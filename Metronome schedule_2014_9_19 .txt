@@ -1,0 +1,32 @@
+主軸 快速開發 MVC
+
+
+~9/20			| 系統架構
+9/21 ~ 9/27		| UI Layout 
+9/28 ~ 10/4		| UI Layout 
+9/15 ~ 9/21		| 移入後台功能
+10/5 ~ 10/11 		| 移入後台功能
+10/12 ~ 10/18		| Debug
+10/19 ~ 10/25		| Debug
+備用 10/26 ~ 11/1	|
+
+
+1. Metronome Main Page
+   (a) BPM picker and display
+   (b) Volume bars display
+   (c) Loop list dispaly
+   (d) Choose to other Main page button
+   (e) System function view Button 
+   (f) Playing button
+   (g) Save in loop list button
+   (h) Voice picker
+   (i) Beats picker
+   
+2. Loop function view
+3. System 頁面
+
+4. Voice
+   (a) Human voice
+   (b) Normal Click hi
+   (c) Normal Click Low
+   (d) Drum voice
