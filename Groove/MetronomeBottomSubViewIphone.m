@@ -31,7 +31,7 @@
         
         [self bringSubviewToFront:self.VolumeSet];
         self.TriangleView.Opened = YES;
-        //[self bringSubviewToFront:self.TriangleView];
+        
     }
     return self;
 }
