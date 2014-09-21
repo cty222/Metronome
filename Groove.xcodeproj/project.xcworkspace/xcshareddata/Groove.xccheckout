@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CB088A26-EEC7-47C5-9635-3D72B7464BDB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Groove</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>40FC3480-6254-4D07-B02A-C206CA97C507</key>
+		<string>ssh://github.com/cty222/Metronome.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Groove.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>40FC3480-6254-4D07-B02A-C206CA97C507</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/cty222/Metronome.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>40FC3480-6254-4D07-B02A-C206CA97C507</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>40FC3480-6254-4D07-B02A-C206CA97C507</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Metronome</string>
+		</dict>
+	</array>
+</dict>
+</plist>

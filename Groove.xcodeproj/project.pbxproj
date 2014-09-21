@@ -1,0 +1,643 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 000BDEEB19BF7D6A00078456 /* triangle2.png */; };
+		004BE63E19B2DDC7002CD995 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE63D19B2DDC7002CD995 /* Foundation.framework */; };
+		004BE64019B2DDC7002CD995 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE63F19B2DDC7002CD995 /* CoreGraphics.framework */; };
+		004BE64219B2DDC7002CD995 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE64119B2DDC7002CD995 /* UIKit.framework */; };
+		004BE64419B2DDC7002CD995 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE64319B2DDC7002CD995 /* CoreData.framework */; };
+		004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 004BE64819B2DDC7002CD995 /* InfoPlist.strings */; };
+		004BE64C19B2DDC8002CD995 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 004BE64B19B2DDC7002CD995 /* main.m */; };
+		004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 004BE64F19B2DDC8002CD995 /* AppDelegate.m */; };
+		004BE65319B2DDC8002CD995 /* Groove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 004BE65119B2DDC8002CD995 /* Groove.xcdatamodeld */; };
+		004BE65519B2DDC8002CD995 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 004BE65419B2DDC8002CD995 /* Images.xcassets */; };
+		004BE65C19B2DDC8002CD995 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE65B19B2DDC8002CD995 /* XCTest.framework */; };
+		004BE65D19B2DDC8002CD995 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE63D19B2DDC7002CD995 /* Foundation.framework */; };
+		004BE65E19B2DDC8002CD995 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE64119B2DDC7002CD995 /* UIKit.framework */; };
+		004BE65F19B2DDC8002CD995 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE64319B2DDC7002CD995 /* CoreData.framework */; };
+		004BE66719B2DDC8002CD995 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 004BE66519B2DDC8002CD995 /* InfoPlist.strings */; };
+		004BE66919B2DDC8002CD995 /* GrooveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 004BE66819B2DDC8002CD995 /* GrooveTests.m */; };
+		004BE67519B2E014002CD995 /* XibViewInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 004BE67419B2E014002CD995 /* XibViewInterface.m */; };
+		004BE68019B2E131002CD995 /* MetronomeMainViewControllerIphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 004BE67E19B2E131002CD995 /* MetronomeMainViewControllerIphone.m */; };
+		004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004BE67F19B2E131002CD995 /* MetronomeMainViewControllerIphone.xib */; };
+		004BE68519B2E670002CD995 /* GlobalConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 004BE68419B2E670002CD995 /* GlobalConfig.plist */; };
+		004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 004BE68719B2EA93002CD995 /* GlobalConfig.m */; };
+		00677B0519BC4C09007A3085 /* MetronmoneTopSubViewIphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B0419BC4C09007A3085 /* MetronmoneTopSubViewIphone.m */; };
+		00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00677B0819BC5203007A3085 /* MetronmoneTopSubViewIphone.xib */; };
+		00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B0C19BC538F007A3085 /* GrooveMainViewControllerIpone.m */; };
+		00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */; };
+		00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */; };
+		00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */; };
+		00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F8C519C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m */; };
+		00E5F8C819C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E5F8C719C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib */; };
+		00E5F8CB19C0CE3D00661D1C /* VolumeBarSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F8CA19C0CE3D00661D1C /* VolumeBarSet.m */; };
+		00E5F8CD19C0CE5E00661D1C /* VolumeBarSet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E5F8CC19C0CE5E00661D1C /* VolumeBarSet.xib */; };
+		00E5F8D019C0D71E00661D1C /* TriangleScrollBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F8CF19C0D71E00661D1C /* TriangleScrollBar.m */; };
+		00E5F8D219C0D73C00661D1C /* TriangleScrollBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E5F8D119C0D73C00661D1C /* TriangleScrollBar.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		004BE66019B2DDC8002CD995 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 004BE63219B2DDC7002CD995 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 004BE63919B2DDC7002CD995;
+			remoteInfo = Groove;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		000BDEEB19BF7D6A00078456 /* triangle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle2.png; sourceTree = "<group>"; };
+		004BE63A19B2DDC7002CD995 /* Groove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Groove.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		004BE63D19B2DDC7002CD995 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		004BE63F19B2DDC7002CD995 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		004BE64119B2DDC7002CD995 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		004BE64319B2DDC7002CD995 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		004BE64719B2DDC7002CD995 /* Groove-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Groove-Info.plist"; sourceTree = "<group>"; };
+		004BE64919B2DDC7002CD995 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		004BE64B19B2DDC7002CD995 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		004BE64D19B2DDC8002CD995 /* Groove-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Groove-Prefix.pch"; sourceTree = "<group>"; };
+		004BE64E19B2DDC8002CD995 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		004BE64F19B2DDC8002CD995 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		004BE65219B2DDC8002CD995 /* Groove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Groove.xcdatamodel; sourceTree = "<group>"; };
+		004BE65419B2DDC8002CD995 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		004BE65A19B2DDC8002CD995 /* GrooveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrooveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		004BE65B19B2DDC8002CD995 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		004BE66419B2DDC8002CD995 /* GrooveTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GrooveTests-Info.plist"; sourceTree = "<group>"; };
+		004BE66619B2DDC8002CD995 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		004BE66819B2DDC8002CD995 /* GrooveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrooveTests.m; sourceTree = "<group>"; };
+		004BE67319B2E014002CD995 /* XibViewInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibViewInterface.h; sourceTree = "<group>"; };
+		004BE67419B2E014002CD995 /* XibViewInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibViewInterface.m; sourceTree = "<group>"; };
+		004BE67D19B2E131002CD995 /* MetronomeMainViewControllerIphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeMainViewControllerIphone.h; sourceTree = "<group>"; };
+		004BE67E19B2E131002CD995 /* MetronomeMainViewControllerIphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeMainViewControllerIphone.m; sourceTree = "<group>"; };
+		004BE67F19B2E131002CD995 /* MetronomeMainViewControllerIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeMainViewControllerIphone.xib; sourceTree = "<group>"; };
+		004BE68419B2E670002CD995 /* GlobalConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GlobalConfig.plist; sourceTree = "<group>"; };
+		004BE68619B2EA93002CD995 /* GlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConfig.h; sourceTree = "<group>"; };
+		004BE68719B2EA93002CD995 /* GlobalConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConfig.m; sourceTree = "<group>"; };
+		00677B0319BC4C09007A3085 /* MetronmoneTopSubViewIphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MetronmoneTopSubViewIphone.h; sourceTree = "<group>"; };
+		00677B0419BC4C09007A3085 /* MetronmoneTopSubViewIphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronmoneTopSubViewIphone.m; sourceTree = "<group>"; };
+		00677B0819BC5203007A3085 /* MetronmoneTopSubViewIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronmoneTopSubViewIphone.xib; sourceTree = "<group>"; };
+		00677B0B19BC538F007A3085 /* GrooveMainViewControllerIpone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrooveMainViewControllerIpone.h; sourceTree = "<group>"; };
+		00677B0C19BC538F007A3085 /* GrooveMainViewControllerIpone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrooveMainViewControllerIpone.m; sourceTree = "<group>"; };
+		00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrooveMainViewControllerIpone.xib; sourceTree = "<group>"; };
+		00677B1119BC5DA4007A3085 /* LargeBPMPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargeBPMPicker.h; sourceTree = "<group>"; };
+		00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargeBPMPicker.m; sourceTree = "<group>"; };
+		00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LargeBPMPicker.xib; sourceTree = "<group>"; };
+		00E5F8C419C0BFCD00661D1C /* MetronomeBottomSubViewIphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeBottomSubViewIphone.h; sourceTree = "<group>"; };
+		00E5F8C519C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeBottomSubViewIphone.m; sourceTree = "<group>"; };
+		00E5F8C719C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeBottomSubViewIphone.xib; sourceTree = "<group>"; };
+		00E5F8C919C0CE3D00661D1C /* VolumeBarSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolumeBarSet.h; sourceTree = "<group>"; };
+		00E5F8CA19C0CE3D00661D1C /* VolumeBarSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolumeBarSet.m; sourceTree = "<group>"; };
+		00E5F8CC19C0CE5E00661D1C /* VolumeBarSet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VolumeBarSet.xib; sourceTree = "<group>"; };
+		00E5F8CE19C0D71E00661D1C /* TriangleScrollBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleScrollBar.h; sourceTree = "<group>"; };
+		00E5F8CF19C0D71E00661D1C /* TriangleScrollBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriangleScrollBar.m; sourceTree = "<group>"; };
+		00E5F8D119C0D73C00661D1C /* TriangleScrollBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriangleScrollBar.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		004BE63719B2DDC7002CD995 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				004BE64019B2DDC7002CD995 /* CoreGraphics.framework in Frameworks */,
+				004BE64419B2DDC7002CD995 /* CoreData.framework in Frameworks */,
+				004BE64219B2DDC7002CD995 /* UIKit.framework in Frameworks */,
+				004BE63E19B2DDC7002CD995 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		004BE65719B2DDC8002CD995 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				004BE65C19B2DDC8002CD995 /* XCTest.framework in Frameworks */,
+				004BE65F19B2DDC8002CD995 /* CoreData.framework in Frameworks */,
+				004BE65E19B2DDC8002CD995 /* UIKit.framework in Frameworks */,
+				004BE65D19B2DDC8002CD995 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		004BE63119B2DDC7002CD995 = {
+			isa = PBXGroup;
+			children = (
+				004BE64519B2DDC7002CD995 /* Groove */,
+				004BE66219B2DDC8002CD995 /* GrooveTests */,
+				004BE63C19B2DDC7002CD995 /* Frameworks */,
+				004BE63B19B2DDC7002CD995 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		004BE63B19B2DDC7002CD995 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				004BE63A19B2DDC7002CD995 /* Groove.app */,
+				004BE65A19B2DDC8002CD995 /* GrooveTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		004BE63C19B2DDC7002CD995 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				004BE63D19B2DDC7002CD995 /* Foundation.framework */,
+				004BE63F19B2DDC7002CD995 /* CoreGraphics.framework */,
+				004BE64119B2DDC7002CD995 /* UIKit.framework */,
+				004BE64319B2DDC7002CD995 /* CoreData.framework */,
+				004BE65B19B2DDC8002CD995 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		004BE64519B2DDC7002CD995 /* Groove */ = {
+			isa = PBXGroup;
+			children = (
+				00BB6DD019BD82C900E3C068 /* Protocol */,
+				00677B0A19BC5323007A3085 /* Groove */,
+				004BE68219B2E5C8002CD995 /* GlobalConfig */,
+				004BE67619B2E01E002CD995 /* SuperClass */,
+				004BE67219B2DF89002CD995 /* Metronome */,
+				004BE64E19B2DDC8002CD995 /* AppDelegate.h */,
+				004BE64F19B2DDC8002CD995 /* AppDelegate.m */,
+				004BE65419B2DDC8002CD995 /* Images.xcassets */,
+				004BE65119B2DDC8002CD995 /* Groove.xcdatamodeld */,
+				004BE64619B2DDC7002CD995 /* Supporting Files */,
+			);
+			path = Groove;
+			sourceTree = "<group>";
+		};
+		004BE64619B2DDC7002CD995 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				000BDEEB19BF7D6A00078456 /* triangle2.png */,
+				004BE64719B2DDC7002CD995 /* Groove-Info.plist */,
+				004BE64819B2DDC7002CD995 /* InfoPlist.strings */,
+				004BE64B19B2DDC7002CD995 /* main.m */,
+				004BE64D19B2DDC8002CD995 /* Groove-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		004BE66219B2DDC8002CD995 /* GrooveTests */ = {
+			isa = PBXGroup;
+			children = (
+				004BE66819B2DDC8002CD995 /* GrooveTests.m */,
+				004BE66319B2DDC8002CD995 /* Supporting Files */,
+			);
+			path = GrooveTests;
+			sourceTree = "<group>";
+		};
+		004BE66319B2DDC8002CD995 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				004BE66419B2DDC8002CD995 /* GrooveTests-Info.plist */,
+				004BE66519B2DDC8002CD995 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		004BE67219B2DF89002CD995 /* Metronome */ = {
+			isa = PBXGroup;
+			children = (
+				00E5F8C319C0BF9600661D1C /* MetronomeBottomSubViewIphone */,
+				00677B1019BC5D5B007A3085 /* MetronmeItems */,
+				00677AFC19BC4AF6007A3085 /* MetronomeTopSubViewIphone */,
+				004BE67D19B2E131002CD995 /* MetronomeMainViewControllerIphone.h */,
+				004BE67E19B2E131002CD995 /* MetronomeMainViewControllerIphone.m */,
+				004BE67F19B2E131002CD995 /* MetronomeMainViewControllerIphone.xib */,
+			);
+			name = Metronome;
+			sourceTree = "<group>";
+		};
+		004BE67619B2E01E002CD995 /* SuperClass */ = {
+			isa = PBXGroup;
+			children = (
+				004BE67319B2E014002CD995 /* XibViewInterface.h */,
+				004BE67419B2E014002CD995 /* XibViewInterface.m */,
+			);
+			name = SuperClass;
+			sourceTree = "<group>";
+		};
+		004BE68219B2E5C8002CD995 /* GlobalConfig */ = {
+			isa = PBXGroup;
+			children = (
+				004BE68419B2E670002CD995 /* GlobalConfig.plist */,
+				004BE68619B2EA93002CD995 /* GlobalConfig.h */,
+				004BE68719B2EA93002CD995 /* GlobalConfig.m */,
+			);
+			name = GlobalConfig;
+			sourceTree = "<group>";
+		};
+		00677AFC19BC4AF6007A3085 /* MetronomeTopSubViewIphone */ = {
+			isa = PBXGroup;
+			children = (
+				00677B0319BC4C09007A3085 /* MetronmoneTopSubViewIphone.h */,
+				00677B0419BC4C09007A3085 /* MetronmoneTopSubViewIphone.m */,
+				00677B0819BC5203007A3085 /* MetronmoneTopSubViewIphone.xib */,
+			);
+			name = MetronomeTopSubViewIphone;
+			sourceTree = "<group>";
+		};
+		00677B0A19BC5323007A3085 /* Groove */ = {
+			isa = PBXGroup;
+			children = (
+				00677B0B19BC538F007A3085 /* GrooveMainViewControllerIpone.h */,
+				00677B0C19BC538F007A3085 /* GrooveMainViewControllerIpone.m */,
+				00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */,
+			);
+			name = Groove;
+			sourceTree = "<group>";
+		};
+		00677B1019BC5D5B007A3085 /* MetronmeItems */ = {
+			isa = PBXGroup;
+			children = (
+				00677B1119BC5DA4007A3085 /* LargeBPMPicker.h */,
+				00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */,
+				00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */,
+				00E5F8C919C0CE3D00661D1C /* VolumeBarSet.h */,
+				00E5F8CA19C0CE3D00661D1C /* VolumeBarSet.m */,
+				00E5F8CC19C0CE5E00661D1C /* VolumeBarSet.xib */,
+				00E5F8CE19C0D71E00661D1C /* TriangleScrollBar.h */,
+				00E5F8CF19C0D71E00661D1C /* TriangleScrollBar.m */,
+				00E5F8D119C0D73C00661D1C /* TriangleScrollBar.xib */,
+			);
+			name = MetronmeItems;
+			sourceTree = "<group>";
+		};
+		00BB6DD019BD82C900E3C068 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
+		00E5F8C319C0BF9600661D1C /* MetronomeBottomSubViewIphone */ = {
+			isa = PBXGroup;
+			children = (
+				00E5F8C419C0BFCD00661D1C /* MetronomeBottomSubViewIphone.h */,
+				00E5F8C519C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m */,
+				00E5F8C719C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib */,
+			);
+			name = MetronomeBottomSubViewIphone;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		004BE63919B2DDC7002CD995 /* Groove */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 004BE66C19B2DDC8002CD995 /* Build configuration list for PBXNativeTarget "Groove" */;
+			buildPhases = (
+				004BE63619B2DDC7002CD995 /* Sources */,
+				004BE63719B2DDC7002CD995 /* Frameworks */,
+				004BE63819B2DDC7002CD995 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Groove;
+			productName = Groove;
+			productReference = 004BE63A19B2DDC7002CD995 /* Groove.app */;
+			productType = "com.apple.product-type.application";
+		};
+		004BE65919B2DDC8002CD995 /* GrooveTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 004BE66F19B2DDC8002CD995 /* Build configuration list for PBXNativeTarget "GrooveTests" */;
+			buildPhases = (
+				004BE65619B2DDC8002CD995 /* Sources */,
+				004BE65719B2DDC8002CD995 /* Frameworks */,
+				004BE65819B2DDC8002CD995 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				004BE66119B2DDC8002CD995 /* PBXTargetDependency */,
+			);
+			name = GrooveTests;
+			productName = GrooveTests;
+			productReference = 004BE65A19B2DDC8002CD995 /* GrooveTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		004BE63219B2DDC7002CD995 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Cty;
+				TargetAttributes = {
+					004BE63919B2DDC7002CD995 = {
+						DevelopmentTeam = 6LM28NT488;
+					};
+					004BE65919B2DDC8002CD995 = {
+						TestTargetID = 004BE63919B2DDC7002CD995;
+					};
+				};
+			};
+			buildConfigurationList = 004BE63519B2DDC7002CD995 /* Build configuration list for PBXProject "Groove" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 004BE63119B2DDC7002CD995;
+			productRefGroup = 004BE63B19B2DDC7002CD995 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				004BE63919B2DDC7002CD995 /* Groove */,
+				004BE65919B2DDC8002CD995 /* GrooveTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		004BE63819B2DDC7002CD995 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */,
+				004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */,
+				00E5F8CD19C0CE5E00661D1C /* VolumeBarSet.xib in Resources */,
+				00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */,
+				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
+				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
+				00E5F8D219C0D73C00661D1C /* TriangleScrollBar.xib in Resources */,
+				00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */,
+				004BE65519B2DDC8002CD995 /* Images.xcassets in Resources */,
+				00E5F8C819C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib in Resources */,
+				004BE68519B2E670002CD995 /* GlobalConfig.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		004BE65819B2DDC8002CD995 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				004BE66719B2DDC8002CD995 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		004BE63619B2DDC7002CD995 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00677B0519BC4C09007A3085 /* MetronmoneTopSubViewIphone.m in Sources */,
+				004BE68019B2E131002CD995 /* MetronomeMainViewControllerIphone.m in Sources */,
+				004BE67519B2E014002CD995 /* XibViewInterface.m in Sources */,
+				00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */,
+				00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */,
+				00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */,
+				004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */,
+				00E5F8CB19C0CE3D00661D1C /* VolumeBarSet.m in Sources */,
+				00E5F8D019C0D71E00661D1C /* TriangleScrollBar.m in Sources */,
+				004BE65319B2DDC8002CD995 /* Groove.xcdatamodeld in Sources */,
+				004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */,
+				004BE64C19B2DDC8002CD995 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		004BE65619B2DDC8002CD995 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				004BE66919B2DDC8002CD995 /* GrooveTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		004BE66119B2DDC8002CD995 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 004BE63919B2DDC7002CD995 /* Groove */;
+			targetProxy = 004BE66019B2DDC8002CD995 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		004BE64819B2DDC7002CD995 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				004BE64919B2DDC7002CD995 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		004BE66519B2DDC8002CD995 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				004BE66619B2DDC8002CD995 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		004BE66A19B2DDC8002CD995 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		004BE66B19B2DDC8002CD995 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		004BE66D19B2DDC8002CD995 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Groove/Groove-Prefix.pch";
+				INFOPLIST_FILE = "Groove/Groove-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		004BE66E19B2DDC8002CD995 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Groove/Groove-Prefix.pch";
+				INFOPLIST_FILE = "Groove/Groove-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		004BE67019B2DDC8002CD995 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Groove.app/Groove";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Groove/Groove-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "GrooveTests/GrooveTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		004BE67119B2DDC8002CD995 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Groove.app/Groove";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Groove/Groove-Prefix.pch";
+				INFOPLIST_FILE = "GrooveTests/GrooveTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		004BE63519B2DDC7002CD995 /* Build configuration list for PBXProject "Groove" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				004BE66A19B2DDC8002CD995 /* Debug */,
+				004BE66B19B2DDC8002CD995 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		004BE66C19B2DDC8002CD995 /* Build configuration list for PBXNativeTarget "Groove" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				004BE66D19B2DDC8002CD995 /* Debug */,
+				004BE66E19B2DDC8002CD995 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		004BE66F19B2DDC8002CD995 /* Build configuration list for PBXNativeTarget "GrooveTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				004BE67019B2DDC8002CD995 /* Debug */,
+				004BE67119B2DDC8002CD995 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		004BE65119B2DDC8002CD995 /* Groove.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				004BE65219B2DDC8002CD995 /* Groove.xcdatamodel */,
+			);
+			currentVersion = 004BE65219B2DDC8002CD995 /* Groove.xcdatamodel */;
+			path = Groove.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 004BE63219B2DDC7002CD995 /* Project object */;
+}
