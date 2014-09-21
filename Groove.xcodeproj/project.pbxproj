@@ -33,13 +33,14 @@
 		00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B0C19BC538F007A3085 /* GrooveMainViewControllerIpone.m */; };
 		00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */; };
 		00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */; };
+		00B9689819CEDE5300AAD1AF /* TmpVerticalSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689719CEDE5300AAD1AF /* TmpVerticalSlider.m */; };
+		00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */; };
+		00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */; };
 		00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */; };
 		00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F8C519C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m */; };
 		00E5F8C819C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E5F8C719C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib */; };
 		00E5F8CB19C0CE3D00661D1C /* VolumeBarSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F8CA19C0CE3D00661D1C /* VolumeBarSet.m */; };
 		00E5F8CD19C0CE5E00661D1C /* VolumeBarSet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E5F8CC19C0CE5E00661D1C /* VolumeBarSet.xib */; };
-		00E5F8D019C0D71E00661D1C /* TriangleScrollBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F8CF19C0D71E00661D1C /* TriangleScrollBar.m */; };
-		00E5F8D219C0D73C00661D1C /* TriangleScrollBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E5F8D119C0D73C00661D1C /* TriangleScrollBar.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,11 @@
 		00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrooveMainViewControllerIpone.xib; sourceTree = "<group>"; };
 		00677B1119BC5DA4007A3085 /* LargeBPMPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargeBPMPicker.h; sourceTree = "<group>"; };
 		00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargeBPMPicker.m; sourceTree = "<group>"; };
+		00B9689619CEDE5300AAD1AF /* TmpVerticalSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmpVerticalSlider.h; sourceTree = "<group>"; };
+		00B9689719CEDE5300AAD1AF /* TmpVerticalSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmpVerticalSlider.m; sourceTree = "<group>"; };
+		00B9689919CEF10900AAD1AF /* MetronomeSelectBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeSelectBar.h; sourceTree = "<group>"; };
+		00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeSelectBar.m; sourceTree = "<group>"; };
+		00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeSelectBar.xib; sourceTree = "<group>"; };
 		00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LargeBPMPicker.xib; sourceTree = "<group>"; };
 		00E5F8C419C0BFCD00661D1C /* MetronomeBottomSubViewIphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeBottomSubViewIphone.h; sourceTree = "<group>"; };
 		00E5F8C519C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeBottomSubViewIphone.m; sourceTree = "<group>"; };
@@ -95,9 +101,6 @@
 		00E5F8C919C0CE3D00661D1C /* VolumeBarSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolumeBarSet.h; sourceTree = "<group>"; };
 		00E5F8CA19C0CE3D00661D1C /* VolumeBarSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolumeBarSet.m; sourceTree = "<group>"; };
 		00E5F8CC19C0CE5E00661D1C /* VolumeBarSet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VolumeBarSet.xib; sourceTree = "<group>"; };
-		00E5F8CE19C0D71E00661D1C /* TriangleScrollBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleScrollBar.h; sourceTree = "<group>"; };
-		00E5F8CF19C0D71E00661D1C /* TriangleScrollBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriangleScrollBar.m; sourceTree = "<group>"; };
-		00E5F8D119C0D73C00661D1C /* TriangleScrollBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriangleScrollBar.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,9 +268,11 @@
 				00E5F8C919C0CE3D00661D1C /* VolumeBarSet.h */,
 				00E5F8CA19C0CE3D00661D1C /* VolumeBarSet.m */,
 				00E5F8CC19C0CE5E00661D1C /* VolumeBarSet.xib */,
-				00E5F8CE19C0D71E00661D1C /* TriangleScrollBar.h */,
-				00E5F8CF19C0D71E00661D1C /* TriangleScrollBar.m */,
-				00E5F8D119C0D73C00661D1C /* TriangleScrollBar.xib */,
+				00B9689619CEDE5300AAD1AF /* TmpVerticalSlider.h */,
+				00B9689719CEDE5300AAD1AF /* TmpVerticalSlider.m */,
+				00B9689919CEF10900AAD1AF /* MetronomeSelectBar.h */,
+				00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */,
+				00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */,
 			);
 			name = MetronmeItems;
 			sourceTree = "<group>";
@@ -372,8 +377,8 @@
 				00E5F8CD19C0CE5E00661D1C /* VolumeBarSet.xib in Resources */,
 				00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */,
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
+				00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */,
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
-				00E5F8D219C0D73C00661D1C /* TriangleScrollBar.xib in Resources */,
 				00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */,
 				004BE65519B2DDC8002CD995 /* Images.xcassets in Resources */,
 				00E5F8C819C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib in Resources */,
@@ -396,15 +401,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00B9689819CEDE5300AAD1AF /* TmpVerticalSlider.m in Sources */,
 				00677B0519BC4C09007A3085 /* MetronmoneTopSubViewIphone.m in Sources */,
 				004BE68019B2E131002CD995 /* MetronomeMainViewControllerIphone.m in Sources */,
 				004BE67519B2E014002CD995 /* XibViewInterface.m in Sources */,
 				00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */,
+				00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */,
 				00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */,
 				00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */,
 				004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */,
 				00E5F8CB19C0CE3D00661D1C /* VolumeBarSet.m in Sources */,
-				00E5F8D019C0D71E00661D1C /* TriangleScrollBar.m in Sources */,
 				004BE65319B2DDC8002CD995 /* Groove.xcdatamodeld in Sources */,
 				004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */,
 				004BE64C19B2DDC8002CD995 /* main.m in Sources */,

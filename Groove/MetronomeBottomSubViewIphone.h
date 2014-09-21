@@ -8,11 +8,10 @@
 
 #import "XibViewInterface.h"
 #import "VolumeBarSet.h"
-#import "TriangleScrollBar.h"
+#import "MetronomeSelectBar.h"
 
 @interface MetronomeBottomSubViewIphone : XibViewInterface
 @property (strong, nonatomic) IBOutlet VolumeBarSet *VolumeSet;
-@property (strong, nonatomic) IBOutlet TriangleScrollBar *TriangleView;
-
+@property (strong, nonatomic) IBOutlet MetronomeSelectBar *SelectGrooveBar;
 
 @end

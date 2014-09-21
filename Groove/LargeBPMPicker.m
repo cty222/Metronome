@@ -135,6 +135,12 @@
     }
 }
 
+
+- (BOOL) GetTouched
+{
+    return _Touched;
+}
+
 - (void) SetTouched: (BOOL)NewValue
 {
     _Touched = NewValue;
@@ -167,10 +173,6 @@
     }
 }
 
-- (BOOL) GetTouched
-{
-    return _Touched;
-}
 
 - (void) TouchBeginEvent : (CGPoint) TouchLocation
 {

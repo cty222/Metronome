@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MetronmoneTopSubViewIphone.h"
 #import "MetronomeBottomSubViewIphone.h"
+#import "MetronomeSelectBar.h"
 
 @interface MetronomeMainViewControllerIphone : UIViewController
 @property (strong, nonatomic) IBOutlet UIView *FullView;

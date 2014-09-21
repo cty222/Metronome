@@ -15,6 +15,36 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        
+        for (int Index =0; Index < 5; Index++)
+        {
+            CGRect TmpVerticalSliderRect = CGRectMake(50 * Index, 0, 40, 140);
+            TmpVerticalSlider *TmpSlider = [[TmpVerticalSlider alloc] initWithFrame:TmpVerticalSliderRect];
+            TmpSlider.SliderTag = Index;
+            [self addSubview:TmpSlider];
+            
+            switch (Index) {
+                case ACCENT_SLIDER:
+                    self.SliderAccent = TmpSlider;
+                    break;
+                case FOUR_NOTE_SLIDER:
+                    self.Slider4Note = TmpSlider;
+                    break;
+                case EIGHT_NOTE_SLIDER:
+                    self.Slider8Note = TmpSlider;
+                    break;
+                case SIXTEEN_NOTE_SLIDER:
+                    self.Slider16Note = TmpSlider;
+                    break;
+                case TRIPPLE_NOTE_SLIDER:
+                    self.SliderTrippleNote = TmpSlider;
+                    break;
+                default:
+                    break;
+            }
+        }
+        self.backgroundColor = [UIColor blackColor];
+
     }
     return self;
 }

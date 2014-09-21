@@ -122,49 +122,81 @@
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    UITouch *touch =  [touches anyObject];
-    if ([NSStringFromClass([touch.view class]) isEqualToString:@"LargeBPMPicker"])
+    UITouch *Touch =  [touches anyObject];
+    if ([NSStringFromClass([Touch.view class]) isEqualToString:@"LargeBPMPicker"])
     {
-        LargeBPMPicker* BPMPicker = (LargeBPMPicker *)touch.view;
+        LargeBPMPicker* BPMPicker = (LargeBPMPicker *)Touch.view;
         CGPoint OriginalLocation;
-        OriginalLocation = [touch locationInView:touch.view];
+        OriginalLocation = [Touch locationInView:Touch.view];
         [BPMPicker TouchBeginEvent:OriginalLocation];
+    }
+    else if ([NSStringFromClass([Touch.view class]) isEqualToString:@"MetronomeSelectBar"])
+    {
+        MetronomeSelectBar* ScrollView = (MetronomeSelectBar *)Touch.view;
+        CGPoint OriginalLocation;
+        OriginalLocation = [Touch locationInView:Touch.view];
+        [ScrollView TouchBeginEvent:OriginalLocation];
+    }
+    else
+    {
+        NSLog(@"%@", Touch);
     }
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UITouch *touch =  [touches anyObject];
-    if ([NSStringFromClass([touch.view class]) isEqualToString:@"LargeBPMPicker"])
+    UITouch *Touch =  [touches anyObject];
+    if ([NSStringFromClass([Touch.view class]) isEqualToString:@"LargeBPMPicker"])
     {
-        LargeBPMPicker* BPMPicker = (LargeBPMPicker *)touch.view;
+        LargeBPMPicker* BPMPicker = (LargeBPMPicker *)Touch.view;
         CGPoint OriginalLocation;
-        OriginalLocation = [touch locationInView:touch.view];
+        OriginalLocation = [Touch locationInView:Touch.view];
         [BPMPicker TouchEndEvent:OriginalLocation];
+    }
+    else if ([NSStringFromClass([Touch.view class]) isEqualToString:@"MetronomeSelectBar"])
+    {
+        MetronomeSelectBar* ScrollView = (MetronomeSelectBar *)Touch.view;
+        CGPoint OriginalLocation;
+        OriginalLocation = [Touch locationInView:Touch.view];
+        [ScrollView TouchEndEvent:OriginalLocation];
     }
 }
 
 -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UITouch *touch =  [touches anyObject];
-    if ([NSStringFromClass([touch.view class]) isEqualToString:@"LargeBPMPicker"])
+    UITouch *Touch =  [touches anyObject];
+    if ([NSStringFromClass([Touch.view class]) isEqualToString:@"LargeBPMPicker"])
     {
-        LargeBPMPicker* BPMPicker = (LargeBPMPicker *)touch.view;
+        LargeBPMPicker* BPMPicker = (LargeBPMPicker *)Touch.view;
         CGPoint OriginalLocation;
-        OriginalLocation = [touch locationInView:touch.view];
+        OriginalLocation = [Touch locationInView:Touch.view];
         [BPMPicker TouchMoveEvent:OriginalLocation];
+    }
+    else if ([NSStringFromClass([Touch.view class]) isEqualToString:@"MetronomeSelectBar"])
+    {
+        MetronomeSelectBar* ScrollView = (MetronomeSelectBar *)Touch.view;
+        CGPoint OriginalLocation;
+        OriginalLocation = [Touch locationInView:Touch.view];
+        [ScrollView TouchMoveEvent:OriginalLocation];
     }
 }
 
  -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UITouch *touch =  [touches anyObject];
-    if ([NSStringFromClass([touch.view class]) isEqualToString:@"LargeBPMPicker"])
+    UITouch *Touch =  [touches anyObject];
+    if ([NSStringFromClass([Touch.view class]) isEqualToString:@"LargeBPMPicker"])
     {
-        LargeBPMPicker* BPMPicker = (LargeBPMPicker *)touch.view;
+        LargeBPMPicker* BPMPicker = (LargeBPMPicker *)Touch.view;
         CGPoint OriginalLocation;
-        OriginalLocation = [touch locationInView:touch.view];
+        OriginalLocation = [Touch locationInView:Touch.view];
         [BPMPicker TouchCancellEvent:OriginalLocation];
+    }
+    else if ([NSStringFromClass([Touch.view class]) isEqualToString:@"MetronomeSelectBar"])
+    {
+        MetronomeSelectBar* ScrollView = (MetronomeSelectBar *)Touch.view;
+        CGPoint OriginalLocation;
+        OriginalLocation = [Touch locationInView:Touch.view];
+        [ScrollView TouchCancellEvent:OriginalLocation];
     }
 }
 

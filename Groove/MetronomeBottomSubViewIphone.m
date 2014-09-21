@@ -24,14 +24,10 @@
         [self.VolumeSet removeFromSuperview];
         self.VolumeSet = [[VolumeBarSet alloc] initWithFrame:self.VolumeSet.frame];
         [self addSubview:self.VolumeSet];
-        
-        [self.TriangleView removeFromSuperview];
-        self.TriangleView = [[TriangleScrollBar alloc] initWithFrame:self.TriangleView.frame];
-        [self addSubview:self.TriangleView];
-        
-        [self bringSubviewToFront:self.VolumeSet];
-        self.TriangleView.Opened = YES;
-        
+       
+        [self.SelectGrooveBar removeFromSuperview];
+        self.SelectGrooveBar = [[MetronomeSelectBar alloc] initWithFrame:self.SelectGrooveBar.frame];
+        [self addSubview:self.SelectGrooveBar];
     }
     return self;
 }
