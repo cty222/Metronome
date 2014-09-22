@@ -8,6 +8,9 @@
 
 #import "MetronomeSelectBar.h"
 
+#define CELL_WIDTH   40
+#define FIRST_CELL_OFFSET_COUNT 2
+
 @implementation MetronomeSelectBar
 {
     NSMutableArray * _GrooveCellList;
@@ -16,7 +19,11 @@
     CGPoint OriginalLocation;
     BOOL _Touched;
     int _FocusIndex;
+    int PermanentFrameMove;
     int CurrentMove;
+    NSTimer *MoveToCenterTimer;
+    int MoveToCenterCounter;
+
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -24,9 +31,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        PermanentFrameMove = -1 * (CELL_WIDTH * FIRST_CELL_OFFSET_COUNT);
         self.GrooveCellList = [self SelectCellList];
         self.FocusIndex = 0;
         self.userInteractionEnabled = YES;
+        
+
     }
     return self;
 }
@@ -42,67 +52,109 @@
     
     for (int Index = 0; Index < self.GrooveCellList.count; Index++)
     {
-        CGRect TmpFrame = CGRectMake((Index - self.FocusIndex)  * 40, 20, 40, 40);
+        CGRect TmpFrame = CGRectMake(Index * CELL_WIDTH - CurrentMove - PermanentFrameMove, 20, CELL_WIDTH, 40);
         UILabel * TmpLabel = [[UILabel alloc] initWithFrame:TmpFrame];
         TmpLabel.text = [NSString stringWithFormat:@"L%d", Index];
         [ControlView addSubview:TmpLabel];
     }
     
-    [self FlashDisplayFrame];
+    [self SetFrameValueWhenStopSelect];
 }
 
 - (void) FlashDisplayFrame
 {
+    Boolean NoFucus = YES;
+    
     for (int Index = 0; Index < self.GrooveCellList.count; Index++)
     {
-        CGRect TmpFrame = CGRectMake((Index - self.FocusIndex)  * 40 - CurrentMove, 20, 40, 40);
+        CGRect TmpFrame = CGRectMake(Index * CELL_WIDTH - CurrentMove - PermanentFrameMove, 20, CELL_WIDTH, 40);
         UILabel * TmpLabel = self.subviews[Index];
         TmpLabel.frame = TmpFrame;
         if (TmpFrame.origin.x + TmpFrame.size.width > self.bounds.size.width ||
             TmpFrame.origin.x < self.bounds.origin.x
             )
         {
+            // if cell is out of view frame, it will be hidden.
             TmpLabel.hidden = YES;
         }
         else
         {
             TmpLabel.hidden = NO;
         }
-    }
-}
-
-- (int) NowFocusCellIndex
-{
-    Boolean HaveFocus = false;
-    
-    int Index = 0;
-    for (Index = 0 ; Index < self.subviews.count; Index++)
-    {
-        UILabel * TmpLabel = self.subviews[Index];
-        NSLog(@"%@", TmpLabel);
-        if (TmpLabel.frame.origin.x - CurrentMove <= 0 &&
-            (TmpLabel.frame.origin.x - CurrentMove + TmpLabel.frame.size.width) >= 40
-            )
+        
+        if ([self isFocusCell:TmpLabel])
         {
-            HaveFocus = YES;
-            break;
+            self.FocusIndex = Index;
+            NoFucus = NO;
         }
     }
     
-    if (!HaveFocus)
+    // This is for first Cell and last Cell
+    // it avoid user have no focus cell
+    if (self.FocusIndex == 0 && NoFucus)
     {
-        Index = 0;
+        PermanentFrameMove += [self Sensitivity];
+        [self FlashDisplayFrame];
     }
-    
-    return Index;
+    else if (self.FocusIndex == (self.GrooveCellList.count -1) && NoFucus)
+    {
+        PermanentFrameMove -= [self Sensitivity];
+        [self FlashDisplayFrame];
+    }
+}
 
+- (Boolean) isFocusCell: (UILabel *) Label
+{
+    if ((Label.frame.origin.x + Label.frame.size.width > self.bounds.size.width/2)
+        && Label.frame.origin.x < self.bounds.size.width/2
+        )
+    {
+        return YES;
+    }
+    return NO;
+}
+
+- (void) SetFrameValueWhenStopSelect
+{
+    int NewPermanentFrameMove = -1 * (CELL_WIDTH * (FIRST_CELL_OFFSET_COUNT - self.FocusIndex));
+    PermanentFrameMove += CurrentMove;
+    CurrentMove = 0;
+    MoveToCenterCounter = NewPermanentFrameMove - PermanentFrameMove;
+    MoveToCenterTimer = [NSTimer scheduledTimerWithTimeInterval:0.01
+                                                         target:self
+                                                       selector:@selector(MoveFocusCellToCenterTick:)
+                                                       userInfo:nil
+                                                        repeats:YES];
+}
+
+
+- (void) MoveFocusCellToCenterTick: (NSTimer *) ThisTimer
+{
+    if (MoveToCenterCounter >0)
+    {
+        PermanentFrameMove++;
+        MoveToCenterCounter--;
+    }
+    else if(MoveToCenterCounter <0)
+    {
+        PermanentFrameMove--;
+        MoveToCenterCounter++;
+    }
+    [self FlashDisplayFrame];
+    
+    
+    if (MoveToCenterCounter == 0)
+    {
+        [MoveToCenterTimer invalidate];
+        MoveToCenterTimer = nil;
+    }
 }
 
 // ============================
 // Property
 - (int) Sensitivity
 {
-    return 1;
+    return 2;
 }
 
 
@@ -135,10 +187,7 @@
     }
     else
     {
-
-        self.FocusIndex = [self NowFocusCellIndex];
-        
-        [self FlashDisplayFrame];
+        [self SetFrameValueWhenStopSelect];
     }
 }
 
@@ -160,8 +209,6 @@
     _FocusIndex = NewValue;
     UILabel * NewFocusLabel = self.subviews[_FocusIndex];
     NewFocusLabel.backgroundColor = [UIColor blueColor];
-    
-    //CurrentMove = 0;
 }
 //
 // ============================
@@ -216,14 +263,9 @@
         if (MoveLeft != 0)
         {
             CurrentMove = MoveLeft;
-
-            //self.FocusIndex = [self NowFocusCellIndex];
-            
-            
             {
                 [self FlashDisplayFrame];
             }
-            NSLog(@"%d",CurrentMove);
         }
     }
 }
