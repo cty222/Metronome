@@ -1,0 +1,18 @@
+table Tempo_Cell
+
+Tempo_ID
+OwnerListID
+BPM_Value
+Time_Signature
+Loop_Time
+Accent_Volume
+Quarter_Note_Volume
+Eighth_Note_Volume
+Sixteenth_Note_Volume
+Tripple_Note_Volume
+
+
+table MetronomeTempoList
+
+TempoListID
+TempListName
