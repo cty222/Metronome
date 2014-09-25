@@ -25,7 +25,14 @@
     //
     [GlobalConfig Initialize:self.window];
     
-
+    //
+    // 2. Initize Model
+    //
+    gMetronomeModel = [[MetronomeModel alloc] init];
+    [gMetronomeModel InitializeCoreData : self.managedObjectContext
+                     ManagedObjectModel : self.managedObjectModel
+                              DbVersion : [GlobalConfig DbVersion]];
+    
     self.window.rootViewController =  [GlobalConfig MetronomeMainViewControllerIphone];
     
     // System add
@@ -113,10 +120,18 @@
         return _persistentStoreCoordinator;
     }
     
+    
+    // This use original version
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Groove.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    
+    /*NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];*/
+    
+    
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.

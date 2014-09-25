@@ -211,6 +211,16 @@ static NSMutableDictionary * ThisPlist;
     return [ThisPlist objectForKey:@"BPMMaxValue"];
 }
 
++ (NSNumber *) DbVersion
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return nil;
+    }
+    
+    return [ThisPlist objectForKey:@"DbVersion"];
+}
+
 
 //
 // ============================

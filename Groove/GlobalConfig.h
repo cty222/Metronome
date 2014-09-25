@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @class GlobalConfig;
 
 enum {
@@ -36,6 +35,7 @@ enum {
 + (NSNumber *) DeviceType;
 + (NSNumber *) BPMMinValue;
 + (NSNumber *) BPMMaxValue;
++ (NSNumber *) DbVersion;
 
 
 // Main View

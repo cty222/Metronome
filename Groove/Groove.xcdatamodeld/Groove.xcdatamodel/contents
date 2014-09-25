@@ -1,4 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DbConfig" representedClassName="DbConfig" syncable="YES">
+        <attribute name="dbVersion" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="TempoCell" representedClassName="TempoCell" syncable="YES">
+        <attribute name="accentVolume" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="bpmValue" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="eighthNoteVolume" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="loopCount" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="quarterNoteVolume" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sixteenNoteVolume" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="trippleNoteVolume" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="listOwner" maxCount="1" deletionRule="Nullify" destinationEntity="TempoList" inverseName="cellBelongTo" inverseEntity="TempoList" syncable="YES"/>
+        <relationship name="timeSignatureType" maxCount="1" deletionRule="Nullify" destinationEntity="TimeSignatureType" inverseName="usingCell" inverseEntity="TimeSignatureType" syncable="YES"/>
+    </entity>
+    <entity name="TempoList" representedClassName="TempoList" syncable="YES">
+        <attribute name="tempoListName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cellBelongTo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TempoCell" inverseName="listOwner" inverseEntity="TempoCell" syncable="YES"/>
+    </entity>
+    <entity name="TimeSignatureType" representedClassName="TimeSignatureType" syncable="YES">
+        <attribute name="timeSignature" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="usingCell" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TempoCell" inverseName="timeSignatureType" inverseEntity="TempoCell" syncable="YES"/>
+    </entity>
+    <fetchRequest name="FetchCellFromSigleOwner" entity="TempoCell" predicateString="listOwner == $listOwner"/>
+    <fetchRequest name="FetchDbVersion" entity="DbConfig" predicateString="dbVersion >= $DbVersion"/>
+    <fetchRequest name="FetchOwerFromSingleName" entity="TempoCell"/>
+    <elements>
+        <element name="TempoCell" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="TempoList" positionX="349" positionY="-127" width="128" height="73"/>
+        <element name="TimeSignatureType" positionX="412" positionY="80" width="128" height="28"/>
+        <element name="DbConfig" positionX="153" positionY="18" width="128" height="60"/>
+    </elements>
 </model>

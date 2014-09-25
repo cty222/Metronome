@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>DbVersion</key>
+	<real>1001</real>
 	<key>VersionID</key>
-	<real>4001</real>
+	<real>4003</real>
 	<key>BPMMinValue</key>
 	<integer>30</integer>
 	<key>BPMMaxValue</key>

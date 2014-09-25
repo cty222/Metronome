@@ -14,4 +14,7 @@
 @property (strong, nonatomic) IBOutlet VolumeBarSet *VolumeSet;
 @property (strong, nonatomic) IBOutlet MetronomeSelectBar *SelectGrooveBar;
 
+
+- (void) CopyCellDataTableToSelectBar : (NSArray *) CellDataTable;
+
 @end

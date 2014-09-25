@@ -1,8 +1,5 @@
 table Tempo_Cell
-
-Tempo_ID
-OwnerListID
-BPM_Value
+timeBPM_Value
 Time_Signature
 Loop_Time
 Accent_Volume
@@ -14,5 +11,4 @@ Tripple_Note_Volume
 
 table MetronomeTempoList
 
-TempoListID
 TempListName

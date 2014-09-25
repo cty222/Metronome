@@ -32,6 +32,11 @@
     return self;
 }
 
+- (void) CopyCellDataTableToSelectBar : (NSArray *) CellDataTable
+{
+    self.SelectGrooveBar.GrooveCellList = [NSMutableArray arrayWithArray:CellDataTable];
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

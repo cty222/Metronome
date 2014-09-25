@@ -70,13 +70,18 @@
     self.TopView.frame = TopViewFrame;
     self.BottomView.frame = BottomViewFrame;
 
+#if DEBUG_CLOSE
     NSLog(@"%@", self.FullView);
     NSLog(@"%@", self.TopView);
     NSLog(@"%@", self.BottomView);
+#endif
 
     [self InitializeTopSubView];
     [self InitializeBottomSubView];
+    
+    [self FillData];
 }
+
 
 - (void) InitializeTopSubView
 {
@@ -107,10 +112,19 @@
         [[self.BottomView subviews]
          makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }
-    NSLog(@"%@",self.BottomSubView);
+
     [self.BottomView addSubview:self.BottomSubView];
-    //self.BottomSubView.Set.hidden = YES;
 }
+
+
+//
+// Testing
+//
+- (void) FillData
+{
+    [self.BottomSubView CopyCellDataTableToSelectBar:[gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]]];
+}
+
 //  =========================
 //
 //

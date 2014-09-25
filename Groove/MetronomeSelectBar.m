@@ -32,7 +32,7 @@
     if (self) {
         // Initialization code
         PermanentFrameMove = -1 * (CELL_WIDTH * FIRST_CELL_OFFSET_COUNT);
-        self.GrooveCellList = [self SelectCellList];
+        //self.GrooveCellList = [self SelectCellList];
         self.FocusIndex = 0;
         self.userInteractionEnabled = YES;
         
@@ -47,6 +47,7 @@
     UIView * ControlView = self;
     ControlView.bounds = CGRectMake(0, 0, 200, 80);
     
+    // Clear all cell
     [[ControlView subviews]
      makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
@@ -63,6 +64,11 @@
 
 - (void) FlashDisplayFrame
 {
+    if (self.GrooveCellList == nil)
+    {
+        return;
+    }
+    
     Boolean NoFucus = YES;
     
     for (int Index = 0; Index < self.GrooveCellList.count; Index++)
@@ -198,8 +204,10 @@
 
 - (void) SetFocusIndex:(int) NewValue
 {
-    NSLog(@"OldIndex : %d", _FocusIndex);
-    NSLog(@"FocusIndex : %d", NewValue);
+    if (_GrooveCellList == nil || self.subviews.count == 0)
+    {
+        return;
+    }
     
     // Reset old Label background color
     UILabel * OldFocusLabel = self.subviews[_FocusIndex];
