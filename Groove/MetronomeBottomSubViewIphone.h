@@ -10,11 +10,17 @@
 #import "VolumeBarSet.h"
 #import "MetronomeSelectBar.h"
 
-@interface MetronomeBottomSubViewIphone : XibViewInterface
+@interface MetronomeBottomSubViewIphone : XibViewInterface <SelectBarProtocol>
 @property (strong, nonatomic) IBOutlet VolumeBarSet *VolumeSet;
 @property (strong, nonatomic) IBOutlet MetronomeSelectBar *SelectGrooveBar;
+@property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
+
+@property (getter = GetCurrentDataTable, setter = SetCurrentDataTable:) NSMutableArray *CurrentDataTable;
+
+@property (nonatomic, assign) id<SelectBarProtocol> delegate;
 
 
-- (void) CopyCellDataTableToSelectBar : (NSArray *) CellDataTable;
+- (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable;
+
 
 @end

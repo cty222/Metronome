@@ -8,11 +8,23 @@
 
 #import "XibViewInterface.h"
 
-@interface MetronomeSelectBar : XibViewInterface
+@protocol SelectBarProtocol <NSObject>
+@required
+
+@optional
+
+- (void) SetFocusIndex: (int) FocusIndex;
+@end
+
+
+@interface MetronomeSelectBar : XibViewInterface <SelectBarProtocol>
 @property (getter = GetGrooveCellList, setter = SetGrooveCellList:)NSMutableArray* GrooveCellList;
 
 @property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
 @property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
+
+@property (nonatomic, assign) id<SelectBarProtocol> delegate;
+
 
 - (void) TouchBeginEvent : (CGPoint) TouchLocation;
 - (void) TouchEndEvent : (CGPoint) TouchLocation;

@@ -13,6 +13,10 @@
 @end
 
 @implementation MetronomeMainViewControllerIphone
+{
+    NSMutableArray * CurrentCellsDataTable;
+    int _FocusIndex;
+}
 
 //- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 //{
@@ -113,6 +117,7 @@
          makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }
 
+    self.BottomSubView.delegate = self;
     [self.BottomView addSubview:self.BottomSubView];
 }
 
@@ -122,8 +127,28 @@
 //
 - (void) FillData
 {
-    [self.BottomSubView CopyCellDataTableToSelectBar:[gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]]];
+    CurrentCellsDataTable = [[NSMutableArray alloc] initWithArray:[gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]]];
+    self.BottomSubView.CurrentDataTable = CurrentCellsDataTable;
+
 }
+
+//  =========================
+//  property
+//  
+- (int) GetFocusIndex
+{
+    return _FocusIndex;
+}
+
+- (void) SetFocusIndex:(int) NewValue
+{
+    _FocusIndex = NewValue;
+    TempoCell * CurrentCell = CurrentCellsDataTable[_FocusIndex];
+    self.TopSubView.BPMPicker.BPMValue = [CurrentCell.bpmValue intValue];
+}
+//
+//  =========================
+
 
 //  =========================
 //

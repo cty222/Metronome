@@ -136,11 +136,11 @@
                                        insertNewObjectForEntityForName:NSStringFromClass([TempoCell class])  inManagedObjectContext:_ManagedObjectContext];
             NewTempoList.bpmValue = [NSNumber numberWithInt:(50 + (Index + Row) *10)];
             NewTempoList.loopCount = @1;
-            NewTempoList.accentVolume = @10;
-            NewTempoList.quarterNoteVolume = @10;
-            NewTempoList.eighthNoteVolume = @10;
-            NewTempoList.sixteenNoteVolume = @10;
-            NewTempoList.trippleNoteVolume = @10;
+            NewTempoList.accentVolume = @8.2;
+            NewTempoList.quarterNoteVolume = @4.0;
+            NewTempoList.eighthNoteVolume = @7.2;
+            NewTempoList.sixteenNoteVolume = @(-0.5);
+            NewTempoList.trippleNoteVolume = @0;
             NewTempoList.timeSignatureType = self.TimeSignatureTypeDataTable[3];
             NewTempoList.listOwner = self.TempoListDataTable[Row];
         }

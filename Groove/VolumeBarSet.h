@@ -19,9 +19,12 @@ typedef enum {
 
 @interface VolumeBarSet : XibViewInterface
 @property (strong, nonatomic) IBOutlet TmpVerticalSlider *SliderAccent;
-@property (strong, nonatomic) IBOutlet TmpVerticalSlider *Slider4Note;
-@property (strong, nonatomic) IBOutlet TmpVerticalSlider *Slider8Note;
-@property (strong, nonatomic) IBOutlet TmpVerticalSlider *Slider16Note;
+@property (strong, nonatomic) IBOutlet TmpVerticalSlider *SliderQuarterNote;
+@property (strong, nonatomic) IBOutlet TmpVerticalSlider *SliderEighthNote;
+@property (strong, nonatomic) IBOutlet TmpVerticalSlider *SliderSixteenNote;
 @property (strong, nonatomic) IBOutlet TmpVerticalSlider *SliderTrippleNote;
+
+@property (getter=GetMaxValue, setter=SetMaxValue:)float MaxValue;
+@property (getter=GetMinValue, setter=SetMinValue:)float MinValue;
 
 @end

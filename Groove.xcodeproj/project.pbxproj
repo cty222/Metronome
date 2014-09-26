@@ -10,8 +10,9 @@
 		000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 000BDEEB19BF7D6A00078456 /* triangle2.png */; };
 		001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */; };
 		001B2B3019D3CF190057A22E /* DbConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2F19D3CF190057A22E /* DbConfig.m */; };
-		001B2B3A19D410690057A22E /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B3919D410690057A22E /* TempoCell.m */; };
 		001B2B3D19D4106A0057A22E /* TempoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B3C19D4106A0057A22E /* TempoList.m */; };
+		0036173D19D5CC9900848A35 /* loop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0036173C19D5CC9900848A35 /* loop.png */; };
+		0036174519D5E2DA00848A35 /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0036174419D5E2DA00848A35 /* TempoCell.m */; };
 		003A56A219D3284600747EB3 /* TimeSignatureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 003A56A119D3284600747EB3 /* TimeSignatureType.m */; };
 		003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 003A56A819D3293A00747EB3 /* MetronomeModel.m */; };
 		004BE63E19B2DDC7002CD995 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE63D19B2DDC7002CD995 /* Foundation.framework */; };
@@ -64,10 +65,11 @@
 		001B2B2E19D3CF190057A22E /* DbConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DbConfig.h; path = CoreDataSubClass/DbConfig.h; sourceTree = "<group>"; };
 		001B2B2F19D3CF190057A22E /* DbConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DbConfig.m; path = CoreDataSubClass/DbConfig.m; sourceTree = "<group>"; };
 		001B2B3119D403B20057A22E /* DebugHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugHeader.h; sourceTree = "<group>"; };
-		001B2B3819D410690057A22E /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
-		001B2B3919D410690057A22E /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
 		001B2B3B19D4106A0057A22E /* TempoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoList.h; path = CoreDataSubClass/TempoList.h; sourceTree = "<group>"; };
 		001B2B3C19D4106A0057A22E /* TempoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoList.m; path = CoreDataSubClass/TempoList.m; sourceTree = "<group>"; };
+		0036173C19D5CC9900848A35 /* loop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loop.png; sourceTree = "<group>"; };
+		0036174319D5E2DA00848A35 /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
+		0036174419D5E2DA00848A35 /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
 		003A56A019D3284600747EB3 /* TimeSignatureType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSignatureType.h; path = CoreDataSubClass/TimeSignatureType.h; sourceTree = "<group>"; };
 		003A56A119D3284600747EB3 /* TimeSignatureType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeSignatureType.m; path = CoreDataSubClass/TimeSignatureType.m; sourceTree = "<group>"; };
 		003A56A719D3293A00747EB3 /* MetronomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetronomeModel.h; path = CoreDataSubClass/MetronomeModel.h; sourceTree = "<group>"; };
@@ -145,14 +147,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		003A56A619D3285800747EB3 /* CoreDataSubClass */ = {
+		003A56A619D3285800747EB3 /* CoreDataModel */ = {
 			isa = PBXGroup;
 			children = (
+				0036174319D5E2DA00848A35 /* TempoCell.h */,
+				0036174419D5E2DA00848A35 /* TempoCell.m */,
 				001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */,
 				001B2B3B19D4106A0057A22E /* TempoList.h */,
 				001B2B3C19D4106A0057A22E /* TempoList.m */,
-				001B2B3819D410690057A22E /* TempoCell.h */,
-				001B2B3919D410690057A22E /* TempoCell.m */,
 				001B2B2E19D3CF190057A22E /* DbConfig.h */,
 				001B2B2F19D3CF190057A22E /* DbConfig.m */,
 				003A56A019D3284600747EB3 /* TimeSignatureType.h */,
@@ -160,7 +162,7 @@
 				003A56A719D3293A00747EB3 /* MetronomeModel.h */,
 				003A56A819D3293A00747EB3 /* MetronomeModel.m */,
 			);
-			name = CoreDataSubClass;
+			name = CoreDataModel;
 			sourceTree = "<group>";
 		};
 		004BE63119B2DDC7002CD995 = {
@@ -197,8 +199,7 @@
 		004BE64519B2DDC7002CD995 /* Groove */ = {
 			isa = PBXGroup;
 			children = (
-				003A56A619D3285800747EB3 /* CoreDataSubClass */,
-				00BB6DD019BD82C900E3C068 /* Protocol */,
+				003A56A619D3285800747EB3 /* CoreDataModel */,
 				00677B0A19BC5323007A3085 /* Groove */,
 				004BE68219B2E5C8002CD995 /* GlobalConfig */,
 				004BE67619B2E01E002CD995 /* SuperClass */,
@@ -214,6 +215,7 @@
 		004BE64619B2DDC7002CD995 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0036173C19D5CC9900848A35 /* loop.png */,
 				000BDEEB19BF7D6A00078456 /* triangle2.png */,
 				004BE64719B2DDC7002CD995 /* Groove-Info.plist */,
 				004BE64819B2DDC7002CD995 /* InfoPlist.strings */,
@@ -312,13 +314,6 @@
 			name = MetronmeItems;
 			sourceTree = "<group>";
 		};
-		00BB6DD019BD82C900E3C068 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Protocol;
-			sourceTree = "<group>";
-		};
 		00E5F8C319C0BF9600661D1C /* MetronomeBottomSubViewIphone */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +406,7 @@
 				004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */,
 				00E5F8CD19C0CE5E00661D1C /* VolumeBarSet.xib in Resources */,
 				00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */,
+				0036173D19D5CC9900848A35 /* loop.png in Resources */,
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
 				00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */,
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
@@ -439,12 +435,12 @@
 				00B9689819CEDE5300AAD1AF /* TmpVerticalSlider.m in Sources */,
 				001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */,
 				00677B0519BC4C09007A3085 /* MetronmoneTopSubViewIphone.m in Sources */,
+				0036174519D5E2DA00848A35 /* TempoCell.m in Sources */,
 				004BE68019B2E131002CD995 /* MetronomeMainViewControllerIphone.m in Sources */,
 				004BE67519B2E014002CD995 /* XibViewInterface.m in Sources */,
 				00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */,
 				00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */,
 				001B2B3019D3CF190057A22E /* DbConfig.m in Sources */,
-				001B2B3A19D410690057A22E /* TempoCell.m in Sources */,
 				00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */,
 				00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */,
 				004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */,
@@ -573,12 +569,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Groove/Groove-Prefix.pch";
 				INFOPLIST_FILE = "Groove/Groove-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Groove/Groove-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -589,12 +589,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Groove/Groove-Prefix.pch";
 				INFOPLIST_FILE = "Groove/Groove-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Groove/Groove-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

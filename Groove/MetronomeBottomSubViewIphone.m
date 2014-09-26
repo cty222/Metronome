@@ -7,8 +7,14 @@
 //
 
 #import "MetronomeBottomSubViewIphone.h"
+#import "MetronomeModel.h"
 
 @implementation MetronomeBottomSubViewIphone
+{
+    NSMutableArray * _CurrentDataTable;
+    int _FocusIndex;
+
+}
 
 - (void) awakeFromNib
 {
@@ -23,19 +29,77 @@
         // Initialization code
         [self.VolumeSet removeFromSuperview];
         self.VolumeSet = [[VolumeBarSet alloc] initWithFrame:self.VolumeSet.frame];
+        self.VolumeSet.MaxValue = 10.0;
+        self.VolumeSet.MinValue = -1.0;
         [self addSubview:self.VolumeSet];
        
         [self.SelectGrooveBar removeFromSuperview];
         self.SelectGrooveBar = [[MetronomeSelectBar alloc] initWithFrame:self.SelectGrooveBar.frame];
+        self.SelectGrooveBar.delegate = self;
         [self addSubview:self.SelectGrooveBar];
     }
     return self;
 }
 
-- (void) CopyCellDataTableToSelectBar : (NSArray *) CellDataTable
+- (void) SetVolumeBarVolume : (NSArray *) CellDataTable
 {
-    self.SelectGrooveBar.GrooveCellList = [NSMutableArray arrayWithArray:CellDataTable];
+    TempoCell *Cell = CellDataTable[_FocusIndex];
+    self.VolumeSet.SliderAccent.value = [Cell.accentVolume floatValue];
+    self.VolumeSet.SliderQuarterNote.value = [Cell.quarterNoteVolume floatValue];
+    self.VolumeSet.SliderEighthNote.value = [Cell.eighthNoteVolume floatValue];
+    self.VolumeSet.SliderSixteenNote.value = [Cell.sixteenNoteVolume floatValue];
+    self.VolumeSet.SliderTrippleNote.value = [Cell.trippleNoteVolume floatValue];
+
 }
+
+- (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable
+{
+    NSMutableArray * GrooveLoopList = [[NSMutableArray alloc]init];
+    for (TempoCell *Cell in CellDataTable)
+    {
+        [GrooveLoopList addObject:[Cell.loopCount stringValue]];
+    }
+    self.SelectGrooveBar.GrooveCellList = GrooveLoopList;
+}
+
+// =================================
+// Property
+//
+- (NSMutableArray *) GetCurrentDataTable
+{
+    return _CurrentDataTable;
+}
+- (void) SetCurrentDataTable : (NSMutableArray *) NewValue
+{
+    _CurrentDataTable = NewValue;
+    
+    // Set Select Loop bar
+    [self CopyGrooveLoopListToSelectBar: _CurrentDataTable];
+}
+
+- (int) GetFocusIndex
+{
+    return _FocusIndex;
+}
+
+- (void) SetFocusIndex:(int) NewValue
+{
+    _FocusIndex = NewValue;
+    [self SetVolumeBarVolume: _CurrentDataTable];
+    
+    // Pass to parent view.
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(SetFocusIndex:)])
+        {
+            [self.delegate SetFocusIndex: _FocusIndex];
+        }
+    }
+}
+//
+// =================================
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

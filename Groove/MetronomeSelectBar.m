@@ -9,6 +9,7 @@
 #import "MetronomeSelectBar.h"
 
 #define CELL_WIDTH   40
+#define CELL_HEIGHT  40
 #define FIRST_CELL_OFFSET_COUNT 2
 
 @implementation MetronomeSelectBar
@@ -23,6 +24,13 @@
     int CurrentMove;
     NSTimer *MoveToCenterTimer;
     int MoveToCenterCounter;
+    
+    NSTimer *LongTouchTimer;
+
+    
+    // Label
+    UIImage * LargeImage;
+    UIImage * SmallImage;
 
 }
 
@@ -51,15 +59,56 @@
     [[ControlView subviews]
      makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
+    UIImage * LoopImage = [UIImage imageNamed:@"loop.png"];
+    
+    // Create Small Size Loop Image
+    CGSize LoopImageSmallSize = CGSizeMake(CELL_WIDTH, CELL_HEIGHT);
+    UIGraphicsBeginImageContext(LoopImageSmallSize);
+    [LoopImage drawInRect:CGRectMake(0, 0, LoopImageSmallSize.width, LoopImageSmallSize.height)];
+    SmallImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // Create Large Size Loop Image
+    CGSize LoopImageLargeSize = CGSizeMake(80, 80);
+    UIGraphicsBeginImageContext(LoopImageLargeSize);
+    [LoopImage drawInRect:CGRectMake(0, 0, LoopImageLargeSize.width, LoopImageLargeSize.height)];
+    LargeImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
     for (int Index = 0; Index < self.GrooveCellList.count; Index++)
     {
-        CGRect TmpFrame = CGRectMake(Index * CELL_WIDTH - CurrentMove - PermanentFrameMove, 20, CELL_WIDTH, 40);
+        CGRect TmpFrame = CGRectMake(Index * CELL_WIDTH - CurrentMove - PermanentFrameMove, 20, CELL_WIDTH, CELL_HEIGHT);
         UILabel * TmpLabel = [[UILabel alloc] initWithFrame:TmpFrame];
-        TmpLabel.text = [NSString stringWithFormat:@"L%d", Index];
+        
+        
+        TmpLabel.backgroundColor = [UIColor colorWithPatternImage:SmallImage];
+
+        TmpLabel.text = [self ReturnListCellValue:self.GrooveCellList[Index]];
+        TmpLabel.textAlignment = NSTextAlignmentCenter;
+        
         [ControlView addSubview:TmpLabel];
     }
     
     [self SetFrameValueWhenStopSelect];
+}
+
+- (NSString *) ReturnListCellValue : (NSObject *) CellValue
+{
+    NSString *ReturnString = @"";
+    if ([NSStringFromClass([CellValue class]) isEqualToString: NSStringFromClass([NSNumber class])])
+    {
+        ReturnString = [(NSNumber *)CellValue stringValue];
+    }
+    else if([NSStringFromClass([CellValue class])isEqualToString: NSStringFromClass([NSString class])])
+    {
+        ReturnString = (NSString *)CellValue;
+    }
+    else if([NSStringFromClass([CellValue class])isEqualToString: @"__NSCFString"])
+    {
+        ReturnString = (NSString *)CellValue;
+    }
+    return  ReturnString;
 }
 
 - (void) FlashDisplayFrame
@@ -153,8 +202,48 @@
     {
         [MoveToCenterTimer invalidate];
         MoveToCenterTimer = nil;
+        
+        // Until stop touching, parent's focusIndex will change.
+        if (self.delegate != nil)
+        {
+            // Check whether delegate have this selector
+            if([self.delegate respondsToSelector:@selector(SetFocusIndex:)])
+            {
+                [self.delegate SetFocusIndex: _FocusIndex];
+            }
+        }
     }
 }
+
+- (void) LongTouchFlashPageInfo
+{
+    LongTouchTimer = [NSTimer scheduledTimerWithTimeInterval:1.5
+                                                         target:self
+                                                       selector:@selector(LongTouchFlashTick:)
+                                                       userInfo:nil
+                                                        repeats:YES];
+}
+
+- (void) LongTouchFlashTick: (NSTimer *) ThisTimer
+{
+    // 1. Flash page info for user recognize.
+    if (!_Touched)
+    {
+        [LongTouchTimer invalidate];
+        LongTouchTimer = nil;
+        return;
+    }
+    
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(SetFocusIndex:)])
+        {
+            [self.delegate SetFocusIndex: _FocusIndex];
+        }
+    }
+}
+
 
 // ============================
 // Property
@@ -189,7 +278,7 @@
     _Touched = NewValue;
     if (_Touched)
     {
-
+        [self LongTouchFlashPageInfo];
     }
     else
     {
@@ -211,40 +300,13 @@
     
     // Reset old Label background color
     UILabel * OldFocusLabel = self.subviews[_FocusIndex];
-    OldFocusLabel.backgroundColor = [UIColor whiteColor];
-    
+    OldFocusLabel.backgroundColor = [UIColor colorWithPatternImage:SmallImage];
+
     // Set New label background color
     _FocusIndex = NewValue;
     UILabel * NewFocusLabel = self.subviews[_FocusIndex];
     NewFocusLabel.backgroundColor = [UIColor blueColor];
 }
-//
-// ============================
-
-
-// ============================
-// TODO:
-- (NSMutableArray *) SelectCellList
-{
-    NSMutableArray * TmpDataBaseData = [[NSMutableArray alloc] init];
-    for (int Index = 0 ; Index < 10; Index++)
-    {
-        [TmpDataBaseData addObject:[NSString stringWithFormat:@"%d", Index]];
-    }
-    
-    return TmpDataBaseData;
-}
-
-- (Boolean) InsertCell
-{
-    return false;
-}
-
-- (Boolean) DeleteCell
-{
-    return false;
-}
-
 //
 // ============================
 

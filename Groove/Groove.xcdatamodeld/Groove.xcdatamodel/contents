@@ -4,13 +4,13 @@
         <attribute name="dbVersion" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
     </entity>
     <entity name="TempoCell" representedClassName="TempoCell" syncable="YES">
-        <attribute name="accentVolume" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="accentVolume" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="bpmValue" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="eighthNoteVolume" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="eighthNoteVolume" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="loopCount" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="quarterNoteVolume" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="sixteenNoteVolume" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="trippleNoteVolume" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="quarterNoteVolume" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="sixteenNoteVolume" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="trippleNoteVolume" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <relationship name="listOwner" maxCount="1" deletionRule="Nullify" destinationEntity="TempoList" inverseName="cellBelongTo" inverseEntity="TempoList" syncable="YES"/>
         <relationship name="timeSignatureType" maxCount="1" deletionRule="Nullify" destinationEntity="TimeSignatureType" inverseName="usingCell" inverseEntity="TimeSignatureType" syncable="YES"/>
     </entity>
@@ -26,9 +26,9 @@
     <fetchRequest name="FetchDbVersion" entity="DbConfig" predicateString="dbVersion >= $DbVersion"/>
     <fetchRequest name="FetchOwerFromSingleName" entity="TempoCell"/>
     <elements>
-        <element name="TempoCell" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="DbConfig" positionX="153" positionY="18" width="128" height="60"/>
+        <element name="TempoCell" positionX="-63" positionY="-18" width="128" height="30"/>
         <element name="TempoList" positionX="349" positionY="-127" width="128" height="73"/>
         <element name="TimeSignatureType" positionX="412" positionY="80" width="128" height="28"/>
-        <element name="DbConfig" positionX="153" positionY="18" width="128" height="60"/>
     </elements>
 </model>

@@ -28,13 +28,13 @@
                     self.SliderAccent = TmpSlider;
                     break;
                 case FOUR_NOTE_SLIDER:
-                    self.Slider4Note = TmpSlider;
+                    self.SliderQuarterNote = TmpSlider;
                     break;
                 case EIGHT_NOTE_SLIDER:
-                    self.Slider8Note = TmpSlider;
+                    self.SliderEighthNote = TmpSlider;
                     break;
                 case SIXTEEN_NOTE_SLIDER:
-                    self.Slider16Note = TmpSlider;
+                    self.SliderSixteenNote = TmpSlider;
                     break;
                 case TRIPPLE_NOTE_SLIDER:
                     self.SliderTrippleNote = TmpSlider;
@@ -48,6 +48,38 @@
     }
     return self;
 }
+
+// ==================================
+// property
+//
+- (float) GetMaxValue
+{
+    return self.SliderAccent.maximumValue;
+}
+-(void) SetMaxValue:(float) NewValue
+{
+    self.SliderAccent.maximumValue = NewValue;
+    self.SliderQuarterNote.maximumValue = NewValue;
+    self.SliderEighthNote.maximumValue = NewValue;
+    self.SliderSixteenNote.maximumValue = NewValue;
+    self.SliderTrippleNote.maximumValue = NewValue;
+}
+
+- (float) GetMinValue
+{
+    return self.SliderAccent.minimumValue;
+}
+-(void) SetMinValue:(float) NewValue
+{
+    self.SliderAccent.minimumValue = NewValue;
+    self.SliderQuarterNote.minimumValue = NewValue;
+    self.SliderEighthNote.minimumValue = NewValue;
+    self.SliderSixteenNote.minimumValue = NewValue;
+    self.SliderTrippleNote.minimumValue = NewValue;
+
+}
+//
+// ==================================
 
 /*
 // Only override drawRect: if you perform custom drawing.
