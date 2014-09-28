@@ -148,12 +148,12 @@
     // it avoid user have no focus cell
     if (self.FocusIndex == 0 && NoFucus)
     {
-        PermanentFrameMove += [self Sensitivity];
+        PermanentFrameMove += 1;
         [self FlashDisplayFrame];
     }
     else if (self.FocusIndex == (self.GrooveCellList.count -1) && NoFucus)
     {
-        PermanentFrameMove -= [self Sensitivity];
+        PermanentFrameMove -= 1;
         [self FlashDisplayFrame];
     }
 }
@@ -247,9 +247,9 @@
 
 // ============================
 // Property
-- (int) Sensitivity
+- (float) Sensitivity
 {
-    return 2;
+    return 1;
 }
 
 
@@ -293,18 +293,36 @@
 
 - (void) SetFocusIndex:(int) NewValue
 {
-    if (_GrooveCellList == nil || self.subviews.count == 0)
+
+    if (_GrooveCellList == nil
+        || self.subviews.count == 0
+        || self.subviews.count <= NewValue
+        )
     {
         return;
     }
+
+    int OldValue = _FocusIndex;
+    _FocusIndex = NewValue;
+
+
+    // Set from code, not user touch, CurrentMove will be Zero.
+    // (MoveToCenterTimer == nil) is for avoid recursive error.
+    if (!_Touched && OldValue != NewValue && MoveToCenterTimer == nil)
+    {
+        [self SetFrameValueWhenStopSelect];
+        return;
+    }
+
     
     // Reset old Label background color
-    UILabel * OldFocusLabel = self.subviews[_FocusIndex];
+    UILabel * OldFocusLabel = self.subviews[OldValue];
     OldFocusLabel.backgroundColor = [UIColor colorWithPatternImage:SmallImage];
-
+    
     // Set New label background color
-    _FocusIndex = NewValue;
-    UILabel * NewFocusLabel = self.subviews[_FocusIndex];
+    // When Initialize, we will set _FocusIndex from zero to zero.
+    // So it must out of brackets.
+    UILabel * NewFocusLabel = self.subviews[NewValue];
     NewFocusLabel.backgroundColor = [UIColor blueColor];
 }
 //

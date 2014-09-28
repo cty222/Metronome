@@ -84,8 +84,21 @@
 
 - (void) SetFocusIndex:(int) NewValue
 {
+    if (NewValue < 0 || NewValue == _FocusIndex)
+    {
+        return;
+    }
+    
+    // If set from this view, translate start point to SelectGrooveBar.
+    if (self.SelectGrooveBar.FocusIndex != NewValue)
+    {
+        self.SelectGrooveBar.FocusIndex = NewValue;
+        return;
+    }
+    
     _FocusIndex = NewValue;
     [self SetVolumeBarVolume: _CurrentDataTable];
+    
     
     // Pass to parent view.
     if (self.delegate != nil)
@@ -100,6 +113,15 @@
 //
 // =================================
 
+// =================================
+// Action
+//
+
+- (IBAction)PlayLoop:(id)sender {
+    self.FocusIndex +=1;
+}
+//
+// =================================
 
 /*
 // Only override drawRect: if you perform custom drawing.
