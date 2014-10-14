@@ -38,4 +38,7 @@ MetronomeModel * gMetronomeModel;
 - (void) InitializeCoreData : (NSManagedObjectContext *) ManagedObjectContext
          ManagedObjectModel : (NSManagedObjectModel *) ManagedObjectModel
                   DbVersion : (NSNumber *) DbVersion;
+
+- (void) Save;
+
 @end

@@ -9,6 +9,16 @@
 #import "GlobalConfig.h"
 #import "XibViewInterface.h"
 
+@ class LargeBPMPicker;
+
+@protocol LargeBPMPickerProtocol <NSObject>
+@required
+
+@optional
+
+- (void) SetBPMValue : (int) NewValue;
+@end
+
 @interface LargeBPMPicker : XibViewInterface
 @property (weak, nonatomic) IBOutlet UILabel *LebalBPMValue;
 
@@ -25,4 +35,7 @@
 - (void) TouchMoveEvent : (CGPoint) TouchLocation;
 - (void) TouchCancellEvent : (CGPoint) TouchLocation;
 //
+
+@property (nonatomic, assign) id<LargeBPMPickerProtocol> delegate;
+
 @end

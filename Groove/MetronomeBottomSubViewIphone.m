@@ -11,7 +11,7 @@
 
 @implementation MetronomeBottomSubViewIphone
 {
-    NSMutableArray * _CurrentDataTable;
+    NSArray * _CurrentDataTable;
     int _FocusIndex;
 
 }
@@ -31,6 +31,7 @@
         self.VolumeSet = [[VolumeBarSet alloc] initWithFrame:self.VolumeSet.frame];
         self.VolumeSet.MaxValue = 10.0;
         self.VolumeSet.MinValue = -1.0;
+        self.VolumeSet.delegate = self;
         [self addSubview:self.VolumeSet];
        
         [self.SelectGrooveBar removeFromSuperview];
@@ -49,7 +50,6 @@
     self.VolumeSet.SliderEighthNote.value = [Cell.eighthNoteVolume floatValue];
     self.VolumeSet.SliderSixteenNote.value = [Cell.sixteenNoteVolume floatValue];
     self.VolumeSet.SliderTrippleNote.value = [Cell.trippleNoteVolume floatValue];
-
 }
 
 - (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable
@@ -65,11 +65,11 @@
 // =================================
 // Property
 //
-- (NSMutableArray *) GetCurrentDataTable
+- (NSArray *) GetCurrentDataTable
 {
     return _CurrentDataTable;
 }
-- (void) SetCurrentDataTable : (NSMutableArray *) NewValue
+- (void) SetCurrentDataTable : (NSArray *) NewValue
 {
     _CurrentDataTable = NewValue;
     
@@ -84,7 +84,7 @@
 
 - (void) SetFocusIndex:(int) NewValue
 {
-    if (NewValue < 0 || NewValue == _FocusIndex)
+    if (NewValue < 0)
     {
         return;
     }
@@ -110,15 +110,88 @@
         }
     }
 }
+
 //
 // =================================
 
 // =================================
 // Action
 //
+- (IBAction) VolumeSliderValueChanged:(TmpVerticalSlider*) ThisVerticalSlider
+{
+    // Pass to parent view.
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(VolumeSliderValueChanged:)])
+        {
+            [self.delegate VolumeSliderValueChanged: ThisVerticalSlider];
+        }
+    }
+}
 
-- (IBAction)PlayLoop:(id)sender {
+- (IBAction) PlayCurrentCellButtonClick: (UIButton *) ThisClickedButton {
+    // Pass to parent view.
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(PlayCurrentCellButtonClick:)])
+        {
+            [self.delegate PlayCurrentCellButtonClick: ThisClickedButton];
+        }
+    }
+}
+
+- (IBAction) TapBPMValueButtonClick: (UIButton *) ThisClickedButton {
+    // Pass to parent view.
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(TapBPMValueButtonClick:)])
+        {
+            [self.delegate TapBPMValueButtonClick: ThisClickedButton];
+        }
+    }
+}
+
+- (IBAction) AddLoopCellButtonClick: (UIButton *) ThisClickedButton {
+    // Pass to parent view.
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(AddLoopCellButtonClick:)])
+        {
+            [self.delegate AddLoopCellButtonClick: ThisClickedButton];
+        }
+    }
+}
+
+
+- (IBAction) DeleteLoopCellButtonClick: (UIButton *) ThisClickedButton {
+    // Pass to parent view.
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(DeleteLoopCellButtonClick:)])
+        {
+            [self.delegate DeleteLoopCellButtonClick: ThisClickedButton];
+        }
+    }
+}
+
+- (IBAction) PlayLoopCellButtonClick: (UIButton *) ThisClickedButton {
+
     self.FocusIndex +=1;
+    
+    // Pass to parent view.
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(PlayLoopCellButtonClick:)])
+        {
+            [self.delegate PlayLoopCellButtonClick: ThisClickedButton];
+        }
+    }
 }
 //
 // =================================

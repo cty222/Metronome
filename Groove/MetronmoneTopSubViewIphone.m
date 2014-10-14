@@ -26,10 +26,24 @@
         // Initialization code
         [self.BPMPicker removeFromSuperview];
         self.BPMPicker = [[LargeBPMPicker alloc] initWithFrame:self.BPMPicker.frame];
+        self.BPMPicker.delegate = self;
         [self addSubview:self.BPMPicker];
 
     }
     return self;
+}
+
+- (void) SetBPMValue : (int) NewValue
+{
+    // Pass to parent view.
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(SetBPMValue:)])
+        {
+            [self.delegate SetBPMValue: NewValue];
+        }
+    }
 }
 
 /*

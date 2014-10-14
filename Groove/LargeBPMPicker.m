@@ -100,6 +100,16 @@
     
     _BPMValue = NewValue;
     self.LebalBPMValue.text = [NSString stringWithFormat:@"%d", _BPMValue];
+    
+    // Pass to parent view.
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(SetBPMValue:)])
+        {
+            [self.delegate SetBPMValue: _BPMValue];
+        }
+    }
 }
 //
 // ===========================

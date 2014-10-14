@@ -8,11 +8,12 @@
 
 #import "LargeBPMPicker.h"
 
-@interface MetronmoneTopSubViewIphone : XibViewInterface
+@interface MetronmoneTopSubViewIphone : XibViewInterface <LargeBPMPickerProtocol>
 
 @property (weak, nonatomic) IBOutlet UIButton *ButtonChangePage;
 @property (strong, nonatomic) IBOutlet LargeBPMPicker *BPMPicker;
 
+@property (nonatomic, assign) id<LargeBPMPickerProtocol> delegate;
 
 
 @end

@@ -16,12 +16,14 @@
 // Model
 #import "MetronomeModel.h"
 
-@interface MetronomeMainViewControllerIphone : UIViewController <SelectBarProtocol>
+@interface MetronomeMainViewControllerIphone : UIViewController <SelectBarProtocol, MetronomeBottomViewProtocol, LargeBPMPickerProtocol>
 @property (strong, nonatomic) IBOutlet UIView *FullView;
 @property (weak, nonatomic) IBOutlet UIView *TopView;
 @property (weak, nonatomic) IBOutlet UIView *BottomView;
 @property (nonatomic) MetronmoneTopSubViewIphone *TopSubView;
 @property (nonatomic) MetronomeBottomSubViewIphone *BottomSubView;
+
+
 
 @property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
 

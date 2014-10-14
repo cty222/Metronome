@@ -14,7 +14,7 @@
 
 @implementation MetronomeMainViewControllerIphone
 {
-    NSMutableArray * CurrentCellsDataTable;
+    NSArray * CurrentCellsDataTable;
     int _FocusIndex;
 }
 
@@ -92,6 +92,7 @@
     if (self.TopSubView == nil)
     {
         self.TopSubView = [[MetronmoneTopSubViewIphone alloc] initWithFrame:self.TopView.frame];
+        self.TopSubView.delegate = self;
     }
     if (self.TopView.subviews.count != 0)
     {
@@ -121,16 +122,16 @@
     [self.BottomView addSubview:self.BottomSubView];
 }
 
-
+// ============
 //
-// Testing
+// TODO : Testing
 //
 - (void) FillData
 {
-    CurrentCellsDataTable = [[NSMutableArray alloc] initWithArray:[gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]]];
+    CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]];
     self.BottomSubView.CurrentDataTable = CurrentCellsDataTable;
-
 }
+// ============
 
 //  =========================
 //  property
@@ -242,6 +243,76 @@
 //
 //  =========================
 
+//  =========================
+// delegate
+//
+- (void) SetBPMValue : (int) NewValue
+{
+    TempoCell *Cell = CurrentCellsDataTable[_FocusIndex];
+    Cell.bpmValue = [NSNumber numberWithInt:NewValue];
+    
+    // TODO : 不要save這麼頻繁
+    [gMetronomeModel Save];
+}
+
+- (IBAction) VolumeSliderValueChanged:(TmpVerticalSlider*) ThisVerticalSlider
+{
+    
+    float Value = ThisVerticalSlider.value;
+    int TagNumber = ThisVerticalSlider.SliderTag;
+    TempoCell *Cell = CurrentCellsDataTable[_FocusIndex];
+
+    switch (TagNumber) {
+        case 0:
+            Cell.accentVolume = [NSNumber numberWithFloat:Value];
+            break;
+        case 1:
+            Cell.quarterNoteVolume = [NSNumber numberWithFloat:Value];
+            break;
+        case 2:
+            Cell.eighthNoteVolume = [NSNumber numberWithFloat:Value];
+            break;
+        case 3:
+            Cell.sixteenNoteVolume = [NSNumber numberWithFloat:Value];
+            break;
+        case 4:
+            Cell.trippleNoteVolume = [NSNumber numberWithFloat:Value];
+            break;
+        default:
+            break;
+    }
+    
+    // TODO : 不要save這麼頻繁
+    [gMetronomeModel Save];
+}
+
+- (IBAction) PlayCurrentCellButtonClick: (UIButton *) ThisClickedButton
+{
+    NSLog(@"PlayCurrentCellButtonClick");
+}
+
+- (IBAction) TapBPMValueButtonClick: (UIButton *) ThisClickedButton
+{
+    NSLog(@"TapBPMValueButtonClick");
+}
+
+- (IBAction) AddLoopCellButtonClick: (UIButton *) ThisClickedButton
+{
+    NSLog(@"AddLoopCellButtonClick");
+}
+
+- (IBAction) DeleteLoopCellButtonClick: (UIButton *) ThisClickedButton
+{
+    NSLog(@"DeleteLoopCellButtonClick");
+}
+
+- (IBAction) PlayLoopCellButtonClick: (UIButton *) ThisClickedButton
+{
+    NSLog(@"PlayLoopCellButtonClick");
+}
+
+//
+//  =========================
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

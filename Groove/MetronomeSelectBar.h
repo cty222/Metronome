@@ -17,7 +17,7 @@
 @end
 
 
-@interface MetronomeSelectBar : XibViewInterface <SelectBarProtocol>
+@interface MetronomeSelectBar : XibViewInterface
 @property (getter = GetGrooveCellList, setter = SetGrooveCellList:)NSMutableArray* GrooveCellList;
 
 @property (getter = GetTouched, setter = SetTouched:) BOOL Touched;

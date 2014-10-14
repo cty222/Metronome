@@ -23,6 +23,9 @@
                     <state key="normal" title="Play">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="PlayCurrentCellButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="gUh-Rp-nzK"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RSJ-fx-8NR">
                     <rect key="frame" x="261" y="101" width="59" height="42"/>
@@ -31,6 +34,9 @@
                     <state key="normal" title="Tap">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="TapBPMValueButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="UFa-ad-WMf"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" id="0eg-Cr-3ZA" customClass="MetronomeSelectBar">
                     <rect key="frame" x="60" y="220" width="200" height="80"/>
@@ -38,23 +44,37 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5bb-e2-v1w">
-                    <rect key="frame" x="260" y="220" width="60" height="80"/>
+                    <rect key="frame" x="260" y="220" width="60" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="0.15579608019999999" blue="0.14642800040000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.65196150279999998" green="0.91357387320000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="( + )">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="AddLoopCellButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="XsY-HY-81a"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="y6P-BE-IgL">
+                    <rect key="frame" x="260" y="260" width="60" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.15579608019999999" blue="0.14642800040000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="( - )">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="DeleteLoopCellButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="xmi-7g-3hE"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rkq-mo-XTz">
                     <rect key="frame" x="0.0" y="220" width="60" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="0.15579608019999999" blue="0.14642800040000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.65196150279999998" green="0.91357387320000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="PlayLoop">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="PlayLoop:" destination="iN0-l3-epB" eventType="touchUpInside" id="QEB-vL-3Gw"/>
+                        <action selector="PlayLoopCellButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="VmR-C2-Ze5"/>
                     </connections>
                 </button>
             </subviews>
@@ -62,7 +82,12 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="AddLoopCellButton" destination="5bb-e2-v1w" id="Ieu-rp-bAQ"/>
+                <outlet property="DeleteLoopCellButton" destination="y6P-BE-IgL" id="ZQC-9k-pYe"/>
+                <outlet property="PlayCurrentCellButton" destination="g7s-1g-KHS" id="JKw-Ft-vkc"/>
+                <outlet property="PlayLoopCellButton" destination="Rkq-mo-XTz" id="UCf-8w-f3b"/>
                 <outlet property="SelectGrooveBar" destination="0eg-Cr-3ZA" id="D44-xZ-pfO"/>
+                <outlet property="TapBPMValueButton" destination="RSJ-fx-8NR" id="xZE-QG-ljS"/>
                 <outlet property="VolumeSet" destination="wov-cd-VAX" id="Ae7-ze-ovV"/>
             </connections>
         </view>

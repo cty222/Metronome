@@ -49,7 +49,7 @@
                     </state>
                 </button>
                 <view contentMode="scaleToFill" id="cWm-G2-BW2" customClass="LargeBPMPicker">
-                    <rect key="frame" x="0.0" y="46" width="320" height="160"/>
+                    <rect key="frame" x="0.0" y="45.999998198449525" width="320" height="160"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>

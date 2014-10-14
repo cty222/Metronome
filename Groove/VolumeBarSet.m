@@ -21,6 +21,7 @@
             CGRect TmpVerticalSliderRect = CGRectMake(50 * Index, 0, 40, 140);
             TmpVerticalSlider *TmpSlider = [[TmpVerticalSlider alloc] initWithFrame:TmpVerticalSliderRect];
             TmpSlider.SliderTag = Index;
+            [TmpSlider addTarget:self action:@selector(VolumeSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
             [self addSubview:TmpSlider];
             
             switch (Index) {
@@ -69,6 +70,7 @@
 {
     return self.SliderAccent.minimumValue;
 }
+
 -(void) SetMinValue:(float) NewValue
 {
     self.SliderAccent.minimumValue = NewValue;
@@ -78,6 +80,20 @@
     self.SliderTrippleNote.minimumValue = NewValue;
 
 }
+
+- (IBAction)VolumeSliderValueChanged:(TmpVerticalSlider*) ThisVerticalSlider
+{
+    // Pass to parent view.
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(VolumeSliderValueChanged:)])
+        {
+            [self.delegate VolumeSliderValueChanged: ThisVerticalSlider];
+        }
+    }
+}
+
 //
 // ==================================
 

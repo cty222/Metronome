@@ -17,6 +17,14 @@ typedef enum {
     TRIPPLE_NOTE_SLIDER
 } SLIDER_TAG;
 
+@protocol VolumeBarSetProtocol <NSObject>
+@required
+
+@optional
+
+- (IBAction)VolumeSliderValueChanged:(TmpVerticalSlider*) ThisVerticalSlider;
+@end
+
 @interface VolumeBarSet : XibViewInterface
 @property (strong, nonatomic) IBOutlet TmpVerticalSlider *SliderAccent;
 @property (strong, nonatomic) IBOutlet TmpVerticalSlider *SliderQuarterNote;
@@ -26,5 +34,7 @@ typedef enum {
 
 @property (getter=GetMaxValue, setter=SetMaxValue:)float MaxValue;
 @property (getter=GetMinValue, setter=SetMinValue:)float MinValue;
+
+@property (nonatomic, assign) id<VolumeBarSetProtocol> delegate;
 
 @end

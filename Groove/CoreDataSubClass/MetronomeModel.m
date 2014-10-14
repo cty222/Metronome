@@ -222,6 +222,11 @@
     return [_ManagedObjectContext executeFetchRequest:self.TempoCellEntitySigleOwnerFetch error:nil];
 }
 
+- (void) Save
+{
+    [_ManagedObjectContext save:nil];
+}
+
 //
 // ==============================
 @end
