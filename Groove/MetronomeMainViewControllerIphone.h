@@ -13,8 +13,6 @@
 #import "MetronomeBottomSubViewIphone.h"
 #import "MetronomeSelectBar.h"
 
-// Model
-#import "MetronomeModel.h"
 
 @interface MetronomeMainViewControllerIphone : UIViewController <SelectBarProtocol, MetronomeBottomViewProtocol, LargeBPMPickerProtocol>
 @property (strong, nonatomic) IBOutlet UIView *FullView;

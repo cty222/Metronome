@@ -16,6 +16,9 @@
 {
     NSArray * CurrentCellsDataTable;
     int _FocusIndex;
+    
+    
+    BOOL DeleteFillDataFlag;
 }
 
 //- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -84,6 +87,8 @@
     [self InitializeBottomSubView];
     
     [self FillData];
+    
+    DeleteFillDataFlag = NO;
 }
 
 
@@ -131,6 +136,7 @@
     CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]];
     self.BottomSubView.CurrentDataTable = CurrentCellsDataTable;
 }
+//
 // ============
 
 //  =========================
@@ -143,9 +149,28 @@
 
 - (void) SetFocusIndex:(int) NewValue
 {
+    if (NewValue < 0 || NewValue >= CurrentCellsDataTable.count)
+    {
+      return;
+    }
+    
     _FocusIndex = NewValue;
     TempoCell * CurrentCell = CurrentCellsDataTable[_FocusIndex];
+    
     self.TopSubView.BPMPicker.BPMValue = [CurrentCell.bpmValue intValue];
+    [self.TopSubView.TimeSignatureButton setTitle:CurrentCell.timeSignatureType.timeSignature forState:UIControlStateNormal];
+    
+    if (DeleteFillDataFlag)
+    {
+        [self FillData];
+        DeleteFillDataFlag = NO;
+        self.BottomSubView.DeleteLoopCellButton.enabled = YES;
+    }
+}
+
+- (void) ChangeSelectBarForcusIndex: (int) NewValue
+{
+    [self.BottomSubView ChangeSelectBarForcusIndex: NewValue];
 }
 //
 //  =========================
@@ -294,20 +319,54 @@
 - (IBAction) TapBPMValueButtonClick: (UIButton *) ThisClickedButton
 {
     NSLog(@"TapBPMValueButtonClick");
-}
+}	
 
 - (IBAction) AddLoopCellButtonClick: (UIButton *) ThisClickedButton
 {
-    NSLog(@"AddLoopCellButtonClick");
+    // 新增一筆進資料庫
+    [gMetronomeModel AddNewTempoCell];
+    
+    // 重新顯示
+    [self FillData];
 }
 
 - (IBAction) DeleteLoopCellButtonClick: (UIButton *) ThisClickedButton
 {
-    NSLog(@"DeleteLoopCellButtonClick");
+    int DeleteIndex;
+    int NewIndex;
+    // 不可以刪掉最後一個
+    if (CurrentCellsDataTable.count == 1 )
+    {
+        return;
+    }
+    
+    
+    DeleteIndex = self.FocusIndex;
+
+    if (self.FocusIndex == 0)
+    {
+        NewIndex = self.FocusIndex +1 ;
+    }
+    else
+    {
+        NewIndex = self.FocusIndex -1 ;
+    }
+    [self ChangeSelectBarForcusIndex:NewIndex];
+    
+    // 找到目前的
+    TempoCell * CurrentCell = CurrentCellsDataTable[DeleteIndex];
+    [gMetronomeModel DeleteTargetTempoCell:CurrentCell];
+    
+    // 重新顯示
+    DeleteFillDataFlag = YES;
+    self.BottomSubView.DeleteLoopCellButton.enabled = NO;
 }
 
 - (IBAction) PlayLoopCellButtonClick: (UIButton *) ThisClickedButton
 {
+    int NewIndex = self.FocusIndex + 1;
+    [self ChangeSelectBarForcusIndex: NewIndex];
+
     NSLog(@"PlayLoopCellButtonClick");
 }
 

@@ -9,11 +9,14 @@
 #import "XibViewInterface.h"
 #import "VolumeBarSet.h"
 #import "MetronomeSelectBar.h"
+#import "MetronomeModel.h"
 
 @protocol MetronomeBottomViewProtocol <NSObject>
 @required
 
 @optional
+- (void) SetFocusIndex:(int) NewValue;
+- (int) GetFocusIndex;
 
 - (IBAction) PlayCurrentCellButtonClick: (UIButton *) ThisClickedButton;
 - (IBAction) TapBPMValueButtonClick: (UIButton *) ThisClickedButton;
@@ -36,15 +39,13 @@
 @property (strong, nonatomic) IBOutlet UIButton *DeleteLoopCellButton;
 @property (strong, nonatomic) IBOutlet UIButton *PlayLoopCellButton;
 
-
-@property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
-
 @property (getter = GetCurrentDataTable, setter = SetCurrentDataTable:) NSArray *CurrentDataTable;
 
 @property (nonatomic, assign) id<SelectBarProtocol, MetronomeBottomViewProtocol> delegate;
 
 
 - (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable;
+- (void) ChangeSelectBarForcusIndex: (int) NewValue;
 
 
 @end

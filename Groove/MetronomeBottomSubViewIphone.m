@@ -7,13 +7,10 @@
 //
 
 #import "MetronomeBottomSubViewIphone.h"
-#import "MetronomeModel.h"
 
 @implementation MetronomeBottomSubViewIphone
 {
     NSArray * _CurrentDataTable;
-    int _FocusIndex;
-
 }
 
 - (void) awakeFromNib
@@ -42,9 +39,8 @@
     return self;
 }
 
-- (void) SetVolumeBarVolume : (NSArray *) CellDataTable
+- (void) SetVolumeBarVolume : (TempoCell *)Cell
 {
-    TempoCell *Cell = CellDataTable[_FocusIndex];
     self.VolumeSet.SliderAccent.value = [Cell.accentVolume floatValue];
     self.VolumeSet.SliderQuarterNote.value = [Cell.quarterNoteVolume floatValue];
     self.VolumeSet.SliderEighthNote.value = [Cell.eighthNoteVolume floatValue];
@@ -75,42 +71,44 @@
     
     // Set Select Loop bar
     [self CopyGrooveLoopListToSelectBar: _CurrentDataTable];
+    [self SetVolumeBarVolume: _CurrentDataTable[[self GetFocusIndex]]];
+
 }
 
 - (int) GetFocusIndex
 {
-    return _FocusIndex;
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(GetFocusIndex)])
+        {
+            return [self.delegate GetFocusIndex];
+        }
+    }
+
+    return 0;
 }
 
 - (void) SetFocusIndex:(int) NewValue
 {
-    if (NewValue < 0)
-    {
-        return;
-    }
-    
-    // If set from this view, translate start point to SelectGrooveBar.
-    if (self.SelectGrooveBar.FocusIndex != NewValue)
-    {
-        self.SelectGrooveBar.FocusIndex = NewValue;
-        return;
-    }
-    
-    _FocusIndex = NewValue;
-    [self SetVolumeBarVolume: _CurrentDataTable];
-    
-    
     // Pass to parent view.
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
         if([self.delegate respondsToSelector:@selector(SetFocusIndex:)])
         {
-            [self.delegate SetFocusIndex: _FocusIndex];
+            [self.delegate SetFocusIndex: NewValue];
         }
     }
+    
+    // UI 自動動作
+    [self SetVolumeBarVolume: _CurrentDataTable[[self GetFocusIndex]]];
 }
 
+- (void) ChangeSelectBarForcusIndex: (int) NewValue
+{
+    self.SelectGrooveBar.FocusIndex = NewValue;
+}
 //
 // =================================
 
@@ -179,10 +177,8 @@
     }
 }
 
-- (IBAction) PlayLoopCellButtonClick: (UIButton *) ThisClickedButton {
-
-    self.FocusIndex +=1;
-    
+- (IBAction) PlayLoopCellButtonClick: (UIButton *) ThisClickedButton
+{
     // Pass to parent view.
     if (self.delegate != nil)
     {

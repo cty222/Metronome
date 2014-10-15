@@ -40,5 +40,7 @@ MetronomeModel * gMetronomeModel;
                   DbVersion : (NSNumber *) DbVersion;
 
 - (void) Save;
+- (void) AddNewTempoCell;
+- (void) DeleteTargetTempoCell : (TempoCell *) TargetCell;
 
 @end

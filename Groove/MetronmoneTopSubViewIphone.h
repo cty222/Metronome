@@ -10,10 +10,10 @@
 
 @interface MetronmoneTopSubViewIphone : XibViewInterface <LargeBPMPickerProtocol>
 
-@property (weak, nonatomic) IBOutlet UIButton *ButtonChangePage;
 @property (strong, nonatomic) IBOutlet LargeBPMPicker *BPMPicker;
 
 @property (nonatomic, assign) id<LargeBPMPickerProtocol> delegate;
 
+@property (strong, nonatomic) IBOutlet UIButton *TimeSignatureButton;
 
 @end
