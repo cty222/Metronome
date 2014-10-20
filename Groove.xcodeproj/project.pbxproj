@@ -43,6 +43,17 @@
 		00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */; };
 		00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */; };
 		00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */; };
+		00DA131119F4E94700F27E25 /* NotesTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131019F4E94700F27E25 /* NotesTool.m */; };
+		00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131419F4EE1E00F27E25 /* AudioPlay.m */; };
+		00DA131C19F4EF1900F27E25 /* BeepBound.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131719F4EF1900F27E25 /* BeepBound.m */; };
+		00DA131E19F4EF1900F27E25 /* NomalHiClickVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131B19F4EF1900F27E25 /* NomalHiClickVoice.m */; };
+		00DA132019F4F38000F27E25 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DA131F19F4F38000F27E25 /* AudioToolbox.framework */; };
+		00DA132219F4F38A00F27E25 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DA132119F4F38A00F27E25 /* OpenAL.framework */; };
+		00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00DA13AD19F4F77000F27E25 /* HiAccent.wav */; };
+		00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00DA13AE19F4F77000F27E25 /* HiAnd.wav */; };
+		00DA13B419F4F77000F27E25 /* HiE.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00DA13AF19F4F77000F27E25 /* HiE.wav */; };
+		00DA13B519F4F77000F27E25 /* HiFirst.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00DA13B019F4F77000F27E25 /* HiFirst.wav */; };
+		00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00DA13B119F4F77000F27E25 /* HiGa.wav */; };
 		00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F8C519C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m */; };
 		00E5F8C819C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E5F8C719C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib */; };
 		00E5F8CB19C0CE3D00661D1C /* VolumeBarSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F8CA19C0CE3D00661D1C /* VolumeBarSet.m */; };
@@ -113,6 +124,21 @@
 		00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeSelectBar.m; sourceTree = "<group>"; };
 		00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeSelectBar.xib; sourceTree = "<group>"; };
 		00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LargeBPMPicker.xib; sourceTree = "<group>"; };
+		00DA130F19F4E94600F27E25 /* NotesTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesTool.h; path = Tools/NotesTool.h; sourceTree = "<group>"; };
+		00DA131019F4E94700F27E25 /* NotesTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesTool.m; path = Tools/NotesTool.m; sourceTree = "<group>"; };
+		00DA131319F4EE1E00F27E25 /* AudioPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioPlay.h; path = Tools/AudioPlay.h; sourceTree = "<group>"; };
+		00DA131419F4EE1E00F27E25 /* AudioPlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioPlay.m; path = Tools/AudioPlay.m; sourceTree = "<group>"; };
+		00DA131619F4EF1900F27E25 /* BeepBound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeepBound.h; path = Tools/BeepBound.h; sourceTree = "<group>"; };
+		00DA131719F4EF1900F27E25 /* BeepBound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeepBound.m; path = Tools/BeepBound.m; sourceTree = "<group>"; };
+		00DA131A19F4EF1900F27E25 /* NomalHiClickVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NomalHiClickVoice.h; path = Tools/NomalHiClickVoice.h; sourceTree = "<group>"; };
+		00DA131B19F4EF1900F27E25 /* NomalHiClickVoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NomalHiClickVoice.m; path = Tools/NomalHiClickVoice.m; sourceTree = "<group>"; };
+		00DA131F19F4F38000F27E25 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		00DA132119F4F38A00F27E25 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		00DA13AD19F4F77000F27E25 /* HiAccent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiAccent.wav; sourceTree = "<group>"; };
+		00DA13AE19F4F77000F27E25 /* HiAnd.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiAnd.wav; sourceTree = "<group>"; };
+		00DA13AF19F4F77000F27E25 /* HiE.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiE.wav; sourceTree = "<group>"; };
+		00DA13B019F4F77000F27E25 /* HiFirst.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiFirst.wav; sourceTree = "<group>"; };
+		00DA13B119F4F77000F27E25 /* HiGa.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiGa.wav; sourceTree = "<group>"; };
 		00E5F8C419C0BFCD00661D1C /* MetronomeBottomSubViewIphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeBottomSubViewIphone.h; sourceTree = "<group>"; };
 		00E5F8C519C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeBottomSubViewIphone.m; sourceTree = "<group>"; };
 		00E5F8C719C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeBottomSubViewIphone.xib; sourceTree = "<group>"; };
@@ -126,6 +152,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00DA132219F4F38A00F27E25 /* OpenAL.framework in Frameworks */,
+				00DA132019F4F38000F27E25 /* AudioToolbox.framework in Frameworks */,
 				004BE64019B2DDC7002CD995 /* CoreGraphics.framework in Frameworks */,
 				004BE64419B2DDC7002CD995 /* CoreData.framework in Frameworks */,
 				004BE64219B2DDC7002CD995 /* UIKit.framework in Frameworks */,
@@ -187,6 +215,8 @@
 		004BE63C19B2DDC7002CD995 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00DA132119F4F38A00F27E25 /* OpenAL.framework */,
+				00DA131F19F4F38000F27E25 /* AudioToolbox.framework */,
 				004BE63D19B2DDC7002CD995 /* Foundation.framework */,
 				004BE63F19B2DDC7002CD995 /* CoreGraphics.framework */,
 				004BE64119B2DDC7002CD995 /* UIKit.framework */,
@@ -199,6 +229,8 @@
 		004BE64519B2DDC7002CD995 /* Groove */ = {
 			isa = PBXGroup;
 			children = (
+				00DA13AB19F4F77000F27E25 /* Media */,
+				00DA131219F4E95000F27E25 /* Tools */,
 				003A56A619D3285800747EB3 /* CoreDataModel */,
 				00677B0A19BC5323007A3085 /* Groove */,
 				004BE68219B2E5C8002CD995 /* GlobalConfig */,
@@ -206,7 +238,6 @@
 				004BE67219B2DF89002CD995 /* Metronome */,
 				004BE64E19B2DDC8002CD995 /* AppDelegate.h */,
 				004BE64F19B2DDC8002CD995 /* AppDelegate.m */,
-				004BE65419B2DDC8002CD995 /* Images.xcassets */,
 				004BE64619B2DDC7002CD995 /* Supporting Files */,
 			);
 			path = Groove;
@@ -252,6 +283,7 @@
 				004BE67D19B2E131002CD995 /* MetronomeMainViewControllerIphone.h */,
 				004BE67E19B2E131002CD995 /* MetronomeMainViewControllerIphone.m */,
 				004BE67F19B2E131002CD995 /* MetronomeMainViewControllerIphone.xib */,
+				004BE65419B2DDC8002CD995 /* Images.xcassets */,
 			);
 			name = Metronome;
 			sourceTree = "<group>";
@@ -312,6 +344,41 @@
 				00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */,
 			);
 			name = MetronmeItems;
+			sourceTree = "<group>";
+		};
+		00DA131219F4E95000F27E25 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				00DA131619F4EF1900F27E25 /* BeepBound.h */,
+				00DA131719F4EF1900F27E25 /* BeepBound.m */,
+				00DA131A19F4EF1900F27E25 /* NomalHiClickVoice.h */,
+				00DA131B19F4EF1900F27E25 /* NomalHiClickVoice.m */,
+				00DA130F19F4E94600F27E25 /* NotesTool.h */,
+				00DA131019F4E94700F27E25 /* NotesTool.m */,
+				00DA131319F4EE1E00F27E25 /* AudioPlay.h */,
+				00DA131419F4EE1E00F27E25 /* AudioPlay.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		00DA13AB19F4F77000F27E25 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				00DA13AC19F4F77000F27E25 /* NormalHi */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		00DA13AC19F4F77000F27E25 /* NormalHi */ = {
+			isa = PBXGroup;
+			children = (
+				00DA13AD19F4F77000F27E25 /* HiAccent.wav */,
+				00DA13AE19F4F77000F27E25 /* HiAnd.wav */,
+				00DA13AF19F4F77000F27E25 /* HiE.wav */,
+				00DA13B019F4F77000F27E25 /* HiFirst.wav */,
+				00DA13B119F4F77000F27E25 /* HiGa.wav */,
+			);
+			path = NormalHi;
 			sourceTree = "<group>";
 		};
 		00E5F8C319C0BF9600661D1C /* MetronomeBottomSubViewIphone */ = {
@@ -402,16 +469,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00DA13B519F4F77000F27E25 /* HiFirst.wav in Resources */,
 				000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */,
+				00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */,
 				004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */,
 				00E5F8CD19C0CE5E00661D1C /* VolumeBarSet.xib in Resources */,
+				00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */,
 				00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */,
 				0036173D19D5CC9900848A35 /* loop.png in Resources */,
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
 				00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */,
+				00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */,
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
 				00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */,
 				004BE65519B2DDC8002CD995 /* Images.xcassets in Resources */,
+				00DA13B419F4F77000F27E25 /* HiE.wav in Resources */,
 				00E5F8C819C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib in Resources */,
 				004BE68519B2E670002CD995 /* GlobalConfig.plist in Resources */,
 			);
@@ -442,14 +514,18 @@
 				00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */,
 				001B2B3019D3CF190057A22E /* DbConfig.m in Sources */,
 				00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */,
+				00DA131E19F4EF1900F27E25 /* NomalHiClickVoice.m in Sources */,
 				00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */,
 				004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */,
 				003A56A219D3284600747EB3 /* TimeSignatureType.m in Sources */,
 				00E5F8CB19C0CE3D00661D1C /* VolumeBarSet.m in Sources */,
+				00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */,
 				004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */,
 				001B2B3D19D4106A0057A22E /* TempoList.m in Sources */,
 				004BE64C19B2DDC8002CD995 /* main.m in Sources */,
+				00DA131C19F4EF1900F27E25 /* BeepBound.m in Sources */,
 				003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */,
+				00DA131119F4E94700F27E25 /* NotesTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

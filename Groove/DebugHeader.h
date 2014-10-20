@@ -12,4 +12,7 @@
 #define DEBUG_OPEN  1
 #define DEBUG_CLOSE 0
 
+// Display Audio log
+#define AUDIO_LOG 1
+
 #endif

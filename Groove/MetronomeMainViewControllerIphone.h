@@ -13,8 +13,11 @@
 #import "MetronomeBottomSubViewIphone.h"
 #import "MetronomeSelectBar.h"
 
+// Tools
+#import "NotesTool.h"
+#import "AudioPlay.h"
 
-@interface MetronomeMainViewControllerIphone : UIViewController <SelectBarProtocol, MetronomeBottomViewProtocol, LargeBPMPickerProtocol>
+@interface MetronomeMainViewControllerIphone : UIViewController <NoteProtocol, SelectBarProtocol, MetronomeBottomViewProtocol, LargeBPMPickerProtocol>
 @property (strong, nonatomic) IBOutlet UIView *FullView;
 @property (weak, nonatomic) IBOutlet UIView *TopView;
 @property (weak, nonatomic) IBOutlet UIView *BottomView;
@@ -22,7 +25,7 @@
 @property (nonatomic) MetronomeBottomSubViewIphone *BottomSubView;
 
 
-
+@property (nonatomic, strong) BeepBound* CurrentVoice;
 @property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
 
 @end
