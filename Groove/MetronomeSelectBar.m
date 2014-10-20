@@ -52,7 +52,6 @@
 
 - (void) DisplayCellList
 {
-    NSLog(@"DisplayCellList");
     UIView * ControlView = self;
     ControlView.bounds = CGRectMake(0, 0, 200, 80);
     
@@ -172,13 +171,10 @@
 
 - (void) SetFrameValueWhenStopSelect
 {
-    NSLog(@"SetFrameValueWhenStopSelect");
-    
     int NewPermanentFrameMove = -1 * (CELL_WIDTH * (FIRST_CELL_OFFSET_COUNT - self.FocusIndex));
     PermanentFrameMove += CurrentMove;
     CurrentMove = 0;
     MoveToCenterCounter = NewPermanentFrameMove - PermanentFrameMove;
-    
 
     MoveToCenterTimer = [NSTimer scheduledTimerWithTimeInterval:0.01
                                                          target:self
@@ -208,7 +204,6 @@
         [MoveToCenterTimer invalidate];
         MoveToCenterTimer = nil;
         
-        NSLog(@"MoveFocusCellToCenterTick");
         // Until stop touching, parent's focusIndex will change.
         if (self.delegate != nil)
         {
@@ -288,7 +283,6 @@
     }
     else
     {
-        NSLog(@"SetTouched");
         [self SetFrameValueWhenStopSelect];
     }
 }
@@ -317,11 +311,9 @@
     // (MoveToCenterTimer == nil) is for avoid recursive error.
     if (!_Touched && OldValue != NewValue && MoveToCenterTimer == nil)
     {
-        NSLog(@"Selectbar FocusIndex");
         [self SetFrameValueWhenStopSelect];
         return;
     }
-
     
     // Reset old Label background color
     UILabel * OldFocusLabel = self.subviews[OldValue];

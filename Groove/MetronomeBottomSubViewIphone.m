@@ -67,11 +67,24 @@
 }
 - (void) SetCurrentDataTable : (NSArray *) NewValue
 {
+    int _FocusIndex = 0;
+    
     _CurrentDataTable = NewValue;
     
     // Set Select Loop bar
     [self CopyGrooveLoopListToSelectBar: _CurrentDataTable];
-    [self SetVolumeBarVolume: _CurrentDataTable[[self GetFocusIndex]]];
+
+    _FocusIndex = [self GetFocusIndex];
+    
+    if (_FocusIndex >= 0 && _FocusIndex < _CurrentDataTable.count)
+    {
+        [self SetVolumeBarVolume: _CurrentDataTable[_FocusIndex]];
+    }
+    else
+    {
+        // First Initailize will give wrong Index
+        // NSLog(@"Wrong Index");
+    }
 
 }
 

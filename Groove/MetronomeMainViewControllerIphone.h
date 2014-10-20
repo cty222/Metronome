@@ -17,6 +17,12 @@
 #import "NotesTool.h"
 #import "AudioPlay.h"
 
+typedef enum {
+    STOP_PLAYING         = 0,
+    SINGLE_PLAYING,
+    LOOP_PLAYING,
+} METRONOME_PLAYING_MODE;
+
 @interface MetronomeMainViewControllerIphone : UIViewController <NoteProtocol, SelectBarProtocol, MetronomeBottomViewProtocol, LargeBPMPickerProtocol>
 @property (strong, nonatomic) IBOutlet UIView *FullView;
 @property (weak, nonatomic) IBOutlet UIView *TopView;
@@ -27,5 +33,6 @@
 
 @property (nonatomic, strong) BeepBound* CurrentVoice;
 @property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
+@property (getter = GetPlayingMode, setter = SetPlayingMode:) METRONOME_PLAYING_MODE PlayingMode;
 
 @end
