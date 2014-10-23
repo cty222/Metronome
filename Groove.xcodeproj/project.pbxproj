@@ -43,6 +43,7 @@
 		00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */; };
 		00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */; };
 		00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */; };
+		00C4B4ED19F9752D00B363BA /* dialog2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00C4B4EC19F9752D00B363BA /* dialog2.pdf */; };
 		00DA131119F4E94700F27E25 /* NotesTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131019F4E94700F27E25 /* NotesTool.m */; };
 		00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131419F4EE1E00F27E25 /* AudioPlay.m */; };
 		00DA131C19F4EF1900F27E25 /* BeepBound.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131719F4EF1900F27E25 /* BeepBound.m */; };
@@ -124,6 +125,7 @@
 		00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeSelectBar.m; sourceTree = "<group>"; };
 		00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeSelectBar.xib; sourceTree = "<group>"; };
 		00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LargeBPMPicker.xib; sourceTree = "<group>"; };
+		00C4B4EC19F9752D00B363BA /* dialog2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = dialog2.pdf; sourceTree = "<group>"; };
 		00DA130F19F4E94600F27E25 /* NotesTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesTool.h; path = Tools/NotesTool.h; sourceTree = "<group>"; };
 		00DA131019F4E94700F27E25 /* NotesTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesTool.m; path = Tools/NotesTool.m; sourceTree = "<group>"; };
 		00DA131319F4EE1E00F27E25 /* AudioPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioPlay.h; path = Tools/AudioPlay.h; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		004BE64519B2DDC7002CD995 /* Groove */ = {
 			isa = PBXGroup;
 			children = (
+				00C4B4EB19F9752D00B363BA /* Picture */,
 				00DA13AB19F4F77000F27E25 /* Media */,
 				00DA131219F4E95000F27E25 /* Tools */,
 				003A56A619D3285800747EB3 /* CoreDataModel */,
@@ -344,6 +347,14 @@
 				00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */,
 			);
 			name = MetronmeItems;
+			sourceTree = "<group>";
+		};
+		00C4B4EB19F9752D00B363BA /* Picture */ = {
+			isa = PBXGroup;
+			children = (
+				00C4B4EC19F9752D00B363BA /* dialog2.pdf */,
+			);
+			path = Picture;
 			sourceTree = "<group>";
 		};
 		00DA131219F4E95000F27E25 /* Tools */ = {
@@ -484,6 +495,7 @@
 				00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */,
 				004BE65519B2DDC8002CD995 /* Images.xcassets in Resources */,
 				00DA13B419F4F77000F27E25 /* HiE.wav in Resources */,
+				00C4B4ED19F9752D00B363BA /* dialog2.pdf in Resources */,
 				00E5F8C819C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib in Resources */,
 				004BE68519B2E670002CD995 /* GlobalConfig.plist in Resources */,
 			);
