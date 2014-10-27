@@ -10,6 +10,9 @@
 
 @implementation LargeBPMPicker
 {
+    // Picture Array
+    NSMutableArray * Digits;
+    
     int _BPMValue;
     int _BPMMax;
     int _BPMMin;
@@ -62,9 +65,33 @@
     if (self) {
         // Initialization code
     }
+    
+    Digits = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < 10; i++)
+    {
+        int TmpIndex = i;
+        if (TmpIndex > 1)
+        {
+            TmpIndex %= TmpIndex;
+        }
+        NSString *ImageName = [NSString stringWithFormat:@"reflect_number_%d", TmpIndex];
+        NSLog(@"%@", ImageName);
+        UIGraphicsBeginImageContext(self.DigitInOnces.frame.size);
+        [[UIImage imageNamed:ImageName] drawInRect:self.DigitInOnces.bounds];
+        UIImage *Image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        [Digits addObject:Image];
+    }
+    
+    self.DigitInHundreds.userInteractionEnabled = NO;
+    self.DigitInTens.userInteractionEnabled = NO;
+    self.DigitInOnces.userInteractionEnabled = NO;
+
     return self;
 }
 
+// NO Use
 - (id) init
 {
     self = [super init];
@@ -99,7 +126,20 @@
     }
     
     _BPMValue = NewValue;
-    self.LebalBPMValue.text = [NSString stringWithFormat:@"%d", _BPMValue];
+    if (_BPMValue/100 == 0)
+    {
+        self.DigitInHundreds.hidden = YES;
+    }
+    else
+    {
+        self.DigitInHundreds.hidden = NO;
+    }
+    
+    self.DigitInHundreds.backgroundColor = [UIColor colorWithPatternImage:Digits[_BPMValue/100]];
+    self.DigitInTens.backgroundColor = [UIColor colorWithPatternImage:Digits[(_BPMValue%100)/10]];
+    self.DigitInOnces.backgroundColor = [UIColor colorWithPatternImage:Digits[_BPMValue%10]];
+    
+    NSLog(@"%d", _BPMValue);
     
     // Pass to parent view.
     if (self.delegate != nil)

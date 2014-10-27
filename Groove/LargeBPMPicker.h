@@ -20,9 +20,11 @@
 @end
 
 @interface LargeBPMPicker : XibViewInterface
-@property (weak, nonatomic) IBOutlet UILabel *LebalBPMValue;
 
 @property (getter = GetBPMValue, setter = SetBPMValue:) int BPMValue;
+@property (strong, nonatomic) IBOutlet UIView *DigitInHundreds;
+@property (strong, nonatomic) IBOutlet UIView *DigitInTens;
+@property (strong, nonatomic) IBOutlet UIView *DigitInOnces;
 
 @property (weak, nonatomic) IBOutlet UIImageView *UpArrow;
 @property (weak, nonatomic) IBOutlet UIImageView *DownArrow;
