@@ -73,7 +73,7 @@
         int TmpIndex = i;
         if (TmpIndex > 1)
         {
-            TmpIndex %= TmpIndex;
+            TmpIndex = TmpIndex %2;
         }
         NSString *ImageName = [NSString stringWithFormat:@"reflect_number_%d", TmpIndex];
         NSLog(@"%@", ImageName);
