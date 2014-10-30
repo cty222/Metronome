@@ -14,6 +14,5 @@
 
 @property (nonatomic, assign) id<LargeBPMPickerProtocol> delegate;
 
-@property (strong, nonatomic) IBOutlet UIButton *TimeSignatureButton;
 
 @end

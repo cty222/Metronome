@@ -17,6 +17,12 @@
 {
     NSArray * CurrentCellsDataTable;
     
+    // Tap Fuction
+    double _LastRecordTime_ms;
+    NSDate * _Date;;
+    NSTimer *ClearTapTimer;
+
+    
     // Index
     int _FocusIndex;
     TempoCell *_CurrentCell;
@@ -209,7 +215,7 @@
     _CurrentCell = CurrentCellsDataTable[_FocusIndex];
     
     self.TopSubView.BPMPicker.BPMValue = [_CurrentCell.bpmValue intValue];
-    [self.TopSubView.TimeSignatureButton setTitle:_CurrentCell.timeSignatureType.timeSignature forState:UIControlStateNormal];
+    [self.BottomSubView.TimeSignatureButton setTitle:_CurrentCell.timeSignatureType.timeSignature forState:UIControlStateNormal];
     
     if (DeleteFillDataFlag)
     {
@@ -251,13 +257,15 @@
     switch (_PlayingMode) {
         case STOP_PLAYING:
             [self StopClickWithResetCounter : YES];
+            [self.BottomSubView.PlayLoopCellButton setTitle:@"PlayLoop" forState:UIControlStateNormal];
+            [self.BottomSubView.PlayCurrentCellButton setTitle:@"Play" forState:UIControlStateNormal];
             break;
         case SINGLE_PLAYING:
-            NSLog(@"SINGLE_PLAYING StartClick");
+            [self.BottomSubView.PlayCurrentCellButton setTitle:@"Stop" forState:UIControlStateNormal];
             [self StartClick];
             break;
         case LOOP_PLAYING:
-            NSLog(@"LOOP_PLAYING StartClick");
+            [self.BottomSubView.PlayLoopCellButton setTitle:@"StopLoop" forState:UIControlStateNormal];
             [self StartClick];
             break;
         default:
@@ -365,6 +373,7 @@
 //  =========================
 // delegate
 //
+// 不會設下去到Bottom View UI
 - (void) SetBPMValue : (int) NewValue
 {
     _CurrentCell.bpmValue = [NSNumber numberWithInt:NewValue];
@@ -423,7 +432,31 @@
 - (IBAction) TapBPMValueButtonClick: (UIButton *) ThisClickedButton
 {
     NSLog(@"TapBPMValueButtonClick");
-}	
+    
+    if (_Date == nil)
+    {
+        _Date = [NSDate date];
+    }
+    
+    if (ClearTapTimer != nil)
+    {
+        [ClearTapTimer invalidate];
+        ClearTapTimer = nil;
+    }
+    ClearTapTimer = [NSTimer scheduledTimerWithTimeInterval:5
+                                                      target:self
+                                                    selector:@selector(ClearTapTicker:)
+                                                    userInfo:nil
+                                                     repeats:NO];
+    if (_LastRecordTime_ms != 0)
+    {
+        double CurrentRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
+        int NewBPMvalue = 60000.f/(CurrentRecordTime_ms -_LastRecordTime_ms);
+        self.TopSubView.BPMPicker.BPMValue = NewBPMvalue;
+    }
+    
+    _LastRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
+}
 
 - (IBAction) AddLoopCellButtonClick: (UIButton *) ThisClickedButton
 {
@@ -470,6 +503,7 @@
     if (self.PlayingMode == SINGLE_PLAYING)
     {
         self.PlayingMode = STOP_PLAYING;
+        [self.BottomSubView.PlayCurrentCellButton setTitle:@"Play" forState:UIControlStateNormal];
     }
     
     if (self.PlayingMode == STOP_PLAYING)
@@ -480,6 +514,7 @@
     {
         self.PlayingMode = STOP_PLAYING;
     }
+    
 }
 
 - (void) FirstBeatFunc
@@ -643,6 +678,18 @@
         [self StartClick];
     }
 }
+
+- (void) ClearTapTicker: (NSTimer *) theTimer
+{
+    NSLog(@"Tap Clear");
+    if (_Date != nil)	
+    {
+        _Date = nil;
+    }
+    _LastRecordTime_ms = 0;
+    ClearTapTimer = nil;
+}
+
 
 - (int) DecodeTimeSignatureToValue : (NSString *)TimeSignatureString
 {

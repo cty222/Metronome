@@ -44,8 +44,8 @@
         self.FocusIndex = 0;
         self.userInteractionEnabled = YES;
         
-
     }
+    NSLog(@"Select bar : %@", self);
     return self;
 }
 
@@ -53,7 +53,7 @@
 - (void) DisplayCellList
 {
     UIView * ControlView = self;
-    ControlView.bounds = CGRectMake(0, 0, 200, 80);
+    ControlView.bounds = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     
     // Clear all cell
     [[ControlView subviews]
@@ -75,10 +75,10 @@
     LargeImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    
+    float CellHeightLocation = (ControlView.bounds.size.height - CELL_HEIGHT)/2;
     for (int Index = 0; Index < self.GrooveCellList.count; Index++)
     {
-        CGRect TmpFrame = CGRectMake(Index * CELL_WIDTH - CurrentMove - PermanentFrameMove, 20, CELL_WIDTH, CELL_HEIGHT);
+        CGRect TmpFrame = CGRectMake(Index * CELL_WIDTH - CurrentMove - PermanentFrameMove, CellHeightLocation, CELL_WIDTH, CELL_HEIGHT);
         UILabel * TmpLabel = [[UILabel alloc] initWithFrame:TmpFrame];
         
         
@@ -120,9 +120,10 @@
     
     Boolean NoFucus = YES;
     
+    float CellHeightLocation = (self.bounds.size.height - CELL_HEIGHT)/2;
     for (int Index = 0; Index < self.GrooveCellList.count; Index++)
     {
-        CGRect TmpFrame = CGRectMake(Index * CELL_WIDTH - CurrentMove - PermanentFrameMove, 20, CELL_WIDTH, 40);
+        CGRect TmpFrame = CGRectMake(Index * CELL_WIDTH - CurrentMove - PermanentFrameMove, CellHeightLocation, CELL_WIDTH, CELL_HEIGHT);
         UILabel * TmpLabel = self.subviews[Index];
         TmpLabel.frame = TmpFrame;
         if (TmpFrame.origin.x + TmpFrame.size.width > self.bounds.size.width ||

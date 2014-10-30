@@ -29,6 +29,11 @@
         self.BPMPicker.delegate = self;
         [self addSubview:self.BPMPicker];
 
+        UIGraphicsBeginImageContext(self.frame.size);
+        [[UIImage imageNamed:@"TopViewBackground"] drawInRect:self.bounds];
+        UIImage *Image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.backgroundColor = [UIColor colorWithPatternImage:Image];
     }
     return self;
 }

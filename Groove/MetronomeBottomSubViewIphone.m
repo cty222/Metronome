@@ -31,13 +31,6 @@
         self.VolumeSet.delegate = self;
         [self addSubview:self.VolumeSet];
        
-        // test
-        /*UIGraphicsBeginImageContext(self.VolumeSet.frame.size);
-        [[UIImage imageNamed:@"reflect_number_0"] drawInRect:self.VolumeSet.bounds];
-        UIImage *Image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        self.VolumeSet.backgroundColor = [UIColor colorWithPatternImage:Image];*/
         
         [self.SelectGrooveBar removeFromSuperview];
         self.SelectGrooveBar = [[MetronomeSelectBar alloc] initWithFrame:self.SelectGrooveBar.frame];

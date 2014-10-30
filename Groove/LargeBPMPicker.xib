@@ -20,17 +20,17 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <view contentMode="scaleToFill" id="49R-tF-cI1">
-                    <rect key="frame" x="15" y="20" width="65" height="115"/>
+                    <rect key="frame" x="17" y="8" width="65" height="142"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.23640270320000001" green="1" blue="0.76854884010000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="tFR-GT-a7j">
-                    <rect key="frame" x="90" y="20" width="65" height="115"/>
+                    <rect key="frame" x="90" y="8" width="65" height="142"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.23640270320000001" green="1" blue="0.76854884010000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="WWp-NV-ic2">
-                    <rect key="frame" x="165" y="20" width="65" height="115"/>
+                    <rect key="frame" x="163" y="8" width="65" height="142"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.23640270320000001" green="1" blue="0.76854884010000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>

@@ -30,11 +30,13 @@
 @property (strong, nonatomic) IBOutlet VolumeBarSet *VolumeSet;
 @property (strong, nonatomic) IBOutlet MetronomeSelectBar *SelectGrooveBar;
 
-// Middle
+// Sub button
 @property (strong, nonatomic) IBOutlet UIButton *PlayCurrentCellButton;
 @property (strong, nonatomic) IBOutlet UIButton *TapBPMValueButton;
+@property (strong, nonatomic) IBOutlet UIButton *TimeSignatureButton;
+@property (strong, nonatomic) IBOutlet UIButton *Voice;
 
-// Buttom
+// loop button
 @property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
 @property (strong, nonatomic) IBOutlet UIButton *DeleteLoopCellButton;
 @property (strong, nonatomic) IBOutlet UIButton *PlayLoopCellButton;
