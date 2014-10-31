@@ -36,6 +36,27 @@
         self.SelectGrooveBar = [[MetronomeSelectBar alloc] initWithFrame:self.SelectGrooveBar.frame];
         self.SelectGrooveBar.delegate = self;
         [self addSubview:self.SelectGrooveBar];
+        
+        // Tap ...拼錯了
+        UIGraphicsBeginImageContext(self.TapBPMValueButton.frame.size);
+        [[UIImage imageNamed:@"Tap"] drawInRect:self.TapBPMValueButton.bounds];
+        UIImage *TapImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.TapBPMValueButton.backgroundColor = [UIColor colorWithPatternImage:TapImage];
+        
+        // Voice
+        UIGraphicsBeginImageContext(self.VoiceButton.frame.size);
+        [[UIImage imageNamed:@"Voice_Hi-Click"] drawInRect:self.VoiceButton.bounds];
+        UIImage *VoiceImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.VoiceButton.backgroundColor = [UIColor colorWithPatternImage:VoiceImage];
+        
+        // Time Signature
+        UIGraphicsBeginImageContext(self.TimeSignatureButton.frame.size);
+        [[UIImage imageNamed:@"TimeSignature4_4"] drawInRect:self.TimeSignatureButton.bounds];
+        UIImage *TimeSignatureImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.TimeSignatureButton.backgroundColor = [UIColor colorWithPatternImage:TimeSignatureImage];
     }
     return self;
 }

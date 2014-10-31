@@ -34,7 +34,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *PlayCurrentCellButton;
 @property (strong, nonatomic) IBOutlet UIButton *TapBPMValueButton;
 @property (strong, nonatomic) IBOutlet UIButton *TimeSignatureButton;
-@property (strong, nonatomic) IBOutlet UIButton *Voice;
+@property (strong, nonatomic) IBOutlet UIButton *VoiceButton;
 
 // loop button
 @property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;

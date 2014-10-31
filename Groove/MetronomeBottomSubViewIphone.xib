@@ -11,43 +11,29 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="wov-cd-VAX" customClass="VolumeBarSet">
-                    <rect key="frame" x="0.0" y="61" width="260" height="188"/>
+                <view contentMode="scaleToFill" id="YjW-sh-2ej">
+                    <rect key="frame" x="0.0" y="250" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RSJ-fx-8NR">
-                    <rect key="frame" x="260" y="128" width="59" height="35"/>
+                    <rect key="frame" x="270" y="111" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.67428845319999997" green="1" blue="0.90542151240000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Tap">
+                    <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="TapBPMValueButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="UFa-ad-WMf"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Adm-l7-2Y6">
-                    <rect key="frame" x="260" y="171" width="59" height="35"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.67428845319999997" green="1" blue="0.90542151240000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Voice">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="TapBPMValueButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="xjp-Tt-n3h"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0ih-Bc-crv">
-                    <rect key="frame" x="260" y="214" width="59" height="35"/>
+                    <rect key="frame" x="270" y="205" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.67428845319999997" green="1" blue="0.90542151240000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Sign">
+                    <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="TapBPMValueButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="qu2-Yl-nql"/>
-                    </connections>
                 </button>
                 <view contentMode="scaleToFill" id="0eg-Cr-3ZA" customClass="MetronomeSelectBar">
                     <rect key="frame" x="60" y="0.0" width="200" height="60"/>
@@ -89,18 +75,31 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="g7s-1g-KHS">
-                    <rect key="frame" x="262" y="79" width="58" height="35"/>
+                    <rect key="frame" x="270" y="64" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.67428845319999997" green="1" blue="0.90542151240000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Play">
+                    <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="PlayCurrentCellButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="gUh-Rp-nzK"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Adm-l7-2Y6">
+                    <rect key="frame" x="270" y="158" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.67428845319999997" green="1" blue="0.90542151240000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <view contentMode="scaleToFill" id="wov-cd-VAX" customClass="VolumeBarSet">
+                    <rect key="frame" x="0.0" y="60" width="260" height="190"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="0.98724205590000003" green="1" blue="0.26242883839999998" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.37735541423452401" green="0.31659724143586399" blue="0.37924505739795922" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -111,7 +110,7 @@
                 <outlet property="SelectGrooveBar" destination="0eg-Cr-3ZA" id="D44-xZ-pfO"/>
                 <outlet property="TapBPMValueButton" destination="RSJ-fx-8NR" id="xZE-QG-ljS"/>
                 <outlet property="TimeSignatureButton" destination="0ih-Bc-crv" id="Ai6-wD-JqS"/>
-                <outlet property="Voice" destination="Adm-l7-2Y6" id="rQk-cG-DJD"/>
+                <outlet property="VoiceButton" destination="Adm-l7-2Y6" id="3so-zK-5mO"/>
                 <outlet property="VolumeSet" destination="wov-cd-VAX" id="Ae7-ze-ovV"/>
             </connections>
         </view>

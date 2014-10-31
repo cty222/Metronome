@@ -46,6 +46,9 @@
     int _LoopCountCounter;
     int _TimeSignatureCounter;
     BOOL ChangeToNextCellFlag;
+    
+    // PlayCell Image
+    UIImage *_SinglePlayImage;
 }
 
 //- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -180,6 +183,14 @@
 
     self.BottomSubView.delegate = self;
     [self.BottomView addSubview:self.BottomSubView];
+    
+    
+    // SinglePlay
+    UIGraphicsBeginImageContext(self.BottomSubView.PlayCurrentCellButton.frame.size);
+    [[UIImage imageNamed:@"SinglePlay"] drawInRect:self.BottomSubView.PlayCurrentCellButton.bounds];
+    _SinglePlayImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.BottomSubView.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
 }
 
 // ============
@@ -215,7 +226,9 @@
     _CurrentCell = CurrentCellsDataTable[_FocusIndex];
     
     self.TopSubView.BPMPicker.BPMValue = [_CurrentCell.bpmValue intValue];
-    [self.BottomSubView.TimeSignatureButton setTitle:_CurrentCell.timeSignatureType.timeSignature forState:UIControlStateNormal];
+    
+    // TODO: 要改成設圖
+    //[self.BottomSubView.TimeSignatureButton setTitle:_CurrentCell.timeSignatureType.timeSignature forState:UIControlStateNormal];
     
     if (DeleteFillDataFlag)
     {
@@ -258,10 +271,11 @@
         case STOP_PLAYING:
             [self StopClickWithResetCounter : YES];
             [self.BottomSubView.PlayLoopCellButton setTitle:@"PlayLoop" forState:UIControlStateNormal];
-            [self.BottomSubView.PlayCurrentCellButton setTitle:@"Play" forState:UIControlStateNormal];
+            self.BottomSubView.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
             break;
         case SINGLE_PLAYING:
-            [self.BottomSubView.PlayCurrentCellButton setTitle:@"Stop" forState:UIControlStateNormal];
+            // TODO : 要改成Stop圖
+            //self.BottomSubView.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
             [self StartClick];
             break;
         case LOOP_PLAYING:
@@ -502,8 +516,8 @@
 {
     if (self.PlayingMode == SINGLE_PLAYING)
     {
-        self.PlayingMode = STOP_PLAYING;
-        [self.BottomSubView.PlayCurrentCellButton setTitle:@"Play" forState:UIControlStateNormal];
+        self.PlayingMode = STOP_PLAYING;        
+        self.BottomSubView.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
     }
     
     if (self.PlayingMode == STOP_PLAYING)
@@ -693,6 +707,7 @@
 
 - (int) DecodeTimeSignatureToValue : (NSString *)TimeSignatureString
 {
+    
     if ([TimeSignatureString isEqualToString:@"1/4"])
     {
         return 1;

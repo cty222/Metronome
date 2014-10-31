@@ -41,6 +41,10 @@
 		00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B0C19BC538F007A3085 /* GrooveMainViewControllerIpone.m */; };
 		00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */; };
 		00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */; };
+		007BA89B1A03F95300FCDADF /* SinglePlay.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 007BA89A1A03F95300FCDADF /* SinglePlay.pdf */; };
+		007BA89D1A03F95E00FCDADF /* Tab.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 007BA89C1A03F95E00FCDADF /* Tab.pdf */; };
+		007BA89F1A03F96900FCDADF /* TimeSignature_4_4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 007BA89E1A03F96900FCDADF /* TimeSignature_4_4.pdf */; };
+		007BA8A11A03F98000FCDADF /* Voice_Hi-Click.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 007BA8A01A03F98000FCDADF /* Voice_Hi-Click.pdf */; };
 		00B81F6A1A0278D60098BCBB /* TopViewBackground.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00B81F691A0278D60098BCBB /* TopViewBackground.pdf */; };
 		00B9689819CEDE5300AAD1AF /* TmpVerticalSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689719CEDE5300AAD1AF /* TmpVerticalSlider.m */; };
 		00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */; };
@@ -124,6 +128,10 @@
 		00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrooveMainViewControllerIpone.xib; sourceTree = "<group>"; };
 		00677B1119BC5DA4007A3085 /* LargeBPMPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargeBPMPicker.h; sourceTree = "<group>"; };
 		00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargeBPMPicker.m; sourceTree = "<group>"; };
+		007BA89A1A03F95300FCDADF /* SinglePlay.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SinglePlay.pdf; sourceTree = "<group>"; };
+		007BA89C1A03F95E00FCDADF /* Tab.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Tab.pdf; sourceTree = "<group>"; };
+		007BA89E1A03F96900FCDADF /* TimeSignature_4_4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TimeSignature_4_4.pdf; sourceTree = "<group>"; };
+		007BA8A01A03F98000FCDADF /* Voice_Hi-Click.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Voice_Hi-Click.pdf"; sourceTree = "<group>"; };
 		00B81F691A0278D60098BCBB /* TopViewBackground.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TopViewBackground.pdf; sourceTree = "<group>"; };
 		00B9689619CEDE5300AAD1AF /* TmpVerticalSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmpVerticalSlider.h; sourceTree = "<group>"; };
 		00B9689719CEDE5300AAD1AF /* TmpVerticalSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmpVerticalSlider.m; sourceTree = "<group>"; };
@@ -358,10 +366,14 @@
 		00C4B4EB19F9752D00B363BA /* Picture */ = {
 			isa = PBXGroup;
 			children = (
+				007BA89C1A03F95E00FCDADF /* Tab.pdf */,
+				007BA89A1A03F95300FCDADF /* SinglePlay.pdf */,
+				007BA89E1A03F96900FCDADF /* TimeSignature_4_4.pdf */,
 				0010FF2419FEC1B5005E74C1 /* reflect_number_0.pdf */,
 				0010FF2519FEC1B5005E74C1 /* reflect_number_1.pdf */,
 				00C4B4EC19F9752D00B363BA /* dialog2.pdf */,
 				00B81F691A0278D60098BCBB /* TopViewBackground.pdf */,
+				007BA8A01A03F98000FCDADF /* Voice_Hi-Click.pdf */,
 			);
 			path = Picture;
 			sourceTree = "<group>";
@@ -493,6 +505,7 @@
 				00DA13B519F4F77000F27E25 /* HiFirst.wav in Resources */,
 				0010FF2719FEC1B5005E74C1 /* reflect_number_1.pdf in Resources */,
 				000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */,
+				007BA89F1A03F96900FCDADF /* TimeSignature_4_4.pdf in Resources */,
 				00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */,
 				004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */,
 				00E5F8CD19C0CE5E00661D1C /* VolumeBarSet.xib in Resources */,
@@ -505,8 +518,11 @@
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
 				00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */,
 				0010FF2619FEC1B5005E74C1 /* reflect_number_0.pdf in Resources */,
+				007BA89B1A03F95300FCDADF /* SinglePlay.pdf in Resources */,
 				004BE65519B2DDC8002CD995 /* Images.xcassets in Resources */,
 				00DA13B419F4F77000F27E25 /* HiE.wav in Resources */,
+				007BA89D1A03F95E00FCDADF /* Tab.pdf in Resources */,
+				007BA8A11A03F98000FCDADF /* Voice_Hi-Click.pdf in Resources */,
 				00C4B4ED19F9752D00B363BA /* dialog2.pdf in Resources */,
 				00E5F8C819C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib in Resources */,
 				004BE68519B2E670002CD995 /* GlobalConfig.plist in Resources */,
