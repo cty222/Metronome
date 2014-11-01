@@ -227,6 +227,40 @@
 //
 // =================================
 
+
+// =================================
+// iAD function
+
+- (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    // 有錯誤會進來
+}
+
+- (void) bannerViewActionDidFinish:(ADBannerView *)banner
+{
+   // 使用者關掉廣告內容畫面
+}
+
+-(void) bannerViewDidLoadAd:(ADBannerView *)banner
+{
+  // 廣告載入
+}
+
+-(void) bannerViewWillLoadAd:(ADBannerView *)banner
+{
+    
+}
+
+-(BOOL) bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+{
+    // 使用者點了廣告後開啟畫面
+    return YES;
+}
+
+
+//
+// =================================
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

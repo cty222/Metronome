@@ -5,6 +5,7 @@
 //  Created by C-ty on 2014/9/11.
 //  Copyright (c) 2014年 Cty. All rights reserved.
 //
+#import "iAd/iAd.h"
 
 #import "XibViewInterface.h"
 #import "VolumeBarSet.h"
@@ -26,7 +27,7 @@
 - (IBAction) VolumeSliderValueChanged:(TmpVerticalSlider*) ThisVerticalSlider;
 @end
 
-@interface MetronomeBottomSubViewIphone : XibViewInterface <SelectBarProtocol, VolumeBarSetProtocol>
+@interface MetronomeBottomSubViewIphone : XibViewInterface <SelectBarProtocol, VolumeBarSetProtocol, ADBannerViewDelegate>
 @property (strong, nonatomic) IBOutlet VolumeBarSet *VolumeSet;
 @property (strong, nonatomic) IBOutlet MetronomeSelectBar *SelectGrooveBar;
 
