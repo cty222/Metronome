@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+// 讓silence mode 下也有聲音
+#import <AVFoundation/AVFoundation.h>
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -19,6 +22,20 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor blueColor];
+    
+    // 0. Disbale IdleTimer
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+    
+    // 讓silence mode 下也有聲音
+    // Need study!!
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    NSError *setCategoryError = nil;
+    if (![session setCategory:AVAudioSessionCategoryPlayback
+                  withOptions:AVAudioSessionCategoryOptionMixWithOthers
+                        error:&setCategoryError]) {
+        // handle error
+        NSLog(@"AVAudioSession Set error!!");
+    }
     
     //
     // 1. Initize global config
