@@ -1,0 +1,42 @@
+View Size : 
+TopView		 total : 320 * 268
+System Icon      :   40~320 * 52
+Large BPM Picker :	 320 * 216 
+BPM Number		 :   65 * 204
+Arrow			 :   50 * 72
+
+BottomView 	 total : 320 * 300
+cell selecter  : 320 * 60	
+volume bar set : 260 * 190
+button view    : 60 * 190
+button 		   : 40 * 40
+Ad View		   : 320 * 50
+
+
+Issue :
+主頁面：
+funcion
+1.1 Sys Icon 換頁功能
+
+2.1 Loop 點擊Mute？
+2.2 Loop 增加減少閃爍
+2.3 Loop Cell 數值增加減少
+2.4 Loop Cell 不是focus Cell 快速單點擊成為 focus Cell ??
+2.5 Loop Cell 長壓進入刪除模式, drop掉 或是按一下 回復
+
+3.1 Voice 選取
+
+4.1 Time Signature選取
+
+5.1 加入ad
+
+UI:
+1.1 數字不夠
+1.2 箭頭不在牆壁上
+
+2.1 Sys Icon 還沒換
+
+3.1 Loop selecter 圖形沒換 
+
+4.1 volume set 樣子沒換
+
