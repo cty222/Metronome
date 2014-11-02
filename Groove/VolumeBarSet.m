@@ -44,8 +44,6 @@
                     break;
             }
         }
-        self.backgroundColor = [UIColor blackColor];
-
     }
     return self;
 }

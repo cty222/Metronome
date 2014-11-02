@@ -37,7 +37,7 @@
         self.SelectGrooveBar.delegate = self;
         [self addSubview:self.SelectGrooveBar];
         
-        // Tap ...拼錯了
+        // Tap
         UIGraphicsBeginImageContext(self.TapBPMValueButton.frame.size);
         [[UIImage imageNamed:@"Tap"] drawInRect:self.TapBPMValueButton.bounds];
         UIImage *TapImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -57,6 +57,13 @@
         UIImage *TimeSignatureImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         self.TimeSignatureButton.backgroundColor = [UIColor colorWithPatternImage:TimeSignatureImage];
+        
+        // Back ground
+        UIGraphicsBeginImageContext(self.frame.size);
+        [[UIImage imageNamed:@"BottomViewBackground"] drawInRect:self.bounds];
+        UIImage *SelfBackGroundImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.backgroundColor = [UIColor colorWithPatternImage:SelfBackGroundImage];
     }
     return self;
 }
