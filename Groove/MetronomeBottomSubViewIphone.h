@@ -11,6 +11,7 @@
 #import "VolumeBarSet.h"
 #import "MetronomeSelectBar.h"
 #import "MetronomeModel.h"
+#import "CircleButton.h"
 
 @protocol MetronomeBottomViewProtocol <NSObject>
 @required
@@ -50,5 +51,6 @@
 - (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable;
 - (void) ChangeSelectBarForcusIndex: (int) NewValue;
 
+@property (strong, nonatomic) IBOutlet CircleButton *TestCircleButton;
 
 @end

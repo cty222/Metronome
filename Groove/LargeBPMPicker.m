@@ -226,8 +226,7 @@
 
 - (void) TouchBeginEvent : (CGPoint) TouchLocation
 {
-    OriginalLocation.x = TouchLocation.x;
-    OriginalLocation.y = TouchLocation.y;
+    OriginalLocation = TouchLocation;
     self.Touched = YES;
 }
 

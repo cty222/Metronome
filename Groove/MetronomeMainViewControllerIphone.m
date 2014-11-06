@@ -49,6 +49,8 @@
     
     // PlayCell Image
     UIImage *_SinglePlayImage;
+    UIImage *_RedPlayloopImage;
+    UIImage *_BlackPlayloopImage;
 }
 
 //- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -191,6 +193,19 @@
     _SinglePlayImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     self.BottomSubView.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
+    
+    // red  playloop button
+    UIGraphicsBeginImageContext(self.BottomSubView.PlayLoopCellButton.frame.size);
+    [[UIImage imageNamed:@"LoopPlay_red"] drawInRect:self.BottomSubView.PlayLoopCellButton.bounds];
+    _RedPlayloopImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.BottomSubView.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayloopImage];
+
+    // bloak  playloop button
+    UIGraphicsBeginImageContext(self.BottomSubView.PlayLoopCellButton.frame.size);
+    [[UIImage imageNamed:@"LoopPlay_black"] drawInRect:self.BottomSubView.PlayLoopCellButton.bounds];
+    _BlackPlayloopImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
 }
 
 // ============
@@ -270,7 +285,7 @@
     switch (_PlayingMode) {
         case STOP_PLAYING:
             [self StopClickWithResetCounter : YES];
-            [self.BottomSubView.PlayLoopCellButton setTitle:@"PlayLoop" forState:UIControlStateNormal];
+            self.BottomSubView.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayloopImage];
             self.BottomSubView.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
             break;
         case SINGLE_PLAYING:
@@ -279,7 +294,8 @@
             [self StartClick];
             break;
         case LOOP_PLAYING:
-            [self.BottomSubView.PlayLoopCellButton setTitle:@"StopLoop" forState:UIControlStateNormal];
+            self.BottomSubView.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_BlackPlayloopImage];
+
             [self StartClick];
             break;
         default:

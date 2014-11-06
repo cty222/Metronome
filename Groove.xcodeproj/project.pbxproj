@@ -38,6 +38,10 @@
 		004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004BE67F19B2E131002CD995 /* MetronomeMainViewControllerIphone.xib */; };
 		004BE68519B2E670002CD995 /* GlobalConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 004BE68419B2E670002CD995 /* GlobalConfig.plist */; };
 		004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 004BE68719B2EA93002CD995 /* GlobalConfig.m */; };
+		006175BE1A0BCFE100113560 /* PlayLoop_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */; };
+		006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BD1A0BCFE100113560 /* PlayLoop.pdf */; };
+		006175C21A0BD4A300113560 /* CircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 006175C11A0BD4A200113560 /* CircleButton.m */; };
+		006175CB1A0BDB7A00113560 /* CircleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006175CA1A0BDB7A00113560 /* CircleButton.xib */; };
 		00677B0519BC4C09007A3085 /* MetronmoneTopSubViewIphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B0419BC4C09007A3085 /* MetronmoneTopSubViewIphone.m */; };
 		00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00677B0819BC5203007A3085 /* MetronmoneTopSubViewIphone.xib */; };
 		00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B0C19BC538F007A3085 /* GrooveMainViewControllerIpone.m */; };
@@ -125,6 +129,11 @@
 		004BE68419B2E670002CD995 /* GlobalConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GlobalConfig.plist; sourceTree = "<group>"; };
 		004BE68619B2EA93002CD995 /* GlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConfig.h; sourceTree = "<group>"; };
 		004BE68719B2EA93002CD995 /* GlobalConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConfig.m; sourceTree = "<group>"; };
+		006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop_red.pdf; sourceTree = "<group>"; };
+		006175BD1A0BCFE100113560 /* PlayLoop.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop.pdf; sourceTree = "<group>"; };
+		006175C01A0BD4A200113560 /* CircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleButton.h; path = UITools/CircleButton.h; sourceTree = "<group>"; };
+		006175C11A0BD4A200113560 /* CircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleButton.m; path = UITools/CircleButton.m; sourceTree = "<group>"; };
+		006175CA1A0BDB7A00113560 /* CircleButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleButton.xib; sourceTree = "<group>"; };
 		00677B0319BC4C09007A3085 /* MetronmoneTopSubViewIphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MetronmoneTopSubViewIphone.h; sourceTree = "<group>"; };
 		00677B0419BC4C09007A3085 /* MetronmoneTopSubViewIphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronmoneTopSubViewIphone.m; sourceTree = "<group>"; };
 		00677B0819BC5203007A3085 /* MetronmoneTopSubViewIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronmoneTopSubViewIphone.xib; sourceTree = "<group>"; };
@@ -376,6 +385,9 @@
 				00B9689919CEF10900AAD1AF /* MetronomeSelectBar.h */,
 				00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */,
 				00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */,
+				006175C01A0BD4A200113560 /* CircleButton.h */,
+				006175C11A0BD4A200113560 /* CircleButton.m */,
+				006175CA1A0BDB7A00113560 /* CircleButton.xib */,
 			);
 			name = MetronmeItems;
 			sourceTree = "<group>";
@@ -383,6 +395,8 @@
 		00C4B4EB19F9752D00B363BA /* Picture */ = {
 			isa = PBXGroup;
 			children = (
+				006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */,
+				006175BD1A0BCFE100113560 /* PlayLoop.pdf */,
 				00BBE8101A06AFDA0034BCB6 /* BottomViewBackground.pdf */,
 				00BBE80C1A06AF670034BCB6 /* SinglePlay.pdf */,
 				00BBE80A1A06AF5D0034BCB6 /* TimeSignature_4_4.pdf */,
@@ -521,6 +535,8 @@
 			files = (
 				00B81F6A1A0278D60098BCBB /* TopViewBackground.pdf in Resources */,
 				00DA13B519F4F77000F27E25 /* HiFirst.wav in Resources */,
+				006175BE1A0BCFE100113560 /* PlayLoop_red.pdf in Resources */,
+				006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */,
 				00BBE8111A06AFDA0034BCB6 /* BottomViewBackground.pdf in Resources */,
 				0010FF2719FEC1B5005E74C1 /* reflect_number_1.pdf in Resources */,
 				000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */,
@@ -536,6 +552,7 @@
 				00BBE80D1A06AF670034BCB6 /* SinglePlay.pdf in Resources */,
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
 				00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */,
+				006175CB1A0BDB7A00113560 /* CircleButton.xib in Resources */,
 				00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */,
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
 				00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */,
@@ -573,6 +590,7 @@
 				00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */,
 				00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */,
 				001B2B3019D3CF190057A22E /* DbConfig.m in Sources */,
+				006175C21A0BD4A300113560 /* CircleButton.m in Sources */,
 				00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */,
 				00DA131E19F4EF1900F27E25 /* NomalHiClickVoice.m in Sources */,
 				00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */,

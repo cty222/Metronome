@@ -59,11 +59,24 @@
         self.TimeSignatureButton.backgroundColor = [UIColor colorWithPatternImage:TimeSignatureImage];
         
         // Back ground
-        UIGraphicsBeginImageContext(self.frame.size);
+        /*UIGraphicsBeginImageContext(self.frame.size);
         [[UIImage imageNamed:@"BottomViewBackground"] drawInRect:self.bounds];
         UIImage *SelfBackGroundImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        self.backgroundColor = [UIColor colorWithPatternImage:SelfBackGroundImage];
+        self.backgroundColor = [UIColor colorWithPatternImage:SelfBackGroundImage];*/
+        self.backgroundColor = [UIColor whiteColor];
+        
+
+        
+        // TODO : Test CircleButton
+        self.VolumeSet.hidden = YES;
+        [self.TestCircleButton removeFromSuperview];
+        self.TestCircleButton = [[CircleButton alloc] initWithFrame:self.TestCircleButton.frame];
+        [self addSubview:self.TestCircleButton];
+        self.TestCircleButton.MaxIndex = 100;
+        self.TestCircleButton.MinIndex = 0;
+        self.TestCircleButton.Sensitivity = 3;
+
     }
     return self;
 }
