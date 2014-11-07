@@ -37,6 +37,8 @@
         self.SelectGrooveBar.delegate = self;
         [self addSubview:self.SelectGrooveBar];
         
+        self.adView.delegate = self;
+        
         // Tap
         UIGraphicsBeginImageContext(self.TapBPMValueButton.frame.size);
         [[UIImage imageNamed:@"Tap"] drawInRect:self.TapBPMValueButton.bounds];
@@ -76,6 +78,7 @@
         self.TestCircleButton.MaxIndex = 100;
         self.TestCircleButton.MinIndex = 0;
         self.TestCircleButton.Sensitivity = 3;
+        self.TestCircleButton.IndexValue = 80;
 
     }
     return self;

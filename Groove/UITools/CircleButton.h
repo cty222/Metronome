@@ -14,13 +14,16 @@ typedef enum {
 } CIRCLE_BUTTON_MODE;
 
 @interface CircleButton : XibViewInterface
-@property (strong, nonatomic) IBOutlet UIView *FrontView;
-@property (strong, nonatomic) IBOutlet UIView *BackView;
+@property (strong, nonatomic) IBOutlet UIView *SubView_F4;
+@property (strong, nonatomic) IBOutlet UIView *SubView_F3;
+@property (strong, nonatomic) IBOutlet UIView *SubView_F2_ValueHide;
+@property (strong, nonatomic) IBOutlet UIView *SubView_F2_Value;
+@property (strong, nonatomic) IBOutlet UIView *SubView_F1;
 
 @property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
-@property (getter = GetIndexValue, setter = SetIndexValue:) NSUInteger IndexValue;
-@property NSUInteger MaxIndex;
-@property NSUInteger MinIndex;
+@property (getter = GetIndexValue, setter = SetIndexValue:) NSInteger IndexValue;
+@property NSInteger MaxIndex;
+@property NSInteger MinIndex;
 
 @property (getter = GetSensitivity, setter = SetSensitivity:) double Sensitivity;
 @property (getter = GetDataStringArray, setter = SetDataStringArray:) NSMutableArray * DataStringArray;

@@ -47,6 +47,8 @@
 
 @property (nonatomic, assign) id<SelectBarProtocol, MetronomeBottomViewProtocol> delegate;
 
+// Ad
+@property(nonatomic,retain)IBOutlet ADBannerView *adView;
 
 - (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable;
 - (void) ChangeSelectBarForcusIndex: (int) NewValue;

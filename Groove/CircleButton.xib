@@ -13,11 +13,27 @@
             <subviews>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" id="8hY-XB-xII">
                     <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" id="6Fb-7J-0gj">
                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="wCD-Ff-CmM">
+                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </view>
+                            </subviews>
+                        </view>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" id="Cag-au-HtR">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view userInteractionEnabled="NO" contentMode="scaleToFill" id="NUL-Hz-lEl">
+                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </view>
+                            </subviews>
                         </view>
                     </subviews>
                 </view>
@@ -25,8 +41,11 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="BackView" destination="8hY-XB-xII" id="Okk-gv-sRb"/>
-                <outlet property="FrontView" destination="6Fb-7J-0gj" id="ro2-j9-HM7"/>
+                <outlet property="SubView_F1" destination="8hY-XB-xII" id="042-fw-owE"/>
+                <outlet property="SubView_F2_Value" destination="6Fb-7J-0gj" id="Xf0-rd-awp"/>
+                <outlet property="SubView_F2_ValueHide" destination="wCD-Ff-CmM" id="7fR-hc-RuX"/>
+                <outlet property="SubView_F3" destination="Cag-au-HtR" id="dKT-4r-Dyc"/>
+                <outlet property="SubView_F4" destination="NUL-Hz-lEl" id="ifd-eH-iAA"/>
             </connections>
             <point key="canvasLocation" x="396" y="368"/>
         </view>
