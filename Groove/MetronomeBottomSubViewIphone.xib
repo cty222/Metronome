@@ -67,7 +67,7 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RSJ-fx-8NR">
-                    <rect key="frame" x="270" y="158" width="40" height="40"/>
+                    <rect key="frame" x="270" y="159" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.67428845319999997" green="1" blue="0.90542151240000002" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal">
@@ -78,7 +78,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="g7s-1g-KHS">
-                    <rect key="frame" x="270" y="204" width="40" height="40"/>
+                    <rect key="frame" x="270" y="205" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.67428845319999997" green="1" blue="0.90542151240000002" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal">
@@ -89,34 +89,34 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" id="wov-cd-VAX" customClass="VolumeBarSet">
-                    <rect key="frame" x="0.0" y="66" width="178" height="178"/>
+                    <rect key="frame" x="0.0" y="66" width="260" height="119"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </view>
-                <view contentMode="scaleToFill" id="yw3-mj-qU9" customClass="CircleButton">
-                    <rect key="frame" x="191" y="125" width="60" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="0.94132335840000003" blue="0.1584888968" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
-                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Rab-tm-P43">
-                    <rect key="frame" x="0.0" y="250" width="320" height="50"/>
+                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CoW-LI-FJh">
+                    <rect key="frame" x="0.0" y="250" width="320" height="52"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </adBannerView>
+                <view contentMode="scaleToFill" id="40i-gE-xCd" customClass="CircleButton">
+                    <rect key="frame" x="183" y="182" width="60" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.37735541423452401" green="0.31659724143586399" blue="0.37924505739795922" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="AddLoopCellButton" destination="5bb-e2-v1w" id="Ieu-rp-bAQ"/>
+                <outlet property="CircleButtonTest" destination="40i-gE-xCd" id="YOg-4w-vhz"/>
                 <outlet property="DeleteLoopCellButton" destination="y6P-BE-IgL" id="ZQC-9k-pYe"/>
                 <outlet property="PlayCurrentCellButton" destination="g7s-1g-KHS" id="JKw-Ft-vkc"/>
                 <outlet property="PlayLoopCellButton" destination="Rkq-mo-XTz" id="UCf-8w-f3b"/>
                 <outlet property="SelectGrooveBar" destination="0eg-Cr-3ZA" id="D44-xZ-pfO"/>
                 <outlet property="TapBPMValueButton" destination="RSJ-fx-8NR" id="xZE-QG-ljS"/>
-                <outlet property="TestCircleButton" destination="yw3-mj-qU9" id="sc9-MC-UG8"/>
                 <outlet property="TimeSignatureButton" destination="0ih-Bc-crv" id="Ai6-wD-JqS"/>
                 <outlet property="VoiceButton" destination="Adm-l7-2Y6" id="3so-zK-5mO"/>
                 <outlet property="VolumeSet" destination="wov-cd-VAX" id="Ae7-ze-ovV"/>
-                <outlet property="adView" destination="Rab-tm-P43" id="lNt-Zc-Pd3"/>
+                <outlet property="adView" destination="CoW-LI-FJh" id="W5E-25-w0i"/>
             </connections>
         </view>
     </objects>

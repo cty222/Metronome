@@ -13,15 +13,23 @@
             <subviews>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" id="8hY-XB-xII">
                     <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NewCircle_F1" id="Fxs-UG-TyT">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" id="6Fb-7J-0gj">
                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NewCircle_F2" id="79O-Xj-CW5">
+                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                </imageView>
                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" id="wCD-Ff-CmM">
                                     <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 </view>
                             </subviews>
                         </view>
@@ -29,9 +37,19 @@
                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NewCircle_F3" id="ROc-Pf-cQB">
+                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                </imageView>
                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" id="NUL-Hz-lEl">
                                     <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NewCircle_F4" id="4dN-ww-1C6">
+                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
                             </subviews>
                         </view>
@@ -41,6 +59,10 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="F1ImageView" destination="Fxs-UG-TyT" id="D7u-ep-Y2Z"/>
+                <outlet property="F2ImageValueView" destination="79O-Xj-CW5" id="aR6-71-qxr"/>
+                <outlet property="F3ImageView" destination="ROc-Pf-cQB" id="b5x-L5-lkb"/>
+                <outlet property="F4ImageView" destination="4dN-ww-1C6" id="9UR-Ni-c75"/>
                 <outlet property="SubView_F1" destination="8hY-XB-xII" id="042-fw-owE"/>
                 <outlet property="SubView_F2_Value" destination="6Fb-7J-0gj" id="Xf0-rd-awp"/>
                 <outlet property="SubView_F2_ValueHide" destination="wCD-Ff-CmM" id="7fR-hc-RuX"/>
@@ -50,6 +72,12 @@
             <point key="canvasLocation" x="396" y="368"/>
         </view>
     </objects>
+    <resources>
+        <image name="NewCircle_F1" width="51" height="51"/>
+        <image name="NewCircle_F2" width="51" height="51"/>
+        <image name="NewCircle_F3" width="51" height="51"/>
+        <image name="NewCircle_F4" width="51" height="51"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

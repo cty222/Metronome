@@ -8,6 +8,9 @@
 
 #import "XibViewInterface.h"
 
+#define ROUNDING_BACK_SENSITIVITY   4
+#define ROUNDING_START_SENSITIVITY  2
+
 typedef enum {
     CBM_NO_DATA_ARRAY,
     CBM_HAVE_DATA_ARRAY
@@ -19,6 +22,11 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIView *SubView_F2_ValueHide;
 @property (strong, nonatomic) IBOutlet UIView *SubView_F2_Value;
 @property (strong, nonatomic) IBOutlet UIView *SubView_F1;
+@property (strong, nonatomic) IBOutlet UIImageView *F1ImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *F2ImageValueView;
+@property (strong, nonatomic) IBOutlet UIImageView *F3ImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *F4ImageView;
+
 
 @property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
 @property (getter = GetIndexValue, setter = SetIndexValue:) NSInteger IndexValue;

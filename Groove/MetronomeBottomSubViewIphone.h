@@ -52,7 +52,6 @@
 
 - (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable;
 - (void) ChangeSelectBarForcusIndex: (int) NewValue;
-
-@property (strong, nonatomic) IBOutlet CircleButton *TestCircleButton;
+@property (strong, nonatomic) IBOutlet CircleButton *CircleButtonTest;
 
 @end

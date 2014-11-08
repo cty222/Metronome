@@ -72,13 +72,13 @@
         
         // TODO : Test CircleButton
         self.VolumeSet.hidden = YES;
-        [self.TestCircleButton removeFromSuperview];
-        self.TestCircleButton = [[CircleButton alloc] initWithFrame:self.TestCircleButton.frame];
-        [self addSubview:self.TestCircleButton];
-        self.TestCircleButton.MaxIndex = 100;
-        self.TestCircleButton.MinIndex = 0;
-        self.TestCircleButton.Sensitivity = 3;
-        self.TestCircleButton.IndexValue = 80;
+        [self.CircleButtonTest removeFromSuperview];
+        self.CircleButtonTest = [[CircleButton alloc] initWithFrame:self.CircleButtonTest.frame];
+        [self addSubview:self.CircleButtonTest];
+        self.CircleButtonTest.MaxIndex = 100;
+        self.CircleButtonTest.MinIndex = 0;
+        self.CircleButtonTest.Sensitivity = 3;
+        self.CircleButtonTest.IndexValue = 80;
 
     }
     return self;

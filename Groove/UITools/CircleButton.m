@@ -10,12 +10,8 @@
 
 @implementation CircleButton
 {
-    UIImage * _ImageFrame1;
-    UIImage * _ImageFrame2;
-    UIImage * _ImageFrame3;
-    UIImage * _ImageFrame4;
-    UIImage * _ImageFrame4Touched;
-
+    UIImage * _ImageMask;
+    NSInteger _SubView_F4_degree;
     
     BOOL _Touched;
     CGPoint OriginalLocation;
@@ -37,38 +33,11 @@
 {
     _DataStringArray = nil;
     
-    UIGraphicsBeginImageContext(self.SubView_F1.frame.size);
-    [[UIImage imageNamed:@"NewCircle_F1"] drawInRect:self.SubView_F1.bounds];
-    _ImageFrame1 = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsBeginImageContext(self.frame.size);
+    [[UIImage imageNamed:@"NewCircle_F1"] drawInRect:self.bounds];
+    _ImageMask = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    self.SubView_F1.backgroundColor = [UIColor colorWithPatternImage:_ImageFrame1];
-    
-    UIGraphicsBeginImageContext(self.SubView_F2_Value.frame.size);
-    [[UIImage imageNamed:@"NewCircle_F2"] drawInRect:self.SubView_F2_Value.bounds];
-    _ImageFrame2 = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.SubView_F2_Value.backgroundColor = [UIColor colorWithPatternImage:_ImageFrame2];
-    self.SubView_F2_ValueHide.backgroundColor = [UIColor colorWithPatternImage:_ImageFrame1];
-
-    
-    UIGraphicsBeginImageContext(self.SubView_F3.frame.size);
-    [[UIImage imageNamed:@"NewCircle_F3"] drawInRect:self.SubView_F3.bounds];
-    _ImageFrame3 = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.SubView_F3.backgroundColor = [UIColor colorWithPatternImage:_ImageFrame3];
-    
-    UIGraphicsBeginImageContext(self.SubView_F4.frame.size);
-    [[UIImage imageNamed:@"NewCircle_F4"] drawInRect:self.SubView_F4.bounds];
-    _ImageFrame4 = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.SubView_F4.backgroundColor = [UIColor colorWithPatternImage:_ImageFrame4];
-    
-    UIGraphicsBeginImageContext(CGSizeMake(120, 120));
-    [[UIImage imageNamed:@"NewCircle_F4"] drawInRect:CGRectMake(0, 0, 120, 120)];
-    _ImageFrame4Touched = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    [self bringSubviewToFront:self.SubView_F3];
+    self.SubView_F2_ValueHide.backgroundColor = [UIColor colorWithPatternImage:_ImageMask];
 }
 
 - (id)initWithFrame:(CGRect) frame
@@ -161,32 +130,33 @@
     _Touched = NewValue;
     if (_Touched)
     {
+        // 如果觸碰
+        // 最內環會變大, 便最外環
         if (_TouchedTimer != nil)
         {
             [_TouchedTimer invalidate];
             _TouchedTimer = nil;
         }
-        _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.01
+        _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
                                                              target:self
                                                            selector:@selector(TouchedOpen:)
                                                            userInfo:nil
                                                             repeats:YES];
-        self.SubView_F4.backgroundColor = [UIColor colorWithPatternImage:_ImageFrame4Touched];
-
     }
     else
     {
+        // 如果結束觸碰
+        // 最內環會變轉正, 之後再縮小.
         if (_TouchedTimer != nil)
         {
             [_TouchedTimer invalidate];
             _TouchedTimer = nil;
         }
-        _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.01
-                                                             target:self
-                                                           selector:@selector(TouchedClose:)
-                                                           userInfo:nil
-                                                            repeats:YES];
-        self.SubView_F4.backgroundColor = [UIColor colorWithPatternImage:_ImageFrame4];
+        _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
+                                                         target:self
+                                                       selector:@selector(RoundingStart:)
+                                                       userInfo:nil
+                                                        repeats:YES];
     }
 }
 
@@ -197,9 +167,9 @@
 
 - (void) TouchedOpen: (NSTimer *) ThisTimer
 {
-    if (self.SubView_F4.frame.origin.x > -30)
+
+    if (self.SubView_F4.frame.origin.x > -1 * (self.frame.size.width /2))
     {
-        //self.SubView_F4.frame = CGRectMake( -30, -30, 120, 120);
         self.SubView_F4.frame = CGRectMake( self.SubView_F4.frame.origin.x -1,
                                             self.SubView_F4.frame.origin.y -1,
                                             self.SubView_F4.frame.size.width + 2,
@@ -208,11 +178,17 @@
     }
     else
     {
+        //當變大完成, 就會開始旋轉
         if (_TouchedTimer != nil)
         {
             [_TouchedTimer invalidate];
             _TouchedTimer = nil;
         }
+        _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.01
+                                                         target:self
+                                                       selector:@selector(RoundingStart:)
+                                                       userInfo:nil
+                                                        repeats:YES];
     }
 }
 
@@ -220,7 +196,6 @@
 {
     if (self.SubView_F4.frame.origin.x < 0)
     {
-        //self.SubView_F4.frame = CGRectMake( 0 , 0, 60, 60);
         self.SubView_F4.frame = CGRectMake( self.SubView_F4.frame.origin.x +1,
                                            self.SubView_F4.frame.origin.y +1,
                                            self.SubView_F4.frame.size.width - 2,
@@ -237,9 +212,55 @@
     }
 }
 
+- (void) RoundingStart: (NSTimer *) ThisTimer
+{
+
+    if (self.Touched)
+    {
+        _SubView_F4_degree += ROUNDING_START_SENSITIVITY;
+        [self RotationChange:self.SubView_F4 Degree:(float)_SubView_F4_degree];
+    }
+    else
+    {
+        if (_SubView_F4_degree % ROUNDING_BACK_SENSITIVITY)
+        {
+            _SubView_F4_degree -= _SubView_F4_degree % ROUNDING_BACK_SENSITIVITY;
+        }
+        _SubView_F4_degree -= ROUNDING_BACK_SENSITIVITY;
+        [self RotationChange:self.SubView_F4 Degree:(float)_SubView_F4_degree];
+        if ((_SubView_F4_degree % 180) == 0)
+        {
+            //當轉正完成, 就會開始縮小
+            if (_TouchedTimer != nil)
+            {
+                [_TouchedTimer invalidate];
+                _TouchedTimer = nil;
+            }
+            _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
+                                                         target:self
+                                                       selector:@selector(TouchedClose:)
+                                                       userInfo:nil
+                                                        repeats:YES];
+        }
+    }
+}
+
+- (void) RotationChange :(UIView *) TargetView Degree : (float) Degree
+{
+    if (TargetView == nil)
+    {
+        return;
+    }
+    
+    float rad = Degree/ 180.0 *M_PI;
+    CGAffineTransform rotation = CGAffineTransformMakeRotation(rad);
+    [TargetView.layer setAffineTransform:rotation];
+
+}
+
+
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    NSLog(@"123456789");
     OriginalLocation = [self GetLocationPoint: touches];
 
     self.Touched = YES;

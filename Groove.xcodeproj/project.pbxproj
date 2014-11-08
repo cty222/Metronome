@@ -45,12 +45,12 @@
 		006175BE1A0BCFE100113560 /* PlayLoop_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */; };
 		006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BD1A0BCFE100113560 /* PlayLoop.pdf */; };
 		006175C21A0BD4A300113560 /* CircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 006175C11A0BD4A200113560 /* CircleButton.m */; };
-		006175CB1A0BDB7A00113560 /* CircleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006175CA1A0BDB7A00113560 /* CircleButton.xib */; };
 		00677B0519BC4C09007A3085 /* MetronmoneTopSubViewIphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B0419BC4C09007A3085 /* MetronmoneTopSubViewIphone.m */; };
 		00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00677B0819BC5203007A3085 /* MetronmoneTopSubViewIphone.xib */; };
 		00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B0C19BC538F007A3085 /* GrooveMainViewControllerIpone.m */; };
 		00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */; };
 		00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */; };
+		00B02A5D1A0E997C00BCAF3B /* CircleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */; };
 		00B81F6A1A0278D60098BCBB /* TopViewBackground.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00B81F691A0278D60098BCBB /* TopViewBackground.pdf */; };
 		00B9689819CEDE5300AAD1AF /* TmpVerticalSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689719CEDE5300AAD1AF /* TmpVerticalSlider.m */; };
 		00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */; };
@@ -141,7 +141,6 @@
 		006175BD1A0BCFE100113560 /* PlayLoop.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop.pdf; sourceTree = "<group>"; };
 		006175C01A0BD4A200113560 /* CircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleButton.h; path = UITools/CircleButton.h; sourceTree = "<group>"; };
 		006175C11A0BD4A200113560 /* CircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleButton.m; path = UITools/CircleButton.m; sourceTree = "<group>"; };
-		006175CA1A0BDB7A00113560 /* CircleButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleButton.xib; sourceTree = "<group>"; };
 		00677B0319BC4C09007A3085 /* MetronmoneTopSubViewIphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MetronmoneTopSubViewIphone.h; sourceTree = "<group>"; };
 		00677B0419BC4C09007A3085 /* MetronmoneTopSubViewIphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronmoneTopSubViewIphone.m; sourceTree = "<group>"; };
 		00677B0819BC5203007A3085 /* MetronmoneTopSubViewIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronmoneTopSubViewIphone.xib; sourceTree = "<group>"; };
@@ -150,6 +149,7 @@
 		00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrooveMainViewControllerIpone.xib; sourceTree = "<group>"; };
 		00677B1119BC5DA4007A3085 /* LargeBPMPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargeBPMPicker.h; sourceTree = "<group>"; };
 		00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargeBPMPicker.m; sourceTree = "<group>"; };
+		00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleButton.xib; sourceTree = "<group>"; };
 		00B81F691A0278D60098BCBB /* TopViewBackground.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TopViewBackground.pdf; sourceTree = "<group>"; };
 		00B9689619CEDE5300AAD1AF /* TmpVerticalSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmpVerticalSlider.h; sourceTree = "<group>"; };
 		00B9689719CEDE5300AAD1AF /* TmpVerticalSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmpVerticalSlider.m; sourceTree = "<group>"; };
@@ -395,7 +395,7 @@
 				00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */,
 				006175C01A0BD4A200113560 /* CircleButton.h */,
 				006175C11A0BD4A200113560 /* CircleButton.m */,
-				006175CA1A0BDB7A00113560 /* CircleButton.xib */,
+				00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */,
 			);
 			name = MetronmeItems;
 			sourceTree = "<group>";
@@ -550,6 +550,7 @@
 				006175BE1A0BCFE100113560 /* PlayLoop_red.pdf in Resources */,
 				006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */,
 				00BBE8111A06AFDA0034BCB6 /* BottomViewBackground.pdf in Resources */,
+				00B02A5D1A0E997C00BCAF3B /* CircleButton.xib in Resources */,
 				0010FF2719FEC1B5005E74C1 /* reflect_number_1.pdf in Resources */,
 				000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */,
 				00BBE80B1A06AF5D0034BCB6 /* TimeSignature_4_4.pdf in Resources */,
@@ -566,7 +567,6 @@
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
 				005DBB841A0D425300120439 /* NewCircleButton_f4.pdf in Resources */,
 				00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */,
-				006175CB1A0BDB7A00113560 /* CircleButton.xib in Resources */,
 				00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */,
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
 				005DBB831A0D425300120439 /* NewCircleButton_f3.pdf in Resources */,
