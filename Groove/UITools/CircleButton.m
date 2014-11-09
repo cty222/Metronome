@@ -25,6 +25,8 @@
     
     NSOperationQueue * _Queue;
     NSBlockOperation * RoundingOperation;
+
+    
 }
 
 - (void) awakeFromNib
@@ -36,7 +38,8 @@
 {
     _Queue = [[NSOperationQueue alloc] init];
     _SubView_F4_degree = 0;
-
+    [self FlipAnimation];
+    
     _DataStringArray = nil;
     
     UIGraphicsBeginImageContext(self.frame.size);
@@ -93,7 +96,6 @@
 
 -(void) SetIndexValue: (NSInteger) NewValue
 {
-    NSLog(@"Set New IndexValue %ld", (long)NewValue);
     if (self.GetDataStringArray != nil)
     {
         self.MinIndex = 0;
@@ -117,7 +119,7 @@
     _IndexValue = NewValue;
     
     [self ValueColorChangeWithIndexValue];
-    [self.ValueLabel setText:[NSString stringWithFormat:@"%d", _IndexValue]];
+    [self.ValueLabel setText:[NSString stringWithFormat:@"%lu", (unsigned long)_IndexValue]];
 }
 
 
@@ -140,19 +142,12 @@
         // 如果觸碰
         // 最內環會變大, 便最外環
         // 不用animate 是因為動作設不快???
-        if (_TouchedTimer != nil)
-        {
-            [_TouchedTimer invalidate];
-            _TouchedTimer = nil;
-        }
-        _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
-                                                             target:self
-                                                           selector:@selector(TouchedOpen:)
-                                                           userInfo:nil
-                                                            repeats:YES];
+        // 翻轉文字_顯示, 放大在反轉完成之後
+        [self FlipAnimation];
     }
     else
     {
+        
         // 如果結束觸碰
         // 最內環會變轉正, 之後再縮小.
         [self RoundingAnimationStop];
@@ -165,15 +160,49 @@
     return _Touched;
 }
 
+- (void) FlipAnimation
+{
+    if (self.Touched) {
+        [UIView transitionFromView:self.SignPicture toView:self.ValueLabel
+                          duration:0.5
+                           options:UIViewAnimationOptionTransitionFlipFromLeft
+                        completion:^(BOOL finished){
+                            if (self.Touched)
+                            {
+                                // 放大在反轉完成之後
+                                if (_TouchedTimer != nil)
+                                {
+                                    [_TouchedTimer invalidate];
+                                    _TouchedTimer = nil;
+                                }
+                                _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
+                                                                             target:self
+                                                                           selector:@selector(TouchedOpen:)
+                                                                           userInfo:nil
+                                                                            repeats:YES];
+                            }
+                        }];
+    }
+    else {
+        [UIView transitionFromView:self.ValueLabel toView:self.SignPicture
+                          duration:0.5
+                           options:UIViewAnimationOptionTransitionFlipFromLeft
+                        completion:NULL];
+    }
+}
 
 - (void) TouchedOpen: (NSTimer *) ThisTimer
 {
-
-    NSLog(@"%@",self.SubView_F4);
+    if (!self.Touched)
+    {
+        return;
+    }
+    
+    // 放大
     if (self.SubView_F4.frame.origin.x > -1 * (self.frame.size.width /2))
     {
-        self.SubView_F4.frame = CGRectMake( self.SubView_F4.frame.origin.x -1,
-                                            self.SubView_F4.frame.origin.y -1,
+        self.SubView_F4.frame = CGRectMake( self.SubView_F4.frame.origin.x - 1,
+                                            self.SubView_F4.frame.origin.y - 1,
                                             self.SubView_F4.frame.size.width + 2,
                                             self.SubView_F4.frame.size.height + 2
                                            );
@@ -194,16 +223,26 @@
 
 - (void) TouchedClose: (NSTimer *) ThisTimer
 {
+    if (self.Touched)
+    {
+        return;
+    }
+    
+    // 縮小
     if (self.SubView_F4.frame.origin.x < 0)
     {
-        self.SubView_F4.frame = CGRectMake( self.SubView_F4.frame.origin.x +1,
-                                           self.SubView_F4.frame.origin.y +1,
+        self.SubView_F4.frame = CGRectMake( self.SubView_F4.frame.origin.x + 1,
+                                           self.SubView_F4.frame.origin.y + 1,
                                            self.SubView_F4.frame.size.width - 2,
                                            self.SubView_F4.frame.size.height - 2
                                            );
     }
     else
     {
+        // 翻轉文字_顯示
+        [self FlipAnimation];
+
+        
         if (_TouchedTimer != nil)
         {
             [_TouchedTimer invalidate];
@@ -238,7 +277,7 @@
                      }
                      completion:^(BOOL finished){
                          if (!self.Touched){
-                             if ((_SubView_F4_degree % 180) == 0)
+                             if ((_SubView_F4_degree % HALF_CIRCLE_DEGREE) == 0)
                              {
                                  _SubView_F4_degree = 0;
                                  //當轉正完成, 就會開始縮小
@@ -277,7 +316,7 @@
             TestCounter = 0;
             while (self.Touched) {
                 _SubView_F4_degree += ROUNDING_START_SENSITIVITY;
-                float rad = ((float)_SubView_F4_degree/ 180.0 )*M_PI;
+                float rad = ((float)_SubView_F4_degree/ (float)HALF_CIRCLE_DEGREE )*M_PI;
                 CGAffineTransform rotation = CGAffineTransformMakeRotation(rad);
                 [self.SubView_F4.layer setAffineTransform:rotation];
             }
@@ -296,7 +335,7 @@
         return;
     }
     
-    float rad = Degree/ 180.0 *M_PI;
+    float rad = ((float)Degree/ (float)HALF_CIRCLE_DEGREE) *M_PI;
     CGAffineTransform rotation = CGAffineTransformMakeRotation(rad);
     [TargetView.layer setAffineTransform:rotation];
 
@@ -346,7 +385,7 @@
 // 如果開animate, Close 也要用 不然會有bug
 - (void) AnimationTouchedOpen
 {
-    [UIView animateWithDuration:0.0001
+    [UIView animateWithDuration:0.03
                           delay:0
                         options: 0
                      animations:^{

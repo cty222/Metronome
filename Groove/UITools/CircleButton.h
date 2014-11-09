@@ -10,11 +10,13 @@
 
 #define ROUNDING_BACK_SENSITIVITY   10
 #define ROUNDING_START_SENSITIVITY  4
+#define HALF_CIRCLE_DEGREE  180
 
 typedef enum {
     CBM_NO_DATA_ARRAY,
     CBM_HAVE_DATA_ARRAY
 } CIRCLE_BUTTON_MODE;
+
 
 @interface CircleButton : XibViewInterface
 @property (strong, nonatomic) IBOutlet UIView *SubView_F4;
@@ -28,6 +30,7 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIImageView *F4ImageView;
 
 @property (strong, nonatomic) IBOutlet UILabel *ValueLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *SignPicture;
 
 @property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
 @property (getter = GetIndexValue, setter = SetIndexValue:) NSInteger IndexValue;

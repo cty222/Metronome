@@ -16,6 +16,9 @@
 		001F01191A05511300189941 /* IssueAndInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 001F01181A05511300189941 /* IssueAndInfo.txt */; };
 		001F011B1A05679D00189941 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001F011A1A05679D00189941 /* iAd.framework */; };
 		00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 00319FB91A0F2EED00CF3C83 /* UINSOperation.m */; };
+		0034734E1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0034734C1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf */; };
+		0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */; };
+		003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */; };
 		0036173D19D5CC9900848A35 /* loop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0036173C19D5CC9900848A35 /* loop.png */; };
 		0036174519D5E2DA00848A35 /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0036174419D5E2DA00848A35 /* TempoCell.m */; };
 		003A56A219D3284600747EB3 /* TimeSignatureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 003A56A119D3284600747EB3 /* TimeSignatureType.m */; };
@@ -40,9 +43,6 @@
 		004BE68519B2E670002CD995 /* GlobalConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 004BE68419B2E670002CD995 /* GlobalConfig.plist */; };
 		004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 004BE68719B2EA93002CD995 /* GlobalConfig.m */; };
 		005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */; };
-		005DBB821A0D425300120439 /* NewCircleButton_f2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005DBB7E1A0D425300120439 /* NewCircleButton_f2.pdf */; };
-		005DBB831A0D425300120439 /* NewCircleButton_f3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005DBB7F1A0D425300120439 /* NewCircleButton_f3.pdf */; };
-		005DBB841A0D425300120439 /* NewCircleButton_f4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005DBB801A0D425300120439 /* NewCircleButton_f4.pdf */; };
 		006175BE1A0BCFE100113560 /* PlayLoop_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */; };
 		006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BD1A0BCFE100113560 /* PlayLoop.pdf */; };
 		006175C21A0BD4A300113560 /* CircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 006175C11A0BD4A200113560 /* CircleButton.m */; };
@@ -104,6 +104,9 @@
 		001F011A1A05679D00189941 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		00319FB81A0F2EED00CF3C83 /* UINSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UINSOperation.h; path = Tools/UINSOperation.h; sourceTree = "<group>"; };
 		00319FB91A0F2EED00CF3C83 /* UINSOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UINSOperation.m; path = Tools/UINSOperation.m; sourceTree = "<group>"; };
+		0034734C1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f3.pdf; sourceTree = "<group>"; };
+		0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f4.pdf; sourceTree = "<group>"; };
+		003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f2.pdf; sourceTree = "<group>"; };
 		0036173C19D5CC9900848A35 /* loop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loop.png; sourceTree = "<group>"; };
 		0036174319D5E2DA00848A35 /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
 		0036174419D5E2DA00848A35 /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
@@ -137,9 +140,6 @@
 		004BE68619B2EA93002CD995 /* GlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConfig.h; sourceTree = "<group>"; };
 		004BE68719B2EA93002CD995 /* GlobalConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConfig.m; sourceTree = "<group>"; };
 		005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f1.pdf; sourceTree = "<group>"; };
-		005DBB7E1A0D425300120439 /* NewCircleButton_f2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f2.pdf; sourceTree = "<group>"; };
-		005DBB7F1A0D425300120439 /* NewCircleButton_f3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f3.pdf; sourceTree = "<group>"; };
-		005DBB801A0D425300120439 /* NewCircleButton_f4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f4.pdf; sourceTree = "<group>"; };
 		006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop_red.pdf; sourceTree = "<group>"; };
 		006175BD1A0BCFE100113560 /* PlayLoop.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop.pdf; sourceTree = "<group>"; };
 		006175C01A0BD4A200113560 /* CircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleButton.h; path = UITools/CircleButton.h; sourceTree = "<group>"; };
@@ -407,9 +407,9 @@
 			isa = PBXGroup;
 			children = (
 				005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */,
-				005DBB7E1A0D425300120439 /* NewCircleButton_f2.pdf */,
-				005DBB7F1A0D425300120439 /* NewCircleButton_f3.pdf */,
-				005DBB801A0D425300120439 /* NewCircleButton_f4.pdf */,
+				003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */,
+				0034734C1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf */,
+				0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */,
 				006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */,
 				006175BD1A0BCFE100113560 /* PlayLoop.pdf */,
 				00BBE8101A06AFDA0034BCB6 /* BottomViewBackground.pdf */,
@@ -563,18 +563,18 @@
 				00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */,
 				004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */,
 				00E5F8CD19C0CE5E00661D1C /* VolumeBarSet.xib in Resources */,
+				003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */,
 				00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */,
-				005DBB821A0D425300120439 /* NewCircleButton_f2.pdf in Resources */,
 				00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */,
 				00BBE8091A06AF510034BCB6 /* Tap.pdf in Resources */,
 				0036173D19D5CC9900848A35 /* loop.png in Resources */,
 				00BBE80D1A06AF670034BCB6 /* SinglePlay.pdf in Resources */,
+				0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */,
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
-				005DBB841A0D425300120439 /* NewCircleButton_f4.pdf in Resources */,
 				00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */,
 				00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */,
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
-				005DBB831A0D425300120439 /* NewCircleButton_f3.pdf in Resources */,
+				0034734E1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf in Resources */,
 				00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */,
 				0010FF2619FEC1B5005E74C1 /* reflect_number_0.pdf in Resources */,
 				001F01191A05511300189941 /* IssueAndInfo.txt in Resources */,
