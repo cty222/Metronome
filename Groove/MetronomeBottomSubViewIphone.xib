@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -89,7 +88,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" id="wov-cd-VAX" customClass="VolumeBarSet">
-                    <rect key="frame" x="0.0" y="66" width="260" height="119"/>
+                    <rect key="frame" x="0.0" y="66" width="72" height="58"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </view>
                 <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CoW-LI-FJh">
@@ -97,7 +96,27 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </adBannerView>
                 <view contentMode="scaleToFill" id="40i-gE-xCd" customClass="CircleButton">
-                    <rect key="frame" x="183" y="182" width="60" height="60"/>
+                    <rect key="frame" x="200" y="182" width="60" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="vkX-vz-nz5" customClass="CircleButton">
+                    <rect key="frame" x="119" y="182" width="60" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="x1S-8B-yew" customClass="CircleButton">
+                    <rect key="frame" x="19" y="182" width="60" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="Ux0-tM-we0" customClass="CircleButton">
+                    <rect key="frame" x="91" y="68" width="60" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="MB3-vM-4e5" customClass="CircleButton">
+                    <rect key="frame" x="172" y="68" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -108,6 +127,10 @@
             <connections>
                 <outlet property="AddLoopCellButton" destination="5bb-e2-v1w" id="Ieu-rp-bAQ"/>
                 <outlet property="CircleButtonTest" destination="40i-gE-xCd" id="YOg-4w-vhz"/>
+                <outlet property="CircleButtonTest2" destination="vkX-vz-nz5" id="GxH-dg-kOk"/>
+                <outlet property="CircleButtonTest3" destination="x1S-8B-yew" id="N4v-mT-AdO"/>
+                <outlet property="CircleButtonTest4" destination="MB3-vM-4e5" id="n7x-qE-Cer"/>
+                <outlet property="CircleButtonTest5" destination="Ux0-tM-we0" id="tCL-2e-u5l"/>
                 <outlet property="DeleteLoopCellButton" destination="y6P-BE-IgL" id="ZQC-9k-pYe"/>
                 <outlet property="PlayCurrentCellButton" destination="g7s-1g-KHS" id="JKw-Ft-vkc"/>
                 <outlet property="PlayLoopCellButton" destination="Rkq-mo-XTz" id="UCf-8w-f3b"/>

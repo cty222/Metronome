@@ -11,7 +11,7 @@
 @implementation CircleButton
 {
     UIImage * _ImageMask;
-    NSInteger _SubView_F4_degree;
+    __block NSInteger _SubView_F4_degree;
     
     BOOL _Touched;
     CGPoint OriginalLocation;
@@ -21,7 +21,10 @@
 
     NSUInteger _Sensitivity;
     NSTimer *_TouchedTimer;
-
+    
+    
+    NSOperationQueue * _Queue;
+    NSBlockOperation * RoundingOperation;
 }
 
 - (void) awakeFromNib
@@ -31,6 +34,9 @@
 
 -(void) Initialize
 {
+    _Queue = [[NSOperationQueue alloc] init];
+    _SubView_F4_degree = 0;
+
     _DataStringArray = nil;
     
     UIGraphicsBeginImageContext(self.frame.size);
@@ -111,6 +117,7 @@
     _IndexValue = NewValue;
     
     [self ValueColorChangeWithIndexValue];
+    [self.ValueLabel setText:[NSString stringWithFormat:@"%d", _IndexValue]];
 }
 
 
@@ -132,6 +139,7 @@
     {
         // 如果觸碰
         // 最內環會變大, 便最外環
+        // 不用animate 是因為動作設不快???
         if (_TouchedTimer != nil)
         {
             [_TouchedTimer invalidate];
@@ -147,16 +155,8 @@
     {
         // 如果結束觸碰
         // 最內環會變轉正, 之後再縮小.
-        if (_TouchedTimer != nil)
-        {
-            [_TouchedTimer invalidate];
-            _TouchedTimer = nil;
-        }
-        _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
-                                                         target:self
-                                                       selector:@selector(RoundingStart:)
-                                                       userInfo:nil
-                                                        repeats:YES];
+        [self RoundingAnimationStop];
+
     }
 }
 
@@ -165,9 +165,11 @@
     return _Touched;
 }
 
+
 - (void) TouchedOpen: (NSTimer *) ThisTimer
 {
 
+    NSLog(@"%@",self.SubView_F4);
     if (self.SubView_F4.frame.origin.x > -1 * (self.frame.size.width /2))
     {
         self.SubView_F4.frame = CGRectMake( self.SubView_F4.frame.origin.x -1,
@@ -184,11 +186,9 @@
             [_TouchedTimer invalidate];
             _TouchedTimer = nil;
         }
-        _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.01
-                                                         target:self
-                                                       selector:@selector(RoundingStart:)
-                                                       userInfo:nil
-                                                        repeats:YES];
+
+        [self RoundingAnimationStart];
+
     }
 }
 
@@ -212,38 +212,82 @@
     }
 }
 
-- (void) RoundingStart: (NSTimer *) ThisTimer
+- (void) RoundingAnimationStart
 {
+    [UIView animateWithDuration:0.005
+                          delay:0.01
+                        options: UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         [self RotationChange :self.SubView_F4 Degree : (float) _SubView_F4_degree];
+                     }
+                     completion:^(BOOL finished){
+                         if (self.Touched){
+                             _SubView_F4_degree += ROUNDING_START_SENSITIVITY;
+                             [self RoundingAnimationStart];
+                         }
+                     }];
+}
 
-    if (self.Touched)
+- (void) RoundingAnimationStop
+{
+    [UIView animateWithDuration:0.005
+                          delay:0.0001
+                        options: UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         [self RotationChange :self.SubView_F4 Degree : (float) _SubView_F4_degree];
+                     }
+                     completion:^(BOOL finished){
+                         if (!self.Touched){
+                             if ((_SubView_F4_degree % 180) == 0)
+                             {
+                                 _SubView_F4_degree = 0;
+                                 //當轉正完成, 就會開始縮小
+                                 if (_TouchedTimer != nil)
+                                 {
+                                     [_TouchedTimer invalidate];
+                                     _TouchedTimer = nil;
+                                 }
+                                 _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.001
+                                                                                  target:self
+                                                                                selector:@selector(TouchedClose:)
+                                                                                userInfo:nil
+                                                                                 repeats:YES];
+                             }
+                             else
+                             {
+                                 if (_SubView_F4_degree % ROUNDING_BACK_SENSITIVITY)
+                                 {
+                                     _SubView_F4_degree -= _SubView_F4_degree % ROUNDING_BACK_SENSITIVITY;
+                                 }
+                                 _SubView_F4_degree -= ROUNDING_BACK_SENSITIVITY;
+                                 [self RoundingAnimationStop];
+                             }
+                         }
+                     }];
+}
+#if 0
+- (void) OperationRounding
+{
+    //if (RoundingOperation == nil)
     {
-        _SubView_F4_degree += ROUNDING_START_SENSITIVITY;
-        [self RotationChange:self.SubView_F4 Degree:(float)_SubView_F4_degree];
-    }
-    else
-    {
-        if (_SubView_F4_degree % ROUNDING_BACK_SENSITIVITY)
-        {
-            _SubView_F4_degree -= _SubView_F4_degree % ROUNDING_BACK_SENSITIVITY;
-        }
-        _SubView_F4_degree -= ROUNDING_BACK_SENSITIVITY;
-        [self RotationChange:self.SubView_F4 Degree:(float)_SubView_F4_degree];
-        if ((_SubView_F4_degree % 180) == 0)
-        {
-            //當轉正完成, 就會開始縮小
-            if (_TouchedTimer != nil)
-            {
-                [_TouchedTimer invalidate];
-                _TouchedTimer = nil;
+        RoundingOperation = [[NSBlockOperation alloc] init];
+        [RoundingOperation setThreadPriority:1];
+        [RoundingOperation addExecutionBlock:^{
+            __block int TestCounter;
+            TestCounter = 0;
+            while (self.Touched) {
+                _SubView_F4_degree += ROUNDING_START_SENSITIVITY;
+                float rad = ((float)_SubView_F4_degree/ 180.0 )*M_PI;
+                CGAffineTransform rotation = CGAffineTransformMakeRotation(rad);
+                [self.SubView_F4.layer setAffineTransform:rotation];
             }
-            _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
-                                                         target:self
-                                                       selector:@selector(TouchedClose:)
-                                                       userInfo:nil
-                                                        repeats:YES];
-        }
+        }];
+        
+        [_Queue addOperation:RoundingOperation];
     }
 }
+#endif
+
 
 - (void) RotationChange :(UIView *) TargetView Degree : (float) Degree
 {
@@ -296,4 +340,40 @@
     UITouch *Touch =  [touches anyObject];
     return [Touch locationInView:Touch.view];
 }
+
+
+#if 0
+// 如果開animate, Close 也要用 不然會有bug
+- (void) AnimationTouchedOpen
+{
+    [UIView animateWithDuration:0.0001
+                          delay:0
+                        options: 0
+                     animations:^{
+                         self.SubView_F4.frame = CGRectMake( self.SubView_F4.frame.origin.x -1,
+                                                            self.SubView_F4.frame.origin.y -1,
+                                                            self.SubView_F4.frame.size.width + 2,
+                                                            self.SubView_F4.frame.size.height + 2
+                                                            );
+                     }
+                     completion:^(BOOL finished){
+                         if (self.Touched)
+                         {
+                             if (self.SubView_F4.frame.origin.x > -1 * (self.frame.size.width /2)) {
+                                 [self AnimationTouchedOpen];
+                             }
+                             else
+                             {
+                                 [self RoundingAnimationStart];
+                             }
+                         }
+                         else
+                         {
+                             [self RoundingAnimationStop];
+                             
+                         }
+                         
+                     }];
+}
+#endif
 @end

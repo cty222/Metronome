@@ -15,6 +15,7 @@
 		001B2B3D19D4106A0057A22E /* TempoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B3C19D4106A0057A22E /* TempoList.m */; };
 		001F01191A05511300189941 /* IssueAndInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 001F01181A05511300189941 /* IssueAndInfo.txt */; };
 		001F011B1A05679D00189941 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001F011A1A05679D00189941 /* iAd.framework */; };
+		00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 00319FB91A0F2EED00CF3C83 /* UINSOperation.m */; };
 		0036173D19D5CC9900848A35 /* loop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0036173C19D5CC9900848A35 /* loop.png */; };
 		0036174519D5E2DA00848A35 /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0036174419D5E2DA00848A35 /* TempoCell.m */; };
 		003A56A219D3284600747EB3 /* TimeSignatureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 003A56A119D3284600747EB3 /* TimeSignatureType.m */; };
@@ -101,6 +102,8 @@
 		001B2B3C19D4106A0057A22E /* TempoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoList.m; path = CoreDataSubClass/TempoList.m; sourceTree = "<group>"; };
 		001F01181A05511300189941 /* IssueAndInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IssueAndInfo.txt; sourceTree = "<group>"; };
 		001F011A1A05679D00189941 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		00319FB81A0F2EED00CF3C83 /* UINSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UINSOperation.h; path = Tools/UINSOperation.h; sourceTree = "<group>"; };
+		00319FB91A0F2EED00CF3C83 /* UINSOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UINSOperation.m; path = Tools/UINSOperation.m; sourceTree = "<group>"; };
 		0036173C19D5CC9900848A35 /* loop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loop.png; sourceTree = "<group>"; };
 		0036174319D5E2DA00848A35 /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
 		0036174419D5E2DA00848A35 /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
@@ -433,6 +436,8 @@
 				00DA131019F4E94700F27E25 /* NotesTool.m */,
 				00DA131319F4EE1E00F27E25 /* AudioPlay.h */,
 				00DA131419F4EE1E00F27E25 /* AudioPlay.m */,
+				00319FB81A0F2EED00CF3C83 /* UINSOperation.h */,
+				00319FB91A0F2EED00CF3C83 /* UINSOperation.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -607,6 +612,7 @@
 				00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */,
 				001B2B3019D3CF190057A22E /* DbConfig.m in Sources */,
 				006175C21A0BD4A300113560 /* CircleButton.m in Sources */,
+				00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */,
 				00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */,
 				00DA131E19F4EF1900F27E25 /* NomalHiClickVoice.m in Sources */,
 				00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */,

@@ -72,17 +72,51 @@
         
         // TODO : Test CircleButton
         self.VolumeSet.hidden = YES;
+        
         [self.CircleButtonTest removeFromSuperview];
         self.CircleButtonTest = [[CircleButton alloc] initWithFrame:self.CircleButtonTest.frame];
         [self addSubview:self.CircleButtonTest];
         self.CircleButtonTest.MaxIndex = 100;
         self.CircleButtonTest.MinIndex = 0;
-        self.CircleButtonTest.Sensitivity = 3;
+        self.CircleButtonTest.Sensitivity = 4;
         self.CircleButtonTest.IndexValue = 80;
-
+        
+        [self.CircleButtonTest2 removeFromSuperview];
+        self.CircleButtonTest2 = [[CircleButton alloc] initWithFrame:self.CircleButtonTest2.frame];
+        [self addSubview:self.CircleButtonTest2];
+        self.CircleButtonTest2.MaxIndex = 100;
+        self.CircleButtonTest2.MinIndex = 0;
+        self.CircleButtonTest2.Sensitivity = 3;
+        self.CircleButtonTest2.IndexValue = 80;
+        
+        [self.CircleButtonTest3 removeFromSuperview];
+        self.CircleButtonTest3 = [[CircleButton alloc] initWithFrame:self.CircleButtonTest3.frame];
+        [self addSubview:self.CircleButtonTest3];
+        self.CircleButtonTest3.MaxIndex = 100;
+        self.CircleButtonTest3.MinIndex = 0;
+        self.CircleButtonTest3.Sensitivity = 2;
+        self.CircleButtonTest3.IndexValue = 80;
+        
+        [self.CircleButtonTest4 removeFromSuperview];
+        self.CircleButtonTest4 = [[CircleButton alloc] initWithFrame:self.CircleButtonTest4.frame];
+        [self addSubview:self.CircleButtonTest4];
+        self.CircleButtonTest4.MaxIndex = 100;
+        self.CircleButtonTest4.MinIndex = 0;
+        self.CircleButtonTest4.Sensitivity = 1;
+        self.CircleButtonTest4.IndexValue = 80;
+        
+        [self.CircleButtonTest5 removeFromSuperview];
+        self.CircleButtonTest5 = [[CircleButton alloc] initWithFrame:self.CircleButtonTest5.frame];
+        [self addSubview:self.CircleButtonTest5];
+        self.CircleButtonTest5.MaxIndex = 100;
+        self.CircleButtonTest5.MinIndex = 0;
+        self.CircleButtonTest5.Sensitivity = 1;
+        self.CircleButtonTest5.IndexValue = 80;
+        
     }
     return self;
 }
+
 
 - (void) SetVolumeBarVolume : (TempoCell *)Cell
 {
