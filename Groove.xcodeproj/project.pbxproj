@@ -53,7 +53,6 @@
 		00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */; };
 		00B02A5D1A0E997C00BCAF3B /* CircleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */; };
 		00B81F6A1A0278D60098BCBB /* TopViewBackground.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00B81F691A0278D60098BCBB /* TopViewBackground.pdf */; };
-		00B9689819CEDE5300AAD1AF /* TmpVerticalSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689719CEDE5300AAD1AF /* TmpVerticalSlider.m */; };
 		00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */; };
 		00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */; };
 		00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */; };
@@ -63,6 +62,7 @@
 		00BBE80F1A06AF710034BCB6 /* Voice_Hi-Click.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00BBE80E1A06AF710034BCB6 /* Voice_Hi-Click.pdf */; };
 		00BBE8111A06AFDA0034BCB6 /* BottomViewBackground.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00BBE8101A06AFDA0034BCB6 /* BottomViewBackground.pdf */; };
 		00C4B4ED19F9752D00B363BA /* dialog2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00C4B4EC19F9752D00B363BA /* dialog2.pdf */; };
+		00D92FD01A15C3D800AEC17F /* CellParameterSettingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D92FCF1A15C3D800AEC17F /* CellParameterSettingControl.m */; };
 		00DA131119F4E94700F27E25 /* NotesTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131019F4E94700F27E25 /* NotesTool.m */; };
 		00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131419F4EE1E00F27E25 /* AudioPlay.m */; };
 		00DA131C19F4EF1900F27E25 /* BeepBound.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131719F4EF1900F27E25 /* BeepBound.m */; };
@@ -76,8 +76,6 @@
 		00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00DA13B119F4F77000F27E25 /* HiGa.wav */; };
 		00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F8C519C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m */; };
 		00E5F8C819C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E5F8C719C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib */; };
-		00E5F8CB19C0CE3D00661D1C /* VolumeBarSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F8CA19C0CE3D00661D1C /* VolumeBarSet.m */; };
-		00E5F8CD19C0CE5E00661D1C /* VolumeBarSet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E5F8CC19C0CE5E00661D1C /* VolumeBarSet.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,8 +152,6 @@
 		00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargeBPMPicker.m; sourceTree = "<group>"; };
 		00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleButton.xib; sourceTree = "<group>"; };
 		00B81F691A0278D60098BCBB /* TopViewBackground.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TopViewBackground.pdf; sourceTree = "<group>"; };
-		00B9689619CEDE5300AAD1AF /* TmpVerticalSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmpVerticalSlider.h; sourceTree = "<group>"; };
-		00B9689719CEDE5300AAD1AF /* TmpVerticalSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmpVerticalSlider.m; sourceTree = "<group>"; };
 		00B9689919CEF10900AAD1AF /* MetronomeSelectBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeSelectBar.h; sourceTree = "<group>"; };
 		00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeSelectBar.m; sourceTree = "<group>"; };
 		00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeSelectBar.xib; sourceTree = "<group>"; };
@@ -166,6 +162,8 @@
 		00BBE80E1A06AF710034BCB6 /* Voice_Hi-Click.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Voice_Hi-Click.pdf"; sourceTree = "<group>"; };
 		00BBE8101A06AFDA0034BCB6 /* BottomViewBackground.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BottomViewBackground.pdf; sourceTree = "<group>"; };
 		00C4B4EC19F9752D00B363BA /* dialog2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = dialog2.pdf; sourceTree = "<group>"; };
+		00D92FCE1A15C3D800AEC17F /* CellParameterSettingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellParameterSettingControl.h; path = Controller/CellParameterSettingControl.h; sourceTree = "<group>"; };
+		00D92FCF1A15C3D800AEC17F /* CellParameterSettingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellParameterSettingControl.m; path = Controller/CellParameterSettingControl.m; sourceTree = "<group>"; };
 		00DA130F19F4E94600F27E25 /* NotesTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesTool.h; path = Tools/NotesTool.h; sourceTree = "<group>"; };
 		00DA131019F4E94700F27E25 /* NotesTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesTool.m; path = Tools/NotesTool.m; sourceTree = "<group>"; };
 		00DA131319F4EE1E00F27E25 /* AudioPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioPlay.h; path = Tools/AudioPlay.h; sourceTree = "<group>"; };
@@ -184,9 +182,6 @@
 		00E5F8C419C0BFCD00661D1C /* MetronomeBottomSubViewIphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeBottomSubViewIphone.h; sourceTree = "<group>"; };
 		00E5F8C519C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeBottomSubViewIphone.m; sourceTree = "<group>"; };
 		00E5F8C719C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeBottomSubViewIphone.xib; sourceTree = "<group>"; };
-		00E5F8C919C0CE3D00661D1C /* VolumeBarSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolumeBarSet.h; sourceTree = "<group>"; };
-		00E5F8CA19C0CE3D00661D1C /* VolumeBarSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolumeBarSet.m; sourceTree = "<group>"; };
-		00E5F8CC19C0CE5E00661D1C /* VolumeBarSet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VolumeBarSet.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,7 +280,6 @@
 				00C4B4EB19F9752D00B363BA /* Picture */,
 				00DA13AB19F4F77000F27E25 /* Media */,
 				00DA131219F4E95000F27E25 /* Tools */,
-				003A56A619D3285800747EB3 /* CoreDataModel */,
 				00677B0A19BC5323007A3085 /* Groove */,
 				004BE68219B2E5C8002CD995 /* GlobalConfig */,
 				004BE67619B2E01E002CD995 /* SuperClass */,
@@ -331,12 +325,9 @@
 		004BE67219B2DF89002CD995 /* Metronome */ = {
 			isa = PBXGroup;
 			children = (
-				00E5F8C319C0BF9600661D1C /* MetronomeBottomSubViewIphone */,
-				00677B1019BC5D5B007A3085 /* MetronmeItems */,
-				00677AFC19BC4AF6007A3085 /* MetronomeTopSubViewIphone */,
-				004BE67D19B2E131002CD995 /* MetronomeMainViewControllerIphone.h */,
-				004BE67E19B2E131002CD995 /* MetronomeMainViewControllerIphone.m */,
-				004BE67F19B2E131002CD995 /* MetronomeMainViewControllerIphone.xib */,
+				003A56A619D3285800747EB3 /* CoreDataModel */,
+				00D92FCD1A15C15000AEC17F /* Controller */,
+				00D92FCC1A15C14500AEC17F /* View */,
 				004BE65419B2DDC8002CD995 /* Images.xcassets */,
 			);
 			name = Metronome;
@@ -388,11 +379,6 @@
 				00677B1119BC5DA4007A3085 /* LargeBPMPicker.h */,
 				00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */,
 				00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */,
-				00E5F8C919C0CE3D00661D1C /* VolumeBarSet.h */,
-				00E5F8CA19C0CE3D00661D1C /* VolumeBarSet.m */,
-				00E5F8CC19C0CE5E00661D1C /* VolumeBarSet.xib */,
-				00B9689619CEDE5300AAD1AF /* TmpVerticalSlider.h */,
-				00B9689719CEDE5300AAD1AF /* TmpVerticalSlider.m */,
 				00B9689919CEF10900AAD1AF /* MetronomeSelectBar.h */,
 				00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */,
 				00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */,
@@ -423,6 +409,28 @@
 				00B81F691A0278D60098BCBB /* TopViewBackground.pdf */,
 			);
 			path = Picture;
+			sourceTree = "<group>";
+		};
+		00D92FCC1A15C14500AEC17F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				00E5F8C319C0BF9600661D1C /* MetronomeBottomSubViewIphone */,
+				00677B1019BC5D5B007A3085 /* MetronmeItems */,
+				00677AFC19BC4AF6007A3085 /* MetronomeTopSubViewIphone */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		00D92FCD1A15C15000AEC17F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				004BE67D19B2E131002CD995 /* MetronomeMainViewControllerIphone.h */,
+				004BE67E19B2E131002CD995 /* MetronomeMainViewControllerIphone.m */,
+				004BE67F19B2E131002CD995 /* MetronomeMainViewControllerIphone.xib */,
+				00D92FCE1A15C3D800AEC17F /* CellParameterSettingControl.h */,
+				00D92FCF1A15C3D800AEC17F /* CellParameterSettingControl.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		00DA131219F4E95000F27E25 /* Tools */ = {
@@ -562,7 +570,6 @@
 				00BBE80F1A06AF710034BCB6 /* Voice_Hi-Click.pdf in Resources */,
 				00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */,
 				004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */,
-				00E5F8CD19C0CE5E00661D1C /* VolumeBarSet.xib in Resources */,
 				003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */,
 				00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */,
 				00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */,
@@ -602,7 +609,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00B9689819CEDE5300AAD1AF /* TmpVerticalSlider.m in Sources */,
 				001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */,
 				00677B0519BC4C09007A3085 /* MetronmoneTopSubViewIphone.m in Sources */,
 				0036174519D5E2DA00848A35 /* TempoCell.m in Sources */,
@@ -612,13 +618,13 @@
 				00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */,
 				001B2B3019D3CF190057A22E /* DbConfig.m in Sources */,
 				006175C21A0BD4A300113560 /* CircleButton.m in Sources */,
+				00D92FD01A15C3D800AEC17F /* CellParameterSettingControl.m in Sources */,
 				00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */,
 				00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */,
 				00DA131E19F4EF1900F27E25 /* NomalHiClickVoice.m in Sources */,
 				00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */,
 				004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */,
 				003A56A219D3284600747EB3 /* TimeSignatureType.m in Sources */,
-				00E5F8CB19C0CE3D00661D1C /* VolumeBarSet.m in Sources */,
 				00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */,
 				004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */,
 				001B2B3D19D4106A0057A22E /* TempoList.m in Sources */,

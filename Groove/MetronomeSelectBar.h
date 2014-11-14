@@ -25,9 +25,4 @@
 
 @property (nonatomic, assign) id<SelectBarProtocol> delegate;
 
-
-- (void) TouchBeginEvent : (CGPoint) TouchLocation;
-- (void) TouchEndEvent : (CGPoint) TouchLocation;
-- (void) TouchMoveEvent : (CGPoint) TouchLocation;
-- (void) TouchCancellEvent : (CGPoint) TouchLocation;
 @end

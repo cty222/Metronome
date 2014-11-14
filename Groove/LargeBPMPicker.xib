@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -18,30 +19,20 @@
                     <rect key="frame" x="240" y="115" width="50" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <view contentMode="scaleToFill" id="49R-tF-cI1">
-                    <rect key="frame" x="17" y="12" width="65" height="204"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T5l-Ke-ePx">
+                    <rect key="frame" x="0.0" y="0.0" width="232" height="216"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.23640270320000001" green="1" blue="0.76854884010000002" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
-                <view contentMode="scaleToFill" id="tFR-GT-a7j">
-                    <rect key="frame" x="90" y="12" width="65" height="204"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.23640270320000001" green="1" blue="0.76854884010000002" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
-                <view contentMode="scaleToFill" id="WWp-NV-ic2">
-                    <rect key="frame" x="163" y="12" width="65" height="204"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.23640270320000001" green="1" blue="0.76854884010000002" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
+                    <fontDescription key="fontDescription" type="system" pointSize="140"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="DigitInHundreds" destination="49R-tF-cI1" id="bdh-NS-Met"/>
-                <outlet property="DigitInOnces" destination="WWp-NV-ic2" id="MLv-Dj-DyV"/>
-                <outlet property="DigitInTens" destination="tFR-GT-a7j" id="i5o-0D-p0c"/>
                 <outlet property="DownArrow" destination="gO9-qJ-qSh" id="wXR-lp-tbh"/>
                 <outlet property="UpArrow" destination="evR-Hq-QD5" id="78d-PR-a2r"/>
+                <outlet property="ValueLabel" destination="T5l-Ke-ePx" id="G8B-kg-0Uf"/>
             </connections>
         </view>
     </objects>

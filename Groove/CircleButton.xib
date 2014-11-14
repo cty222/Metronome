@@ -70,16 +70,16 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="F1ImageView" destination="Fxs-UG-TyT" id="D7u-ep-Y2Z"/>
-                <outlet property="F2ImageValueView" destination="79O-Xj-CW5" id="aR6-71-qxr"/>
-                <outlet property="F3ImageView" destination="ROc-Pf-cQB" id="b5x-L5-lkb"/>
-                <outlet property="F4ImageView" destination="4dN-ww-1C6" id="9UR-Ni-c75"/>
+                <outlet property="ImageView_Frame0" destination="Fxs-UG-TyT" id="ALe-8w-Rkf"/>
+                <outlet property="ImageView_Frame1_Value" destination="79O-Xj-CW5" id="WGi-Fs-eUm"/>
+                <outlet property="ImageView_Frame3" destination="ROc-Pf-cQB" id="lf3-y7-0zF"/>
+                <outlet property="ImageView_Frame4" destination="4dN-ww-1C6" id="nDi-8E-mcz"/>
                 <outlet property="SignPicture" destination="LsL-kU-NNR" id="DX1-UU-7Hj"/>
-                <outlet property="SubView_F1" destination="8hY-XB-xII" id="042-fw-owE"/>
-                <outlet property="SubView_F2_Value" destination="6Fb-7J-0gj" id="Xf0-rd-awp"/>
-                <outlet property="SubView_F2_ValueHide" destination="wCD-Ff-CmM" id="7fR-hc-RuX"/>
-                <outlet property="SubView_F3" destination="Cag-au-HtR" id="dKT-4r-Dyc"/>
-                <outlet property="SubView_F4" destination="NUL-Hz-lEl" id="ifd-eH-iAA"/>
+                <outlet property="SubView_Frame0" destination="8hY-XB-xII" id="PRy-Ii-hvh"/>
+                <outlet property="SubView_Frame1_Value" destination="6Fb-7J-0gj" id="hSx-WA-fCS"/>
+                <outlet property="SubView_Frame2_BlockValue" destination="wCD-Ff-CmM" id="d63-mH-GXy"/>
+                <outlet property="SubView_Frame3" destination="Cag-au-HtR" id="NJS-Nr-MH1"/>
+                <outlet property="SubView_Frame4" destination="NUL-Hz-lEl" id="iHU-Uh-3JR"/>
                 <outlet property="ValueLabel" destination="TLJ-GH-833" id="Sbt-9i-dOS"/>
             </connections>
             <point key="canvasLocation" x="396" y="368"/>

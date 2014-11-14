@@ -16,12 +16,13 @@
     BOOL _Touched;
     CGPoint OriginalLocation;
     
-    NSUInteger _IndexValue;
-    NSMutableArray * _DataStringArray;
+    float _IndexValue;
 
-    NSUInteger _Sensitivity;
+    NSUInteger _IndexValueSensitivity;
+    
     NSTimer *_TouchedTimer;
     
+    CIRCLEBUTTON_RANGE _IndexRange;
     
     NSOperationQueue * _Queue;
     NSBlockOperation * RoundingOperation;
@@ -36,17 +37,20 @@
 
 -(void) Initialize
 {
+    // Default Valeu
     _Queue = [[NSOperationQueue alloc] init];
     _SubView_F4_degree = 0;
-    [self FlipAnimation];
+    _IndexRange.MaxIndex = CIRCLE_DEFAULT_MAX_VALUE;
+    _IndexRange.MinIndex = CIRCLE_DEFAULT_MIN_VALUE;
     
-    _DataStringArray = nil;
+    // reset to default state
+    [self FlipAnimation];
     
     UIGraphicsBeginImageContext(self.frame.size);
     [[UIImage imageNamed:@"NewCircle_F1"] drawInRect:self.bounds];
     _ImageMask = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    self.SubView_F2_ValueHide.backgroundColor = [UIColor colorWithPatternImage:_ImageMask];
+    self.SubView_Frame2_BlockValue.backgroundColor = [UIColor colorWithPatternImage:_ImageMask];
 }
 
 - (id)initWithFrame:(CGRect) frame
@@ -61,77 +65,81 @@
     return self;
 }
 
-// TODO : 
 - (void) ValueColorChangeWithIndexValue
 {
-    NSUInteger Scale = self.MaxIndex - self.MinIndex;
+    NSUInteger Scale = self.IndexRange.MaxIndex - self.IndexRange.MinIndex;
     if (Scale == 0) {
         Scale = 1;
     }
     
-    double DisplayPersentage = (double)(self.IndexValue - self.MinIndex)/ (double) Scale;
+    double DisplayPersentage = (double)(self.IndexValue - self.IndexRange.MinIndex)/ (double) Scale;
     
-    self.SubView_F2_ValueHide.frame = CGRectMake(0, 0 , self.frame.size.width, self.frame.size.height * (1 - DisplayPersentage));
+    self.SubView_Frame2_BlockValue.frame = CGRectMake(0, 0 , self.frame.size.width, self.frame.size.height * (1 - DisplayPersentage));
     
 }
 
-- (double) GetSensitivity
+- (CIRCLEBUTTON_RANGE) GetIndexRange
 {
-    if (_Sensitivity<= 0)
+    return _IndexRange;
+}
+
+- (void) SetIndexRange:(CIRCLEBUTTON_RANGE) NewValue
+{
+    if (NewValue.MaxIndex < NewValue.MinIndex)
     {
-        _Sensitivity = 1;
+        NewValue.MaxIndex = NewValue.MinIndex;
     }
-    return _Sensitivity;
+    
+    if (NewValue.MaxIndex == 0)
+    {
+        NewValue.MaxIndex = CIRCLE_DEFAULT_MAX_VALUE;
+    }
+    
+    if (NewValue.UnitValue > NewValue.MaxIndex - NewValue.MinIndex)
+    {
+        NewValue.UnitValue = NewValue.MaxIndex - NewValue.MinIndex;
+    }
+    
+    _IndexRange = NewValue;
 }
 
--(void) SetSensitivity: (double) NewValue
+- (double) GetIndexValueSensitivity
 {
-    _Sensitivity = NewValue;
+    if (_IndexValueSensitivity<= 0)
+    {
+        _IndexValueSensitivity = 1;
+    }
+    return _IndexValueSensitivity;
 }
 
--(NSInteger) GetIndexValue
+-(void) SetIndexValueSensitivity: (double) NewValue
+{
+    _IndexValueSensitivity = NewValue;
+}
+
+-(float) GetIndexValue
 {
     return _IndexValue;
 }
 
--(void) SetIndexValue: (NSInteger) NewValue
+-(void) SetIndexValue: (float) NewValue
 {
-    if (self.GetDataStringArray != nil)
-    {
-        self.MinIndex = 0;
-        self.MaxIndex = self.GetDataStringArray.count - 1;
-    }
     
-    if (self.MaxIndex < self.MinIndex)
+    if (NewValue > self.IndexRange.MaxIndex)
     {
-        self.MaxIndex = self.MinIndex;
+        NewValue = self.IndexRange.MaxIndex;
     }
-    
-    if (NewValue > self.MaxIndex)
+    else if (NewValue < self.IndexRange.MinIndex)
     {
-        NewValue = self.MaxIndex;
-    }
-    else if (NewValue < self.MinIndex)
-    {
-        NewValue = self.MinIndex;
+        NewValue = self.IndexRange.MinIndex;
     }
         
     _IndexValue = NewValue;
     
     [self ValueColorChangeWithIndexValue];
-    [self.ValueLabel setText:[NSString stringWithFormat:@"%lu", (unsigned long)_IndexValue]];
-}
-
-
--(void) SetDataStringArray: (NSMutableArray *) NewValue
-{
-    _DataStringArray = NewValue;
-    self.IndexValue = 0;
-}
-
-- (NSMutableArray *) GetDataStringArray
-{
-    return _DataStringArray;
+    [self.ValueLabel setText:[NSString stringWithFormat:@"%0.1f", _IndexValue]];
+    
+    [self CircleButtonValueChanged: self];
 }
 
 -(void) SetTouched: (BOOL) NewValue
@@ -199,12 +207,12 @@
     }
     
     // 放大
-    if (self.SubView_F4.frame.origin.x > -1 * (self.frame.size.width /2))
+    if (self.SubView_Frame4.frame.origin.x > -1 * (self.frame.size.width /2))
     {
-        self.SubView_F4.frame = CGRectMake( self.SubView_F4.frame.origin.x - 1,
-                                            self.SubView_F4.frame.origin.y - 1,
-                                            self.SubView_F4.frame.size.width + 2,
-                                            self.SubView_F4.frame.size.height + 2
+        self.SubView_Frame4.frame = CGRectMake( self.SubView_Frame4.frame.origin.x - 1,
+                                            self.SubView_Frame4.frame.origin.y - 1,
+                                            self.SubView_Frame4.frame.size.width + 2,
+                                            self.SubView_Frame4.frame.size.height + 2
                                            );
     }
     else
@@ -229,12 +237,12 @@
     }
     
     // 縮小
-    if (self.SubView_F4.frame.origin.x < 0)
+    if (self.SubView_Frame4.frame.origin.x < 0)
     {
-        self.SubView_F4.frame = CGRectMake( self.SubView_F4.frame.origin.x + 1,
-                                           self.SubView_F4.frame.origin.y + 1,
-                                           self.SubView_F4.frame.size.width - 2,
-                                           self.SubView_F4.frame.size.height - 2
+        self.SubView_Frame4.frame = CGRectMake( self.SubView_Frame4.frame.origin.x + 1,
+                                           self.SubView_Frame4.frame.origin.y + 1,
+                                           self.SubView_Frame4.frame.size.width - 2,
+                                           self.SubView_Frame4.frame.size.height - 2
                                            );
     }
     else
@@ -257,7 +265,7 @@
                           delay:0.01
                         options: UIViewAnimationOptionCurveLinear
                      animations:^{
-                         [self RotationChange :self.SubView_F4 Degree : (float) _SubView_F4_degree];
+                         [self RotationChange :self.SubView_Frame4 Degree : (float) _SubView_F4_degree];
                      }
                      completion:^(BOOL finished){
                          if (self.Touched){
@@ -273,7 +281,7 @@
                           delay:0.0001
                         options: UIViewAnimationOptionCurveLinear
                      animations:^{
-                         [self RotationChange :self.SubView_F4 Degree : (float) _SubView_F4_degree];
+                         [self RotationChange :self.SubView_Frame4 Degree : (float) _SubView_F4_degree];
                      }
                      completion:^(BOOL finished){
                          if (!self.Touched){
@@ -360,11 +368,11 @@
     {
         CGPoint TouchLocation = [self GetLocationPoint: touches];
         // Because zero point is on left top, large point in on right bottom
-        int MoveUp = (double)(OriginalLocation.y - TouchLocation.y) / (double)self.Sensitivity;
+        int MoveUp = (double)(OriginalLocation.y - TouchLocation.y) / (double)self.IndexValueSensitivity;
         if (MoveUp != 0)
         {
-            self.IndexValue += MoveUp;
-            OriginalLocation = TouchLocation;
+           self.IndexValue += (float)MoveUp * self.IndexRange.UnitValue;
+           OriginalLocation = TouchLocation;
         }
     }
 }
@@ -380,6 +388,18 @@
     return [Touch locationInView:Touch.view];
 }
 
+- (IBAction) CircleButtonValueChanged:(CircleButton*) ThisCircleButton;
+{
+    // Pass to parent view.
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(CircleButtonValueChanged:)])
+        {
+            [self.delegate CircleButtonValueChanged: ThisCircleButton];
+        }
+    }
+}
 
 #if 0
 // 如果開animate, Close 也要用 不然會有bug

@@ -24,94 +24,40 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self.VolumeSet removeFromSuperview];
-        self.VolumeSet = [[VolumeBarSet alloc] initWithFrame:self.VolumeSet.frame];
-        self.VolumeSet.MaxValue = 10.0;
-        self.VolumeSet.MinValue = -1.0;
-        self.VolumeSet.delegate = self;
-        [self addSubview:self.VolumeSet];
-       
         
         [self.SelectGrooveBar removeFromSuperview];
         self.SelectGrooveBar = [[MetronomeSelectBar alloc] initWithFrame:self.SelectGrooveBar.frame];
         self.SelectGrooveBar.delegate = self;
         [self addSubview:self.SelectGrooveBar];
         
-        self.adView.delegate = self;
-        
-        // Tap
-        UIGraphicsBeginImageContext(self.TapBPMValueButton.frame.size);
-        [[UIImage imageNamed:@"Tap"] drawInRect:self.TapBPMValueButton.bounds];
-        UIImage *TapImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        self.TapBPMValueButton.backgroundColor = [UIColor colorWithPatternImage:TapImage];
-        
-        // Voice
-        UIGraphicsBeginImageContext(self.VoiceButton.frame.size);
-        [[UIImage imageNamed:@"Voice_Hi-Click"] drawInRect:self.VoiceButton.bounds];
-        UIImage *VoiceImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        self.VoiceButton.backgroundColor = [UIColor colorWithPatternImage:VoiceImage];
-        
-        // Time Signature
-        UIGraphicsBeginImageContext(self.TimeSignatureButton.frame.size);
-        [[UIImage imageNamed:@"TimeSignature4_4"] drawInRect:self.TimeSignatureButton.bounds];
-        UIImage *TimeSignatureImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        self.TimeSignatureButton.backgroundColor = [UIColor colorWithPatternImage:TimeSignatureImage];
-        
         // Back ground
-        /*UIGraphicsBeginImageContext(self.frame.size);
-        [[UIImage imageNamed:@"BottomViewBackground"] drawInRect:self.bounds];
-        UIImage *SelfBackGroundImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        self.backgroundColor = [UIColor colorWithPatternImage:SelfBackGroundImage];*/
         self.backgroundColor = [UIColor whiteColor];
-        
+       
+        [self.AccentCircleVolumeButton removeFromSuperview];
+        self.AccentCircleVolumeButton = [[CircleButton alloc] initWithFrame:self.AccentCircleVolumeButton.frame];
+        [self addSubview:self.AccentCircleVolumeButton];
 
-        
-        // TODO : Test CircleButton
-        self.VolumeSet.hidden = YES;
-        
-        [self.CircleButtonTest removeFromSuperview];
-        self.CircleButtonTest = [[CircleButton alloc] initWithFrame:self.CircleButtonTest.frame];
-        [self addSubview:self.CircleButtonTest];
-        self.CircleButtonTest.MaxIndex = 100;
-        self.CircleButtonTest.MinIndex = 0;
-        self.CircleButtonTest.Sensitivity = 4;
-        self.CircleButtonTest.IndexValue = 80;
-        
-        [self.CircleButtonTest2 removeFromSuperview];
-        self.CircleButtonTest2 = [[CircleButton alloc] initWithFrame:self.CircleButtonTest2.frame];
-        [self addSubview:self.CircleButtonTest2];
-        self.CircleButtonTest2.MaxIndex = 100;
-        self.CircleButtonTest2.MinIndex = 0;
-        self.CircleButtonTest2.Sensitivity = 3;
-        self.CircleButtonTest2.IndexValue = 80;
-        
-        [self.CircleButtonTest3 removeFromSuperview];
-        self.CircleButtonTest3 = [[CircleButton alloc] initWithFrame:self.CircleButtonTest3.frame];
-        [self addSubview:self.CircleButtonTest3];
-        self.CircleButtonTest3.MaxIndex = 100;
-        self.CircleButtonTest3.MinIndex = 0;
-        self.CircleButtonTest3.Sensitivity = 2;
-        self.CircleButtonTest3.IndexValue = 80;
-        
-        [self.CircleButtonTest4 removeFromSuperview];
-        self.CircleButtonTest4 = [[CircleButton alloc] initWithFrame:self.CircleButtonTest4.frame];
-        [self addSubview:self.CircleButtonTest4];
-        self.CircleButtonTest4.MaxIndex = 100;
-        self.CircleButtonTest4.MinIndex = 0;
-        self.CircleButtonTest4.Sensitivity = 1;
-        self.CircleButtonTest4.IndexValue = 80;
-        
-        [self.CircleButtonTest5 removeFromSuperview];
-        self.CircleButtonTest5 = [[CircleButton alloc] initWithFrame:self.CircleButtonTest5.frame];
-        [self addSubview:self.CircleButtonTest5];
-        self.CircleButtonTest5.MaxIndex = 100;
-        self.CircleButtonTest5.MinIndex = 0;
-        self.CircleButtonTest5.Sensitivity = 1;
-        self.CircleButtonTest5.IndexValue = 80;
+        [self.QuarterCircleVolumeButton removeFromSuperview];
+        self.QuarterCircleVolumeButton = [[CircleButton alloc] initWithFrame:self.QuarterCircleVolumeButton.frame];
+        [self addSubview:self.QuarterCircleVolumeButton];
+
+        [self.EighthNoteCircleVolumeButton removeFromSuperview];
+        self.EighthNoteCircleVolumeButton = [[CircleButton alloc] initWithFrame:self.EighthNoteCircleVolumeButton.frame];
+        [self addSubview:self.EighthNoteCircleVolumeButton];
+
+        [self.SixteenthNoteCircleVolumeButton removeFromSuperview];
+        self.SixteenthNoteCircleVolumeButton = [[CircleButton alloc] initWithFrame:self.SixteenthNoteCircleVolumeButton.frame];
+        [self addSubview:self.SixteenthNoteCircleVolumeButton];
+
+        [self.TrippleNoteCircleVolumeButton removeFromSuperview];
+        self.TrippleNoteCircleVolumeButton = [[CircleButton alloc] initWithFrame:self.TrippleNoteCircleVolumeButton.frame];
+        [self addSubview:self.TrippleNoteCircleVolumeButton];
+
+
+        [self.VoiceTypeCircleButton removeFromSuperview];
+        self.VoiceTypeCircleButton = [[CircleButton alloc] initWithFrame:self.VoiceTypeCircleButton.frame];
+        [self addSubview:self.VoiceTypeCircleButton];
+
         
     }
     return self;
@@ -120,11 +66,11 @@
 
 - (void) SetVolumeBarVolume : (TempoCell *)Cell
 {
-    self.VolumeSet.SliderAccent.value = [Cell.accentVolume floatValue];
-    self.VolumeSet.SliderQuarterNote.value = [Cell.quarterNoteVolume floatValue];
-    self.VolumeSet.SliderEighthNote.value = [Cell.eighthNoteVolume floatValue];
-    self.VolumeSet.SliderSixteenNote.value = [Cell.sixteenNoteVolume floatValue];
-    self.VolumeSet.SliderTrippleNote.value = [Cell.trippleNoteVolume floatValue];
+    self.AccentCircleVolumeButton.IndexValue = [Cell.accentVolume floatValue];
+    self.QuarterCircleVolumeButton.IndexValue = [Cell.quarterNoteVolume floatValue];
+    self.EighthNoteCircleVolumeButton.IndexValue = [Cell.eighthNoteVolume floatValue];
+    self.SixteenthNoteCircleVolumeButton.IndexValue = [Cell.sixteenNoteVolume floatValue];
+    self.TrippleNoteCircleVolumeButton.IndexValue = [Cell.trippleNoteVolume floatValue];
 }
 
 - (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable
@@ -204,119 +150,6 @@
 //
 // =================================
 
-// =================================
-// Action
-//
-- (IBAction) VolumeSliderValueChanged:(TmpVerticalSlider*) ThisVerticalSlider
-{
-    // Pass to parent view.
-    if (self.delegate != nil)
-    {
-        // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(VolumeSliderValueChanged:)])
-        {
-            [self.delegate VolumeSliderValueChanged: ThisVerticalSlider];
-        }
-    }
-}
-
-- (IBAction) PlayCurrentCellButtonClick: (UIButton *) ThisClickedButton {
-    // Pass to parent view.
-    if (self.delegate != nil)
-    {
-        // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(PlayCurrentCellButtonClick:)])
-        {
-            [self.delegate PlayCurrentCellButtonClick: ThisClickedButton];
-        }
-    }
-}
-
-- (IBAction) TapBPMValueButtonClick: (UIButton *) ThisClickedButton {
-    // Pass to parent view.
-    if (self.delegate != nil)
-    {
-        // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(TapBPMValueButtonClick:)])
-        {
-            [self.delegate TapBPMValueButtonClick: ThisClickedButton];
-        }
-    }
-}
-
-- (IBAction) AddLoopCellButtonClick: (UIButton *) ThisClickedButton {
-    // Pass to parent view.
-    if (self.delegate != nil)
-    {
-        // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(AddLoopCellButtonClick:)])
-        {
-            [self.delegate AddLoopCellButtonClick: ThisClickedButton];
-        }
-    }
-}
-
-
-- (IBAction) DeleteLoopCellButtonClick: (UIButton *) ThisClickedButton {
-    // Pass to parent view.
-    if (self.delegate != nil)
-    {
-        // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(DeleteLoopCellButtonClick:)])
-        {
-            [self.delegate DeleteLoopCellButtonClick: ThisClickedButton];
-        }
-    }
-}
-
-- (IBAction) PlayLoopCellButtonClick: (UIButton *) ThisClickedButton
-{
-    // Pass to parent view.
-    if (self.delegate != nil)
-    {
-        // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(PlayLoopCellButtonClick:)])
-        {
-            [self.delegate PlayLoopCellButtonClick: ThisClickedButton];
-        }
-    }
-}
-//
-// =================================
-
-
-// =================================
-// iAD function
-
-- (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
-{
-    // 有錯誤會進來
-}
-
-- (void) bannerViewActionDidFinish:(ADBannerView *)banner
-{
-   // 使用者關掉廣告內容畫面
-}
-
--(void) bannerViewDidLoadAd:(ADBannerView *)banner
-{
-  // 廣告載入
-}
-
--(void) bannerViewWillLoadAd:(ADBannerView *)banner
-{
-    
-}
-
--(BOOL) bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
-{
-    // 使用者點了廣告後開啟畫面
-    return YES;
-}
-
-
-//
-// =================================
 
 /*
 // Only override drawRect: if you perform custom drawing.

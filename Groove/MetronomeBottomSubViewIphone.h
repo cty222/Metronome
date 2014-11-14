@@ -8,7 +8,6 @@
 #import "iAd/iAd.h"
 
 #import "XibViewInterface.h"
-#import "VolumeBarSet.h"
 #import "MetronomeSelectBar.h"
 #import "MetronomeModel.h"
 #import "CircleButton.h"
@@ -23,32 +22,19 @@
 - (void) SetFocusIndex:(int) NewValue;
 - (int) GetFocusIndex;
 
-- (IBAction) PlayCurrentCellButtonClick: (UIButton *) ThisClickedButton;
-- (IBAction) TapBPMValueButtonClick: (UIButton *) ThisClickedButton;
-- (IBAction) AddLoopCellButtonClick: (UIButton *) ThisClickedButton;
-- (IBAction) DeleteLoopCellButtonClick: (UIButton *) ThisClickedButton;
-- (IBAction) PlayLoopCellButtonClick: (UIButton *) ThisClickedButton;
-- (IBAction) VolumeSliderValueChanged:(TmpVerticalSlider*) ThisVerticalSlider;
 @end
 
-@interface MetronomeBottomSubViewIphone : XibViewInterface <SelectBarProtocol, VolumeBarSetProtocol, ADBannerViewDelegate>
-@property (strong, nonatomic) IBOutlet VolumeBarSet *VolumeSet;
-@property (strong, nonatomic) IBOutlet MetronomeSelectBar *SelectGrooveBar;
 
-// Sub button
-@property (strong, nonatomic) IBOutlet UIButton *PlayCurrentCellButton;
-@property (strong, nonatomic) IBOutlet UIButton *TapBPMValueButton;
-@property (strong, nonatomic) IBOutlet UIButton *TimeSignatureButton;
-@property (strong, nonatomic) IBOutlet UIButton *VoiceButton;
+@interface MetronomeBottomSubViewIphone : XibViewInterface <SelectBarProtocol>
+@property (strong, nonatomic) IBOutlet MetronomeSelectBar *SelectGrooveBar;
 
 // loop button
 @property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
-@property (strong, nonatomic) IBOutlet UIButton *DeleteLoopCellButton;
 @property (strong, nonatomic) IBOutlet UIButton *PlayLoopCellButton;
 
 @property (getter = GetCurrentDataTable, setter = SetCurrentDataTable:) NSArray *CurrentDataTable;
 
-@property (nonatomic, assign) id<SelectBarProtocol, MetronomeBottomViewProtocol> delegate;
+@property (nonatomic, assign) id<MetronomeBottomViewProtocol> delegate;
 
 // Ad
 @property(nonatomic,retain)IBOutlet ADBannerView *adView;
@@ -56,10 +42,10 @@
 - (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable;
 - (void) ChangeSelectBarForcusIndex: (int) NewValue;
 
-@property (strong, nonatomic) IBOutlet CircleButton *CircleButtonTest;
-@property (strong, nonatomic) IBOutlet CircleButton *CircleButtonTest2;
-@property (strong, nonatomic) IBOutlet CircleButton *CircleButtonTest3;
-@property (strong, nonatomic) IBOutlet CircleButton *CircleButtonTest4;
-@property (strong, nonatomic) IBOutlet CircleButton *CircleButtonTest5;
-
+@property (strong, nonatomic) IBOutlet CircleButton *AccentCircleVolumeButton;
+@property (strong, nonatomic) IBOutlet CircleButton *QuarterCircleVolumeButton;
+@property (strong, nonatomic) IBOutlet CircleButton *EighthNoteCircleVolumeButton;
+@property (strong, nonatomic) IBOutlet CircleButton *SixteenthNoteCircleVolumeButton;
+@property (strong, nonatomic) IBOutlet CircleButton *TrippleNoteCircleVolumeButton;
+@property (strong, nonatomic) IBOutlet CircleButton *VoiceTypeCircleButton;
 @end

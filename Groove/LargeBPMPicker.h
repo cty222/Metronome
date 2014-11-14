@@ -9,6 +9,9 @@
 #import "GlobalConfig.h"
 #import "XibViewInterface.h"
 
+
+#define DIGIT_ENABLE_FLAG 0
+
 @ class LargeBPMPicker;
 
 @protocol LargeBPMPickerProtocol <NSObject>
@@ -22,21 +25,20 @@
 @interface LargeBPMPicker : XibViewInterface
 
 @property (getter = GetBPMValue, setter = SetBPMValue:) int BPMValue;
+
+#if DIGIT_ENABLE_FLAG
 @property (strong, nonatomic) IBOutlet UIView *DigitInHundreds;
 @property (strong, nonatomic) IBOutlet UIView *DigitInTens;
 @property (strong, nonatomic) IBOutlet UIView *DigitInOnces;
+#else
+@property (strong, nonatomic) IBOutlet UILabel *ValueLabel;
+#endif
 
 @property (weak, nonatomic) IBOutlet UIImageView *UpArrow;
 @property (weak, nonatomic) IBOutlet UIImageView *DownArrow;
 
 //
 @property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
-
-- (void) TouchBeginEvent : (CGPoint) TouchLocation;
-- (void) TouchEndEvent : (CGPoint) TouchLocation;
-- (void) TouchMoveEvent : (CGPoint) TouchLocation;
-- (void) TouchCancellEvent : (CGPoint) TouchLocation;
-//
 
 @property (nonatomic, assign) id<LargeBPMPickerProtocol> delegate;
 

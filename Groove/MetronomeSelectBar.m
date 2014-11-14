@@ -332,22 +332,25 @@
 
 // ============================
 //
-- (void) TouchBeginEvent : (CGPoint) TouchLocation
+
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    OriginalLocation.x = TouchLocation.x;
-    OriginalLocation.y = TouchLocation.y;
+    OriginalLocation = [self GetLocationPoint: touches];
+    
     self.Touched = YES;
 }
 
-- (void) TouchEndEvent : (CGPoint) TouchLocation
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.Touched = NO;
 }
 
-- (void) TouchMoveEvent : (CGPoint) TouchLocation
+-(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (self.Touched)
     {
+        CGPoint TouchLocation = [self GetLocationPoint: touches];
+        // Because zero point is on left top, large point in on right bottom
         int MoveLeft = (OriginalLocation.x - TouchLocation.x) / [self Sensitivity];
         if (MoveLeft != 0)
         {
@@ -359,10 +362,18 @@
     }
 }
 
-- (void) TouchCancellEvent : (CGPoint) TouchLocation
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.Touched = NO;
 }
+
+- (CGPoint) GetLocationPoint: (NSSet*)touches
+{
+    UITouch *Touch =  [touches anyObject];
+    return [Touch locationInView:Touch.view];
+}
+
+
 // 
 // ============================
 /*

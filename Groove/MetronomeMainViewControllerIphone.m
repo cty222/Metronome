@@ -22,7 +22,6 @@
     NSDate * _Date;;
     NSTimer *ClearTapTimer;
 
-    
     // Index
     int _FocusIndex;
     TempoCell *_CurrentCell;
@@ -122,11 +121,159 @@
     NSLog(@"%@", self.BottomView);
 #endif
     
+    // Initalize Sub View
     [self InitializeTopSubView];
     
     [self InitializeBottomSubView];
 
+    // Get Control UI form sub View and initialize default data
+    [self InitlizeCellParameterControlItems];
+    
+    [self InitlizePlayingItems];
+    
+    [self InitializeLoopControlItem];
+    
     [self FillData];
+}
+
+-(void) InitializeVolumeSets
+{
+    self.AccentCircleVolumeButton = self.BottomSubView.AccentCircleVolumeButton;
+    self.QuarterCircleVolumeButton = self.BottomSubView.QuarterCircleVolumeButton;
+    self.EighthNoteCircleVolumeButton = self.BottomSubView.EighthNoteCircleVolumeButton;
+    self.SixteenthNoteCircleVolumeButton = self.BottomSubView.SixteenthNoteCircleVolumeButton;
+    self.TrippleNoteCircleVolumeButton = self.BottomSubView.TrippleNoteCircleVolumeButton;
+    
+    self.AccentCircleVolumeButton.delegate = self;
+    self.QuarterCircleVolumeButton.delegate = self;
+    self.EighthNoteCircleVolumeButton.delegate = self;
+    self.SixteenthNoteCircleVolumeButton.delegate = self;
+    self.TrippleNoteCircleVolumeButton.delegate = self;
+    
+    CIRCLEBUTTON_RANGE VolumeRange;
+    VolumeRange.MaxIndex = 10.0;
+    VolumeRange.MinIndex = 0;
+    VolumeRange.UnitValue = 0.1;
+    
+    self.AccentCircleVolumeButton.IndexRange = VolumeRange;
+    self.AccentCircleVolumeButton.IndexValueSensitivity = 1;
+    self.AccentCircleVolumeButton.tag = ACCENT_VOLUME_BUTTON;
+    
+    self.QuarterCircleVolumeButton.IndexRange = VolumeRange;
+    self.QuarterCircleVolumeButton.IndexValueSensitivity = 1;
+    self.QuarterCircleVolumeButton.tag = QUARTER_VOLUME_BUTTON;
+    
+    self.EighthNoteCircleVolumeButton.IndexRange = VolumeRange;
+    self.EighthNoteCircleVolumeButton.IndexValueSensitivity = 1;
+    self.EighthNoteCircleVolumeButton.tag = EIGHTH_NOTE_VOLUME_BUTTON;
+    
+    self.SixteenthNoteCircleVolumeButton.IndexRange = VolumeRange;
+    self.SixteenthNoteCircleVolumeButton.IndexValueSensitivity = 1;
+    self.SixteenthNoteCircleVolumeButton.tag = SIXTEENTH_NOTE_VOLUME_BUTTON;
+    
+    self.TrippleNoteCircleVolumeButton.IndexRange = VolumeRange;
+    self.TrippleNoteCircleVolumeButton.IndexValueSensitivity = 1;
+    self.TrippleNoteCircleVolumeButton.tag = TRIPPLET_NOTE_VOLUME_BUTTON;
+}
+
+- (void) InitlizeCellParameterControlItems
+{
+    [self InitializeVolumeSets];
+    
+    self.BPMPicker = self.TopSubView.BPMPicker;
+    self.VoiceTypeCircleButton = self.BottomSubView.VoiceTypeCircleButton;
+    self.TimeSigaturePicker = self.TopSubView.TimeSigaturePicker;
+    self.TapButton = self.TopSubView.TapButton;
+    
+    // BPM Picker Initialize
+    self.BPMPicker.delegate = self;
+    
+    // VoiceType CircleButton initialize
+    self.VoiceTypeCircleButton.delegate = self;
+    CIRCLEBUTTON_RANGE VolumeRange;
+    VolumeRange.MaxIndex = 10.0;
+    VolumeRange.MinIndex = 0;
+    VolumeRange.UnitValue = 1;
+    
+    self.VoiceTypeCircleButton.IndexRange = VolumeRange;
+    self.VoiceTypeCircleButton.IndexValueSensitivity = 1;
+    self.VoiceTypeCircleButton.IndexValue = 3;
+    self.VoiceTypeCircleButton.tag = VOICE_TYPE_BUTTON;
+    
+    /*UIGraphicsBeginImageContext(self.VoiceButton.frame.size);
+    [[UIImage imageNamed:@"Voice_Hi-Click"] drawInRect:self.VoiceButton.bounds];
+    UIImage *VoiceImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.VoiceButton.backgroundColor = [UIColor colorWithPatternImage:VoiceImage];*/
+    
+     // Time Signature
+     UIGraphicsBeginImageContext(self.TimeSigaturePicker.frame.size);
+     [[UIImage imageNamed:@"TimeSignature4_4"] drawInRect:self.TimeSigaturePicker.bounds];
+     UIImage *TimeSignatureImage = UIGraphicsGetImageFromCurrentImageContext();
+     UIGraphicsEndImageContext();
+     self.TimeSigaturePicker.backgroundColor = [UIColor colorWithPatternImage:TimeSignatureImage];
+    
+    // Tap Button initialize
+    UIGraphicsBeginImageContext(self.TapButton.frame.size);
+    [[UIImage imageNamed:@"Tap"] drawInRect:self.TapButton.bounds];
+    UIImage *TapImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.TapButton.backgroundColor = [UIColor colorWithPatternImage:TapImage];
+    
+    [self.TapButton addTarget:self
+                       action:@selector(TapBPMValueButtonClick:)forControlEvents:UIControlEventTouchDown];
+}
+
+- (void) InitlizePlayingItems
+{
+    self.PlayCurrentCellButton = self.TopSubView.PlayCurrentCellButton;
+    self.PlayLoopCellButton = self.BottomSubView.PlayLoopCellButton;
+    
+    // PlayLoopCellButton Initalize
+    // red  playloop button
+    UIGraphicsBeginImageContext(self.PlayLoopCellButton.frame.size);
+    [[UIImage imageNamed:@"LoopPlay_red"] drawInRect:self.PlayLoopCellButton.bounds];
+    _RedPlayloopImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayloopImage];
+    
+    // bloak  playloop button
+    UIGraphicsBeginImageContext(self.PlayLoopCellButton.frame.size);
+    [[UIImage imageNamed:@"LoopPlay_black"] drawInRect:self.PlayLoopCellButton.bounds];
+    _BlackPlayloopImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // Play Current cell button initialize
+    UIGraphicsBeginImageContext(self.PlayCurrentCellButton.frame.size);
+    [[UIImage imageNamed:@"SinglePlay"] drawInRect:self.PlayCurrentCellButton.bounds];
+    _SinglePlayImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
+
+    [self.PlayCurrentCellButton addTarget:self
+                       action:@selector(PlayCurrentCellButtonClick:) forControlEvents:UIControlEventTouchDown];
+    
+    
+    // Play LoopCellButton Initialize
+    [self.PlayLoopCellButton addTarget:self
+                                   action:@selector(PlayLoopCellButtonClick:) forControlEvents:UIControlEventTouchDown];
+}
+
+- (void) InitializeLoopControlItem
+{
+    self.SelectGrooveBar = self.BottomSubView.SelectGrooveBar;
+    self.AddLoopCellButton = self.BottomSubView.AddLoopCellButton;
+    
+    [self.AddLoopCellButton addTarget:self
+                                   action:@selector(AddLoopCellButtonClick:) forControlEvents:UIControlEventTouchDown];
+}
+
+- (void) InitializeSystemButton
+{
+    self.SystemButton = self.TopSubView.SystemButton;
+    self.adView = self.BottomSubView.adView;
+    
+    self.adView.delegate = self;
 }
 
 - (void) InitailzieTools
@@ -157,7 +304,6 @@
     if (self.TopSubView == nil)
     {
         self.TopSubView = [[MetronmoneTopSubViewIphone alloc] initWithFrame:self.TopView.frame];
-        self.TopSubView.delegate = self;
     }
     if (self.TopView.subviews.count != 0)
     {
@@ -185,27 +331,6 @@
 
     self.BottomSubView.delegate = self;
     [self.BottomView addSubview:self.BottomSubView];
-    
-    
-    // SinglePlay
-    UIGraphicsBeginImageContext(self.BottomSubView.PlayCurrentCellButton.frame.size);
-    [[UIImage imageNamed:@"SinglePlay"] drawInRect:self.BottomSubView.PlayCurrentCellButton.bounds];
-    _SinglePlayImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.BottomSubView.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
-    
-    // red  playloop button
-    UIGraphicsBeginImageContext(self.BottomSubView.PlayLoopCellButton.frame.size);
-    [[UIImage imageNamed:@"LoopPlay_red"] drawInRect:self.BottomSubView.PlayLoopCellButton.bounds];
-    _RedPlayloopImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.BottomSubView.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayloopImage];
-
-    // bloak  playloop button
-    UIGraphicsBeginImageContext(self.BottomSubView.PlayLoopCellButton.frame.size);
-    [[UIImage imageNamed:@"LoopPlay_black"] drawInRect:self.BottomSubView.PlayLoopCellButton.bounds];
-    _BlackPlayloopImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
 }
 
 // ============
@@ -249,7 +374,8 @@
     {
         [self FillData];
         DeleteFillDataFlag = NO;
-        self.BottomSubView.DeleteLoopCellButton.enabled = YES;
+        // TODO:
+        //self.BottomSubView.DeleteLoopCellButton.enabled = YES;
     }
     
     if (self.PlayingMode == LOOP_PLAYING)
@@ -285,16 +411,16 @@
     switch (_PlayingMode) {
         case STOP_PLAYING:
             [self StopClickWithResetCounter : YES];
-            self.BottomSubView.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayloopImage];
-            self.BottomSubView.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
+            self.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayloopImage];
+            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
             break;
         case SINGLE_PLAYING:
             // TODO : 要改成Stop圖
-            //self.BottomSubView.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
+            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
             [self StartClick];
             break;
         case LOOP_PLAYING:
-            self.BottomSubView.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_BlackPlayloopImage];
+            self.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_BlackPlayloopImage];
 
             [self StartClick];
             break;
@@ -316,87 +442,6 @@
     
     [self presentViewController:[GlobalConfig GrooveMainViewControllerIphone] animated:YES completion:nil];
 }
-
-- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
-{
-    UITouch *Touch =  [touches anyObject];
-    if ([NSStringFromClass([Touch.view class]) isEqualToString:@"LargeBPMPicker"])
-    {
-        LargeBPMPicker* BPMPicker = (LargeBPMPicker *)Touch.view;
-        CGPoint OriginalLocation;
-        OriginalLocation = [Touch locationInView:Touch.view];
-        [BPMPicker TouchBeginEvent:OriginalLocation];
-    }
-    else if ([NSStringFromClass([Touch.view class]) isEqualToString:@"MetronomeSelectBar"])
-    {
-        MetronomeSelectBar* ScrollView = (MetronomeSelectBar *)Touch.view;
-        CGPoint OriginalLocation;
-        OriginalLocation = [Touch locationInView:Touch.view];
-        [ScrollView TouchBeginEvent:OriginalLocation];
-    }
-    else
-    {
-        NSLog(@"%@", Touch);
-    }
-}
-
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *Touch =  [touches anyObject];
-    if ([NSStringFromClass([Touch.view class]) isEqualToString:@"LargeBPMPicker"])
-    {
-        LargeBPMPicker* BPMPicker = (LargeBPMPicker *)Touch.view;
-        CGPoint OriginalLocation;
-        OriginalLocation = [Touch locationInView:Touch.view];
-        [BPMPicker TouchEndEvent:OriginalLocation];
-    }
-    else if ([NSStringFromClass([Touch.view class]) isEqualToString:@"MetronomeSelectBar"])
-    {
-        MetronomeSelectBar* ScrollView = (MetronomeSelectBar *)Touch.view;
-        CGPoint OriginalLocation;
-        OriginalLocation = [Touch locationInView:Touch.view];
-        [ScrollView TouchEndEvent:OriginalLocation];
-    }
-}
-
--(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *Touch =  [touches anyObject];
-    if ([NSStringFromClass([Touch.view class]) isEqualToString:@"LargeBPMPicker"])
-    {
-        LargeBPMPicker* BPMPicker = (LargeBPMPicker *)Touch.view;
-        CGPoint OriginalLocation;
-        OriginalLocation = [Touch locationInView:Touch.view];
-        [BPMPicker TouchMoveEvent:OriginalLocation];
-    }
-    else if ([NSStringFromClass([Touch.view class]) isEqualToString:@"MetronomeSelectBar"])
-    {
-        MetronomeSelectBar* ScrollView = (MetronomeSelectBar *)Touch.view;
-        CGPoint OriginalLocation;
-        OriginalLocation = [Touch locationInView:Touch.view];
-        [ScrollView TouchMoveEvent:OriginalLocation];
-    }
-}
-
- -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *Touch =  [touches anyObject];
-    if ([NSStringFromClass([Touch.view class]) isEqualToString:@"LargeBPMPicker"])
-    {
-        LargeBPMPicker* BPMPicker = (LargeBPMPicker *)Touch.view;
-        CGPoint OriginalLocation;
-        OriginalLocation = [Touch locationInView:Touch.view];
-        [BPMPicker TouchCancellEvent:OriginalLocation];
-    }
-    else if ([NSStringFromClass([Touch.view class]) isEqualToString:@"MetronomeSelectBar"])
-    {
-        MetronomeSelectBar* ScrollView = (MetronomeSelectBar *)Touch.view;
-        CGPoint OriginalLocation;
-        OriginalLocation = [Touch locationInView:Touch.view];
-        [ScrollView TouchCancellEvent:OriginalLocation];
-    }
-}
-
 //
 //  =========================
 
@@ -417,26 +462,23 @@
     }
 }
 
-- (IBAction) VolumeSliderValueChanged:(TmpVerticalSlider*) ThisVerticalSlider
+- (IBAction) CircleButtonValueChanged:(CircleButton*) ThisCircleButton;
 {
-    
-    float Value = ThisVerticalSlider.value;
-    int TagNumber = ThisVerticalSlider.SliderTag;
-
-    switch (TagNumber) {
-        case 0:
+    float Value = ThisCircleButton.IndexValue;
+    switch (ThisCircleButton.tag) {
+        case ACCENT_VOLUME_BUTTON:
             _CurrentCell.accentVolume = [NSNumber numberWithFloat:Value];
             break;
-        case 1:
+        case QUARTER_VOLUME_BUTTON:
             _CurrentCell.quarterNoteVolume = [NSNumber numberWithFloat:Value];
             break;
-        case 2:
+        case EIGHTH_NOTE_VOLUME_BUTTON:
             _CurrentCell.eighthNoteVolume = [NSNumber numberWithFloat:Value];
             break;
-        case 3:
+        case SIXTEENTH_NOTE_VOLUME_BUTTON:
             _CurrentCell.sixteenNoteVolume = [NSNumber numberWithFloat:Value];
             break;
-        case 4:
+        case TRIPPLET_NOTE_VOLUME_BUTTON:
             _CurrentCell.trippleNoteVolume = [NSNumber numberWithFloat:Value];
             break;
         default:
@@ -525,7 +567,9 @@
     
     // 重新顯示
     DeleteFillDataFlag = YES;
-    self.BottomSubView.DeleteLoopCellButton.enabled = NO;
+    
+    // TODO:
+    //self.BottomSubView.DeleteLoopCellButton.enabled = NO;
 }
 
 - (IBAction) PlayLoopCellButtonClick: (UIButton *) ThisClickedButton
@@ -533,7 +577,8 @@
     if (self.PlayingMode == SINGLE_PLAYING)
     {
         self.PlayingMode = STOP_PLAYING;        
-        self.BottomSubView.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
+        
+        self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
     }
     
     if (self.PlayingMode == STOP_PLAYING)
@@ -761,6 +806,41 @@
     
     return 4;
 }
+
+
+// =================================
+// iAD function
+
+- (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    // 有錯誤會進來
+}
+
+- (void) bannerViewActionDidFinish:(ADBannerView *)banner
+{
+    // 使用者關掉廣告內容畫面
+}
+
+-(void) bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    // 廣告載入
+}
+
+-(void) bannerViewWillLoadAd:(ADBannerView *)banner
+{
+    
+}
+
+-(BOOL) bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+{
+    // 使用者點了廣告後開啟畫面
+    return YES;
+}
+
+
+//
+// =================================
+
 
 - (void)didReceiveMemoryWarning
 {

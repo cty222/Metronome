@@ -12,7 +12,9 @@
 
 @property (strong, nonatomic) IBOutlet LargeBPMPicker *BPMPicker;
 
-@property (nonatomic, assign) id<LargeBPMPickerProtocol> delegate;
-
+@property (strong, nonatomic) IBOutlet UIButton *PlayCurrentCellButton;
+@property (strong, nonatomic) IBOutlet UIButton *TapButton;
+@property (strong, nonatomic) IBOutlet UIButton *TimeSigaturePicker;
+@property (strong, nonatomic) IBOutlet UIButton *SystemButton;
 
 @end

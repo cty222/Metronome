@@ -26,29 +26,9 @@
         // Initialization code
         [self.BPMPicker removeFromSuperview];
         self.BPMPicker = [[LargeBPMPicker alloc] initWithFrame:self.BPMPicker.frame];
-        self.BPMPicker.delegate = self;
         [self addSubview:self.BPMPicker];
-
-        UIGraphicsBeginImageContext(self.frame.size);
-        [[UIImage imageNamed:@"TopViewBackground"] drawInRect:self.bounds];
-        UIImage *Image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        self.backgroundColor = [UIColor colorWithPatternImage:Image];
     }
     return self;
-}
-
-- (void) SetBPMValue : (int) NewValue
-{
-    // Pass to parent view.
-    if (self.delegate != nil)
-    {
-        // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(SetBPMValue:)])
-        {
-            [self.delegate SetBPMValue: NewValue];
-        }
-    }
 }
 
 /*

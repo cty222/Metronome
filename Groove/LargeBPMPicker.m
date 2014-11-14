@@ -66,8 +66,8 @@
         // Initialization code
     }
     
+#if DIGIT_ENABLE_FLAG
     Digits = [[NSMutableArray alloc] init];
-    
     for (int i = 0; i < 10; i++)
     {
         int TmpIndex = i;
@@ -87,6 +87,7 @@
     self.DigitInHundreds.userInteractionEnabled = NO;
     self.DigitInTens.userInteractionEnabled = NO;
     self.DigitInOnces.userInteractionEnabled = NO;
+#endif
 
     return self;
 }
@@ -126,6 +127,8 @@
     }
     
     _BPMValue = NewValue;
+    
+#if DIGIT_ENABLE_FLAG
     if (_BPMValue/100 == 0)
     {
         self.DigitInHundreds.hidden = YES;
@@ -138,7 +141,9 @@
     self.DigitInHundreds.backgroundColor = [UIColor colorWithPatternImage:Digits[_BPMValue/100]];
     self.DigitInTens.backgroundColor = [UIColor colorWithPatternImage:Digits[(_BPMValue%100)/10]];
     self.DigitInOnces.backgroundColor = [UIColor colorWithPatternImage:Digits[_BPMValue%10]];
-    
+#else
+    [self.ValueLabel setText:[NSString stringWithFormat:@"%d", self.BPMValue]];
+#endif
     NSLog(@"%d", _BPMValue);
     
     // Pass to parent view.
@@ -223,24 +228,25 @@
     }
 }
 
-
-- (void) TouchBeginEvent : (CGPoint) TouchLocation
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    OriginalLocation = TouchLocation;
+    OriginalLocation = [self GetLocationPoint: touches];
+    
     self.Touched = YES;
 }
 
-- (void) TouchEndEvent : (CGPoint) TouchLocation
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.Touched = NO;
 }
 
-- (void) TouchMoveEvent : (CGPoint) TouchLocation
+-(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (self.Touched)
     {
+        CGPoint TouchLocation = [self GetLocationPoint: touches];
         // Because zero point is on left top, large point in on right bottom
-        int MoveUp = (OriginalLocation.y - TouchLocation.y) / [self Sensitivity];
+        int MoveUp = (double)(OriginalLocation.y - TouchLocation.y) / [self Sensitivity];
         if (MoveUp != 0)
         {
             self.BPMValue += MoveUp;
@@ -249,14 +255,15 @@
     }
 }
 
-- (void) TouchCancellEvent : (CGPoint) TouchLocation
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.Touched = NO;
 }
 
-- (IBAction) ScrollBPM : (UISwipeGestureRecognizer *) sendor
+- (CGPoint) GetLocationPoint: (NSSet*)touches
 {
-
+    UITouch *Touch =  [touches anyObject];
+    return [Touch locationInView:Touch.view];
 }
 
 // ========
