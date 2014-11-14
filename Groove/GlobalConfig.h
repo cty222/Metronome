@@ -36,6 +36,7 @@ enum {
 + (NSNumber *) BPMMinValue;
 + (NSNumber *) BPMMaxValue;
 + (NSNumber *) DbVersion;
++ (NSNumber *) LastFocusCellIndex;
 
 
 // Main View

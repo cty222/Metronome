@@ -79,8 +79,6 @@ static NSMutableDictionary * ThisPlist;
 
 + (void) Initialize : (UIWindow *) MainWindows
 {
-    NSLog(@"%@", MainWindows);
-    
     ThisPlist = [GlobalConfig GlobalConfigPlist];
     BOOL IsChanged = NO;
     
@@ -197,7 +195,6 @@ static NSMutableDictionary * ThisPlist;
     {
         return nil;
     }
-    NSLog(@"BPMMinValue, %@", [ThisPlist objectForKey:@"BPMMinValue"]);
     return [ThisPlist objectForKey:@"BPMMinValue"];
 }
 
@@ -221,6 +218,15 @@ static NSMutableDictionary * ThisPlist;
     return [ThisPlist objectForKey:@"DbVersion"];
 }
 
++ (NSNumber *) LastFocusCellIndex
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return nil;
+    }
+    
+    return [ThisPlist objectForKey:@"LastFocusCellIndex"];
+}
 
 //
 // ============================

@@ -45,7 +45,6 @@
         self.userInteractionEnabled = YES;
         
     }
-    NSLog(@"Select bar : %@", self);
     return self;
 }
 

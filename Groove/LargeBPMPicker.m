@@ -76,7 +76,6 @@
             TmpIndex = TmpIndex %2;
         }
         NSString *ImageName = [NSString stringWithFormat:@"reflect_number_%d", TmpIndex];
-        NSLog(@"%@", ImageName);
         UIGraphicsBeginImageContext(self.DigitInOnces.frame.size);
         [[UIImage imageNamed:ImageName] drawInRect:self.DigitInOnces.bounds];
         UIImage *Image = UIGraphicsGetImageFromCurrentImageContext();
@@ -144,7 +143,6 @@
 #else
     [self.ValueLabel setText:[NSString stringWithFormat:@"%d", self.BPMValue]];
 #endif
-    NSLog(@"%d", _BPMValue);
     
     // Pass to parent view.
     if (self.delegate != nil)

@@ -26,14 +26,11 @@
     _DbVersion = DbVersion;
     
     // CheckVersion
-    NSLog(@"CheckVersion");
     self.DbVersionDataTable = [self FetchDbConfigWhereDbVersion : _DbVersion];
-    NSLog(@"%@", self.DbVersionDataTable);
     if (self.DbVersionDataTable.count == 0)
     {
         IsItNeedToInsertDBValue = YES;
     }
-    NSLog(@"CheckVersion End");
 
     // If need to set default
     if (IsItNeedToInsertDBValue)

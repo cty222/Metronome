@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MetronomeMainViewControllerIphone.h"
+
+#define TAP_CLEAR_DELAY 3
 
 typedef enum{
     ACCENT_VOLUME_BUTTON = 101,
@@ -20,6 +23,27 @@ typedef enum{
     VOICE_TYPE_BUTTON = 201,
 } PARAMETER_BUTTON_TAG;
 
-@interface CellParameterSettingControl : NSObject
+@interface CellParameterSettingControl : NSObject <CircleButtonProtocol, LargeBPMPickerProtocol>
+
+// (1) Volume sets
+@property (strong, nonatomic) IBOutlet CircleButton *AccentCircleVolumeButton;
+@property (strong, nonatomic) IBOutlet CircleButton *QuarterCircleVolumeButton;
+@property (strong, nonatomic) IBOutlet CircleButton *EighthNoteCircleVolumeButton;
+@property (strong, nonatomic) IBOutlet CircleButton *SixteenthNoteCircleVolumeButton;
+@property (strong, nonatomic) IBOutlet CircleButton *TrippleNoteCircleVolumeButton;
+
+// (2) Cell parameter control item
+@property (strong, nonatomic) IBOutlet LargeBPMPicker *BPMPicker;
+@property (strong, nonatomic) IBOutlet CircleButton *VoiceTypeCircleButton;
+@property (strong, nonatomic) IBOutlet UIButton *TimeSigaturePicker;
+@property (strong, nonatomic) IBOutlet UIButton *TapButton;
+
+@property UIViewController *ParrentController;
+
+
+- (void) InitializeVolumeSets;
+- (void) InitlizeCellParameterControlItems;
+- (void) SetVolumeBarVolume : (TempoCell *)Cell;
+- (int) DecodeTimeSignatureToValue : (NSString *)TimeSignatureString;
 
 @end
