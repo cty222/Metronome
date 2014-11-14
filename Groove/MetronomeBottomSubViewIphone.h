@@ -15,37 +15,25 @@
 #import "UINSOperation.h"
 
 
-@protocol MetronomeBottomViewProtocol <NSObject>
-@required
-
-@optional
-- (void) SetFocusIndex:(int) NewValue;
-- (int) GetFocusIndex;
-
-@end
-
-
-@interface MetronomeBottomSubViewIphone : XibViewInterface <SelectBarProtocol>
+@interface MetronomeBottomSubViewIphone : XibViewInterface
 @property (strong, nonatomic) IBOutlet MetronomeSelectBar *SelectGrooveBar;
 
-// loop button
-@property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
-@property (strong, nonatomic) IBOutlet UIButton *PlayLoopCellButton;
-
-@property (getter = GetCurrentDataTable, setter = SetCurrentDataTable:) NSArray *CurrentDataTable;
-
-@property (nonatomic, assign) id<MetronomeBottomViewProtocol> delegate;
-
-// Ad
-@property(nonatomic,retain)IBOutlet ADBannerView *adView;
-
-- (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable;
-- (void) ChangeSelectBarForcusIndex: (int) NewValue;
-
+// Volume button
 @property (strong, nonatomic) IBOutlet CircleButton *AccentCircleVolumeButton;
 @property (strong, nonatomic) IBOutlet CircleButton *QuarterCircleVolumeButton;
 @property (strong, nonatomic) IBOutlet CircleButton *EighthNoteCircleVolumeButton;
 @property (strong, nonatomic) IBOutlet CircleButton *SixteenthNoteCircleVolumeButton;
 @property (strong, nonatomic) IBOutlet CircleButton *TrippleNoteCircleVolumeButton;
+
+// Voice botton
 @property (strong, nonatomic) IBOutlet CircleButton *VoiceTypeCircleButton;
+
+// loop button
+@property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
+@property (strong, nonatomic) IBOutlet UIButton *PlayLoopCellButton;
+
+
+// Ad view
+@property(nonatomic,retain)IBOutlet ADBannerView *adView;
+
 @end

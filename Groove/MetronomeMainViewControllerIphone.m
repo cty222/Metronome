@@ -266,6 +266,8 @@
     
     [self.AddLoopCellButton addTarget:self
                                    action:@selector(AddLoopCellButtonClick:) forControlEvents:UIControlEventTouchDown];
+    
+    self.SelectGrooveBar.delegate = self;
 }
 
 - (void) InitializeSystemButton
@@ -329,7 +331,6 @@
          makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }
 
-    self.BottomSubView.delegate = self;
     [self.BottomView addSubview:self.BottomSubView];
 }
 
@@ -340,7 +341,17 @@
 - (void) FillData
 {
     CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]];
-    self.BottomSubView.CurrentDataTable = CurrentCellsDataTable;
+    
+    [self CopyGrooveLoopListToSelectBar : CurrentCellsDataTable];
+}
+
+- (void) SetVolumeBarVolume : (TempoCell *)Cell
+{
+    self.AccentCircleVolumeButton.IndexValue = [Cell.accentVolume floatValue];
+    self.QuarterCircleVolumeButton.IndexValue = [Cell.quarterNoteVolume floatValue];
+    self.EighthNoteCircleVolumeButton.IndexValue = [Cell.eighthNoteVolume floatValue];
+    self.SixteenthNoteCircleVolumeButton.IndexValue = [Cell.sixteenNoteVolume floatValue];
+    self.TrippleNoteCircleVolumeButton.IndexValue = [Cell.trippleNoteVolume floatValue];
 }
 //
 // ============
@@ -366,6 +377,7 @@
     _CurrentCell = CurrentCellsDataTable[_FocusIndex];
     
     self.TopSubView.BPMPicker.BPMValue = [_CurrentCell.bpmValue intValue];
+    [self SetVolumeBarVolume:_CurrentCell];
     
     // TODO: 要改成設圖
     //[self.BottomSubView.TimeSignatureButton setTitle:_CurrentCell.timeSignatureType.timeSignature forState:UIControlStateNormal];
@@ -389,8 +401,20 @@
 
 - (void) ChangeSelectBarForcusIndex: (int) NewValue
 {
-    [self.BottomSubView ChangeSelectBarForcusIndex: NewValue];
+    self.SelectGrooveBar.FocusIndex = NewValue;
 }
+
+
+- (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable
+{
+    NSMutableArray * GrooveLoopList = [[NSMutableArray alloc]init];
+    for (TempoCell *Cell in CellDataTable)
+    {
+        [GrooveLoopList addObject:[Cell.loopCount stringValue]];
+    }
+    self.SelectGrooveBar.GrooveCellList = GrooveLoopList;
+}
+
 
 - (METRONOME_PLAYING_MODE) GetPlayingMode
 {

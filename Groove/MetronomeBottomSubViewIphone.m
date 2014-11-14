@@ -10,7 +10,6 @@
 
 @implementation MetronomeBottomSubViewIphone
 {
-    NSArray * _CurrentDataTable;
 }
 
 - (void) awakeFromNib
@@ -27,7 +26,6 @@
         
         [self.SelectGrooveBar removeFromSuperview];
         self.SelectGrooveBar = [[MetronomeSelectBar alloc] initWithFrame:self.SelectGrooveBar.frame];
-        self.SelectGrooveBar.delegate = self;
         [self addSubview:self.SelectGrooveBar];
         
         // Back ground
@@ -64,89 +62,7 @@
 }
 
 
-- (void) SetVolumeBarVolume : (TempoCell *)Cell
-{
-    self.AccentCircleVolumeButton.IndexValue = [Cell.accentVolume floatValue];
-    self.QuarterCircleVolumeButton.IndexValue = [Cell.quarterNoteVolume floatValue];
-    self.EighthNoteCircleVolumeButton.IndexValue = [Cell.eighthNoteVolume floatValue];
-    self.SixteenthNoteCircleVolumeButton.IndexValue = [Cell.sixteenNoteVolume floatValue];
-    self.TrippleNoteCircleVolumeButton.IndexValue = [Cell.trippleNoteVolume floatValue];
-}
 
-- (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable
-{
-    NSMutableArray * GrooveLoopList = [[NSMutableArray alloc]init];
-    for (TempoCell *Cell in CellDataTable)
-    {
-        [GrooveLoopList addObject:[Cell.loopCount stringValue]];
-    }
-    self.SelectGrooveBar.GrooveCellList = GrooveLoopList;
-}
-
-// =================================
-// Property
-//
-- (NSArray *) GetCurrentDataTable
-{
-    return _CurrentDataTable;
-}
-- (void) SetCurrentDataTable : (NSArray *) NewValue
-{
-    int _FocusIndex = 0;
-    
-    _CurrentDataTable = NewValue;
-    
-    // Set Select Loop bar
-    [self CopyGrooveLoopListToSelectBar: _CurrentDataTable];
-
-    _FocusIndex = [self GetFocusIndex];
-    
-    if (_FocusIndex >= 0 && _FocusIndex < _CurrentDataTable.count)
-    {
-        [self SetVolumeBarVolume: _CurrentDataTable[_FocusIndex]];
-    }
-    else
-    {
-        // First Initailize will give wrong Index
-        // NSLog(@"Wrong Index");
-    }
-
-}
-
-- (int) GetFocusIndex
-{
-    if (self.delegate != nil)
-    {
-        // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(GetFocusIndex)])
-        {
-            return [self.delegate GetFocusIndex];
-        }
-    }
-
-    return 0;
-}
-
-- (void) SetFocusIndex:(int) NewValue
-{
-    // Pass to parent view.
-    if (self.delegate != nil)
-    {
-        // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(SetFocusIndex:)])
-        {
-            [self.delegate SetFocusIndex: NewValue];
-        }
-    }
-    
-    // UI 自動動作
-    [self SetVolumeBarVolume: _CurrentDataTable[[self GetFocusIndex]]];
-}
-
-- (void) ChangeSelectBarForcusIndex: (int) NewValue
-{
-    self.SelectGrooveBar.FocusIndex = NewValue;
-}
 //
 // =================================
 

@@ -28,8 +28,8 @@
                     </state>
                 </button>
                 <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CoW-LI-FJh">
-                    <rect key="frame" x="0.0" y="250" width="320" height="52"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="0.0" y="250" width="320" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </adBannerView>
                 <view contentMode="scaleToFill" id="vkX-vz-nz5" customClass="CircleButton">
                     <rect key="frame" x="120" y="149" width="80" height="80"/>

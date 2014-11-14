@@ -27,7 +27,7 @@ typedef enum {
     LOOP_PLAYING,
 } METRONOME_PLAYING_MODE;
 
-@interface MetronomeMainViewControllerIphone : UIViewController <NoteProtocol, SelectBarProtocol, MetronomeBottomViewProtocol,LargeBPMPickerProtocol, CircleButtonProtocol, ADBannerViewDelegate>
+@interface MetronomeMainViewControllerIphone : UIViewController <NoteProtocol, SelectBarProtocol, LargeBPMPickerProtocol, CircleButtonProtocol, ADBannerViewDelegate>
 @property (strong, nonatomic) IBOutlet UIView *FullView;
 @property (weak, nonatomic) IBOutlet UIView *TopView;
 @property (weak, nonatomic) IBOutlet UIView *BottomView;
