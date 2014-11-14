@@ -8,6 +8,14 @@
 
 #import "XibViewInterface.h"
 
+
+typedef enum{
+  SELECT_NONE,
+  SELECT_CELL,
+  SELECT_CELL_LOOP_COUNT,
+  SELECT_CAN_DROP
+} SELECT_BAR_MOVE_MODE;
+
 @protocol SelectBarProtocol <NSObject>
 @required
 

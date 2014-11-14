@@ -17,7 +17,7 @@
     NSMutableArray * _GrooveCellList;
     
     // Touch Event
-    CGPoint OriginalLocation;
+    CGPoint _OriginalLocation;
     BOOL _Touched;
     int _FocusIndex;
     int PermanentFrameMove;
@@ -27,6 +27,7 @@
     
     NSTimer *LongTouchTimer;
 
+    SELECT_BAR_MOVE_MODE _MovedMode;
     
     // Label
     UIImage * LargeImage;
@@ -328,19 +329,56 @@
 //
 // ============================
 
+// ======
+//
+//
+
+- (int) GetTouchedCellIndex : (CGPoint) TouchedLocation
+{
+    // 左右移動過的就回傳 FocusIndex
+    if (_MovedMode == SELECT_CELL || _MovedMode == SELECT_CAN_DROP)
+    {
+        return self.FocusIndex;
+    }
+    else
+    {
+        float MiddlePoint = self.bounds.size.width /2 ;
+        int IndexOffet = (MiddlePoint - TouchedLocation.x - CELL_WIDTH/2 ) / CELL_WIDTH;
+        return IndexOffet;
+    }
+}
+
+- (void) CheckIsSingleTouchChoose
+{
+    if (_MovedMode == SELECT_NONE || _MovedMode == SELECT_CELL_LOOP_COUNT)
+    {
+        [self GetTouchedCellIndex:_OriginalLocation];
+    }
+}
+
+- (void) TouchedEndReset
+{
+    _MovedMode = SELECT_NONE;
+}
+//
+// ======
 
 // ============================
 //
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    OriginalLocation = [self GetLocationPoint: touches];
+    [self TouchedEndReset];
+    
+    _OriginalLocation = [self GetLocationPoint: touches];
     
     self.Touched = YES;
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [self CheckIsSingleTouchChoose];
+    
     self.Touched = NO;
 }
 
@@ -349,14 +387,35 @@
     if (self.Touched)
     {
         CGPoint TouchLocation = [self GetLocationPoint: touches];
+        
         // Because zero point is on left top, large point in on right bottom
-        int MoveLeft = (OriginalLocation.x - TouchLocation.x) / [self Sensitivity];
-        if (MoveLeft != 0)
+        int MoveLeftRight = (_OriginalLocation.x - TouchLocation.x) / [self Sensitivity];
+        int MoveUpDown = (_OriginalLocation.y - TouchLocation.y) / [self Sensitivity];
+
+        
+        if (MoveLeftRight != 0 && (_MovedMode == SELECT_CELL || _MovedMode == SELECT_NONE))
         {
-            CurrentMove = MoveLeft;
+            _MovedMode = SELECT_CELL;
+            
+            CurrentMove = MoveLeftRight;
             {
                 [self FlashDisplayFrame];
             }
+        }
+        else if (MoveUpDown != 0 && (_MovedMode == SELECT_CELL_LOOP_COUNT || _MovedMode == SELECT_NONE))
+        {
+            _MovedMode = SELECT_CELL_LOOP_COUNT;
+            // TODO : 記錄所條的Cell Index
+            int TargetIndex = [self GetTouchedCellIndex:_OriginalLocation];
+            
+            // TODO Add delegate to change loop count
+            //self.BPMValue += MoveUp;
+            
+            _OriginalLocation = TouchLocation;
+        }
+        else if (_MovedMode == SELECT_CAN_DROP)
+        {
+            
         }
     }
 }
