@@ -35,7 +35,7 @@ typedef enum {
 @property (nonatomic) MetronmoneTopSubViewIphone *TopSubView;
 @property (nonatomic) MetronomeBottomSubViewIphone *BottomSubView;
 
-
+@property NSArray * CurrentCellsDataTable;
 @property (nonatomic, strong) BeepBound* CurrentVoice;
 @property TempoCell* CurrentCell;
 @property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;

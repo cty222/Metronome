@@ -19,21 +19,5 @@
             landmarkType = "19">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Groove/UITools/CircleButton.m"
-            timestampString = "437631242.174136"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-GetIndexRange"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -10,29 +10,25 @@
 
 #define CELL_WIDTH   40
 #define CELL_HEIGHT  40
+#define CELL_MERGIN  CELL_WIDTH /4;
 #define FIRST_CELL_OFFSET_COUNT 2
 
 @implementation MetronomeSelectBar
 {
-    NSMutableArray * _GrooveCellList;
+    // Data
+    NSMutableArray * _GrooveCellValueStringList;
     
-    // Touch Event
-    CGPoint _OriginalLocation;
+    // Property
     BOOL _Touched;
     int _FocusIndex;
-    int PermanentFrameMove;
-    int CurrentMove;
+    SELECT_BAR_MOVE_MODE _MovedMode;
+    float _FocusLine;
+
+    // Touch Event
+    CGPoint _OriginalLocation;
     NSTimer *MoveToCenterTimer;
-    int MoveToCenterCounter;
     
     NSTimer *LongTouchTimer;
-
-    SELECT_BAR_MOVE_MODE _MovedMode;
-    
-    // Label
-    UIImage * LargeImage;
-    UIImage * SmallImage;
-
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -40,11 +36,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        PermanentFrameMove = -1 * (CELL_WIDTH * FIRST_CELL_OFFSET_COUNT);
-        //self.GrooveCellList = [self SelectCellList];
         self.FocusIndex = 0;
         self.userInteractionEnabled = YES;
-        
     }
     return self;
 }
@@ -52,93 +45,72 @@
 
 - (void) DisplayCellList
 {
-    UIView * ControlView = self;
-    ControlView.bounds = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    UIView * ControlView = self.GrooveCellListView;
     
     // Clear all cell
     [[ControlView subviews]
      makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
-    UIImage * LoopImage = [UIImage imageNamed:@"loop.png"];
-    
-    // Create Small Size Loop Image
-    CGSize LoopImageSmallSize = CGSizeMake(CELL_WIDTH, CELL_HEIGHT);
-    UIGraphicsBeginImageContext(LoopImageSmallSize);
-    [LoopImage drawInRect:CGRectMake(0, 0, LoopImageSmallSize.width, LoopImageSmallSize.height)];
-    SmallImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    // Create Large Size Loop Image
-    CGSize LoopImageLargeSize = CGSizeMake(80, 80);
-    UIGraphicsBeginImageContext(LoopImageLargeSize);
-    [LoopImage drawInRect:CGRectMake(0, 0, LoopImageLargeSize.width, LoopImageLargeSize.height)];
-    LargeImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    float CellHeightLocation = (ControlView.bounds.size.height - CELL_HEIGHT)/2;
-    for (int Index = 0; Index < self.GrooveCellList.count; Index++)
-    {
-        CGRect TmpFrame = CGRectMake(Index * CELL_WIDTH - CurrentMove - PermanentFrameMove, CellHeightLocation, CELL_WIDTH, CELL_HEIGHT);
-        UILabel * TmpLabel = [[UILabel alloc] initWithFrame:TmpFrame];
-        
-        
-        TmpLabel.backgroundColor = [UIColor colorWithPatternImage:SmallImage];
 
-        TmpLabel.text = [self ReturnListCellValue:self.GrooveCellList[Index]];
-        TmpLabel.textAlignment = NSTextAlignmentCenter;
+    float CellWidth  = CELL_WIDTH;
+    float CellHeight = CELL_HEIGHT;
+    float CellLocation_X = 0;
+    float CellLocation_Y = (ControlView.bounds.size.height - CellHeight)/2 ;
+    
+    for (int Index = 0; Index < self.GrooveCellValueStringList.count; Index++)
+    {
+        CGRect TmpFrame = CGRectMake(CellLocation_X, CellLocation_Y, CellWidth, CellHeight);
+        CellLocation_X += CellWidth + CELL_MERGIN;
         
-        [ControlView addSubview:TmpLabel];
+        SelectBarCell * TmpCell = [[SelectBarCell alloc] initWithFrame:TmpFrame];
+        TmpCell.IndexNumber = Index;
+        TmpCell.ValueLabel.text = (NSString *)self.GrooveCellValueStringList[Index];
+        TmpCell.delegate = self;
+        TmpCell.HorizontalSensitivity = [self Sensitivity];
+
+        [ControlView addSubview:TmpCell];
     }
+    
+    CGRect frame = self.GrooveCellListView.frame;
+    self.GrooveCellListView.frame = CGRectMake(frame.origin.x + [self FocusLine] - CELL_WIDTH/2, frame.origin.y, frame.size.width, frame.size.height);
     
     [self SetFrameValueWhenStopSelect];
 }
 
-- (NSString *) ReturnListCellValue : (NSObject *) CellValue
-{
-    NSString *ReturnString = @"";
-    if ([NSStringFromClass([CellValue class]) isEqualToString: NSStringFromClass([NSNumber class])])
-    {
-        ReturnString = [(NSNumber *)CellValue stringValue];
-    }
-    else if([NSStringFromClass([CellValue class])isEqualToString: NSStringFromClass([NSString class])])
-    {
-        ReturnString = (NSString *)CellValue;
-    }
-    else if([NSStringFromClass([CellValue class])isEqualToString: @"__NSCFString"])
-    {
-        ReturnString = (NSString *)CellValue;
-    }
-    return  ReturnString;
-}
-
 - (void) FlashDisplayFrame
 {
-    if (self.GrooveCellList == nil)
+    if (self.GrooveCellListView.subviews == nil)
     {
         return;
     }
     
+    UIView * ControlView = self.GrooveCellListView;
+
     Boolean NoFucus = YES;
+   
+    float StartLine = 0;
+    float EndLine = self.HerizontalScrollBar.frame.size.width;
     
-    float CellHeightLocation = (self.bounds.size.height - CELL_HEIGHT)/2;
-    for (int Index = 0; Index < self.GrooveCellList.count; Index++)
+    for (int Index = 0; Index < self.GrooveCellListView.subviews.count; Index++)
     {
-        CGRect TmpFrame = CGRectMake(Index * CELL_WIDTH - CurrentMove - PermanentFrameMove, CellHeightLocation, CELL_WIDTH, CELL_HEIGHT);
-        UILabel * TmpLabel = self.subviews[Index];
-        TmpLabel.frame = TmpFrame;
-        if (TmpFrame.origin.x + TmpFrame.size.width > self.bounds.size.width ||
-            TmpFrame.origin.x < self.bounds.origin.x
+        SelectBarCell * TmpCell = ControlView.subviews[Index];
+        
+        float CellStartLine = TmpCell.frame.origin.x + ControlView.frame.origin.x;
+        float CellEndLine = CellStartLine + TmpCell.frame.size.width;
+        
+        if (CellEndLine > EndLine ||
+            CellStartLine < StartLine
             )
         {
             // if cell is out of view frame, it will be hidden.
-            TmpLabel.hidden = YES;
+            TmpCell.hidden = YES;
         }
         else
         {
-            TmpLabel.hidden = NO;
+            TmpCell.hidden = NO;
         }
         
-        if ([self isFocusCell:TmpLabel])
+        
+        if (NoFucus && [self isFocusCell:TmpCell])
         {
             self.FocusIndex = Index;
             NoFucus = NO;
@@ -149,34 +121,39 @@
     // it avoid user have no focus cell
     if (self.FocusIndex == 0 && NoFucus)
     {
-        PermanentFrameMove += 1;
-        [self FlashDisplayFrame];
+        [self HorizontalValueChange:1 :nil];
     }
-    else if (self.FocusIndex == (self.GrooveCellList.count -1) && NoFucus)
+    else if (self.FocusIndex == (self.GrooveCellValueStringList.count -1) && NoFucus)
     {
-        PermanentFrameMove -= 1;
-        [self FlashDisplayFrame];
+        [self HorizontalValueChange: -1 :nil];
     }
 }
 
-- (Boolean) isFocusCell: (UILabel *) Label
+- (Boolean) isFocusCell: (SelectBarCell *) TargetCell
 {
-    if ((Label.frame.origin.x + Label.frame.size.width > self.bounds.size.width/2)
-        && Label.frame.origin.x < self.bounds.size.width/2
-        )
+    UIView * ControlView = self.GrooveCellListView;
+
+    float CellViewStart = TargetCell.frame.origin.x + ControlView.frame.origin.x;
+    float CellViewEnd = TargetCell.frame.origin.x + TargetCell.frame.size.width + ControlView.frame.origin.x;
+
+    if (CellViewStart <= [self FocusLine] && CellViewEnd >= [self FocusLine])
     {
+        NSLog(@"New Focus %d", TargetCell.IndexNumber);
         return YES;
     }
+    
     return NO;
 }
 
+
 - (void) SetFrameValueWhenStopSelect
 {
-    int NewPermanentFrameMove = -1 * (CELL_WIDTH * (FIRST_CELL_OFFSET_COUNT - self.FocusIndex));
-    PermanentFrameMove += CurrentMove;
-    CurrentMove = 0;
-    MoveToCenterCounter = NewPermanentFrameMove - PermanentFrameMove;
-
+    if (MoveToCenterTimer != nil)
+    {
+        [MoveToCenterTimer invalidate];
+        MoveToCenterTimer = nil;
+    }
+    
     MoveToCenterTimer = [NSTimer scheduledTimerWithTimeInterval:0.01
                                                          target:self
                                                        selector:@selector(MoveFocusCellToCenterTick:)
@@ -184,26 +161,36 @@
                                                         repeats:YES];
 }
 
-
 - (void) MoveFocusCellToCenterTick: (NSTimer *) ThisTimer
 {
-    if (MoveToCenterCounter >0)
-    {
-        PermanentFrameMove++;
-        MoveToCenterCounter--;
-    }
-    else if(MoveToCenterCounter <0)
-    {
-        PermanentFrameMove--;
-        MoveToCenterCounter++;
-    }
-    [self FlashDisplayFrame];
+    // Focus Cell base
+    UIView * ControlView = self.GrooveCellListView;
+    SelectBarCell * FocusCell = ControlView.subviews[self.FocusIndex];
+    float FocusCellBase_X = FocusCell.frame.origin.x + ControlView.frame.origin.x;
     
     
-    if (MoveToCenterCounter == 0)
+    if ((int)FocusCellBase_X > (int)([self FocusLine] - CELL_WIDTH/2))
     {
-        [MoveToCenterTimer invalidate];
-        MoveToCenterTimer = nil;
+        [self HorizontalValueChange:1 :nil];
+    }
+    else if ((int)FocusCellBase_X < (int)([self FocusLine]  - CELL_WIDTH/2))
+    {
+        [self HorizontalValueChange:-1 :nil];
+    }
+    else
+    {
+        [self FlashDisplayFrame];
+        
+        if (MoveToCenterTimer != nil)
+        {
+            [MoveToCenterTimer invalidate];
+            MoveToCenterTimer = nil;
+        }
+        else
+        {
+            [ThisTimer invalidate];
+            return;
+        }
         
         // Until stop touching, parent's focusIndex will change.
         if (self.delegate != nil)
@@ -224,6 +211,8 @@
                                                        selector:@selector(LongTouchFlashTick:)
                                                        userInfo:nil
                                                         repeats:YES];
+    
+    
 }
 
 - (void) LongTouchFlashTick: (NSTimer *) ThisTimer
@@ -249,22 +238,34 @@
 
 // ============================
 // Property
+//
 - (float) Sensitivity
 {
-    return 1;
+    return 2;
 }
 
-
-- (NSMutableArray *) GetGrooveCellList
+- (float) FocusLine
 {
-    return _GrooveCellList;
-}
-
--(void) SetGrooveCellList: (NSMutableArray *) NewValue
-{
-    if (NewValue != _GrooveCellList)
+    if (_FocusLine == 0)
     {
-        _GrooveCellList = NewValue;
+        UIView * ControlView = self.GrooveCellListView;
+        _FocusLine = ControlView.bounds.size.width/2;
+    }
+    
+    return _FocusLine;
+}
+
+
+- (NSMutableArray *) GetGrooveCellValueStringList
+{
+    return _GrooveCellValueStringList;
+}
+
+-(void) SetGrooveCellValueStringList: (NSMutableArray *) NewValue
+{
+    if (NewValue != _GrooveCellValueStringList)
+    {
+        _GrooveCellValueStringList = NewValue;
         [self DisplayCellList];
     }
 }
@@ -295,10 +296,12 @@
 
 - (void) SetFocusIndex:(int) NewValue
 {
+  
+    UIView * ControlView = self.GrooveCellListView;
 
-    if (_GrooveCellList == nil
-        || self.subviews.count == 0
-        || self.subviews.count <= NewValue
+    if (_GrooveCellValueStringList == nil
+        || ControlView.subviews.count == 0
+        || ControlView.subviews.count <= NewValue
         )
     {
         return;
@@ -306,7 +309,6 @@
     
     int OldValue = _FocusIndex;
     _FocusIndex = NewValue;
-
 
     // Set from code, not user touch, CurrentMove will be Zero.
     // (MoveToCenterTimer == nil) is for avoid recursive error.
@@ -316,69 +318,36 @@
         return;
     }
     
-    // Reset old Label background color
-    UILabel * OldFocusLabel = self.subviews[OldValue];
-    OldFocusLabel.backgroundColor = [UIColor colorWithPatternImage:SmallImage];
     
     // Set New label background color
     // When Initialize, we will set _FocusIndex from zero to zero.
     // So it must out of brackets.
-    UILabel * NewFocusLabel = self.subviews[NewValue];
-    NewFocusLabel.backgroundColor = [UIColor blueColor];
+    NSLog(@"OldFocusCell");
+    SelectBarCell * OldFocusCell = ControlView.subviews[OldValue];
+    OldFocusCell.IsFocusOn = NO;
+    
+    NSLog(@"NewFocusCell");
+    SelectBarCell * NewFocusCell = ControlView.subviews[NewValue];
+    NewFocusCell.IsFocusOn = YES;
+
+
+
 }
 //
 // ============================
 
-// ======
-//
-//
-
-- (int) GetTouchedCellIndex : (CGPoint) TouchedLocation
-{
-    // 左右移動過的就回傳 FocusIndex
-    if (_MovedMode == SELECT_CELL || _MovedMode == SELECT_CAN_DROP)
-    {
-        return self.FocusIndex;
-    }
-    else
-    {
-        float MiddlePoint = self.bounds.size.width /2 ;
-        int IndexOffet = (MiddlePoint - TouchedLocation.x - CELL_WIDTH/2 ) / CELL_WIDTH;
-        return IndexOffet;
-    }
-}
-
-- (void) CheckIsSingleTouchChoose
-{
-    if (_MovedMode == SELECT_NONE || _MovedMode == SELECT_CELL_LOOP_COUNT)
-    {
-        [self GetTouchedCellIndex:_OriginalLocation];
-    }
-}
-
-- (void) TouchedEndReset
-{
-    _MovedMode = SELECT_NONE;
-}
-//
-// ======
 
 // ============================
 //
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    [self TouchedEndReset];
-    
     _OriginalLocation = [self GetLocationPoint: touches];
-    
     self.Touched = YES;
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self CheckIsSingleTouchChoose];
-    
     self.Touched = NO;
 }
 
@@ -390,32 +359,14 @@
         
         // Because zero point is on left top, large point in on right bottom
         int MoveLeftRight = (_OriginalLocation.x - TouchLocation.x) / [self Sensitivity];
-        int MoveUpDown = (_OriginalLocation.y - TouchLocation.y) / [self Sensitivity];
-
         
-        if (MoveLeftRight != 0 && (_MovedMode == SELECT_CELL || _MovedMode == SELECT_NONE))
+        if (MoveLeftRight != 0)
         {
-            _MovedMode = SELECT_CELL;
             
-            CurrentMove = MoveLeftRight;
-            {
-                [self FlashDisplayFrame];
-            }
-        }
-        else if (MoveUpDown != 0 && (_MovedMode == SELECT_CELL_LOOP_COUNT || _MovedMode == SELECT_NONE))
-        {
-            _MovedMode = SELECT_CELL_LOOP_COUNT;
-            // TODO : 記錄所條的Cell Index
-            int TargetIndex = [self GetTouchedCellIndex:_OriginalLocation];
-            
-            // TODO Add delegate to change loop count
-            //self.BPMValue += MoveUp;
-            
+            [self HorizontalValueChange:MoveLeftRight :nil];
+
             _OriginalLocation = TouchLocation;
-        }
-        else if (_MovedMode == SELECT_CAN_DROP)
-        {
-            
+
         }
     }
 }
@@ -430,6 +381,57 @@
     UITouch *Touch =  [touches anyObject];
     return [Touch locationInView:Touch.view];
 }
+
+
+
+// ============================
+// delegate
+//
+- (void) HorizontalValueChange:(int)ChangeValue :(SelectBarCell *)ThisCell
+{
+    
+    CGRect frame = self.GrooveCellListView.frame;
+    self.GrooveCellListView.frame = CGRectMake(frame.origin.x - ChangeValue, frame.origin.y, frame.size.width, frame.size.height);
+    
+    [self FlashDisplayFrame];
+
+}
+
+
+- (void) VerticlValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell
+{
+    if (self.delegate != nil)
+    {
+        int Index = ThisCell.IndexNumber;
+        
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(SetTargetCellLoopCountAdd: AddValue:)])
+        {
+            if ([self.delegate SetTargetCellLoopCountAdd:Index  AddValue: ChangeValue])
+            {
+                SelectBarCell * TargetCell =  self.GrooveCellListView.subviews[Index];
+                TargetCell.ValueLabel.text = (NSString *)self.GrooveCellValueStringList[Index];
+            }
+            
+        }
+    }
+}
+
+- (BOOL) LongPressModeEnable: (SelectBarCell *) ThisCell
+{
+    if (_MovedMode == SELECT_CELL_NONE)
+    {
+        _MovedMode = SELECT_CAN_DROP;
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+
+//
+// ============================
 
 
 // 

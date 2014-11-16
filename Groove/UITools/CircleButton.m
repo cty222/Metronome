@@ -14,7 +14,7 @@
     __block NSInteger _SubView_F4_degree;
     
     BOOL _Touched;
-    CGPoint OriginalLocation;
+    CGPoint _OriginalLocation;
     
     float _IndexValue;
 
@@ -352,7 +352,7 @@
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    OriginalLocation = [self GetLocationPoint: touches];
+    _OriginalLocation = [self GetLocationPoint: touches];
 
     self.Touched = YES;
 }
@@ -368,11 +368,11 @@
     {
         CGPoint TouchLocation = [self GetLocationPoint: touches];
         // Because zero point is on left top, large point in on right bottom
-        int MoveUp = (double)(OriginalLocation.y - TouchLocation.y) / (double)self.IndexValueSensitivity;
+        int MoveUp = (double)(_OriginalLocation.y - TouchLocation.y) / (double)self.IndexValueSensitivity;
         if (MoveUp != 0)
         {
            self.IndexValue += (float)MoveUp * self.IndexRange.UnitValue;
-           OriginalLocation = TouchLocation;
+           _OriginalLocation = TouchLocation;
         }
     }
 }

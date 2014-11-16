@@ -15,8 +15,6 @@
 
 @implementation MetronomeMainViewControllerIphone
 {
-    NSArray * _CurrentCellsDataTable;
-
     // Index
     int _FocusIndex;
     
@@ -192,9 +190,9 @@
 //
 - (void) FillData
 {
-    _CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]];
+    self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]];
     
-    [_LoopAndPlayViewSubController CopyGrooveLoopListToSelectBar : _CurrentCellsDataTable];
+    [_LoopAndPlayViewSubController CopyGrooveLoopListToSelectBar : self.CurrentCellsDataTable];
 }
 
 
@@ -212,13 +210,13 @@
 // 不會設下去到Bottom View UI
 - (void) SetFocusIndex:(int) NewValue
 {
-    if (NewValue < 0 || NewValue >= _CurrentCellsDataTable.count || _FocusIndex == NewValue)
+    if (NewValue < 0 || NewValue >= self.CurrentCellsDataTable.count || _FocusIndex == NewValue)
     {
       return;
     }
     
     _FocusIndex = NewValue;
-    self.CurrentCell = _CurrentCellsDataTable[_FocusIndex];
+    self.CurrentCell = self.CurrentCellsDataTable[_FocusIndex];
     
     self.TopSubView.BPMPicker.BPMValue = [self.CurrentCell.bpmValue intValue];
     [_CellParameterSettingSubController SetVolumeBarVolume:self.CurrentCell];
@@ -345,7 +343,7 @@
         ChangeToNextCellFlag = NO;
         int NewIndex = self.FocusIndex + 1;
         
-        if (NewIndex >= _CurrentCellsDataTable.count)
+        if (NewIndex >= self.CurrentCellsDataTable.count)
         {
             self.PlayingMode = STOP_PLAYING;
             return;

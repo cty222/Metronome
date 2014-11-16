@@ -42,6 +42,8 @@
 		004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004BE67F19B2E131002CD995 /* MetronomeMainViewControllerIphone.xib */; };
 		004BE68519B2E670002CD995 /* GlobalConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 004BE68419B2E670002CD995 /* GlobalConfig.plist */; };
 		004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 004BE68719B2EA93002CD995 /* GlobalConfig.m */; };
+		005662181A185D8E002222A0 /* SelectBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005662171A185D8E002222A0 /* SelectBarCell.xib */; };
+		0056621B1A185E0D002222A0 /* SelectBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0056621A1A185E0D002222A0 /* SelectBarCell.m */; };
 		005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */; };
 		006175BE1A0BCFE100113560 /* PlayLoop_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */; };
 		006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BD1A0BCFE100113560 /* PlayLoop.pdf */; };
@@ -139,6 +141,9 @@
 		004BE68419B2E670002CD995 /* GlobalConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GlobalConfig.plist; sourceTree = "<group>"; };
 		004BE68619B2EA93002CD995 /* GlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConfig.h; sourceTree = "<group>"; };
 		004BE68719B2EA93002CD995 /* GlobalConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConfig.m; sourceTree = "<group>"; };
+		005662171A185D8E002222A0 /* SelectBarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectBarCell.xib; sourceTree = "<group>"; };
+		005662191A185E0D002222A0 /* SelectBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectBarCell.h; path = UITools/SelectBarCell.h; sourceTree = "<group>"; };
+		0056621A1A185E0D002222A0 /* SelectBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectBarCell.m; path = UITools/SelectBarCell.m; sourceTree = "<group>"; };
 		005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f1.pdf; sourceTree = "<group>"; };
 		006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop_red.pdf; sourceTree = "<group>"; };
 		006175BD1A0BCFE100113560 /* PlayLoop.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop.pdf; sourceTree = "<group>"; };
@@ -385,12 +390,15 @@
 				00677B1119BC5DA4007A3085 /* LargeBPMPicker.h */,
 				00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */,
 				00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */,
-				00B9689919CEF10900AAD1AF /* MetronomeSelectBar.h */,
-				00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */,
-				00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */,
 				006175C01A0BD4A200113560 /* CircleButton.h */,
 				006175C11A0BD4A200113560 /* CircleButton.m */,
 				00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */,
+				00B9689919CEF10900AAD1AF /* MetronomeSelectBar.h */,
+				00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */,
+				00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */,
+				005662171A185D8E002222A0 /* SelectBarCell.xib */,
+				005662191A185E0D002222A0 /* SelectBarCell.h */,
+				0056621A1A185E0D002222A0 /* SelectBarCell.m */,
 			);
 			name = MetronmeItems;
 			sourceTree = "<group>";
@@ -593,6 +601,7 @@
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
 				0034734E1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf in Resources */,
 				00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */,
+				005662181A185D8E002222A0 /* SelectBarCell.xib in Resources */,
 				0010FF2619FEC1B5005E74C1 /* reflect_number_0.pdf in Resources */,
 				001F01191A05511300189941 /* IssueAndInfo.txt in Resources */,
 				005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */,
@@ -640,6 +649,7 @@
 				004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */,
 				001B2B3D19D4106A0057A22E /* TempoList.m in Sources */,
 				004BE64C19B2DDC8002CD995 /* main.m in Sources */,
+				0056621B1A185E0D002222A0 /* SelectBarCell.m in Sources */,
 				00DA131C19F4EF1900F27E25 /* BeepBound.m in Sources */,
 				00D92FD61A15FE5700AEC17F /* SystemPageControl.m in Sources */,
 				003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */,

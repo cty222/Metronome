@@ -28,6 +28,9 @@
         self.SelectGrooveBar = [[MetronomeSelectBar alloc] initWithFrame:self.SelectGrooveBar.frame];
         [self addSubview:self.SelectGrooveBar];
         
+        self.PlayLoopCellButton = self.SelectGrooveBar.PlayLoopCellButton;
+        self.AddLoopCellButton = self.SelectGrooveBar.AddLoopCellButton;
+        
         // Back ground
         self.backgroundColor = [UIColor whiteColor];
        

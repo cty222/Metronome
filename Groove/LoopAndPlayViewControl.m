@@ -14,6 +14,8 @@
     UIImage *_SinglePlayImage;
     UIImage *_RedPlayloopImage;
     UIImage *_BlackPlayloopImage;
+    
+    NSMutableArray * _GrooveLoopList;
 }
 
 - (void) InitlizePlayingItems
@@ -94,12 +96,12 @@
 
 - (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable
 {
-    NSMutableArray * GrooveLoopList = [[NSMutableArray alloc]init];
+    _GrooveLoopList = [[NSMutableArray alloc]init];
     for (TempoCell *Cell in CellDataTable)
     {
-        [GrooveLoopList addObject:[Cell.loopCount stringValue]];
+        [_GrooveLoopList addObject:[NSString stringWithFormat:@"%d", [Cell.loopCount intValue]]];
     }
-    self.SelectGrooveBar.GrooveCellList = GrooveLoopList;
+    self.SelectGrooveBar.GrooveCellValueStringList = _GrooveLoopList;
 }
 
 // =========================
@@ -204,6 +206,32 @@
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
     Parent.FocusIndex = NewValue;
     
+}
+
+// Loop 增減
+- (BOOL) SetTargetCellLoopCountAdd: (int) Index AddValue:(int)Value;
+{
+    NSLog(@"Control Index %d!!", Index);
+    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    
+    TempoCell * TargetCell = Parent.CurrentCellsDataTable[Index];
+    
+    
+    int NewTotalValue = [TargetCell.loopCount intValue] + Value;
+    
+    if (NewTotalValue >= 0)
+    {
+        TargetCell.loopCount = [NSNumber numberWithInt:NewTotalValue];
+        
+        // TODO : 不要save這麼頻繁
+        [gMetronomeModel Save];
+        
+        [_GrooveLoopList replaceObjectAtIndex:Index withObject:[NSString stringWithFormat:@"%d", NewTotalValue]];
+
+        return YES;
+    }
+    
+    return NO;
 }
 //
 // =========================
