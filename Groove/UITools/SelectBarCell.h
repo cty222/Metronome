@@ -37,6 +37,7 @@ typedef enum{
 @property (getter = GetIsfocusOn, setter = SetIsfocusOn:) BOOL IsFocusOn;
 @property (getter = GetMoveMode, setter = SetMoveMode:) SELECT_CELL_MOVE_MODE MoveMode;
 
+@property (getter = GetShortPressSecond, setter = SetShortPressSecond:) float ShortPressSecond;
 @property (getter = GetLongPressSecond, setter = SetLongPressSecond:) float LongPressSecond;
 @property (getter = GetVerticalSensitivity, setter = SetVerticalSensitivity:) float VerticalSensitivity;
 @property (getter = GetHorizontalSensitivity, setter = SetHorizontalSensitivity:) float HorizontalSensitivity;

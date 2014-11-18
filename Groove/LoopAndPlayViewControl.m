@@ -90,6 +90,7 @@
 
 - (void) ChangeSelectBarForcusIndex: (int) NewValue
 {
+    self.SelectGrooveBar.NoneHumanChangeFocusFlag = YES;
     self.SelectGrooveBar.FocusIndex = NewValue;
 }
 
@@ -218,9 +219,12 @@
     
     
     int NewTotalValue = [TargetCell.loopCount intValue] + Value;
-    
-    if (NewTotalValue >= 0)
+    NSLog(@"LoopValueMin %d", [[GlobalConfig LoopValueMin] intValue]);
+    NSLog(@"LoopValueMax %d", [[GlobalConfig LoopValueMax] intValue]);
+
+    if (NewTotalValue >= [[GlobalConfig LoopValueMin] intValue] && NewTotalValue <= [[GlobalConfig LoopValueMax] intValue])
     {
+        NSLog(@"1235456789");
         TargetCell.loopCount = [NSNumber numberWithInt:NewTotalValue];
         
         // TODO : 不要save這麼頻繁

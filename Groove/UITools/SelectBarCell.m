@@ -20,7 +20,13 @@
     CGPoint _OriginalLocation;
     NSTimer *_LongPressTimer;
     
+    // Short press
+    NSDate * _Date;
+    double _PressTime_ms;
+
+    
     float _LongPressSecond;
+    float _ShortPressSecond;
     float _VerticalSensitivity;
     float _HorizontalSensitivity;
 }
@@ -42,9 +48,12 @@
         self.userInteractionEnabled = YES;
         
         self.MoveMode = SELECT_CELL_NONE;
+        self.ShortPressSecond = 0.5;
         self.LongPressSecond = 0.8;
         self.VerticalSensitivity = 4;
         self.HorizontalSensitivity = 1;
+        
+        _Date = [NSDate date];
     }
     return self;
 }
@@ -102,8 +111,7 @@
     _Touched = NewValue;
     if (_Touched)
     {
-
-        
+        _PressTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
         
        if (_LongPressTimer != nil)
         {
@@ -120,6 +128,15 @@
     }
     else
     {
+        if (_PressTime_ms != 0)
+        {
+            double CurrentRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
+            if ((CurrentRecordTime_ms -_PressTime_ms) < self.ShortPressSecond * 1000.0)
+            {
+                [self ShortPressToSetFocus:self];
+            }
+        }
+        
         self.MoveMode = SELECT_CELL_NONE;
     }
 }
@@ -131,8 +148,6 @@
 
 - (void) SetMoveMode : (SELECT_CELL_MOVE_MODE) NewValue
 {
-     NSLog(@"Index %d, SetMoveMode",self.IndexNumber);
-
     if (NewValue >= SELECT_CELL_MODE_END || NewValue < SELECT_CELL_NONE)
     {
         NewValue = SELECT_CELL_NONE;
@@ -140,30 +155,23 @@
     
     if (NewValue == SELECT_CELL_LONG_PRRESS_MOVE)
     {
-        NSLog(@"Index %d, 1",self.IndexNumber);
         self.CurrentDisplayView = self.LongPressImage;
         _MoveMode = SELECT_CELL_LONG_PRRESS_MOVE;
     }
     else if (NewValue == SELECT_CELL_FOCUS_ON_MOVE || (self.IsFocusOn && _MoveMode == SELECT_CELL_NORMAL_MOVE))
     {
-        NSLog(@"Index %d, 2",self.IndexNumber);
-
         self.CurrentDisplayView = self.FocusImage;
         _MoveMode = SELECT_CELL_FOCUS_ON_MOVE;
 
     }
     else if (NewValue == SELECT_CELL_FOCUS_ON || self.IsFocusOn)
     {
-        NSLog(@"Index %d, 3",self.IndexNumber);
-
         self.CurrentDisplayView = self.FocusImage;
         _MoveMode = SELECT_CELL_FOCUS_ON;
 
     }
     else
     {
-        NSLog(@"Index %d, 4",self.IndexNumber);
-
         self.CurrentDisplayView = self.NoramlImage;
         _MoveMode = NewValue;
     }
@@ -175,6 +183,20 @@
 {
 
     return _MoveMode;
+}
+
+- (void) SetShortPressSecond : (float) NewValue
+{
+    _ShortPressSecond = NewValue;
+}
+
+- (float)GetShortPressSecond
+{
+    if (_ShortPressSecond == 0)
+    {
+        _ShortPressSecond = 0.25;
+    }
+    return _ShortPressSecond;
 }
 
 - (void) SetLongPressSecond : (float) NewValue
@@ -261,7 +283,16 @@
         
         if (self.MoveMode != SELECT_CELL_LONG_PRRESS_MOVE)
         {
-            self.MoveMode = SELECT_CELL_NORMAL_MOVE;
+            if (!self.IsFocusOn)
+            {
+                self.MoveMode = SELECT_CELL_NORMAL_MOVE;
+            }
+            else
+            {
+                self.MoveMode = SELECT_CELL_FOCUS_ON_MOVE;
+            }
+            
+            
             if (MoveHerizontal != 0)
             {
                 _OriginalLocation = TouchLocation;

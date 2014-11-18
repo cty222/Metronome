@@ -228,6 +228,34 @@ static NSMutableDictionary * ThisPlist;
     return [ThisPlist objectForKey:@"LastFocusCellIndex"];
 }
 
++ (NSNumber *) LoopValueMax
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return nil;
+    }
+    return [ThisPlist objectForKey:@"LoopValueMax"];
+}
+
++ (NSNumber *) LoopValueMin
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return nil;
+    }
+    
+    return [ThisPlist objectForKey:@"LoopValueMin"];
+}
+
++ (NSNumber *) LoopCellMaxCount
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return nil;
+    }
+    
+    return [ThisPlist objectForKey:@"LoopCellMaxCount"];
+}
 //
 // ============================
 

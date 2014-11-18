@@ -34,7 +34,6 @@
     CURRENT_PLAYING_NOTE _CurrentPlayingNoteCounter;
     int _LoopCountCounter;
     int _TimeSignatureCounter;
-    BOOL ChangeToNextCellFlag;
     //
     // ========================
 
@@ -231,14 +230,6 @@
         // TODO:
         //self.BottomSubView.DeleteLoopCellButton.enabled = YES;
     }
-    
-    if (self.PlayingMode == LOOP_PLAYING)
-    {
-        
-        [self StopClickWithResetCounter: YES];
-        [self StartClick];
-    }
-    
 }
 
 - (METRONOME_PLAYING_MODE) GetPlayingMode
@@ -282,8 +273,6 @@
 //  =========================
 // delegate
 //
-// 不會設下去到Bottom View UI
-
 - (void) FirstBeatFunc
 {
     // Accent
@@ -335,12 +324,11 @@
 //  Play Function
 //
 
-- (void) PlayingLoopCellList
+- (void) ChangeToNextLoopCell
 {
     // Change to next
     if (self.PlayingMode == LOOP_PLAYING)
     {
-        ChangeToNextCellFlag = NO;
         int NewIndex = self.FocusIndex + 1;
         
         if (NewIndex >= self.CurrentCellsDataTable.count)
@@ -348,8 +336,20 @@
             self.PlayingMode = STOP_PLAYING;
             return;
         }
+
+        [self StopClickWithResetCounter: YES];
         self.FocusIndex = NewIndex;
+        
+        // 如果Count是0就跳到下一個Cell
+        if ([self.CurrentCell.loopCount intValue] == 0)
+        {
+            [self ChangeToNextLoopCell];
+            return;
+        }
+        
         [_LoopAndPlayViewSubController ChangeSelectBarForcusIndex: NewIndex];
+        
+        [self StartClick];
     }
 }
 
@@ -381,60 +381,66 @@
     
     // 因為Timer的特性是先等再做
     // 所以必須要調整成先開始一次與最後多等一次
+    if (self.PlayingMode == LOOP_PLAYING)
+    {
+        if (_LoopCountCounter >= [self.CurrentCell.loopCount intValue])
+        {
+            [self ChangeToNextLoopCell];
+            // 最後一次只有delay
+            // 沒有聲音
+            return;
+        }
+        
+        if (_CurrentPlayingNoteCounter == NONE_CLICK)
+        {
+            _CurrentPlayingNoteCounter = FIRST_CLICK;
+        }
+    }
     [self MetronomeTicker: nil];
     
     PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE([self.CurrentCell.bpmValue intValue])
                                                       target:self
                                                     selector:@selector(MetronomeTicker:)
                                                     userInfo:nil
-                                                     repeats:true];
+                                                     repeats:YES];
 }
 
-- (void) MetronomeTicker: (NSTimer *) theTimer
+- (void) MetronomeTicker: (NSTimer *) ThisTimer
 {
-    // Loop_Playing mode only !!
-    if (ChangeToNextCellFlag)
+    if (self.PlayingMode == LOOP_PLAYING)
     {
-        ChangeToNextCellFlag = NO;
-        if (self.PlayingMode == LOOP_PLAYING)
+        // Four Note family
+        if (_CurrentPlayingNoteCounter == RESET_CLICK)
         {
-            [self PlayingLoopCellList];
-        }
-        return;
-    }
-    
-    // Four Note family
-    if (_CurrentPlayingNoteCounter == LAST_CLICK)
-    {
-        if (self.PlayingMode == LOOP_PLAYING)
-        {
+            _CurrentPlayingNoteCounter = FIRST_CLICK;
+
             _TimeSignatureCounter++;
-            if (_TimeSignatureCounter == [_CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentCell.timeSignatureType.timeSignature])
-            {
-                _TimeSignatureCounter = 0;
-                _LoopCountCounter++;
-                if (_LoopCountCounter == [self.CurrentCell.loopCount intValue])
-                {
-                    _LoopCountCounter = 0;
-                    ChangeToNextCellFlag = YES;
-                    
-                    // 最後一次只有delay
-                    // 沒有聲音
-                    return;
-                }
-            }
+           if (_TimeSignatureCounter == [_CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentCell.timeSignatureType.timeSignature])
+           {
+               _TimeSignatureCounter = 0;
+               _LoopCountCounter++;
+               if (_LoopCountCounter >= [self.CurrentCell.loopCount intValue])
+               {
+                   [self ChangeToNextLoopCell];
+                   return;
+               }
+           }
         }
-        
-        _CurrentPlayingNoteCounter = FIRST_CLICK;
+        //NSLog(@"_CurrentPlayingNoteCounter :%d, index %d", _CurrentPlayingNoteCounter, self.FocusIndex);
+        [NotesTool NotesFunc:_CurrentPlayingNoteCounter :_NTool];
+        _CurrentPlayingNoteCounter++;
+    }
+    else if (self.PlayingMode == SINGLE_PLAYING)
+    {
+       [NotesTool NotesFunc:_CurrentPlayingNoteCounter :_NTool];
     }
     else
     {
-        _CurrentPlayingNoteCounter++;
+        [self StopClickWithResetCounter: YES];
+        [ThisTimer invalidate];
     }
     
-   [NotesTool NotesFunc:_CurrentPlayingNoteCounter :_NTool];
-    
-    if(self.ChangeBPMValueFlag && theTimer != nil && self.PlayingMode != STOP_PLAYING)
+    if(self.ChangeBPMValueFlag && ThisTimer != nil && self.PlayingMode != STOP_PLAYING)
     {
         self.ChangeBPMValueFlag = NO;
         [self StopClickWithResetCounter: NO];

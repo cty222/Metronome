@@ -23,6 +23,7 @@ typedef enum {
     A_CLICK     = 10,
     AF_GA_CLICK = 11,
     LAST_CLICK  = 12,
+    RESET_CLICK = 13,
     ACCENT_CLICK
 } CURRENT_PLAYING_NOTE;
 

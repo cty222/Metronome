@@ -8,16 +8,17 @@
 
 #import "MetronomeSelectBar.h"
 
-#define CELL_WIDTH   40
-#define CELL_HEIGHT  40
-#define CELL_MERGIN  CELL_WIDTH /4;
-#define FIRST_CELL_OFFSET_COUNT 2
+#define CELL_WIDTH   (40)
+#define CELL_HEIGHT  (40)
+#define CELL_MARGIN  (CELL_WIDTH /4);
+#define CONTROL_VIEW_MARGIN_LEFT    ([self FocusLine] - CELL_WIDTH/2)
+#define CONTROL_VIEW_MARGIN_RIGHT    (2 * CELL_WIDTH)
 
 @implementation MetronomeSelectBar
 {
     // Data
     NSMutableArray * _GrooveCellValueStringList;
-    
+
     // Property
     BOOL _Touched;
     int _FocusIndex;
@@ -38,6 +39,7 @@
         // Initialization code
         self.FocusIndex = 0;
         self.userInteractionEnabled = YES;
+
     }
     return self;
 }
@@ -51,6 +53,12 @@
     [[ControlView subviews]
      makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
+    ControlView.frame = CGRectMake(ControlView.frame.origin.x,
+                                   ControlView.frame.origin.y,
+                                   (self.GrooveCellValueStringList.count * CELL_WIDTH) + CONTROL_VIEW_MARGIN_LEFT +CONTROL_VIEW_MARGIN_RIGHT,
+                                   ControlView.frame.size.height
+                                   );
+    
     float CellWidth  = CELL_WIDTH;
     float CellHeight = CELL_HEIGHT;
     float CellLocation_X = 0;
@@ -59,7 +67,7 @@
     for (int Index = 0; Index < self.GrooveCellValueStringList.count; Index++)
     {
         CGRect TmpFrame = CGRectMake(CellLocation_X, CellLocation_Y, CellWidth, CellHeight);
-        CellLocation_X += CellWidth + CELL_MERGIN;
+        CellLocation_X += CellWidth + CELL_MARGIN;
         
         SelectBarCell * TmpCell = [[SelectBarCell alloc] initWithFrame:TmpFrame];
         TmpCell.IndexNumber = Index;
@@ -70,8 +78,8 @@
         [ControlView addSubview:TmpCell];
     }
     
-    CGRect frame = self.GrooveCellListView.frame;
-    self.GrooveCellListView.frame = CGRectMake(frame.origin.x + [self FocusLine] - CELL_WIDTH/2, frame.origin.y, frame.size.width, frame.size.height);
+    CGRect frame = ControlView.frame;
+    ControlView.frame = CGRectMake(frame.origin.x + CONTROL_VIEW_MARGIN_LEFT, frame.origin.y, frame.size.width, frame.size.height);
     
     [self SetFrameValueWhenStopSelect];
 }
@@ -84,7 +92,7 @@
     }
     
     UIView * ControlView = self.GrooveCellListView;
-
+    
     Boolean NoFucus = YES;
    
     float StartLine = 0;
@@ -110,7 +118,7 @@
         }
         
         
-        if (NoFucus && [self isFocusCell:TmpCell])
+        if (NoFucus && [self isFocusCell:TmpCell] && !self.NoneHumanChangeFocusFlag)
         {
             self.FocusIndex = Index;
             NoFucus = NO;
@@ -119,26 +127,28 @@
     
     // This is for first Cell and last Cell
     // it avoid user have no focus cell
-    if (self.FocusIndex == 0 && NoFucus)
+    // 這是防止手動拉動超出邊線
+    if (!self.NoneHumanChangeFocusFlag)
     {
-        [self HorizontalValueChange:1 :nil];
-    }
-    else if (self.FocusIndex == (self.GrooveCellValueStringList.count -1) && NoFucus)
-    {
-        [self HorizontalValueChange: -1 :nil];
+        if (self.FocusIndex == 0 && NoFucus)
+        {
+            [self HorizontalValueChange:1 :nil];
+        }
+        else if (self.FocusIndex == (self.GrooveCellValueStringList.count -1) && NoFucus)
+        {
+            [self HorizontalValueChange: -1 :nil];
+        }
     }
 }
 
 - (Boolean) isFocusCell: (SelectBarCell *) TargetCell
 {
     UIView * ControlView = self.GrooveCellListView;
-
     float CellViewStart = TargetCell.frame.origin.x + ControlView.frame.origin.x;
     float CellViewEnd = TargetCell.frame.origin.x + TargetCell.frame.size.width + ControlView.frame.origin.x;
 
     if (CellViewStart <= [self FocusLine] && CellViewEnd >= [self FocusLine])
     {
-        NSLog(@"New Focus %d", TargetCell.IndexNumber);
         return YES;
     }
     
@@ -179,6 +189,12 @@
     }
     else
     {
+        if (self.Mode == SELECT_BAR_UNCHANGED)
+        {
+            self.Mode = SELECT_NONE;
+            self.NoneHumanChangeFocusFlag = NO;
+        }
+        
         [self FlashDisplayFrame];
         
         if (MoveToCenterTimer != nil)
@@ -248,8 +264,8 @@
 {
     if (_FocusLine == 0)
     {
-        UIView * ControlView = self.GrooveCellListView;
-        _FocusLine = ControlView.bounds.size.width/2;
+        UIView * DisplaySizeView = self.HerizontalScrollBar;
+        _FocusLine = DisplaySizeView.bounds.size.width/2;
     }
     
     return _FocusLine;
@@ -296,6 +312,10 @@
 
 - (void) SetFocusIndex:(int) NewValue
 {
+    if (self.Mode == SELECT_BAR_UNCHANGED)
+    {
+        return;
+    }
   
     UIView * ControlView = self.GrooveCellListView;
 
@@ -312,21 +332,20 @@
 
     // Set from code, not user touch, CurrentMove will be Zero.
     // (MoveToCenterTimer == nil) is for avoid recursive error.
-    if (!_Touched && OldValue != NewValue && MoveToCenterTimer == nil)
+    if (self.NoneHumanChangeFocusFlag)
     {
+        self.Mode = SELECT_BAR_UNCHANGED;
         [self SetFrameValueWhenStopSelect];
         return;
     }
-    
+
     
     // Set New label background color
     // When Initialize, we will set _FocusIndex from zero to zero.
     // So it must out of brackets.
-    NSLog(@"OldFocusCell");
     SelectBarCell * OldFocusCell = ControlView.subviews[OldValue];
     OldFocusCell.IsFocusOn = NO;
     
-    NSLog(@"NewFocusCell");
     SelectBarCell * NewFocusCell = ControlView.subviews[NewValue];
     NewFocusCell.IsFocusOn = YES;
 
@@ -389,9 +408,10 @@
 //
 - (void) HorizontalValueChange:(int)ChangeValue :(SelectBarCell *)ThisCell
 {
-    
-    CGRect frame = self.GrooveCellListView.frame;
-    self.GrooveCellListView.frame = CGRectMake(frame.origin.x - ChangeValue, frame.origin.y, frame.size.width, frame.size.height);
+    UIView * ControlView = self.GrooveCellListView;
+
+    CGRect frame = ControlView.frame;
+    ControlView.frame = CGRectMake(frame.origin.x - ChangeValue, frame.origin.y, frame.size.width, frame.size.height);
     
     [self FlashDisplayFrame];
 
@@ -428,6 +448,12 @@
     {
         return NO;
     }
+}
+
+- (void) ShortPressToSetFocus: (SelectBarCell*) ThisCell
+{
+    self.NoneHumanChangeFocusFlag = YES;
+    self.FocusIndex = ThisCell.IndexNumber;
 }
 
 //

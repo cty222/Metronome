@@ -6,6 +6,10 @@
 //  Copyright (c) 2014年 Cty. All rights reserved.
 //
 
+// ************************************************
+// If Change plist value, it also need to change version
+// ************************************************
+
 #import <Foundation/Foundation.h>
 
 @class GlobalConfig;
@@ -37,6 +41,9 @@ enum {
 + (NSNumber *) BPMMaxValue;
 + (NSNumber *) DbVersion;
 + (NSNumber *) LastFocusCellIndex;
++ (NSNumber *) LoopValueMin;
++ (NSNumber *) LoopValueMax;
++ (NSNumber *) LoopCellMaxCount;
 
 
 // Main View

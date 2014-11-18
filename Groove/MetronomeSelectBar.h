@@ -13,7 +13,8 @@
 typedef enum{
   SELECT_NONE,
   SELECT_CELL,
-  SELECT_CAN_DROP
+  SELECT_CAN_DROP,
+  SELECT_BAR_UNCHANGED
 } SELECT_BAR_MOVE_MODE;
 
 @protocol SelectBarProtocol <NSObject>
@@ -32,6 +33,9 @@ typedef enum{
 
 @property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
 @property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
+
+@property BOOL NoneHumanChangeFocusFlag;
+@property SELECT_BAR_MOVE_MODE Mode;
 
 @property (nonatomic, assign) id<SelectBarProtocol> delegate;
 

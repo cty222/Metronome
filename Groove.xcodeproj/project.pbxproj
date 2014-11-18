@@ -235,9 +235,9 @@
 		003A56A619D3285800747EB3 /* CoreDataModel */ = {
 			isa = PBXGroup;
 			children = (
+				001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */,
 				0036174319D5E2DA00848A35 /* TempoCell.h */,
 				0036174419D5E2DA00848A35 /* TempoCell.m */,
-				001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */,
 				001B2B3B19D4106A0057A22E /* TempoList.h */,
 				001B2B3C19D4106A0057A22E /* TempoList.m */,
 				001B2B2E19D3CF190057A22E /* DbConfig.h */,
