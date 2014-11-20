@@ -12,7 +12,6 @@
 
 typedef enum{
   SELECT_NONE,
-  SELECT_CELL,
   SELECT_CAN_DROP,
   SELECT_BAR_UNCHANGED
 } SELECT_BAR_MOVE_MODE;
@@ -27,11 +26,11 @@ typedef enum{
 
 @end
 
-
 @interface MetronomeSelectBar : XibViewInterface <SelectBarCellProtocol>
 @property (getter = GetGrooveCellValueStringList, setter = SetGrooveCellValueStringList:) NSMutableArray* GrooveCellValueStringList;
 
 @property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
+
 @property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
 
 @property BOOL NoneHumanChangeFocusFlag;

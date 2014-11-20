@@ -16,6 +16,7 @@ typedef enum{
     SELECT_CELL_FOCUS_ON,
     SELECT_CELL_FOCUS_ON_MOVE,
     SELECT_CELL_LONG_PRRESS_MOVE,
+    SELECT_CELL_BLOCK,
     SELECT_CELL_MODE_END
 } SELECT_CELL_MOVE_MODE;
 
@@ -28,7 +29,7 @@ typedef enum{
 - (void) VerticlValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell;
 - (BOOL) LongPressModeEnable: (SelectBarCell *) ThisCell;
 - (void) ShortPressToSetFocus: (SelectBarCell*) ThisCell;
-
+- (void) CellTouchedChange : (BOOL) Touched : (SelectBarCell *) ThisCell;
 @end
 
 @interface SelectBarCell : XibViewInterface <UIGestureRecognizerDelegate>

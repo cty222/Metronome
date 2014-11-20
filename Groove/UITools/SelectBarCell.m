@@ -18,6 +18,9 @@
     SELECT_CELL_MOVE_MODE _MoveMode;
 
     CGPoint _OriginalLocation;
+    CGPoint _OriginalFrameOrigin;
+    CGPoint _TouchedOriginOffset;
+
     NSTimer *_LongPressTimer;
     
     // Short press
@@ -108,6 +111,11 @@
 
 -(void) SetTouched: (BOOL) NewValue
 {
+    if (_Touched == NewValue && self.MoveMode == SELECT_CELL_BLOCK)
+    {
+        return;
+    }
+    
     _Touched = NewValue;
     if (_Touched)
     {
@@ -139,6 +147,8 @@
         
         self.MoveMode = SELECT_CELL_NONE;
     }
+    
+    [self CellTouchedChange:_Touched : self];
 }
 
 - (BOOL) GetTouched
@@ -148,6 +158,13 @@
 
 - (void) SetMoveMode : (SELECT_CELL_MOVE_MODE) NewValue
 {
+    if (_MoveMode == SELECT_CELL_LONG_PRRESS_MOVE
+        && NewValue != SELECT_CELL_LONG_PRRESS_MOVE)
+    {
+        self.frame = CGRectMake(_OriginalFrameOrigin.x, _OriginalFrameOrigin.y, self.frame.size.width, self.frame.size.height);
+    }
+    
+    
     if (NewValue >= SELECT_CELL_MODE_END || NewValue < SELECT_CELL_NONE)
     {
         NewValue = SELECT_CELL_NONE;
@@ -155,6 +172,7 @@
     
     if (NewValue == SELECT_CELL_LONG_PRRESS_MOVE)
     {
+        _OriginalFrameOrigin = self.frame.origin;
         self.CurrentDisplayView = self.LongPressImage;
         _MoveMode = SELECT_CELL_LONG_PRRESS_MOVE;
     }
@@ -176,12 +194,10 @@
         _MoveMode = NewValue;
     }
 
-
 }
 
 - (SELECT_CELL_MOVE_MODE) GetMoveMode
 {
-
     return _MoveMode;
 }
 
@@ -250,7 +266,12 @@
 //
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    _OriginalLocation = [self GetLocationPoint: touches];
+    if (self.MoveMode == SELECT_CELL_BLOCK)
+    {
+        return;
+    }
+    
+    _OriginalLocation = [self GetLocationPointInSuperview: touches];
     
     self.Touched = YES;
 
@@ -264,25 +285,30 @@
 
 -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+
+    if (self.MoveMode == SELECT_CELL_BLOCK)
+    {
+        return;
+    }
+    
     if (self.Touched)
     {
-        CGPoint TouchLocation = [self GetLocationPoint: touches];
-        // Because zero point is on left top, large point in on right bottom
-        
-        int MoveVertical = (double)(_OriginalLocation.y - TouchLocation.y) / self.VerticalSensitivity;
-        int MoveHerizontal = (double)(_OriginalLocation.x - TouchLocation.x) / self.HorizontalSensitivity;
-        
-        if ((self.MoveMode == SELECT_CELL_NONE) && (MoveVertical !=0 || MoveHerizontal !=0))
-        {
-            if (_LongPressTimer != nil)
-            {
-                [_LongPressTimer invalidate];
-                _LongPressTimer = nil;
-            }
-        }
-        
+        CGPoint TouchLocation = [self GetLocationPointInSuperview: touches];
+
         if (self.MoveMode != SELECT_CELL_LONG_PRRESS_MOVE)
         {
+            int MoveVertical = (double)(_OriginalLocation.y - TouchLocation.y) / self.VerticalSensitivity;
+            int MoveHerizontal = (double)(_OriginalLocation.x - TouchLocation.x) / self.HorizontalSensitivity;
+            
+            if ((self.MoveMode == SELECT_CELL_NONE) && (MoveVertical !=0 || MoveHerizontal !=0))
+            {
+                if (_LongPressTimer != nil)
+                {
+                    [_LongPressTimer invalidate];
+                    _LongPressTimer = nil;
+                }
+            }
+            
             if (!self.IsFocusOn)
             {
                 self.MoveMode = SELECT_CELL_NORMAL_MOVE;
@@ -308,7 +334,17 @@
         }
         else
         {
+            if (self.superview == nil)
+            {
+                return;
+            }
+            
+            float MoveVertical = (_OriginalLocation.y - TouchLocation.y);
+            float MoveHerizontal = (_OriginalLocation.x - TouchLocation.x);
+
             // Long Press for delete, or change Index
+            self.frame = CGRectMake(self.frame.origin.x - MoveHerizontal , self.frame.origin.y - MoveVertical, self.frame.size.width, self.frame.size.height);
+            _OriginalLocation = TouchLocation;
         }
         
     }
@@ -317,15 +353,21 @@
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.Touched = NO;
-    //[self PassTouchedCancelled:touches withEvent:event];
-
 }
 
-- (CGPoint) GetLocationPoint: (NSSet*)touches
+- (CGPoint) GetLocationPointInSuperview: (NSSet*)touches
 {
     UITouch *Touch =  [touches anyObject];
-    return [Touch locationInView:Touch.view];
+    if (self.superview == nil)
+    {
+        return CGPointMake(0, 0);
+    }
+    else
+    {
+        return [Touch locationInView:self.superview];
+    }
 }
+
 
 - (void) LongPressTick :(NSTimer *) ThisTimer
 {
@@ -358,6 +400,7 @@
 
 - (void) VerticlValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell
 {
+
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
@@ -383,12 +426,26 @@
 
 - (void) ShortPressToSetFocus: (SelectBarCell *) ThisCell
 {
+
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
         if([self.delegate respondsToSelector:@selector(ShortPressToSetFocus:)])
         {
             [self.delegate ShortPressToSetFocus: ThisCell];
+        }
+    }
+}
+
+- (void) CellTouchedChange : (BOOL) Touched : (SelectBarCell *) ThisCell
+{
+
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(CellTouchedChange::)])
+        {
+            [self.delegate CellTouchedChange : Touched : ThisCell];
         }
     }
 }

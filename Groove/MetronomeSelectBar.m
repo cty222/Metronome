@@ -20,11 +20,13 @@
     NSMutableArray * _GrooveCellValueStringList;
 
     // Property
-    BOOL _Touched;
+    BOOL _BarSpaceTouched;
+    BOOL _IsAnyCellTouched;
+
     int _FocusIndex;
     SELECT_BAR_MOVE_MODE _MovedMode;
     float _FocusLine;
-
+    
     // Touch Event
     CGPoint _OriginalLocation;
     NSTimer *MoveToCenterTimer;
@@ -234,7 +236,7 @@
 - (void) LongTouchFlashTick: (NSTimer *) ThisTimer
 {
     // 1. Flash page info for user recognize.
-    if (!_Touched)
+    if (!_BarSpaceTouched)
     {
         [LongTouchTimer invalidate];
         LongTouchTimer = nil;
@@ -286,16 +288,14 @@
     }
 }
 
-
 - (BOOL) GetTouched
 {
-    return _Touched;
+    return (_IsAnyCellTouched || _BarSpaceTouched);
 }
 
 - (void) SetTouched: (BOOL)NewValue
 {
-    _Touched = NewValue;
-    if (_Touched)
+    if (_IsAnyCellTouched || _BarSpaceTouched)
     {
         [self LongTouchFlashPageInfo];
     }
@@ -303,6 +303,18 @@
     {
         [self SetFrameValueWhenStopSelect];
     }
+}
+
+- (BOOL) GetBarSpaceTouched
+{
+    return _BarSpaceTouched;
+}
+
+- (void) SetBarSpaceTouched: (BOOL)NewValue
+{
+    _BarSpaceTouched = NewValue;
+
+    self.Touched = _BarSpaceTouched;
 }
 
 - (int) GetFocusIndex
@@ -361,18 +373,19 @@
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
+   
     _OriginalLocation = [self GetLocationPoint: touches];
-    self.Touched = YES;
+    [self SetBarSpaceTouched: YES];
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.Touched = NO;
+    [self SetBarSpaceTouched: NO];
 }
 
 -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (self.Touched)
+    if ([self GetBarSpaceTouched])
     {
         CGPoint TouchLocation = [self GetLocationPoint: touches];
         
@@ -392,7 +405,7 @@
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.Touched = NO;
+    [self SetBarSpaceTouched: NO];
 }
 
 - (CGPoint) GetLocationPoint: (NSSet*)touches
@@ -408,6 +421,11 @@
 //
 - (void) HorizontalValueChange:(int)ChangeValue :(SelectBarCell *)ThisCell
 {
+    if(self.Mode == SELECT_CAN_DROP)
+    {
+        return;
+    }
+    
     UIView * ControlView = self.GrooveCellListView;
 
     CGRect frame = ControlView.frame;
@@ -420,6 +438,11 @@
 
 - (void) VerticlValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell
 {
+    if(self.Mode == SELECT_CAN_DROP)
+    {
+        return;
+    }
+    
     if (self.delegate != nil)
     {
         int Index = ThisCell.IndexNumber;
@@ -446,6 +469,7 @@
     }
     else
     {
+        _MovedMode = SELECT_NONE;
         return NO;
     }
 }
@@ -454,6 +478,37 @@
 {
     self.NoneHumanChangeFocusFlag = YES;
     self.FocusIndex = ThisCell.IndexNumber;
+}
+
+- (void) CellTouchedChange : (BOOL) Touched : (SelectBarCell *) ThisCell
+{
+    if (Touched)
+    {
+        // 只要有一個Cell 是 Touched 就是Touched狀態
+        if (!_IsAnyCellTouched) {
+            _IsAnyCellTouched = YES;
+        }
+    }
+    else
+    {
+        // 所有Cell 都不是 Touched 才不是Touched狀態
+        if (_IsAnyCellTouched) {
+            BOOL TmpTouched = NO;
+            for (int Index = 0; Index < self.GrooveCellListView.subviews.count; Index++) {
+                SelectBarCell * Cell = self.GrooveCellListView.subviews[Index];
+                if (Cell.Touched) {
+                    TmpTouched = Cell.Touched;
+                    break;
+                }
+            }
+            if (!TmpTouched)
+            {
+                _IsAnyCellTouched = NO;
+            }
+        }
+    }
+    
+    self.Touched = _IsAnyCellTouched;
 }
 
 //

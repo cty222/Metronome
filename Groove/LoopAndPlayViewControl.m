@@ -212,19 +212,15 @@
 // Loop 增減
 - (BOOL) SetTargetCellLoopCountAdd: (int) Index AddValue:(int)Value;
 {
-    NSLog(@"Control Index %d!!", Index);
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
     
     TempoCell * TargetCell = Parent.CurrentCellsDataTable[Index];
     
     
     int NewTotalValue = [TargetCell.loopCount intValue] + Value;
-    NSLog(@"LoopValueMin %d", [[GlobalConfig LoopValueMin] intValue]);
-    NSLog(@"LoopValueMax %d", [[GlobalConfig LoopValueMax] intValue]);
 
     if (NewTotalValue >= [[GlobalConfig LoopValueMin] intValue] && NewTotalValue <= [[GlobalConfig LoopValueMax] intValue])
     {
-        NSLog(@"1235456789");
         TargetCell.loopCount = [NSNumber numberWithInt:NewTotalValue];
         
         // TODO : 不要save這麼頻繁
