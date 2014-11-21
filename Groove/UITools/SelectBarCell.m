@@ -378,6 +378,7 @@
         }
         else
         {
+            
             if (self.superview == nil)
             {
                 return;
@@ -389,6 +390,7 @@
             // Long Press for delete, or change Index
             self.frame = CGRectMake(self.frame.origin.x - MoveHerizontal , self.frame.origin.y - MoveVertical, self.frame.size.width, self.frame.size.height);
             _OriginalLocation = TouchLocation;
+            [self CellMoving: self];
         }
         
     }
@@ -504,6 +506,19 @@
         }
     }
 }
+
+- (void) CellMoving :(SelectBarCell *) ThisCell
+{
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(CellMoving:)])
+        {
+            [self.delegate CellMoving : ThisCell];
+        }
+    }
+}
+
 //
 // ============================
 

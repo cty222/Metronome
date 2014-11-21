@@ -26,6 +26,7 @@ typedef enum{
 
 - (void) SetFocusIndex: (int) FocusIndex;
 - (BOOL) SetTargetCellLoopCountAdd: (int) Index AddValue:(int)Value;
+- (void) DeleteTargetIndexCell: (int) Index;
 
 @end
 

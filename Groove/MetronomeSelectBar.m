@@ -26,6 +26,7 @@
     int _FocusIndex;
     SELECT_BAR_MOVE_MODE _Mode;
     float _FocusLine;
+    int _DeleteIndex;
     
     // Touch Event
     CGPoint _OriginalLocation;
@@ -263,7 +264,17 @@
     }
 }
 
-
+- (void) DeleteTargetIndexCell: (int) Index
+{
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(DeleteTargetIndexCell:)])
+        {
+            [self.delegate DeleteTargetIndexCell: Index];
+        }
+    }
+}
 // ============================
 // Property
 //
@@ -515,6 +526,11 @@
     {
         if (self.Mode == SELECT_BAR_CAN_DROP)
         {
+            if (_DeleteIndex >= 0)
+            {
+                [self DeleteTargetIndexCell: _DeleteIndex];
+                _DeleteIndex = -1;
+            }
             self.Mode = SELECT_BAR_NONE;
         }
     }
@@ -559,6 +575,44 @@
     self.Touched = _IsAnyCellTouched;
 }
 
+- (void) CellMoving :(SelectBarCell *) ThisCell
+{
+    float Cell_X_Offset = self.GrooveCellListView.frame.origin.x + self.HerizontalScrollBar.frame.origin.x;
+    float Cell_Y_Offset = self.GrooveCellListView.frame.origin.y + self.HerizontalScrollBar.frame.origin.y;
+    float DropImage_X_Offset = self.DropCellView.frame.origin.x;
+    float DropImage_Y_Offset = self.DropCellView.frame.origin.y;
+
+  
+    float Cell_X_Start = ThisCell.frame.origin.x + Cell_X_Offset;
+    float Cell_X_End = Cell_X_Start + ThisCell.frame.size.width;
+    float Cell_Y_Start = ThisCell.frame.origin.y + Cell_Y_Offset;
+    float Cell_Y_End = Cell_Y_Start + ThisCell.frame.size.height;
+
+    float DropImage_X_Start = self.DropImage.frame.origin.x + DropImage_X_Offset;
+    float DropImage_X_End = DropImage_X_Start + self.DropImage.frame.size.width;
+    float DropImage_Y_Start = self.DropImage.frame.origin.y + DropImage_Y_Offset;
+    float DropImage_Y_End = DropImage_Y_Start + self.DropImage.frame.size.height;
+    
+    
+    NSLog(@"3 %f %f", Cell_Y_Start, Cell_Y_End);
+    NSLog(@"4 %f %f", DropImage_Y_Start, DropImage_Y_End);
+    
+    if (((Cell_X_Start >= DropImage_X_Start && Cell_X_Start <= DropImage_X_End)
+         || (Cell_X_End >= DropImage_X_Start && Cell_X_End <= DropImage_X_End))
+        && ( (Cell_Y_Start >= DropImage_Y_Start && Cell_Y_Start <= DropImage_Y_End)
+            || (Cell_Y_End >= DropImage_Y_Start && Cell_Y_End <= DropImage_Y_End))
+        )
+    {
+        self.DropImage.backgroundColor = [UIColor yellowColor];
+        _DeleteIndex = ThisCell.IndexNumber;
+    }
+    else
+    {
+        self.DropImage.backgroundColor = [UIColor blueColor];
+        _DeleteIndex = -1;
+    }
+
+}
 //
 // ============================
 

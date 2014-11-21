@@ -31,6 +31,7 @@ typedef enum{
 - (BOOL) IsLongPressModeEnable: (BOOL) Enable : (SelectBarCell *) ThisCell;
 - (void) ShortPressToSetFocus: (SelectBarCell*) ThisCell;
 - (void) CellTouchedChange : (BOOL) Touched : (SelectBarCell *) ThisCell;
+- (void) CellMoving :(SelectBarCell *) ThisCell;
 @end
 
 @interface SelectBarCell : XibViewInterface <UIGestureRecognizerDelegate>

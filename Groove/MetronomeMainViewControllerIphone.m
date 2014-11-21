@@ -146,7 +146,6 @@
     _PlayingMode = STOP_PLAYING;
     _FocusIndex = -1;
     
-    self.DeleteFillDataFlag = NO;
     self.ChangeBPMValueFlag = NO;
 }
 
@@ -223,13 +222,7 @@
     // TODO: 要改成設圖
     //[self.BottomSubView.TimeSignatureButton setTitle:_CurrentCell.timeSignatureType.timeSignature forState:UIControlStateNormal];
     
-    if (self.DeleteFillDataFlag)
-    {
-        [self FillData];
-        self.DeleteFillDataFlag = NO;
-        // TODO:
-        //self.BottomSubView.DeleteLoopCellButton.enabled = YES;
-    }
+
 }
 
 - (METRONOME_PLAYING_MODE) GetPlayingMode

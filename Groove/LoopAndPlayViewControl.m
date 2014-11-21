@@ -233,6 +233,39 @@
     
     return NO;
 }
+
+- (void) DeleteTargetIndexCell: (int) Index
+{
+    NSLog(@"DeleteTargetIndexCell");
+    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    
+   
+    // 不可以刪掉最後一個
+    if (Parent.CurrentCellsDataTable.count == 1 )
+    {
+        return;
+    }
+    
+    // 如果刪的是focus cell, 先改成focus前一個, 如果是最前面就改成focus後一個
+    if (Index == Parent.FocusIndex)
+    {
+        if (Index - 1 > 0)
+        {
+            Parent.FocusIndex = Index -1;
+        }
+        else
+        {
+            Parent.FocusIndex = Index + 1;;
+        }
+    }
+    
+    // 找到要刪除的
+    TempoCell * DeletedCell = Parent.CurrentCellsDataTable[Index];
+    [gMetronomeModel DeleteTargetTempoCell:DeletedCell];
+    
+    // 重新顯示
+    [Parent FillData];    
+}
 //
 // =========================
 
