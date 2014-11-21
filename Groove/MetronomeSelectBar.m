@@ -24,7 +24,7 @@
     BOOL _IsAnyCellTouched;
 
     int _FocusIndex;
-    SELECT_BAR_MOVE_MODE _MovedMode;
+    SELECT_BAR_MOVE_MODE _Mode;
     float _FocusLine;
     
     // Touch Event
@@ -38,7 +38,15 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        [self.DropCellView removeFromSuperview];
+        self.DropCellView = [[DropCellView alloc] initWithFrame:self.DropCellView.frame];
+        [self addSubview:self.DropCellView];
+        self.DropCellView.hidden = YES;
+
+        self.DropImage = self.DropCellView.DropImage;
+        
         // Initialization code
+        self.Mode = SELECT_BAR_NONE;
         self.FocusIndex = 0;
         self.userInteractionEnabled = YES;
 
@@ -87,7 +95,7 @@
 }
 
 - (void) FlashDisplayFrame
-{
+{    
     if (self.GrooveCellListView.subviews == nil)
     {
         return;
@@ -175,6 +183,7 @@
 
 - (void) MoveFocusCellToCenterTick: (NSTimer *) ThisTimer
 {
+   
     // Focus Cell base
     UIView * ControlView = self.GrooveCellListView;
     SelectBarCell * FocusCell = ControlView.subviews[self.FocusIndex];
@@ -193,8 +202,10 @@
     {
         if (self.Mode == SELECT_BAR_UNCHANGED)
         {
-            self.Mode = SELECT_NONE;
+            self.Mode = SELECT_BAR_NONE;
             self.NoneHumanChangeFocusFlag = NO;
+            // Until stop touching, parent's focusIndex will change.
+
         }
         
         [self FlashDisplayFrame];
@@ -210,7 +221,6 @@
             return;
         }
         
-        // Until stop touching, parent's focusIndex will change.
         if (self.delegate != nil)
         {
             // Check whether delegate have this selector
@@ -288,6 +298,38 @@
     }
 }
 
+- (SELECT_BAR_MOVE_MODE) GetMode
+{
+    return _Mode;
+}
+
+- (void) SetMode : (SELECT_BAR_MOVE_MODE) NewValue
+{
+    if ((_Mode == NewValue)
+        || (NewValue >= SELECT_BAR_END || NewValue < SELECT_BAR_NONE)
+        )
+    {
+        return;
+    }
+    
+    switch (NewValue) {
+        case SELECT_BAR_NONE:
+            self.DropCellView.hidden = YES;
+            break;
+        case SELECT_BAR_VERTICAL_MOVE:
+            break;
+        case SELECT_BAR_CAN_DROP:
+            self.DropCellView.hidden = NO;
+            break;
+        case SELECT_BAR_UNCHANGED:
+            break;
+        default:
+            return;
+    }
+        
+    _Mode = NewValue;
+}
+
 - (BOOL) GetTouched
 {
     return (_IsAnyCellTouched || _BarSpaceTouched);
@@ -342,16 +384,7 @@
     int OldValue = _FocusIndex;
     _FocusIndex = NewValue;
 
-    // Set from code, not user touch, CurrentMove will be Zero.
-    // (MoveToCenterTimer == nil) is for avoid recursive error.
-    if (self.NoneHumanChangeFocusFlag)
-    {
-        self.Mode = SELECT_BAR_UNCHANGED;
-        [self SetFrameValueWhenStopSelect];
-        return;
-    }
-
-    
+  
     // Set New label background color
     // When Initialize, we will set _FocusIndex from zero to zero.
     // So it must out of brackets.
@@ -361,7 +394,14 @@
     SelectBarCell * NewFocusCell = ControlView.subviews[NewValue];
     NewFocusCell.IsFocusOn = YES;
 
-
+    // Set from code, not user touch, CurrentMove will be Zero.
+    // (MoveToCenterTimer == nil) is for avoid recursive error.
+    if (self.NoneHumanChangeFocusFlag)
+    {
+        self.Mode = SELECT_BAR_UNCHANGED;
+        [self SetFrameValueWhenStopSelect];
+        return;
+    }
 
 }
 //
@@ -421,7 +461,7 @@
 //
 - (void) HorizontalValueChange:(int)ChangeValue :(SelectBarCell *)ThisCell
 {
-    if(self.Mode == SELECT_CAN_DROP)
+    if(self.Mode == SELECT_BAR_CAN_DROP)
     {
         return;
     }
@@ -438,7 +478,7 @@
 
 - (void) VerticlValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell
 {
-    if(self.Mode == SELECT_CAN_DROP)
+    if(self.Mode == SELECT_BAR_CAN_DROP)
     {
         return;
     }
@@ -460,18 +500,26 @@
     }
 }
 
-- (BOOL) LongPressModeEnable: (SelectBarCell *) ThisCell
+- (BOOL) IsLongPressModeEnable: (BOOL) Enable : (SelectBarCell *) ThisCell
 {
-    if (_MovedMode == SELECT_CELL_NONE)
+    if (Enable)
     {
-        _MovedMode = SELECT_CAN_DROP;
-        return YES;
+        if (self.Mode == SELECT_CELL_NONE)
+        {
+            self.Mode = SELECT_BAR_CAN_DROP;
+            [self sendSubviewToBack:self.DropCellView];
+            return YES;
+        }
     }
     else
     {
-        _MovedMode = SELECT_NONE;
-        return NO;
+        if (self.Mode == SELECT_BAR_CAN_DROP)
+        {
+            self.Mode = SELECT_BAR_NONE;
+        }
     }
+    return NO;
+
 }
 
 - (void) ShortPressToSetFocus: (SelectBarCell*) ThisCell

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -39,11 +40,17 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <view contentMode="scaleToFill" id="TeT-pI-UDw" customClass="DropCellView">
+                    <rect key="frame" x="0.0" y="-120" width="320" height="120"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="AddLoopCellButton" destination="GQz-iD-ctj" id="hXg-Yn-5jn"/>
+                <outlet property="DropCellView" destination="TeT-pI-UDw" id="eDc-Lv-O0d"/>
                 <outlet property="FocusLineImage" destination="2CV-Oj-d5K" id="b1d-Qb-a9c"/>
                 <outlet property="GrooveCellListView" destination="TUi-0m-NJ0" id="2bR-nw-KxQ"/>
                 <outlet property="HerizontalScrollBar" destination="GeF-K8-o8W" id="IeQ-B9-A9n"/>

@@ -32,7 +32,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
 @property (strong, nonatomic) IBOutlet UIButton *PlayLoopCellButton;
 
-
 // Ad view
 @property(nonatomic,retain)IBOutlet ADBannerView *adView;
 

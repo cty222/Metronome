@@ -21,6 +21,8 @@
 		003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */; };
 		0036173D19D5CC9900848A35 /* loop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0036173C19D5CC9900848A35 /* loop.png */; };
 		0036174519D5E2DA00848A35 /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0036174419D5E2DA00848A35 /* TempoCell.m */; };
+		003994B11A1FAE1D00379CEA /* DropCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 003994B01A1FAE1D00379CEA /* DropCellView.m */; };
+		003994B31A1FAE3F00379CEA /* DropCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003994B21A1FAE3F00379CEA /* DropCellView.xib */; };
 		003A56A219D3284600747EB3 /* TimeSignatureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 003A56A119D3284600747EB3 /* TimeSignatureType.m */; };
 		003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 003A56A819D3293A00747EB3 /* MetronomeModel.m */; };
 		004BE63E19B2DDC7002CD995 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE63D19B2DDC7002CD995 /* Foundation.framework */; };
@@ -112,6 +114,9 @@
 		0036173C19D5CC9900848A35 /* loop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loop.png; sourceTree = "<group>"; };
 		0036174319D5E2DA00848A35 /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
 		0036174419D5E2DA00848A35 /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
+		003994AF1A1FAE1D00379CEA /* DropCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropCellView.h; path = UITools/DropCellView.h; sourceTree = "<group>"; };
+		003994B01A1FAE1D00379CEA /* DropCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropCellView.m; path = UITools/DropCellView.m; sourceTree = "<group>"; };
+		003994B21A1FAE3F00379CEA /* DropCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropCellView.xib; sourceTree = "<group>"; };
 		003A56A019D3284600747EB3 /* TimeSignatureType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSignatureType.h; path = CoreDataSubClass/TimeSignatureType.h; sourceTree = "<group>"; };
 		003A56A119D3284600747EB3 /* TimeSignatureType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeSignatureType.m; path = CoreDataSubClass/TimeSignatureType.m; sourceTree = "<group>"; };
 		003A56A719D3293A00747EB3 /* MetronomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetronomeModel.h; path = CoreDataSubClass/MetronomeModel.h; sourceTree = "<group>"; };
@@ -399,6 +404,9 @@
 				005662171A185D8E002222A0 /* SelectBarCell.xib */,
 				005662191A185E0D002222A0 /* SelectBarCell.h */,
 				0056621A1A185E0D002222A0 /* SelectBarCell.m */,
+				003994AF1A1FAE1D00379CEA /* DropCellView.h */,
+				003994B01A1FAE1D00379CEA /* DropCellView.m */,
+				003994B21A1FAE3F00379CEA /* DropCellView.xib */,
 			);
 			name = MetronmeItems;
 			sourceTree = "<group>";
@@ -604,6 +612,7 @@
 				005662181A185D8E002222A0 /* SelectBarCell.xib in Resources */,
 				0010FF2619FEC1B5005E74C1 /* reflect_number_0.pdf in Resources */,
 				001F01191A05511300189941 /* IssueAndInfo.txt in Resources */,
+				003994B31A1FAE3F00379CEA /* DropCellView.xib in Resources */,
 				005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */,
 				004BE65519B2DDC8002CD995 /* Images.xcassets in Resources */,
 				00DA13B419F4F77000F27E25 /* HiE.wav in Resources */,
@@ -651,6 +660,7 @@
 				004BE64C19B2DDC8002CD995 /* main.m in Sources */,
 				0056621B1A185E0D002222A0 /* SelectBarCell.m in Sources */,
 				00DA131C19F4EF1900F27E25 /* BeepBound.m in Sources */,
+				003994B11A1FAE1D00379CEA /* DropCellView.m in Sources */,
 				00D92FD61A15FE5700AEC17F /* SystemPageControl.m in Sources */,
 				003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */,
 				00DA131119F4E94700F27E25 /* NotesTool.m in Sources */,

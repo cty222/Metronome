@@ -30,6 +30,7 @@
         
         self.PlayLoopCellButton = self.SelectGrooveBar.PlayLoopCellButton;
         self.AddLoopCellButton = self.SelectGrooveBar.AddLoopCellButton;
+
         
         // Back ground
         self.backgroundColor = [UIColor whiteColor];

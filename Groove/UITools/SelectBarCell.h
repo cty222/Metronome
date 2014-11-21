@@ -15,6 +15,7 @@ typedef enum{
     SELECT_CELL_NORMAL_MOVE,
     SELECT_CELL_FOCUS_ON,
     SELECT_CELL_FOCUS_ON_MOVE,
+    SELECT_CELL_SHORT_PRESS,
     SELECT_CELL_LONG_PRRESS_MOVE,
     SELECT_CELL_BLOCK,
     SELECT_CELL_MODE_END
@@ -27,7 +28,7 @@ typedef enum{
 
 - (void) HorizontalValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell;
 - (void) VerticlValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell;
-- (BOOL) LongPressModeEnable: (SelectBarCell *) ThisCell;
+- (BOOL) IsLongPressModeEnable: (BOOL) Enable : (SelectBarCell *) ThisCell;
 - (void) ShortPressToSetFocus: (SelectBarCell*) ThisCell;
 - (void) CellTouchedChange : (BOOL) Touched : (SelectBarCell *) ThisCell;
 @end

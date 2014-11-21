@@ -9,11 +9,14 @@
 #import "GlobalConfig.h"
 #import "XibViewInterface.h"
 #import "SelectBarCell.h"
+#import "DropCellView.h"
 
 typedef enum{
-  SELECT_NONE,
-  SELECT_CAN_DROP,
-  SELECT_BAR_UNCHANGED
+  SELECT_BAR_NONE,
+  SELECT_BAR_VERTICAL_MOVE,
+  SELECT_BAR_CAN_DROP,
+  SELECT_BAR_UNCHANGED,
+  SELECT_BAR_END
 } SELECT_BAR_MOVE_MODE;
 
 @protocol SelectBarProtocol <NSObject>
@@ -34,7 +37,7 @@ typedef enum{
 @property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
 
 @property BOOL NoneHumanChangeFocusFlag;
-@property SELECT_BAR_MOVE_MODE Mode;
+@property (getter = GetMode, setter = SetMode:) SELECT_BAR_MOVE_MODE Mode;
 
 @property (nonatomic, assign) id<SelectBarProtocol> delegate;
 
@@ -45,4 +48,6 @@ typedef enum{
 @property (strong, nonatomic) IBOutlet UIImageView *FocusLineImage;
 @property (strong, nonatomic) IBOutlet UIView *GrooveCellListView;
 
+@property (strong, nonatomic) IBOutlet DropCellView *DropCellView;
+@property (strong, nonatomic) UILabel *DropImage;
 @end
