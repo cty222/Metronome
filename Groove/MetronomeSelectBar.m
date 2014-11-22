@@ -105,8 +105,6 @@
 
 - (void) FlashDisplayFrame
 {
-    NSLog(@"FlashDisplayFrame");
-
     if (self.GrooveCellListView.subviews == nil)
     {
         return;
@@ -151,7 +149,6 @@
     // 這是防止手動拉動超出邊線
     if (!self.NoneHumanChangeFocusFlag)
     {
-        NSLog(@"??????");
         if (self.FocusIndex == 0 && NoFucus)
         {
             [self HorizontalValueChange:1 :nil];
@@ -180,7 +177,6 @@
 
 - (void) SetFrameValueWhenStopSelect
 {
-    NSLog(@"SetFrameValueWhenStopSelect");
     if (MoveToCenterTimer != nil)
     {
         [MoveToCenterTimer invalidate];
@@ -196,7 +192,6 @@
 
 - (void) MoveFocusCellToCenterTick: (NSTimer *) ThisTimer
 {
-    NSLog(@"self.FocusIndex %d", self.FocusIndex);
     // Focus Cell base
     UIView * ControlView = self.GrooveCellListView;
     SelectBarCell * FocusCell = ControlView.subviews[self.FocusIndex];
@@ -212,13 +207,10 @@
     }
     else
     {
-        NSLog(@"End???");
-        if (self.Mode == SELECT_BAR_UNCHANGED)
-        {
-            self.Mode = SELECT_BAR_NONE;
-            self.NoneHumanChangeFocusFlag = NO;
-            // Until stop touching, parent's focusIndex will change.
-        }
+        self.Mode = SELECT_BAR_NONE;
+        self.NoneHumanChangeFocusFlag = NO;
+        
+        // Until stop touching, parent's focusIndex will change.
         [self FlashDisplayFrame];
         
         if (MoveToCenterTimer != nil)
@@ -561,8 +553,6 @@
 
 - (void) ShortPressToSetFocus: (SelectBarCell*) ThisCell
 {
-    NSLog(@"P02");
-
     self.NoneHumanChangeFocusFlag = YES;
     self.FocusIndex = ThisCell.IndexNumber;
 }

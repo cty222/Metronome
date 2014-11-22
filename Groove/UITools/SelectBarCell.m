@@ -445,8 +445,6 @@
     }
     else
     {
-        NSLog(@"R01");
-
         self.MoveMode = SELECT_CELL_NONE;
     }
     
