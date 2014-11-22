@@ -14,6 +14,13 @@
 #define CONTROL_VIEW_MARGIN_LEFT    ([self FocusLine] - CELL_WIDTH/2)
 #define CONTROL_VIEW_MARGIN_RIGHT    (2 * CELL_WIDTH)
 
+@interface MetronomeSelectBar ()
+@property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
+@property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
+@property BOOL NoneHumanChangeFocusFlag;
+@property (getter = GetMode, setter = SetMode:) SELECT_BAR_MOVE_MODE Mode;
+@end
+
 @implementation MetronomeSelectBar
 {
     // Data
@@ -91,12 +98,15 @@
     
     CGRect frame = ControlView.frame;
     ControlView.frame = CGRectMake(frame.origin.x + CONTROL_VIEW_MARGIN_LEFT, frame.origin.y, frame.size.width, frame.size.height);
-    
-    [self SetFrameValueWhenStopSelect];
+
+    [self ChangeFocusIndexByFunction: [[GlobalConfig LastFocusCellIndex] intValue]];
+
 }
 
 - (void) FlashDisplayFrame
-{    
+{
+    NSLog(@"FlashDisplayFrame");
+
     if (self.GrooveCellListView.subviews == nil)
     {
         return;
@@ -141,6 +151,7 @@
     // 這是防止手動拉動超出邊線
     if (!self.NoneHumanChangeFocusFlag)
     {
+        NSLog(@"??????");
         if (self.FocusIndex == 0 && NoFucus)
         {
             [self HorizontalValueChange:1 :nil];
@@ -169,6 +180,7 @@
 
 - (void) SetFrameValueWhenStopSelect
 {
+    NSLog(@"SetFrameValueWhenStopSelect");
     if (MoveToCenterTimer != nil)
     {
         [MoveToCenterTimer invalidate];
@@ -184,12 +196,11 @@
 
 - (void) MoveFocusCellToCenterTick: (NSTimer *) ThisTimer
 {
-   
+    NSLog(@"self.FocusIndex %d", self.FocusIndex);
     // Focus Cell base
     UIView * ControlView = self.GrooveCellListView;
     SelectBarCell * FocusCell = ControlView.subviews[self.FocusIndex];
     float FocusCellBase_X = FocusCell.frame.origin.x + ControlView.frame.origin.x;
-    
     
     if ((int)FocusCellBase_X > (int)([self FocusLine] - CELL_WIDTH/2))
     {
@@ -201,14 +212,13 @@
     }
     else
     {
+        NSLog(@"End???");
         if (self.Mode == SELECT_BAR_UNCHANGED)
         {
             self.Mode = SELECT_BAR_NONE;
             self.NoneHumanChangeFocusFlag = NO;
             // Until stop touching, parent's focusIndex will change.
-
         }
-        
         [self FlashDisplayFrame];
         
         if (MoveToCenterTimer != nil)
@@ -325,11 +335,11 @@
     
     switch (NewValue) {
         case SELECT_BAR_NONE:
+            _DeleteIndex = -1;
             self.DropCellView.hidden = YES;
             break;
-        case SELECT_BAR_VERTICAL_MOVE:
-            break;
         case SELECT_BAR_CAN_DROP:
+            _DeleteIndex = -1;
             self.DropCellView.hidden = NO;
             break;
         case SELECT_BAR_UNCHANGED:
@@ -354,7 +364,14 @@
     }
     else
     {
-        [self SetFrameValueWhenStopSelect];
+        if (self.Mode == SELECT_BAR_NONE)
+        {
+            [self SetFrameValueWhenStopSelect];
+        }
+        else
+        {
+            self.Mode = SELECT_BAR_NONE;
+        }
     }
 }
 
@@ -394,7 +411,7 @@
     
     int OldValue = _FocusIndex;
     _FocusIndex = NewValue;
-
+    [GlobalConfig SetLastFocusCellIndex: _FocusIndex];
   
     // Set New label background color
     // When Initialize, we will set _FocusIndex from zero to zero.
@@ -414,6 +431,12 @@
         return;
     }
 
+}
+
+- (void) ChangeFocusIndexByFunction : (int) NewIndex
+{
+    self.NoneHumanChangeFocusFlag = YES;
+    self.FocusIndex = NewIndex;
 }
 //
 // ============================
@@ -529,9 +552,7 @@
             if (_DeleteIndex >= 0)
             {
                 [self DeleteTargetIndexCell: _DeleteIndex];
-                _DeleteIndex = -1;
             }
-            self.Mode = SELECT_BAR_NONE;
         }
     }
     return NO;
@@ -540,6 +561,8 @@
 
 - (void) ShortPressToSetFocus: (SelectBarCell*) ThisCell
 {
+    NSLog(@"P02");
+
     self.NoneHumanChangeFocusFlag = YES;
     self.FocusIndex = ThisCell.IndexNumber;
 }
@@ -592,10 +615,6 @@
     float DropImage_X_End = DropImage_X_Start + self.DropImage.frame.size.width;
     float DropImage_Y_Start = self.DropImage.frame.origin.y + DropImage_Y_Offset;
     float DropImage_Y_End = DropImage_Y_Start + self.DropImage.frame.size.height;
-    
-    
-    NSLog(@"3 %f %f", Cell_Y_Start, Cell_Y_End);
-    NSLog(@"4 %f %f", DropImage_Y_Start, DropImage_Y_End);
     
     if (((Cell_X_Start >= DropImage_X_Start && Cell_X_Start <= DropImage_X_End)
          || (Cell_X_End >= DropImage_X_Start && Cell_X_End <= DropImage_X_End))

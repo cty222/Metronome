@@ -25,7 +25,7 @@
 - (void) InitlizePlayingItems;
 - (void) InitializeLoopControlItem;
 - (void) ChangeButtonDisplayByPlayMode;
-- (void) ChangeSelectBarForcusIndex: (int) NewValue;
+- (void) ChangeSelectBarForcusIndex: (int) NewIndex;
 - (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable;
 
 @end

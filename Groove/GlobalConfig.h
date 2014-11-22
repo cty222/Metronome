@@ -44,6 +44,7 @@ enum {
 + (NSNumber *) LoopValueMin;
 + (NSNumber *) LoopValueMax;
 + (NSNumber *) LoopCellMaxCount;
++ (void) SetLastFocusCellIndex : (int) NewValue;
 
 
 // Main View

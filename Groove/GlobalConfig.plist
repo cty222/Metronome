@@ -13,7 +13,7 @@
 	<key>DbVersion</key>
 	<real>1001</real>
 	<key>VersionID</key>
-	<real>4005</real>
+	<real>4006</real>
 	<key>BPMMinValue</key>
 	<integer>30</integer>
 	<key>BPMMaxValue</key>

@@ -88,10 +88,9 @@
 }
 
 
-- (void) ChangeSelectBarForcusIndex: (int) NewValue
+- (void) ChangeSelectBarForcusIndex: (int) NewIndex
 {
-    self.SelectGrooveBar.NoneHumanChangeFocusFlag = YES;
-    self.SelectGrooveBar.FocusIndex = NewValue;
+    [self.SelectGrooveBar ChangeFocusIndexByFunction: NewIndex];
 }
 
 
@@ -156,45 +155,6 @@
     }
 }
 
-
-
-#if 0
-- (IBAction) DeleteLoopCellButtonClick: (UIButton *) ThisClickedButton
-{
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
-    
-    int DeleteIndex;
-    int NewIndex;
-    // 不可以刪掉最後一個
-    if (CurrentCellsDataTable.count == 1 )
-    {
-        return;
-    }
-    
-    DeleteIndex = Parent.FocusIndex;
-    
-    if (Parent.FocusIndex == 0)
-    {
-        NewIndex = Parent.FocusIndex +1 ;
-    }
-    else
-    {
-        NewIndex = Parent.FocusIndex -1 ;
-    }
-    [Parent ChangeSelectBarForcusIndex:NewIndex];
-    
-    // 找到要刪除的
-    TempoCell * DeletedCell = CurrentCellsDataTable[DeleteIndex];
-    [gMetronomeModel DeleteTargetTempoCell:DeletedCell];
-    
-    // 重新顯示
-    DeleteFillDataFlag = YES;
-    
-    // TODO:
-    //self.BottomSubView.DeleteLoopCellButton.enabled = NO;
-}
-#endif
-
 //
 // =========================
 
@@ -236,35 +196,41 @@
 
 - (void) DeleteTargetIndexCell: (int) Index
 {
-    NSLog(@"DeleteTargetIndexCell %d", Index);
+
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
-    
    
-    // 不可以刪掉最後一個
-    if (Parent.CurrentCellsDataTable.count == 1 )
+    // 不可以刪掉最後一個, 或大於Count > 或負數Index
+    if ((Parent.CurrentCellsDataTable.count <= 1 )
+        || (Parent.CurrentCellsDataTable.count <= Index )
+        || (Index <0 )
+        )
     {
         return;
     }
     
+
+    int NewIndex = -1;
     // 如果刪的是focus cell, 先改成focus前一個, 如果是最前面就改成focus後一個
     if (Index == Parent.FocusIndex)
     {
         if (Index - 1 >= 0)
         {
-            Parent.FocusIndex = Index -1;
+            NewIndex = Index -1;
         }
         else
         {
-            Parent.FocusIndex = Index + 1;;
+            NewIndex = Index + 1;;
         }
+        [self ChangeSelectBarForcusIndex:NewIndex];
     }
+
     
     // 找到要刪除的
     TempoCell * DeletedCell = Parent.CurrentCellsDataTable[Index];
     [gMetronomeModel DeleteTargetTempoCell:DeletedCell];
     
     // 重新顯示
-    [Parent FillData];    
+    [Parent FillData];
 }
 //
 // =========================

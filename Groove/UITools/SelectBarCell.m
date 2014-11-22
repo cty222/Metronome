@@ -78,13 +78,16 @@
     
     _IsFocusOn = NewValue;
 
-    if (_IsFocusOn)
+    if (self.MoveMode != SELECT_CELL_LONG_PRRESS_MOVE)
     {
-        self.MoveMode = SELECT_CELL_FOCUS_ON;
-    }
-    else
-    {
-        self.MoveMode = SELECT_CELL_NONE;
+        if (_IsFocusOn)
+        {
+            self.CurrentDisplayView = self.FocusImage;
+        }
+        else
+        {
+            self.CurrentDisplayView = self.NoramlImage;
+        }
     }
 }
 
@@ -144,7 +147,6 @@
                 self.MoveMode = SELECT_CELL_SHORT_PRESS;
             }
         }
-        
         self.MoveMode = SELECT_CELL_NONE;
     }
     
@@ -182,45 +184,20 @@
         case SELECT_CELL_NONE:
             if (self.IsFocusOn)
             {
-                self.MoveMode = SELECT_CELL_FOCUS_ON;
-                return;
+                self.CurrentDisplayView = self.FocusImage;
             }
-            self.CurrentDisplayView = self.NoramlImage;
+            else
+            {
+                self.CurrentDisplayView = self.NoramlImage;
+            }
             break;
-            
         case SELECT_CELL_NORMAL_MOVE:
-            if (self.IsFocusOn)
-            {
-                self.MoveMode = SELECT_CELL_FOCUS_ON_MOVE;
-                return;
-            }
-            self.CurrentDisplayView = self.NoramlImage;
             break;
-            
-        case SELECT_CELL_FOCUS_ON:
-            if (!self.IsFocusOn)
-            {
-                self.MoveMode = SELECT_CELL_NONE;
-                return;
-            }
-            self.CurrentDisplayView = self.FocusImage;
-            break;
-            
-        case SELECT_CELL_FOCUS_ON_MOVE:
-            if (!self.IsFocusOn)
-            {
-                self.MoveMode = SELECT_CELL_NORMAL_MOVE;
-                return;
-            }
-            self.CurrentDisplayView = self.FocusImage;
-            break;
-            
         case SELECT_CELL_SHORT_PRESS:
             _MoveMode = NewValue;
             [self ShortPressToSetFocus:self];
             return;
             break;
-            
         case SELECT_CELL_LONG_PRRESS_MOVE:
             if (![self IsLongPressModeEnable:YES : self])
             {
@@ -229,10 +206,8 @@
             _OriginalFrameOrigin = self.frame.origin;
             self.CurrentDisplayView = self.LongPressImage;
             break;
-            
         case SELECT_CELL_BLOCK:
             break;
-            
         default:
             return;
             break;
@@ -353,15 +328,7 @@
                 }
             }
             
-            if (!self.IsFocusOn)
-            {
-                self.MoveMode = SELECT_CELL_NORMAL_MOVE;
-            }
-            else
-            {
-                self.MoveMode = SELECT_CELL_FOCUS_ON_MOVE;
-            }
-            
+            self.MoveMode = SELECT_CELL_NORMAL_MOVE;
             
             if (MoveHerizontal != 0)
             {
@@ -378,7 +345,6 @@
         }
         else
         {
-            
             if (self.superview == nil)
             {
                 return;
@@ -418,7 +384,7 @@
 - (void) LongPressTick :(NSTimer *) ThisTimer
 {
     if ((self.MoveMode == SELECT_CELL_NONE
-        || self.MoveMode == SELECT_CELL_FOCUS_ON)
+        || self.IsFocusOn)
         && self.Touched)
     {
         self.MoveMode = SELECT_CELL_LONG_PRRESS_MOVE;
@@ -479,6 +445,8 @@
     }
     else
     {
+        NSLog(@"R01");
+
         self.MoveMode = SELECT_CELL_NONE;
     }
     

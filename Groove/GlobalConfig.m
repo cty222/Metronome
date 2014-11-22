@@ -228,6 +228,17 @@ static NSMutableDictionary * ThisPlist;
     return [ThisPlist objectForKey:@"LastFocusCellIndex"];
 }
 
++ (void) SetLastFocusCellIndex : (int) NewValue
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return;
+    }
+    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"LastFocusCellIndex"];
+    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+
+}
+
 + (NSNumber *) LoopValueMax
 {
     if (![GlobalConfig IsInitialized])
