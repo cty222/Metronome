@@ -236,7 +236,7 @@
 
 - (void) DeleteTargetIndexCell: (int) Index
 {
-    NSLog(@"DeleteTargetIndexCell");
+    NSLog(@"DeleteTargetIndexCell %d", Index);
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
     
    
@@ -249,7 +249,7 @@
     // 如果刪的是focus cell, 先改成focus前一個, 如果是最前面就改成focus後一個
     if (Index == Parent.FocusIndex)
     {
-        if (Index - 1 > 0)
+        if (Index - 1 >= 0)
         {
             Parent.FocusIndex = Index -1;
         }

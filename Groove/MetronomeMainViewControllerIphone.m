@@ -383,12 +383,13 @@
             // 沒有聲音
             return;
         }
-        
-        if (_CurrentPlayingNoteCounter == NONE_CLICK)
-        {
-            _CurrentPlayingNoteCounter = FIRST_CLICK;
-        }
     }
+    
+    if (_CurrentPlayingNoteCounter == NONE_CLICK)
+    {
+        _CurrentPlayingNoteCounter = FIRST_CLICK;
+    }
+    
     [self MetronomeTicker: nil];
     
     PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE([self.CurrentCell.bpmValue intValue])
@@ -400,37 +401,33 @@
 
 - (void) MetronomeTicker: (NSTimer *) ThisTimer
 {
-    if (self.PlayingMode == LOOP_PLAYING)
-    {
-        // Four Note family
-        if (_CurrentPlayingNoteCounter == RESET_CLICK)
-        {
-            _CurrentPlayingNoteCounter = FIRST_CLICK;
-
-            _TimeSignatureCounter++;
-           if (_TimeSignatureCounter == [_CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentCell.timeSignatureType.timeSignature])
-           {
-               _TimeSignatureCounter = 0;
-               _LoopCountCounter++;
-               if (_LoopCountCounter >= [self.CurrentCell.loopCount intValue])
-               {
-                   [self ChangeToNextLoopCell];
-                   return;
-               }
-           }
-        }
-        //NSLog(@"_CurrentPlayingNoteCounter :%d, index %d", _CurrentPlayingNoteCounter, self.FocusIndex);
-        [NotesTool NotesFunc:_CurrentPlayingNoteCounter :_NTool];
-        _CurrentPlayingNoteCounter++;
-    }
-    else if (self.PlayingMode == SINGLE_PLAYING)
-    {
-       [NotesTool NotesFunc:_CurrentPlayingNoteCounter :_NTool];
-    }
-    else
+    if (self.PlayingMode == STOP_PLAYING)
     {
         [self StopClickWithResetCounter: YES];
         [ThisTimer invalidate];
+    }
+    
+    [NotesTool NotesFunc:_CurrentPlayingNoteCounter :_NTool];
+    _CurrentPlayingNoteCounter++;
+    
+    if (_CurrentPlayingNoteCounter == RESET_CLICK)
+    {
+        _CurrentPlayingNoteCounter = FIRST_CLICK;
+        
+        if (self.PlayingMode == LOOP_PLAYING)
+        {
+            _TimeSignatureCounter++;
+            if (_TimeSignatureCounter == [_CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentCell.timeSignatureType.timeSignature])
+            {
+                _TimeSignatureCounter = 0;
+                _LoopCountCounter++;
+                if (_LoopCountCounter >= [self.CurrentCell.loopCount intValue])
+                {
+                    [self ChangeToNextLoopCell];
+                    return;
+                }
+            }
+        }
     }
     
     if(self.ChangeBPMValueFlag && ThisTimer != nil && self.PlayingMode != STOP_PLAYING)
