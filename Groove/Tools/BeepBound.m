@@ -38,6 +38,7 @@
 
 - (void) dealloc
 {
+    NSLog(@"dealloc");
     [self ReleaseVoice];
 
 }

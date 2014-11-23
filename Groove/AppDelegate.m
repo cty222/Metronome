@@ -10,6 +10,8 @@
 
 // 讓silence mode 下也有聲音
 #import <AVFoundation/AVFoundation.h>
+#import "Audioplay.h"
+
 
 @implementation AppDelegate
 
@@ -25,17 +27,7 @@
     
     // 0. Disbale IdleTimer
     [UIApplication sharedApplication].idleTimerDisabled = YES;
-    
-    // 讓silence mode 下也有聲音
-    // Need study!!
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    NSError *setCategoryError = nil;
-    if (![session setCategory:AVAudioSessionCategoryPlayback
-                  withOptions:AVAudioSessionCategoryOptionMixWithOthers
-                        error:&setCategoryError]) {
-        // handle error
-        NSLog(@"AVAudioSession Set error!!");
-    }
+        
     
     //
     // 1. Initize global config
@@ -65,7 +57,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -81,6 +73,9 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    NSLog(@"applicationWillTerminate");
+
+    
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }

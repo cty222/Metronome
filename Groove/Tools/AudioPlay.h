@@ -12,6 +12,7 @@
 #import <OpenAl/alc.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "BeepBound.h"
+#import <AVFoundation/AVFoundation.h>
 
 // Click voice class
 #import "NomalHiClickVoice.h"
@@ -24,7 +25,7 @@
 AudioPlay* gPlayUnit;
 NSMutableArray* gClickVoiceList;
 
-@interface AudioPlay : NSObject
+@interface AudioPlay : NSObject <AVAudioPlayerDelegate>
 
 enum ClickVoice{
     NO_VOICE   = 0,
@@ -38,5 +39,7 @@ enum ClickVoice{
 - (void) playSound : (double) InsertVolume : (AUDIO_FILE) AudioFile;
 + (BOOL) AudioPlayEnable;
 + (void) ResetClickVocieList;
++ (void) InitAlcDevice;
++ (void) RestartAlcDevice;
 
 @end
