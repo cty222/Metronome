@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -23,7 +24,7 @@
                     </state>
                 </button>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="IdF-4P-xRb">
-                    <rect key="frame" x="252" y="46" width="60" height="200"/>
+                    <rect key="frame" x="252" y="46" width="60" height="184"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="n1P-MM-kWw">
@@ -37,10 +38,17 @@
                     <color key="backgroundColor" red="0.2394013831" green="0.2187751383" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="200"/>
                 </scrollView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PYh-UZ-971">
-                    <rect key="frame" x="129" y="230" width="40" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hd4-aG-aep">
+                    <rect key="frame" x="252" y="238" width="60" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Play">
+                    <state key="normal" title="(+)">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PYh-UZ-971">
+                    <rect key="frame" x="8" y="238" width="69" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Loop Play">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
@@ -49,6 +57,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="AddLoopCellButton" destination="hd4-aG-aep" id="z2d-6E-5LD"/>
                 <outlet property="BPMPicker" destination="cWm-G2-BW2" id="RMt-pA-AJe"/>
                 <outlet property="PlayLoopCellButton" destination="PYh-UZ-971" id="h3n-Dk-ujU"/>
                 <outlet property="SystemButton" destination="qDg-3A-xuS" id="tBW-yK-My4"/>

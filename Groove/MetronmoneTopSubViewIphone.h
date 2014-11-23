@@ -16,4 +16,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *TimeSigaturePicker;
 @property (strong, nonatomic) IBOutlet UIButton *SystemButton;
 
+@property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
+
 @end

@@ -31,13 +31,14 @@
     [[UIImage imageNamed:@"LoopPlay_red"] drawInRect:self.PlayCurrentCellButton.bounds];
     _RedPlayCurrentImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayCurrentImage];
     
     // bloak  playloop button
     UIGraphicsBeginImageContext(self.PlayCurrentCellButton.frame.size);
     [[UIImage imageNamed:@"LoopPlay_black"] drawInRect:self.PlayCurrentCellButton.bounds];
     _BlackPlayCurrentImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_BlackPlayCurrentImage];
+
     
     // Play Current cell button initialize
     /*UIGraphicsBeginImageContext(self.PlayLoopCellButton.frame.size);
@@ -59,7 +60,7 @@
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
 
     self.SelectGrooveBar = Parent.BottomSubView.SelectGrooveBar;
-    self.AddLoopCellButton = Parent.BottomSubView.AddLoopCellButton;
+    self.AddLoopCellButton = Parent.TopSubView.AddLoopCellButton;
     
     [self.AddLoopCellButton addTarget:self
                                action:@selector(AddLoopCellButtonClick:) forControlEvents:UIControlEventTouchDown];
@@ -73,15 +74,15 @@
 
     switch (Parent.PlayingMode) {
         case STOP_PLAYING:
-            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayCurrentImage];
+            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_BlackPlayCurrentImage];
             //self.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
             break;
         case SINGLE_PLAYING:
-            // TODO : 要改成Stop圖
-            //self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
+            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayCurrentImage];
             break;
         case LOOP_PLAYING:
-            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_BlackPlayCurrentImage];
+            // TODO : 要改成Stop圖
+            //self.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
             break;
     }
 }

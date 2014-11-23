@@ -26,7 +26,6 @@
 @property (strong, nonatomic) IBOutlet CircleButton *TrippleNoteCircleVolumeButton;
 
 // loop button
-@property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
 @property (strong, nonatomic) IBOutlet UIButton *PlayCurrentCellButton;
 
 // Ad view
