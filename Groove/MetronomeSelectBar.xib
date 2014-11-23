@@ -12,34 +12,20 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="GeF-K8-o8W">
-                    <rect key="frame" x="46" y="0.0" width="228" height="46"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="TUi-0m-NJ0">
-                            <rect key="frame" x="0.0" y="0.0" width="1000" height="46"/>
+                            <rect key="frame" x="0.0" y="0.0" width="1046" height="46"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2CV-Oj-d5K">
-                            <rect key="frame" x="99" y="0.0" width="46" height="46"/>
+                            <rect key="frame" x="145" y="0.0" width="46" height="46"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hfv-WE-RM6">
-                    <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <state key="normal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GQz-iD-ctj">
-                    <rect key="frame" x="274" y="0.0" width="46" height="46"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="( +)">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <view contentMode="scaleToFill" id="TeT-pI-UDw" customClass="DropCellView">
                     <rect key="frame" x="0.0" y="-120" width="320" height="120"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -49,12 +35,10 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="AddLoopCellButton" destination="GQz-iD-ctj" id="hXg-Yn-5jn"/>
                 <outlet property="DropCellView" destination="TeT-pI-UDw" id="eDc-Lv-O0d"/>
                 <outlet property="FocusLineImage" destination="2CV-Oj-d5K" id="b1d-Qb-a9c"/>
                 <outlet property="GrooveCellListView" destination="TUi-0m-NJ0" id="2bR-nw-KxQ"/>
                 <outlet property="HerizontalScrollBar" destination="GeF-K8-o8W" id="IeQ-B9-A9n"/>
-                <outlet property="PlayLoopCellButton" destination="hfv-WE-RM6" id="ouv-bb-WtY"/>
             </connections>
             <point key="canvasLocation" x="206" y="267"/>
         </view>

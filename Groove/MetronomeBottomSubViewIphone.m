@@ -28,10 +28,8 @@
         self.SelectGrooveBar = [[MetronomeSelectBar alloc] initWithFrame:self.SelectGrooveBar.frame];
         [self addSubview:self.SelectGrooveBar];
         
-        self.PlayLoopCellButton = self.SelectGrooveBar.PlayLoopCellButton;
         self.AddLoopCellButton = self.SelectGrooveBar.AddLoopCellButton;
 
-        
         // Back ground
         self.backgroundColor = [UIColor whiteColor];
        
@@ -54,13 +52,7 @@
         [self.TrippleNoteCircleVolumeButton removeFromSuperview];
         self.TrippleNoteCircleVolumeButton = [[CircleButton alloc] initWithFrame:self.TrippleNoteCircleVolumeButton.frame];
         [self addSubview:self.TrippleNoteCircleVolumeButton];
-
-
-        [self.VoiceTypeCircleButton removeFromSuperview];
-        self.VoiceTypeCircleButton = [[CircleButton alloc] initWithFrame:self.VoiceTypeCircleButton.frame];
-        [self addSubview:self.VoiceTypeCircleButton];
-
-        
+       
     }
     return self;
 }

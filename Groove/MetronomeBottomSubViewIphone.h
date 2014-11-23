@@ -25,12 +25,9 @@
 @property (strong, nonatomic) IBOutlet CircleButton *SixteenthNoteCircleVolumeButton;
 @property (strong, nonatomic) IBOutlet CircleButton *TrippleNoteCircleVolumeButton;
 
-// Voice botton
-@property (strong, nonatomic) IBOutlet CircleButton *VoiceTypeCircleButton;
-
 // loop button
 @property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
-@property (strong, nonatomic) IBOutlet UIButton *PlayLoopCellButton;
+@property (strong, nonatomic) IBOutlet UIButton *PlayCurrentCellButton;
 
 // Ad view
 @property(nonatomic,retain)IBOutlet ADBannerView *adView;

@@ -63,9 +63,8 @@
     
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
     self.BPMPicker = Parent.TopSubView.BPMPicker;
-    self.VoiceTypeCircleButton = Parent.BottomSubView.VoiceTypeCircleButton;
+    //self.VoiceTypeCircleButton = Parent.BottomSubView.VoiceTypeCircleButton;
     self.TimeSigaturePicker = Parent.TopSubView.TimeSigaturePicker;
-    self.TapButton = Parent.TopSubView.TapButton;
     
     // BPM Picker Initialize
     self.BPMPicker.delegate = self;
@@ -95,15 +94,7 @@
     UIGraphicsEndImageContext();
     self.TimeSigaturePicker.backgroundColor = [UIColor colorWithPatternImage:TimeSignatureImage];
     
-    // Tap Button initialize
-    UIGraphicsBeginImageContext(self.TapButton.frame.size);
-    [[UIImage imageNamed:@"Tap"] drawInRect:self.TapButton.bounds];
-    UIImage *TapImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.TapButton.backgroundColor = [UIColor colorWithPatternImage:TapImage];
-    
-    [self.TapButton addTarget:self
-                       action:@selector(TapBPMValueButtonClick:)forControlEvents:UIControlEventTouchDown];
+ 
 }
 
 - (void) SetVolumeBarVolume : (TempoCell *)Cell
@@ -159,6 +150,11 @@
 // =========================
 // delegate
 //
+- (void) ShortPress: (LargeBPMPicker *) ThisPicker
+{
+    [self TapBPMValueButtonClick:ThisPicker];
+}
+
 - (IBAction) CircleButtonValueChanged:(CircleButton*) ThisCircleButton;
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
@@ -208,7 +204,7 @@
 // =========================
 // Action
 //
-- (IBAction) TapBPMValueButtonClick: (UIButton *) ThisClickedButton
+- (IBAction) TapBPMValueButtonClick: (id) ThisClickedButton
 {
     if (_Date == nil)
     {

@@ -13,8 +13,8 @@
 @interface LoopAndPlayViewControl : NSObject <SelectBarProtocol>
 
 // (3) Playing Cell functon item
-@property (strong, nonatomic) IBOutlet UIButton *PlayCurrentCellButton;
 @property (strong, nonatomic) IBOutlet UIButton *PlayLoopCellButton;
+@property (strong, nonatomic) IBOutlet UIButton *PlayCurrentCellButton;
 
 // (4) Loop Control function button
 @property (strong, nonatomic) IBOutlet MetronomeSelectBar *SelectGrooveBar;

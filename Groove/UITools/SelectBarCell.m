@@ -8,6 +8,12 @@
 
 #import "SelectBarCell.h"
 
+@interface SelectBarCell ()
+{
+    
+}
+@end
+
 @implementation SelectBarCell
 {
     // Property
@@ -55,8 +61,6 @@
         self.LongPressSecond = 0.8;
         self.VerticalSensitivity = 16;
         self.HorizontalSensitivity = 1;
-        
-        _Date = [NSDate date];
     }
     return self;
 }
@@ -122,7 +126,7 @@
     _Touched = NewValue;
     if (_Touched)
     {
-        _PressTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
+        [self ShortPressCheckStart];
         
        if (_LongPressTimer != nil)
         {
@@ -139,14 +143,11 @@
     }
     else
     {
-        if (_PressTime_ms != 0)
+        if (self.MoveMode == SELECT_CELL_NONE)
         {
-            double CurrentRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
-            if ((CurrentRecordTime_ms -_PressTime_ms) < self.ShortPressSecond * 1000.0)
-            {
-                self.MoveMode = SELECT_CELL_SHORT_PRESS;
-            }
+            [self ShortPressCheckEnd];
         }
+        
         self.MoveMode = SELECT_CELL_NONE;
     }
     
@@ -163,7 +164,6 @@
     // Set mode block situation
     if ((_MoveMode == NewValue)
         || (NewValue >= SELECT_CELL_MODE_END || NewValue < SELECT_CELL_NONE)
-        || (_MoveMode != SELECT_CELL_NONE && NewValue == SELECT_CELL_SHORT_PRESS)
         )
     {
         return;
@@ -192,11 +192,6 @@
             }
             break;
         case SELECT_CELL_NORMAL_MOVE:
-            break;
-        case SELECT_CELL_SHORT_PRESS:
-            _MoveMode = NewValue;
-            [self ShortPressToSetFocus:self];
-            return;
             break;
         case SELECT_CELL_LONG_PRRESS_MOVE:
             if (![self IsLongPressModeEnable:YES : self])
@@ -275,6 +270,35 @@
     }
     return _HorizontalSensitivity;
 }
+
+//
+// ================================
+
+// ================================
+// Function
+//
+
+- (void) ShortPressCheckStart
+{
+    if (_Date == nil)
+    {
+        _Date = [NSDate date];
+    }
+    _PressTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
+}
+
+- (void) ShortPressCheckEnd
+{
+    if (_PressTime_ms != 0 && self.MoveMode == SELECT_CELL_NONE)
+    {
+        double CurrentRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
+        if ((CurrentRecordTime_ms -_PressTime_ms) < self.ShortPressSecond * 1000.0)
+        {
+            [self ShortPressToSetFocus:self];
+        }
+    }
+}
+
 
 //
 // ================================
@@ -439,13 +463,9 @@
 
 - (void) ShortPressToSetFocus: (SelectBarCell *) ThisCell
 {
-    if (self.MoveMode != SELECT_CELL_SHORT_PRESS)
+    if (self.MoveMode != SELECT_CELL_NONE)
     {
         return;
-    }
-    else
-    {
-        self.MoveMode = SELECT_CELL_NONE;
     }
     
     if (self.delegate != nil)
@@ -456,8 +476,6 @@
             [self.delegate ShortPressToSetFocus: ThisCell];
         }
     }
-    
-
 }
 
 - (void) CellTouchedChange : (BOOL) Touched : (SelectBarCell *) ThisCell

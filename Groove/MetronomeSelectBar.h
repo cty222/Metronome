@@ -38,7 +38,6 @@ typedef enum{
 
 // loop button
 @property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
-@property (strong, nonatomic) IBOutlet UIButton *PlayLoopCellButton;
 @property (strong, nonatomic) IBOutlet UIView *HerizontalScrollBar;
 @property (strong, nonatomic) IBOutlet UIImageView *FocusLineImage;
 @property (strong, nonatomic) IBOutlet UIView *GrooveCellListView;

@@ -20,11 +20,13 @@
 @optional
 
 - (void) SetBPMValue : (int) NewValue;
+- (void) ShortPress: (LargeBPMPicker *) ThisPicker;
 @end
 
 @interface LargeBPMPicker : XibViewInterface
 
 @property (getter = GetBPMValue, setter = SetBPMValue:) int BPMValue;
+@property (getter = GetShortPressSecond, setter = SetShortPressSecond:) float ShortPressSecond;
 
 #if DIGIT_ENABLE_FLAG
 @property (strong, nonatomic) IBOutlet UIView *DigitInHundreds;

@@ -12,8 +12,8 @@
 {
     // PlayCell Image
     UIImage *_SinglePlayImage;
-    UIImage *_RedPlayloopImage;
-    UIImage *_BlackPlayloopImage;
+    UIImage *_RedPlayCurrentImage;
+    UIImage *_BlackPlayCurrentImage;
     
     NSMutableArray * _GrooveLoopList;
 }
@@ -22,33 +22,32 @@
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
 
-    self.PlayCurrentCellButton = Parent.TopSubView.PlayCurrentCellButton;
-    self.PlayLoopCellButton = Parent.BottomSubView.PlayLoopCellButton;
+    self.PlayLoopCellButton = Parent.TopSubView.PlayLoopCellButton;
+    self.PlayCurrentCellButton = Parent.BottomSubView.PlayCurrentCellButton;
     
     // PlayLoopCellButton Initalize
     // red  playloop button
-    UIGraphicsBeginImageContext(self.PlayLoopCellButton.frame.size);
-    [[UIImage imageNamed:@"LoopPlay_red"] drawInRect:self.PlayLoopCellButton.bounds];
-    _RedPlayloopImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsBeginImageContext(self.PlayCurrentCellButton.frame.size);
+    [[UIImage imageNamed:@"LoopPlay_red"] drawInRect:self.PlayCurrentCellButton.bounds];
+    _RedPlayCurrentImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    self.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayloopImage];
+    self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayCurrentImage];
     
     // bloak  playloop button
-    UIGraphicsBeginImageContext(self.PlayLoopCellButton.frame.size);
-    [[UIImage imageNamed:@"LoopPlay_black"] drawInRect:self.PlayLoopCellButton.bounds];
-    _BlackPlayloopImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsBeginImageContext(self.PlayCurrentCellButton.frame.size);
+    [[UIImage imageNamed:@"LoopPlay_black"] drawInRect:self.PlayCurrentCellButton.bounds];
+    _BlackPlayCurrentImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
     // Play Current cell button initialize
-    UIGraphicsBeginImageContext(self.PlayCurrentCellButton.frame.size);
-    [[UIImage imageNamed:@"SinglePlay"] drawInRect:self.PlayCurrentCellButton.bounds];
+    /*UIGraphicsBeginImageContext(self.PlayLoopCellButton.frame.size);
+    [[UIImage imageNamed:@"SinglePlay"] drawInRect:self.PlayLoopCellButton.bounds];
     _SinglePlayImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
+    self.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];*/
     
     [self.PlayCurrentCellButton addTarget:self
                                    action:@selector(PlayCurrentCellButtonClick:) forControlEvents:UIControlEventTouchDown];
-    
     
     // Play LoopCellButton Initialize
     [self.PlayLoopCellButton addTarget:self
@@ -74,15 +73,15 @@
 
     switch (Parent.PlayingMode) {
         case STOP_PLAYING:
-            self.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayloopImage];
-            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
+            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayCurrentImage];
+            //self.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
             break;
         case SINGLE_PLAYING:
             // TODO : 要改成Stop圖
-            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
+            //self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
             break;
         case LOOP_PLAYING:
-            self.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_BlackPlayloopImage];
+            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_BlackPlayCurrentImage];
             break;
     }
 }
@@ -127,7 +126,7 @@
     {
         Parent.PlayingMode = STOP_PLAYING;
         
-        self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
+        //self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
     }
     
     if (Parent.PlayingMode == STOP_PLAYING)

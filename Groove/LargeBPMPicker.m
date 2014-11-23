@@ -22,6 +22,11 @@
     BOOL _Touched;
     NSTimer *ArrowCancellTimer;
     NSTimer *ArrowLongPushTimer;
+    
+    // Short press
+    float _ShortPressSecond;
+    NSDate * _Date;
+    double _PressTime_ms;
 }
 
 - (float) LongPushArraySensitivity
@@ -46,7 +51,8 @@
     _BPMMin = [[GlobalConfig BPMMinValue] intValue];
 
     self.BPMValue = 120;
-    
+    self.ShortPressSecond = 0.5;
+
     CGAffineTransform rotation = CGAffineTransformMakeRotation(M_PI);
     CALayer *DownArrowLayer = self.DownArrow.layer;
     [DownArrowLayer setAffineTransform:rotation];
@@ -110,9 +116,8 @@
 }
 */
 
-// ===========================
-//
-//
+
+
 - (int) GetBPMValue
 {
     return _BPMValue;
@@ -156,6 +161,51 @@
 }
 //
 // ===========================
+
+// ============================
+// delegate
+//
+- (void) ShortPress: (LargeBPMPicker *) ThisPicker
+{
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(ShortPress:)])
+        {
+            [self.delegate ShortPress: ThisPicker];
+        }
+    }
+}
+//
+// ============================
+
+// ================================
+// Function
+//
+
+- (void) ShortPressCheckStart
+{
+    if (_Date == nil)
+    {
+        _Date = [NSDate date];
+    }
+    
+    _PressTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
+}
+
+- (void) ShortPressCheckEnd
+{
+
+    if (_PressTime_ms != 0)
+    {
+        double CurrentRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
+        if ((CurrentRecordTime_ms -_PressTime_ms) < self.ShortPressSecond * 1000.0)
+        {
+            [self ShortPress:self];
+        }
+    }
+}
+
 - (void) CheckTouchBPMValueArrow : (CGPoint) TouchLocation
 {
     if (!self.Touched)
@@ -188,6 +238,25 @@
     }
 }
 
+//
+// ================================
+
+// ================================
+// property
+//
+- (void) SetShortPressSecond : (float) NewValue
+{
+    _ShortPressSecond = NewValue;
+}
+
+- (float)GetShortPressSecond
+{
+    if (_ShortPressSecond == 0)
+    {
+        _ShortPressSecond = 0.25;
+    }
+    return _ShortPressSecond;
+}
 
 - (BOOL) GetTouched
 {
@@ -210,9 +279,20 @@
             [ArrowCancellTimer invalidate];
             ArrowCancellTimer = nil;
         }
+        
+        [self ShortPressCheckStart];
     }
     else
     {
+        if (_PressTime_ms != 0)
+        {
+            double CurrentRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
+            if ((CurrentRecordTime_ms -_PressTime_ms) < self.ShortPressSecond * 1000.0)
+            {
+                [self ShortPress:self];
+            }
+        }
+        
         ArrowCancellTimer = [NSTimer scheduledTimerWithTimeInterval:2
                                                              target:self
                                                            selector:@selector(ArrowCancellTicker:)
@@ -223,8 +303,18 @@
             [ArrowLongPushTimer invalidate];
             ArrowLongPushTimer = nil;
         }
+        
+        [self ShortPressCheckEnd];
+
     }
 }
+
+//
+// ================================
+
+// ================================
+// touch event
+//
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
@@ -263,6 +353,10 @@
     UITouch *Touch =  [touches anyObject];
     return [Touch locationInView:Touch.view];
 }
+
+//
+// ================================
+
 
 // ========
 // Ticker
