@@ -13,9 +13,11 @@
 @property (strong, nonatomic) IBOutlet LargeBPMPicker *BPMPicker;
 
 @property (strong, nonatomic) IBOutlet UIButton *PlayLoopCellButton;
+@property (strong, nonatomic) IBOutlet UIButton *VoiceTypePicker;
 @property (strong, nonatomic) IBOutlet UIButton *TimeSigaturePicker;
 @property (strong, nonatomic) IBOutlet UIButton *SystemButton;
 
 @property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
+@property (strong, nonatomic) IBOutlet UIScrollView *OptionScrollView;
 
 @end

@@ -27,6 +27,8 @@
         [self.BPMPicker removeFromSuperview];
         self.BPMPicker = [[LargeBPMPicker alloc] initWithFrame:self.BPMPicker.frame];
         [self addSubview:self.BPMPicker];
+        [self sendSubviewToBack:self.BPMPicker];
+
     }
     return self;
 }

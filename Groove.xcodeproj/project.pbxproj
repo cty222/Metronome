@@ -55,6 +55,7 @@
 		00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B0C19BC538F007A3085 /* GrooveMainViewControllerIpone.m */; };
 		00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */; };
 		00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */; };
+		00A0B8111A23A9AD00D93ABB /* UIWindowWithHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A0B8101A23A9AD00D93ABB /* UIWindowWithHook.m */; };
 		00B02A5D1A0E997C00BCAF3B /* CircleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */; };
 		00B81F6A1A0278D60098BCBB /* TopViewBackground.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00B81F691A0278D60098BCBB /* TopViewBackground.pdf */; };
 		00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */; };
@@ -162,6 +163,8 @@
 		00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrooveMainViewControllerIpone.xib; sourceTree = "<group>"; };
 		00677B1119BC5DA4007A3085 /* LargeBPMPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargeBPMPicker.h; sourceTree = "<group>"; };
 		00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargeBPMPicker.m; sourceTree = "<group>"; };
+		00A0B80F1A23A9AD00D93ABB /* UIWindowWithHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIWindowWithHook.h; path = SuperClass/UIWindowWithHook.h; sourceTree = "<group>"; };
+		00A0B8101A23A9AD00D93ABB /* UIWindowWithHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIWindowWithHook.m; path = SuperClass/UIWindowWithHook.m; sourceTree = "<group>"; };
 		00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleButton.xib; sourceTree = "<group>"; };
 		00B81F691A0278D60098BCBB /* TopViewBackground.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TopViewBackground.pdf; sourceTree = "<group>"; };
 		00B9689919CEF10900AAD1AF /* MetronomeSelectBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeSelectBar.h; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 			children = (
 				004BE67319B2E014002CD995 /* XibViewInterface.h */,
 				004BE67419B2E014002CD995 /* XibViewInterface.m */,
+				00A0B80F1A23A9AD00D93ABB /* UIWindowWithHook.h */,
+				00A0B8101A23A9AD00D93ABB /* UIWindowWithHook.m */,
 			);
 			name = SuperClass;
 			sourceTree = "<group>";
@@ -653,6 +658,7 @@
 				00DA131E19F4EF1900F27E25 /* NomalHiClickVoice.m in Sources */,
 				00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */,
 				004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */,
+				00A0B8111A23A9AD00D93ABB /* UIWindowWithHook.m in Sources */,
 				003A56A219D3284600747EB3 /* TimeSignatureType.m in Sources */,
 				00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */,
 				004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */,

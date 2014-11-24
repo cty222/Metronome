@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+// WindowsHook
+#import "UIWindowWithHook.h"
+
 // View
 #import "MetronmoneTopSubViewIphone.h"
 #import "MetronomeBottomSubViewIphone.h"

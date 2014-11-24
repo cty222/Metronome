@@ -112,7 +112,17 @@
     [_LoopAndPlayViewSubController InitializeLoopControlItem];
    
     [self FillData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(TouchedNotificationCallBack:)
+                                                 name:kTouchGlobalHookNotification
+                                               object:nil];
+}
 
+- (void)TouchedNotificationCallBack:(UIEvent *)Event
+{
+    //NSSet * Touches = [Event allTouches];
+    NSLog(@"%@", Event);
 }
 
 - (void) InitializeSubController

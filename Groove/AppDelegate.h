@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIWindowWithHook.h"
 #import "GlobalConfig.h"
 #import "MetronomeMainViewControllerIphone.h"
 #import "MetronomeModel.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UIWindowWithHook *window;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;

@@ -63,29 +63,28 @@
     
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
     self.BPMPicker = Parent.TopSubView.BPMPicker;
-    //self.VoiceTypeCircleButton = Parent.BottomSubView.VoiceTypeCircleButton;
+    self.VoiceTypePicker = Parent.TopSubView.VoiceTypePicker;
     self.TimeSigaturePicker = Parent.TopSubView.TimeSigaturePicker;
     
     // BPM Picker Initialize
     self.BPMPicker.delegate = self;
     
     // VoiceType CircleButton initialize
-    self.VoiceTypeCircleButton.delegate = self;
+    /*self.VoiceTypeCircleButton.delegate = self;
     CIRCLEBUTTON_RANGE VolumeRange;
     VolumeRange.MaxIndex = 10.0;
     VolumeRange.MinIndex = 0;
-    VolumeRange.UnitValue = 1;
+    VolumeRange.UnitValue = 1;*/
     
-    self.VoiceTypeCircleButton.IndexRange = VolumeRange;
-    self.VoiceTypeCircleButton.IndexValueSensitivity = 1;
-    self.VoiceTypeCircleButton.IndexValue = 3;
-    self.VoiceTypeCircleButton.tag = VOICE_TYPE_BUTTON;
-    
+   
     /*UIGraphicsBeginImageContext(self.VoiceButton.frame.size);
      [[UIImage imageNamed:@"Voice_Hi-Click"] drawInRect:self.VoiceButton.bounds];
      UIImage *VoiceImage = UIGraphicsGetImageFromCurrentImageContext();
      UIGraphicsEndImageContext();
      self.VoiceButton.backgroundColor = [UIColor colorWithPatternImage:VoiceImage];*/
+    [self.VoiceTypePicker addTarget:self
+                               action:@selector(VoiceTypePickerDisplay:) forControlEvents:UIControlEventTouchDown];
+    
     
     // Time Signature
     UIGraphicsBeginImageContext(self.TimeSigaturePicker.frame.size);
@@ -93,8 +92,20 @@
     UIImage *TimeSignatureImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     self.TimeSigaturePicker.backgroundColor = [UIColor colorWithPatternImage:TimeSignatureImage];
+    [self.TimeSigaturePicker addTarget:self
+                             action:@selector(TimeSigaturePickerDisplay:) forControlEvents:UIControlEventTouchDown];
     
  
+}
+
+-(IBAction) VoiceTypePickerDisplay:(id)sender
+{
+    NSLog(@"VoiceTypePickerDisplay");
+}
+
+-(IBAction) TimeSigaturePickerDisplay:(id)sender
+{
+    NSLog(@"TimeSigaturePickerDisplay");
 }
 
 - (void) SetVolumeBarVolume : (TempoCell *)Cell

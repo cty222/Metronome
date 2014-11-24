@@ -439,7 +439,6 @@
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-   
     _OriginalLocation = [self GetLocationPoint: touches];
     [self SetBarSpaceTouched: YES];
 }

@@ -63,6 +63,9 @@
     self.UpArrow.hidden = YES;
     self.DownArrow.hidden = YES;
     self.Touched = NO;
+    self.ValueLabel.adjustsFontSizeToFitWidth = YES;
+    [self.ValueLabel sizeToFit];
+
 }
 
 - (id)initWithFrame:(CGRect) frame

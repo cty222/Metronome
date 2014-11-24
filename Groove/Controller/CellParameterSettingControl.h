@@ -34,7 +34,7 @@ typedef enum{
 
 // (2) Cell parameter control item
 @property (strong, nonatomic) IBOutlet LargeBPMPicker *BPMPicker;
-@property (strong, nonatomic) IBOutlet CircleButton *VoiceTypeCircleButton;
+@property (strong, nonatomic) IBOutlet UIButton *VoiceTypePicker;
 @property (strong, nonatomic) IBOutlet UIButton *TimeSigaturePicker;
 @property (strong, nonatomic) IBOutlet UIButton *TapButton;
 

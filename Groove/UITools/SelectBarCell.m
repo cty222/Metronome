@@ -143,6 +143,12 @@
     }
     else
     {
+        if (_LongPressTimer != nil)
+        {
+            [_LongPressTimer invalidate];
+            _LongPressTimer = nil;
+        }
+        
         if (self.MoveMode == SELECT_CELL_NONE)
         {
             [self ShortPressCheckEnd];
@@ -164,6 +170,7 @@
     // Set mode block situation
     if ((_MoveMode == NewValue)
         || (NewValue >= SELECT_CELL_MODE_END || NewValue < SELECT_CELL_NONE)
+        || (NewValue == SELECT_CELL_LONG_PRRESS_MOVE && _MoveMode != SELECT_CELL_NONE)
         )
     {
         return;
@@ -328,7 +335,6 @@
 
 -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-
     if (self.MoveMode == SELECT_CELL_BLOCK)
     {
         return;
@@ -396,7 +402,7 @@
     UITouch *Touch =  [touches anyObject];
     if (self.superview == nil)
     {
-        return CGPointMake(0, 0);
+        return [Touch locationInView:self];
     }
     else
     {
@@ -407,9 +413,8 @@
 
 - (void) LongPressTick :(NSTimer *) ThisTimer
 {
-    if ((self.MoveMode == SELECT_CELL_NONE
-        || self.IsFocusOn)
-        && self.Touched)
+    if ( (self.MoveMode == SELECT_CELL_NONE && self.Touched)
+        )
     {
         self.MoveMode = SELECT_CELL_LONG_PRRESS_MOVE;
     }

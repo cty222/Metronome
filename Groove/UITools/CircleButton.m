@@ -379,7 +379,7 @@
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-   self.Touched = NO; 
+   self.Touched = NO;
 }
 
 - (CGPoint) GetLocationPoint: (NSSet*)touches
