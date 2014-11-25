@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00039D1F1A24ED2300710E0E /* SubPropertySelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00039D1E1A24ED2300710E0E /* SubPropertySelector.xib */; };
+		00039D221A24ED4500710E0E /* SubPropertySelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 00039D211A24ED4500710E0E /* SubPropertySelector.m */; };
+		00039D241A24FA8E00710E0E /* TmpArrows.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 00039D231A24FA8E00710E0E /* TmpArrows.jpeg */; };
 		000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 000BDEEB19BF7D6A00078456 /* triangle2.png */; };
 		0010FF2619FEC1B5005E74C1 /* reflect_number_0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0010FF2419FEC1B5005E74C1 /* reflect_number_0.pdf */; };
 		0010FF2719FEC1B5005E74C1 /* reflect_number_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0010FF2519FEC1B5005E74C1 /* reflect_number_1.pdf */; };
@@ -96,6 +99,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00039D1E1A24ED2300710E0E /* SubPropertySelector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubPropertySelector.xib; sourceTree = "<group>"; };
+		00039D201A24ED4500710E0E /* SubPropertySelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubPropertySelector.h; path = UITools/SubPropertySelector.h; sourceTree = "<group>"; };
+		00039D211A24ED4500710E0E /* SubPropertySelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubPropertySelector.m; path = UITools/SubPropertySelector.m; sourceTree = "<group>"; };
+		00039D231A24FA8E00710E0E /* TmpArrows.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TmpArrows.jpeg; sourceTree = "<group>"; };
 		000BDEEB19BF7D6A00078456 /* triangle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle2.png; sourceTree = "<group>"; };
 		0010FF2419FEC1B5005E74C1 /* reflect_number_0.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = reflect_number_0.pdf; sourceTree = "<group>"; };
 		0010FF2519FEC1B5005E74C1 /* reflect_number_1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = reflect_number_1.pdf; sourceTree = "<group>"; };
@@ -412,6 +419,9 @@
 				003994AF1A1FAE1D00379CEA /* DropCellView.h */,
 				003994B01A1FAE1D00379CEA /* DropCellView.m */,
 				003994B21A1FAE3F00379CEA /* DropCellView.xib */,
+				00039D1E1A24ED2300710E0E /* SubPropertySelector.xib */,
+				00039D201A24ED4500710E0E /* SubPropertySelector.h */,
+				00039D211A24ED4500710E0E /* SubPropertySelector.m */,
 			);
 			name = MetronmeItems;
 			sourceTree = "<group>";
@@ -419,6 +429,7 @@
 		00C4B4EB19F9752D00B363BA /* Picture */ = {
 			isa = PBXGroup;
 			children = (
+				00039D231A24FA8E00710E0E /* TmpArrows.jpeg */,
 				005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */,
 				003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */,
 				0034734C1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf */,
@@ -596,6 +607,7 @@
 				00BBE8111A06AFDA0034BCB6 /* BottomViewBackground.pdf in Resources */,
 				00B02A5D1A0E997C00BCAF3B /* CircleButton.xib in Resources */,
 				0010FF2719FEC1B5005E74C1 /* reflect_number_1.pdf in Resources */,
+				00039D241A24FA8E00710E0E /* TmpArrows.jpeg in Resources */,
 				000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */,
 				00BBE80B1A06AF5D0034BCB6 /* TimeSignature_4_4.pdf in Resources */,
 				00BBE80F1A06AF710034BCB6 /* Voice_Hi-Click.pdf in Resources */,
@@ -613,6 +625,7 @@
 				00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */,
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
 				0034734E1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf in Resources */,
+				00039D1F1A24ED2300710E0E /* SubPropertySelector.xib in Resources */,
 				00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */,
 				005662181A185D8E002222A0 /* SelectBarCell.xib in Resources */,
 				0010FF2619FEC1B5005E74C1 /* reflect_number_0.pdf in Resources */,
@@ -669,6 +682,7 @@
 				003994B11A1FAE1D00379CEA /* DropCellView.m in Sources */,
 				00D92FD61A15FE5700AEC17F /* SystemPageControl.m in Sources */,
 				003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */,
+				00039D221A24ED4500710E0E /* SubPropertySelector.m in Sources */,
 				00DA131119F4E94700F27E25 /* NotesTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

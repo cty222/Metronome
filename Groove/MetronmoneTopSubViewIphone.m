@@ -28,6 +28,12 @@
         self.BPMPicker = [[LargeBPMPicker alloc] initWithFrame:self.BPMPicker.frame];
         [self addSubview:self.BPMPicker];
         [self sendSubviewToBack:self.BPMPicker];
+        
+        [self.SubPropertySelectorView removeFromSuperview];
+        self.SubPropertySelectorView = [[SubPropertySelector alloc] initWithFrame:self.SubPropertySelectorView.frame];
+        [self addSubview:self.SubPropertySelectorView];
+        [self sendSubviewToBack:self.SubPropertySelectorView];
+        [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_HIDDEN :0];
 
     }
     return self;

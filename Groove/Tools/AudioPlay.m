@@ -128,9 +128,9 @@ static ALCcontext *openALContext;
 //
 - (void) AVAudioSessionInterruptionHandler : (NSNotification*) notification
 {
-	    NSDictionary *interruptionDictionary = [notification userInfo];
-    NSNumber *interruptionType = (NSNumber *)[interruptionDictionary valueForKey:AVAudioSessionInterruptionTypeKey];
-    int Type = [interruptionType intValue];
+    NSDictionary *UserInfoDictionary = [notification userInfo];
+    NSNumber *InterruptionType = (NSNumber *)[UserInfoDictionary valueForKey:AVAudioSessionInterruptionTypeKey];
+    int Type = [InterruptionType intValue];
     
     if (Type == AVAudioSessionInterruptionTypeBegan)
     {

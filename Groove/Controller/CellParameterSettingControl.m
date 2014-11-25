@@ -63,8 +63,12 @@
     
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
     self.BPMPicker = Parent.TopSubView.BPMPicker;
+    self.OptionScrollView = Parent.TopSubView.OptionScrollView;
     self.VoiceTypePicker = Parent.TopSubView.VoiceTypePicker;
     self.TimeSigaturePicker = Parent.TopSubView.TimeSigaturePicker;
+    self.SubPropertySelectorView = Parent.TopSubView.SubPropertySelectorView;
+    
+
     
     // BPM Picker Initialize
     self.BPMPicker.delegate = self;
@@ -75,6 +79,7 @@
     VolumeRange.MaxIndex = 10.0;
     VolumeRange.MinIndex = 0;
     VolumeRange.UnitValue = 1;*/
+    
     
    
     /*UIGraphicsBeginImageContext(self.VoiceButton.frame.size);
@@ -95,17 +100,42 @@
     [self.TimeSigaturePicker addTarget:self
                              action:@selector(TimeSigaturePickerDisplay:) forControlEvents:UIControlEventTouchDown];
     
- 
+
+    // SubPropertySelectorView
+    self.SubPropertySelectorView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.SubPropertySelectorView.frame.origin.y;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(TouchedNotificationCallBack:)
+                                                 name:kTouchGlobalHookNotification
+                                               object:nil];
 }
 
--(IBAction) VoiceTypePickerDisplay:(id)sender
+-(IBAction) VoiceTypePickerDisplay:(UIView *)sender
 {
-    NSLog(@"VoiceTypePickerDisplay");
+    float CenterLine = sender.frame.origin.y + sender.frame.size.height/2;
+    [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_SHOW :CenterLine];
 }
 
--(IBAction) TimeSigaturePickerDisplay:(id)sender
+-(IBAction) TimeSigaturePickerDisplay:(UIView *)sender
 {
-    NSLog(@"TimeSigaturePickerDisplay");
+    float CenterLine = sender.frame.origin.y + sender.frame.size.height/2;
+    [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_SHOW :CenterLine];
+}
+
+- (void)TouchedNotificationCallBack:(NSNotification *)Notification
+{
+    UIEvent *Event = [Notification object];
+    NSSet *touches = [Event allTouches];
+    UITouch *touch = [touches anyObject];
+    UIView * target = [touch view];
+    if ((target != self.TimeSigaturePicker && target != self.VoiceTypePicker))
+    {
+        if (self.SubPropertySelectorView.Mode != SUB_PROPERTY_MODE_HIDDEN)
+        {
+            [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_HIDDEN :0];
+            return;
+        }
+    }
 }
 
 - (void) SetVolumeBarVolume : (TempoCell *)Cell

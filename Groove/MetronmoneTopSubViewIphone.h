@@ -7,6 +7,7 @@
 //
 
 #import "LargeBPMPicker.h"
+#import "SubPropertySelector.h"
 
 @interface MetronmoneTopSubViewIphone : XibViewInterface <LargeBPMPickerProtocol>
 
@@ -19,5 +20,6 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *OptionScrollView;
+@property (strong, nonatomic) IBOutlet SubPropertySelector *SubPropertySelectorView;
 
 @end

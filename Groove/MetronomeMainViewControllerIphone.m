@@ -119,10 +119,12 @@
                                                object:nil];
 }
 
-- (void)TouchedNotificationCallBack:(UIEvent *)Event
+- (void)TouchedNotificationCallBack:(NSNotification *)Notification
 {
-    //NSSet * Touches = [Event allTouches];
-    NSLog(@"%@", Event);
+    UIEvent *Event = [Notification object];
+    NSSet *touches = [Event allTouches];
+    UITouch *touch = [touches anyObject];
+    UIView * target = [touch view];
 }
 
 - (void) InitializeSubController

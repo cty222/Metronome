@@ -37,6 +37,9 @@ typedef enum{
 @property (strong, nonatomic) IBOutlet UIButton *VoiceTypePicker;
 @property (strong, nonatomic) IBOutlet UIButton *TimeSigaturePicker;
 @property (strong, nonatomic) IBOutlet UIButton *TapButton;
+@property (strong, nonatomic) IBOutlet SubPropertySelector *SubPropertySelectorView;
+@property (strong, nonatomic) IBOutlet UIScrollView *OptionScrollView;
+
 
 @property UIViewController *ParrentController;
 
