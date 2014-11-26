@@ -77,8 +77,12 @@
     NSLog(@"02 Create TimeSignature");
     [self CreateDefaultTimeSignatureType];
     
+    // Create VoiceType
+    NSLog(@"03 Create VoiceType");
+    [self CreateDefaultVoiceType];
+    
     // Create TempoCell
-    NSLog(@"03 Create TempoCell");
+    NSLog(@"04 Create TempoCell");
     [self CreateDefaultTempoCell];
     
     // Update DbVersion
@@ -115,6 +119,20 @@
         NewTimeSignatureType.timeSignature = (NSString *)TimeSignatureArray[Index];
     }
     [_ManagedObjectContext save:nil];
+}
+
+- (void) CreateDefaultVoiceType
+{
+
+    NSArray *VoiceTypeArray =[NSArray arrayWithObjects:@"NormalHi", nil];
+    for (int Index=0;Index <VoiceTypeArray.count; Index++)
+    {
+        VoiceType* NewVoiceType = [NSEntityDescription
+                                                   insertNewObjectForEntityForName:NSStringFromClass([VoiceType class]) inManagedObjectContext:_ManagedObjectContext];
+        NewVoiceType.voiceType = (NSString *)VoiceTypeArray[Index];
+    }
+    [_ManagedObjectContext save:nil];
+
 }
 
 - (void) CreateDefaultTempoCell
@@ -191,6 +209,18 @@
         [self.TimeSignatureTypeEntityFetch setEntity:Entity];
     }
     return [_ManagedObjectContext executeFetchRequest:self.TimeSignatureTypeEntityFetch error:nil];
+}
+
+- (NSArray *) FetchVoiceType
+{
+    NSEntityDescription *Entity;
+    if (self.VoiceTypeEntityFetch == nil)
+    {
+        self.VoiceTypeEntityFetch = [[NSFetchRequest alloc] init];
+        Entity = [NSEntityDescription entityForName:NSStringFromClass([VoiceType class]) inManagedObjectContext:_ManagedObjectContext];
+        [self.VoiceTypeEntityFetch setEntity:Entity];
+    }
+    return [_ManagedObjectContext executeFetchRequest:self.VoiceTypeEntityFetch error:nil];
 }
 
 - (NSArray *) FetchTempoCell

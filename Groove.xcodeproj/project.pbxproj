@@ -23,7 +23,6 @@
 		0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */; };
 		003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */; };
 		0036173D19D5CC9900848A35 /* loop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0036173C19D5CC9900848A35 /* loop.png */; };
-		0036174519D5E2DA00848A35 /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0036174419D5E2DA00848A35 /* TempoCell.m */; };
 		003994B11A1FAE1D00379CEA /* DropCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 003994B01A1FAE1D00379CEA /* DropCellView.m */; };
 		003994B31A1FAE3F00379CEA /* DropCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003994B21A1FAE3F00379CEA /* DropCellView.xib */; };
 		003A56A219D3284600747EB3 /* TimeSignatureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 003A56A119D3284600747EB3 /* TimeSignatureType.m */; };
@@ -59,6 +58,8 @@
 		00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */; };
 		00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */; };
 		00A0B8111A23A9AD00D93ABB /* UIWindowWithHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A0B8101A23A9AD00D93ABB /* UIWindowWithHook.m */; };
+		00A894411A264CA3008D4D1B /* VoiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A894401A264CA3008D4D1B /* VoiceType.m */; };
+		00A894441A264CE6008D4D1B /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A894431A264CE6008D4D1B /* TempoCell.m */; };
 		00B02A5D1A0E997C00BCAF3B /* CircleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */; };
 		00B81F6A1A0278D60098BCBB /* TopViewBackground.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00B81F691A0278D60098BCBB /* TopViewBackground.pdf */; };
 		00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */; };
@@ -120,8 +121,6 @@
 		0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f4.pdf; sourceTree = "<group>"; };
 		003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f2.pdf; sourceTree = "<group>"; };
 		0036173C19D5CC9900848A35 /* loop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loop.png; sourceTree = "<group>"; };
-		0036174319D5E2DA00848A35 /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
-		0036174419D5E2DA00848A35 /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
 		003994AF1A1FAE1D00379CEA /* DropCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropCellView.h; path = UITools/DropCellView.h; sourceTree = "<group>"; };
 		003994B01A1FAE1D00379CEA /* DropCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropCellView.m; path = UITools/DropCellView.m; sourceTree = "<group>"; };
 		003994B21A1FAE3F00379CEA /* DropCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropCellView.xib; sourceTree = "<group>"; };
@@ -172,6 +171,10 @@
 		00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargeBPMPicker.m; sourceTree = "<group>"; };
 		00A0B80F1A23A9AD00D93ABB /* UIWindowWithHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIWindowWithHook.h; path = SuperClass/UIWindowWithHook.h; sourceTree = "<group>"; };
 		00A0B8101A23A9AD00D93ABB /* UIWindowWithHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIWindowWithHook.m; path = SuperClass/UIWindowWithHook.m; sourceTree = "<group>"; };
+		00A8943F1A264CA3008D4D1B /* VoiceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoiceType.h; path = CoreDataSubClass/VoiceType.h; sourceTree = "<group>"; };
+		00A894401A264CA3008D4D1B /* VoiceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoiceType.m; path = CoreDataSubClass/VoiceType.m; sourceTree = "<group>"; };
+		00A894421A264CE6008D4D1B /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
+		00A894431A264CE6008D4D1B /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
 		00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleButton.xib; sourceTree = "<group>"; };
 		00B81F691A0278D60098BCBB /* TopViewBackground.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TopViewBackground.pdf; sourceTree = "<group>"; };
 		00B9689919CEF10900AAD1AF /* MetronomeSelectBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeSelectBar.h; sourceTree = "<group>"; };
@@ -251,8 +254,10 @@
 			isa = PBXGroup;
 			children = (
 				001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */,
-				0036174319D5E2DA00848A35 /* TempoCell.h */,
-				0036174419D5E2DA00848A35 /* TempoCell.m */,
+				00A894421A264CE6008D4D1B /* TempoCell.h */,
+				00A894431A264CE6008D4D1B /* TempoCell.m */,
+				00A8943F1A264CA3008D4D1B /* VoiceType.h */,
+				00A894401A264CA3008D4D1B /* VoiceType.m */,
 				001B2B3B19D4106A0057A22E /* TempoList.h */,
 				001B2B3C19D4106A0057A22E /* TempoList.m */,
 				001B2B2E19D3CF190057A22E /* DbConfig.h */,
@@ -657,7 +662,6 @@
 			files = (
 				001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */,
 				00677B0519BC4C09007A3085 /* MetronmoneTopSubViewIphone.m in Sources */,
-				0036174519D5E2DA00848A35 /* TempoCell.m in Sources */,
 				004BE68019B2E131002CD995 /* MetronomeMainViewControllerIphone.m in Sources */,
 				004BE67519B2E014002CD995 /* XibViewInterface.m in Sources */,
 				00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */,
@@ -677,6 +681,8 @@
 				004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */,
 				001B2B3D19D4106A0057A22E /* TempoList.m in Sources */,
 				004BE64C19B2DDC8002CD995 /* main.m in Sources */,
+				00A894441A264CE6008D4D1B /* TempoCell.m in Sources */,
+				00A894411A264CA3008D4D1B /* VoiceType.m in Sources */,
 				0056621B1A185E0D002222A0 /* SelectBarCell.m in Sources */,
 				00DA131C19F4EF1900F27E25 /* BeepBound.m in Sources */,
 				003994B11A1FAE1D00379CEA /* DropCellView.m in Sources */,

@@ -121,10 +121,10 @@
 
 - (void)TouchedNotificationCallBack:(NSNotification *)Notification
 {
-    UIEvent *Event = [Notification object];
+/*    UIEvent *Event = [Notification object];
     NSSet *touches = [Event allTouches];
     UITouch *touch = [touches anyObject];
-    UIView * target = [touch view];
+    UIView * target = [touch view];*/
 }
 
 - (void) InitializeSubController
@@ -149,8 +149,6 @@
     
     _NTool = [[NotesTool alloc] init];
     _NTool.delegate = self;
-    
-    self.CurrentVoice = [gClickVoiceList objectAtIndex:1];
 }
 
 - (void) InitializeFlagStatus
@@ -230,7 +228,8 @@
     
     self.TopSubView.BPMPicker.BPMValue = [self.CurrentCell.bpmValue intValue];
     [_CellParameterSettingSubController SetVolumeBarVolume:self.CurrentCell];
-    
+    self.CurrentVoice = [gClickVoiceList objectAtIndex:1];
+
     // TODO: 要改成設圖
     //[self.BottomSubView.TimeSignatureButton setTitle:_CurrentCell.timeSignatureType.timeSignature forState:UIControlStateNormal];
     

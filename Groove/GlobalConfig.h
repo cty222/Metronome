@@ -33,6 +33,7 @@ enum {
 } DEVICE_WIDTH;
 
 @interface GlobalConfig : NSObject
++ (BOOL) ReBuildDb;
 + (void) Initialize : (UIWindow *) MainWindows;
 + (NSNumber *) MainWindowWidth;
 + (NSNumber *) MainWindowHeight;

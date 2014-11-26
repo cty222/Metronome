@@ -13,6 +13,7 @@
         <attribute name="trippleNoteVolume" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <relationship name="listOwner" maxCount="1" deletionRule="Nullify" destinationEntity="TempoList" inverseName="cellBelongTo" inverseEntity="TempoList" syncable="YES"/>
         <relationship name="timeSignatureType" maxCount="1" deletionRule="Nullify" destinationEntity="TimeSignatureType" inverseName="usingCell" inverseEntity="TimeSignatureType" syncable="YES"/>
+        <relationship name="voiceType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VoiceType" inverseName="usingCell" inverseEntity="VoiceType" syncable="YES"/>
     </entity>
     <entity name="TempoList" representedClassName="TempoList" syncable="YES">
         <attribute name="tempoListName" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,13 +23,18 @@
         <attribute name="timeSignature" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="usingCell" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TempoCell" inverseName="timeSignatureType" inverseEntity="TempoCell" syncable="YES"/>
     </entity>
+    <entity name="VoiceType" representedClassName="VoiceType" syncable="YES">
+        <attribute name="voiceType" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="usingCell" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TempoCell" inverseName="voiceType" inverseEntity="TempoCell" syncable="YES"/>
+    </entity>
     <fetchRequest name="FetchCellFromSigleOwner" entity="TempoCell" predicateString="listOwner == $listOwner"/>
     <fetchRequest name="FetchDbVersion" entity="DbConfig" predicateString="dbVersion >= $DbVersion"/>
     <fetchRequest name="FetchOwerFromSingleName" entity="TempoCell"/>
     <elements>
         <element name="DbConfig" positionX="153" positionY="18" width="128" height="60"/>
-        <element name="TempoCell" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="TempoCell" positionX="-63" positionY="-18" width="128" height="193"/>
         <element name="TempoList" positionX="349" positionY="-127" width="128" height="73"/>
         <element name="TimeSignatureType" positionX="412" positionY="80" width="128" height="28"/>
+        <element name="VoiceType" positionX="144" positionY="0" width="128" height="73"/>
     </elements>
 </model>

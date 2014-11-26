@@ -13,6 +13,7 @@
 #import "TempoCell.h"
 #import "TempoList.h"
 #import "TimeSignatureType.h"
+#import "VoiceType.h"
 #import "DbConfig.h"
 
 @class MetronomeModel;
@@ -25,6 +26,7 @@ MetronomeModel * gMetronomeModel;
 @property NSFetchRequest* TempoCellEntitySigleOwnerFetch;
 @property NSFetchRequest* TempoListEntityFetch;
 @property NSFetchRequest* TimeSignatureTypeEntityFetch;
+@property NSFetchRequest* VoiceTypeEntityFetch;
 @property NSFetchRequest* DbConfigEntityFetch;
 
 @property NSArray* TempoCellDataTable;
@@ -33,7 +35,8 @@ MetronomeModel * gMetronomeModel;
 @property NSArray* DbVersionDataTable;
 
 - (NSArray *) FetchTempoCellWhereListName : (NSString *) listOwner;
-
+- (NSArray *) FetchTimeSignatureType;
+- (NSArray *) FetchVoiceType;
 
 - (void) InitializeCoreData : (NSManagedObjectContext *) ManagedObjectContext
          ManagedObjectModel : (NSManagedObjectModel *) ManagedObjectModel

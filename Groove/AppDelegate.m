@@ -96,6 +96,7 @@
 }
 
 #pragma mark - Core Data stack
+// 要做出 managedObjectContext , managedObjectModel, persistentStoreCoordinator
 
 // Returns the managed object context for the application.
 // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
@@ -120,6 +121,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
+    // DB的sqlite是從這個檔案做出來的
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Groove" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
@@ -133,16 +135,20 @@
         return _persistentStoreCoordinator;
     }
     
-    
-    // This use original version
+    // DB會被放在 Documents裡, 找出目標file的URL
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Groove.sqlite"];
+    
+    // 如果Db如果有做修改的話 刪掉
+    if ([GlobalConfig ReBuildDb])
+    {
+        NSLog(@"RebuildDb");
+        NSFileManager *FileManager = [[NSFileManager alloc] init];
+        [FileManager removeItemAtURL:storeURL error:nil];
+    }
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    
-    /*NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];*/
+
     
     
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {

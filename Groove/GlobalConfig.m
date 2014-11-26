@@ -18,6 +18,15 @@ static NSMutableDictionary * ThisPlist;
 // ============================
 // function
 //
++ (BOOL) ReBuildDb
+{
+    NSString * TmpDistributionPath = [GlobalConfig DistributionFilePath];
+    NSString * TmpSourcePath = [GlobalConfig SourceFilePath];
+    
+    NSNumber *SourceDBVersion      = [[NSMutableDictionary dictionaryWithContentsOfFile:TmpSourcePath] objectForKey:@"DbVersion"];
+    NSNumber *DistributionDBVersion = [[NSMutableDictionary dictionaryWithContentsOfFile:TmpDistributionPath] objectForKey:@"DbVersion"];
+    return ([SourceDBVersion intValue] != [DistributionDBVersion intValue]);
+}
 
 + (NSString*) SourceFilePath
 {

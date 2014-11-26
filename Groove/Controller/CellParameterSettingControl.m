@@ -14,6 +14,12 @@
     double _LastRecordTime_ms;
     NSDate * _Date;;
     NSTimer *ClearTapTimer;
+    int TriggerCounter;
+    
+    // VoiceTypeSubButtonArray
+    UIView * _VoiceTypeSubButtonView;
+    UIView * _TimeSignatureTypeSubButtonView;
+
 }
 
 -(void) InitializeVolumeSets
@@ -110,14 +116,95 @@
                                                object:nil];
 }
 
+
 -(IBAction) VoiceTypePickerDisplay:(UIView *)sender
 {
+    UIView * ControlView = self.SubPropertySelectorView.ContentScrollView;
+    
+    // If nil, create data view
+    if (_VoiceTypeSubButtonView == nil)
+    {
+        _VoiceTypeSubButtonView = [[UIView alloc] initWithFrame:ControlView.bounds];
+        float Width  = sender.frame.size.width * 2;
+        float Height = sender.frame.size.height;
+        float XOffset = sender.frame.size.width / 3;
+        float YOffset = Height / 3;
+        float RightMargin = sender.frame.size.width / 3;
+        float DownMargin = Height / 3;
+        int MaxColumn = (_VoiceTypeSubButtonView.frame.size.width - XOffset)/ (Width + RightMargin);
+        
+        NSArray *VoiceTypeArray = [gMetronomeModel FetchVoiceType];
+        
+        UIView * TmpView;
+        for (int Index = 0; Index < VoiceTypeArray.count; Index ++)
+        {
+            CGRect NewFrame = CGRectMake(XOffset + (Index % MaxColumn) * (Width + RightMargin),
+                                         YOffset + (Index / MaxColumn) * (Height + DownMargin),
+                                         Width,
+                                         Height
+                                         );
+            TmpView  =[[UIView alloc] initWithFrame:NewFrame];
+            TmpView.backgroundColor = [UIColor yellowColor];
+            [_VoiceTypeSubButtonView addSubview:TmpView];
+            UILabel * TmpLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];
+            [TmpView addSubview:TmpLabel];
+            VoiceType * tmp = VoiceTypeArray[Index];
+            [TmpLabel setText:tmp.voiceType];
+        }
+    }
+    
+    for (UIView * subView in ControlView.subviews)
+    {
+        [subView removeFromSuperview];
+    }
+    [ControlView addSubview:_VoiceTypeSubButtonView];
+    
     float CenterLine = sender.frame.origin.y + sender.frame.size.height/2;
     [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_SHOW :CenterLine];
 }
 
 -(IBAction) TimeSigaturePickerDisplay:(UIView *)sender
 {
+    UIView * ControlView = self.SubPropertySelectorView.ContentScrollView;
+    
+    // If nil, create data view
+    if (_TimeSignatureTypeSubButtonView == nil)
+    {
+        _TimeSignatureTypeSubButtonView = [[UIView alloc] initWithFrame:ControlView.bounds];
+        float Width  = sender.frame.size.width;
+        float Height = sender.frame.size.height;
+        float XOffset = Width / 3;
+        float YOffset = Height / 3;
+        float RightMargin = Width / 3;
+        float DownMargin = Height / 3;
+        int MaxColumn = (_TimeSignatureTypeSubButtonView.frame.size.width - XOffset)/ (Width + RightMargin);
+        
+        NSArray *TimeSignatureTypeArray = [gMetronomeModel FetchTimeSignatureType];
+        
+        UIView * TmpView;
+        for (int Index = 0; Index < TimeSignatureTypeArray.count; Index ++)
+        {
+            CGRect NewFrame = CGRectMake(XOffset + (Index % MaxColumn) * (Width + RightMargin),
+                                         YOffset + (Index / MaxColumn) * (Height + DownMargin),
+                                         Width,
+                                         Height
+                                         );
+            TmpView  =[[UIView alloc] initWithFrame:NewFrame];
+            TmpView.backgroundColor = [UIColor yellowColor];
+            [_TimeSignatureTypeSubButtonView addSubview:TmpView];
+            UILabel * TmpLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];
+            [TmpView addSubview:TmpLabel];
+            TimeSignatureType * tmp = TimeSignatureTypeArray[Index];
+            [TmpLabel setText:tmp.timeSignature];
+        }
+    }
+    
+    for (UIView * subView in ControlView.subviews)
+    {
+        [subView removeFromSuperview];
+    }
+    [ControlView addSubview:_TimeSignatureTypeSubButtonView];
+    
     float CenterLine = sender.frame.origin.y + sender.frame.size.height/2;
     [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_SHOW :CenterLine];
 }
@@ -245,6 +332,11 @@
 // =========================
 // Action
 //
+- (int) TapTriggerNumber
+{
+    return 3;
+}
+
 - (IBAction) TapBPMValueButtonClick: (id) ThisClickedButton
 {
     if (_Date == nil)
@@ -262,7 +354,8 @@
                                                    selector:@selector(ClearTapTicker:)
                                                    userInfo:nil
                                                     repeats:NO];
-    if (_LastRecordTime_ms != 0)
+    
+    if (_LastRecordTime_ms != 0 && TriggerCounter >= [self TapTriggerNumber])
     {
         double CurrentRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
         int NewBPMvalue = 60000.f/(CurrentRecordTime_ms -_LastRecordTime_ms);
@@ -270,6 +363,7 @@
     }
     
     _LastRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
+    TriggerCounter++;
 }
 
 
@@ -281,6 +375,7 @@
     }
     _LastRecordTime_ms = 0;
     ClearTapTimer = nil;
+    TriggerCounter = 0;
 }
 //
 // =========================
