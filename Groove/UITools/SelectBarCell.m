@@ -60,7 +60,7 @@
         self.ShortPressSecond = 0.5;
         self.LongPressSecond = 0.8;
         self.VerticalSensitivity = 16;
-        self.HorizontalSensitivity = 1;
+        self.HorizontalSensitivity = 0.5;
     }
     return self;
 }
@@ -273,7 +273,7 @@
 {
     if (_HorizontalSensitivity == 0)
     {
-        _HorizontalSensitivity = 1;
+        _HorizontalSensitivity = 0.5;
     }
     return _HorizontalSensitivity;
 }
@@ -346,8 +346,8 @@
 
         if (self.MoveMode != SELECT_CELL_LONG_PRRESS_MOVE)
         {
-            int MoveVertical = (double)(_OriginalLocation.y - TouchLocation.y) / self.VerticalSensitivity;
-            int MoveHerizontal = (double)(_OriginalLocation.x - TouchLocation.x) / self.HorizontalSensitivity;
+            float MoveVertical = (double)(_OriginalLocation.y - TouchLocation.y) / self.VerticalSensitivity;
+            float MoveHerizontal = (double)(_OriginalLocation.x - TouchLocation.x) / self.HorizontalSensitivity;
             
             if ((self.MoveMode == SELECT_CELL_NONE) && (MoveVertical !=0 || MoveHerizontal !=0))
             {
@@ -427,7 +427,7 @@
 // delegate
 //
 
-- (void) HorizontalValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell
+- (void) HorizontalValueChange: (float) ChangeValue : (SelectBarCell *) ThisCell
 {
     if (self.delegate != nil)
     {
@@ -439,7 +439,7 @@
     }
 }
 
-- (void) VerticlValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell
+- (void) VerticlValueChange: (float) ChangeValue : (SelectBarCell *) ThisCell
 {
 
     if (self.delegate != nil)

@@ -23,8 +23,8 @@ typedef enum{
 
 @optional
 
-- (void) HorizontalValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell;
-- (void) VerticlValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell;
+- (void) HorizontalValueChange: (float) ChangeValue : (SelectBarCell *) ThisCell;
+- (void) VerticlValueChange: (float) ChangeValue : (SelectBarCell *) ThisCell;
 - (BOOL) IsLongPressModeEnable: (BOOL) Enable : (SelectBarCell *) ThisCell;
 - (void) ShortPressToSetFocus: (SelectBarCell*) ThisCell;
 - (void) CellTouchedChange : (BOOL) Touched : (SelectBarCell *) ThisCell;

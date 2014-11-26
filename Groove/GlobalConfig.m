@@ -18,14 +18,21 @@ static NSMutableDictionary * ThisPlist;
 // ============================
 // function
 //
-+ (BOOL) ReBuildDb
++ (BOOL) ReBuildDbFlag
 {
-    NSString * TmpDistributionPath = [GlobalConfig DistributionFilePath];
-    NSString * TmpSourcePath = [GlobalConfig SourceFilePath];
+    static BOOL _ReBuildDbFlag;
+
+    static dispatch_once_t _ReBuildDbToken;
+    dispatch_once(&_ReBuildDbToken, ^{
+        NSString * TmpDistributionPath = [GlobalConfig DistributionFilePath];
+        NSString * TmpSourcePath = [GlobalConfig SourceFilePath];
     
-    NSNumber *SourceDBVersion      = [[NSMutableDictionary dictionaryWithContentsOfFile:TmpSourcePath] objectForKey:@"DbVersion"];
-    NSNumber *DistributionDBVersion = [[NSMutableDictionary dictionaryWithContentsOfFile:TmpDistributionPath] objectForKey:@"DbVersion"];
-    return ([SourceDBVersion intValue] != [DistributionDBVersion intValue]);
+        NSNumber *SourceDBVersion      = [[NSMutableDictionary dictionaryWithContentsOfFile:TmpSourcePath] objectForKey:@"DbVersion"];
+        NSNumber *DistributionDBVersion = [[NSMutableDictionary dictionaryWithContentsOfFile:TmpDistributionPath] objectForKey:@"DbVersion"];
+        _ReBuildDbFlag = [SourceDBVersion intValue] != [DistributionDBVersion intValue];
+    });
+    
+    return _ReBuildDbFlag;
 }
 
 + (NSString*) SourceFilePath
@@ -68,6 +75,10 @@ static NSMutableDictionary * ThisPlist;
         else
         {
             NSNumber *DistributionSourceID = [[NSMutableDictionary dictionaryWithContentsOfFile:TmpDistributionPath] objectForKey:@"VersionID"];
+            
+            // Init RebuldFlag at this moment, Important.
+            [GlobalConfig ReBuildDbFlag];
+            
             if ([DistributionSourceID intValue] != [SourceVersionID intValue])
             {
                 [FileManager removeItemAtPath:TmpDistributionPath error:nil];

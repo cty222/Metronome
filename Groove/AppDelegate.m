@@ -139,7 +139,7 @@
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Groove.sqlite"];
     
     // 如果Db如果有做修改的話 刪掉
-    if ([GlobalConfig ReBuildDb])
+    if ([GlobalConfig ReBuildDbFlag])
     {
         NSLog(@"RebuildDb");
         NSFileManager *FileManager = [[NSFileManager alloc] init];

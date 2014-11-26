@@ -65,6 +65,7 @@
 
 - (void) DisplayCellList
 {
+    NSLog(@"DisplayCellList");
     UIView * ControlView = self.GrooveCellListView;
     
     // Clear all cell
@@ -105,6 +106,8 @@
 
 - (void) FlashDisplayFrame
 {
+    NSLog(@"FlashDisplayFrame");
+
     if (self.GrooveCellListView.subviews == nil)
     {
         return;
@@ -151,11 +154,11 @@
     {
         if (self.FocusIndex == 0 && NoFucus)
         {
-            [self HorizontalValueChange:1 :nil];
+            [self HorizontalValueChange:0.5 :nil];
         }
         else if (self.FocusIndex == (self.GrooveCellValueStringList.count -1) && NoFucus)
         {
-            [self HorizontalValueChange: -1 :nil];
+            [self HorizontalValueChange: -0.5 :nil];
         }
     }
 }
@@ -199,11 +202,11 @@
     
     if ((int)FocusCellBase_X > (int)([self FocusLine] - CELL_WIDTH/2))
     {
-        [self HorizontalValueChange:1 :nil];
+        [self HorizontalValueChange:0.5 :nil];
     }
     else if ((int)FocusCellBase_X < (int)([self FocusLine]  - CELL_WIDTH/2))
     {
-        [self HorizontalValueChange:-1 :nil];
+        [self HorizontalValueChange:-0.5 :nil];
     }
     else
     {
@@ -484,7 +487,7 @@
 // ============================
 // delegate
 //
-- (void) HorizontalValueChange:(int)ChangeValue :(SelectBarCell *)ThisCell
+- (void) HorizontalValueChange:(float)ChangeValue :(SelectBarCell *)ThisCell
 {
     if(self.Mode == SELECT_BAR_CAN_DROP)
     {
@@ -501,7 +504,7 @@
 }
 
 
-- (void) VerticlValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell
+- (void) VerticlValueChange: (float) ChangeValue : (SelectBarCell *) ThisCell
 {
     if(self.Mode == SELECT_BAR_CAN_DROP)
     {
