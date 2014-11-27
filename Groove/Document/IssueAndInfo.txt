@@ -1,22 +1,35 @@
 View Size : 
 TopView		 total : 320 * 268
-System Icon      :   40~320 * 52
-Large BPM Picker :	 320 * 216 
-BPM Number		 :   65 * 204
+System Icon      :   64~ 68 * 38
+ScrollView       :  60 * 162
+ScrollCell       :  40 * 40
+AdCellButton     :  60 * 39
+Loop play Button :  69 * 30
+
+Large BPM Picker :	 240 * 252
+BPM Number		 :   240 * 110
 Arrow			 :   50 * 72
 
+Sub Property slector : 240 * 180
+PropertySrcoolView  : 200 * 180
+ropertyArrow        : 60 * 22
+
 BottomView 	 total : 320 * 300
-cell selecter  : 320 * 60	
-volume bar set : 260 * 190
-button view    : 60 * 190
-button 		   : 40 * 40
-Ad View		   : 320 * 50
+Metronome Select Bar : 320 * 46
+Ad View         : 320 * 50
+Circle button   : 80 *80
+play Button     : 80 * 80
+
+
+Metronome Select Bar total : 320 * 46
+Drop View       : 320 * 120 ~ 268
+focus Cell View : 46 *46
+Cell 		    : 40 * 40
 
 
 Issue :
 主頁面：
 funcion
-1.1 Sys Icon 換頁功能
 
 2.2 Loop 增加減少閃爍
 2.5 Loop Cell 長壓進入刪除模式, drop掉 或是按一下 回復
