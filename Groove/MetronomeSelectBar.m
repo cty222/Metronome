@@ -504,7 +504,7 @@
 }
 
 
-- (void) VerticlValueChange: (float) ChangeValue : (SelectBarCell *) ThisCell
+- (void) VerticlValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell
 {
     if(self.Mode == SELECT_BAR_CAN_DROP)
     {

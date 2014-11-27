@@ -109,7 +109,6 @@
 
     // SubPropertySelectorView
     self.SubPropertySelectorView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.SubPropertySelectorView.frame.origin.y;
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(TouchedNotificationCallBack:)
                                                  name:kTouchGlobalHookNotification
@@ -125,6 +124,8 @@
     if (_VoiceTypeSubButtonView == nil)
     {
         _VoiceTypeSubButtonView = [[UIView alloc] initWithFrame:ControlView.bounds];
+        _VoiceTypeSubButtonView.userInteractionEnabled = YES;
+
         float Width  = sender.frame.size.width * 2;
         float Height = sender.frame.size.height;
         float XOffset = sender.frame.size.width / 3;
@@ -146,10 +147,15 @@
             TmpView  =[[UIView alloc] initWithFrame:NewFrame];
             TmpView.backgroundColor = [UIColor yellowColor];
             [_VoiceTypeSubButtonView addSubview:TmpView];
-            UILabel * TmpLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];
-            [TmpView addSubview:TmpLabel];
+            UIButton * TmpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];
+            TmpButton.tag = Index;
+            [TmpView addSubview:TmpButton];
             VoiceType * tmp = VoiceTypeArray[Index];
-            [TmpLabel setText:tmp.voiceType];
+            [TmpButton setTitle:tmp.voiceType forState:UIControlStateNormal];
+            [TmpButton addTarget:self
+                          action:@selector(ChangeVoiceType:)
+                forControlEvents:UIControlEventTouchDown
+             ];
         }
     }
     
@@ -171,6 +177,8 @@
     if (_TimeSignatureTypeSubButtonView == nil)
     {
         _TimeSignatureTypeSubButtonView = [[UIView alloc] initWithFrame:ControlView.bounds];
+        _TimeSignatureTypeSubButtonView.userInteractionEnabled = YES;
+
         float Width  = sender.frame.size.width;
         float Height = sender.frame.size.height;
         float XOffset = Width / 3;
@@ -192,10 +200,15 @@
             TmpView  =[[UIView alloc] initWithFrame:NewFrame];
             TmpView.backgroundColor = [UIColor yellowColor];
             [_TimeSignatureTypeSubButtonView addSubview:TmpView];
-            UILabel * TmpLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];
-            [TmpView addSubview:TmpLabel];
+            UIButton * TmpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];
+            TmpButton.tag = Index;
+            [TmpView addSubview:TmpButton];
             TimeSignatureType * tmp = TimeSignatureTypeArray[Index];
-            [TmpLabel setText:tmp.timeSignature];
+            [TmpButton setTitle:tmp.timeSignature forState:UIControlStateNormal];
+            [TmpButton addTarget:self
+                      action:@selector(ChangeTimeSignature:)
+                      forControlEvents:UIControlEventTouchDown
+             ];
         }
     }
     
@@ -209,20 +222,69 @@
     [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_SHOW :CenterLine];
 }
 
+- (IBAction) ChangeVoiceType:(UIView *)TriggerItem
+{
+    NSArray *VoiceTypeArray = [gMetronomeModel FetchVoiceType];
+
+    if (gClickVoiceList.count <= TriggerItem.tag || VoiceTypeArray.count <= TriggerItem.tag)
+    {
+        return;
+    }
+    
+    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    
+    // Because 0 is no voice
+    NSInteger VoiceIndex = TriggerItem.tag + 1;
+    Parent.CurrentVoice = [gClickVoiceList objectAtIndex:VoiceIndex];
+
+    Parent.CurrentCell.voiceType = (VoiceType *)VoiceTypeArray[TriggerItem.tag];
+    
+    // TODO : 不要save這麼頻繁
+    [gMetronomeModel Save];
+}
+
+- (IBAction) ChangeTimeSignature:(UIView *)TriggerItem
+{
+    NSArray *TimeSignatureTypeArray = [gMetronomeModel FetchTimeSignatureType];
+    
+    if (TimeSignatureTypeArray.count <= TriggerItem.tag)
+    {
+        return;
+    }
+    
+    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    
+ 
+    Parent.CurrentCell.timeSignatureType = (TimeSignatureType *)TimeSignatureTypeArray[TriggerItem.tag];
+    
+    // TODO : 不要save這麼頻繁
+    [gMetronomeModel Save];
+    
+}
+
+
 - (void)TouchedNotificationCallBack:(NSNotification *)Notification
 {
     UIEvent *Event = [Notification object];
     NSSet *touches = [Event allTouches];
     UITouch *touch = [touches anyObject];
     UIView * target = [touch view];
-    if ((target != self.TimeSigaturePicker && target != self.VoiceTypePicker))
+
+    if (self.SubPropertySelectorView.Mode != SUB_PROPERTY_MODE_HIDDEN)
     {
-        if (self.SubPropertySelectorView.Mode != SUB_PROPERTY_MODE_HIDDEN)
+        if ((target != self.TimeSigaturePicker && target != self.VoiceTypePicker)
+            && ((target != _VoiceTypeSubButtonView) && (target != _TimeSignatureTypeSubButtonView))
+            /*&& ![NSStringFromClass([target class]) isEqualToString:NSStringFromClass([UILabel class])]*/
+            )
         {
+            
             [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_HIDDEN :0];
             return;
+            
         }
     }
+    
+
 }
 
 - (void) SetVolumeBarVolume : (TempoCell *)Cell
