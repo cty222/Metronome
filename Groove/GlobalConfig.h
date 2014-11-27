@@ -49,7 +49,11 @@ enum {
 
 
 // Main View
-+ (UIViewController *) GrooveMainViewControllerIphone;
++ (UIViewController *) SystemPageViewControllerIphone;
 + (UIViewController *) MetronomeMainViewControllerIphone;
+
+// GlobalEvent
+#define kChangeToSystemPageView @"kChangeToSystemPageView"
+#define kChangeToMetronomeView @"kChangeToMetronomeView"
 
 @end

@@ -29,11 +29,22 @@
     // 0. Disbale IdleTimer
     [UIApplication sharedApplication].idleTimerDisabled = YES;
         
+    // DB會被放在 Documents裡, 找出目標file的URL
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Groove.sqlite"];
+    
+    // 如果Db如果有做修改的話 刪掉
+    if ([GlobalConfig ReBuildDbFlag])
+    {
+        NSLog(@"RebuildDb");
+        NSFileManager *FileManager = [[NSFileManager alloc] init];
+        [FileManager removeItemAtURL:storeURL error:nil];
+    }
     
     //
     // 1. Initize global config
     //
     [GlobalConfig Initialize:self.window];
+    
     
     //
     // 2. Initize Model
@@ -44,6 +55,7 @@
                               DbVersion : [GlobalConfig DbVersion]];
     
     self.window.rootViewController =  [GlobalConfig MetronomeMainViewControllerIphone];
+
     
     // System add
     [self.window makeKeyAndVisible];
@@ -138,18 +150,9 @@
     // DB會被放在 Documents裡, 找出目標file的URL
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Groove.sqlite"];
     
-    // 如果Db如果有做修改的話 刪掉
-    if ([GlobalConfig ReBuildDbFlag])
-    {
-        NSLog(@"RebuildDb");
-        NSFileManager *FileManager = [[NSFileManager alloc] init];
-        [FileManager removeItemAtURL:storeURL error:nil];
-    }
-    
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
 
-    
     
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         /*

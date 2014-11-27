@@ -31,7 +31,7 @@
     {
         IsItNeedToInsertDBValue = YES;
     }
-
+    
     // If need to set default
     if (IsItNeedToInsertDBValue)
     {

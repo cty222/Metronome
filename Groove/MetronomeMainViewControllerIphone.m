@@ -111,12 +111,42 @@
     
     [_LoopAndPlayViewSubController InitializeLoopControlItem];
    
+    [_SystemPageController InitializeSystemButton];
+    
+    [self GlobaleventInitialize];
+    
     [self FillData];
+
+}
+
+- (void) GlobaleventInitialize
+{
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(TouchedNotificationCallBack:)
                                                  name:kTouchGlobalHookNotification
                                                object:nil];
+    
+    // Change View Controller
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(ChangePageToSystemView:)
+                                                 name:kChangeToSystemPageView
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(ChangePageToMetronomeView:)
+                                                 name:kChangeToMetronomeView
+                                               object:nil];
+}
+
+- (void) ChangePageToSystemView:(NSNotification *)Notification
+{
+    [self presentViewController:[GlobalConfig SystemPageViewControllerIphone] animated:YES completion:nil];
+}
+
+- (void) ChangePageToMetronomeView:(NSNotification *)Notification
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)TouchedNotificationCallBack:(NSNotification *)Notification

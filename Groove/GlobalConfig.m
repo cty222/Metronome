@@ -8,7 +8,7 @@
 
 #import "GlobalConfig.h"
 #import "MetronomeMainViewControllerIphone.h"
-#import "GrooveMainViewControllerIpone.h"
+#import "SystemPageViewController.h"
 
 static BOOL _IsInitialized;
 static NSMutableDictionary * ThisPlist;
@@ -162,7 +162,7 @@ static NSMutableDictionary * ThisPlist;
     // TODO: Self testing
     //
     if (self.MetronomeMainViewControllerIphone == nil ||
-        self.GrooveMainViewControllerIphone == nil
+        self.SystemPageViewControllerIphone == nil
         )
     {
         _IsInitialized = NO;
@@ -308,21 +308,22 @@ static NSMutableDictionary * ThisPlist;
     return _MetronomeMainViewControllerIphone;
 }
 
-+ (UIViewController *) GrooveMainViewControllerIphone
++ (UIViewController *) SystemPageViewControllerIphone
 {
-    static GrooveMainViewControllerIpone* _GrooveMainViewControllerIphone;
+    static SystemPageViewController* _SystemPageViewControllerIphone;
     static dispatch_once_t _GMVCIToken;
     dispatch_once(&_GMVCIToken, ^{
-        _GrooveMainViewControllerIphone = [[GrooveMainViewControllerIpone alloc] initWithNibName:NSStringFromClass([GrooveMainViewControllerIpone class]) bundle:nil];
+        _SystemPageViewControllerIphone = [[SystemPageViewController alloc] initWithNibName:NSStringFromClass([_SystemPageViewControllerIphone class]) bundle:nil];
+        _SystemPageViewControllerIphone.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+
     });
     
     if (![GlobalConfig IsInitialized])
     {
         return nil;
     }
-    return _GrooveMainViewControllerIphone;
+    return _SystemPageViewControllerIphone;
 }
-
 //
 // ============================
 

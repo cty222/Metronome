@@ -60,6 +60,8 @@
 		00A0B8111A23A9AD00D93ABB /* UIWindowWithHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A0B8101A23A9AD00D93ABB /* UIWindowWithHook.m */; };
 		00A894411A264CA3008D4D1B /* VoiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A894401A264CA3008D4D1B /* VoiceType.m */; };
 		00A894441A264CE6008D4D1B /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A894431A264CE6008D4D1B /* TempoCell.m */; };
+		00AB03781A2783C500352DD7 /* SystemPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AB03761A2783C400352DD7 /* SystemPageViewController.m */; };
+		00AB03791A2783C500352DD7 /* SystemPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00AB03771A2783C500352DD7 /* SystemPageViewController.xib */; };
 		00B02A5D1A0E997C00BCAF3B /* CircleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */; };
 		00B81F6A1A0278D60098BCBB /* TopViewBackground.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00B81F691A0278D60098BCBB /* TopViewBackground.pdf */; };
 		00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */; };
@@ -175,6 +177,9 @@
 		00A894401A264CA3008D4D1B /* VoiceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoiceType.m; path = CoreDataSubClass/VoiceType.m; sourceTree = "<group>"; };
 		00A894421A264CE6008D4D1B /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
 		00A894431A264CE6008D4D1B /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
+		00AB03751A2783C400352DD7 /* SystemPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemPageViewController.h; path = Controller/SystemPageViewController.h; sourceTree = "<group>"; };
+		00AB03761A2783C400352DD7 /* SystemPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SystemPageViewController.m; path = Controller/SystemPageViewController.m; sourceTree = "<group>"; };
+		00AB03771A2783C500352DD7 /* SystemPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SystemPageViewController.xib; path = Controller/SystemPageViewController.xib; sourceTree = "<group>"; };
 		00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleButton.xib; sourceTree = "<group>"; };
 		00B81F691A0278D60098BCBB /* TopViewBackground.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TopViewBackground.pdf; sourceTree = "<group>"; };
 		00B9689919CEF10900AAD1AF /* MetronomeSelectBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeSelectBar.h; sourceTree = "<group>"; };
@@ -476,6 +481,9 @@
 				00D92FD21A15EDFD00AEC17F /* LoopAndPlayViewControl.m */,
 				00D92FD41A15FE5700AEC17F /* SystemPageControl.h */,
 				00D92FD51A15FE5700AEC17F /* SystemPageControl.m */,
+				00AB03751A2783C400352DD7 /* SystemPageViewController.h */,
+				00AB03761A2783C400352DD7 /* SystemPageViewController.m */,
+				00AB03771A2783C500352DD7 /* SystemPageViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -611,6 +619,7 @@
 				006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */,
 				00BBE8111A06AFDA0034BCB6 /* BottomViewBackground.pdf in Resources */,
 				00B02A5D1A0E997C00BCAF3B /* CircleButton.xib in Resources */,
+				00AB03791A2783C500352DD7 /* SystemPageViewController.xib in Resources */,
 				0010FF2719FEC1B5005E74C1 /* reflect_number_1.pdf in Resources */,
 				00039D241A24FA8E00710E0E /* TmpArrows.jpeg in Resources */,
 				000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */,
@@ -683,6 +692,7 @@
 				004BE64C19B2DDC8002CD995 /* main.m in Sources */,
 				00A894441A264CE6008D4D1B /* TempoCell.m in Sources */,
 				00A894411A264CA3008D4D1B /* VoiceType.m in Sources */,
+				00AB03781A2783C500352DD7 /* SystemPageViewController.m in Sources */,
 				0056621B1A185E0D002222A0 /* SelectBarCell.m in Sources */,
 				00DA131C19F4EF1900F27E25 /* BeepBound.m in Sources */,
 				003994B11A1FAE1D00379CEA /* DropCellView.m in Sources */,
