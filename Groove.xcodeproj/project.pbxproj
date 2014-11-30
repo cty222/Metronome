@@ -11,8 +11,6 @@
 		00039D221A24ED4500710E0E /* SubPropertySelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 00039D211A24ED4500710E0E /* SubPropertySelector.m */; };
 		00039D241A24FA8E00710E0E /* TmpArrows.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 00039D231A24FA8E00710E0E /* TmpArrows.jpeg */; };
 		000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 000BDEEB19BF7D6A00078456 /* triangle2.png */; };
-		0010FF2619FEC1B5005E74C1 /* reflect_number_0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0010FF2419FEC1B5005E74C1 /* reflect_number_0.pdf */; };
-		0010FF2719FEC1B5005E74C1 /* reflect_number_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0010FF2519FEC1B5005E74C1 /* reflect_number_1.pdf */; };
 		001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */; };
 		001B2B3019D3CF190057A22E /* DbConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2F19D3CF190057A22E /* DbConfig.m */; };
 		001B2B3D19D4106A0057A22E /* TempoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B3C19D4106A0057A22E /* TempoList.m */; };
@@ -57,22 +55,25 @@
 		00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B0C19BC538F007A3085 /* GrooveMainViewControllerIpone.m */; };
 		00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */; };
 		00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */; };
+		0071A9AE1A2B075F00EA57D2 /* LoopCellScrollView.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9AD1A2B075F00EA57D2 /* LoopCellScrollView.pdf */; };
+		0071A9B51A2B090100EA57D2 /* 16Note.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9B01A2B090100EA57D2 /* 16Note.pdf */; };
+		0071A9B61A2B090100EA57D2 /* 8Notes.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9B11A2B090100EA57D2 /* 8Notes.pdf */; };
+		0071A9B71A2B090100EA57D2 /* Accent.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9B21A2B090100EA57D2 /* Accent.pdf */; };
+		0071A9B81A2B090100EA57D2 /* QuarterNote.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9B31A2B090100EA57D2 /* QuarterNote.pdf */; };
+		0071A9B91A2B090100EA57D2 /* TrippleNote.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9B41A2B090100EA57D2 /* TrippleNote.pdf */; };
+		0071A9CF1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9CD1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf */; };
+		0071A9D01A2B0EB300EA57D2 /* SystemButton.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9CE1A2B0EB300EA57D2 /* SystemButton.pdf */; };
+		0071A9D41A2B108B00EA57D2 /* HumanVoice.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9D21A2B108B00EA57D2 /* HumanVoice.pdf */; };
+		0071A9D51A2B108B00EA57D2 /* ScrollViewCellBackGround.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9D31A2B108B00EA57D2 /* ScrollViewCellBackGround.pdf */; };
 		00A0B8111A23A9AD00D93ABB /* UIWindowWithHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A0B8101A23A9AD00D93ABB /* UIWindowWithHook.m */; };
 		00A894411A264CA3008D4D1B /* VoiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A894401A264CA3008D4D1B /* VoiceType.m */; };
 		00A894441A264CE6008D4D1B /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A894431A264CE6008D4D1B /* TempoCell.m */; };
 		00AB03781A2783C500352DD7 /* SystemPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AB03761A2783C400352DD7 /* SystemPageViewController.m */; };
 		00AB03791A2783C500352DD7 /* SystemPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00AB03771A2783C500352DD7 /* SystemPageViewController.xib */; };
 		00B02A5D1A0E997C00BCAF3B /* CircleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */; };
-		00B81F6A1A0278D60098BCBB /* TopViewBackground.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00B81F691A0278D60098BCBB /* TopViewBackground.pdf */; };
 		00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */; };
 		00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */; };
 		00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */; };
-		00BBE8091A06AF510034BCB6 /* Tap.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00BBE8081A06AF510034BCB6 /* Tap.pdf */; };
-		00BBE80B1A06AF5D0034BCB6 /* TimeSignature_4_4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00BBE80A1A06AF5D0034BCB6 /* TimeSignature_4_4.pdf */; };
-		00BBE80D1A06AF670034BCB6 /* SinglePlay.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00BBE80C1A06AF670034BCB6 /* SinglePlay.pdf */; };
-		00BBE80F1A06AF710034BCB6 /* Voice_Hi-Click.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00BBE80E1A06AF710034BCB6 /* Voice_Hi-Click.pdf */; };
-		00BBE8111A06AFDA0034BCB6 /* BottomViewBackground.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00BBE8101A06AFDA0034BCB6 /* BottomViewBackground.pdf */; };
-		00C4B4ED19F9752D00B363BA /* dialog2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00C4B4EC19F9752D00B363BA /* dialog2.pdf */; };
 		00D92FD01A15C3D800AEC17F /* CellParameterSettingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D92FCF1A15C3D800AEC17F /* CellParameterSettingControl.m */; };
 		00D92FD31A15EDFD00AEC17F /* LoopAndPlayViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D92FD21A15EDFD00AEC17F /* LoopAndPlayViewControl.m */; };
 		00D92FD61A15FE5700AEC17F /* SystemPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D92FD51A15FE5700AEC17F /* SystemPageControl.m */; };
@@ -107,8 +108,6 @@
 		00039D211A24ED4500710E0E /* SubPropertySelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubPropertySelector.m; path = UITools/SubPropertySelector.m; sourceTree = "<group>"; };
 		00039D231A24FA8E00710E0E /* TmpArrows.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TmpArrows.jpeg; sourceTree = "<group>"; };
 		000BDEEB19BF7D6A00078456 /* triangle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle2.png; sourceTree = "<group>"; };
-		0010FF2419FEC1B5005E74C1 /* reflect_number_0.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = reflect_number_0.pdf; sourceTree = "<group>"; };
-		0010FF2519FEC1B5005E74C1 /* reflect_number_1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = reflect_number_1.pdf; sourceTree = "<group>"; };
 		001B2B2C19D3CA0C0057A22E /* Groove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Groove.xcdatamodel; sourceTree = "<group>"; };
 		001B2B2E19D3CF190057A22E /* DbConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DbConfig.h; path = CoreDataSubClass/DbConfig.h; sourceTree = "<group>"; };
 		001B2B2F19D3CF190057A22E /* DbConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DbConfig.m; path = CoreDataSubClass/DbConfig.m; sourceTree = "<group>"; };
@@ -171,6 +170,16 @@
 		00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrooveMainViewControllerIpone.xib; sourceTree = "<group>"; };
 		00677B1119BC5DA4007A3085 /* LargeBPMPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargeBPMPicker.h; sourceTree = "<group>"; };
 		00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargeBPMPicker.m; sourceTree = "<group>"; };
+		0071A9AD1A2B075F00EA57D2 /* LoopCellScrollView.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LoopCellScrollView.pdf; sourceTree = "<group>"; };
+		0071A9B01A2B090100EA57D2 /* 16Note.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 16Note.pdf; sourceTree = "<group>"; };
+		0071A9B11A2B090100EA57D2 /* 8Notes.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 8Notes.pdf; sourceTree = "<group>"; };
+		0071A9B21A2B090100EA57D2 /* Accent.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Accent.pdf; sourceTree = "<group>"; };
+		0071A9B31A2B090100EA57D2 /* QuarterNote.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = QuarterNote.pdf; sourceTree = "<group>"; };
+		0071A9B41A2B090100EA57D2 /* TrippleNote.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TrippleNote.pdf; sourceTree = "<group>"; };
+		0071A9CD1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ScrollViewBackGround.pdf; sourceTree = "<group>"; };
+		0071A9CE1A2B0EB300EA57D2 /* SystemButton.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SystemButton.pdf; sourceTree = "<group>"; };
+		0071A9D21A2B108B00EA57D2 /* HumanVoice.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HumanVoice.pdf; sourceTree = "<group>"; };
+		0071A9D31A2B108B00EA57D2 /* ScrollViewCellBackGround.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ScrollViewCellBackGround.pdf; sourceTree = "<group>"; };
 		00A0B80F1A23A9AD00D93ABB /* UIWindowWithHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIWindowWithHook.h; path = SuperClass/UIWindowWithHook.h; sourceTree = "<group>"; };
 		00A0B8101A23A9AD00D93ABB /* UIWindowWithHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIWindowWithHook.m; path = SuperClass/UIWindowWithHook.m; sourceTree = "<group>"; };
 		00A8943F1A264CA3008D4D1B /* VoiceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoiceType.h; path = CoreDataSubClass/VoiceType.h; sourceTree = "<group>"; };
@@ -181,17 +190,10 @@
 		00AB03761A2783C400352DD7 /* SystemPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SystemPageViewController.m; path = Controller/SystemPageViewController.m; sourceTree = "<group>"; };
 		00AB03771A2783C500352DD7 /* SystemPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SystemPageViewController.xib; path = Controller/SystemPageViewController.xib; sourceTree = "<group>"; };
 		00B02A5C1A0E997C00BCAF3B /* CircleButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleButton.xib; sourceTree = "<group>"; };
-		00B81F691A0278D60098BCBB /* TopViewBackground.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TopViewBackground.pdf; sourceTree = "<group>"; };
 		00B9689919CEF10900AAD1AF /* MetronomeSelectBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeSelectBar.h; sourceTree = "<group>"; };
 		00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeSelectBar.m; sourceTree = "<group>"; };
 		00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeSelectBar.xib; sourceTree = "<group>"; };
 		00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LargeBPMPicker.xib; sourceTree = "<group>"; };
-		00BBE8081A06AF510034BCB6 /* Tap.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Tap.pdf; sourceTree = "<group>"; };
-		00BBE80A1A06AF5D0034BCB6 /* TimeSignature_4_4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TimeSignature_4_4.pdf; sourceTree = "<group>"; };
-		00BBE80C1A06AF670034BCB6 /* SinglePlay.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SinglePlay.pdf; sourceTree = "<group>"; };
-		00BBE80E1A06AF710034BCB6 /* Voice_Hi-Click.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Voice_Hi-Click.pdf"; sourceTree = "<group>"; };
-		00BBE8101A06AFDA0034BCB6 /* BottomViewBackground.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BottomViewBackground.pdf; sourceTree = "<group>"; };
-		00C4B4EC19F9752D00B363BA /* dialog2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = dialog2.pdf; sourceTree = "<group>"; };
 		00D92FCE1A15C3D800AEC17F /* CellParameterSettingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellParameterSettingControl.h; path = Controller/CellParameterSettingControl.h; sourceTree = "<group>"; };
 		00D92FCF1A15C3D800AEC17F /* CellParameterSettingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellParameterSettingControl.m; path = Controller/CellParameterSettingControl.m; sourceTree = "<group>"; };
 		00D92FD11A15EDFD00AEC17F /* LoopAndPlayViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopAndPlayViewControl.h; sourceTree = "<group>"; };
@@ -436,9 +438,51 @@
 			name = MetronmeItems;
 			sourceTree = "<group>";
 		};
+		0071A9AC1A2B075F00EA57D2 /* MetronomeSelectBar */ = {
+			isa = PBXGroup;
+			children = (
+				0071A9AD1A2B075F00EA57D2 /* LoopCellScrollView.pdf */,
+			);
+			path = MetronomeSelectBar;
+			sourceTree = "<group>";
+		};
+		0071A9AF1A2B090100EA57D2 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				0071A9B01A2B090100EA57D2 /* 16Note.pdf */,
+				0071A9B11A2B090100EA57D2 /* 8Notes.pdf */,
+				0071A9B21A2B090100EA57D2 /* Accent.pdf */,
+				0071A9B31A2B090100EA57D2 /* QuarterNote.pdf */,
+				0071A9B41A2B090100EA57D2 /* TrippleNote.pdf */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		0071A9CC1A2B0EB300EA57D2 /* ScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				0071A9CD1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf */,
+				0071A9CE1A2B0EB300EA57D2 /* SystemButton.pdf */,
+			);
+			path = ScrollView;
+			sourceTree = "<group>";
+		};
+		0071A9D11A2B108B00EA57D2 /* PropertyButton */ = {
+			isa = PBXGroup;
+			children = (
+				0071A9D21A2B108B00EA57D2 /* HumanVoice.pdf */,
+				0071A9D31A2B108B00EA57D2 /* ScrollViewCellBackGround.pdf */,
+			);
+			path = PropertyButton;
+			sourceTree = "<group>";
+		};
 		00C4B4EB19F9752D00B363BA /* Picture */ = {
 			isa = PBXGroup;
 			children = (
+				0071A9D11A2B108B00EA57D2 /* PropertyButton */,
+				0071A9CC1A2B0EB300EA57D2 /* ScrollView */,
+				0071A9AF1A2B090100EA57D2 /* Note */,
+				0071A9AC1A2B075F00EA57D2 /* MetronomeSelectBar */,
 				00039D231A24FA8E00710E0E /* TmpArrows.jpeg */,
 				005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */,
 				003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */,
@@ -446,15 +490,6 @@
 				0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */,
 				006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */,
 				006175BD1A0BCFE100113560 /* PlayLoop.pdf */,
-				00BBE8101A06AFDA0034BCB6 /* BottomViewBackground.pdf */,
-				00BBE80C1A06AF670034BCB6 /* SinglePlay.pdf */,
-				00BBE80A1A06AF5D0034BCB6 /* TimeSignature_4_4.pdf */,
-				00BBE8081A06AF510034BCB6 /* Tap.pdf */,
-				0010FF2419FEC1B5005E74C1 /* reflect_number_0.pdf */,
-				0010FF2519FEC1B5005E74C1 /* reflect_number_1.pdf */,
-				00C4B4EC19F9752D00B363BA /* dialog2.pdf */,
-				00BBE80E1A06AF710034BCB6 /* Voice_Hi-Click.pdf */,
-				00B81F691A0278D60098BCBB /* TopViewBackground.pdf */,
 			);
 			path = Picture;
 			sourceTree = "<group>";
@@ -613,44 +648,45 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00B81F6A1A0278D60098BCBB /* TopViewBackground.pdf in Resources */,
 				00DA13B519F4F77000F27E25 /* HiFirst.wav in Resources */,
+				0071A9B71A2B090100EA57D2 /* Accent.pdf in Resources */,
+				0071A9B91A2B090100EA57D2 /* TrippleNote.pdf in Resources */,
 				006175BE1A0BCFE100113560 /* PlayLoop_red.pdf in Resources */,
+				0071A9AE1A2B075F00EA57D2 /* LoopCellScrollView.pdf in Resources */,
 				006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */,
-				00BBE8111A06AFDA0034BCB6 /* BottomViewBackground.pdf in Resources */,
 				00B02A5D1A0E997C00BCAF3B /* CircleButton.xib in Resources */,
+				0071A9D41A2B108B00EA57D2 /* HumanVoice.pdf in Resources */,
 				00AB03791A2783C500352DD7 /* SystemPageViewController.xib in Resources */,
-				0010FF2719FEC1B5005E74C1 /* reflect_number_1.pdf in Resources */,
 				00039D241A24FA8E00710E0E /* TmpArrows.jpeg in Resources */,
 				000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */,
-				00BBE80B1A06AF5D0034BCB6 /* TimeSignature_4_4.pdf in Resources */,
-				00BBE80F1A06AF710034BCB6 /* Voice_Hi-Click.pdf in Resources */,
 				00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */,
 				004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */,
 				003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */,
 				00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */,
+				0071A9D01A2B0EB300EA57D2 /* SystemButton.pdf in Resources */,
 				00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */,
-				00BBE8091A06AF510034BCB6 /* Tap.pdf in Resources */,
+				0071A9B51A2B090100EA57D2 /* 16Note.pdf in Resources */,
+				0071A9CF1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf in Resources */,
 				0036173D19D5CC9900848A35 /* loop.png in Resources */,
-				00BBE80D1A06AF670034BCB6 /* SinglePlay.pdf in Resources */,
 				0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */,
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
 				00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */,
 				00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */,
+				0071A9B61A2B090100EA57D2 /* 8Notes.pdf in Resources */,
+				0071A9D51A2B108B00EA57D2 /* ScrollViewCellBackGround.pdf in Resources */,
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
 				0034734E1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf in Resources */,
 				00039D1F1A24ED2300710E0E /* SubPropertySelector.xib in Resources */,
 				00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */,
 				005662181A185D8E002222A0 /* SelectBarCell.xib in Resources */,
-				0010FF2619FEC1B5005E74C1 /* reflect_number_0.pdf in Resources */,
 				001F01191A05511300189941 /* IssueAndInfo.txt in Resources */,
 				003994B31A1FAE3F00379CEA /* DropCellView.xib in Resources */,
 				005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */,
 				004BE65519B2DDC8002CD995 /* Images.xcassets in Resources */,
 				00DA13B419F4F77000F27E25 /* HiE.wav in Resources */,
-				00C4B4ED19F9752D00B363BA /* dialog2.pdf in Resources */,
 				00E5F8C819C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib in Resources */,
 				004BE68519B2E670002CD995 /* GlobalConfig.plist in Resources */,
+				0071A9B81A2B090100EA57D2 /* QuarterNote.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@ PropertySrcoolView  : 200 * 180
 ropertyArrow        : 60 * 22
 
 BottomView 	 total : 320 * 300
-Metronome Select Bar : 320 * 46
+Metronome Select Bar : 320 * 50
 Ad View         : 320 * 50
 Circle button   : 80 *80
 play Button     : 80 * 80
