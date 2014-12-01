@@ -117,6 +117,8 @@
         TimeSignatureType* NewTimeSignatureType = [NSEntityDescription
                                                    insertNewObjectForEntityForName:NSStringFromClass([TimeSignatureType class]) inManagedObjectContext:_ManagedObjectContext];
         NewTimeSignatureType.timeSignature = (NSString *)TimeSignatureArray[Index];
+        NewTimeSignatureType.sortIndex = [NSNumber numberWithInt:Index];
+        NSLog(@"%@", NewTimeSignatureType);
     }
     [_ManagedObjectContext save:nil];
 }
@@ -124,12 +126,13 @@
 - (void) CreateDefaultVoiceType
 {
 
-    NSArray *VoiceTypeArray =[NSArray arrayWithObjects:@"NormalHi", nil];
+    NSArray *VoiceTypeArray =[NSArray arrayWithObjects:@"NomalHiClickVoice", @"NomalLowClickVoice", @"HumanVoice", nil];
     for (int Index=0;Index <VoiceTypeArray.count; Index++)
     {
         VoiceType* NewVoiceType = [NSEntityDescription
                                                    insertNewObjectForEntityForName:NSStringFromClass([VoiceType class]) inManagedObjectContext:_ManagedObjectContext];
         NewVoiceType.voiceType = (NSString *)VoiceTypeArray[Index];
+        NewVoiceType.sortIndex = [NSNumber numberWithInt:Index];
     }
     [_ManagedObjectContext save:nil];
 
@@ -207,6 +210,11 @@
         self.TimeSignatureTypeEntityFetch = [[NSFetchRequest alloc] init];
         Entity = [NSEntityDescription entityForName:NSStringFromClass([TimeSignatureType class]) inManagedObjectContext:_ManagedObjectContext];
         [self.TimeSignatureTypeEntityFetch setEntity:Entity];
+        
+        // Sort
+        NSSortDescriptor *Sort = [[NSSortDescriptor alloc] initWithKey:@"sortIndex" ascending:YES];
+        NSArray *SortArray = [[NSArray alloc] initWithObjects:Sort, nil];
+        [self.TimeSignatureTypeEntityFetch setSortDescriptors:SortArray];
     }
     return [_ManagedObjectContext executeFetchRequest:self.TimeSignatureTypeEntityFetch error:nil];
 }
@@ -219,6 +227,11 @@
         self.VoiceTypeEntityFetch = [[NSFetchRequest alloc] init];
         Entity = [NSEntityDescription entityForName:NSStringFromClass([VoiceType class]) inManagedObjectContext:_ManagedObjectContext];
         [self.VoiceTypeEntityFetch setEntity:Entity];
+        
+        // Sort
+        NSSortDescriptor *Sort = [[NSSortDescriptor alloc] initWithKey:@"sortIndex" ascending:YES];
+        NSArray *SortArray = [[NSArray alloc] initWithObjects:Sort, nil];
+        [self.VoiceTypeEntityFetch setSortDescriptors:SortArray];
     }
     return [_ManagedObjectContext executeFetchRequest:self.VoiceTypeEntityFetch error:nil];
 }

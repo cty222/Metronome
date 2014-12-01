@@ -52,7 +52,7 @@
         self.TrippleNoteCircleVolumeButton = [[CircleButton alloc] initWithFrame:self.TrippleNoteCircleVolumeButton.frame];
         self.TrippleNoteCircleVolumeButton.SignPicture.image = [UIImage imageNamed:@"TrippleNote"];
         [self addSubview:self.TrippleNoteCircleVolumeButton];
-       
+     
     }
     return self;
 }
@@ -61,7 +61,6 @@
 
 //
 // =================================
-
 
 /*
 // Only override drawRect: if you perform custom drawing.

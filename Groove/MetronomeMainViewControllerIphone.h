@@ -40,6 +40,8 @@ typedef enum {
 
 @property NSArray * CurrentCellsDataTable;
 @property (nonatomic, strong) BeepBound* CurrentVoice;
+@property (nonatomic, strong) NSString* CurrentTimeSignature;
+
 @property TempoCell* CurrentCell;
 @property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
 @property (getter = GetPlayingMode, setter = SetPlayingMode:) METRONOME_PLAYING_MODE PlayingMode;

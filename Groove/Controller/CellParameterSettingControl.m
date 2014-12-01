@@ -79,30 +79,19 @@
     // BPM Picker Initialize
     self.BPMPicker.delegate = self;
     
-    // VoiceType CircleButton initialize
-    /*self.VoiceTypeCircleButton.delegate = self;
-    CIRCLEBUTTON_RANGE VolumeRange;
-    VolumeRange.MaxIndex = 10.0;
-    VolumeRange.MinIndex = 0;
-    VolumeRange.UnitValue = 1;*/
-    
-    
-   
-    /*UIGraphicsBeginImageContext(self.VoiceButton.frame.size);
-     [[UIImage imageNamed:@"Voice_Hi-Click"] drawInRect:self.VoiceButton.bounds];
-     UIImage *VoiceImage = UIGraphicsGetImageFromCurrentImageContext();
-     UIGraphicsEndImageContext();
-     self.VoiceButton.backgroundColor = [UIColor colorWithPatternImage:VoiceImage];*/
+    //VoiceTypePicker
     [self.VoiceTypePicker addTarget:self
                                action:@selector(VoiceTypePickerDisplay:) forControlEvents:UIControlEventTouchDown];
     
     
     // Time Signature
-    UIGraphicsBeginImageContext(self.TimeSigaturePicker.frame.size);
+    /*UIGraphicsBeginImageContext(self.TimeSigaturePicker.frame.size);
     [[UIImage imageNamed:@"TimeSignature4_4"] drawInRect:self.TimeSigaturePicker.bounds];
     UIImage *TimeSignatureImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    self.TimeSigaturePicker.backgroundColor = [UIColor colorWithPatternImage:TimeSignatureImage];
+    self.TimeSigaturePicker.backgroundColor = [UIColor colorWithPatternImage:TimeSignatureImage];*/
+    
+    
     [self.TimeSigaturePicker addTarget:self
                              action:@selector(TimeSigaturePickerDisplay:) forControlEvents:UIControlEventTouchDown];
     
@@ -126,17 +115,16 @@
         _VoiceTypeSubButtonView = [[UIView alloc] initWithFrame:ControlView.bounds];
         _VoiceTypeSubButtonView.userInteractionEnabled = YES;
 
-        float Width  = sender.frame.size.width * 2;
+        float Width  = sender.frame.size.width;
         float Height = sender.frame.size.height;
-        float XOffset = sender.frame.size.width / 3;
-        float YOffset = Height / 3;
-        float RightMargin = sender.frame.size.width / 3;
-        float DownMargin = Height / 3;
+        float XOffset = sender.frame.size.width / 2;
+        float YOffset = Height / 2;
+        float RightMargin = sender.frame.size.width / 2;
+        float DownMargin = Height / 2;
         int MaxColumn = (_VoiceTypeSubButtonView.frame.size.width - XOffset)/ (Width + RightMargin);
         
         NSArray *VoiceTypeArray = [gMetronomeModel FetchVoiceType];
         
-        UIView * TmpView;
         for (int Index = 0; Index < VoiceTypeArray.count; Index ++)
         {
             CGRect NewFrame = CGRectMake(XOffset + (Index % MaxColumn) * (Width + RightMargin),
@@ -144,21 +132,20 @@
                                          Width,
                                          Height
                                          );
-            TmpView  =[[UIView alloc] initWithFrame:NewFrame];
-            TmpView.backgroundColor = [UIColor yellowColor];
-            [_VoiceTypeSubButtonView addSubview:TmpView];
-            UIButton * TmpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];
+            UIButton * TmpButton = [[UIButton alloc] initWithFrame:NewFrame];
             TmpButton.tag = Index;
-            [TmpView addSubview:TmpButton];
             VoiceType * tmp = VoiceTypeArray[Index];
-            [TmpButton setTitle:tmp.voiceType forState:UIControlStateNormal];
+            [TmpButton setBackgroundImage:[UIImage imageNamed:tmp.voiceType] forState:UIControlStateNormal];
             [TmpButton addTarget:self
                           action:@selector(ChangeVoiceType:)
                 forControlEvents:UIControlEventTouchDown
              ];
+            
+            [_VoiceTypeSubButtonView addSubview:TmpButton];
         }
     }
     
+    // Remove and Display
     for (UIView * subView in ControlView.subviews)
     {
         [subView removeFromSuperview];
@@ -181,15 +168,13 @@
 
         float Width  = sender.frame.size.width;
         float Height = sender.frame.size.height;
-        float XOffset = Width / 3;
-        float YOffset = Height / 3;
-        float RightMargin = Width / 3;
-        float DownMargin = Height / 3;
+        float XOffset = Width / 2;
+        float YOffset = Height / 2;
+        float RightMargin = Width / 2;
+        float DownMargin = Height / 2;
         int MaxColumn = (_TimeSignatureTypeSubButtonView.frame.size.width - XOffset)/ (Width + RightMargin);
         
         NSArray *TimeSignatureTypeArray = [gMetronomeModel FetchTimeSignatureType];
-        
-        UIView * TmpView;
         for (int Index = 0; Index < TimeSignatureTypeArray.count; Index ++)
         {
             CGRect NewFrame = CGRectMake(XOffset + (Index % MaxColumn) * (Width + RightMargin),
@@ -197,18 +182,18 @@
                                          Width,
                                          Height
                                          );
-            TmpView  =[[UIView alloc] initWithFrame:NewFrame];
-            TmpView.backgroundColor = [UIColor yellowColor];
-            [_TimeSignatureTypeSubButtonView addSubview:TmpView];
-            UIButton * TmpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];
+            UIButton * TmpButton = [[UIButton alloc] initWithFrame:NewFrame];
             TmpButton.tag = Index;
-            [TmpView addSubview:TmpButton];
+            [TmpButton setBackgroundImage:[UIImage imageNamed:@"ScrollViewCellBackGround"] forState:UIControlStateNormal];
             TimeSignatureType * tmp = TimeSignatureTypeArray[Index];
+            
             [TmpButton setTitle:tmp.timeSignature forState:UIControlStateNormal];
             [TmpButton addTarget:self
                       action:@selector(ChangeTimeSignature:)
                       forControlEvents:UIControlEventTouchDown
              ];
+            [_TimeSignatureTypeSubButtonView addSubview:TmpButton];
+
         }
     }
     
@@ -222,7 +207,7 @@
     [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_SHOW :CenterLine];
 }
 
-- (IBAction) ChangeVoiceType:(UIView *)TriggerItem
+- (IBAction) ChangeVoiceType:(UIButton *)TriggerItem
 {
     NSArray *VoiceTypeArray = [gMetronomeModel FetchVoiceType];
 
@@ -234,16 +219,17 @@
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
     
     // Because 0 is no voice
-    NSInteger VoiceIndex = TriggerItem.tag + 1;
+    NSInteger VoiceIndex = TriggerItem.tag;
     Parent.CurrentVoice = [gClickVoiceList objectAtIndex:VoiceIndex];
-
     Parent.CurrentCell.voiceType = (VoiceType *)VoiceTypeArray[TriggerItem.tag];
     
+    [self.VoiceTypePicker setBackgroundImage:[TriggerItem backgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];
+
     // TODO : 不要save這麼頻繁
     [gMetronomeModel Save];
 }
 
-- (IBAction) ChangeTimeSignature:(UIView *)TriggerItem
+- (IBAction) ChangeTimeSignature:(UIButton *)TriggerItem
 {
     NSArray *TimeSignatureTypeArray = [gMetronomeModel FetchTimeSignatureType];
     
@@ -253,13 +239,12 @@
     }
     
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
-    
- 
     Parent.CurrentCell.timeSignatureType = (TimeSignatureType *)TimeSignatureTypeArray[TriggerItem.tag];
     
     // TODO : 不要save這麼頻繁
     [gMetronomeModel Save];
     
+    [self.TimeSigaturePicker setTitle:TriggerItem.titleLabel.text forState:UIControlStateNormal];
 }
 
 

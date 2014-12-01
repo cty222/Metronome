@@ -11,9 +11,9 @@
 	<key>LastFocusCellIndex</key>
 	<integer>0</integer>
 	<key>DbVersion</key>
-	<real>1003</real>
+	<real>1006</real>
 	<key>VersionID</key>
-	<real>4008</real>
+	<real>4011</real>
 	<key>BPMMinValue</key>
 	<integer>30</integer>
 	<key>BPMMaxValue</key>

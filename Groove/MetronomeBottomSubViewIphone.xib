@@ -11,10 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CoW-LI-FJh">
-                    <rect key="frame" x="0.0" y="250" width="320" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                </adBannerView>
                 <view contentMode="scaleToFill" id="vkX-vz-nz5" customClass="CircleButton">
                     <rect key="frame" x="115" y="149" width="90" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -52,6 +48,10 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="utD-OK-Pb3">
+                    <rect key="frame" x="0.0" y="250" width="320" height="50"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                </adBannerView>
             </subviews>
             <color key="backgroundColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -64,7 +64,7 @@
                 <outlet property="SelectGrooveBar" destination="0eg-Cr-3ZA" id="D44-xZ-pfO"/>
                 <outlet property="SixteenthNoteCircleVolumeButton" destination="x1S-8B-yew" id="PDD-pj-1YA"/>
                 <outlet property="TrippleNoteCircleVolumeButton" destination="vkX-vz-nz5" id="ZxV-2m-Abn"/>
-                <outlet property="adView" destination="CoW-LI-FJh" id="W5E-25-w0i"/>
+                <outlet property="adView" destination="utD-OK-Pb3" id="2x9-jV-e7D"/>
             </connections>
         </view>
     </objects>

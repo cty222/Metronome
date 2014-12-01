@@ -28,11 +28,12 @@ NSMutableArray* gClickVoiceList;
 @interface AudioPlay : NSObject <AVAudioPlayerDelegate>
 
 enum ClickVoice{
-    NO_VOICE   = 0,
-    NORMAL_HI  = 1,
-    DRUM_VOICE = 2,
-    LAST_VOICE = DRUM_VOICE,
-    FIRST_VOICE = NORMAL_HI
+    NO_VOICE   = -1,
+    NORMAL_HI_VOICE  = 0,
+    NORMAL_LOW_VOICE = 1,
+    HUMAN_VOICE = 2,
+    LAST_VOICE = HUMAN_VOICE,
+    FIRST_VOICE = NORMAL_HI_VOICE
 };
 
 @property int MaxVolume;

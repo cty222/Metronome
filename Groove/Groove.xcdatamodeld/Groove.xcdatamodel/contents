@@ -20,10 +20,12 @@
         <relationship name="cellBelongTo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TempoCell" inverseName="listOwner" inverseEntity="TempoCell" syncable="YES"/>
     </entity>
     <entity name="TimeSignatureType" representedClassName="TimeSignatureType" syncable="YES">
+        <attribute name="sortIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="timeSignature" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="usingCell" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TempoCell" inverseName="timeSignatureType" inverseEntity="TempoCell" syncable="YES"/>
     </entity>
     <entity name="VoiceType" representedClassName="VoiceType" syncable="YES">
+        <attribute name="sortIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="voiceType" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="usingCell" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TempoCell" inverseName="voiceType" inverseEntity="TempoCell" syncable="YES"/>
     </entity>
@@ -34,7 +36,7 @@
         <element name="DbConfig" positionX="153" positionY="18" width="128" height="60"/>
         <element name="TempoCell" positionX="-63" positionY="-18" width="128" height="193"/>
         <element name="TempoList" positionX="349" positionY="-127" width="128" height="73"/>
-        <element name="TimeSignatureType" positionX="412" positionY="80" width="128" height="28"/>
-        <element name="VoiceType" positionX="144" positionY="0" width="128" height="73"/>
+        <element name="TimeSignatureType" positionX="412" positionY="80" width="128" height="88"/>
+        <element name="VoiceType" positionX="144" positionY="0" width="128" height="88"/>
     </elements>
 </model>

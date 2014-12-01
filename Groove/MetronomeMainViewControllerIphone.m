@@ -258,11 +258,9 @@
     
     self.TopSubView.BPMPicker.BPMValue = [self.CurrentCell.bpmValue intValue];
     [_CellParameterSettingSubController SetVolumeBarVolume:self.CurrentCell];
-    self.CurrentVoice = [gClickVoiceList objectAtIndex:1];
-
-    // TODO: 要改成設圖
-    //[self.BottomSubView.TimeSignatureButton setTitle:_CurrentCell.timeSignatureType.timeSignature forState:UIControlStateNormal];
-    
+    self.CurrentVoice = [gClickVoiceList objectAtIndex:[self.CurrentCell.voiceType.sortIndex intValue]];
+    self.CurrentTimeSignature = self.CurrentCell.timeSignatureType.timeSignature;
+    [_CellParameterSettingSubController.TimeSigaturePicker setTitle:self.CurrentTimeSignature forState:UIControlStateNormal];
 
 }
 
@@ -310,7 +308,7 @@
 - (void) FirstBeatFunc
 {
     // Accent
-    if ( _AccentCounter == 0 || _AccentCounter >= [_CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentCell.timeSignatureType.timeSignature])
+    if ( _AccentCounter == 0 || _AccentCounter >= [_CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
     {
         [gPlayUnit playSound: [self.CurrentCell.accentVolume floatValue]/ MAX_VOLUME
                             : [self.CurrentVoice GetAccentVoice]];
@@ -458,7 +456,7 @@
         if (self.PlayingMode == LOOP_PLAYING)
         {
             _TimeSignatureCounter++;
-            if (_TimeSignatureCounter == [_CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentCell.timeSignatureType.timeSignature])
+            if (_TimeSignatureCounter == [_CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
             {
                 _TimeSignatureCounter = 0;
                 _LoopCountCounter++;

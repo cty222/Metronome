@@ -38,8 +38,9 @@ static ALCcontext *openALContext;
     }
     
     // ?? why I have beep sound ??
-    [gClickVoiceList addObject: [[BeepBound alloc] init]];
     [gClickVoiceList addObject: [[NomalHiClickVoice alloc] init]];
+    [gClickVoiceList addObject: [[BeepBound alloc] init]];
+    [gClickVoiceList addObject: [[BeepBound alloc] init]];    
 }
 
 + (void) InitAlcDevice
