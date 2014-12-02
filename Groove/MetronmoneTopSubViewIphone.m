@@ -34,6 +34,12 @@
         [self addSubview:self.SubPropertySelectorView];
         [self sendSubviewToBack:self.SubPropertySelectorView];
         [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_HIDDEN :0];
+        
+        [self.LoopCellEditBarView removeFromSuperview];
+        self.LoopCellEditBarView = [[LoopCellEditBar alloc] initWithFrame:self.LoopCellEditBarView.frame];
+        [self addSubview:self.LoopCellEditBarView];
+        [self sendSubviewToBack:self.LoopCellEditBarView];
+        [self.LoopCellEditBarView ChangeMode:LOOP_CELL_EDIT_BAR_MODE_HIDDEN :0];
 
     }
     return self;

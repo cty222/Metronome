@@ -34,17 +34,13 @@ funcion
 2.2 Loop 增加減少閃爍
 2.5 Loop Cell 長壓進入刪除模式, drop掉 或是按一下 回復
 
-3.1 Voice 選取
-4.1 Time Signature選取
+
 
 
 UI:
-1.1 數字不夠
-1.2 箭頭不在牆壁上
+LoopCell1.2 箭頭不在牆壁上
 
-2.1 Sys Icon 還沒換
 
 3.1 Loop selecter 圖形沒換 
 
-4.1 volume set 樣子沒換
 

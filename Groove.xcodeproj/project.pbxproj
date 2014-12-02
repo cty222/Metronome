@@ -75,6 +75,8 @@
 		00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */; };
 		00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */; };
 		00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */; };
+		00C38EAC1A2E2D6300DF9B8C /* LoopCellEditBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C38EAB1A2E2D6300DF9B8C /* LoopCellEditBar.m */; };
+		00C38EAE1A2E308400DF9B8C /* LoopCellEditBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00C38EAD1A2E308400DF9B8C /* LoopCellEditBar.xib */; };
 		00D92FD01A15C3D800AEC17F /* CellParameterSettingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D92FCF1A15C3D800AEC17F /* CellParameterSettingControl.m */; };
 		00D92FD31A15EDFD00AEC17F /* LoopAndPlayViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D92FD21A15EDFD00AEC17F /* LoopAndPlayViewControl.m */; };
 		00D92FD61A15FE5700AEC17F /* SystemPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D92FD51A15FE5700AEC17F /* SystemPageControl.m */; };
@@ -196,6 +198,9 @@
 		00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeSelectBar.m; sourceTree = "<group>"; };
 		00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeSelectBar.xib; sourceTree = "<group>"; };
 		00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LargeBPMPicker.xib; sourceTree = "<group>"; };
+		00C38EAA1A2E2D6300DF9B8C /* LoopCellEditBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoopCellEditBar.h; path = UITools/LoopCellEditBar.h; sourceTree = "<group>"; };
+		00C38EAB1A2E2D6300DF9B8C /* LoopCellEditBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoopCellEditBar.m; path = UITools/LoopCellEditBar.m; sourceTree = "<group>"; };
+		00C38EAD1A2E308400DF9B8C /* LoopCellEditBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoopCellEditBar.xib; sourceTree = "<group>"; };
 		00D92FCE1A15C3D800AEC17F /* CellParameterSettingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellParameterSettingControl.h; path = Controller/CellParameterSettingControl.h; sourceTree = "<group>"; };
 		00D92FCF1A15C3D800AEC17F /* CellParameterSettingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellParameterSettingControl.m; path = Controller/CellParameterSettingControl.m; sourceTree = "<group>"; };
 		00D92FD11A15EDFD00AEC17F /* LoopAndPlayViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopAndPlayViewControl.h; sourceTree = "<group>"; };
@@ -418,6 +423,9 @@
 		00677B1019BC5D5B007A3085 /* MetronmeItems */ = {
 			isa = PBXGroup;
 			children = (
+				00C38EAA1A2E2D6300DF9B8C /* LoopCellEditBar.h */,
+				00C38EAB1A2E2D6300DF9B8C /* LoopCellEditBar.m */,
+				00C38EAD1A2E308400DF9B8C /* LoopCellEditBar.xib */,
 				00677B1119BC5DA4007A3085 /* LargeBPMPicker.h */,
 				00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */,
 				00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */,
@@ -673,6 +681,7 @@
 				0071A9CF1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf in Resources */,
 				0036173D19D5CC9900848A35 /* loop.png in Resources */,
 				0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */,
+				00C38EAE1A2E308400DF9B8C /* LoopCellEditBar.xib in Resources */,
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
 				00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */,
 				00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */,
@@ -710,6 +719,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */,
+				00C38EAC1A2E2D6300DF9B8C /* LoopCellEditBar.m in Sources */,
 				00677B0519BC4C09007A3085 /* MetronmoneTopSubViewIphone.m in Sources */,
 				004BE68019B2E131002CD995 /* MetronomeMainViewControllerIphone.m in Sources */,
 				004BE67519B2E014002CD995 /* XibViewInterface.m in Sources */,

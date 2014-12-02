@@ -72,8 +72,9 @@
     self.OptionScrollView = Parent.TopSubView.OptionScrollView;
     self.VoiceTypePicker = Parent.TopSubView.VoiceTypePicker;
     self.TimeSigaturePicker = Parent.TopSubView.TimeSigaturePicker;
+    self.LoopCellEditer = Parent.TopSubView.LoopCellEditer;
     self.SubPropertySelectorView = Parent.TopSubView.SubPropertySelectorView;
-    
+    self.LoopCellEditBarView = Parent.TopSubView.LoopCellEditBarView;
 
     
     // BPM Picker Initialize
@@ -95,13 +96,21 @@
     [self.TimeSigaturePicker addTarget:self
                              action:@selector(TimeSigaturePickerDisplay:) forControlEvents:UIControlEventTouchDown];
     
+    [self.LoopCellEditer addTarget:self
+                                action:@selector(LoopCellEditerDisplay:) forControlEvents:UIControlEventTouchDown];
 
     // SubPropertySelectorView
     self.SubPropertySelectorView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.SubPropertySelectorView.frame.origin.y;
+    
+    // LoopCellEditBarView
+    self.LoopCellEditBarView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.LoopCellEditBarView.frame.origin.y;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(TouchedNotificationCallBack:)
                                                  name:kTouchGlobalHookNotification
                                                object:nil];
+    
+
 }
 
 
@@ -207,6 +216,13 @@
     [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_SHOW :CenterLine];
 }
 
+-(IBAction) LoopCellEditerDisplay:(UIButton *)sender
+{
+    NSLog(@"LoopCellEditerDisplay");
+    float CenterLine = sender.frame.origin.y + sender.frame.size.height/2;
+    [self.LoopCellEditBarView ChangeMode:LOOP_CELL_EDIT_BAR_MODE_SHOW :CenterLine];
+}
+
 - (IBAction) ChangeVoiceType:(UIButton *)TriggerItem
 {
     NSArray *VoiceTypeArray = [gMetronomeModel FetchVoiceType];
@@ -269,6 +285,17 @@
         }
     }
     
+    if (self.LoopCellEditBarView.Mode != LOOP_CELL_EDIT_BAR_MODE_HIDDEN)
+    {
+        if ((target != self.LoopCellEditer)
+            )
+        {
+            
+            [self.LoopCellEditBarView ChangeMode:LOOP_CELL_EDIT_BAR_MODE_HIDDEN :0];
+            return;
+            
+        }
+    }
 
 }
 
