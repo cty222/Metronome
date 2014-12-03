@@ -173,12 +173,18 @@
     }
     [ControlView addSubview:_VoiceTypeSubButtonView];
     
-    float CenterLine = sender.frame.origin.y + sender.frame.size.height/2;
+    UIScrollView * ParentScrollView = (UIScrollView * )sender.superview;
+    float CenterLine = sender.frame.origin.y + sender.frame.size.height/2 - ParentScrollView.contentOffset.y;
     [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_SHOW :CenterLine];
 }
 
 -(IBAction) TimeSigaturePickerDisplay:(UIView *)sender
 {
+    if (self.SubPropertySelectorView.Mode != SUB_PROPERTY_MODE_HIDDEN)
+    {
+        return;
+    }
+    
     UIView * ControlView = self.SubPropertySelectorView.ContentScrollView;
     
     // If nil, create data view
@@ -224,13 +230,15 @@
     }
     [ControlView addSubview:_TimeSignatureTypeSubButtonView];
     
-    float CenterLine = sender.frame.origin.y + sender.frame.size.height/2;
+    UIScrollView * ParentScrollView = (UIScrollView * )sender.superview;
+    float CenterLine = sender.frame.origin.y + sender.frame.size.height/2 - ParentScrollView.contentOffset.y;
     [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_SHOW :CenterLine];
 }
 
 -(IBAction) LoopCellEditerDisplay:(UIButton *)sender
 {
-    float CenterLine = sender.frame.origin.y + sender.frame.size.height/2;
+    UIScrollView * ParentScrollView = (UIScrollView * )sender.superview;
+    float CenterLine = sender.frame.origin.y + sender.frame.size.height/2 - ParentScrollView.contentOffset.y;
     [self.LoopCellEditBarView ChangeMode:LOOP_CELL_EDIT_BAR_MODE_SHOW :CenterLine];
 }
 
