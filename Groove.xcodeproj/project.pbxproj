@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		00039D1F1A24ED2300710E0E /* SubPropertySelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00039D1E1A24ED2300710E0E /* SubPropertySelector.xib */; };
 		00039D221A24ED4500710E0E /* SubPropertySelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 00039D211A24ED4500710E0E /* SubPropertySelector.m */; };
-		000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 000BDEEB19BF7D6A00078456 /* triangle2.png */; };
 		001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */; };
 		001B2B3019D3CF190057A22E /* DbConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2F19D3CF190057A22E /* DbConfig.m */; };
 		001B2B3D19D4106A0057A22E /* TempoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B3C19D4106A0057A22E /* TempoList.m */; };
@@ -109,7 +108,6 @@
 		00039D1E1A24ED2300710E0E /* SubPropertySelector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubPropertySelector.xib; sourceTree = "<group>"; };
 		00039D201A24ED4500710E0E /* SubPropertySelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubPropertySelector.h; path = UITools/SubPropertySelector.h; sourceTree = "<group>"; };
 		00039D211A24ED4500710E0E /* SubPropertySelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubPropertySelector.m; path = UITools/SubPropertySelector.m; sourceTree = "<group>"; };
-		000BDEEB19BF7D6A00078456 /* triangle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle2.png; sourceTree = "<group>"; };
 		001B2B2C19D3CA0C0057A22E /* Groove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Groove.xcdatamodel; sourceTree = "<group>"; };
 		001B2B2E19D3CF190057A22E /* DbConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DbConfig.h; path = CoreDataSubClass/DbConfig.h; sourceTree = "<group>"; };
 		001B2B2F19D3CF190057A22E /* DbConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DbConfig.m; path = CoreDataSubClass/DbConfig.m; sourceTree = "<group>"; };
@@ -340,7 +338,6 @@
 			isa = PBXGroup;
 			children = (
 				0036173C19D5CC9900848A35 /* loop.png */,
-				000BDEEB19BF7D6A00078456 /* triangle2.png */,
 				004BE64719B2DDC7002CD995 /* Groove-Info.plist */,
 				004BE64819B2DDC7002CD995 /* InfoPlist.strings */,
 				004BE64B19B2DDC7002CD995 /* main.m */,
@@ -670,7 +667,6 @@
 				005A93901A2CD07100280507 /* PropertyDialog.pdf in Resources */,
 				0071A9D41A2B108B00EA57D2 /* HumanVoice.pdf in Resources */,
 				00AB03791A2783C500352DD7 /* SystemPageViewController.xib in Resources */,
-				000BDEEC19BF7D6A00078456 /* triangle2.png in Resources */,
 				00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */,
 				004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */,
 				003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */,

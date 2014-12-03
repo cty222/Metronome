@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -61,7 +60,7 @@
                 </button>
                 <view contentMode="scaleToFill" id="cWm-G2-BW2" customClass="LargeBPMPicker">
                     <rect key="frame" x="8" y="8" width="240" height="252"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qDg-3A-xuS">
@@ -80,6 +79,10 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AccentNote" id="GDj-bq-qoF">
+                    <rect key="frame" x="5" y="18" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -93,12 +96,14 @@
                 <outlet property="PlayLoopCellButton" destination="PYh-UZ-971" id="h3n-Dk-ujU"/>
                 <outlet property="SubPropertySelectorView" destination="OF2-gL-lEa" id="EZc-Rg-9h3"/>
                 <outlet property="SystemButton" destination="qDg-3A-xuS" id="tBW-yK-My4"/>
+                <outlet property="TapAlertImage" destination="GDj-bq-qoF" id="O57-od-uq2"/>
                 <outlet property="TimeSigaturePicker" destination="n1P-MM-kWw" id="DlP-Uu-mbS"/>
                 <outlet property="VoiceTypePicker" destination="t2o-NR-dku" id="SVP-h2-Ucj"/>
             </connections>
         </view>
     </objects>
     <resources>
+        <image name="AccentNote" width="40" height="40"/>
         <image name="HumanVoice" width="40" height="40"/>
         <image name="ScrollViewBackGround" width="60" height="162"/>
         <image name="ScrollViewCellBackGround" width="40" height="40"/>

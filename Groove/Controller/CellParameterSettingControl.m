@@ -21,7 +21,6 @@
     // Tap Fuction
     double _LastRecordTime_ms;
     NSDate * _Date;;
-    NSTimer *_TapResetTimer;
     int _TapTriggerCounter;
     
     // VoiceTypeSubButtonArray
@@ -83,7 +82,7 @@
     self.LoopCellEditer = Parent.TopSubView.LoopCellEditer;
     self.SubPropertySelectorView = Parent.TopSubView.SubPropertySelectorView;
     self.LoopCellEditBarView = Parent.TopSubView.LoopCellEditBarView;
-
+    self.TapAlertImage = Parent.TopSubView.TapAlertImage;
     
     // BPM Picker Initialize
     self.BPMPicker.delegate = self;
@@ -427,19 +426,22 @@
 - (void) SetTapTriggerCounter: (int) NewValue
 {
     // TODO: Open A Timer or animation to show Tap icon when Second Tap
-    if(NewValue >0 && NewValue <  [self TapTriggerNumber])
+    if(NewValue >1 && NewValue <  [self TapTriggerNumber])
     {
         // check icon
         // Show normal Icon
+        self.TapAlertImage.hidden = NO;
     }
     else if (NewValue >= [self TapTriggerNumber])
     {
         // show
+        self.TapAlertImage.hidden = NO;
     }
     else
     {
         // check icon
         // Hidden Icon
+        self.TapAlertImage.hidden = YES;
     }
     
     _TapTriggerCounter = NewValue;
@@ -462,17 +464,6 @@
     {
         _Date = [NSDate date];
     }
-    
-    if (_TapResetTimer != nil)
-    {
-        [_TapResetTimer invalidate];
-        _TapResetTimer = nil;
-    }
-    _TapResetTimer = [NSTimer scheduledTimerWithTimeInterval:TAP_CLEAR_DELAY
-                                                     target:self
-                                                   selector:@selector(TapResetTicker:)
-                                                   userInfo:nil
-                                                    repeats:NO];
     
     if (_LastRecordTime_ms != 0 && self.TapTriggerCounter >= [self TapTriggerNumber])
     {
@@ -508,7 +499,6 @@
         _Date = nil;
     }
     _LastRecordTime_ms = 0;
-    _TapResetTimer = nil;
     self.TapTriggerCounter = 0;
 }
 //

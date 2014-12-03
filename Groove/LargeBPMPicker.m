@@ -56,15 +56,25 @@
 
 -(void) Initialize
 {
+    NSNumber * DeviceType = [GlobalConfig DeviceType];
+    switch (DeviceType.intValue) {
+        case IPHONE_4S:
+            self.ValueLabel.font = [self.ValueLabel.font  fontWithSize:110];
+            self.UpArrow.font = [self.ValueLabel.font  fontWithSize:30];
+            self.DownArrow.font = [self.ValueLabel.font  fontWithSize:30];
+            break;
+        case IPHONE_5S:
+            break;
+        default:
+            break;
+    }
+    
+    
     _BPMMax = [[GlobalConfig BPMMaxValue] intValue];
     _BPMMin = [[GlobalConfig BPMMinValue] intValue];
 
     self.BPMValue = 120;
     self.ShortPressSecond = 0.5;
-
-    CGAffineTransform rotation = CGAffineTransformMakeRotation(M_PI);
-    CALayer *DownArrowLayer = self.DownArrow.layer;
-    [DownArrowLayer setAffineTransform:rotation];
     
     self.UpArrow.userInteractionEnabled = NO;
     self.DownArrow.userInteractionEnabled = NO;
@@ -72,9 +82,10 @@
     self.UpArrow.hidden = YES;
     self.DownArrow.hidden = YES;
     self.Touched = NO;
-    self.ValueLabel.adjustsFontSizeToFitWidth = YES;
-    [self.ValueLabel sizeToFit];
-
+    //self.ValueLabel.adjustsFontSizeToFitWidth = YES;
+    //[self.ValueLabel sizeToFit];
+    //[self.UpArrow sizeToFit];
+    //[self.DownArrow sizeToFit];
 }
 
 - (id)initWithFrame:(CGRect) frame
@@ -159,6 +170,9 @@
     self.DigitInOnces.backgroundColor = [UIColor colorWithPatternImage:Digits[_BPMValue%10]];
 #else
     [self.ValueLabel setText:[NSString stringWithFormat:@"%d", self.BPMValue]];
+    [self.UpArrow setText:[NSString stringWithFormat:@"%d", self.BPMValue - 1]];
+    [self.DownArrow setText:[NSString stringWithFormat:@"%d", self.BPMValue +1 ]];
+
 #endif
     
     // Pass to parent view.
@@ -392,6 +406,7 @@
 {
     self.UpArrow.hidden = YES;
     self.DownArrow.hidden = YES;
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTapResetNotification object:nil];
 }
 
 - (void) ArrowLongPushTicker: (NSTimer *) ThisTimer

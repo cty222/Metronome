@@ -41,6 +41,7 @@
         [self sendSubviewToBack:self.LoopCellEditBarView];
         [self.LoopCellEditBarView ChangeMode:LOOP_CELL_EDIT_BAR_MODE_HIDDEN :0];
 
+        self.TapAlertImage.hidden = YES;
     }
     return self;
 }
