@@ -8,13 +8,21 @@
 
 #import "CellParameterSettingControl.h"
 
+// Private property
+@interface CellParameterSettingControl ()
+
+// Tap Trigger ounter
+@property (getter = GetTapTriggerCounter, setter = SetTapTriggerCounter:) int TapTriggerCounter;
+
+@end
+
 @implementation CellParameterSettingControl
 {
     // Tap Fuction
     double _LastRecordTime_ms;
     NSDate * _Date;;
-    NSTimer *ClearTapTimer;
-    int TriggerCounter;
+    NSTimer *_TapResetTimer;
+    int _TapTriggerCounter;
     
     // VoiceTypeSubButtonArray
     UIView * _VoiceTypeSubButtonView;
@@ -108,6 +116,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(TouchedNotificationCallBack:)
                                                  name:kTouchGlobalHookNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(TapResetNotificationCallBack:)
+                                                 name:kTapResetNotification
                                                object:nil];
     
 
@@ -218,7 +231,6 @@
 
 -(IBAction) LoopCellEditerDisplay:(UIButton *)sender
 {
-    NSLog(@"LoopCellEditerDisplay");
     float CenterLine = sender.frame.origin.y + sender.frame.size.height/2;
     [self.LoopCellEditBarView ChangeMode:LOOP_CELL_EDIT_BAR_MODE_SHOW :CenterLine];
 }
@@ -403,6 +415,39 @@
 //
 // =========================
 
+
+// =========================
+// Property
+//
+- (int) GetTapTriggerCounter
+{
+    return _TapTriggerCounter;
+}
+
+- (void) SetTapTriggerCounter: (int) NewValue
+{
+    // TODO: Open A Timer or animation to show Tap icon when Second Tap
+    if(NewValue >0 && NewValue <  [self TapTriggerNumber])
+    {
+        // check icon
+        // Show normal Icon
+    }
+    else if (NewValue >= [self TapTriggerNumber])
+    {
+        // show
+    }
+    else
+    {
+        // check icon
+        // Hidden Icon
+    }
+    
+    _TapTriggerCounter = NewValue;
+}
+
+//
+// =========================
+
 // =========================
 // Action
 //
@@ -418,38 +463,53 @@
         _Date = [NSDate date];
     }
     
-    if (ClearTapTimer != nil)
+    if (_TapResetTimer != nil)
     {
-        [ClearTapTimer invalidate];
-        ClearTapTimer = nil;
+        [_TapResetTimer invalidate];
+        _TapResetTimer = nil;
     }
-    ClearTapTimer = [NSTimer scheduledTimerWithTimeInterval:TAP_CLEAR_DELAY
+    _TapResetTimer = [NSTimer scheduledTimerWithTimeInterval:TAP_CLEAR_DELAY
                                                      target:self
-                                                   selector:@selector(ClearTapTicker:)
+                                                   selector:@selector(TapResetTicker:)
                                                    userInfo:nil
                                                     repeats:NO];
     
-    if (_LastRecordTime_ms != 0 && TriggerCounter >= [self TapTriggerNumber])
+    if (_LastRecordTime_ms != 0 && self.TapTriggerCounter >= [self TapTriggerNumber])
     {
         double CurrentRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
         int NewBPMvalue = 60000.f/(CurrentRecordTime_ms -_LastRecordTime_ms);
-        self.BPMPicker.BPMValue = NewBPMvalue;
+        
+        // 如果速度低於BPMMinValue, 就重算
+        if( NewBPMvalue >= [[GlobalConfig BPMMinValue] intValue])
+        {
+            self.BPMPicker.BPMValue = NewBPMvalue;
+        }
+        else
+        {
+            self.TapTriggerCounter = 0;
+        }
     }
     
     _LastRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
-    TriggerCounter++;
+    self.TapTriggerCounter++;
+}
+
+// If using scroll or single step to change BPM value, need to clean TapTriggerCounter
+- (void) TapResetNotificationCallBack :(NSNotification *)Notification
+{
+    [self TapResetTicker:nil];
 }
 
 
-- (void) ClearTapTicker: (NSTimer *) theTimer
+- (void) TapResetTicker: (NSTimer *) theTimer
 {
     if (_Date != nil)
     {
         _Date = nil;
     }
     _LastRecordTime_ms = 0;
-    ClearTapTimer = nil;
-    TriggerCounter = 0;
+    _TapResetTimer = nil;
+    self.TapTriggerCounter = 0;
 }
 //
 // =========================

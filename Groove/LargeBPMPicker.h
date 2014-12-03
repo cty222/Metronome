@@ -11,6 +11,7 @@
 
 
 #define DIGIT_ENABLE_FLAG 0
+#define kTapResetNotification @"kTapResetNotification"
 
 @ class LargeBPMPicker;
 

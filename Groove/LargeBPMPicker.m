@@ -8,6 +8,14 @@
 
 #import "LargeBPMPicker.h"
 
+// Private property
+@interface LargeBPMPicker ()
+
+@property (getter = GetIsBPMValueChange, setter = SetIsBPMValueChange:) BOOL IsBPMValueChange;
+
+
+@end
+
 @implementation LargeBPMPicker
 {
     // Picture Array
@@ -24,6 +32,7 @@
     NSTimer *ArrowLongPushTimer;
     
     // Short press
+    BOOL _IsBPMValueChange;
     float _ShortPressSecond;
     NSDate * _Date;
     double _PressTime_ms;
@@ -170,6 +179,11 @@
 //
 - (void) ShortPress: (LargeBPMPicker *) ThisPicker
 {
+    if (self.IsBPMValueChange)
+    {
+        return;
+    }
+    
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
@@ -198,7 +212,6 @@
 
 - (void) ShortPressCheckEnd
 {
-
     if (_PressTime_ms != 0)
     {
         double CurrentRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
@@ -216,22 +229,21 @@
         return;
     }
     
-    BOOL LongPushFlag = NO;
     CGRect UpArrowFrame = self.UpArrow.frame;
     CGRect DownArrowFrame = self.DownArrow.frame;
     
     if ((TouchLocation.x > UpArrowFrame.origin.x && TouchLocation.x < UpArrowFrame.origin.x + UpArrowFrame.size.width) && (TouchLocation.y > UpArrowFrame.origin.y && TouchLocation.y < UpArrowFrame.origin.y + UpArrowFrame.size.height))
     {
         self.BPMValue++;
-        LongPushFlag = YES;
+        self.IsBPMValueChange = YES;
     }
     else if((TouchLocation.x > DownArrowFrame.origin.x && TouchLocation.x < DownArrowFrame.origin.x + DownArrowFrame.size.width) && (TouchLocation.y > DownArrowFrame.origin.y && TouchLocation.y < DownArrowFrame.origin.y + DownArrowFrame.size.height))
     {
         self.BPMValue--;
-        LongPushFlag = YES;
+        self.IsBPMValueChange = YES;
     }
     
-    if (LongPushFlag && ArrowLongPushTimer == nil)
+    if (self.IsBPMValueChange == YES && ArrowLongPushTimer == nil)
     {
         ArrowLongPushTimer = [NSTimer scheduledTimerWithTimeInterval:[self LongPushArraySensitivity]
                                                               target:self
@@ -247,6 +259,22 @@
 // ================================
 // property
 //
+
+- (void) SetIsBPMValueChange : (BOOL) NewValue
+{
+    if (NewValue)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTapResetNotification object:nil];
+    }
+    
+    _IsBPMValueChange = NewValue;
+}
+
+- (BOOL) GetIsBPMValueChange
+{
+    return  _IsBPMValueChange;
+}
+
 - (void) SetShortPressSecond : (float) NewValue
 {
     _ShortPressSecond = NewValue;
@@ -268,13 +296,18 @@
 
 - (void) SetTouched: (BOOL)NewValue
 {
+    
     _Touched = NewValue;
+    
     if (_Touched)
     {
+        self.IsBPMValueChange = NO;
+        
         if (self.UpArrow.hidden == NO)
         {
             [self CheckTouchBPMValueArrow: OriginalLocation];
         }
+        
         self.UpArrow.hidden = NO;
         self.DownArrow.hidden = NO;
         if (ArrowCancellTimer != nil)
@@ -287,15 +320,6 @@
     }
     else
     {
-        if (_PressTime_ms != 0)
-        {
-            double CurrentRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
-            if ((CurrentRecordTime_ms -_PressTime_ms) < self.ShortPressSecond * 1000.0)
-            {
-                [self ShortPress:self];
-            }
-        }
-        
         ArrowCancellTimer = [NSTimer scheduledTimerWithTimeInterval:2
                                                              target:self
                                                            selector:@selector(ArrowCancellTicker:)
@@ -308,7 +332,7 @@
         }
         
         [self ShortPressCheckEnd];
-
+        self.IsBPMValueChange = NO;
     }
 }
 
@@ -340,6 +364,7 @@
         int MoveUp = (double)(OriginalLocation.y - TouchLocation.y) / [self Sensitivity];
         if (MoveUp != 0)
         {
+            self.IsBPMValueChange = YES;
             self.BPMValue += MoveUp;
             OriginalLocation = TouchLocation;
         }
