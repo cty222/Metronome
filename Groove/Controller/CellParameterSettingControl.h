@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "MetronomeMainViewControllerIphone.h"
 
-#define TAP_CLEAR_DELAY 3
-
 typedef enum{
     ACCENT_VOLUME_BUTTON = 101,
     QUARTER_VOLUME_BUTTON,
