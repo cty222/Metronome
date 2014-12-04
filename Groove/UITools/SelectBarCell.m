@@ -59,8 +59,7 @@
         self.MoveMode = SELECT_CELL_NONE;
         self.ShortPressSecond = 0.5;
         self.LongPressSecond = 0.8;
-        self.VerticalSensitivity = 8;
-        self.HorizontalSensitivity = 0.5;
+        self.HorizontalSensitivity = 1;
     }
     return self;
 }
@@ -84,14 +83,7 @@
 
     if (self.MoveMode != SELECT_CELL_LONG_PRRESS_MOVE)
     {
-        if (_IsFocusOn)
-        {
-            self.CurrentDisplayView = self.FocusImage;
-        }
-        else
-        {
-            self.CurrentDisplayView = self.NoramlImage;
-        }
+        self.CurrentDisplayView = self.NoramlImage;
     }
 }
 
@@ -189,14 +181,7 @@
     // Change
     switch (NewValue) {
         case SELECT_CELL_NONE:
-            if (self.IsFocusOn)
-            {
-                self.CurrentDisplayView = self.FocusImage;
-            }
-            else
-            {
-                self.CurrentDisplayView = self.NoramlImage;
-            }
+            self.CurrentDisplayView = self.NoramlImage;
             break;
         case SELECT_CELL_NORMAL_MOVE:
             break;
@@ -248,20 +233,6 @@
         _LongPressSecond = 1;
     }
     return _LongPressSecond;
-}
-
-- (void) SetVerticalSensitivity : (float) NewValue
-{
-    _VerticalSensitivity = NewValue;
-}
-
-- (float)GetVerticalSensitivity
-{
-    if (_VerticalSensitivity == 0)
-    {
-        _VerticalSensitivity = 1;
-    }
-    return _VerticalSensitivity;
 }
 
 - (void) SetHorizontalSensitivity : (float) NewValue
@@ -346,11 +317,9 @@
 
         if (self.MoveMode != SELECT_CELL_LONG_PRRESS_MOVE)
         {
-            NSLog(@"%f", TouchLocation.y);
-            int MoveVertical = (float)(_OriginalLocation.y - TouchLocation.y) / self.VerticalSensitivity;
             float MoveHerizontal = (float)(_OriginalLocation.x - TouchLocation.x) / self.HorizontalSensitivity;
             
-            if ((self.MoveMode == SELECT_CELL_NONE) && (MoveVertical !=0 || MoveHerizontal !=0))
+            if ((self.MoveMode == SELECT_CELL_NONE) && (MoveHerizontal !=0))
             {
                 if (_LongPressTimer != nil)
                 {
@@ -366,17 +335,7 @@
                 _OriginalLocation = TouchLocation;
                 [self HorizontalValueChange:MoveHerizontal :self];
             }
-            
-            if (MoveVertical >= 1)
-            {
-                _OriginalLocation = TouchLocation;
-                [self VerticlValueChange: 1 : self];
-            }
-            else if (MoveVertical <= -1)
-            {
-                _OriginalLocation = TouchLocation;
-                [self VerticlValueChange: -1 : self];
-            }
+
             
         }
         else
@@ -445,19 +404,6 @@
     }
 }
 
-- (void) VerticlValueChange: (int) ChangeValue : (SelectBarCell *) ThisCell
-{
-    NSLog(@"VerticlValueChange %d",ChangeValue);
-    if (self.delegate != nil)
-    {
-        // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(VerticlValueChange::)])
-        {
-            [self.delegate VerticlValueChange: ChangeValue: ThisCell];
-        }
-    }
-}
-
 - (BOOL) IsLongPressModeEnable: (BOOL) Enable : (SelectBarCell *) ThisCell
 {
     if (self.delegate != nil)
@@ -491,7 +437,7 @@
 
 - (void) CellTouchedChange : (BOOL) Touched : (SelectBarCell *) ThisCell
 {
-
+/*
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
@@ -499,7 +445,7 @@
         {
             [self.delegate CellTouchedChange : Touched : ThisCell];
         }
-    }
+    }*/
 }
 
 - (void) CellMoving :(SelectBarCell *) ThisCell

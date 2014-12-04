@@ -29,7 +29,7 @@ typedef enum{
 
 @end
 
-@interface MetronomeSelectBar : XibViewInterface <SelectBarCellProtocol>
+@interface MetronomeSelectBar : XibViewInterface <SelectBarCellProtocol, UIScrollViewDelegate>
 @property (getter = GetGrooveCellValueStringList, setter = SetGrooveCellValueStringList:) NSMutableArray* GrooveCellValueStringList;
 @property (nonatomic, assign) id<SelectBarProtocol> delegate;
 
@@ -39,7 +39,8 @@ typedef enum{
 // loop button
 @property (strong, nonatomic) IBOutlet UIView *HerizontalScrollBar;
 @property (strong, nonatomic) IBOutlet UIImageView *FocusLineImage;
-@property (strong, nonatomic) IBOutlet UIView *GrooveCellListView;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *GrooveCellListView;
 
 @property (strong, nonatomic) IBOutlet DropCellView *DropCellView;
 @property (strong, nonatomic) UILabel *DropImage;

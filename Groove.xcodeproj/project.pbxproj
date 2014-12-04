@@ -52,7 +52,6 @@
 		006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BD1A0BCFE100113560 /* PlayLoop.pdf */; };
 		006175C21A0BD4A300113560 /* CircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 006175C11A0BD4A200113560 /* CircleButton.m */; };
 		00677B0519BC4C09007A3085 /* MetronmoneTopSubViewIphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B0419BC4C09007A3085 /* MetronmoneTopSubViewIphone.m */; };
-		00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00677B0819BC5203007A3085 /* MetronmoneTopSubViewIphone.xib */; };
 		00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B0C19BC538F007A3085 /* GrooveMainViewControllerIpone.m */; };
 		00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */; };
 		00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */; };
@@ -74,6 +73,7 @@
 		00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */; };
 		00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */; };
 		00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */; };
+		00BE69D81A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BE69D71A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib */; };
 		00C38EAC1A2E2D6300DF9B8C /* LoopCellEditBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C38EAB1A2E2D6300DF9B8C /* LoopCellEditBar.m */; };
 		00C38EAE1A2E308400DF9B8C /* LoopCellEditBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00C38EAD1A2E308400DF9B8C /* LoopCellEditBar.xib */; };
 		00D92FD01A15C3D800AEC17F /* CellParameterSettingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D92FCF1A15C3D800AEC17F /* CellParameterSettingControl.m */; };
@@ -168,7 +168,6 @@
 		006175C11A0BD4A200113560 /* CircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleButton.m; path = UITools/CircleButton.m; sourceTree = "<group>"; };
 		00677B0319BC4C09007A3085 /* MetronmoneTopSubViewIphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MetronmoneTopSubViewIphone.h; sourceTree = "<group>"; };
 		00677B0419BC4C09007A3085 /* MetronmoneTopSubViewIphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronmoneTopSubViewIphone.m; sourceTree = "<group>"; };
-		00677B0819BC5203007A3085 /* MetronmoneTopSubViewIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronmoneTopSubViewIphone.xib; sourceTree = "<group>"; };
 		00677B0B19BC538F007A3085 /* GrooveMainViewControllerIpone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrooveMainViewControllerIpone.h; sourceTree = "<group>"; };
 		00677B0C19BC538F007A3085 /* GrooveMainViewControllerIpone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrooveMainViewControllerIpone.m; sourceTree = "<group>"; };
 		00677B0D19BC538F007A3085 /* GrooveMainViewControllerIpone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrooveMainViewControllerIpone.xib; sourceTree = "<group>"; };
@@ -196,6 +195,7 @@
 		00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeSelectBar.m; sourceTree = "<group>"; };
 		00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeSelectBar.xib; sourceTree = "<group>"; };
 		00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LargeBPMPicker.xib; sourceTree = "<group>"; };
+		00BE69D71A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronmoneTopSubViewIphone.xib; sourceTree = "<group>"; };
 		00C38EAA1A2E2D6300DF9B8C /* LoopCellEditBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoopCellEditBar.h; path = UITools/LoopCellEditBar.h; sourceTree = "<group>"; };
 		00C38EAB1A2E2D6300DF9B8C /* LoopCellEditBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoopCellEditBar.m; path = UITools/LoopCellEditBar.m; sourceTree = "<group>"; };
 		00C38EAD1A2E308400DF9B8C /* LoopCellEditBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoopCellEditBar.xib; sourceTree = "<group>"; };
@@ -402,7 +402,7 @@
 			children = (
 				00677B0319BC4C09007A3085 /* MetronmoneTopSubViewIphone.h */,
 				00677B0419BC4C09007A3085 /* MetronmoneTopSubViewIphone.m */,
-				00677B0819BC5203007A3085 /* MetronmoneTopSubViewIphone.xib */,
+				00BE69D71A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib */,
 			);
 			name = MetronomeTopSubViewIphone;
 			sourceTree = "<group>";
@@ -678,6 +678,7 @@
 				0036173D19D5CC9900848A35 /* loop.png in Resources */,
 				0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */,
 				00C38EAE1A2E308400DF9B8C /* LoopCellEditBar.xib in Resources */,
+				00BE69D81A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib in Resources */,
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
 				00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */,
 				00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */,
@@ -686,7 +687,6 @@
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
 				0034734E1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf in Resources */,
 				00039D1F1A24ED2300710E0E /* SubPropertySelector.xib in Resources */,
-				00677B0919BC5203007A3085 /* MetronmoneTopSubViewIphone.xib in Resources */,
 				005662181A185D8E002222A0 /* SelectBarCell.xib in Resources */,
 				001F01191A05511300189941 /* IssueAndInfo.txt in Resources */,
 				003994B31A1FAE3F00379CEA /* DropCellView.xib in Resources */,

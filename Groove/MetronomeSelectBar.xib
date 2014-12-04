@@ -19,13 +19,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" id="TUi-0m-NJ0">
-                            <rect key="frame" x="0.0" y="0.0" width="1046" height="50"/>
+                        <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" id="OPI-v4-d5S">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                        </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2CV-Oj-d5K">
+                        </scrollView>
+                        <imageView userInteractionEnabled="NO" alpha="0.39999999999999963" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2CV-Oj-d5K">
                             <rect key="frame" x="145" y="0.0" width="46" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="1" green="0.28190266250000001" blue="0.1408895587" alpha="1" colorSpace="calibratedRGB"/>
                         </imageView>
                     </subviews>
                 </view>
@@ -40,7 +41,7 @@
             <connections>
                 <outlet property="DropCellView" destination="TeT-pI-UDw" id="eDc-Lv-O0d"/>
                 <outlet property="FocusLineImage" destination="2CV-Oj-d5K" id="b1d-Qb-a9c"/>
-                <outlet property="GrooveCellListView" destination="TUi-0m-NJ0" id="2bR-nw-KxQ"/>
+                <outlet property="GrooveCellListView" destination="OPI-v4-d5S" id="QV9-PN-sAB"/>
                 <outlet property="HerizontalScrollBar" destination="GeF-K8-o8W" id="IeQ-B9-A9n"/>
             </connections>
             <point key="canvasLocation" x="206" y="267"/>
