@@ -128,6 +128,7 @@
 
 -(IBAction) VoiceTypePickerDisplay:(UIView *)sender
 {
+   
     UIView * ControlView = self.SubPropertySelectorView.ContentScrollView;
     
     // If nil, create data view
@@ -161,18 +162,34 @@
                           action:@selector(ChangeVoiceType:)
                 forControlEvents:UIControlEventTouchDown
              ];
-            
-            [_VoiceTypeSubButtonView addSubview:TmpButton];
+            [ControlView addSubview:_VoiceTypeSubButtonView];
+            _VoiceTypeSubButtonView.hidden = YES;
         }
+    }
+   
+    if ((self.SubPropertySelectorView.Mode != SUB_PROPERTY_MODE_HIDDEN)
+        && _VoiceTypeSubButtonView.hidden == NO
+        )
+    {
+        _VoiceTypeSubButtonView.hidden = YES;
+        [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_HIDDEN :0];
+        return;
     }
     
     // Remove and Display
     for (UIView * subView in ControlView.subviews)
     {
-        [subView removeFromSuperview];
+        if (subView == _VoiceTypeSubButtonView)
+        {
+            subView.hidden = NO;
+        }
+        else
+        {
+            subView.hidden = YES;
+        }
     }
-    [ControlView addSubview:_VoiceTypeSubButtonView];
-    
+
+
     UIScrollView * ParentScrollView = (UIScrollView * )sender.superview;
     float CenterLine = sender.frame.origin.y + sender.frame.size.height/2 - ParentScrollView.contentOffset.y;
     [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_SHOW :CenterLine];
@@ -180,11 +197,6 @@
 
 -(IBAction) TimeSigaturePickerDisplay:(UIView *)sender
 {
-    if (self.SubPropertySelectorView.Mode != SUB_PROPERTY_MODE_HIDDEN)
-    {
-        return;
-    }
-    
     UIView * ControlView = self.SubPropertySelectorView.ContentScrollView;
     
     // If nil, create data view
@@ -222,13 +234,32 @@
             [_TimeSignatureTypeSubButtonView addSubview:TmpButton];
 
         }
+        [ControlView addSubview:_TimeSignatureTypeSubButtonView];
+        _TimeSignatureTypeSubButtonView.hidden = YES;
     }
     
+    if ((self.SubPropertySelectorView.Mode != SUB_PROPERTY_MODE_HIDDEN)
+        && _TimeSignatureTypeSubButtonView.hidden == NO
+        )
+    {
+        _TimeSignatureTypeSubButtonView.hidden = YES;
+        [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_HIDDEN :0];
+        return;
+    }
     for (UIView * subView in ControlView.subviews)
     {
-        [subView removeFromSuperview];
+        if (subView == _TimeSignatureTypeSubButtonView)
+        {
+            subView.hidden = NO;
+        }
+        else
+        {
+            subView.hidden = YES;
+        }
     }
-    [ControlView addSubview:_TimeSignatureTypeSubButtonView];
+
+
+
     
     UIScrollView * ParentScrollView = (UIScrollView * )sender.superview;
     float CenterLine = sender.frame.origin.y + sender.frame.size.height/2 - ParentScrollView.contentOffset.y;

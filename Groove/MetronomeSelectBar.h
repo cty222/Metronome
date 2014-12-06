@@ -9,11 +9,9 @@
 #import "GlobalConfig.h"
 #import "XibViewInterface.h"
 #import "SelectBarCell.h"
-#import "DropCellView.h"
 
 typedef enum{
   SELECT_BAR_NONE,
-  SELECT_BAR_CAN_DROP,
   SELECT_BAR_UNCHANGED,
   SELECT_BAR_END
 } SELECT_BAR_MOVE_MODE;
@@ -32,16 +30,12 @@ typedef enum{
 @interface MetronomeSelectBar : XibViewInterface <SelectBarCellProtocol, UIScrollViewDelegate>
 @property (getter = GetGrooveCellValueStringList, setter = SetGrooveCellValueStringList:) NSMutableArray* GrooveCellValueStringList;
 @property (nonatomic, assign) id<SelectBarProtocol> delegate;
-
-- (void) ChangeFocusIndexByFunction : (int) NewIndex;
+- (void) ChangeFocusIndexWithUIMoving : (int) NewIndex;
 
 
 // loop button
 @property (strong, nonatomic) IBOutlet UIView *HerizontalScrollBar;
 @property (strong, nonatomic) IBOutlet UIImageView *FocusLineImage;
-
 @property (strong, nonatomic) IBOutlet UIScrollView *GrooveCellListView;
 
-@property (strong, nonatomic) IBOutlet DropCellView *DropCellView;
-@property (strong, nonatomic) UILabel *DropImage;
 @end

@@ -90,7 +90,7 @@
 
 - (void) ChangeSelectBarForcusIndex: (int) NewIndex
 {
-    [self.SelectGrooveBar ChangeFocusIndexByFunction: NewIndex];
+    [self.SelectGrooveBar ChangeFocusIndexWithUIMoving: NewIndex];
 }
 
 

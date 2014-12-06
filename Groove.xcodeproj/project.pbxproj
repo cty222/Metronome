@@ -19,8 +19,6 @@
 		0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */; };
 		003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */; };
 		0036173D19D5CC9900848A35 /* loop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0036173C19D5CC9900848A35 /* loop.png */; };
-		003994B11A1FAE1D00379CEA /* DropCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 003994B01A1FAE1D00379CEA /* DropCellView.m */; };
-		003994B31A1FAE3F00379CEA /* DropCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003994B21A1FAE3F00379CEA /* DropCellView.xib */; };
 		003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 003A56A819D3293A00747EB3 /* MetronomeModel.m */; };
 		004BE63E19B2DDC7002CD995 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE63D19B2DDC7002CD995 /* Foundation.framework */; };
 		004BE64019B2DDC7002CD995 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE63F19B2DDC7002CD995 /* CoreGraphics.framework */; };
@@ -41,8 +39,6 @@
 		004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004BE67F19B2E131002CD995 /* MetronomeMainViewControllerIphone.xib */; };
 		004BE68519B2E670002CD995 /* GlobalConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 004BE68419B2E670002CD995 /* GlobalConfig.plist */; };
 		004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 004BE68719B2EA93002CD995 /* GlobalConfig.m */; };
-		005662181A185D8E002222A0 /* SelectBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005662171A185D8E002222A0 /* SelectBarCell.xib */; };
-		0056621B1A185E0D002222A0 /* SelectBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0056621A1A185E0D002222A0 /* SelectBarCell.m */; };
 		005A93901A2CD07100280507 /* PropertyDialog.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005A938E1A2CD07100280507 /* PropertyDialog.pdf */; };
 		005A93911A2CD07100280507 /* PropertyDialogArrow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005A938F1A2CD07100280507 /* PropertyDialogArrow.pdf */; };
 		005A93941A2CE10900280507 /* VoiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 005A93931A2CE10900280507 /* VoiceType.m */; };
@@ -73,6 +69,8 @@
 		00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */; };
 		00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */; };
 		00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */; };
+		00BDD13C1A33820B00B24D30 /* SelectBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BDD13A1A33820B00B24D30 /* SelectBarCell.m */; };
+		00BDD13D1A33820B00B24D30 /* SelectBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BDD13B1A33820B00B24D30 /* SelectBarCell.xib */; };
 		00BE69D81A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BE69D71A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib */; };
 		00C38EAC1A2E2D6300DF9B8C /* LoopCellEditBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C38EAB1A2E2D6300DF9B8C /* LoopCellEditBar.m */; };
 		00C38EAE1A2E308400DF9B8C /* LoopCellEditBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00C38EAD1A2E308400DF9B8C /* LoopCellEditBar.xib */; };
@@ -122,9 +120,6 @@
 		0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f4.pdf; sourceTree = "<group>"; };
 		003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f2.pdf; sourceTree = "<group>"; };
 		0036173C19D5CC9900848A35 /* loop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loop.png; sourceTree = "<group>"; };
-		003994AF1A1FAE1D00379CEA /* DropCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropCellView.h; path = UITools/DropCellView.h; sourceTree = "<group>"; };
-		003994B01A1FAE1D00379CEA /* DropCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropCellView.m; path = UITools/DropCellView.m; sourceTree = "<group>"; };
-		003994B21A1FAE3F00379CEA /* DropCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropCellView.xib; sourceTree = "<group>"; };
 		003A56A719D3293A00747EB3 /* MetronomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetronomeModel.h; path = CoreDataSubClass/MetronomeModel.h; sourceTree = "<group>"; };
 		003A56A819D3293A00747EB3 /* MetronomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetronomeModel.m; path = CoreDataSubClass/MetronomeModel.m; sourceTree = "<group>"; };
 		004BE63A19B2DDC7002CD995 /* Groove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Groove.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,9 +147,6 @@
 		004BE68419B2E670002CD995 /* GlobalConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GlobalConfig.plist; sourceTree = "<group>"; };
 		004BE68619B2EA93002CD995 /* GlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConfig.h; sourceTree = "<group>"; };
 		004BE68719B2EA93002CD995 /* GlobalConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConfig.m; sourceTree = "<group>"; };
-		005662171A185D8E002222A0 /* SelectBarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectBarCell.xib; sourceTree = "<group>"; };
-		005662191A185E0D002222A0 /* SelectBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectBarCell.h; path = UITools/SelectBarCell.h; sourceTree = "<group>"; };
-		0056621A1A185E0D002222A0 /* SelectBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectBarCell.m; path = UITools/SelectBarCell.m; sourceTree = "<group>"; };
 		005A938E1A2CD07100280507 /* PropertyDialog.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PropertyDialog.pdf; sourceTree = "<group>"; };
 		005A938F1A2CD07100280507 /* PropertyDialogArrow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PropertyDialogArrow.pdf; sourceTree = "<group>"; };
 		005A93921A2CE10900280507 /* VoiceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoiceType.h; path = CoreDataSubClass/VoiceType.h; sourceTree = "<group>"; };
@@ -195,6 +187,9 @@
 		00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeSelectBar.m; sourceTree = "<group>"; };
 		00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeSelectBar.xib; sourceTree = "<group>"; };
 		00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LargeBPMPicker.xib; sourceTree = "<group>"; };
+		00BDD1391A33820B00B24D30 /* SelectBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBarCell.h; sourceTree = "<group>"; };
+		00BDD13A1A33820B00B24D30 /* SelectBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBarCell.m; sourceTree = "<group>"; };
+		00BDD13B1A33820B00B24D30 /* SelectBarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectBarCell.xib; sourceTree = "<group>"; };
 		00BE69D71A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronmoneTopSubViewIphone.xib; sourceTree = "<group>"; };
 		00C38EAA1A2E2D6300DF9B8C /* LoopCellEditBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoopCellEditBar.h; path = UITools/LoopCellEditBar.h; sourceTree = "<group>"; };
 		00C38EAB1A2E2D6300DF9B8C /* LoopCellEditBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoopCellEditBar.m; path = UITools/LoopCellEditBar.m; sourceTree = "<group>"; };
@@ -432,12 +427,9 @@
 				00B9689919CEF10900AAD1AF /* MetronomeSelectBar.h */,
 				00B9689A19CEF10900AAD1AF /* MetronomeSelectBar.m */,
 				00B9689E19CEF1C400AAD1AF /* MetronomeSelectBar.xib */,
-				005662171A185D8E002222A0 /* SelectBarCell.xib */,
-				005662191A185E0D002222A0 /* SelectBarCell.h */,
-				0056621A1A185E0D002222A0 /* SelectBarCell.m */,
-				003994AF1A1FAE1D00379CEA /* DropCellView.h */,
-				003994B01A1FAE1D00379CEA /* DropCellView.m */,
-				003994B21A1FAE3F00379CEA /* DropCellView.xib */,
+				00BDD1391A33820B00B24D30 /* SelectBarCell.h */,
+				00BDD13A1A33820B00B24D30 /* SelectBarCell.m */,
+				00BDD13B1A33820B00B24D30 /* SelectBarCell.xib */,
 				00039D1E1A24ED2300710E0E /* SubPropertySelector.xib */,
 				00039D201A24ED4500710E0E /* SubPropertySelector.h */,
 				00039D211A24ED4500710E0E /* SubPropertySelector.m */,
@@ -687,9 +679,8 @@
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
 				0034734E1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf in Resources */,
 				00039D1F1A24ED2300710E0E /* SubPropertySelector.xib in Resources */,
-				005662181A185D8E002222A0 /* SelectBarCell.xib in Resources */,
+				00BDD13D1A33820B00B24D30 /* SelectBarCell.xib in Resources */,
 				001F01191A05511300189941 /* IssueAndInfo.txt in Resources */,
-				003994B31A1FAE3F00379CEA /* DropCellView.xib in Resources */,
 				005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */,
 				004BE65519B2DDC8002CD995 /* Images.xcassets in Resources */,
 				00DA13B419F4F77000F27E25 /* HiE.wav in Resources */,
@@ -738,14 +729,13 @@
 				00A894441A264CE6008D4D1B /* TempoCell.m in Sources */,
 				00AB03781A2783C500352DD7 /* SystemPageViewController.m in Sources */,
 				005A93941A2CE10900280507 /* VoiceType.m in Sources */,
-				0056621B1A185E0D002222A0 /* SelectBarCell.m in Sources */,
 				00DA131C19F4EF1900F27E25 /* BeepBound.m in Sources */,
-				003994B11A1FAE1D00379CEA /* DropCellView.m in Sources */,
 				00D92FD61A15FE5700AEC17F /* SystemPageControl.m in Sources */,
 				003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */,
 				00039D221A24ED4500710E0E /* SubPropertySelector.m in Sources */,
 				005A93971A2CE10A00280507 /* TimeSignatureType.m in Sources */,
 				00DA131119F4E94700F27E25 /* NotesTool.m in Sources */,
+				00BDD13C1A33820B00B24D30 /* SelectBarCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
