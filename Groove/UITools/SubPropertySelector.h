@@ -7,22 +7,27 @@
 //
 
 #import "XibViewInterface.h"
+#import "UIWindowWithHook.h"
 
-#define kSubPropertySelectorHiddenNotification @"kSubPropertySelectorHiddenNotification"
-#define Key_SubPropertySelectorMode @"Key_SubPropertySelectorMode"
-#define Key_TriggerViewCenterLine @"Key_TriggerViewCenterLine"
+@protocol SubPropertySelectorProtocol <NSObject>
+@required
 
-typedef enum{
-    SUB_PROPERTY_MODE_HIDDEN,
-    SUB_PROPERTY_MODE_SHOW,
-    SUB_PROPERTY_MODE_END
-} SUB_PROPERTY_MODE;
+@optional
+
+- (IBAction)ChangeValue: (id)RootSuperView : (id) ChooseCell;
+@end
 
 @interface SubPropertySelector : XibViewInterface
 @property (strong, nonatomic) IBOutlet UIImageView *ArrowView;
 @property (strong, nonatomic) IBOutlet UIScrollView *ContentScrollView;
-@property (readonly, getter=GetMode)SUB_PROPERTY_MODE Mode;
+@property (strong, nonatomic) id TriggerButton;
+
 @property float OriginYOffset;
-- (void) ChangeMode: (SUB_PROPERTY_MODE) ModeValue : (float) TriggerViewCenterLineValue;
+@property float ArrowCenterLine;
+@property (nonatomic, assign) id<SubPropertySelectorProtocol> delegate;
+
+@property (getter = GetHidden, setter = SetHidden:) BOOL hidden;
+- (IBAction)ClickCell: (id) sender;
+- (IBAction)ChangeValue: (id)RootSuperView : (id) ChooseCell;
 
 @end

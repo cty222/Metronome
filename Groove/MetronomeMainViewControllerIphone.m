@@ -37,11 +37,6 @@
     //
     // ========================
 
-    
-    // Sub Controller
-    CellParameterSettingControl * _CellParameterSettingSubController;
-    LoopAndPlayViewControl * _LoopAndPlayViewSubController;
-    SystemPageControl * _SystemPageController;
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -105,13 +100,13 @@
     // Get Control UI form sub View and initialize default data
     [self InitializeSubController];
     
-    [_CellParameterSettingSubController InitlizeCellParameterControlItems];
+    [self.CellParameterSettingSubController InitlizeCellParameterControlItems];
     
-    [_LoopAndPlayViewSubController InitlizePlayingItems];
+    [self.LoopAndPlayViewSubController InitlizePlayingItems];
     
-    [_LoopAndPlayViewSubController InitializeLoopControlItem];
+    [self.LoopAndPlayViewSubController InitializeLoopControlItem];
    
-    [_SystemPageController InitializeSystemButton];
+    [self.SystemPageController InitializeSystemButton];
     
     [self GlobaleventInitialize];
     
@@ -159,14 +154,14 @@
 
 - (void) InitializeSubController
 {
-    _CellParameterSettingSubController = [[CellParameterSettingControl alloc] init];
-    _CellParameterSettingSubController.ParrentController = self;
+    self.CellParameterSettingSubController = [[CellParameterSettingControl alloc] init];
+    self.CellParameterSettingSubController.ParrentController = self;
     
-    _LoopAndPlayViewSubController = [[LoopAndPlayViewControl alloc] init];
-    _LoopAndPlayViewSubController.ParrentController = self;
+    self.LoopAndPlayViewSubController = [[LoopAndPlayViewControl alloc] init];
+    self.LoopAndPlayViewSubController.ParrentController = self;
     
-    _SystemPageController = [[SystemPageControl alloc] init];
-    _SystemPageController.ParrentController = self;
+    self.SystemPageController = [[SystemPageControl alloc] init];
+    self.SystemPageController.ParrentController = self;
 }
 
 - (void) InitailzieTools
@@ -230,7 +225,7 @@
 {
     self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]];
     
-    [_LoopAndPlayViewSubController CopyGrooveLoopListToSelectBar : self.CurrentCellsDataTable];
+    [self.LoopAndPlayViewSubController CopyGrooveLoopListToSelectBar : self.CurrentCellsDataTable];
 }
 
 
@@ -257,10 +252,10 @@
     self.CurrentCell = self.CurrentCellsDataTable[_FocusIndex];
     
     self.TopSubView.BPMPicker.BPMValue = [self.CurrentCell.bpmValue intValue];
-    [_CellParameterSettingSubController SetVolumeBarVolume:self.CurrentCell];
+    [self.CellParameterSettingSubController SetVolumeBarVolume:self.CurrentCell];
     self.CurrentVoice = [gClickVoiceList objectAtIndex:[self.CurrentCell.voiceType.sortIndex intValue]];
     self.CurrentTimeSignature = self.CurrentCell.timeSignatureType.timeSignature;
-    [_CellParameterSettingSubController.TimeSigaturePicker setTitle:self.CurrentTimeSignature forState:UIControlStateNormal];
+    [self.CellParameterSettingSubController.TimeSigaturePicker setTitle:self.CurrentTimeSignature forState:UIControlStateNormal];
 
 }
 
@@ -294,7 +289,7 @@
             break;
     }
     
-    [_LoopAndPlayViewSubController ChangeButtonDisplayByPlayMode];
+    [self.LoopAndPlayViewSubController ChangeButtonDisplayByPlayMode];
 
 }
 //
@@ -308,7 +303,7 @@
 - (void) FirstBeatFunc
 {
     // Accent
-    if ( _AccentCounter == 0 || _AccentCounter >= [_CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
+    if ( _AccentCounter == 0 || _AccentCounter >= [self.CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
     {
         [gPlayUnit playSound: [self.CurrentCell.accentVolume floatValue]/ MAX_VOLUME
                             : [self.CurrentVoice GetAccentVoice]];
@@ -379,7 +374,7 @@
             return;
         }
         
-        [_LoopAndPlayViewSubController ChangeSelectBarForcusIndex: NewIndex];
+        [self.LoopAndPlayViewSubController ChangeSelectBarForcusIndex: NewIndex];
         
         [self StartClick];
     }
@@ -456,7 +451,7 @@
         if (self.PlayingMode == LOOP_PLAYING)
         {
             _TimeSignatureCounter++;
-            if (_TimeSignatureCounter == [_CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
+            if (_TimeSignatureCounter == [self.CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
             {
                 _TimeSignatureCounter = 0;
                 _LoopCountCounter++;

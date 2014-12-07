@@ -8,7 +8,9 @@
 
 #import "LargeBPMPicker.h"
 #import "SubPropertySelector.h"
-#import "LoopCellEditBar.h"
+#import "TimeSignaturePickerView.h"
+#import "VoiceTypePickerView.h"
+#import "LoopCellEditerView.h"
 
 @interface MetronmoneTopSubViewIphone : XibViewInterface <LargeBPMPickerProtocol>
 
@@ -23,7 +25,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *OptionScrollView;
 @property (strong, nonatomic) IBOutlet SubPropertySelector *SubPropertySelectorView;
-@property (strong, nonatomic) IBOutlet LoopCellEditBar *LoopCellEditBarView;
 @property (strong, nonatomic) IBOutlet UIImageView *TapAlertImage;
 
 @end

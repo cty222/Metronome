@@ -13,7 +13,7 @@
 
 @implementation SubPropertySelector
 {
-    SUB_PROPERTY_MODE _Mode;
+    BOOL _hidden;
 }
 
 - (id)initWithFrame:(CGRect) frame
@@ -21,55 +21,97 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        
-        // addObserver: selector 所在
-        // selector 名稱
-        // name 訊息名, 相同的才接收
-        // object 接收對象 nil為隨意
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(SelectorHiddenNotificationCallBack:)
-                                                     name:kSubPropertySelectorHiddenNotification
+                                                 selector:@selector(TouchedNotificationCallBack:)
+                                                     name:kTouchGlobalHookNotification
                                                    object:nil];
     }
     return self;
 }
 
-- (void)SelectorHiddenNotificationCallBack:(NSNotification*) notification
-{
-    NSDictionary *UserInfoDictionary = [notification userInfo];
-    NSNumber *Mode = (NSNumber *)[UserInfoDictionary valueForKey:Key_SubPropertySelectorMode];
-    NSNumber *TriggerViewCenterLine = (NSNumber *)[UserInfoDictionary valueForKey:Key_TriggerViewCenterLine];
 
-    if(Mode == nil || TriggerViewCenterLine == nil)
+- (BOOL) GetHidden
+{
+    return _hidden;
+}
+
+- (void) SetHidden:(BOOL)hidden
+{
+    _hidden = hidden;
+    if(_hidden)
+    {
+        [super setHidden:_hidden];
+    }
+    else
+    {
+        [super setHidden:_hidden];
+        [self.superview bringSubviewToFront:self];
+        [self ChangeTriggleViewCenterline: self.ArrowCenterLine];
+    }
+}
+
+- (void) ChangeTriggleViewCenterline :(float) TriggerViewCenterLineValue
+{
+    if (self.superview != nil)
+    {
+        self.ArrowView.frame = CGRectMake(self.ArrowView.frame.origin.x, (TriggerViewCenterLineValue - self.ArrowView.frame.size.height/2 + self.OriginYOffset), self.ArrowView.frame.size.width, self.ArrowView.frame.size.height);
+        [self.superview bringSubviewToFront:self];
+    }
+}
+
+- (IBAction)ClickCell: (id) sender
+{
+    [self ChangeValue:self :sender];
+}
+
+- (IBAction)ChangeValue: (id)RootSuperView : (id) ChooseCell
+{
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(ChangeValue::)])
+        {
+            [self.delegate ChangeValue: self : ChooseCell];
+        }
+    }
+}
+
+- (void)TouchedNotificationCallBack:(NSNotification *)Notification
+{
+    
+    UIEvent *Event = [Notification object];
+    NSSet *touches = [Event allTouches];
+    UITouch *touch = [touches anyObject];
+    UIView * target = [touch view];
+    
+    // Important!! : Scroll is nil
+    if (target == nil)
     {
         return;
     }
-
-    [self ChangeMode:[Mode intValue] : [TriggerViewCenterLine floatValue]];
-}
-
-- (SUB_PROPERTY_MODE) GetMode
-{
-    return _Mode;
-}
-
-- (void) ChangeMode: (SUB_PROPERTY_MODE) ModeValue : (float) TriggerViewCenterLineValue
-{
-    _Mode = ModeValue;
-    if (self.Mode == SUB_PROPERTY_MODE_HIDDEN)
+    
+    if (![self IsIncludeTargetView: target])
     {
         self.hidden = YES;
     }
-    else if (self.Mode == SUB_PROPERTY_MODE_SHOW)
+}
+
+- (BOOL) IsIncludeTargetView: (UIView *) TargetView
+{
+    if (TargetView == self || TargetView == self.ContentScrollView || TargetView == self.TriggerButton)
     {
-        if (self.superview != nil)
-        {
-            self.hidden = NO;
-            self.ArrowView.frame = CGRectMake(self.ArrowView.frame.origin.x, (TriggerViewCenterLineValue - self.ArrowView.frame.size.height/2 + self.OriginYOffset), self.ArrowView.frame.size.width, self.ArrowView.frame.size.height);
-            [self.superview bringSubviewToFront:self];
-        }
+        return YES;
     }
-    
+    else
+    {
+        for (int Index = 0; Index < self.ContentScrollView.subviews.count; Index++) {
+            if (TargetView == self.ContentScrollView.subviews[Index])
+            {
+                return YES;
+            }
+        }
+        return NO;
+    }
 }
 
 /*

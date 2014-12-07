@@ -11,12 +11,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="268"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="OF2-gL-lEa" customClass="SubPropertySelector">
+                <view contentMode="scaleToFill" id="OF2-gL-lEa">
                     <rect key="frame" x="5" y="20" width="252" height="200"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                </view>
-                <view contentMode="scaleToFill" id="adO-uA-xbD" customClass="LoopCellEditBar">
-                    <rect key="frame" x="5" y="160" width="252" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="IdF-4P-xRb">
@@ -92,7 +88,6 @@
             <connections>
                 <outlet property="AddLoopCellButton" destination="hd4-aG-aep" id="z2d-6E-5LD"/>
                 <outlet property="BPMPicker" destination="cWm-G2-BW2" id="RMt-pA-AJe"/>
-                <outlet property="LoopCellEditBarView" destination="adO-uA-xbD" id="IHN-bP-0wu"/>
                 <outlet property="LoopCellEditer" destination="OAO-zL-gYf" id="1cQ-50-60G"/>
                 <outlet property="OptionScrollView" destination="IdF-4P-xRb" id="Hd3-kb-LJt"/>
                 <outlet property="PlayLoopCellButton" destination="PYh-UZ-971" id="h3n-Dk-ujU"/>

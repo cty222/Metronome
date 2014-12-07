@@ -25,6 +25,10 @@
 #import "LoopAndPlayViewControl.h"
 #import "SystemPageControl.h"
 
+@class LoopAndPlayViewControl;
+@class CellParameterSettingControl;
+@class SystemPageControl;
+
 typedef enum {
     STOP_PLAYING         = 0,
     SINGLE_PLAYING,
@@ -50,6 +54,11 @@ typedef enum {
 
 - (void) FillData;
 
+
+// Sub Controller
+@property  CellParameterSettingControl * CellParameterSettingSubController;
+@property  LoopAndPlayViewControl * LoopAndPlayViewSubController;
+@property  SystemPageControl * SystemPageController;
 
 
 

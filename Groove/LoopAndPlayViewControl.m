@@ -170,7 +170,7 @@
 }
 
 // Loop 增減
-- (BOOL) SetTargetCellLoopCountAdd: (int) Index AddValue:(int)Value;
+- (void) SetTargetCellLoopCountAdd: (int) Index AddValue:(int)Value
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
     
@@ -187,11 +187,9 @@
         [gMetronomeModel Save];
         
         [_GrooveLoopList replaceObjectAtIndex:Index withObject:[NSString stringWithFormat:@"%d", NewTotalValue]];
-
-        return YES;
-    }
-    
-    return NO;
+        
+        [Parent FillData];
+    }    
 }
 
 - (void) DeleteTargetIndexCell: (int) Index

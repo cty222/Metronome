@@ -28,4 +28,7 @@
 - (void) ChangeSelectBarForcusIndex: (int) NewIndex;
 - (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable;
 
+
+- (void) SetTargetCellLoopCountAdd: (int) Index AddValue:(int)Value;
+
 @end

@@ -24,8 +24,9 @@
     int _TapTriggerCounter;
     
     // VoiceTypeSubButtonArray
-    UIView * _VoiceTypeSubButtonView;
-    UIView * _TimeSignatureTypeSubButtonView;
+    VoiceTypePickerView * _VoiceTypePickerView;
+    TimeSignaturePickerView * _TimeSignaturePickerView;
+    LoopCellEditerView * _LoopCellEditerView;
 
 }
 
@@ -81,37 +82,33 @@
     self.TimeSigaturePicker = Parent.TopSubView.TimeSigaturePicker;
     self.LoopCellEditer = Parent.TopSubView.LoopCellEditer;
     self.SubPropertySelectorView = Parent.TopSubView.SubPropertySelectorView;
-    self.LoopCellEditBarView = Parent.TopSubView.LoopCellEditBarView;
     self.TapAlertImage = Parent.TopSubView.TapAlertImage;
     
     // BPM Picker Initialize
     self.BPMPicker.delegate = self;
     
+    
+    // SubPropertySelectorView
+    [self.SubPropertySelectorView.superview bringSubviewToFront:self.SubPropertySelectorView];
+    
     //VoiceTypePicker
+    [self InitilaizeVoiceTypePickerView];
     [self.VoiceTypePicker addTarget:self
                                action:@selector(VoiceTypePickerDisplay:) forControlEvents:UIControlEventTouchDown];
     
-    
     // Time Signature
-    /*UIGraphicsBeginImageContext(self.TimeSigaturePicker.frame.size);
-    [[UIImage imageNamed:@"TimeSignature4_4"] drawInRect:self.TimeSigaturePicker.bounds];
-    UIImage *TimeSignatureImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.TimeSigaturePicker.backgroundColor = [UIColor colorWithPatternImage:TimeSignatureImage];*/
-    
-    
+    [self InitilaizeTimeSignaturePickerView];
     [self.TimeSigaturePicker addTarget:self
                              action:@selector(TimeSigaturePickerDisplay:) forControlEvents:UIControlEventTouchDown];
     
+
+    // LoopCellEditer
+    [self InitilaizeLoopCellEditerView];
     [self.LoopCellEditer addTarget:self
                                 action:@selector(LoopCellEditerDisplay:) forControlEvents:UIControlEventTouchDown];
 
-    // SubPropertySelectorView
-    self.SubPropertySelectorView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.SubPropertySelectorView.frame.origin.y;
-    
-    // LoopCellEditBarView
-    self.LoopCellEditBarView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.LoopCellEditBarView.frame.origin.y;
-    
+
+   
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(TouchedNotificationCallBack:)
                                                  name:kTouchGlobalHookNotification
@@ -125,152 +122,73 @@
 
 }
 
+- (void) InitilaizeVoiceTypePickerView
+{
+    if (_VoiceTypePickerView == nil)
+    {
+        NSArray *VoiceTypeArray = [gMetronomeModel FetchVoiceType];
+        _VoiceTypePickerView = [[VoiceTypePickerView alloc] initWithFrame:self.SubPropertySelectorView.bounds];
+        _VoiceTypePickerView.OriginYOffset = self.OptionScrollView.frame.origin.y - _VoiceTypePickerView.frame.origin.y;
+        _VoiceTypePickerView.ArrowCenterLine = self.VoiceTypePicker.frame.origin.y + self.VoiceTypePicker.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
+        _VoiceTypePickerView.TriggerButton = self.VoiceTypePicker;
+        _VoiceTypePickerView.delegate = self;
+
+        [_VoiceTypePickerView DisplayPropertyCell:VoiceTypeArray : self.VoiceTypePicker];
+        [self.SubPropertySelectorView addSubview:_VoiceTypePickerView];
+        
+        _VoiceTypePickerView.hidden = YES;
+    }
+}
+
 
 -(IBAction) VoiceTypePickerDisplay:(UIView *)sender
 {
-   
-    UIView * ControlView = self.SubPropertySelectorView.ContentScrollView;
-    
+    _VoiceTypePickerView.hidden = !_VoiceTypePickerView.hidden;
+}
+
+- (void) InitilaizeTimeSignaturePickerView
+{
     // If nil, create data view
-    if (_VoiceTypeSubButtonView == nil)
+    if (_TimeSignaturePickerView == nil)
     {
-        _VoiceTypeSubButtonView = [[UIView alloc] initWithFrame:ControlView.bounds];
-        _VoiceTypeSubButtonView.userInteractionEnabled = YES;
-
-        float Width  = sender.frame.size.width;
-        float Height = sender.frame.size.height;
-        float XOffset = sender.frame.size.width / 2;
-        float YOffset = Height / 2;
-        float RightMargin = sender.frame.size.width / 2;
-        float DownMargin = Height / 2;
-        int MaxColumn = (_VoiceTypeSubButtonView.frame.size.width - XOffset)/ (Width + RightMargin);
+        NSArray *TimeSignatureTypeArray = [gMetronomeModel FetchTimeSignatureType];
+        _TimeSignaturePickerView = [[TimeSignaturePickerView alloc] initWithFrame:self.SubPropertySelectorView.bounds];
+        _TimeSignaturePickerView.OriginYOffset = self.OptionScrollView.frame.origin.y - _TimeSignaturePickerView.frame.origin.y;
+        _TimeSignaturePickerView.ArrowCenterLine = self.TimeSigaturePicker.frame.origin.y + self.TimeSigaturePicker.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
+        _TimeSignaturePickerView.TriggerButton = self.TimeSigaturePicker;
+        _TimeSignaturePickerView.delegate = self;
         
-        NSArray *VoiceTypeArray = [gMetronomeModel FetchVoiceType];
+        [_TimeSignaturePickerView DisplayPropertyCell:TimeSignatureTypeArray : self.TimeSigaturePicker];
+        [self.SubPropertySelectorView addSubview:_TimeSignaturePickerView];
         
-        for (int Index = 0; Index < VoiceTypeArray.count; Index ++)
-        {
-            CGRect NewFrame = CGRectMake(XOffset + (Index % MaxColumn) * (Width + RightMargin),
-                                         YOffset + (Index / MaxColumn) * (Height + DownMargin),
-                                         Width,
-                                         Height
-                                         );
-            UIButton * TmpButton = [[UIButton alloc] initWithFrame:NewFrame];
-            TmpButton.tag = Index;
-            VoiceType * tmp = VoiceTypeArray[Index];
-            [TmpButton setBackgroundImage:[UIImage imageNamed:tmp.voiceType] forState:UIControlStateNormal];
-            [TmpButton addTarget:self
-                          action:@selector(ChangeVoiceType:)
-                forControlEvents:UIControlEventTouchDown
-             ];
-            [ControlView addSubview:_VoiceTypeSubButtonView];
-            _VoiceTypeSubButtonView.hidden = YES;
-        }
+        _TimeSignaturePickerView.hidden = YES;
     }
-   
-    if ((self.SubPropertySelectorView.Mode != SUB_PROPERTY_MODE_HIDDEN)
-        && _VoiceTypeSubButtonView.hidden == NO
-        )
-    {
-        _VoiceTypeSubButtonView.hidden = YES;
-        [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_HIDDEN :0];
-        return;
-    }
-    
-    // Remove and Display
-    for (UIView * subView in ControlView.subviews)
-    {
-        if (subView == _VoiceTypeSubButtonView)
-        {
-            subView.hidden = NO;
-        }
-        else
-        {
-            subView.hidden = YES;
-        }
-    }
-
-
-    UIScrollView * ParentScrollView = (UIScrollView * )sender.superview;
-    float CenterLine = sender.frame.origin.y + sender.frame.size.height/2 - ParentScrollView.contentOffset.y;
-    [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_SHOW :CenterLine];
 }
 
 -(IBAction) TimeSigaturePickerDisplay:(UIView *)sender
 {
-    UIView * ControlView = self.SubPropertySelectorView.ContentScrollView;
-    
-    // If nil, create data view
-    if (_TimeSignatureTypeSubButtonView == nil)
-    {
-        _TimeSignatureTypeSubButtonView = [[UIView alloc] initWithFrame:ControlView.bounds];
-        _TimeSignatureTypeSubButtonView.userInteractionEnabled = YES;
+    _TimeSignaturePickerView.hidden = !_TimeSignaturePickerView.hidden;
+}
 
-        float Width  = sender.frame.size.width;
-        float Height = sender.frame.size.height;
-        float XOffset = Width / 2;
-        float YOffset = Height / 2;
-        float RightMargin = Width / 2;
-        float DownMargin = Height / 2;
-        int MaxColumn = (_TimeSignatureTypeSubButtonView.frame.size.width - XOffset)/ (Width + RightMargin);
+- (void) InitilaizeLoopCellEditerView
+{
+    if (_LoopCellEditerView == nil)
+    {
+        _LoopCellEditerView = [[LoopCellEditerView alloc] initWithFrame:self.SubPropertySelectorView.bounds];
+        _LoopCellEditerView.OriginYOffset = self.OptionScrollView.frame.origin.y - _TimeSignaturePickerView.frame.origin.y;
+        _LoopCellEditerView.ArrowCenterLine = self.LoopCellEditer.frame.origin.y + self.LoopCellEditer.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
+        _LoopCellEditerView.TriggerButton = self.LoopCellEditer;
+        _LoopCellEditerView.delegate = self;
         
-        NSArray *TimeSignatureTypeArray = [gMetronomeModel FetchTimeSignatureType];
-        for (int Index = 0; Index < TimeSignatureTypeArray.count; Index ++)
-        {
-            CGRect NewFrame = CGRectMake(XOffset + (Index % MaxColumn) * (Width + RightMargin),
-                                         YOffset + (Index / MaxColumn) * (Height + DownMargin),
-                                         Width,
-                                         Height
-                                         );
-            UIButton * TmpButton = [[UIButton alloc] initWithFrame:NewFrame];
-            TmpButton.tag = Index;
-            [TmpButton setBackgroundImage:[UIImage imageNamed:@"ScrollViewCellBackGround"] forState:UIControlStateNormal];
-            TimeSignatureType * tmp = TimeSignatureTypeArray[Index];
-            
-            [TmpButton setTitle:tmp.timeSignature forState:UIControlStateNormal];
-            [TmpButton addTarget:self
-                      action:@selector(ChangeTimeSignature:)
-                      forControlEvents:UIControlEventTouchDown
-             ];
-            [_TimeSignatureTypeSubButtonView addSubview:TmpButton];
-
-        }
-        [ControlView addSubview:_TimeSignatureTypeSubButtonView];
-        _TimeSignatureTypeSubButtonView.hidden = YES;
+        [self.SubPropertySelectorView addSubview:_LoopCellEditerView];
+        
+        _LoopCellEditerView.hidden = YES;
     }
-    
-    if ((self.SubPropertySelectorView.Mode != SUB_PROPERTY_MODE_HIDDEN)
-        && _TimeSignatureTypeSubButtonView.hidden == NO
-        )
-    {
-        _TimeSignatureTypeSubButtonView.hidden = YES;
-        [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_HIDDEN :0];
-        return;
-    }
-    for (UIView * subView in ControlView.subviews)
-    {
-        if (subView == _TimeSignatureTypeSubButtonView)
-        {
-            subView.hidden = NO;
-        }
-        else
-        {
-            subView.hidden = YES;
-        }
-    }
-
-
-
-    
-    UIScrollView * ParentScrollView = (UIScrollView * )sender.superview;
-    float CenterLine = sender.frame.origin.y + sender.frame.size.height/2 - ParentScrollView.contentOffset.y;
-    [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_SHOW :CenterLine];
 }
 
 -(IBAction) LoopCellEditerDisplay:(UIButton *)sender
 {
-    UIScrollView * ParentScrollView = (UIScrollView * )sender.superview;
-    float CenterLine = sender.frame.origin.y + sender.frame.size.height/2 - ParentScrollView.contentOffset.y;
-    [self.LoopCellEditBarView ChangeMode:LOOP_CELL_EDIT_BAR_MODE_SHOW :CenterLine];
+    _LoopCellEditerView.hidden = !_LoopCellEditerView.hidden;
 }
 
 - (IBAction) ChangeVoiceType:(UIButton *)TriggerItem
@@ -295,6 +213,23 @@
     [gMetronomeModel Save];
 }
 
+- (IBAction)ChangeValue: (id)RootSuperView : (UIButton *) ChooseCell;
+{
+    if (RootSuperView == _VoiceTypePickerView)
+    {
+        [self ChangeVoiceType: ChooseCell];
+    }
+    else if (RootSuperView == _TimeSignaturePickerView)
+    {
+        [self ChangeTimeSignature: ChooseCell];
+    }
+    else if (RootSuperView == _LoopCellEditerView)
+    {
+        [self ChangeCellCounter: ChooseCell];
+    }
+    
+}
+
 - (IBAction) ChangeTimeSignature:(UIButton *)TriggerItem
 {
     NSArray *TimeSignatureTypeArray = [gMetronomeModel FetchTimeSignatureType];
@@ -313,40 +248,26 @@
     [self.TimeSigaturePicker setTitle:TriggerItem.titleLabel.text forState:UIControlStateNormal];
 }
 
+- (IBAction) ChangeCellCounter:(UIButton *)TriggerItem
+{
+    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+
+    if (_LoopCellEditerView.CellCounterPlusButton == TriggerItem)
+    {
+        [Parent.LoopAndPlayViewSubController SetTargetCellLoopCountAdd:Parent.FocusIndex AddValue:1];
+    }
+    else if (_LoopCellEditerView.CellCounterMinusButton == TriggerItem)
+    {
+        [Parent.LoopAndPlayViewSubController SetTargetCellLoopCountAdd:Parent.FocusIndex AddValue:-1];
+    }
+}
 
 - (void)TouchedNotificationCallBack:(NSNotification *)Notification
 {
-    UIEvent *Event = [Notification object];
+   /*UIEvent *Event = [Notification object];
     NSSet *touches = [Event allTouches];
     UITouch *touch = [touches anyObject];
-    UIView * target = [touch view];
-
-    if (self.SubPropertySelectorView.Mode != SUB_PROPERTY_MODE_HIDDEN)
-    {
-        if ((target != self.TimeSigaturePicker && target != self.VoiceTypePicker)
-            && ((target != _VoiceTypeSubButtonView) && (target != _TimeSignatureTypeSubButtonView))
-            /*&& ![NSStringFromClass([target class]) isEqualToString:NSStringFromClass([UILabel class])]*/
-            )
-        {
-            
-            [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_HIDDEN :0];
-            return;
-            
-        }
-    }
-    
-    if (self.LoopCellEditBarView.Mode != LOOP_CELL_EDIT_BAR_MODE_HIDDEN)
-    {
-        if ((target != self.LoopCellEditer)
-            )
-        {
-            
-            [self.LoopCellEditBarView ChangeMode:LOOP_CELL_EDIT_BAR_MODE_HIDDEN :0];
-            return;
-            
-        }
-    }
-
+    UIView * target = [touch view];*/
 }
 
 - (void) SetVolumeBarVolume : (TempoCell *)Cell

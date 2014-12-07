@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00039D1F1A24ED2300710E0E /* SubPropertySelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00039D1E1A24ED2300710E0E /* SubPropertySelector.xib */; };
 		00039D221A24ED4500710E0E /* SubPropertySelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 00039D211A24ED4500710E0E /* SubPropertySelector.m */; };
 		001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */; };
 		001B2B3019D3CF190057A22E /* DbConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2F19D3CF190057A22E /* DbConfig.m */; };
@@ -43,6 +42,12 @@
 		005A93911A2CD07100280507 /* PropertyDialogArrow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005A938F1A2CD07100280507 /* PropertyDialogArrow.pdf */; };
 		005A93941A2CE10900280507 /* VoiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 005A93931A2CE10900280507 /* VoiceType.m */; };
 		005A93971A2CE10A00280507 /* TimeSignatureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 005A93961A2CE10A00280507 /* TimeSignatureType.m */; };
+		005DAFC01A34567F008D5F2D /* TimeSignaturePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DAFBF1A34567F008D5F2D /* TimeSignaturePickerView.m */; };
+		005DAFC21A345691008D5F2D /* TimeSignaturePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005DAFC11A345691008D5F2D /* TimeSignaturePickerView.xib */; };
+		005DAFC61A34C7EB008D5F2D /* VoiceTypePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DAFC51A34C7EB008D5F2D /* VoiceTypePickerView.m */; };
+		005DAFC81A34C7FF008D5F2D /* VoiceTypePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005DAFC71A34C7FF008D5F2D /* VoiceTypePickerView.xib */; };
+		005DAFCB1A34CB76008D5F2D /* LoopCellEditerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DAFCA1A34CB76008D5F2D /* LoopCellEditerView.m */; };
+		005DAFCD1A34CB8C008D5F2D /* LoopCellEditerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005DAFCC1A34CB8C008D5F2D /* LoopCellEditerView.xib */; };
 		005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */; };
 		006175BE1A0BCFE100113560 /* PlayLoop_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */; };
 		006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BD1A0BCFE100113560 /* PlayLoop.pdf */; };
@@ -72,8 +77,6 @@
 		00BDD13C1A33820B00B24D30 /* SelectBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BDD13A1A33820B00B24D30 /* SelectBarCell.m */; };
 		00BDD13D1A33820B00B24D30 /* SelectBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BDD13B1A33820B00B24D30 /* SelectBarCell.xib */; };
 		00BE69D81A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00BE69D71A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib */; };
-		00C38EAC1A2E2D6300DF9B8C /* LoopCellEditBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C38EAB1A2E2D6300DF9B8C /* LoopCellEditBar.m */; };
-		00C38EAE1A2E308400DF9B8C /* LoopCellEditBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00C38EAD1A2E308400DF9B8C /* LoopCellEditBar.xib */; };
 		00D92FD01A15C3D800AEC17F /* CellParameterSettingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D92FCF1A15C3D800AEC17F /* CellParameterSettingControl.m */; };
 		00D92FD31A15EDFD00AEC17F /* LoopAndPlayViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D92FD21A15EDFD00AEC17F /* LoopAndPlayViewControl.m */; };
 		00D92FD61A15FE5700AEC17F /* SystemPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D92FD51A15FE5700AEC17F /* SystemPageControl.m */; };
@@ -103,7 +106,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00039D1E1A24ED2300710E0E /* SubPropertySelector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubPropertySelector.xib; sourceTree = "<group>"; };
 		00039D201A24ED4500710E0E /* SubPropertySelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubPropertySelector.h; path = UITools/SubPropertySelector.h; sourceTree = "<group>"; };
 		00039D211A24ED4500710E0E /* SubPropertySelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubPropertySelector.m; path = UITools/SubPropertySelector.m; sourceTree = "<group>"; };
 		001B2B2C19D3CA0C0057A22E /* Groove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Groove.xcdatamodel; sourceTree = "<group>"; };
@@ -153,6 +155,15 @@
 		005A93931A2CE10900280507 /* VoiceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoiceType.m; path = CoreDataSubClass/VoiceType.m; sourceTree = "<group>"; };
 		005A93951A2CE10A00280507 /* TimeSignatureType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSignatureType.h; path = CoreDataSubClass/TimeSignatureType.h; sourceTree = "<group>"; };
 		005A93961A2CE10A00280507 /* TimeSignatureType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeSignatureType.m; path = CoreDataSubClass/TimeSignatureType.m; sourceTree = "<group>"; };
+		005DAFBE1A34567F008D5F2D /* TimeSignaturePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSignaturePickerView.h; path = UITools/TimeSignaturePickerView.h; sourceTree = "<group>"; };
+		005DAFBF1A34567F008D5F2D /* TimeSignaturePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeSignaturePickerView.m; path = UITools/TimeSignaturePickerView.m; sourceTree = "<group>"; };
+		005DAFC11A345691008D5F2D /* TimeSignaturePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeSignaturePickerView.xib; sourceTree = "<group>"; };
+		005DAFC41A34C7EB008D5F2D /* VoiceTypePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoiceTypePickerView.h; path = UITools/VoiceTypePickerView.h; sourceTree = "<group>"; };
+		005DAFC51A34C7EB008D5F2D /* VoiceTypePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoiceTypePickerView.m; path = UITools/VoiceTypePickerView.m; sourceTree = "<group>"; };
+		005DAFC71A34C7FF008D5F2D /* VoiceTypePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VoiceTypePickerView.xib; path = UITools/VoiceTypePickerView.xib; sourceTree = "<group>"; };
+		005DAFC91A34CB76008D5F2D /* LoopCellEditerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoopCellEditerView.h; path = UITools/LoopCellEditerView.h; sourceTree = "<group>"; };
+		005DAFCA1A34CB76008D5F2D /* LoopCellEditerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoopCellEditerView.m; path = UITools/LoopCellEditerView.m; sourceTree = "<group>"; };
+		005DAFCC1A34CB8C008D5F2D /* LoopCellEditerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoopCellEditerView.xib; path = UITools/LoopCellEditerView.xib; sourceTree = "<group>"; };
 		005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f1.pdf; sourceTree = "<group>"; };
 		006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop_red.pdf; sourceTree = "<group>"; };
 		006175BD1A0BCFE100113560 /* PlayLoop.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop.pdf; sourceTree = "<group>"; };
@@ -191,9 +202,6 @@
 		00BDD13A1A33820B00B24D30 /* SelectBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBarCell.m; sourceTree = "<group>"; };
 		00BDD13B1A33820B00B24D30 /* SelectBarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectBarCell.xib; sourceTree = "<group>"; };
 		00BE69D71A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronmoneTopSubViewIphone.xib; sourceTree = "<group>"; };
-		00C38EAA1A2E2D6300DF9B8C /* LoopCellEditBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoopCellEditBar.h; path = UITools/LoopCellEditBar.h; sourceTree = "<group>"; };
-		00C38EAB1A2E2D6300DF9B8C /* LoopCellEditBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoopCellEditBar.m; path = UITools/LoopCellEditBar.m; sourceTree = "<group>"; };
-		00C38EAD1A2E308400DF9B8C /* LoopCellEditBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoopCellEditBar.xib; sourceTree = "<group>"; };
 		00D92FCE1A15C3D800AEC17F /* CellParameterSettingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellParameterSettingControl.h; path = Controller/CellParameterSettingControl.h; sourceTree = "<group>"; };
 		00D92FCF1A15C3D800AEC17F /* CellParameterSettingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellParameterSettingControl.m; path = Controller/CellParameterSettingControl.m; sourceTree = "<group>"; };
 		00D92FD11A15EDFD00AEC17F /* LoopAndPlayViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopAndPlayViewControl.h; sourceTree = "<group>"; };
@@ -392,6 +400,24 @@
 			name = GlobalConfig;
 			sourceTree = "<group>";
 		};
+		005DAFC31A34C586008D5F2D /* SubPropertySelector */ = {
+			isa = PBXGroup;
+			children = (
+				00039D201A24ED4500710E0E /* SubPropertySelector.h */,
+				00039D211A24ED4500710E0E /* SubPropertySelector.m */,
+				005DAFBE1A34567F008D5F2D /* TimeSignaturePickerView.h */,
+				005DAFBF1A34567F008D5F2D /* TimeSignaturePickerView.m */,
+				005DAFC11A345691008D5F2D /* TimeSignaturePickerView.xib */,
+				005DAFC41A34C7EB008D5F2D /* VoiceTypePickerView.h */,
+				005DAFC51A34C7EB008D5F2D /* VoiceTypePickerView.m */,
+				005DAFC71A34C7FF008D5F2D /* VoiceTypePickerView.xib */,
+				005DAFC91A34CB76008D5F2D /* LoopCellEditerView.h */,
+				005DAFCA1A34CB76008D5F2D /* LoopCellEditerView.m */,
+				005DAFCC1A34CB8C008D5F2D /* LoopCellEditerView.xib */,
+			);
+			name = SubPropertySelector;
+			sourceTree = "<group>";
+		};
 		00677AFC19BC4AF6007A3085 /* MetronomeTopSubViewIphone */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,9 +441,7 @@
 		00677B1019BC5D5B007A3085 /* MetronmeItems */ = {
 			isa = PBXGroup;
 			children = (
-				00C38EAA1A2E2D6300DF9B8C /* LoopCellEditBar.h */,
-				00C38EAB1A2E2D6300DF9B8C /* LoopCellEditBar.m */,
-				00C38EAD1A2E308400DF9B8C /* LoopCellEditBar.xib */,
+				005DAFC31A34C586008D5F2D /* SubPropertySelector */,
 				00677B1119BC5DA4007A3085 /* LargeBPMPicker.h */,
 				00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */,
 				00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */,
@@ -430,9 +454,6 @@
 				00BDD1391A33820B00B24D30 /* SelectBarCell.h */,
 				00BDD13A1A33820B00B24D30 /* SelectBarCell.m */,
 				00BDD13B1A33820B00B24D30 /* SelectBarCell.xib */,
-				00039D1E1A24ED2300710E0E /* SubPropertySelector.xib */,
-				00039D201A24ED4500710E0E /* SubPropertySelector.h */,
-				00039D211A24ED4500710E0E /* SubPropertySelector.m */,
 			);
 			name = MetronmeItems;
 			sourceTree = "<group>";
@@ -665,11 +686,13 @@
 				00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */,
 				0071A9D01A2B0EB300EA57D2 /* SystemButton.pdf in Resources */,
 				00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */,
+				005DAFCD1A34CB8C008D5F2D /* LoopCellEditerView.xib in Resources */,
+				005DAFC81A34C7FF008D5F2D /* VoiceTypePickerView.xib in Resources */,
 				0071A9B51A2B090100EA57D2 /* 16Note.pdf in Resources */,
 				0071A9CF1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf in Resources */,
 				0036173D19D5CC9900848A35 /* loop.png in Resources */,
 				0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */,
-				00C38EAE1A2E308400DF9B8C /* LoopCellEditBar.xib in Resources */,
+				005DAFC21A345691008D5F2D /* TimeSignaturePickerView.xib in Resources */,
 				00BE69D81A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib in Resources */,
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
 				00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */,
@@ -678,7 +701,6 @@
 				0071A9D51A2B108B00EA57D2 /* ScrollViewCellBackGround.pdf in Resources */,
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
 				0034734E1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf in Resources */,
-				00039D1F1A24ED2300710E0E /* SubPropertySelector.xib in Resources */,
 				00BDD13D1A33820B00B24D30 /* SelectBarCell.xib in Resources */,
 				001F01191A05511300189941 /* IssueAndInfo.txt in Resources */,
 				005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */,
@@ -706,21 +728,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */,
-				00C38EAC1A2E2D6300DF9B8C /* LoopCellEditBar.m in Sources */,
 				00677B0519BC4C09007A3085 /* MetronmoneTopSubViewIphone.m in Sources */,
 				004BE68019B2E131002CD995 /* MetronomeMainViewControllerIphone.m in Sources */,
 				004BE67519B2E014002CD995 /* XibViewInterface.m in Sources */,
 				00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */,
 				00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */,
 				001B2B3019D3CF190057A22E /* DbConfig.m in Sources */,
+				005DAFC61A34C7EB008D5F2D /* VoiceTypePickerView.m in Sources */,
 				006175C21A0BD4A300113560 /* CircleButton.m in Sources */,
 				00D92FD01A15C3D800AEC17F /* CellParameterSettingControl.m in Sources */,
 				00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */,
 				00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */,
 				00D92FD31A15EDFD00AEC17F /* LoopAndPlayViewControl.m in Sources */,
 				00DA131E19F4EF1900F27E25 /* NomalHiClickVoice.m in Sources */,
+				005DAFC01A34567F008D5F2D /* TimeSignaturePickerView.m in Sources */,
 				00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */,
 				004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */,
+				005DAFCB1A34CB76008D5F2D /* LoopCellEditerView.m in Sources */,
 				00A0B8111A23A9AD00D93ABB /* UIWindowWithHook.m in Sources */,
 				00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */,
 				004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */,

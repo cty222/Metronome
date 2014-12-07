@@ -136,17 +136,6 @@
     [self PassFocusIndexToDelegateControllor];
 }
 
-- (void) DeleteTargetIndexCell: (int) Index
-{
-    if (self.delegate != nil)
-    {
-        // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(DeleteTargetIndexCell:)])
-        {
-            [self.delegate DeleteTargetIndexCell: Index];
-        }
-    }
-}
 // ============================
 // Property
 //

@@ -67,26 +67,21 @@
     self = [super initWithFrame:frame];
     if (self) {
 
-        
-        
         // Initialization code
         [self.BPMPicker removeFromSuperview];
         self.BPMPicker = [[LargeBPMPicker alloc] initWithFrame:self.BPMPicker.frame];
         [self addSubview:self.BPMPicker];
         [self sendSubviewToBack:self.BPMPicker];
-        
+
+#if 0
         [self.SubPropertySelectorView removeFromSuperview];
         self.SubPropertySelectorView = [[SubPropertySelector alloc] initWithFrame:self.SubPropertySelectorView.frame];
         [self addSubview:self.SubPropertySelectorView];
         [self sendSubviewToBack:self.SubPropertySelectorView];
-        [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_HIDDEN :0];
-        
-        [self.LoopCellEditBarView removeFromSuperview];
-        self.LoopCellEditBarView = [[LoopCellEditBar alloc] initWithFrame:self.LoopCellEditBarView.frame];
-        [self addSubview:self.LoopCellEditBarView];
-        [self sendSubviewToBack:self.LoopCellEditBarView];
-        [self.LoopCellEditBarView ChangeMode:LOOP_CELL_EDIT_BAR_MODE_HIDDEN :0];
-
+        [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_HIDDEN
+                                                :0
+                                                : nil];
+#endif
         self.TapAlertImage.hidden = YES;
     }
     return self;
