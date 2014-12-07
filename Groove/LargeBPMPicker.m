@@ -82,10 +82,7 @@
     self.UpArrow.hidden = YES;
     self.DownArrow.hidden = YES;
     self.Touched = NO;
-    //self.ValueLabel.adjustsFontSizeToFitWidth = YES;
-    //[self.ValueLabel sizeToFit];
-    //[self.UpArrow sizeToFit];
-    //[self.DownArrow sizeToFit];
+
 }
 
 - (id)initWithFrame:(CGRect) frame
@@ -170,8 +167,8 @@
     self.DigitInOnces.backgroundColor = [UIColor colorWithPatternImage:Digits[_BPMValue%10]];
 #else
     [self.ValueLabel setText:[NSString stringWithFormat:@"%d", self.BPMValue]];
-    [self.UpArrow setText:[NSString stringWithFormat:@"%d", self.BPMValue - 1]];
-    [self.DownArrow setText:[NSString stringWithFormat:@"%d", self.BPMValue +1 ]];
+    [self.UpArrow setText:[NSString stringWithFormat:@"%d", self.BPMValue + 1]];
+    [self.DownArrow setText:[NSString stringWithFormat:@"%d", self.BPMValue -1 ]];
 
 #endif
     
