@@ -11,5 +11,6 @@
 @interface LoopCellEditerView : SubPropertySelector
 @property (strong, nonatomic) IBOutlet UIButton *CellCounterPlusButton;
 @property (strong, nonatomic) IBOutlet UIButton *CellCounterMinusButton;
+@property (strong, nonatomic) IBOutlet UIButton *CellDeleteButton;
 
 @end

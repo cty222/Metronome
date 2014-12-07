@@ -24,5 +24,8 @@
 - (IBAction)MinusChange:(id)sender {
     [self ChangeValue:self :sender];
 }
+- (IBAction)CellDeleteChange:(id)sender {
+    [self ChangeValue:self :sender];
+}
 
 @end

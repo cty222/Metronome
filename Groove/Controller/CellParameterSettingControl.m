@@ -260,6 +260,10 @@
     {
         [Parent.LoopAndPlayViewSubController SetTargetCellLoopCountAdd:Parent.FocusIndex AddValue:-1];
     }
+    else if (_LoopCellEditerView.CellDeleteButton == TriggerItem)
+    {
+        [Parent.LoopAndPlayViewSubController DeleteTargetIndexCell:Parent.FocusIndex];
+    }
 }
 
 - (void)TouchedNotificationCallBack:(NSNotification *)Notification

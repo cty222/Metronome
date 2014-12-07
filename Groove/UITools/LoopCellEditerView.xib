@@ -20,8 +20,8 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Whq-Mg-PxS">
-                            <rect key="frame" x="44" y="52" width="30" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <rect key="frame" x="42" y="24" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="(+)">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -30,13 +30,23 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ob9-6R-cSt">
-                            <rect key="frame" x="135" y="52" width="30" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <rect key="frame" x="143" y="24" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="(-)">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="MinusChange:" destination="ltB-4j-cgl" eventType="touchUpInside" id="H6V-Wp-rbe"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d5i-uO-WXK">
+                            <rect key="frame" x="79" y="94" width="44" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Delete">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="CellDeleteChange:" destination="ltB-4j-cgl" eventType="touchUpInside" id="mJW-Z5-0NO"/>
                             </connections>
                         </button>
                     </subviews>
@@ -52,6 +62,7 @@
                 <outlet property="ArrowView" destination="zJo-yL-8oH" id="Sac-eE-kgb"/>
                 <outlet property="CellCounterMinusButton" destination="Ob9-6R-cSt" id="Zcu-uv-X8v"/>
                 <outlet property="CellCounterPlusButton" destination="Whq-Mg-PxS" id="IlN-rg-gw4"/>
+                <outlet property="CellDeleteButton" destination="d5i-uO-WXK" id="DnY-mH-ymM"/>
                 <outlet property="ContentScrollView" destination="68L-7D-LWH" id="Frx-fD-dhe"/>
             </connections>
             <point key="canvasLocation" x="324" y="352"/>
