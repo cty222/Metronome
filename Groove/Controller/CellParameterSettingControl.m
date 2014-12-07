@@ -87,7 +87,6 @@
     // BPM Picker Initialize
     self.BPMPicker.delegate = self;
     
-    
     // SubPropertySelectorView
     [self.SubPropertySelectorView.superview bringSubviewToFront:self.SubPropertySelectorView];
     
@@ -144,6 +143,8 @@
 -(IBAction) VoiceTypePickerDisplay:(UIView *)sender
 {
     _VoiceTypePickerView.hidden = !_VoiceTypePickerView.hidden;
+    
+    self.SubPropertySelectorView.hidden = _VoiceTypePickerView.hidden;
 }
 
 - (void) InitilaizeTimeSignaturePickerView
@@ -168,7 +169,10 @@
 -(IBAction) TimeSigaturePickerDisplay:(UIView *)sender
 {
     _TimeSignaturePickerView.hidden = !_TimeSignaturePickerView.hidden;
+
+    self.SubPropertySelectorView.hidden = _TimeSignaturePickerView.hidden;
 }
+
 
 - (void) InitilaizeLoopCellEditerView
 {
@@ -189,6 +193,8 @@
 -(IBAction) LoopCellEditerDisplay:(UIButton *)sender
 {
     _LoopCellEditerView.hidden = !_LoopCellEditerView.hidden;
+    self.SubPropertySelectorView.hidden = _LoopCellEditerView.hidden;
+
 }
 
 - (IBAction) ChangeVoiceType:(UIButton *)TriggerItem

@@ -24,7 +24,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *OptionScrollView;
-@property (strong, nonatomic) IBOutlet SubPropertySelector *SubPropertySelectorView;
+@property (strong, nonatomic) IBOutlet UIView *SubPropertySelectorView;
 @property (strong, nonatomic) IBOutlet UIImageView *TapAlertImage;
 
 @end

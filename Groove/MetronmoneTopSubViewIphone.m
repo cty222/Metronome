@@ -73,15 +73,11 @@
         [self addSubview:self.BPMPicker];
         [self sendSubviewToBack:self.BPMPicker];
 
-#if 0
         [self.SubPropertySelectorView removeFromSuperview];
-        self.SubPropertySelectorView = [[SubPropertySelector alloc] initWithFrame:self.SubPropertySelectorView.frame];
+        self.SubPropertySelectorView = [[UIView alloc] initWithFrame:self.SubPropertySelectorView.frame];
         [self addSubview:self.SubPropertySelectorView];
         [self sendSubviewToBack:self.SubPropertySelectorView];
-        [self.SubPropertySelectorView ChangeMode:SUB_PROPERTY_MODE_HIDDEN
-                                                :0
-                                                : nil];
-#endif
+
         self.TapAlertImage.hidden = YES;
     }
     return self;

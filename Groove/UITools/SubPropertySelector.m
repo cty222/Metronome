@@ -84,6 +84,7 @@
     UITouch *touch = [touches anyObject];
     UIView * target = [touch view];
     
+    NSLog(@"%@", target);
     // Important!! : Scroll is nil
     if (target == nil)
     {
