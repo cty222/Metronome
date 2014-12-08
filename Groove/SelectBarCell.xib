@@ -11,8 +11,8 @@
             <rect key="frame" x="0.0" y="0.0" width="60" height="55"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rXf-Uh-Ejy">
-                    <rect key="frame" x="14" y="17" width="32" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rXf-Uh-Ejy">
+                    <rect key="frame" x="8" y="17" width="44" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -24,7 +24,7 @@
             <connections>
                 <outlet property="InnerLabel" destination="rXf-Uh-Ejy" id="Gxd-UL-bCf"/>
             </connections>
-            <point key="canvasLocation" x="189" y="452"/>
+            <point key="canvasLocation" x="189" y="451.5"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
