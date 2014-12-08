@@ -260,13 +260,10 @@
 //
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    //NSLog(@"scrollViewDidScroll");
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    //NSLog(@"scrollViewWillBeginDragging");
-
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView

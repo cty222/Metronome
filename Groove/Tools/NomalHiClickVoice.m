@@ -15,7 +15,6 @@
 //================================
 - (void) InitializeVoicePath
 {
-    //NSLog(@"InitializeVoicePath Child\n");
     self.AccentPath = [[NSBundle mainBundle] pathForResource:@"HiAccent" ofType:@"wav"];
     self.FirstBeatPath = [[NSBundle mainBundle] pathForResource:@"HiFirst" ofType:@"wav"];
     self.AndBeatPath = [[NSBundle mainBundle] pathForResource:@"HiAnd" ofType:@"wav"];

@@ -11,7 +11,6 @@
 @implementation LoopAndPlayViewControl
 {
     // PlayCell Image
-    UIImage *_SinglePlayImage;
     UIImage *_RedPlayCurrentImage;
     UIImage *_BlackPlayCurrentImage;
     
@@ -39,14 +38,6 @@
     UIGraphicsEndImageContext();
     self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_BlackPlayCurrentImage];
 
-    
-    // Play Current cell button initialize
-    /*UIGraphicsBeginImageContext(self.PlayLoopCellButton.frame.size);
-    [[UIImage imageNamed:@"SinglePlay"] drawInRect:self.PlayLoopCellButton.bounds];
-    _SinglePlayImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];*/
-    
     [self.PlayCurrentCellButton addTarget:self
                                    action:@selector(PlayCurrentCellButtonClick:) forControlEvents:UIControlEventTouchDown];
     
@@ -75,14 +66,14 @@
     switch (Parent.PlayingMode) {
         case STOP_PLAYING:
             self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_BlackPlayCurrentImage];
-            //self.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
+            [self.PlayLoopCellButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             break;
         case SINGLE_PLAYING:
             self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayCurrentImage];
             break;
         case LOOP_PLAYING:
             // TODO : 要改成Stop圖
-            //self.PlayLoopCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
+            [self.PlayLoopCellButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             break;
     }
 }
@@ -107,17 +98,6 @@
 // =========================
 // Action
 //
-- (IBAction) AddLoopCellButtonClick: (UIButton *) ThisClickedButton
-{
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
-
-    // 新增一筆進資料庫
-    [gMetronomeModel AddNewTempoCell];
-    
-    // 重新顯示
-    [Parent FillData];
-}
-
 
 - (IBAction) PlayLoopCellButtonClick: (UIButton *) ThisClickedButton
 {
@@ -126,8 +106,6 @@
     if (Parent.PlayingMode == SINGLE_PLAYING)
     {
         Parent.PlayingMode = STOP_PLAYING;
-        
-        //self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_SinglePlayImage];
     }
     
     if (Parent.PlayingMode == STOP_PLAYING)
@@ -155,19 +133,6 @@
     }
 }
 
-//
-// =========================
-
-// =========================
-// delegate
-//
-// 不會設下去到Bottom View UI
-- (void) SetFocusIndex:(int) NewValue
-{
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
-    Parent.FocusIndex = NewValue;
-    
-}
 
 // Loop 增減
 - (void) SetTargetCellLoopCountAdd: (int) Index AddValue:(int)Value
@@ -178,7 +143,7 @@
     
     
     int NewTotalValue = [TargetCell.loopCount intValue] + Value;
-
+    
     if (NewTotalValue >= [[GlobalConfig LoopValueMin] intValue] && NewTotalValue <= [[GlobalConfig LoopValueMax] intValue])
     {
         TargetCell.loopCount = [NSNumber numberWithInt:NewTotalValue];
@@ -188,15 +153,29 @@
         
         [_GrooveLoopList replaceObjectAtIndex:Index withObject:[NSString stringWithFormat:@"%d", NewTotalValue]];
         
-        [Parent FillData];
-    }    
+        [Parent FetchCurrentCellListFromModel];
+        [Parent ReflashCellListAndFocusCellByCurrentData];
+    }
+}
+
+- (IBAction) AddLoopCellButtonClick: (UIButton *) ThisClickedButton
+{
+    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    
+    // 新增一筆進資料庫
+    [gMetronomeModel AddNewTempoCell];
+    
+    // 重新顯示
+    [Parent FetchCurrentCellListFromModel];
+    [GlobalConfig SetLastFocusCellIndex: (int)(Parent.CurrentCellsDataTable.count - 1)];
+    [Parent ReflashCellListAndFocusCellByCurrentData];
 }
 
 - (void) DeleteTargetIndexCell: (int) Index
 {
-
+    
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
-   
+    
     // 不可以刪掉最後一個, 或大於Count > 或負數Index
     if ((Parent.CurrentCellsDataTable.count <= 1 )
         || (Parent.CurrentCellsDataTable.count <= Index )
@@ -206,7 +185,7 @@
         return;
     }
     
-
+    
     int NewIndex = -1;
     // 如果刪的是focus cell, 先改成focus前一個, 如果是最前面就改成focus後一個
     if (Index == Parent.FocusIndex)
@@ -221,15 +200,31 @@
         }
         [self ChangeSelectBarForcusIndex:NewIndex];
     }
-
+    
     
     // 找到要刪除的
     TempoCell * DeletedCell = Parent.CurrentCellsDataTable[Index];
     [gMetronomeModel DeleteTargetTempoCell:DeletedCell];
     
     // 重新顯示
-    [Parent FillData];
+    [Parent FetchCurrentCellListFromModel];
+    [Parent ReflashCellListAndFocusCellByCurrentData];
 }
+
+//
+// =========================
+
+// =========================
+// delegate
+//
+// 不會設下去到Bottom View UI
+- (void) SetFocusIndex:(int) NewValue
+{
+    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    Parent.FocusIndex = NewValue;
+    
+}
+
 //
 // =========================
 

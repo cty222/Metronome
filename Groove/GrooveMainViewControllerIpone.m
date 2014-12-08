@@ -46,10 +46,6 @@
     }
     
     self.FullView.frame = FullViewFrame;
-
-    
-    NSLog(@"%@", self.FullView);
-
 }
 
 - (void)didReceiveMemoryWarning

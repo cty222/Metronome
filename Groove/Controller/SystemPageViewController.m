@@ -46,10 +46,7 @@
     }
     
     self.FullView.frame = FullViewFrame;
-    
-    
-    NSLog(@"%@", self.FullView);
-    
+        
 }
 - (IBAction)ReturnToMetronome:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:kChangeToMetronomeView object:nil];

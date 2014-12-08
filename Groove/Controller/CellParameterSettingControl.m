@@ -89,6 +89,7 @@
     
     // SubPropertySelectorView
     [self.SubPropertySelectorView.superview bringSubviewToFront:self.SubPropertySelectorView];
+    self.SubPropertySelectorView.hidden = YES;
     
     //VoiceTypePicker
     [self InitilaizeVoiceTypePickerView];
@@ -396,7 +397,7 @@
 - (void) SetTapTriggerCounter: (int) NewValue
 {
     // TODO: Open A Timer or animation to show Tap icon when Second Tap
-    if(NewValue >1 && NewValue <  [self TapTriggerNumber])
+    if(NewValue >=1 && NewValue <  [self TapTriggerNumber])
     {
         // check icon
         // Show normal Icon

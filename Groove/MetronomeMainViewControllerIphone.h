@@ -52,7 +52,9 @@ typedef enum {
 
 @property BOOL ChangeBPMValueFlag;
 
-- (void) FillData;
+
+- (void) FetchCurrentCellListFromModel;
+- (void) ReflashCellListAndFocusCellByCurrentData;
 
 
 // Sub Controller

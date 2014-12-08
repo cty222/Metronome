@@ -110,7 +110,8 @@
     
     [self GlobaleventInitialize];
     
-    [self FillData];
+    [self FetchCurrentCellListFromModel];
+    [self ReflashCellListAndFocusCellByCurrentData];
 
 }
 
@@ -221,10 +222,13 @@
 //
 // TODO : Testing
 //
-- (void) FillData
+- (void) FetchCurrentCellListFromModel
 {
     self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]];
-    
+}
+
+- (void) ReflashCellListAndFocusCellByCurrentData
+{
     [self.LoopAndPlayViewSubController CopyGrooveLoopListToSelectBar : self.CurrentCellsDataTable];
 }
 
