@@ -37,20 +37,23 @@
 
 -(void) Initialize
 {
-    // Default Valeu
+    // Default Value
     _Queue = [[NSOperationQueue alloc] init];
     _SubView_F4_degree = 0;
     _IndexRange.MaxIndex = CIRCLE_DEFAULT_MAX_VALUE;
     _IndexRange.MinIndex = CIRCLE_DEFAULT_MIN_VALUE;
-    
+    self.TwickPicture.hidden = YES;
+
     // reset to default state
     [self FlipAnimation];
     
+    // Need this, Important
     UIGraphicsBeginImageContext(self.frame.size);
     [[UIImage imageNamed:@"NewCircle_F1"] drawInRect:self.bounds];
     _ImageMask = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     self.SubView_Frame2_BlockValue.backgroundColor = [UIColor colorWithPatternImage:_ImageMask];
+    
 }
 
 - (id)initWithFrame:(CGRect) frame
@@ -399,6 +402,28 @@
             [self.delegate CircleButtonValueChanged: ThisCircleButton];
         }
     }
+}
+
+- (void) TwickLing
+{
+    if (self.Touched)
+    {
+        self.TwickPicture.hidden = YES;
+        return;
+    }
+    self.TwickPicture.hidden = NO;
+    [UIView transitionFromView:self.SignPicture toView:self.TwickPicture
+                      duration:0.1
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    completion:^(BOOL finished){
+                        [UIView transitionFromView:self.TwickPicture toView:self.SignPicture
+                                          duration:0.1
+                                           options:UIViewAnimationOptionTransitionCrossDissolve
+                                        completion:^(BOOL finished){
+                                            self.TwickPicture.hidden = YES;
+                                        }];
+
+                    }];
 }
 
 #if 0

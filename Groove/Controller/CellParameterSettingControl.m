@@ -220,6 +220,15 @@
     [gMetronomeModel Save];
 }
 
+- (void) ChangeVoiceTypePickerImage: (int) TagNumber
+{
+    UIButton * TriggerItem = [_VoiceTypePickerView ReturnTargetButton:TagNumber];
+    if (TriggerItem != nil)
+    {
+        [self.VoiceTypePicker setBackgroundImage:[TriggerItem backgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];
+    }
+}
+
 - (IBAction)ChangeValue: (id)RootSuperView : (UIButton *) ChooseCell;
 {
     if (RootSuperView == _VoiceTypePickerView)

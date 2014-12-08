@@ -48,6 +48,7 @@ typedef struct {
 
 @property (strong, nonatomic) IBOutlet UILabel *ValueLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *SignPicture;
+@property (strong, nonatomic) IBOutlet UIImageView *TwickPicture;
 
 @property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
 @property (getter = GetIndexValue, setter = SetIndexValue:) float IndexValue;
@@ -56,5 +57,7 @@ typedef struct {
 @property (getter = GetIndexValueSensitivity, setter = SetIndexValueSensitivity:) double IndexValueSensitivity;
 
 @property (nonatomic, assign) id<CircleButtonProtocol> delegate;
+
+- (void) TwickLing;
 
 @end

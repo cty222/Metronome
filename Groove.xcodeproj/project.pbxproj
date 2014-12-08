@@ -93,6 +93,16 @@
 		00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00DA13B119F4F77000F27E25 /* HiGa.wav */; };
 		00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5F8C519C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m */; };
 		00E5F8C819C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E5F8C719C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib */; };
+		00E8C01E1A3610FD00D53F82 /* 16NoteRed.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C0191A3610FD00D53F82 /* 16NoteRed.pdf */; };
+		00E8C01F1A3610FD00D53F82 /* 8NotesRed.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C01A1A3610FD00D53F82 /* 8NotesRed.pdf */; };
+		00E8C0201A3610FD00D53F82 /* AccentRed.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C01B1A3610FD00D53F82 /* AccentRed.pdf */; };
+		00E8C0211A3610FD00D53F82 /* QuarterNoteRed.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C01C1A3610FD00D53F82 /* QuarterNoteRed.pdf */; };
+		00E8C0221A3610FD00D53F82 /* TrippleNoteRed.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C01D1A3610FD00D53F82 /* TrippleNoteRed.pdf */; };
+		00E8C0411A36119200D53F82 /* 16NoteYellow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C03C1A36119200D53F82 /* 16NoteYellow.pdf */; };
+		00E8C0421A36119200D53F82 /* 8NotesYellow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C03D1A36119200D53F82 /* 8NotesYellow.pdf */; };
+		00E8C0431A36119200D53F82 /* AccentYellow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C03E1A36119200D53F82 /* AccentYellow.pdf */; };
+		00E8C0441A36119200D53F82 /* QuarterNoteYellow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C03F1A36119200D53F82 /* QuarterNoteYellow.pdf */; };
+		00E8C0451A36119200D53F82 /* TrippleNoteYellow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C0401A36119200D53F82 /* TrippleNoteYellow.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +236,16 @@
 		00E5F8C419C0BFCD00661D1C /* MetronomeBottomSubViewIphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeBottomSubViewIphone.h; sourceTree = "<group>"; };
 		00E5F8C519C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeBottomSubViewIphone.m; sourceTree = "<group>"; };
 		00E5F8C719C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeBottomSubViewIphone.xib; sourceTree = "<group>"; };
+		00E8C0191A3610FD00D53F82 /* 16NoteRed.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 16NoteRed.pdf; sourceTree = "<group>"; };
+		00E8C01A1A3610FD00D53F82 /* 8NotesRed.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 8NotesRed.pdf; sourceTree = "<group>"; };
+		00E8C01B1A3610FD00D53F82 /* AccentRed.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AccentRed.pdf; sourceTree = "<group>"; };
+		00E8C01C1A3610FD00D53F82 /* QuarterNoteRed.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = QuarterNoteRed.pdf; sourceTree = "<group>"; };
+		00E8C01D1A3610FD00D53F82 /* TrippleNoteRed.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TrippleNoteRed.pdf; sourceTree = "<group>"; };
+		00E8C03C1A36119200D53F82 /* 16NoteYellow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 16NoteYellow.pdf; sourceTree = "<group>"; };
+		00E8C03D1A36119200D53F82 /* 8NotesYellow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 8NotesYellow.pdf; sourceTree = "<group>"; };
+		00E8C03E1A36119200D53F82 /* AccentYellow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AccentYellow.pdf; sourceTree = "<group>"; };
+		00E8C03F1A36119200D53F82 /* QuarterNoteYellow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = QuarterNoteYellow.pdf; sourceTree = "<group>"; };
+		00E8C0401A36119200D53F82 /* TrippleNoteYellow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TrippleNoteYellow.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,6 +489,8 @@
 		0071A9AF1A2B090100EA57D2 /* Note */ = {
 			isa = PBXGroup;
 			children = (
+				00E8C03B1A36119200D53F82 /* NoteYellow */,
+				00E8C0181A3610FD00D53F82 /* NoteRed */,
 				0071A9B01A2B090100EA57D2 /* 16Note.pdf */,
 				0071A9B11A2B090100EA57D2 /* 8Notes.pdf */,
 				0071A9B21A2B090100EA57D2 /* Accent.pdf */,
@@ -591,6 +613,30 @@
 			name = MetronomeBottomSubViewIphone;
 			sourceTree = "<group>";
 		};
+		00E8C0181A3610FD00D53F82 /* NoteRed */ = {
+			isa = PBXGroup;
+			children = (
+				00E8C0191A3610FD00D53F82 /* 16NoteRed.pdf */,
+				00E8C01A1A3610FD00D53F82 /* 8NotesRed.pdf */,
+				00E8C01B1A3610FD00D53F82 /* AccentRed.pdf */,
+				00E8C01C1A3610FD00D53F82 /* QuarterNoteRed.pdf */,
+				00E8C01D1A3610FD00D53F82 /* TrippleNoteRed.pdf */,
+			);
+			path = NoteRed;
+			sourceTree = "<group>";
+		};
+		00E8C03B1A36119200D53F82 /* NoteYellow */ = {
+			isa = PBXGroup;
+			children = (
+				00E8C03C1A36119200D53F82 /* 16NoteYellow.pdf */,
+				00E8C03D1A36119200D53F82 /* 8NotesYellow.pdf */,
+				00E8C03E1A36119200D53F82 /* AccentYellow.pdf */,
+				00E8C03F1A36119200D53F82 /* QuarterNoteYellow.pdf */,
+				00E8C0401A36119200D53F82 /* TrippleNoteYellow.pdf */,
+			);
+			path = NoteYellow;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -670,18 +716,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				00DA13B519F4F77000F27E25 /* HiFirst.wav in Resources */,
+				00E8C0201A3610FD00D53F82 /* AccentRed.pdf in Resources */,
 				005A93911A2CD07100280507 /* PropertyDialogArrow.pdf in Resources */,
 				0071A9B71A2B090100EA57D2 /* Accent.pdf in Resources */,
 				0071A9B91A2B090100EA57D2 /* TrippleNote.pdf in Resources */,
+				00E8C0211A3610FD00D53F82 /* QuarterNoteRed.pdf in Resources */,
 				006175BE1A0BCFE100113560 /* PlayLoop_red.pdf in Resources */,
 				0071A9AE1A2B075F00EA57D2 /* LoopCellScrollView.pdf in Resources */,
 				006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */,
 				00B02A5D1A0E997C00BCAF3B /* CircleButton.xib in Resources */,
 				005A93901A2CD07100280507 /* PropertyDialog.pdf in Resources */,
+				00E8C0411A36119200D53F82 /* 16NoteYellow.pdf in Resources */,
+				00E8C0421A36119200D53F82 /* 8NotesYellow.pdf in Resources */,
 				0071A9D41A2B108B00EA57D2 /* HumanVoice.pdf in Resources */,
 				00AB03791A2783C500352DD7 /* SystemPageViewController.xib in Resources */,
 				00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */,
+				00E8C0431A36119200D53F82 /* AccentYellow.pdf in Resources */,
 				004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */,
+				00E8C01E1A3610FD00D53F82 /* 16NoteRed.pdf in Resources */,
 				003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */,
 				00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */,
 				0071A9D01A2B0EB300EA57D2 /* SystemButton.pdf in Resources */,
@@ -695,8 +747,12 @@
 				005DAFC21A345691008D5F2D /* TimeSignaturePickerView.xib in Resources */,
 				00BE69D81A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib in Resources */,
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
+				00E8C01F1A3610FD00D53F82 /* 8NotesRed.pdf in Resources */,
 				00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */,
 				00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */,
+				00E8C0441A36119200D53F82 /* QuarterNoteYellow.pdf in Resources */,
+				00E8C0221A3610FD00D53F82 /* TrippleNoteRed.pdf in Resources */,
+				00E8C0451A36119200D53F82 /* TrippleNoteYellow.pdf in Resources */,
 				0071A9B61A2B090100EA57D2 /* 8Notes.pdf in Resources */,
 				0071A9D51A2B108B00EA57D2 /* ScrollViewCellBackGround.pdf in Resources */,
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,

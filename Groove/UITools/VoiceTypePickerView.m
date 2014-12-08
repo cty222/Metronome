@@ -58,6 +58,23 @@
     self.ContentScrollView.contentOffset = CGPointMake(0, 0);
 }
 
+- (id) ReturnTargetButton : (int) TagNumber
+{
+    for (int Index = 0; Index < self.ContentScrollView.subviews.count; Index++)
+    {
+        NSString *SubViewClassName = NSStringFromClass([self.ContentScrollView.subviews[Index] class]);
+        if ([SubViewClassName isEqualToString:@"UIButton"])
+        {
+            UIButton* TmpCell = self.ContentScrollView.subviews[Index];
+            
+            if (TmpCell.tag == TagNumber)
+            {
+                return TmpCell;
+            }
+        }
+    }
+    return nil;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

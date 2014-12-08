@@ -49,4 +49,7 @@ typedef enum{
 - (void) SetVolumeBarVolume : (TempoCell *)Cell;
 - (int) DecodeTimeSignatureToValue : (NSString *)TimeSignatureString;
 
+
+- (void) ChangeVoiceTypePickerImage: (int) TagNumber;
+
 @end

@@ -255,9 +255,18 @@
     _FocusIndex = NewValue;
     self.CurrentCell = self.CurrentCellsDataTable[_FocusIndex];
     
+    // Set BPM
     self.TopSubView.BPMPicker.BPMValue = [self.CurrentCell.bpmValue intValue];
+    
+    // Set Volume Set
     [self.CellParameterSettingSubController SetVolumeBarVolume:self.CurrentCell];
+    
+    // Set Voice
     self.CurrentVoice = [gClickVoiceList objectAtIndex:[self.CurrentCell.voiceType.sortIndex intValue]];
+    self.CurrentCell.voiceType = self.CurrentCell.voiceType;
+    [_CellParameterSettingSubController ChangeVoiceTypePickerImage:[self.CurrentCell.voiceType.sortIndex intValue]];
+    
+    // Set TimeSignature
     self.CurrentTimeSignature = self.CurrentCell.timeSignatureType.timeSignature;
     [self.CellParameterSettingSubController.TimeSigaturePicker setTitle:self.CurrentTimeSignature forState:UIControlStateNormal];
 
@@ -309,13 +318,22 @@
     // Accent
     if ( _AccentCounter == 0 || _AccentCounter >= [self.CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
     {
+
         [gPlayUnit playSound: [self.CurrentCell.accentVolume floatValue]/ MAX_VOLUME
                             : [self.CurrentVoice GetAccentVoice]];
+        if ([self.CurrentCell.accentVolume floatValue] > 0)
+        {
+            [_CellParameterSettingSubController.AccentCircleVolumeButton TwickLing];
+        }
         _AccentCounter = 0;
     }
     
     [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
                         : [self.CurrentVoice GetFirstBeatVoice]];
+    if ([self.CurrentCell.quarterNoteVolume floatValue] > 0)
+    {
+        [_CellParameterSettingSubController.QuarterCircleVolumeButton TwickLing];
+    }
     _AccentCounter++;
 }
 
@@ -323,30 +341,51 @@
 {
     [gPlayUnit playSound: [self.CurrentCell.sixteenNoteVolume floatValue] / MAX_VOLUME
                         : [self.CurrentVoice GetEbeatVoice]];
+    if ([self.CurrentCell.sixteenNoteVolume floatValue] > 0)
+    {
+        [_CellParameterSettingSubController.SixteenthNoteCircleVolumeButton TwickLing];
+    }
 }
 
 - (void) AndBeatFunc
 {
     [gPlayUnit playSound: [self.CurrentCell.eighthNoteVolume floatValue] / MAX_VOLUME
                         : [self.CurrentVoice GetAndBeatVoice]];
+    if ([self.CurrentCell.eighthNoteVolume floatValue] > 0)
+    {
+        [_CellParameterSettingSubController.EighthNoteCircleVolumeButton TwickLing];
+    }
 }
 
 - (void) ABeatFunc
 {
     [gPlayUnit playSound: [self.CurrentCell.sixteenNoteVolume floatValue] / MAX_VOLUME
                         : [self.CurrentVoice GetEbeatVoice]];
+    if ([self.CurrentCell.sixteenNoteVolume floatValue] > 0)
+    {
+        [_CellParameterSettingSubController.SixteenthNoteCircleVolumeButton TwickLing];
+    }
 }
 
 - (void) GiBeatFunc
 {
     [gPlayUnit playSound: [self.CurrentCell.trippleNoteVolume floatValue] / MAX_VOLUME
                         : [self.CurrentVoice GetGibeatVoice]];
+    
+    if ([self.CurrentCell.trippleNoteVolume floatValue] > 0)
+    {
+        [_CellParameterSettingSubController.TrippleNoteCircleVolumeButton TwickLing];
+    }
 }
 
 - (void) GaBeatFunc
 {
     [gPlayUnit playSound: [self.CurrentCell.trippleNoteVolume floatValue] / MAX_VOLUME
                         : [self.CurrentVoice GetGabeatVoice]];
+    if ([self.CurrentCell.trippleNoteVolume floatValue] > 0)
+    {
+        [_CellParameterSettingSubController.TrippleNoteCircleVolumeButton TwickLing];
+    }
 }
 //
 //  =========================

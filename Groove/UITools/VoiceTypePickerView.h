@@ -13,5 +13,6 @@
 
 @property (getter = GetHidden, setter = SetHidden:) BOOL hidden;
 
+- (id) ReturnTargetButton : (int) TagNumber;
 - (void) DisplayPropertyCell : (NSArray *) FillInData : (UIView *) TriggerButton;
 @end

@@ -67,7 +67,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AccentNote" id="GDj-bq-qoF">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AccentNoteGary" id="GDj-bq-qoF">
                     <rect key="frame" x="5" y="18" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -99,7 +99,7 @@
         </view>
     </objects>
     <resources>
-        <image name="AccentNote" width="40" height="40"/>
+        <image name="AccentNoteGary" width="40" height="40"/>
         <image name="HumanVoice" width="40" height="40"/>
         <image name="ScrollViewBackGround" width="60" height="162"/>
         <image name="ScrollViewCellBackGround" width="40" height="40"/>

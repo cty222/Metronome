@@ -74,8 +74,7 @@
         [ControlView addSubview:TmpCell];
     }
   
-    // 0.5 與0.25是fine tune後的數字
-    ControlView.contentInset = UIEdgeInsetsMake (0, ([self FocusLine] -  CellWidth * 0.5), 0,  CellWidth * (self.GrooveCellValueStringList.count -1)  + ([self FocusLine] +  CellWidth * 0.25));
+    ControlView.contentInset = UIEdgeInsetsMake (0, ([self FocusLine] -  CellWidth/2), 0,  CellWidth * (self.GrooveCellValueStringList.count -1)  + ([self FocusLine] +  CellWidth/2));
     
     [self ChangeFocusIndexWithUIMoving: [[GlobalConfig LastFocusCellIndex] intValue]];
 }

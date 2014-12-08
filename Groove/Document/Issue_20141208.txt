@@ -9,7 +9,6 @@ Property:
 BackGround霧化處理
 
 Loop Scrollbar:
-focus cell 數字置中
 focus image 圖
 Cell 圖
 
@@ -17,8 +16,6 @@ Loop scroll subbar
 +/- Loop count數 圖
 Loop Cell 刪除 圖
 
-Volume bar:
-播放閃爍
 
 System Check: 
 左右聲道
