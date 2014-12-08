@@ -16,8 +16,6 @@ Cell 圖
 Loop scroll subbar
 +/- Loop count數 圖
 Loop Cell 刪除 圖
-Loop count 增加的時候 focus 最新的
-Loop play -> Loop Stop交換/顏色(紅/黑)
 
 Volume bar:
 播放閃爍

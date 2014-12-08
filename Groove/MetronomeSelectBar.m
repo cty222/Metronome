@@ -8,9 +8,6 @@
 
 #import "MetronomeSelectBar.h"
 
-#define CELL_WIDTH   (55)
-#define CELL_HEIGHT  (40)
-
 @interface MetronomeSelectBar ()
 @property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
 @property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
@@ -58,8 +55,8 @@
     [[ControlView subviews]
      makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    float CellWidth  = CELL_WIDTH;
-    float CellHeight = CELL_HEIGHT;
+    float CellWidth  = self.FocusLineImage.frame.size.width;
+    float CellHeight = self.FocusLineImage.frame.size.height;
     float CellLocation_X = 0;
     float CellLocation_Y = (ControlView.bounds.size.height - CellHeight)/2 ;
 
@@ -106,7 +103,7 @@
                         options: UIViewAnimationOptionCurveLinear
                      animations:^{
                          UIScrollView * ControlView = self.GrooveCellListView;
-                         float CellWidth  = CELL_WIDTH;
+                         float CellWidth  = self.FocusLineImage.frame.size.width;
                          ControlView.contentOffset = CGPointMake((CellWidth * 0.5 - [self FocusLine]) + CellWidth * self.FocusIndex, 0);
                      }
                      completion:^(BOOL finished){
