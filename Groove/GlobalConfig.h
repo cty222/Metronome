@@ -45,8 +45,14 @@ enum {
 + (NSNumber *) LoopValueMin;
 + (NSNumber *) LoopValueMax;
 + (NSNumber *) LoopCellMaxCount;
-+ (void) SetLastFocusCellIndex : (int) NewValue;
++ (BOOL) PlayCellListNoneStop;
++ (BOOL) LeftChannel;
++ (BOOL) RightChannel;
 
++ (void) SetLastFocusCellIndex : (int) NewValue;
++ (void) SetPlayCellListNoneStop : (BOOL) NewValue;
++ (void) SetLeftChannel : (BOOL) NewValue;
++ (void) SetRightChannel : (BOOL) NewValue;
 
 // Main View
 + (UIViewController *) SystemPageViewControllerIphone;

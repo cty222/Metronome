@@ -13,7 +13,7 @@
 @interface LoopAndPlayViewControl : NSObject <SelectBarProtocol>
 
 // (3) Playing Cell functon item
-@property (strong, nonatomic) IBOutlet UIButton *PlayLoopCellButton;
+@property (strong, nonatomic) IBOutlet UIButton *PlayCellListButton;
 @property (strong, nonatomic) IBOutlet UIButton *PlayCurrentCellButton;
 
 // (4) Loop Control function button
@@ -26,7 +26,7 @@
 - (void) InitializeLoopControlItem;
 - (void) ChangeButtonDisplayByPlayMode;
 - (void) ChangeSelectBarForcusIndex: (int) NewIndex;
-- (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable;
+- (void) CopyCellListToSelectBar : (NSArray *) CellDataTable;
 
 
 - (void) SetTargetCellLoopCountAdd: (int) Index AddValue:(int)Value;

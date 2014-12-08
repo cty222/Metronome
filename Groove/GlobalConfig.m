@@ -287,6 +287,67 @@ static NSMutableDictionary * ThisPlist;
     
     return [ThisPlist objectForKey:@"LoopCellMaxCount"];
 }
+
++ (BOOL) PlayCellListNoneStop
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return NO;
+    }
+    return [[ThisPlist objectForKey:@"PlayCellListNoneStop"] boolValue];
+}
+
++ (void) SetPlayCellListNoneStop : (BOOL) NewValue
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return;
+    }
+    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"PlayCellListNoneStop"];
+    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+    
+}
+
++ (BOOL) LeftChannel
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return YES;
+    }
+    return [[ThisPlist objectForKey:@"LeftChannel"] boolValue];
+}
+
++ (void) SetLeftChannel : (BOOL) NewValue
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return;
+    }
+    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"LeftChannel"];
+    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+    
+}
+
++ (BOOL) RightChannel
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return YES;
+    }
+    return [[ThisPlist objectForKey:@"RightChannel"] boolValue];
+}
+
++ (void) SetRightChannel : (BOOL) NewValue
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return;
+    }
+    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"RightChannel"];
+    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+    
+}
+
 //
 // ============================
 

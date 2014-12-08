@@ -41,10 +41,10 @@
                                                       self.AddLoopCellButton.frame.size.width,
                                                       self.AddLoopCellButton.frame.size.height
                                                       );
-            self.PlayLoopCellButton.frame = CGRectMake(self.PlayLoopCellButton.frame.origin.x,
-                                                      self.PlayLoopCellButton.frame.origin.y + Margin,
-                                                      self.PlayLoopCellButton.frame.size.width,
-                                                      self.PlayLoopCellButton.frame.size.height
+            self.PlayCellListButton.frame = CGRectMake(self.PlayCellListButton.frame.origin.x,
+                                                      self.PlayCellListButton.frame.origin.y + Margin,
+                                                      self.PlayCellListButton.frame.size.width,
+                                                      self.PlayCellListButton.frame.size.height
                                                       );
             self.TapAlertImage.frame = CGRectMake(self.TapAlertImage.frame.origin.x,
                                                   Margin,

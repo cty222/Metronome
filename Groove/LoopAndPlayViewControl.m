@@ -14,14 +14,14 @@
     UIImage *_RedPlayCurrentImage;
     UIImage *_BlackPlayCurrentImage;
     
-    NSMutableArray * _GrooveLoopList;
+    NSMutableArray * _CellValueToStringList;
 }
 
 - (void) InitlizePlayingItems
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
 
-    self.PlayLoopCellButton = Parent.TopSubView.PlayLoopCellButton;
+    self.PlayCellListButton = Parent.TopSubView.PlayCellListButton;
     self.PlayCurrentCellButton = Parent.BottomSubView.PlayCurrentCellButton;
     
     // PlayLoopCellButton Initalize
@@ -41,9 +41,9 @@
     [self.PlayCurrentCellButton addTarget:self
                                    action:@selector(PlayCurrentCellButtonClick:) forControlEvents:UIControlEventTouchDown];
     
-    // Play LoopCellButton Initialize
-    [self.PlayLoopCellButton addTarget:self
-                                action:@selector(PlayLoopCellButtonClick:) forControlEvents:UIControlEventTouchDown];
+    // PlayCellListButton Initialize
+    [self.PlayCellListButton addTarget:self
+                                action:@selector(PlayCellListButtonClick:) forControlEvents:UIControlEventTouchDown];
 }
 
 - (void) InitializeLoopControlItem
@@ -66,14 +66,14 @@
     switch (Parent.PlayingMode) {
         case STOP_PLAYING:
             self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_BlackPlayCurrentImage];
-            [self.PlayLoopCellButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [self.PlayCellListButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             break;
         case SINGLE_PLAYING:
             self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayCurrentImage];
             break;
-        case LOOP_PLAYING:
+        case LIST_PLAYING:
             // TODO : 要改成Stop圖
-            [self.PlayLoopCellButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [self.PlayCellListButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             break;
     }
 }
@@ -85,21 +85,21 @@
 }
 
 
-- (void) CopyGrooveLoopListToSelectBar : (NSArray *) CellDataTable
+- (void) CopyCellListToSelectBar : (NSArray *) CellDataTable
 {
-    _GrooveLoopList = [[NSMutableArray alloc]init];
+    _CellValueToStringList = [[NSMutableArray alloc]init];
     for (TempoCell *Cell in CellDataTable)
     {
-        [_GrooveLoopList addObject:[NSString stringWithFormat:@"%d", [Cell.loopCount intValue]]];
+        [_CellValueToStringList addObject:[NSString stringWithFormat:@"%d", [Cell.loopCount intValue]]];
     }
-    self.SelectGrooveBar.GrooveCellValueStringList = _GrooveLoopList;
+    self.SelectGrooveBar.GrooveCellValueStringList = _CellValueToStringList;
 }
 
 // =========================
 // Action
 //
 
-- (IBAction) PlayLoopCellButtonClick: (UIButton *) ThisClickedButton
+- (IBAction) PlayCellListButtonClick: (UIButton *) ThisClickedButton
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
 
@@ -110,9 +110,9 @@
     
     if (Parent.PlayingMode == STOP_PLAYING)
     {
-        Parent.PlayingMode = LOOP_PLAYING;
+        Parent.PlayingMode = LIST_PLAYING;
     }
-    else if(Parent.PlayingMode == LOOP_PLAYING)
+    else if(Parent.PlayingMode == LIST_PLAYING)
     {
         Parent.PlayingMode = STOP_PLAYING;
     }
@@ -151,7 +151,7 @@
         // TODO : 不要save這麼頻繁
         [gMetronomeModel Save];
         
-        [_GrooveLoopList replaceObjectAtIndex:Index withObject:[NSString stringWithFormat:@"%d", NewTotalValue]];
+        [_CellValueToStringList replaceObjectAtIndex:Index withObject:[NSString stringWithFormat:@"%d", NewTotalValue]];
         
         [Parent FetchCurrentCellListFromModel];
         [Parent ReflashCellListAndFocusCellByCurrentData];

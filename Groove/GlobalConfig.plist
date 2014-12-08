@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LeftChannel</key>
+	<true/>
+	<key>RightChannel</key>
+	<true/>
 	<key>LoopCellMaxCount</key>
 	<integer>30</integer>
 	<key>LoopValueMax</key>
@@ -13,7 +17,7 @@
 	<key>DbVersion</key>
 	<real>1006</real>
 	<key>VersionID</key>
-	<real>4011</real>
+	<real>4013</real>
 	<key>BPMMinValue</key>
 	<integer>30</integer>
 	<key>BPMMaxValue</key>
@@ -24,5 +28,7 @@
 	<integer>320</integer>
 	<key>DeviceType</key>
 	<integer>0</integer>
+	<key>PlayCellListNoneStop</key>
+	<true/>
 </dict>
 </plist>

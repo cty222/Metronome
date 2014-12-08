@@ -32,7 +32,7 @@
 typedef enum {
     STOP_PLAYING         = 0,
     SINGLE_PLAYING,
-    LOOP_PLAYING,
+    LIST_PLAYING,
 } METRONOME_PLAYING_MODE;
 
 @interface MetronomeMainViewControllerIphone : UIViewController <NoteProtocol>

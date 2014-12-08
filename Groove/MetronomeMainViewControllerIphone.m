@@ -229,7 +229,7 @@
 
 - (void) ReflashCellListAndFocusCellByCurrentData
 {
-    [self.LoopAndPlayViewSubController CopyGrooveLoopListToSelectBar : self.CurrentCellsDataTable];
+    [self.LoopAndPlayViewSubController CopyCellListToSelectBar : self.CurrentCellsDataTable];
 }
 
 
@@ -269,7 +269,8 @@
     // Set TimeSignature
     self.CurrentTimeSignature = self.CurrentCell.timeSignatureType.timeSignature;
     [self.CellParameterSettingSubController.TimeSigaturePicker setTitle:self.CurrentTimeSignature forState:UIControlStateNormal];
-
+    
+    [self ResetCounter];
 }
 
 - (METRONOME_PLAYING_MODE) GetPlayingMode
@@ -288,13 +289,14 @@
     
     switch (_PlayingMode) {
         case STOP_PLAYING:
-            [self StopClickWithResetCounter : YES];
+            [self ResetCounter];
+            [self StopClick];
             break;
         case SINGLE_PLAYING:
             // TODO : 要改成Stop圖
             [self StartClick];
             break;
-        case LOOP_PLAYING:
+        case LIST_PLAYING:
             [self StartClick];
             break;
         default:
@@ -397,17 +399,24 @@
 - (void) ChangeToNextLoopCell
 {
     // Change to next
-    if (self.PlayingMode == LOOP_PLAYING)
+    if (self.PlayingMode == LIST_PLAYING)
     {
         int NewIndex = self.FocusIndex + 1;
         
         if (NewIndex >= self.CurrentCellsDataTable.count)
         {
-            self.PlayingMode = STOP_PLAYING;
-            return;
+            if ([GlobalConfig PlayCellListNoneStop])
+            {
+                NewIndex = 0;
+            }
+            else
+            {
+                self.PlayingMode = STOP_PLAYING;
+                return;
+            }
         }
 
-        [self StopClickWithResetCounter: YES];
+        [self StopClick];
         self.FocusIndex = NewIndex;
         
         // 如果Count是0就跳到下一個Cell
@@ -423,18 +432,17 @@
     }
 }
 
+- (void) ResetCounter
+{
+    _LoopCountCounter = 0;
+    _TimeSignatureCounter = 0;
+    _AccentCounter = 0;
+    _CurrentPlayingNoteCounter = NONE_CLICK;
+}
 
 //Stop click
-- (void) StopClickWithResetCounter : (BOOL) ResetFlag
+- (void) StopClick
 {
-    if (ResetFlag)
-    {
-        _LoopCountCounter = 0;
-        _TimeSignatureCounter = 0;
-        _AccentCounter = 0;
-        _CurrentPlayingNoteCounter = NONE_CLICK;
-    }
-    
     if (PlaySoundTimer != nil)
     {
         [PlaySoundTimer invalidate];
@@ -446,12 +454,13 @@
 - (void) StartClick
 {
     if (PlaySoundTimer != nil) {
-        [self StopClickWithResetCounter: YES];
+        [self ResetCounter];
+        [self StopClick];
     }
     
     // 因為Timer的特性是先等再做
     // 所以必須要調整成先開始一次與最後多等一次
-    if (self.PlayingMode == LOOP_PLAYING)
+    if (self.PlayingMode == LIST_PLAYING)
     {
         if (_LoopCountCounter >= [self.CurrentCell.loopCount intValue])
         {
@@ -480,7 +489,8 @@
 {
     if (self.PlayingMode == STOP_PLAYING)
     {
-        [self StopClickWithResetCounter: YES];
+        [self ResetCounter];
+        [self StopClick];
         [ThisTimer invalidate];
     }
     
@@ -491,7 +501,7 @@
     {
         _CurrentPlayingNoteCounter = FIRST_CLICK;
         
-        if (self.PlayingMode == LOOP_PLAYING)
+        if (self.PlayingMode == LIST_PLAYING)
         {
             _TimeSignatureCounter++;
             if (_TimeSignatureCounter == [self.CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
@@ -510,7 +520,7 @@
     if(self.ChangeBPMValueFlag && ThisTimer != nil && self.PlayingMode != STOP_PLAYING)
     {
         self.ChangeBPMValueFlag = NO;
-        [self StopClickWithResetCounter: NO];
+        [self StopClick];
         [self StartClick];
     }
 }

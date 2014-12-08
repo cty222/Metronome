@@ -16,7 +16,7 @@
 
 @property (strong, nonatomic) IBOutlet LargeBPMPicker *BPMPicker;
 
-@property (strong, nonatomic) IBOutlet UIButton *PlayLoopCellButton;
+@property (strong, nonatomic) IBOutlet UIButton *PlayCellListButton;
 @property (strong, nonatomic) IBOutlet UIButton *VoiceTypePicker;
 @property (strong, nonatomic) IBOutlet UIButton *TimeSigaturePicker;
 @property (strong, nonatomic) IBOutlet UIButton *LoopCellEditer;
