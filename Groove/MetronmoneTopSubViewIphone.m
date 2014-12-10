@@ -73,12 +73,26 @@
         [self addSubview:self.BPMPicker];
         [self sendSubviewToBack:self.BPMPicker];
 
-        [self.SubPropertySelectorView removeFromSuperview];
-        self.SubPropertySelectorView = [[UIView alloc] initWithFrame:self.SubPropertySelectorView.frame];
-        [self addSubview:self.SubPropertySelectorView];
-        [self sendSubviewToBack:self.SubPropertySelectorView];
+        [self.TimeSignaturePickerView removeFromSuperview];
+        self.TimeSignaturePickerView = [[TimeSignaturePickerView alloc] initWithFrame:self.TimeSignaturePickerView.frame];
+        [self addSubview:self.TimeSignaturePickerView];
+        [self sendSubviewToBack:self.TimeSignaturePickerView];
 
+        [self.VoiceTypePickerView removeFromSuperview];
+        self.VoiceTypePickerView = [[VoiceTypePickerView alloc] initWithFrame:self.VoiceTypePickerView.frame];
+        [self addSubview:self.VoiceTypePickerView];
+        [self sendSubviewToBack:self.VoiceTypePickerView];
+        
+        [self.LoopCellEditerView removeFromSuperview];
+        self.LoopCellEditerView = [[LoopCellEditerView alloc] initWithFrame:self.LoopCellEditerView.frame];
+        [self addSubview:self.LoopCellEditerView];
+        [self sendSubviewToBack:self.LoopCellEditerView];
+        
         self.TapAlertImage.hidden = YES;
+        self.TimeSignaturePickerView.hidden = YES;
+        self.VoiceTypePickerView.hidden = YES;
+        self.LoopCellEditerView.hidden = YES;
+        
     }
     return self;
 }

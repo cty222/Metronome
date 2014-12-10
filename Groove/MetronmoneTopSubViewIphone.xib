@@ -11,7 +11,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="268"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="OF2-gL-lEa">
+                <view contentMode="scaleToFill" id="OF2-gL-lEa" customClass="TimeSignaturePickerView">
+                    <rect key="frame" x="5" y="20" width="252" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                </view>
+                <view contentMode="scaleToFill" id="3Rs-k7-pnS" customClass="VoiceTypePickerView">
+                    <rect key="frame" x="5" y="20" width="252" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                </view>
+                <view contentMode="scaleToFill" id="2rO-6h-C3a" customClass="LoopCellEditerView">
                     <rect key="frame" x="5" y="20" width="252" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </view>
@@ -89,13 +97,15 @@
                 <outlet property="AddLoopCellButton" destination="hd4-aG-aep" id="z2d-6E-5LD"/>
                 <outlet property="BPMPicker" destination="cWm-G2-BW2" id="RMt-pA-AJe"/>
                 <outlet property="LoopCellEditer" destination="OAO-zL-gYf" id="1cQ-50-60G"/>
+                <outlet property="LoopCellEditerView" destination="2rO-6h-C3a" id="7cD-U5-w9v"/>
                 <outlet property="OptionScrollView" destination="IdF-4P-xRb" id="Hd3-kb-LJt"/>
                 <outlet property="PlayCellListButton" destination="PYh-UZ-971" id="t2T-cG-LkT"/>
-                <outlet property="SubPropertySelectorView" destination="OF2-gL-lEa" id="EZc-Rg-9h3"/>
                 <outlet property="SystemButton" destination="qDg-3A-xuS" id="tBW-yK-My4"/>
                 <outlet property="TapAlertImage" destination="GDj-bq-qoF" id="O57-od-uq2"/>
                 <outlet property="TimeSigaturePicker" destination="n1P-MM-kWw" id="DlP-Uu-mbS"/>
+                <outlet property="TimeSignaturePickerView" destination="OF2-gL-lEa" id="v9e-Tu-82c"/>
                 <outlet property="VoiceTypePicker" destination="t2o-NR-dku" id="SVP-h2-Ucj"/>
+                <outlet property="VoiceTypePickerView" destination="3Rs-k7-pnS" id="KCK-TX-xDl"/>
             </connections>
         </view>
     </objects>

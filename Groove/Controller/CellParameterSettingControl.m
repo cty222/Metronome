@@ -22,12 +22,6 @@
     double _LastRecordTime_ms;
     NSDate * _Date;;
     int _TapTriggerCounter;
-    
-    // VoiceTypeSubButtonArray
-    VoiceTypePickerView * _VoiceTypePickerView;
-    TimeSignaturePickerView * _TimeSignaturePickerView;
-    LoopCellEditerView * _LoopCellEditerView;
-
 }
 
 -(void) InitializeVolumeSets
@@ -81,15 +75,14 @@
     self.VoiceTypePicker = Parent.TopSubView.VoiceTypePicker;
     self.TimeSigaturePicker = Parent.TopSubView.TimeSigaturePicker;
     self.LoopCellEditer = Parent.TopSubView.LoopCellEditer;
-    self.SubPropertySelectorView = Parent.TopSubView.SubPropertySelectorView;
     self.TapAlertImage = Parent.TopSubView.TapAlertImage;
-    
+    self.TimeSignaturePickerView = Parent.TopSubView.TimeSignaturePickerView;
+    self.VoiceTypePickerView = Parent.TopSubView.VoiceTypePickerView;
+    self.LoopCellEditerView = Parent.TopSubView.LoopCellEditerView;
+
     // BPM Picker Initialize
     self.BPMPicker.delegate = self;
     
-    // SubPropertySelectorView
-    [self.SubPropertySelectorView.superview bringSubviewToFront:self.SubPropertySelectorView];
-    self.SubPropertySelectorView.hidden = YES;
     
     //VoiceTypePicker
     [self InitilaizeVoiceTypePickerView];
@@ -124,78 +117,52 @@
 
 - (void) InitilaizeVoiceTypePickerView
 {
-    if (_VoiceTypePickerView == nil)
-    {
-        NSArray *VoiceTypeArray = [gMetronomeModel FetchVoiceType];
-        _VoiceTypePickerView = [[VoiceTypePickerView alloc] initWithFrame:self.SubPropertySelectorView.bounds];
-        _VoiceTypePickerView.OriginYOffset = self.OptionScrollView.frame.origin.y - _VoiceTypePickerView.frame.origin.y;
-        _VoiceTypePickerView.ArrowCenterLine = self.VoiceTypePicker.frame.origin.y + self.VoiceTypePicker.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
-        _VoiceTypePickerView.TriggerButton = self.VoiceTypePicker;
-        _VoiceTypePickerView.delegate = self;
-
-        [_VoiceTypePickerView DisplayPropertyCell:VoiceTypeArray : self.VoiceTypePicker];
-        [self.SubPropertySelectorView addSubview:_VoiceTypePickerView];
-        
-        _VoiceTypePickerView.hidden = YES;
-    }
+    NSArray *VoiceTypeArray = [gMetronomeModel FetchVoiceType];
+    self.VoiceTypePickerView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.VoiceTypePickerView.frame.origin.y;
+    self.VoiceTypePickerView.ArrowCenterLine = self.VoiceTypePicker.frame.origin.y + self.VoiceTypePicker.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
+    self.VoiceTypePickerView.TriggerButton = self.VoiceTypePicker;
+    self.VoiceTypePickerView.delegate = self;
+    
+    [self.VoiceTypePickerView DisplayPropertyCell:VoiceTypeArray : self.VoiceTypePicker];
 }
 
 
 -(IBAction) VoiceTypePickerDisplay:(UIView *)sender
 {
-    _VoiceTypePickerView.hidden = !_VoiceTypePickerView.hidden;
-    
-    self.SubPropertySelectorView.hidden = _VoiceTypePickerView.hidden;
+    self.VoiceTypePickerView.hidden = !self.VoiceTypePickerView.hidden;
 }
 
 - (void) InitilaizeTimeSignaturePickerView
 {
     // If nil, create data view
-    if (_TimeSignaturePickerView == nil)
-    {
         NSArray *TimeSignatureTypeArray = [gMetronomeModel FetchTimeSignatureType];
-        _TimeSignaturePickerView = [[TimeSignaturePickerView alloc] initWithFrame:self.SubPropertySelectorView.bounds];
-        _TimeSignaturePickerView.OriginYOffset = self.OptionScrollView.frame.origin.y - _TimeSignaturePickerView.frame.origin.y;
-        _TimeSignaturePickerView.ArrowCenterLine = self.TimeSigaturePicker.frame.origin.y + self.TimeSigaturePicker.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
-        _TimeSignaturePickerView.TriggerButton = self.TimeSigaturePicker;
-        _TimeSignaturePickerView.delegate = self;
+        self.TimeSignaturePickerView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.TimeSignaturePickerView.frame.origin.y;
+        self.TimeSignaturePickerView.ArrowCenterLine = self.TimeSigaturePicker.frame.origin.y + self.TimeSigaturePicker.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
+        self.TimeSignaturePickerView.TriggerButton = self.TimeSigaturePicker;
+        self.TimeSignaturePickerView.delegate = self;
         
-        [_TimeSignaturePickerView DisplayPropertyCell:TimeSignatureTypeArray : self.TimeSigaturePicker];
-        [self.SubPropertySelectorView addSubview:_TimeSignaturePickerView];
-        
-        _TimeSignaturePickerView.hidden = YES;
-    }
+        [self.TimeSignaturePickerView DisplayPropertyCell:TimeSignatureTypeArray : self.TimeSigaturePicker];
+    
 }
 
 -(IBAction) TimeSigaturePickerDisplay:(UIView *)sender
 {
-    _TimeSignaturePickerView.hidden = !_TimeSignaturePickerView.hidden;
-
-    self.SubPropertySelectorView.hidden = _TimeSignaturePickerView.hidden;
+    self.TimeSignaturePickerView.hidden = !self.TimeSignaturePickerView.hidden;
 }
 
 
 - (void) InitilaizeLoopCellEditerView
 {
-    if (_LoopCellEditerView == nil)
-    {
-        _LoopCellEditerView = [[LoopCellEditerView alloc] initWithFrame:self.SubPropertySelectorView.bounds];
-        _LoopCellEditerView.OriginYOffset = self.OptionScrollView.frame.origin.y - _TimeSignaturePickerView.frame.origin.y;
-        _LoopCellEditerView.ArrowCenterLine = self.LoopCellEditer.frame.origin.y + self.LoopCellEditer.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
-        _LoopCellEditerView.TriggerButton = self.LoopCellEditer;
-        _LoopCellEditerView.delegate = self;
-        
-        [self.SubPropertySelectorView addSubview:_LoopCellEditerView];
-        
-        _LoopCellEditerView.hidden = YES;
-    }
+    self.LoopCellEditerView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.TimeSignaturePickerView.frame.origin.y;
+    self.LoopCellEditerView.ArrowCenterLine = self.LoopCellEditer.frame.origin.y + self.LoopCellEditer.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
+    self.LoopCellEditerView.TriggerButton = self.LoopCellEditer;
+    self.LoopCellEditerView.delegate = self;
+
 }
 
 -(IBAction) LoopCellEditerDisplay:(UIButton *)sender
 {
-    _LoopCellEditerView.hidden = !_LoopCellEditerView.hidden;
-    self.SubPropertySelectorView.hidden = _LoopCellEditerView.hidden;
-
+    self.LoopCellEditerView.hidden = !self.LoopCellEditerView.hidden;
 }
 
 - (IBAction) ChangeVoiceType:(UIButton *)TriggerItem
@@ -222,7 +189,7 @@
 
 - (void) ChangeVoiceTypePickerImage: (int) TagNumber
 {
-    UIButton * TriggerItem = [_VoiceTypePickerView ReturnTargetButton:TagNumber];
+    UIButton * TriggerItem = [self.VoiceTypePickerView ReturnTargetButton:TagNumber];
     if (TriggerItem != nil)
     {
         [self.VoiceTypePicker setBackgroundImage:[TriggerItem backgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];
@@ -231,15 +198,15 @@
 
 - (IBAction)ChangeValue: (id)RootSuperView : (UIButton *) ChooseCell;
 {
-    if (RootSuperView == _VoiceTypePickerView)
+    if (RootSuperView == self.VoiceTypePickerView)
     {
         [self ChangeVoiceType: ChooseCell];
     }
-    else if (RootSuperView == _TimeSignaturePickerView)
+    else if (RootSuperView == self.TimeSignaturePickerView)
     {
         [self ChangeTimeSignature: ChooseCell];
     }
-    else if (RootSuperView == _LoopCellEditerView)
+    else if (RootSuperView == self.LoopCellEditerView)
     {
         [self ChangeCellCounter: ChooseCell];
     }
@@ -268,15 +235,15 @@
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
 
-    if (_LoopCellEditerView.CellCounterPlusButton == TriggerItem)
+    if (self.LoopCellEditerView.CellCounterPlusButton == TriggerItem)
     {
         [Parent.LoopAndPlayViewSubController SetTargetCellLoopCountAdd:Parent.FocusIndex AddValue:1];
     }
-    else if (_LoopCellEditerView.CellCounterMinusButton == TriggerItem)
+    else if (self.LoopCellEditerView.CellCounterMinusButton == TriggerItem)
     {
         [Parent.LoopAndPlayViewSubController SetTargetCellLoopCountAdd:Parent.FocusIndex AddValue:-1];
     }
-    else if (_LoopCellEditerView.CellDeleteButton == TriggerItem)
+    else if (self.LoopCellEditerView.CellDeleteButton == TriggerItem)
     {
         [Parent.LoopAndPlayViewSubController DeleteTargetIndexCell:Parent.FocusIndex];
     }

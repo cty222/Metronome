@@ -35,7 +35,9 @@ typedef enum{
 @property (strong, nonatomic) IBOutlet UIButton *VoiceTypePicker;
 @property (strong, nonatomic) IBOutlet UIButton *TimeSigaturePicker;
 @property (strong, nonatomic) IBOutlet UIButton *LoopCellEditer;
-@property (strong, nonatomic) IBOutlet UIView *SubPropertySelectorView;
+@property (strong, nonatomic) IBOutlet TimeSignaturePickerView *TimeSignaturePickerView;
+@property (strong, nonatomic) IBOutlet VoiceTypePickerView *VoiceTypePickerView;
+@property (strong, nonatomic) IBOutlet LoopCellEditerView *LoopCellEditerView;
 @property (strong, nonatomic) IBOutlet UIScrollView *OptionScrollView;
 
 // (3) AlertImage
