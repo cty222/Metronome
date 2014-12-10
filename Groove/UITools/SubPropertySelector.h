@@ -29,5 +29,7 @@
 @property (getter = GetHidden, setter = SetHidden:) BOOL hidden;
 - (IBAction)ClickCell: (id) sender;
 - (IBAction)ChangeValue: (id)RootSuperView : (id) ChooseCell;
+- (BOOL) IsIncludeTargetView: (UIView *) TargetView;
+- (void) SetHidden:(BOOL)hidden;
 
 @end

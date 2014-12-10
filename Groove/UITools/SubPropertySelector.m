@@ -38,13 +38,12 @@
 - (void) SetHidden:(BOOL)hidden
 {
     _hidden = hidden;
+    [super setHidden:_hidden];
     if(_hidden)
     {
-        [super setHidden:_hidden];
     }
     else
     {
-        [super setHidden:_hidden];
         [self.superview bringSubviewToFront:self];
         [self ChangeTriggleViewCenterline: self.ArrowCenterLine];
     }
@@ -78,7 +77,6 @@
 
 - (void)TouchedNotificationCallBack:(NSNotification *)Notification
 {
-    
     UIEvent *Event = [Notification object];
     NSSet *touches = [Event allTouches];
     UITouch *touch = [touches anyObject];
@@ -105,6 +103,7 @@
     else
     {
         for (int Index = 0; Index < self.ContentScrollView.subviews.count; Index++) {
+
             if (TargetView == self.ContentScrollView.subviews[Index])
             {
                 return YES;

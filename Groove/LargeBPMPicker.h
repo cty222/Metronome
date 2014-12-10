@@ -26,16 +26,10 @@
 
 @interface LargeBPMPicker : XibViewInterface
 
-@property (getter = GetBPMValue, setter = SetBPMValue:) int BPMValue;
+@property (getter = GetValue, setter = SetValue:) int Value;
 @property (getter = GetShortPressSecond, setter = SetShortPressSecond:) float ShortPressSecond;
 
-#if DIGIT_ENABLE_FLAG
-@property (strong, nonatomic) IBOutlet UIView *DigitInHundreds;
-@property (strong, nonatomic) IBOutlet UIView *DigitInTens;
-@property (strong, nonatomic) IBOutlet UIView *DigitInOnces;
-#else
 @property (strong, nonatomic) IBOutlet UILabel *ValueLabel;
-#endif
 
 @property (weak, nonatomic) IBOutlet UILabel *UpArrow;
 @property (weak, nonatomic) IBOutlet UILabel *DownArrow;

@@ -29,7 +29,7 @@
 - (void) CopyCellListToSelectBar : (NSArray *) CellDataTable;
 
 
-- (void) SetTargetCellLoopCountAdd: (int) Index AddValue:(int)Value;
+- (void) SetTargetCellLoopCountAdd: (int) Index Value:(int)NewValue;
 - (void) DeleteTargetIndexCell: (int) Index;
 
 @end

@@ -256,7 +256,7 @@
     self.CurrentCell = self.CurrentCellsDataTable[_FocusIndex];
     
     // Set BPM
-    self.TopSubView.BPMPicker.BPMValue = [self.CurrentCell.bpmValue intValue];
+    self.TopSubView.BPMPicker.Value = [self.CurrentCell.bpmValue intValue];
     
     // Set Volume Set
     [self.CellParameterSettingSubController SetVolumeBarVolume:self.CurrentCell];

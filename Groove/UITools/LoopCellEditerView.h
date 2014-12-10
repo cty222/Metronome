@@ -7,10 +7,11 @@
 //
 
 #import "SubPropertySelector.h"
+#import "ValueScrollView.h"
 
-@interface LoopCellEditerView : SubPropertySelector
-@property (strong, nonatomic) IBOutlet UIButton *CellCounterPlusButton;
-@property (strong, nonatomic) IBOutlet UIButton *CellCounterMinusButton;
+@interface LoopCellEditerView : SubPropertySelector <ValuePickerTemplateProtocol>
 @property (strong, nonatomic) IBOutlet UIButton *CellDeleteButton;
+@property (strong, nonatomic) IBOutlet UIImageView *DeleteUnLock;
+@property (strong, nonatomic) IBOutlet ValueScrollView *ValueScrollView;
 
 @end

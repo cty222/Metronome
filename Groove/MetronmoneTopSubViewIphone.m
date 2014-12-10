@@ -51,7 +51,7 @@
                                                        );
             
             self.AddLoopCellButton.frame = CGRectMake(self.AddLoopCellButton.frame.origin.x,
-                                                      self.AddLoopCellButton.frame.origin.y -18,
+                                                      self.AddLoopCellButton.frame.origin.y -19,
                                                       self.AddLoopCellButton.frame.size.width,
                                                       self.AddLoopCellButton.frame.size.height + 20
                                                       );
@@ -118,9 +118,6 @@
         self.LoopCellEditerView.hidden = YES;
         
     }
-    
-    NSLog(@"%@",self.AddLoopCellButton);
-
     return self;
 }
 

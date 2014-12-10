@@ -8,9 +8,9 @@
 
 #import "SubPropertySelector.h"
 #import "TimeSignatureType.h"
+#import "SmallLeftValuePicker.h"
 
-
-@interface TimeSignaturePickerView : SubPropertySelector
+@interface TimeSignaturePickerView : SubPropertySelector<ValuePickerTemplateProtocol>
 
 - (void) DisplayPropertyCell : (NSArray *) FillInData : (UIView *) TriggerButton;
 

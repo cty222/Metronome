@@ -1,26 +1,23 @@
 //
-//  LargeBPMPicker.m
+//  ValuePickerTemplate.m
 //  Groove
 //
-//  Created by C-ty on 2014/9/7.
+//  Created by C-ty on 2014/12/11.
 //  Copyright (c) 2014年 Cty. All rights reserved.
 //
 
-#import "LargeBPMPicker.h"
+#import "ValuePickerTemplate.h"
 
 // Private property
-@interface LargeBPMPicker ()
+@interface ValuePickerTemplate ()
 
 @property (getter = GetIsValueChange, setter = SetIsValueChange:) BOOL IsValueChange;
-
+@property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
 
 @end
 
-@implementation LargeBPMPicker
+@implementation ValuePickerTemplate
 {
-    // Picture Array
-    NSMutableArray * Digits;
-    
     int _Value;
     int _MaxLimit;
     int _MinLimit;
@@ -28,7 +25,6 @@
     // Touch Event
     CGPoint OriginalLocation;
     BOOL _Touched;
-    NSTimer *ArrowCancellTimer;
     NSTimer *ArrowLongPushTimer;
     
     // Short press
@@ -56,33 +52,14 @@
 
 -(void) Initialize
 {
-    NSNumber * DeviceType = [GlobalConfig DeviceType];
-    switch (DeviceType.intValue) {
-        case IPHONE_4S:
-            self.ValueLabel.font = [self.ValueLabel.font  fontWithSize:110];
-            self.UpArrow.font = [self.ValueLabel.font  fontWithSize:30];
-            self.DownArrow.font = [self.ValueLabel.font  fontWithSize:30];
-            break;
-        case IPHONE_5S:
-            break;
-        default:
-            break;
-    }
-    
-    
-    _MaxLimit = [[GlobalConfig BPMMaxValue] intValue];
-    _MinLimit = [[GlobalConfig BPMMinValue] intValue];
-
-    self.Value = 120;
+    self.Value = 0;
     self.ShortPressSecond = 0.5;
-    
+
+    self.ValueLabel.userInteractionEnabled = NO;
     self.UpArrow.userInteractionEnabled = NO;
     self.DownArrow.userInteractionEnabled = NO;
-
-    self.UpArrow.hidden = YES;
-    self.DownArrow.hidden = YES;
+    
     self.Touched = NO;
-
 }
 
 - (id)initWithFrame:(CGRect) frame
@@ -90,12 +67,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        [self Initialize];
     }
-
+    
     return self;
 }
 
-// NO Use
 - (id) init
 {
     self = [super init];
@@ -104,15 +81,6 @@
     }
     return self;
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 
 
 - (int) GetValue
@@ -128,18 +96,16 @@
     }
     
     _Value = NewValue;
-
+    
     [self.ValueLabel setText:[NSString stringWithFormat:@"%d", self.Value]];
-    [self.UpArrow setText:[NSString stringWithFormat:@"%d", self.Value + 1]];
-    [self.DownArrow setText:[NSString stringWithFormat:@"%d", self.Value -1 ]];
     
     // Pass to parent view.
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(SetBPMValue:)])
+        if([self.delegate respondsToSelector:@selector(SetValue:)])
         {
-            [self.delegate SetBPMValue: _Value];
+            [self.delegate SetValue: _Value];
         }
     }
 }
@@ -149,7 +115,7 @@
 // ============================
 // delegate
 //
-- (void) ShortPress: (LargeBPMPicker *) ThisPicker
+- (void) ShortPress: (id) ThisPicker
 {
     if (self.IsValueChange)
     {
@@ -234,11 +200,6 @@
 
 - (void) SetIsValueChange : (BOOL) NewValue
 {
-    if (NewValue)
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTapResetNotification object:nil];
-    }
-    
     _IsValueChange = NewValue;
 }
 
@@ -275,28 +236,12 @@
     {
         self.IsValueChange = NO;
         
-        if (self.UpArrow.hidden == NO)
-        {
-            [self CheckTouchValueArrow: OriginalLocation];
-        }
-        
-        self.UpArrow.hidden = NO;
-        self.DownArrow.hidden = NO;
-        if (ArrowCancellTimer != nil)
-        {
-            [ArrowCancellTimer invalidate];
-            ArrowCancellTimer = nil;
-        }
-        
+        [self CheckTouchValueArrow: OriginalLocation];
+       
         [self ShortPressCheckStart];
     }
     else
     {
-        ArrowCancellTimer = [NSTimer scheduledTimerWithTimeInterval:2
-                                                             target:self
-                                                           selector:@selector(ArrowCancellTicker:)
-                                                           userInfo:nil
-                                                            repeats:NO];
         if (ArrowLongPushTimer != nil)
         {
             [ArrowLongPushTimer invalidate];
@@ -360,18 +305,20 @@
 
 // ========
 // Ticker
-- (void) ArrowCancellTicker: (NSTimer *) ThisTimer
-{
-    self.UpArrow.hidden = YES;
-    self.DownArrow.hidden = YES;
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTapResetNotification object:nil];
-}
-
 - (void) ArrowLongPushTicker: (NSTimer *) ThisTimer
 {
     [self CheckTouchValueArrow: OriginalLocation];
 }
 
-
 //========
+
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
+
 @end

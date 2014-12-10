@@ -135,27 +135,32 @@
 
 
 // Loop 增減
-- (void) SetTargetCellLoopCountAdd: (int) Index AddValue:(int)Value
+- (void) SetTargetCellLoopCountAdd: (int) Index Value:(int)NewValue
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
     
     TempoCell * TargetCell = Parent.CurrentCellsDataTable[Index];
     
     
-    int NewTotalValue = [TargetCell.loopCount intValue] + Value;
-    
-    if (NewTotalValue >= [[GlobalConfig LoopValueMin] intValue] && NewTotalValue <= [[GlobalConfig LoopValueMax] intValue])
+    if (NewValue < [[GlobalConfig LoopValueMin] intValue])
     {
-        TargetCell.loopCount = [NSNumber numberWithInt:NewTotalValue];
-        
-        // TODO : 不要save這麼頻繁
-        [gMetronomeModel Save];
-        
-        [_CellValueToStringList replaceObjectAtIndex:Index withObject:[NSString stringWithFormat:@"%d", NewTotalValue]];
-        
-        [Parent FetchCurrentCellListFromModel];
-        [Parent ReflashCellListAndFocusCellByCurrentData];
+        NewValue = [[GlobalConfig LoopValueMin] intValue];
     }
+    else if (NewValue > [[GlobalConfig LoopValueMax] intValue])
+    {
+        NewValue = [[GlobalConfig LoopValueMax] intValue];
+    }
+    
+    TargetCell.loopCount = [NSNumber numberWithInt:NewValue];
+    
+    // TODO : 不要save這麼頻繁
+    [gMetronomeModel Save];
+    
+    [_CellValueToStringList replaceObjectAtIndex:Index withObject:[NSString stringWithFormat:@"%d", NewValue]];
+    
+    [Parent FetchCurrentCellListFromModel];
+    [Parent ReflashCellListAndFocusCellByCurrentData];
+
 }
 
 - (IBAction) AddLoopCellButtonClick: (UIButton *) ThisClickedButton

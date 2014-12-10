@@ -38,6 +38,11 @@
 		004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004BE67F19B2E131002CD995 /* MetronomeMainViewControllerIphone.xib */; };
 		004BE68519B2E670002CD995 /* GlobalConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 004BE68419B2E670002CD995 /* GlobalConfig.plist */; };
 		004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 004BE68719B2EA93002CD995 /* GlobalConfig.m */; };
+		005233B31A38AB7E008DF620 /* ValueScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005233B21A38AB7E008DF620 /* ValueScrollView.xib */; };
+		005233B61A38ACDD008DF620 /* ValueScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005233B51A38ACDD008DF620 /* ValueScrollView.m */; };
+		005233BC1A38AFBB008DF620 /* ValuePickerTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 005233BB1A38AFBB008DF620 /* ValuePickerTemplate.m */; };
+		005233C41A38C656008DF620 /* SmallLeftValuePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005233C31A38C656008DF620 /* SmallLeftValuePicker.xib */; };
+		005233C71A38C6D6008DF620 /* SmallLeftValuePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 005233C61A38C6D6008DF620 /* SmallLeftValuePicker.m */; };
 		005A93901A2CD07100280507 /* PropertyDialog.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005A938E1A2CD07100280507 /* PropertyDialog.pdf */; };
 		005A93911A2CD07100280507 /* PropertyDialogArrow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005A938F1A2CD07100280507 /* PropertyDialogArrow.pdf */; };
 		005A93941A2CE10900280507 /* VoiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 005A93931A2CE10900280507 /* VoiceType.m */; };
@@ -159,6 +164,14 @@
 		004BE68419B2E670002CD995 /* GlobalConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GlobalConfig.plist; sourceTree = "<group>"; };
 		004BE68619B2EA93002CD995 /* GlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConfig.h; sourceTree = "<group>"; };
 		004BE68719B2EA93002CD995 /* GlobalConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConfig.m; sourceTree = "<group>"; };
+		005233B21A38AB7E008DF620 /* ValueScrollView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ValueScrollView.xib; path = UITools/ValueScrollView.xib; sourceTree = "<group>"; };
+		005233B41A38ACDD008DF620 /* ValueScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValueScrollView.h; path = UITools/ValueScrollView.h; sourceTree = "<group>"; };
+		005233B51A38ACDD008DF620 /* ValueScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValueScrollView.m; path = UITools/ValueScrollView.m; sourceTree = "<group>"; };
+		005233BA1A38AFBB008DF620 /* ValuePickerTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValuePickerTemplate.h; path = UITools/ValuePickerTemplate.h; sourceTree = "<group>"; };
+		005233BB1A38AFBB008DF620 /* ValuePickerTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValuePickerTemplate.m; path = UITools/ValuePickerTemplate.m; sourceTree = "<group>"; };
+		005233C31A38C656008DF620 /* SmallLeftValuePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallLeftValuePicker.xib; sourceTree = "<group>"; };
+		005233C51A38C6D6008DF620 /* SmallLeftValuePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmallLeftValuePicker.h; path = UITools/SmallLeftValuePicker.h; sourceTree = "<group>"; };
+		005233C61A38C6D6008DF620 /* SmallLeftValuePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmallLeftValuePicker.m; path = UITools/SmallLeftValuePicker.m; sourceTree = "<group>"; };
 		005A938E1A2CD07100280507 /* PropertyDialog.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PropertyDialog.pdf; sourceTree = "<group>"; };
 		005A938F1A2CD07100280507 /* PropertyDialogArrow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PropertyDialogArrow.pdf; sourceTree = "<group>"; };
 		005A93921A2CE10900280507 /* VoiceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoiceType.h; path = CoreDataSubClass/VoiceType.h; sourceTree = "<group>"; };
@@ -420,6 +433,21 @@
 			name = GlobalConfig;
 			sourceTree = "<group>";
 		};
+		005233BD1A38C4EF008DF620 /* ValuePicker */ = {
+			isa = PBXGroup;
+			children = (
+				005233B21A38AB7E008DF620 /* ValueScrollView.xib */,
+				005233B41A38ACDD008DF620 /* ValueScrollView.h */,
+				005233B51A38ACDD008DF620 /* ValueScrollView.m */,
+				005233BA1A38AFBB008DF620 /* ValuePickerTemplate.h */,
+				005233BB1A38AFBB008DF620 /* ValuePickerTemplate.m */,
+				005233C31A38C656008DF620 /* SmallLeftValuePicker.xib */,
+				005233C51A38C6D6008DF620 /* SmallLeftValuePicker.h */,
+				005233C61A38C6D6008DF620 /* SmallLeftValuePicker.m */,
+			);
+			name = ValuePicker;
+			sourceTree = "<group>";
+		};
 		005DAFC31A34C586008D5F2D /* SubPropertySelector */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,6 +489,7 @@
 		00677B1019BC5D5B007A3085 /* MetronmeItems */ = {
 			isa = PBXGroup;
 			children = (
+				005233BD1A38C4EF008DF620 /* ValuePicker */,
 				005DAFC31A34C586008D5F2D /* SubPropertySelector */,
 				00677B1119BC5DA4007A3085 /* LargeBPMPicker.h */,
 				00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */,
@@ -730,10 +759,12 @@
 				00E8C0421A36119200D53F82 /* 8NotesYellow.pdf in Resources */,
 				0071A9D41A2B108B00EA57D2 /* HumanVoice.pdf in Resources */,
 				00AB03791A2783C500352DD7 /* SystemPageViewController.xib in Resources */,
+				005233B31A38AB7E008DF620 /* ValueScrollView.xib in Resources */,
 				00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */,
 				00E8C0431A36119200D53F82 /* AccentYellow.pdf in Resources */,
 				004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */,
 				00E8C01E1A3610FD00D53F82 /* 16NoteRed.pdf in Resources */,
+				005233C41A38C656008DF620 /* SmallLeftValuePicker.xib in Resources */,
 				003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */,
 				00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */,
 				0071A9D01A2B0EB300EA57D2 /* SystemButton.pdf in Resources */,
@@ -790,10 +821,12 @@
 				00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */,
 				00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */,
 				001B2B3019D3CF190057A22E /* DbConfig.m in Sources */,
+				005233B61A38ACDD008DF620 /* ValueScrollView.m in Sources */,
 				005DAFC61A34C7EB008D5F2D /* VoiceTypePickerView.m in Sources */,
 				006175C21A0BD4A300113560 /* CircleButton.m in Sources */,
 				00D92FD01A15C3D800AEC17F /* CellParameterSettingControl.m in Sources */,
 				00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */,
+				005233C71A38C6D6008DF620 /* SmallLeftValuePicker.m in Sources */,
 				00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */,
 				00D92FD31A15EDFD00AEC17F /* LoopAndPlayViewControl.m in Sources */,
 				00DA131E19F4EF1900F27E25 /* NomalHiClickVoice.m in Sources */,
@@ -812,6 +845,7 @@
 				00DA131C19F4EF1900F27E25 /* BeepBound.m in Sources */,
 				00D92FD61A15FE5700AEC17F /* SystemPageControl.m in Sources */,
 				003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */,
+				005233BC1A38AFBB008DF620 /* ValuePickerTemplate.m in Sources */,
 				00039D221A24ED4500710E0E /* SubPropertySelector.m in Sources */,
 				005A93971A2CE10A00280507 /* TimeSignatureType.m in Sources */,
 				00DA131119F4E94700F27E25 /* NotesTool.m in Sources */,

@@ -8,7 +8,16 @@
 
 #import "LoopCellEditerView.h"
 
+@interface LoopCellEditerView ()
+
+@property (getter = GetCanDelete, setter = SetCanDelete:) BOOL CanDelete;
+
+@end
+
 @implementation LoopCellEditerView
+{
+    BOOL _CanDelete;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -17,15 +26,65 @@
     // Drawing code
 }
 */
-- (IBAction)PlusChange:(id)sender {
-    [self ChangeValue:self :sender];
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
 
+        [self.ValueScrollView removeFromSuperview];
+        self.ValueScrollView = [[ValueScrollView alloc] initWithFrame:self.ValueScrollView.frame];
+        // Important !!!
+        [self.ContentScrollView addSubview:self.ValueScrollView];
+        self.ValueScrollView.delegate = self;
+       
+        self.CanDelete = YES;
+        self.DeleteUnLock.userInteractionEnabled = YES;
+        UITapGestureRecognizer *TabUnlockSwitch =
+        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(CellDeleteUnlock:)];
+        [self.DeleteUnLock addGestureRecognizer:TabUnlockSwitch];
+    }
+    return self;
 }
-- (IBAction)MinusChange:(id)sender {
-    [self ChangeValue:self :sender];
+
+- (void) SetHidden:(BOOL)hidden
+{
+    super.hidden = hidden;
+    self.CanDelete = NO;
 }
+
+- (void) SetValue : (int) NewValue
+{
+    [self ChangeValue:self :self.ValueScrollView];
+}
+
+- (BOOL) GetCanDelete
+{
+    return _CanDelete;
+}
+
+- (void) SetCanDelete : (BOOL) NewValue
+{
+    _CanDelete = NewValue;
+    if (_CanDelete)
+    {
+        self.DeleteUnLock.backgroundColor  = [UIColor redColor];
+        self.CellDeleteButton.enabled = YES;
+    }
+    else
+    {
+        self.DeleteUnLock.backgroundColor  = [UIColor blackColor];
+        self.CellDeleteButton.enabled = NO;
+    }
+}
+
 - (IBAction)CellDeleteChange:(id)sender {
     [self ChangeValue:self :sender];
 }
+
+- (IBAction)CellDeleteUnlock:(id)sender {
+    self.CanDelete = !self.CanDelete;
+}
+
 
 @end

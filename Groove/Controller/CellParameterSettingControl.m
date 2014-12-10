@@ -127,29 +127,18 @@
 }
 
 
--(IBAction) VoiceTypePickerDisplay:(UIView *)sender
-{
-    self.VoiceTypePickerView.hidden = !self.VoiceTypePickerView.hidden;
-}
-
 - (void) InitilaizeTimeSignaturePickerView
 {
     // If nil, create data view
-        NSArray *TimeSignatureTypeArray = [gMetronomeModel FetchTimeSignatureType];
-        self.TimeSignaturePickerView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.TimeSignaturePickerView.frame.origin.y;
-        self.TimeSignaturePickerView.ArrowCenterLine = self.TimeSigaturePicker.frame.origin.y + self.TimeSigaturePicker.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
-        self.TimeSignaturePickerView.TriggerButton = self.TimeSigaturePicker;
-        self.TimeSignaturePickerView.delegate = self;
-        
-        [self.TimeSignaturePickerView DisplayPropertyCell:TimeSignatureTypeArray : self.TimeSigaturePicker];
+    NSArray *TimeSignatureTypeArray = [gMetronomeModel FetchTimeSignatureType];
+    self.TimeSignaturePickerView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.TimeSignaturePickerView.frame.origin.y;
+    self.TimeSignaturePickerView.ArrowCenterLine = self.TimeSigaturePicker.frame.origin.y + self.TimeSigaturePicker.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
+    self.TimeSignaturePickerView.TriggerButton = self.TimeSigaturePicker;
+    self.TimeSignaturePickerView.delegate = self;
+    
+    [self.TimeSignaturePickerView DisplayPropertyCell:TimeSignatureTypeArray : self.TimeSigaturePicker];
     
 }
-
--(IBAction) TimeSigaturePickerDisplay:(UIView *)sender
-{
-    self.TimeSignaturePickerView.hidden = !self.TimeSignaturePickerView.hidden;
-}
-
 
 - (void) InitilaizeLoopCellEditerView
 {
@@ -157,11 +146,32 @@
     self.LoopCellEditerView.ArrowCenterLine = self.LoopCellEditer.frame.origin.y + self.LoopCellEditer.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
     self.LoopCellEditerView.TriggerButton = self.LoopCellEditer;
     self.LoopCellEditerView.delegate = self;
-
+    
+    
+    // ValueScrollView
+    self.LoopCellEditerView.ValueScrollView.MaxLimit  = [[GlobalConfig LoopValueMax] intValue];
+    self.LoopCellEditerView.ValueScrollView.MinLimit  = [[GlobalConfig LoopValueMin] intValue];
+    
 }
+
+-(IBAction) VoiceTypePickerDisplay:(UIView *)sender
+{
+    self.VoiceTypePickerView.hidden = !self.VoiceTypePickerView.hidden;
+}
+
+
+-(IBAction) TimeSigaturePickerDisplay:(UIView *)sender
+{
+    self.TimeSignaturePickerView.hidden = !self.TimeSignaturePickerView.hidden;
+}
+
 
 -(IBAction) LoopCellEditerDisplay:(UIButton *)sender
 {
+    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    TempoCell * TargetCell = Parent.CurrentCellsDataTable[Parent.FocusIndex];
+    self.LoopCellEditerView.ValueScrollView.Value =  [TargetCell.loopCount intValue];
+    
     self.LoopCellEditerView.hidden = !self.LoopCellEditerView.hidden;
 }
 
@@ -231,17 +241,14 @@
     [self.TimeSigaturePicker setTitle:TriggerItem.titleLabel.text forState:UIControlStateNormal];
 }
 
-- (IBAction) ChangeCellCounter:(UIButton *)TriggerItem
+- (IBAction) ChangeCellCounter:(id)TriggerItem
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
 
-    if (self.LoopCellEditerView.CellCounterPlusButton == TriggerItem)
+    if (self.LoopCellEditerView.ValueScrollView == TriggerItem)
     {
-        [Parent.LoopAndPlayViewSubController SetTargetCellLoopCountAdd:Parent.FocusIndex AddValue:1];
-    }
-    else if (self.LoopCellEditerView.CellCounterMinusButton == TriggerItem)
-    {
-        [Parent.LoopAndPlayViewSubController SetTargetCellLoopCountAdd:Parent.FocusIndex AddValue:-1];
+        [Parent.LoopAndPlayViewSubController SetTargetCellLoopCountAdd:Parent.FocusIndex
+                                                                 Value:self.LoopCellEditerView.ValueScrollView.Value];
     }
     else if (self.LoopCellEditerView.CellDeleteButton == TriggerItem)
     {
@@ -420,7 +427,7 @@
         // 如果速度低於BPMMinValue, 就重算
         if( NewBPMvalue >= [[GlobalConfig BPMMinValue] intValue])
         {
-            self.BPMPicker.BPMValue = NewBPMvalue;
+            self.BPMPicker.Value = NewBPMvalue;
         }
         else
         {
