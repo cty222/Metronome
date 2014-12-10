@@ -24,13 +24,39 @@
             self.SystemButton.autoresizesSubviews = NO;
             self.SystemButton.autoresizingMask = UIViewAutoresizingNone;
             self.TapAlertImage.autoresizingMask = UIViewAutoresizingNone;
+            self.TimeSigaturePicker.autoresizingMask = UIViewAutoresizingNone;
+            self.VoiceTypePicker.autoresizingMask = UIViewAutoresizingNone;
+            self.LoopCellEditer.autoresizingMask = UIViewAutoresizingNone;
             float Margin = 5;
             float OptionScrollViewLocationX = self.SystemButton.frame.origin.x + (self.SystemButton.frame.size.width - self.OptionScrollView.frame.size.width)/2;
             self.OptionScrollView.frame = CGRectMake(OptionScrollViewLocationX,
                                                      0,
                                                      self.OptionScrollView.frame.size.width,
-                                                     self.OptionScrollView.frame.size.height
+                                                     self.OptionScrollView.frame.size.height - 15
                                                      );
+            self.TimeSigaturePicker.frame = CGRectMake(self.TimeSigaturePicker.frame.origin.x,
+                                                     self.TimeSigaturePicker.frame.origin.y - 6,
+                                                     self.TimeSigaturePicker.frame.size.width,
+                                                     self.TimeSigaturePicker.frame.size.height
+                                                     );
+            self.VoiceTypePicker.frame = CGRectMake(self.VoiceTypePicker.frame.origin.x,
+                                                       self.VoiceTypePicker.frame.origin.y - 7,
+                                                       self.VoiceTypePicker.frame.size.width,
+                                                       self.VoiceTypePicker.frame.size.height
+                                                       );
+            self.LoopCellEditer.frame = CGRectMake(self.LoopCellEditer.frame.origin.x,
+                                                       self.LoopCellEditer.frame.origin.y - 8,
+                                                       self.LoopCellEditer.frame.size.width,
+                                                       self.LoopCellEditer.frame.size.height
+                                                       );
+            
+            self.AddLoopCellButton.frame = CGRectMake(self.AddLoopCellButton.frame.origin.x,
+                                                      self.AddLoopCellButton.frame.origin.y -18,
+                                                      self.AddLoopCellButton.frame.size.width,
+                                                      self.AddLoopCellButton.frame.size.height + 20
+                                                      );
+
+            
             self.SystemButton.frame = CGRectMake(OptionScrollViewLocationX - self.VoiceTypePicker.frame.size.width - Margin,
                                                  Margin,
                                                  self.VoiceTypePicker.frame.size.width,
@@ -62,8 +88,6 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-
-    
     self = [super initWithFrame:frame];
     if (self) {
 
@@ -94,6 +118,9 @@
         self.LoopCellEditerView.hidden = YES;
         
     }
+    
+    NSLog(@"%@",self.AddLoopCellButton);
+
     return self;
 }
 
