@@ -59,5 +59,6 @@ typedef struct {
 @property (nonatomic, assign) id<CircleButtonProtocol> delegate;
 
 - (void) TwickLing;
+- (void) ResetHandle;
 
 @end

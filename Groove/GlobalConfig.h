@@ -62,4 +62,6 @@ enum {
 #define kChangeToSystemPageView @"kChangeToSystemPageView"
 #define kChangeToMetronomeView @"kChangeToMetronomeView"
 
+#define kEnterAdNotification @"kEnterAdNotification"
+
 @end

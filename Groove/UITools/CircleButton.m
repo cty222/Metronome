@@ -7,6 +7,8 @@
 //
 
 #import "CircleButton.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @implementation CircleButton
 {
@@ -26,8 +28,6 @@
     
     NSOperationQueue * _Queue;
     NSBlockOperation * RoundingOperation;
-
-    
 }
 
 - (void) awakeFromNib
@@ -424,6 +424,12 @@
                                         }];
 
                     }];
+}
+
+- (void) ResetHandle
+{
+    // useful
+    self.Touched = NO;
 }
 
 #if 0

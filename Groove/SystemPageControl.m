@@ -28,32 +28,34 @@
 // =================================
 // iAD function
 
-- (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+-(void) bannerViewWillLoadAd:(ADBannerView *)banner
 {
-    // 有錯誤會進來
-}
-
-- (void) bannerViewActionDidFinish:(ADBannerView *)banner
-{
-    // 使用者關掉廣告內容畫面
 }
 
 -(void) bannerViewDidLoadAd:(ADBannerView *)banner
 {
     // 廣告載入
-}
-
--(void) bannerViewWillLoadAd:(ADBannerView *)banner
-{
     
 }
+
+- (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    // 有錯誤會進來
+}
+
 
 -(BOOL) bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
 {
     // 使用者點了廣告後開啟畫面
+
     return YES;
 }
 
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kEnterAdNotification object:nil];
+
+}
 
 //
 // =================================

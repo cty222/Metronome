@@ -112,6 +112,11 @@
                                                  name:kTapResetNotification
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(EnterAddCallBack:)
+                                                 name:kEnterAdNotification
+                                               object:nil];
+    
 
 }
 
@@ -455,6 +460,18 @@
     _LastRecordTime_ms = 0;
     self.TapTriggerCounter = 0;
 }
+
+- (void) EnterAddCallBack :(NSNotification *)Notification
+{
+    [self.AccentCircleVolumeButton ResetHandle];
+    [self.QuarterCircleVolumeButton ResetHandle];
+    [self.EighthNoteCircleVolumeButton ResetHandle];
+    [self.SixteenthNoteCircleVolumeButton ResetHandle];
+    [self.TrippleNoteCircleVolumeButton ResetHandle];
+
+}
+
+
 //
 // =========================
 @end
