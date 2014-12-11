@@ -44,8 +44,10 @@
 {
     [super viewDidAppear:animated];
     
-    NSLog(@"main viewDidAppear");
-    
+    if (self.CellParameterSettingSubController != nil)
+    {
+        [self.CellParameterSettingSubController MainViewDidAppear];
+    }
 }
 
 - (void)viewDidLoad

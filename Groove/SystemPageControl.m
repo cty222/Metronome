@@ -53,7 +53,6 @@
 
 - (void)bannerViewActionDidFinish:(ADBannerView *)banner
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kEnterAdNotification object:nil];
 
 }
 

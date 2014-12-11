@@ -24,6 +24,17 @@
     int _TapTriggerCounter;
 }
 
+
+- (void) MainViewDidAppear
+{
+    [self.AccentCircleVolumeButton ResetHandle];
+    [self.QuarterCircleVolumeButton ResetHandle];
+    [self.EighthNoteCircleVolumeButton ResetHandle];
+    [self.SixteenthNoteCircleVolumeButton ResetHandle];
+    [self.TrippleNoteCircleVolumeButton ResetHandle];
+    
+}
+
 -(void) InitializeVolumeSets
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
@@ -112,12 +123,6 @@
                                                  name:kTapResetNotification
                                                object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(EnterAddCallBack:)
-                                                 name:kEnterAdNotification
-                                               object:nil];
-    
-
 }
 
 - (void) InitilaizeVoiceTypePickerView
@@ -461,15 +466,6 @@
     self.TapTriggerCounter = 0;
 }
 
-- (void) EnterAddCallBack :(NSNotification *)Notification
-{
-    [self.AccentCircleVolumeButton ResetHandle];
-    [self.QuarterCircleVolumeButton ResetHandle];
-    [self.EighthNoteCircleVolumeButton ResetHandle];
-    [self.SixteenthNoteCircleVolumeButton ResetHandle];
-    [self.TrippleNoteCircleVolumeButton ResetHandle];
-
-}
 
 
 //

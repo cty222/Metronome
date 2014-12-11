@@ -45,7 +45,7 @@ typedef enum{
 
 @property UIViewController *ParrentController;
 
-
+- (void) MainViewDidAppear;
 - (void) InitializeVolumeSets;
 - (void) InitlizeCellParameterControlItems;
 - (void) SetVolumeBarVolume : (TempoCell *)Cell;
