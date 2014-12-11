@@ -32,4 +32,5 @@
 - (void) SetTargetCellLoopCountAdd: (int) Index Value:(int)NewValue;
 - (void) DeleteTargetIndexCell: (int) Index;
 
+
 @end

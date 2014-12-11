@@ -17,6 +17,7 @@
 {
     // Index
     int _FocusIndex;
+    BOOL _IsDeleteUICellFinished;
     
     // LoopCellPlayingFlag
     METRONOME_PLAYING_MODE _PlayingMode;
@@ -42,6 +43,8 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    NSLog(@"main viewDidAppear");
     
 }
 
@@ -238,19 +241,50 @@
 
 //  =========================
 //  property
-//  
+//
+- (BOOL) GetIsDeleteUICellFinished
+{
+    return _IsDeleteUICellFinished;
+}
+
+-(void) SetIsDeleteUICellFinished: (BOOL)NewValue
+{
+    if (_IsDeleteUICellFinished == NewValue)
+    {
+        return;
+    }
+    
+    _IsDeleteUICellFinished = NewValue;
+}
+
+
 - (int) GetFocusIndex
 {
+    if (_FocusIndex >= self.CurrentCellsDataTable.count)
+    {
+        NSLog(@"Bug !! Controller _FocusIndex over count error" );
+        _FocusIndex = self.CurrentCellsDataTable.count -1;
+    }
+    else if (_FocusIndex < 0)
+    {
+        NSLog(@"Bug !! Controller _FocusIndex lower 0 error");
+        _FocusIndex = 0;
+        
+    }
     return _FocusIndex;
 }
 
 // 不會設下去到Bottom View UI
 - (void) SetFocusIndex:(int) NewValue
 {
-    if (NewValue < 0 || NewValue >= self.CurrentCellsDataTable.count || _FocusIndex == NewValue)
+    if (NewValue < 0
+        || NewValue >= self.CurrentCellsDataTable.count
+        || (self.PlayingMode == LIST_PLAYING && NewValue == _FocusIndex)
+        )
     {
       return;
     }
+
     
     _FocusIndex = NewValue;
     self.CurrentCell = self.CurrentCellsDataTable[_FocusIndex];
@@ -271,6 +305,7 @@
     [self.CellParameterSettingSubController.TimeSigaturePicker setTitle:self.CurrentTimeSignature forState:UIControlStateNormal];
     
     [self ResetCounter];
+
 }
 
 - (METRONOME_PLAYING_MODE) GetPlayingMode
@@ -289,8 +324,9 @@
     
     switch (_PlayingMode) {
         case STOP_PLAYING:
-            [self ResetCounter];
             [self StopClick];
+            [self ResetCounter];
+            NSLog(@"ResetCounter 1");
             break;
         case SINGLE_PLAYING:
             // TODO : 要改成Stop圖
@@ -454,8 +490,9 @@
 - (void) StartClick
 {
     if (PlaySoundTimer != nil) {
-        [self ResetCounter];
         [self StopClick];
+        [self ResetCounter];
+        NSLog(@"ResetCounter 2");
     }
     
     // 因為Timer的特性是先等再做
@@ -490,6 +527,7 @@
     if (self.PlayingMode == STOP_PLAYING)
     {
         [self ResetCounter];
+        NSLog(@"ResetCounter 3");
         [self StopClick];
         [ThisTimer invalidate];
     }

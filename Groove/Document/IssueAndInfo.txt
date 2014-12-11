@@ -27,20 +27,3 @@ focus Cell View : 46 *46
 Cell 		    : 40 * 40
 
 
-Issue :
-主頁面：
-funcion
-
-2.2 Loop 增加減少閃爍
-2.5 Loop Cell 長壓進入刪除模式, drop掉 或是按一下 回復
-
-
-
-
-UI:
-LoopCell1.2 箭頭不在牆壁上
-
-
-3.1 Loop selecter 圖形沒換 
-
-

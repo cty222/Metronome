@@ -15,6 +15,9 @@
     UIImage *_BlackPlayCurrentImage;
     
     NSMutableArray * _CellValueToStringList;
+    
+    // Delete Cell
+    TempoCell * _DeletedCell;
 }
 
 - (void) InitlizePlayingItems
@@ -176,44 +179,42 @@
     [Parent ReflashCellListAndFocusCellByCurrentData];
 }
 
-- (void) DeleteTargetIndexCell: (int) Index
+- (void) DeleteTargetIndexCell: (int) CurrentFocusIndex
 {
-    
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
     
     // 不可以刪掉最後一個, 或大於Count > 或負數Index
     if ((Parent.CurrentCellsDataTable.count <= 1 )
-        || (Parent.CurrentCellsDataTable.count <= Index )
-        || (Index <0 )
+        || (Parent.CurrentCellsDataTable.count <= CurrentFocusIndex )
+        || (CurrentFocusIndex <0 )
         )
     {
         return;
     }
-    
-    
-    int NewIndex = -1;
-    // 如果刪的是focus cell, 先改成focus前一個, 如果是最前面就改成focus後一個
-    if (Index == Parent.FocusIndex)
-    {
-        if (Index - 1 >= 0)
-        {
-            NewIndex = Index -1;
-        }
-        else
-        {
-            NewIndex = Index + 1;;
-        }
-        [self ChangeSelectBarForcusIndex:NewIndex];
-    }
-    
-    
+
     // 找到要刪除的
-    TempoCell * DeletedCell = Parent.CurrentCellsDataTable[Index];
-    [gMetronomeModel DeleteTargetTempoCell:DeletedCell];
+    _DeletedCell = Parent.CurrentCellsDataTable[CurrentFocusIndex];
     
-    // 重新顯示
+    // 刪掉資料庫對應資料
+    [gMetronomeModel DeleteTargetTempoCell:_DeletedCell];
+    _DeletedCell = nil;
+
+    // 重讀資料庫
     [Parent FetchCurrentCellListFromModel];
+    
+    // 如果刪掉的是最後一個
+    // 向前移一個
+    if (CurrentFocusIndex >= Parent.CurrentCellsDataTable.count)
+    {
+        CurrentFocusIndex = Parent.CurrentCellsDataTable.count -1;
+    }
+    Parent.FocusIndex = CurrentFocusIndex;
+    
+    [GlobalConfig SetLastFocusCellIndex: Parent.FocusIndex];
+
+    // 重新顯示
     [Parent ReflashCellListAndFocusCellByCurrentData];
+
 }
 
 //

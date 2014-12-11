@@ -62,8 +62,4 @@ typedef enum {
 @property  LoopAndPlayViewControl * LoopAndPlayViewSubController;
 @property  SystemPageControl * SystemPageController;
 
-
-
-
-
 @end
