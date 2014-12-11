@@ -24,6 +24,7 @@
 #import "CellParameterSettingControl.h"
 #import "LoopAndPlayViewControl.h"
 #import "SystemPageControl.h"
+#import "PlayerForSongs.h"
 
 @class LoopAndPlayViewControl;
 @class CellParameterSettingControl;

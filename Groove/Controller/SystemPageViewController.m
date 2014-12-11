@@ -7,7 +7,6 @@
 //
 
 #import "SystemPageViewController.h"
-
 @interface SystemPageViewController ()
 
 @end
@@ -21,6 +20,14 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSNumber *LastSelecedtListIndex = [GlobalConfig LastSelecedtListIndex];
+    TempoList * CurrentList = gMetronomeModel.TempoListDataTable[[LastSelecedtListIndex intValue]];
+    self.CurrentSelectedList.text = CurrentList.tempoListName;
 }
 
 - (void)viewDidLoad
@@ -52,10 +59,45 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kChangeToMetronomeView object:nil];
 }
 
+- (IBAction)ChooseMusic:(id)sender {
+    MPMediaPickerController *MusicPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
+    MusicPicker.delegate = self;
+    MusicPicker.allowsPickingMultipleItems =YES;
+    [self presentViewController:MusicPicker animated:YES completion:nil];
+}
+
+- (void) mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
+{
+    [PlayerForSongs SetQueueWithItemCollection:mediaItemCollection];
+    
+    MPMediaItem * Item = mediaItemCollection.items[0];
+    if (Item != nil)
+    {
+        self.CurrentSelectedMusic.text = [Item valueForProperty:MPMediaItemPropertyAlbumTitle];
+    }
+    else
+    {
+        self.CurrentSelectedMusic.text = @"";
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
+{
+    self.CurrentSelectedMusic.text = @"";
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)ClickTotalValueChange:(id)sender {
+}
+
+
 
 /*
 #pragma mark - Navigation

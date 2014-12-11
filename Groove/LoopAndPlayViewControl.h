@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "MetronomeMainViewControllerIphone.h"
 
-
 @interface LoopAndPlayViewControl : NSObject <SelectBarProtocol>
 
 // (3) Playing Cell functon item

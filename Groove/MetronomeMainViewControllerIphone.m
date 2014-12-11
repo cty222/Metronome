@@ -35,6 +35,7 @@
     CURRENT_PLAYING_NOTE _CurrentPlayingNoteCounter;
     int _LoopCountCounter;
     int _TimeSignatureCounter;
+    BOOL _ListChangeFocusFlag;
     //
     // ========================
 
@@ -229,7 +230,13 @@
 //
 - (void) FetchCurrentCellListFromModel
 {
-    self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]];
+    NSNumber *LastSelecedtListIndex = [GlobalConfig LastSelecedtListIndex];
+    self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[[LastSelecedtListIndex intValue]]];
+
+    if (self.CurrentCellsDataTable == nil)
+    {
+        self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]];
+    }
 }
 
 - (void) ReflashCellListAndFocusCellByCurrentData
@@ -281,12 +288,16 @@
 {
     if (NewValue < 0
         || NewValue >= self.CurrentCellsDataTable.count
-        || (self.PlayingMode == LIST_PLAYING && NewValue == _FocusIndex)
+        || (self.PlayingMode == LIST_PLAYING && NewValue == _FocusIndex && !_ListChangeFocusFlag)
         )
     {
       return;
     }
-
+    else if (_ListChangeFocusFlag)
+    {
+        _ListChangeFocusFlag = NO;
+    }
+    
     
     _FocusIndex = NewValue;
     self.CurrentCell = self.CurrentCellsDataTable[_FocusIndex];
@@ -326,9 +337,9 @@
     
     switch (_PlayingMode) {
         case STOP_PLAYING:
+            [PlayerForSongs Stop];
             [self StopClick];
             [self ResetCounter];
-            NSLog(@"ResetCounter 1");
             break;
         case SINGLE_PLAYING:
             // TODO : 要改成Stop圖
@@ -336,6 +347,7 @@
             break;
         case LIST_PLAYING:
             [self StartClick];
+            [PlayerForSongs Play];
             break;
         default:
             self.PlayingMode = STOP_PLAYING;
@@ -446,6 +458,7 @@
             if ([GlobalConfig PlayCellListNoneStop])
             {
                 NewIndex = 0;
+                _ListChangeFocusFlag = YES;
             }
             else
             {
@@ -494,7 +507,6 @@
     if (PlaySoundTimer != nil) {
         [self StopClick];
         [self ResetCounter];
-        NSLog(@"ResetCounter 2");
     }
     
     // 因為Timer的特性是先等再做
@@ -529,7 +541,6 @@
     if (self.PlayingMode == STOP_PLAYING)
     {
         [self ResetCounter];
-        NSLog(@"ResetCounter 3");
         [self StopClick];
         [ThisTimer invalidate];
     }

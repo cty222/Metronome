@@ -42,17 +42,17 @@ enum {
 + (NSNumber *) BPMMaxValue;
 + (NSNumber *) DbVersion;
 + (NSNumber *) LastFocusCellIndex;
++ (NSNumber *) LastSelecedtListIndex;
+
 + (NSNumber *) LoopValueMin;
 + (NSNumber *) LoopValueMax;
 + (NSNumber *) LoopCellMaxCount;
 + (BOOL) PlayCellListNoneStop;
-+ (BOOL) LeftChannel;
-+ (BOOL) RightChannel;
+
 
 + (void) SetLastFocusCellIndex : (int) NewValue;
 + (void) SetPlayCellListNoneStop : (BOOL) NewValue;
-+ (void) SetLeftChannel : (BOOL) NewValue;
-+ (void) SetRightChannel : (BOOL) NewValue;
+
 
 // Main View
 + (UIViewController *) SystemPageViewControllerIphone;

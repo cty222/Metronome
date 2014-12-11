@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		00039D221A24ED4500710E0E /* SubPropertySelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 00039D211A24ED4500710E0E /* SubPropertySelector.m */; };
+		0007F2091A3A1D43003F6927 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0007F2081A3A1D43003F6927 /* MediaPlayer.framework */; };
+		0007F20F1A3A22B9003F6927 /* PlayerForSongs.m in Sources */ = {isa = PBXBuildFile; fileRef = 0007F20E1A3A22B9003F6927 /* PlayerForSongs.m */; };
 		001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */; };
 		001B2B3019D3CF190057A22E /* DbConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2F19D3CF190057A22E /* DbConfig.m */; };
 		001B2B3D19D4106A0057A22E /* TempoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B3C19D4106A0057A22E /* TempoList.m */; };
@@ -123,6 +125,9 @@
 /* Begin PBXFileReference section */
 		00039D201A24ED4500710E0E /* SubPropertySelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubPropertySelector.h; path = UITools/SubPropertySelector.h; sourceTree = "<group>"; };
 		00039D211A24ED4500710E0E /* SubPropertySelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubPropertySelector.m; path = UITools/SubPropertySelector.m; sourceTree = "<group>"; };
+		0007F2081A3A1D43003F6927 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		0007F20D1A3A22B9003F6927 /* PlayerForSongs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerForSongs.h; path = Tools/PlayerForSongs.h; sourceTree = "<group>"; };
+		0007F20E1A3A22B9003F6927 /* PlayerForSongs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerForSongs.m; path = Tools/PlayerForSongs.m; sourceTree = "<group>"; };
 		001B2B2C19D3CA0C0057A22E /* Groove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Groove.xcdatamodel; sourceTree = "<group>"; };
 		001B2B2E19D3CF190057A22E /* DbConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DbConfig.h; path = CoreDataSubClass/DbConfig.h; sourceTree = "<group>"; };
 		001B2B2F19D3CF190057A22E /* DbConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DbConfig.m; path = CoreDataSubClass/DbConfig.m; sourceTree = "<group>"; };
@@ -266,6 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0007F2091A3A1D43003F6927 /* MediaPlayer.framework in Frameworks */,
 				001F011B1A05679D00189941 /* iAd.framework in Frameworks */,
 				00DA132219F4F38A00F27E25 /* OpenAL.framework in Frameworks */,
 				00DA132019F4F38000F27E25 /* AudioToolbox.framework in Frameworks */,
@@ -340,6 +346,7 @@
 		004BE63C19B2DDC7002CD995 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0007F2081A3A1D43003F6927 /* MediaPlayer.framework */,
 				001F011A1A05679D00189941 /* iAd.framework */,
 				00DA132119F4F38A00F27E25 /* OpenAL.framework */,
 				00DA131F19F4F38000F27E25 /* AudioToolbox.framework */,
@@ -608,6 +615,8 @@
 				00DA131419F4EE1E00F27E25 /* AudioPlay.m */,
 				00319FB81A0F2EED00CF3C83 /* UINSOperation.h */,
 				00319FB91A0F2EED00CF3C83 /* UINSOperation.m */,
+				0007F20D1A3A22B9003F6927 /* PlayerForSongs.h */,
+				0007F20E1A3A22B9003F6927 /* PlayerForSongs.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -814,6 +823,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0007F20F1A3A22B9003F6927 /* PlayerForSongs.m in Sources */,
 				001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */,
 				00677B0519BC4C09007A3085 /* MetronmoneTopSubViewIphone.m in Sources */,
 				004BE68019B2E131002CD995 /* MetronomeMainViewControllerIphone.m in Sources */,

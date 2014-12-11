@@ -238,6 +238,27 @@ static NSMutableDictionary * ThisPlist;
     return [ThisPlist objectForKey:@"DbVersion"];
 }
 
++ (NSNumber *) LastSelecedtListIndex
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return nil;
+    }
+    
+    return [ThisPlist objectForKey:@"LastSelecedtListIndex"];
+}
+
++ (void) SetLastSelecedtListIndex : (int) NewValue
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return;
+    }
+    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"LastSelecedtListIndex"];
+    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+    
+}
+
 + (NSNumber *) LastFocusCellIndex
 {
     if (![GlobalConfig IsInitialized])
@@ -294,6 +315,7 @@ static NSMutableDictionary * ThisPlist;
     {
         return NO;
     }
+    
     return [[ThisPlist objectForKey:@"PlayCellListNoneStop"] boolValue];
 }
 
@@ -304,46 +326,6 @@ static NSMutableDictionary * ThisPlist;
         return;
     }
     [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"PlayCellListNoneStop"];
-    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
-    
-}
-
-+ (BOOL) LeftChannel
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return YES;
-    }
-    return [[ThisPlist objectForKey:@"LeftChannel"] boolValue];
-}
-
-+ (void) SetLeftChannel : (BOOL) NewValue
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return;
-    }
-    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"LeftChannel"];
-    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
-    
-}
-
-+ (BOOL) RightChannel
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return YES;
-    }
-    return [[ThisPlist objectForKey:@"RightChannel"] boolValue];
-}
-
-+ (void) SetRightChannel : (BOOL) NewValue
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return;
-    }
-    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"RightChannel"];
     [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
     
 }
