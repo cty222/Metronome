@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SystemPageViewController">
             <connections>
-                <outlet property="ClickTotalValume" destination="hfU-R4-uwr" id="2Ui-iM-l2g"/>
                 <outlet property="CurrentSelectedList" destination="GNY-5i-RXS" id="P3Q-bW-0O4"/>
                 <outlet property="CurrentSelectedMusic" destination="xP8-BX-2AP" id="Ter-D6-uco"/>
                 <outlet property="FullView" destination="i5M-Pr-FkT" id="1ma-41-DK3"/>
-                <outlet property="ListSelector" destination="Ni8-9Z-h4Z" id="FsL-cR-v7l"/>
-                <outlet property="MusicSelector" destination="Oa4-sJ-HXY" id="a9X-kS-wSu"/>
+                <outlet property="MusicTotalVolume" destination="ZIv-SU-6HS" id="8oN-3E-Gfa"/>
                 <outlet property="ReturnButton" destination="BNK-rm-aF6" id="C7N-xn-Bkq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -33,59 +32,37 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" id="jUT-gl-txo">
-                    <rect key="frame" x="0.0" y="100" width="320" height="100"/>
+                    <rect key="frame" x="0.0" y="100" width="320" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ni8-9Z-h4Z">
-                            <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="List">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GNY-5i-RXS">
-                            <rect key="frame" x="88" y="0.0" width="232" height="60"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GNY-5i-RXS">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="hfU-R4-uwr">
-                            <rect key="frame" x="86" y="68" width="225" height="31"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <connections>
-                                <action selector="ClickTotalValueChange:" destination="-1" eventType="valueChanged" id="Pba-Qt-c4r"/>
-                            </connections>
-                        </slider>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="hLW-YM-tig">
-                    <rect key="frame" x="0.0" y="208" width="320" height="100"/>
+                    <rect key="frame" x="0.0" y="177" width="320" height="109"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Oa4-sJ-HXY">
-                            <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Music">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="ChooseMusic:" destination="-1" eventType="touchUpInside" id="vLR-0J-occ"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xP8-BX-2AP">
-                            <rect key="frame" x="88" y="0.0" width="232" height="60"/>
+                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xP8-BX-2AP">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" id="VgH-E5-KlN" customClass="MPVolumeView">
-                            <rect key="frame" x="88" y="50" width="225" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="ZIv-SU-6HS">
+                            <rect key="frame" x="86" y="59" width="219" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="MusicValueChange:" destination="-1" eventType="valueChanged" id="ceF-yl-lYQ"/>
+                            </connections>
+                        </slider>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>

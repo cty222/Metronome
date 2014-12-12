@@ -26,6 +26,8 @@
 
     self.PlayCellListButton = Parent.TopSubView.PlayCellListButton;
     self.PlayCurrentCellButton = Parent.BottomSubView.PlayCurrentCellButton;
+    self.PlayMusicButton = Parent.TopSubView.PlayMusicButton;
+    
     
     // PlayLoopCellButton Initalize
     // red  playloop button
@@ -47,6 +49,10 @@
     // PlayCellListButton Initialize
     [self.PlayCellListButton addTarget:self
                                 action:@selector(PlayCellListButtonClick:) forControlEvents:UIControlEventTouchDown];
+    
+    // PlayCellListButton Initialize
+    [self.PlayMusicButton addTarget:self
+                                action:@selector(PlayMusicButtonClick:) forControlEvents:UIControlEventTouchDown];
 }
 
 - (void) InitializeLoopControlItem
@@ -136,6 +142,18 @@
     }
 }
 
+- (IBAction)PlayMusicButtonClick:(UIButton *)ThisClickedButton
+{
+    if (!myPlayer.playing)
+    {
+        [myPlayer play];
+    }
+    else
+    {
+        [myPlayer stop];
+        [myPlayer setCurrentTime:0.0];
+    }
+}
 
 // Loop 增減
 - (void) SetTargetCellLoopCountAdd: (int) Index Value:(int)NewValue

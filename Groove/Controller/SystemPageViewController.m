@@ -12,6 +12,10 @@
 @end
 
 @implementation SystemPageViewController
+{
+    MPMediaPickerController *MusicPicker;
+
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +32,14 @@
     NSNumber *LastSelecedtListIndex = [GlobalConfig LastSelecedtListIndex];
     TempoList * CurrentList = gMetronomeModel.TempoListDataTable[[LastSelecedtListIndex intValue]];
     self.CurrentSelectedList.text = CurrentList.tempoListName;
+    
+    if (MusicPicker == nil)
+    {
+        MusicPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
+        MusicPicker.delegate = self;
+        MusicPicker.allowsPickingMultipleItems = NO;
+        MusicPicker.showsCloudItems = NO;
+    }
 }
 
 - (void)viewDidLoad
@@ -53,32 +65,45 @@
     }
     
     self.FullView.frame = FullViewFrame;
-        
+    
+    self.CurrentSelectedList.userInteractionEnabled = YES;
+    self.CurrentSelectedMusic.userInteractionEnabled = YES;
+
+    UITapGestureRecognizer *TabSelectedMusic =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChooseMusic:)];
+    [self.CurrentSelectedMusic addGestureRecognizer:TabSelectedMusic];
+    
 }
 - (IBAction)ReturnToMetronome:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:kChangeToMetronomeView object:nil];
 }
 
 - (IBAction)ChooseMusic:(id)sender {
-    MPMediaPickerController *MusicPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
-    MusicPicker.delegate = self;
-    MusicPicker.allowsPickingMultipleItems =YES;
+
     [self presentViewController:MusicPicker animated:YES completion:nil];
 }
 
 - (void) mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
 {
-    [PlayerForSongs SetQueueWithItemCollection:mediaItemCollection];
-    
     MPMediaItem * Item = mediaItemCollection.items[0];
     if (Item != nil)
     {
-        self.CurrentSelectedMusic.text = [Item valueForProperty:MPMediaItemPropertyAlbumTitle];
+        
+        self.CurrentSelectedMusic.text = [Item valueForProperty:MPMediaItemPropertyArtist];
+        self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:@" - "];
+        self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:[Item valueForProperty:MPMediaItemPropertyTitle]];
     }
     else
     {
         self.CurrentSelectedMusic.text = @"";
     }
+    
+    NSURL *url = [Item valueForProperty:MPMediaItemPropertyAssetURL];
+    
+
+    myPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    
+   
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -94,7 +119,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)ClickTotalValueChange:(id)sender {
+- (IBAction)MusicValueChange:(UISlider *)sender {
+
+    [myPlayer setVolume:sender.value];
 }
 
 

@@ -337,7 +337,6 @@
     
     switch (_PlayingMode) {
         case STOP_PLAYING:
-            [PlayerForSongs Stop];
             [self StopClick];
             [self ResetCounter];
             break;
@@ -347,7 +346,6 @@
             break;
         case LIST_PLAYING:
             [self StartClick];
-            [PlayerForSongs Play];
             break;
         default:
             self.PlayingMode = STOP_PLAYING;

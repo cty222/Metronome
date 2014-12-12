@@ -14,6 +14,7 @@
 // (3) Playing Cell functon item
 @property (strong, nonatomic) IBOutlet UIButton *PlayCellListButton;
 @property (strong, nonatomic) IBOutlet UIButton *PlayCurrentCellButton;
+@property (strong, nonatomic) IBOutlet UIButton *PlayMusicButton;
 
 // (4) Loop Control function button
 @property (strong, nonatomic) IBOutlet MetronomeSelectBar *SelectGrooveBar;

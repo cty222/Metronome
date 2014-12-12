@@ -81,10 +81,19 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PYh-UZ-971">
-                    <rect key="frame" x="0.0" y="225" width="110" height="40"/>
+                    <rect key="frame" x="0.0" y="225" width="105" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Marion-Bold" family="Marion" pointSize="23"/>
                     <state key="normal" title="Play List">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NIc-HA-2M5">
+                    <rect key="frame" x="120" y="225" width="120" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Marion-Bold" family="Marion" pointSize="23"/>
+                    <state key="normal" title="Play Music">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -100,6 +109,7 @@
                 <outlet property="LoopCellEditerView" destination="2rO-6h-C3a" id="7cD-U5-w9v"/>
                 <outlet property="OptionScrollView" destination="IdF-4P-xRb" id="Hd3-kb-LJt"/>
                 <outlet property="PlayCellListButton" destination="PYh-UZ-971" id="t2T-cG-LkT"/>
+                <outlet property="PlayMusicButton" destination="NIc-HA-2M5" id="CUb-AN-ff5"/>
                 <outlet property="SystemButton" destination="qDg-3A-xuS" id="tBW-yK-My4"/>
                 <outlet property="TapAlertImage" destination="GDj-bq-qoF" id="O57-od-uq2"/>
                 <outlet property="TimeSigaturePicker" destination="n1P-MM-kWw" id="DlP-Uu-mbS"/>

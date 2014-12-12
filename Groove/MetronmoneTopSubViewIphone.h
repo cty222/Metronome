@@ -15,6 +15,7 @@
 @interface MetronmoneTopSubViewIphone : XibViewInterface <LargeBPMPickerProtocol>
 
 @property (strong, nonatomic) IBOutlet LargeBPMPicker *BPMPicker;
+@property (strong, nonatomic) IBOutlet UIButton *PlayMusicButton;
 
 @property (strong, nonatomic) IBOutlet UIButton *PlayCellListButton;
 @property (strong, nonatomic) IBOutlet UIButton *VoiceTypePicker;

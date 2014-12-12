@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVAudioPlayer.h>
 
 @class PlayerForSongs;
+
+AVAudioPlayer *myPlayer;
 
 @interface PlayerForSongs : NSObject
 

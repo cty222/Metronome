@@ -56,6 +56,7 @@
 		005DAFCB1A34CB76008D5F2D /* LoopCellEditerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DAFCA1A34CB76008D5F2D /* LoopCellEditerView.m */; };
 		005DAFCD1A34CB8C008D5F2D /* LoopCellEditerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005DAFCC1A34CB8C008D5F2D /* LoopCellEditerView.xib */; };
 		005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */; };
+		00612D941A3B7572009A7C88 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00612D931A3B7572009A7C88 /* AVFoundation.framework */; };
 		006175BE1A0BCFE100113560 /* PlayLoop_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */; };
 		006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BD1A0BCFE100113560 /* PlayLoop.pdf */; };
 		006175C21A0BD4A300113560 /* CircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 006175C11A0BD4A200113560 /* CircleButton.m */; };
@@ -193,6 +194,7 @@
 		005DAFCA1A34CB76008D5F2D /* LoopCellEditerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoopCellEditerView.m; path = UITools/LoopCellEditerView.m; sourceTree = "<group>"; };
 		005DAFCC1A34CB8C008D5F2D /* LoopCellEditerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoopCellEditerView.xib; path = UITools/LoopCellEditerView.xib; sourceTree = "<group>"; };
 		005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f1.pdf; sourceTree = "<group>"; };
+		00612D931A3B7572009A7C88 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop_red.pdf; sourceTree = "<group>"; };
 		006175BD1A0BCFE100113560 /* PlayLoop.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop.pdf; sourceTree = "<group>"; };
 		006175C01A0BD4A200113560 /* CircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleButton.h; path = UITools/CircleButton.h; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00612D941A3B7572009A7C88 /* AVFoundation.framework in Frameworks */,
 				0007F2091A3A1D43003F6927 /* MediaPlayer.framework in Frameworks */,
 				001F011B1A05679D00189941 /* iAd.framework in Frameworks */,
 				00DA132219F4F38A00F27E25 /* OpenAL.framework in Frameworks */,
@@ -346,6 +349,7 @@
 		004BE63C19B2DDC7002CD995 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00612D931A3B7572009A7C88 /* AVFoundation.framework */,
 				0007F2081A3A1D43003F6927 /* MediaPlayer.framework */,
 				001F011A1A05679D00189941 /* iAd.framework */,
 				00DA132119F4F38A00F27E25 /* OpenAL.framework */,
