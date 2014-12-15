@@ -11,11 +11,11 @@
             <rect key="frame" x="0.0" y="0.0" width="252" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PropertyDialog" id="6ET-bF-6Q6">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PropertyDialog_5S" id="6ET-bF-6Q6">
                     <rect key="frame" x="0.0" y="0.0" width="237" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="swq-vR-MrU">
+                <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="swq-vR-MrU">
                     <rect key="frame" x="0.0" y="8" width="237" height="169"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </scrollView>
@@ -28,14 +28,15 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="ArrowView" destination="s44-7A-3Xh" id="D7C-Wd-cZE"/>
+                <outlet property="BackgroundView" destination="6ET-bF-6Q6" id="55M-qg-c9s"/>
                 <outlet property="ContentScrollView" destination="swq-vR-MrU" id="ZKb-PH-W11"/>
             </connections>
             <point key="canvasLocation" x="324" y="352"/>
         </view>
     </objects>
     <resources>
-        <image name="PropertyDialog" width="237" height="200"/>
         <image name="PropertyDialogArrow" width="15" height="33"/>
+        <image name="PropertyDialog_5S" width="237" height="200"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

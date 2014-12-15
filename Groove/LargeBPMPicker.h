@@ -31,8 +31,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *ValueLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *UpArrow;
-@property (weak, nonatomic) IBOutlet UILabel *DownArrow;
+@property (weak, nonatomic) IBOutlet UIImageView *UpArrow;
+@property (weak, nonatomic) IBOutlet UIImageView *DownArrow;
 
 //
 @property (getter = GetTouched, setter = SetTouched:) BOOL Touched;

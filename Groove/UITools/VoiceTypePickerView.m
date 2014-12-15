@@ -7,6 +7,7 @@
 //
 
 #import "VoiceTypePickerView.h"
+#import "GlobalConfig.h"
 
 @implementation VoiceTypePickerView
 {
@@ -19,6 +20,19 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        if (self) {
+            // Initialization code
+            NSNumber * DeviceType = [GlobalConfig DeviceType];
+            switch (DeviceType.intValue) {
+                case IPHONE_4S:
+                    self.BackgroundView.image = [UIImage imageNamed:@"PropertyDialog_4S"];
+                    break;
+                case IPHONE_5S:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
     return self;
 }

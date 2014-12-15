@@ -21,8 +21,11 @@
         case IPHONE_4S:
             self.OptionScrollView.autoresizesSubviews = NO;
             self.OptionScrollView.autoresizingMask = UIViewAutoresizingNone;
+            
             self.SystemButton.autoresizesSubviews = NO;
             self.SystemButton.autoresizingMask = UIViewAutoresizingNone;
+            [self.SystemButton setBackgroundImage:[UIImage imageNamed:@"SystemButton_4S"] forState:UIControlStateNormal];
+            
             self.TapAlertImage.autoresizingMask = UIViewAutoresizingNone;
             self.TimeSigaturePicker.autoresizingMask = UIViewAutoresizingNone;
             self.VoiceTypePicker.autoresizingMask = UIViewAutoresizingNone;
@@ -57,21 +60,30 @@
                                                       );
 
             
-            self.SystemButton.frame = CGRectMake(OptionScrollViewLocationX - self.VoiceTypePicker.frame.size.width - Margin,
+            self.SystemButton.frame = CGRectMake(OptionScrollViewLocationX - self.VoiceTypePicker.frame.size.width - Margin *2,
                                                  Margin,
                                                  self.VoiceTypePicker.frame.size.width,
                                                  self.VoiceTypePicker.frame.size.height
                                                  );
+            
             self.AddLoopCellButton.frame = CGRectMake(self.AddLoopCellButton.frame.origin.x,
                                                       self.AddLoopCellButton.frame.origin.y + Margin,
                                                       self.AddLoopCellButton.frame.size.width,
                                                       self.AddLoopCellButton.frame.size.height
                                                       );
+            
             self.PlayCellListButton.frame = CGRectMake(self.PlayCellListButton.frame.origin.x,
                                                       self.PlayCellListButton.frame.origin.y + Margin,
                                                       self.PlayCellListButton.frame.size.width,
                                                       self.PlayCellListButton.frame.size.height
                                                       );
+            
+            self.PlayMusicButton.frame = CGRectMake(self.PlayMusicButton.frame.origin.x,
+                                                       self.PlayMusicButton.frame.origin.y + Margin,
+                                                       self.PlayMusicButton.frame.size.width,
+                                                       self.PlayMusicButton.frame.size.height
+                                                       );
+            
             self.TapAlertImage.frame = CGRectMake(self.TapAlertImage.frame.origin.x,
                                                   Margin,
                                                   self.TapAlertImage.frame.size.width,
@@ -116,6 +128,7 @@
         self.TimeSignaturePickerView.hidden = YES;
         self.VoiceTypePickerView.hidden = YES;
         self.LoopCellEditerView.hidden = YES;
+        
         
     }
     return self;

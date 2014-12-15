@@ -7,6 +7,7 @@
 //
 
 #import "LoopCellEditerView.h"
+#import "GlobalConfig.h"
 
 @interface LoopCellEditerView ()
 
@@ -43,6 +44,17 @@
         UITapGestureRecognizer *TabUnlockSwitch =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(CellDeleteUnlock:)];
         [self.DeleteUnLock addGestureRecognizer:TabUnlockSwitch];
+        
+        NSNumber * DeviceType = [GlobalConfig DeviceType];
+        switch (DeviceType.intValue) {
+            case IPHONE_4S:
+                self.BackgroundView.image = [UIImage imageNamed:@"PropertyDialog_4S"];
+                break;
+            case IPHONE_5S:
+                break;
+            default:
+                break;
+        }
     }
     return self;
 }
@@ -68,12 +80,12 @@
     _CanDelete = NewValue;
     if (_CanDelete)
     {
-        self.DeleteUnLock.backgroundColor  = [UIColor redColor];
+        self.DeleteUnLock.image  = [UIImage imageNamed:@"SwitchButtonUnLock"];
         self.CellDeleteButton.enabled = YES;
     }
     else
     {
-        self.DeleteUnLock.backgroundColor  = [UIColor blackColor];
+        self.DeleteUnLock.image  = [UIImage imageNamed:@"SwitchButtonLock"];
         self.CellDeleteButton.enabled = NO;
     }
 }

@@ -224,7 +224,7 @@
     // 向前移一個
     if (CurrentFocusIndex >= Parent.CurrentCellsDataTable.count)
     {
-        CurrentFocusIndex = Parent.CurrentCellsDataTable.count -1;
+        CurrentFocusIndex = (int)(Parent.CurrentCellsDataTable.count -1);
     }
     Parent.FocusIndex = CurrentFocusIndex;
     

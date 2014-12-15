@@ -47,7 +47,6 @@
 - (void) awakeFromNib
 {
     [super awakeFromNib];
-    [self Initialize];
 }
 
 -(void) Initialize
@@ -68,8 +67,9 @@
     if (self) {
         // Initialization code
         [self Initialize];
-    }
-    
+        
+        NSLog(@"%@", self);
+    };
     return self;
 }
 

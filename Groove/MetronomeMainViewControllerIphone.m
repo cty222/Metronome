@@ -272,7 +272,7 @@
     if (_FocusIndex >= self.CurrentCellsDataTable.count)
     {
         NSLog(@"Bug !! Controller _FocusIndex over count error" );
-        _FocusIndex = self.CurrentCellsDataTable.count -1;
+        _FocusIndex = (int)(self.CurrentCellsDataTable.count -1);
     }
     else if (_FocusIndex < 0)
     {

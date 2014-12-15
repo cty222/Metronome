@@ -51,17 +51,18 @@
 - (void) awakeFromNib
 {
     [super awakeFromNib];
-    [self Initialize];
+
+    [self InitializeInAwakeFromNib];
 }
 
--(void) Initialize
+-(void) InitializeInAwakeFromNib
 {
     NSNumber * DeviceType = [GlobalConfig DeviceType];
     switch (DeviceType.intValue) {
         case IPHONE_4S:
+            self.UpArrow.image = [UIImage imageNamed:@"BPMArrowUp_4S"];
+            self.DownArrow.image = [UIImage imageNamed:@"BPMArrowDown_4S"];
             self.ValueLabel.font = [self.ValueLabel.font  fontWithSize:110];
-            self.UpArrow.font = [self.ValueLabel.font  fontWithSize:30];
-            self.DownArrow.font = [self.ValueLabel.font  fontWithSize:30];
             break;
         case IPHONE_5S:
             break;
@@ -130,8 +131,6 @@
     _Value = NewValue;
 
     [self.ValueLabel setText:[NSString stringWithFormat:@"%d", self.Value]];
-    [self.UpArrow setText:[NSString stringWithFormat:@"%d", self.Value + 1]];
-    [self.DownArrow setText:[NSString stringWithFormat:@"%d", self.Value -1 ]];
     
     // Pass to parent view.
     if (self.delegate != nil)

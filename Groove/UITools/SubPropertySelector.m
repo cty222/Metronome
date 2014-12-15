@@ -25,6 +25,7 @@
                                                  selector:@selector(TouchedNotificationCallBack:)
                                                      name:kTouchGlobalHookNotification
                                                    object:nil];
+        NSLog(@"%@", self);
     }
     return self;
 }

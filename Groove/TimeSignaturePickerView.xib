@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -10,12 +11,12 @@
             <rect key="frame" x="0.0" y="0.0" width="252" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PropertyDialog" id="PL1-C0-Tbi">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PropertyDialog_5S" id="PL1-C0-Tbi">
                     <rect key="frame" x="0.0" y="0.0" width="237" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="0DG-tS-YYj">
-                    <rect key="frame" x="0.0" y="8" width="237" height="169"/>
+                    <rect key="frame" x="0.0" y="8" width="224" height="169"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </scrollView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PropertyDialogArrow" id="Usn-pp-Hnf">
@@ -27,14 +28,15 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="ArrowView" destination="Usn-pp-Hnf" id="SoN-By-3Un"/>
+                <outlet property="BackgroundView" destination="PL1-C0-Tbi" id="whm-we-jIb"/>
                 <outlet property="ContentScrollView" destination="0DG-tS-YYj" id="yyg-Yn-Ays"/>
             </connections>
             <point key="canvasLocation" x="324" y="352"/>
         </view>
     </objects>
     <resources>
-        <image name="PropertyDialog" width="237" height="200"/>
         <image name="PropertyDialogArrow" width="15" height="33"/>
+        <image name="PropertyDialog_5S" width="237" height="200"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

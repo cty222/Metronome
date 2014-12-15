@@ -77,6 +77,8 @@
     ControlView.contentInset = UIEdgeInsetsMake (0, ([self FocusLine] -  CellWidth/2), 0,  CellWidth * (self.GrooveCellValueStringList.count -1)  + ([self FocusLine] +  CellWidth/2));
     
     [self ChangeFocusIndexWithUIMoving: [[GlobalConfig LastFocusCellIndex] intValue]];
+    
+    
 }
 
 

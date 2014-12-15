@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *ArrowView;
 @property (strong, nonatomic) IBOutlet UIScrollView *ContentScrollView;
 @property (strong, nonatomic) id TriggerButton;
+@property (strong, nonatomic) IBOutlet UIImageView *BackgroundView;
 
 @property float OriginYOffset;
 @property float ArrowCenterLine;

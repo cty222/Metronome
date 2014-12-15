@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="252" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PropertyDialog" id="1QB-be-3ZD">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PropertyDialog_5S" id="1QB-be-3ZD">
                     <rect key="frame" x="0.0" y="0.0" width="237" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -24,13 +24,14 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="mFi-hg-9lz" customClass="ValueScrollView">
-                            <rect key="frame" x="15" y="18" width="200" height="100"/>
+                            <rect key="frame" x="15" y="13" width="200" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d5i-uO-WXK">
-                            <rect key="frame" x="137" y="136" width="78" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d5i-uO-WXK">
+                            <rect key="frame" x="126" y="126" width="98" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <color key="tintColor" red="1" green="0.15579608019999999" blue="0.14642800040000001" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Delete">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -38,8 +39,8 @@
                                 <action selector="CellDeleteChange:" destination="ltB-4j-cgl" eventType="touchUpInside" id="mJW-Z5-0NO"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="PXn-mK-Da5">
-                            <rect key="frame" x="26" y="126" width="60" height="50"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwitchButtonLock" id="PXn-mK-Da5">
+                            <rect key="frame" x="40" y="126" width="60" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
@@ -49,6 +50,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="ArrowView" destination="zJo-yL-8oH" id="Sac-eE-kgb"/>
+                <outlet property="BackgroundView" destination="1QB-be-3ZD" id="Gmp-qw-8hs"/>
                 <outlet property="CellDeleteButton" destination="d5i-uO-WXK" id="DnY-mH-ymM"/>
                 <outlet property="ContentScrollView" destination="68L-7D-LWH" id="Frx-fD-dhe"/>
                 <outlet property="DeleteUnLock" destination="PXn-mK-Da5" id="ex9-Ty-Qpb"/>
@@ -58,8 +60,9 @@
         </view>
     </objects>
     <resources>
-        <image name="PropertyDialog" width="237" height="200"/>
         <image name="PropertyDialogArrow" width="15" height="33"/>
+        <image name="PropertyDialog_5S" width="237" height="200"/>
+        <image name="SwitchButtonLock" width="60" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
