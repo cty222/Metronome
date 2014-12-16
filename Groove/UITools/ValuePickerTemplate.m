@@ -109,6 +109,20 @@
         }
     }
 }
+
+- (void) SetValueWithoutDelegate : (int) NewValue
+{
+    if (NewValue > _MaxLimit || NewValue < _MinLimit)
+    {
+        return;
+    }
+    
+    _Value = NewValue;
+    
+    [self.ValueLabel setText:[NSString stringWithFormat:@"%d", self.Value]];
+
+}
+
 //
 // ===========================
 

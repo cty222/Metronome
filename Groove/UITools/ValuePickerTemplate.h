@@ -30,6 +30,7 @@
 @property (getter=GetMinLimit, setter=SetMinLimit:) int MinLimit;
 @property (getter = GetValue, setter = SetValue:) int Value;
 @property (getter = GetShortPressSecond, setter = SetShortPressSecond:) float ShortPressSecond;
+- (void) SetValueWithoutDelegate : (int) NewValue;
 
 
 @property (nonatomic, assign) id<ValuePickerTemplateProtocol> delegate;

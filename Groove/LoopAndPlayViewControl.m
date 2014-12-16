@@ -163,7 +163,7 @@
         [myPlayer stop];
         [myPlayer setCurrentTime:0.0];
     }
-    [self PlayMusicStatusChangedCallBack:nil];
+    //[self PlayMusicStatusChangedCallBack:nil];
 }
 
 - (void) PlayMusicStatusChangedCallBack:(NSNotification *)Notification
