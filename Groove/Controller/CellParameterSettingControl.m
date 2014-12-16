@@ -86,7 +86,7 @@
     self.VoiceTypePicker = Parent.TopSubView.VoiceTypePicker;
     self.TimeSigaturePicker = Parent.TopSubView.TimeSigaturePicker;
     self.LoopCellEditer = Parent.TopSubView.LoopCellEditer;
-    self.TapAlertImage = Parent.TopSubView.TapAlertImage;
+    self.TapAlertImage = Parent.TopSubView.TapAnimationImage;
     self.TimeSignaturePickerView = Parent.TopSubView.TimeSignaturePickerView;
     self.VoiceTypePickerView = Parent.TopSubView.VoiceTypePickerView;
     self.LoopCellEditerView = Parent.TopSubView.LoopCellEditerView;
@@ -399,6 +399,7 @@
     else if (NewValue >= [self TapTriggerNumber])
     {
         // show
+        self.TapAlertImage.Mode = TAP_START_RED;
         self.TapAlertImage.hidden = NO;
     }
     else
@@ -437,6 +438,12 @@
         // 如果速度低於BPMMinValue, 就重算
         if( NewBPMvalue >= [[GlobalConfig BPMMinValue] intValue])
         {
+            // 和上一次Tap成功平均
+            if (self.TapTriggerCounter >= [self TapTriggerNumber]+1)
+            {
+                NewBPMvalue = (self.BPMPicker.Value + NewBPMvalue)/2;
+            }
+            
             self.BPMPicker.Value = NewBPMvalue;
         }
         else

@@ -11,6 +11,7 @@
 #import "TimeSignaturePickerView.h"
 #import "VoiceTypePickerView.h"
 #import "LoopCellEditerView.h"
+#import "TapAnimationImage.h"
 
 @interface MetronmoneTopSubViewIphone : XibViewInterface <LargeBPMPickerProtocol>
 
@@ -28,6 +29,6 @@
 @property (strong, nonatomic) IBOutlet TimeSignaturePickerView *TimeSignaturePickerView;
 @property (strong, nonatomic) IBOutlet VoiceTypePickerView *VoiceTypePickerView;
 @property (strong, nonatomic) IBOutlet LoopCellEditerView *LoopCellEditerView;
-@property (strong, nonatomic) IBOutlet UIImageView *TapAlertImage;
+@property (strong, nonatomic) IBOutlet TapAnimationImage *TapAnimationImage;
 
 @end

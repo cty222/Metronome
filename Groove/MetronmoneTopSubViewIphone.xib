@@ -60,6 +60,11 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
+                <view contentMode="scaleToFill" id="Pfi-Gx-Her" customClass="TapAnimationImage">
+                    <rect key="frame" x="5" y="18" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qDg-3A-xuS">
                     <rect key="frame" x="248" y="18" width="70" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -67,10 +72,6 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AccentNoteGary" id="GDj-bq-qoF">
-                    <rect key="frame" x="5" y="18" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hd4-aG-aep">
                     <rect key="frame" x="253" y="225" width="60" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -111,7 +112,7 @@
                 <outlet property="PlayCellListButton" destination="PYh-UZ-971" id="t2T-cG-LkT"/>
                 <outlet property="PlayMusicButton" destination="NIc-HA-2M5" id="CUb-AN-ff5"/>
                 <outlet property="SystemButton" destination="qDg-3A-xuS" id="tBW-yK-My4"/>
-                <outlet property="TapAlertImage" destination="GDj-bq-qoF" id="O57-od-uq2"/>
+                <outlet property="TapAnimationImage" destination="Pfi-Gx-Her" id="C8j-Nc-aiQ"/>
                 <outlet property="TimeSigaturePicker" destination="n1P-MM-kWw" id="DlP-Uu-mbS"/>
                 <outlet property="TimeSignaturePickerView" destination="OF2-gL-lEa" id="v9e-Tu-82c"/>
                 <outlet property="VoiceTypePicker" destination="t2o-NR-dku" id="SVP-h2-Ucj"/>
@@ -120,7 +121,6 @@
         </view>
     </objects>
     <resources>
-        <image name="AccentNoteGary" width="40" height="40"/>
         <image name="HumanVoice" width="40" height="40"/>
         <image name="LoopCellPickerButton" width="40" height="40"/>
         <image name="ScrollViewBackGround" width="60" height="162"/>

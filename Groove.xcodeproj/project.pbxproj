@@ -13,8 +13,6 @@
 		001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */; };
 		001B2B3019D3CF190057A22E /* DbConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2F19D3CF190057A22E /* DbConfig.m */; };
 		001B2B3D19D4106A0057A22E /* TempoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B3C19D4106A0057A22E /* TempoList.m */; };
-		001BFD9D1A3F4CD900A56947 /* SwitchButtonLock.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFD9B1A3F4CD900A56947 /* SwitchButtonLock.pdf */; };
-		001BFD9E1A3F4CD900A56947 /* SwitchButtonUnLock.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFD9C1A3F4CD900A56947 /* SwitchButtonUnLock.pdf */; };
 		001BFDA01A3F4DCC00A56947 /* NomalHiClickVoice.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFD9F1A3F4DCC00A56947 /* NomalHiClickVoice.pdf */; };
 		001BFDA21A3F4DE900A56947 /* NomalLowClickVoice.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDA11A3F4DE900A56947 /* NomalLowClickVoice.pdf */; };
 		001BFDA41A3F4DF100A56947 /* PropertyDialog_4S.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDA31A3F4DF100A56947 /* PropertyDialog_4S.pdf */; };
@@ -34,7 +32,6 @@
 		001BFDCC1A3F5EE600A56947 /* BPMArrowDown_4S.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDCB1A3F5EE600A56947 /* BPMArrowDown_4S.pdf */; };
 		001BFDCE1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDCD1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf */; };
 		001BFDD11A3F5F2200A56947 /* LoopCellBackGround.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDCF1A3F5F2200A56947 /* LoopCellBackGround.pdf */; };
-		001BFDD21A3F5F2200A56947 /* LoopCellPickerButton.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDD01A3F5F2200A56947 /* LoopCellPickerButton.pdf */; };
 		001F01191A05511300189941 /* IssueAndInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 001F01181A05511300189941 /* IssueAndInfo.txt */; };
 		001F011B1A05679D00189941 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001F011A1A05679D00189941 /* iAd.framework */; };
 		00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 00319FB91A0F2EED00CF3C83 /* UINSOperation.m */; };
@@ -43,6 +40,10 @@
 		003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */; };
 		0036173D19D5CC9900848A35 /* loop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0036173C19D5CC9900848A35 /* loop.png */; };
 		003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 003A56A819D3293A00747EB3 /* MetronomeModel.m */; };
+		0049ECBC1A40BA990016EA3D /* LoopCellPickerButton.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0049ECBB1A40BA990016EA3D /* LoopCellPickerButton.pdf */; };
+		0049ECC61A40BE2B0016EA3D /* TapAnimation_1_gray.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0049ECC51A40BE2B0016EA3D /* TapAnimation_1_gray.pdf */; };
+		0049ECC81A40BE310016EA3D /* TapAnimation_2_gray.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0049ECC71A40BE310016EA3D /* TapAnimation_2_gray.pdf */; };
+		0049ECCA1A40C0500016EA3D /* NewCircle_Big_Inner.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0049ECC91A40C0500016EA3D /* NewCircle_Big_Inner.pdf */; };
 		004BE63E19B2DDC7002CD995 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE63D19B2DDC7002CD995 /* Foundation.framework */; };
 		004BE64019B2DDC7002CD995 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE63F19B2DDC7002CD995 /* CoreGraphics.framework */; };
 		004BE64219B2DDC7002CD995 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE64119B2DDC7002CD995 /* UIKit.framework */; };
@@ -62,6 +63,12 @@
 		004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004BE67F19B2E131002CD995 /* MetronomeMainViewControllerIphone.xib */; };
 		004BE68519B2E670002CD995 /* GlobalConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 004BE68419B2E670002CD995 /* GlobalConfig.plist */; };
 		004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 004BE68719B2EA93002CD995 /* GlobalConfig.m */; };
+		004DF4621A40A69900E79C0E /* SwitchButtonLock.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 004DF4601A40A69900E79C0E /* SwitchButtonLock.pdf */; };
+		004DF4631A40A69900E79C0E /* SwitchButtonUnLock.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 004DF4611A40A69900E79C0E /* SwitchButtonUnLock.pdf */; };
+		004DF4691A40A6AD00E79C0E /* TapAnimation_1_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 004DF4651A40A6AD00E79C0E /* TapAnimation_1_red.pdf */; };
+		004DF46B1A40A6AD00E79C0E /* TapAnimation_2_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 004DF4671A40A6AD00E79C0E /* TapAnimation_2_red.pdf */; };
+		004DF4731A40A84D00E79C0E /* TapAnimationImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 004DF4721A40A84D00E79C0E /* TapAnimationImage.m */; };
+		004DF4771A40A87900E79C0E /* TapAnimationImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004DF4761A40A87900E79C0E /* TapAnimationImage.xib */; };
 		005233B31A38AB7E008DF620 /* ValueScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005233B21A38AB7E008DF620 /* ValueScrollView.xib */; };
 		005233B61A38ACDD008DF620 /* ValueScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005233B51A38ACDD008DF620 /* ValueScrollView.m */; };
 		005233BC1A38AFBB008DF620 /* ValuePickerTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 005233BB1A38AFBB008DF620 /* ValuePickerTemplate.m */; };
@@ -153,8 +160,6 @@
 		001B2B3119D403B20057A22E /* DebugHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugHeader.h; sourceTree = "<group>"; };
 		001B2B3B19D4106A0057A22E /* TempoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoList.h; path = CoreDataSubClass/TempoList.h; sourceTree = "<group>"; };
 		001B2B3C19D4106A0057A22E /* TempoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoList.m; path = CoreDataSubClass/TempoList.m; sourceTree = "<group>"; };
-		001BFD9B1A3F4CD900A56947 /* SwitchButtonLock.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SwitchButtonLock.pdf; sourceTree = "<group>"; };
-		001BFD9C1A3F4CD900A56947 /* SwitchButtonUnLock.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SwitchButtonUnLock.pdf; sourceTree = "<group>"; };
 		001BFD9F1A3F4DCC00A56947 /* NomalHiClickVoice.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NomalHiClickVoice.pdf; sourceTree = "<group>"; };
 		001BFDA11A3F4DE900A56947 /* NomalLowClickVoice.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NomalLowClickVoice.pdf; sourceTree = "<group>"; };
 		001BFDA31A3F4DF100A56947 /* PropertyDialog_4S.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PropertyDialog_4S.pdf; sourceTree = "<group>"; };
@@ -174,7 +179,6 @@
 		001BFDCB1A3F5EE600A56947 /* BPMArrowDown_4S.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BPMArrowDown_4S.pdf; sourceTree = "<group>"; };
 		001BFDCD1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BPMArrowUp_4S.pdf; sourceTree = "<group>"; };
 		001BFDCF1A3F5F2200A56947 /* LoopCellBackGround.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LoopCellBackGround.pdf; sourceTree = "<group>"; };
-		001BFDD01A3F5F2200A56947 /* LoopCellPickerButton.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LoopCellPickerButton.pdf; sourceTree = "<group>"; };
 		001F01181A05511300189941 /* IssueAndInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IssueAndInfo.txt; sourceTree = "<group>"; };
 		001F011A1A05679D00189941 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		00319FB81A0F2EED00CF3C83 /* UINSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UINSOperation.h; path = Tools/UINSOperation.h; sourceTree = "<group>"; };
@@ -185,6 +189,10 @@
 		0036173C19D5CC9900848A35 /* loop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loop.png; sourceTree = "<group>"; };
 		003A56A719D3293A00747EB3 /* MetronomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetronomeModel.h; path = CoreDataSubClass/MetronomeModel.h; sourceTree = "<group>"; };
 		003A56A819D3293A00747EB3 /* MetronomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetronomeModel.m; path = CoreDataSubClass/MetronomeModel.m; sourceTree = "<group>"; };
+		0049ECBB1A40BA990016EA3D /* LoopCellPickerButton.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LoopCellPickerButton.pdf; sourceTree = "<group>"; };
+		0049ECC51A40BE2B0016EA3D /* TapAnimation_1_gray.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TapAnimation_1_gray.pdf; sourceTree = "<group>"; };
+		0049ECC71A40BE310016EA3D /* TapAnimation_2_gray.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TapAnimation_2_gray.pdf; sourceTree = "<group>"; };
+		0049ECC91A40C0500016EA3D /* NewCircle_Big_Inner.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircle_Big_Inner.pdf; sourceTree = "<group>"; };
 		004BE63A19B2DDC7002CD995 /* Groove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Groove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		004BE63D19B2DDC7002CD995 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		004BE63F19B2DDC7002CD995 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -210,6 +218,13 @@
 		004BE68419B2E670002CD995 /* GlobalConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GlobalConfig.plist; sourceTree = "<group>"; };
 		004BE68619B2EA93002CD995 /* GlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConfig.h; sourceTree = "<group>"; };
 		004BE68719B2EA93002CD995 /* GlobalConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConfig.m; sourceTree = "<group>"; };
+		004DF4601A40A69900E79C0E /* SwitchButtonLock.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SwitchButtonLock.pdf; sourceTree = "<group>"; };
+		004DF4611A40A69900E79C0E /* SwitchButtonUnLock.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SwitchButtonUnLock.pdf; sourceTree = "<group>"; };
+		004DF4651A40A6AD00E79C0E /* TapAnimation_1_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TapAnimation_1_red.pdf; sourceTree = "<group>"; };
+		004DF4671A40A6AD00E79C0E /* TapAnimation_2_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TapAnimation_2_red.pdf; sourceTree = "<group>"; };
+		004DF4711A40A84D00E79C0E /* TapAnimationImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TapAnimationImage.h; path = UITools/TapAnimationImage.h; sourceTree = "<group>"; };
+		004DF4721A40A84D00E79C0E /* TapAnimationImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TapAnimationImage.m; path = UITools/TapAnimationImage.m; sourceTree = "<group>"; };
+		004DF4761A40A87900E79C0E /* TapAnimationImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TapAnimationImage.xib; path = UITools/TapAnimationImage.xib; sourceTree = "<group>"; };
 		005233B21A38AB7E008DF620 /* ValueScrollView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ValueScrollView.xib; path = UITools/ValueScrollView.xib; sourceTree = "<group>"; };
 		005233B41A38ACDD008DF620 /* ValueScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValueScrollView.h; path = UITools/ValueScrollView.h; sourceTree = "<group>"; };
 		005233B51A38ACDD008DF620 /* ValueScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValueScrollView.m; path = UITools/ValueScrollView.m; sourceTree = "<group>"; };
@@ -563,6 +578,9 @@
 				00BDD1391A33820B00B24D30 /* SelectBarCell.h */,
 				00BDD13A1A33820B00B24D30 /* SelectBarCell.m */,
 				00BDD13B1A33820B00B24D30 /* SelectBarCell.xib */,
+				004DF4711A40A84D00E79C0E /* TapAnimationImage.h */,
+				004DF4721A40A84D00E79C0E /* TapAnimationImage.m */,
+				004DF4761A40A87900E79C0E /* TapAnimationImage.xib */,
 			);
 			name = MetronmeItems;
 			sourceTree = "<group>";
@@ -570,7 +588,11 @@
 		0071A9AC1A2B075F00EA57D2 /* MetronomeSelectBar */ = {
 			isa = PBXGroup;
 			children = (
+				0049ECC71A40BE310016EA3D /* TapAnimation_2_gray.pdf */,
+				0049ECC51A40BE2B0016EA3D /* TapAnimation_1_gray.pdf */,
 				0071A9AD1A2B075F00EA57D2 /* LoopCellScrollView.pdf */,
+				004DF4651A40A6AD00E79C0E /* TapAnimation_1_red.pdf */,
+				004DF4671A40A6AD00E79C0E /* TapAnimation_2_red.pdf */,
 			);
 			path = MetronomeSelectBar;
 			sourceTree = "<group>";
@@ -602,8 +624,8 @@
 		0071A9D11A2B108B00EA57D2 /* PropertyButton */ = {
 			isa = PBXGroup;
 			children = (
+				0049ECBB1A40BA990016EA3D /* LoopCellPickerButton.pdf */,
 				001BFDCF1A3F5F2200A56947 /* LoopCellBackGround.pdf */,
-				001BFDD01A3F5F2200A56947 /* LoopCellPickerButton.pdf */,
 				001BFDAD1A3F4EA500A56947 /* HumanVoice.pdf */,
 				001BFDA91A3F4E9200A56947 /* ValueDownArrow.pdf */,
 				001BFDAA1A3F4E9200A56947 /* ValueUpArrow.pdf */,
@@ -611,8 +633,8 @@
 				001BFDA31A3F4DF100A56947 /* PropertyDialog_4S.pdf */,
 				001BFDA11A3F4DE900A56947 /* NomalLowClickVoice.pdf */,
 				001BFD9F1A3F4DCC00A56947 /* NomalHiClickVoice.pdf */,
-				001BFD9B1A3F4CD900A56947 /* SwitchButtonLock.pdf */,
-				001BFD9C1A3F4CD900A56947 /* SwitchButtonUnLock.pdf */,
+				004DF4601A40A69900E79C0E /* SwitchButtonLock.pdf */,
+				004DF4611A40A69900E79C0E /* SwitchButtonUnLock.pdf */,
 			);
 			path = PropertyButton;
 			sourceTree = "<group>";
@@ -626,6 +648,7 @@
 				0071A9AF1A2B090100EA57D2 /* Note */,
 				0071A9AC1A2B075F00EA57D2 /* MetronomeSelectBar */,
 				005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */,
+				0049ECC91A40C0500016EA3D /* NewCircle_Big_Inner.pdf */,
 				003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */,
 				0034734C1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf */,
 				0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */,
@@ -821,6 +844,7 @@
 			files = (
 				00DA13B519F4F77000F27E25 /* HiFirst.wav in Resources */,
 				00E8C0201A3610FD00D53F82 /* AccentRed.pdf in Resources */,
+				0049ECBC1A40BA990016EA3D /* LoopCellPickerButton.pdf in Resources */,
 				001BFDCE1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf in Resources */,
 				001BFDBD1A3F550200A56947 /* BPMArrowDown.pdf in Resources */,
 				0071A9B71A2B090100EA57D2 /* Accent.pdf in Resources */,
@@ -832,10 +856,13 @@
 				006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */,
 				00B02A5D1A0E997C00BCAF3B /* CircleButton.xib in Resources */,
 				00E8C0411A36119200D53F82 /* 16NoteYellow.pdf in Resources */,
+				004DF4691A40A6AD00E79C0E /* TapAnimation_1_red.pdf in Resources */,
+				004DF4771A40A87900E79C0E /* TapAnimationImage.xib in Resources */,
 				001BFDC61A3F5EBD00A56947 /* AppIcon_29x3.png in Resources */,
 				001BFDA61A3F4DF900A56947 /* PropertyDialog_5S.pdf in Resources */,
 				00E8C0421A36119200D53F82 /* 8NotesYellow.pdf in Resources */,
 				00AB03791A2783C500352DD7 /* SystemPageViewController.xib in Resources */,
+				0049ECCA1A40C0500016EA3D /* NewCircle_Big_Inner.pdf in Resources */,
 				005233B31A38AB7E008DF620 /* ValueScrollView.xib in Resources */,
 				001BFDA21A3F4DE900A56947 /* NomalLowClickVoice.pdf in Resources */,
 				00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */,
@@ -845,6 +872,7 @@
 				001BFDC91A3F5EBD00A56947 /* AppIcon_60x2.png in Resources */,
 				005233C41A38C656008DF620 /* SmallLeftValuePicker.xib in Resources */,
 				003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */,
+				004DF46B1A40A6AD00E79C0E /* TapAnimation_2_red.pdf in Resources */,
 				00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */,
 				0071A9D01A2B0EB300EA57D2 /* SystemButton.pdf in Resources */,
 				00677B0F19BC538F007A3085 /* GrooveMainViewControllerIpone.xib in Resources */,
@@ -858,23 +886,24 @@
 				0036173D19D5CC9900848A35 /* loop.png in Resources */,
 				0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */,
 				001BFDCA1A3F5EBD00A56947 /* AppIcon_60x3.png in Resources */,
+				0049ECC61A40BE2B0016EA3D /* TapAnimation_1_gray.pdf in Resources */,
 				005DAFC21A345691008D5F2D /* TimeSignaturePickerView.xib in Resources */,
+				004DF4631A40A69900E79C0E /* SwitchButtonUnLock.pdf in Resources */,
+				0049ECC81A40BE310016EA3D /* TapAnimation_2_gray.pdf in Resources */,
 				001BFDAE1A3F4EA600A56947 /* HumanVoice.pdf in Resources */,
 				00BE69D81A30CBC000404FFC /* MetronmoneTopSubViewIphone.xib in Resources */,
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
-				001BFD9D1A3F4CD900A56947 /* SwitchButtonLock.pdf in Resources */,
 				001BFDCC1A3F5EE600A56947 /* BPMArrowDown_4S.pdf in Resources */,
 				001BFDAC1A3F4E9200A56947 /* ValueUpArrow.pdf in Resources */,
 				00E8C01F1A3610FD00D53F82 /* 8NotesRed.pdf in Resources */,
+				004DF4621A40A69900E79C0E /* SwitchButtonLock.pdf in Resources */,
 				00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */,
 				001BFDC51A3F5EBD00A56947 /* AppIcon_29x2.png in Resources */,
 				00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */,
 				00E8C0441A36119200D53F82 /* QuarterNoteYellow.pdf in Resources */,
 				00E8C0221A3610FD00D53F82 /* TrippleNoteRed.pdf in Resources */,
-				001BFDD21A3F5F2200A56947 /* LoopCellPickerButton.pdf in Resources */,
 				00E8C0451A36119200D53F82 /* TrippleNoteYellow.pdf in Resources */,
 				0071A9B61A2B090100EA57D2 /* 8Notes.pdf in Resources */,
-				001BFD9E1A3F4CD900A56947 /* SwitchButtonUnLock.pdf in Resources */,
 				00BB6DDE19BD918600E3C068 /* LargeBPMPicker.xib in Resources */,
 				0034734E1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf in Resources */,
 				00BDD13D1A33820B00B24D30 /* SelectBarCell.xib in Resources */,
@@ -937,6 +966,7 @@
 				00AB03781A2783C500352DD7 /* SystemPageViewController.m in Sources */,
 				005A93941A2CE10900280507 /* VoiceType.m in Sources */,
 				00DA131C19F4EF1900F27E25 /* BeepBound.m in Sources */,
+				004DF4731A40A84D00E79C0E /* TapAnimationImage.m in Sources */,
 				00D92FD61A15FE5700AEC17F /* SystemPageControl.m in Sources */,
 				003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */,
 				005233BC1A38AFBB008DF620 /* ValuePickerTemplate.m in Sources */,

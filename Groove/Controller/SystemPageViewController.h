@@ -12,7 +12,7 @@
 #import "MetronomeModel.h"
 #import "PlayerForSongs.h"
 
-@interface SystemPageViewController : UIViewController <MPMediaPickerControllerDelegate>
+@interface SystemPageViewController : UIViewController <MPMediaPickerControllerDelegate, AVAudioPlayerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *FullView;
 @property (strong, nonatomic) IBOutlet UIButton *ReturnButton;
 

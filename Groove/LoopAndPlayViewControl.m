@@ -53,6 +53,11 @@
     // PlayCellListButton Initialize
     [self.PlayMusicButton addTarget:self
                                 action:@selector(PlayMusicButtonClick:) forControlEvents:UIControlEventTouchDown];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(PlayMusicStatusChangedCallBack:)
+                                                 name:kPlayMusicStatusChangedEvent
+                                               object:nil];
 }
 
 - (void) InitializeLoopControlItem
@@ -144,6 +149,11 @@
 
 - (IBAction)PlayMusicButtonClick:(UIButton *)ThisClickedButton
 {
+    if (myPlayer.url == nil)
+    {
+        return;
+    }
+    
     if (!myPlayer.playing)
     {
         [myPlayer play];
@@ -153,7 +163,21 @@
         [myPlayer stop];
         [myPlayer setCurrentTime:0.0];
     }
+    [self PlayMusicStatusChangedCallBack:nil];
 }
+
+- (void) PlayMusicStatusChangedCallBack:(NSNotification *)Notification
+{
+    if (myPlayer.playing)
+    {
+        [self.PlayMusicButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.PlayMusicButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
+}
+
 
 // Loop 增減
 - (void) SetTargetCellLoopCountAdd: (int) Index Value:(int)NewValue

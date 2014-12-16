@@ -41,7 +41,7 @@ typedef enum{
 @property (strong, nonatomic) IBOutlet UIScrollView *OptionScrollView;
 
 // (3) AlertImage
-@property (strong, nonatomic) IBOutlet UIImageView *TapAlertImage;
+@property (strong, nonatomic) IBOutlet TapAnimationImage *TapAlertImage;
 
 @property UIViewController *ParrentController;
 

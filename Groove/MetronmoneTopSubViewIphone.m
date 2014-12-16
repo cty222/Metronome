@@ -26,7 +26,7 @@
             self.SystemButton.autoresizingMask = UIViewAutoresizingNone;
             [self.SystemButton setBackgroundImage:[UIImage imageNamed:@"SystemButton_4S"] forState:UIControlStateNormal];
             
-            self.TapAlertImage.autoresizingMask = UIViewAutoresizingNone;
+            self.TapAnimationImage.autoresizingMask = UIViewAutoresizingNone;
             self.TimeSigaturePicker.autoresizingMask = UIViewAutoresizingNone;
             self.VoiceTypePicker.autoresizingMask = UIViewAutoresizingNone;
             self.LoopCellEditer.autoresizingMask = UIViewAutoresizingNone;
@@ -84,10 +84,10 @@
                                                        self.PlayMusicButton.frame.size.height
                                                        );
             
-            self.TapAlertImage.frame = CGRectMake(self.TapAlertImage.frame.origin.x,
+            self.TapAnimationImage.frame = CGRectMake(self.TapAnimationImage.frame.origin.x,
                                                   Margin,
-                                                  self.TapAlertImage.frame.size.width,
-                                                  self.TapAlertImage.frame.size.height
+                                                  self.TapAnimationImage.frame.size.width,
+                                                  self.TapAnimationImage.frame.size.height
                                                   );
             break;
         case IPHONE_5S:
@@ -124,7 +124,11 @@
         [self addSubview:self.LoopCellEditerView];
         [self sendSubviewToBack:self.LoopCellEditerView];
         
-        self.TapAlertImage.hidden = YES;
+        [self.TapAnimationImage removeFromSuperview];
+        self.TapAnimationImage = [[TapAnimationImage alloc] initWithFrame:self.TapAnimationImage.frame];
+        [self addSubview:self.TapAnimationImage];
+        
+        self.TapAnimationImage.hidden = YES;
         self.TimeSignaturePickerView.hidden = YES;
         self.VoiceTypePickerView.hidden = YES;
         self.LoopCellEditerView.hidden = YES;

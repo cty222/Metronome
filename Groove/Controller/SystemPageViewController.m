@@ -73,6 +73,8 @@
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChooseMusic:)];
     [self.CurrentSelectedMusic addGestureRecognizer:TabSelectedMusic];
     
+    myPlayer.delegate = self;
+    
 }
 - (IBAction)ReturnToMetronome:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:kChangeToMetronomeView object:nil];
@@ -102,7 +104,6 @@
     
 
     myPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
-    
    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -124,7 +125,10 @@
     [myPlayer setVolume:sender.value];
 }
 
-
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag;
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayMusicStatusChangedEvent object:nil];
+}
 
 /*
 #pragma mark - Navigation

@@ -316,6 +316,10 @@
     // Set TimeSignature
     self.CurrentTimeSignature = self.CurrentCell.timeSignatureType.timeSignature;
     [self.CellParameterSettingSubController.TimeSigaturePicker setTitle:self.CurrentTimeSignature forState:UIControlStateNormal];
+
+    // Set LoopCount
+    _CellParameterSettingSubController.LoopCellEditerView.ValueScrollView.Value = [self.CurrentCell.loopCount intValue];
+
     
     [self ResetCounter];
 

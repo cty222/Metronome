@@ -264,6 +264,7 @@
 
 - (void) RoundingAnimationStart
 {
+    self.ImageView_Frame4.image = [UIImage imageNamed:@"NewCircle_Big_Inner"];
     [UIView animateWithDuration:0.005
                           delay:0.01
                         options: UIViewAnimationOptionCurveLinear
@@ -280,6 +281,8 @@
 
 - (void) RoundingAnimationStop
 {
+    self.ImageView_Frame4.image = [UIImage imageNamed:@"NewCircle_F4"];
+
     [UIView animateWithDuration:0.005
                           delay:0.0001
                         options: UIViewAnimationOptionCurveLinear
