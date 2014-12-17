@@ -73,7 +73,7 @@
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChooseMusic:)];
     [self.CurrentSelectedMusic addGestureRecognizer:TabSelectedMusic];
     
-    myPlayer.delegate = self;
+    gPlayMusicChannel.delegate = self;
     
 }
 - (IBAction)ReturnToMetronome:(id)sender {
@@ -103,7 +103,16 @@
     NSURL *url = [Item valueForProperty:MPMediaItemPropertyAssetURL];
     
 
-    myPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    if (gPlayMusicChannel != nil)
+    {
+        [gPlayMusicChannel Stop];
+    }
+    else
+    {
+        gPlayMusicChannel = [PlayerForSongs alloc];
+    }
+    
+    [gPlayMusicChannel initWithContentsOfURL:url Info:nil];
    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -115,19 +124,54 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)MusicValueChange:(UISlider *)sender {
+- (IBAction)MusicValueChange:(UISlider *)sender
+{
 
-    [myPlayer setVolume:sender.value];
+    gPlayMusicChannel.Volume = sender.value;
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag;
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:kPlayMusicStatusChangedEvent object:nil];
+}
+
+- (IBAction)PlayRateToHave:(UISwitch *)sender {
+    if (sender.isOn)
+    {
+        [gPlayMusicChannel SetPlayRateToHalf];
+    }
+    else
+    {
+        [gPlayMusicChannel SetPlayRateToNormal];
+    }
+}
+
+- (IBAction)PlaySingleCellWithMusic:(UISwitch *)sender {
+    if (sender.isOn)
+    {
+        
+    }
+    else
+    {
+        
+    }
+}
+
+- (IBAction)PlayCellListWithMusic:(UISwitch *)sender {
+    if (sender.isOn)
+    {
+        
+    }
+    else
+    {
+        
+    }
 }
 
 /*

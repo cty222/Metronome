@@ -55,8 +55,8 @@
                                 action:@selector(PlayMusicButtonClick:) forControlEvents:UIControlEventTouchDown];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(PlayMusicStatusChangedCallBack:)
-                                                 name:kPlayMusicStatusChangedEvent
+                                             selector:@selector(PlayMusicWithCellList:)
+                                                 name:kMusicLoudEnoughEvent
                                                object:nil];
 }
 
@@ -149,35 +149,46 @@
 
 - (IBAction)PlayMusicButtonClick:(UIButton *)ThisClickedButton
 {
-    if (myPlayer.url == nil)
+    if (gPlayMusicChannel.URL == nil)
     {
         return;
     }
     
-    if (!myPlayer.playing)
+    if (!gPlayMusicChannel.Playing)
     {
-        [myPlayer play];
+        [gPlayMusicChannel Play];
     }
     else
     {
-        [myPlayer stop];
-        [myPlayer setCurrentTime:0.0];
+        [gPlayMusicChannel Stop];
     }
-    //[self PlayMusicStatusChangedCallBack:nil];
+    
+    [self PlayMusicStatusChangedCallBack:nil];
 }
 
 - (void) PlayMusicStatusChangedCallBack:(NSNotification *)Notification
 {
-    if (myPlayer.playing)
+    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+
+    
+    if (gPlayMusicChannel.Playing)
     {
         [self.PlayMusicButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        
     }
     else
     {
         [self.PlayMusicButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        Parent.PlayingMode = STOP_PLAYING;
     }
 }
 
+- (void) PlayMusicWithCellList:(NSNotification *)Notification
+{
+    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+
+    Parent.PlayingMode = LIST_PLAYING;
+}
 
 // Loop 增減
 - (void) SetTargetCellLoopCountAdd: (int) Index Value:(int)NewValue

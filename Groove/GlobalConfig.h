@@ -61,6 +61,5 @@ enum {
 // GlobalEvent
 #define kChangeToSystemPageView @"kChangeToSystemPageView"
 #define kChangeToMetronomeView @"kChangeToMetronomeView"
-#define kPlayMusicStatusChangedEvent @"kPlayMusicStatusChangedEvent"
 
 @end

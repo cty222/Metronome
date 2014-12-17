@@ -73,7 +73,6 @@
     [super setHidden:_hidden];
     if(_hidden)
     {
-        NSLog(@"01");
         self.Mode = TAP_ALERT_GRAY;
     }
     else
@@ -106,6 +105,8 @@
     _CurrentStep2.hidden = !_CurrentStep2.hidden;
 
 }
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
