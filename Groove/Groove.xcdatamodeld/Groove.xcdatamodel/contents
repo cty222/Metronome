@@ -3,6 +3,13 @@
     <entity name="DbConfig" representedClassName="DbConfig" syncable="YES">
         <attribute name="dbVersion" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
     </entity>
+    <entity name="MusicBindingInfo" representedClassName="MusicBindingInfo" syncable="YES">
+        <attribute name="enableMusic" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="persistentID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TempoList" inverseName="musicInfo" inverseEntity="TempoList" syncable="YES"/>
+    </entity>
     <entity name="TempoCell" representedClassName="TempoCell" syncable="YES">
         <attribute name="accentVolume" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="bpmValue" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -10,14 +17,18 @@
         <attribute name="loopCount" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="quarterNoteVolume" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="sixteenNoteVolume" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="sortIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="trippleNoteVolume" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <relationship name="listOwner" maxCount="1" deletionRule="Nullify" destinationEntity="TempoList" inverseName="cellBelongTo" inverseEntity="TempoList" syncable="YES"/>
         <relationship name="timeSignatureType" maxCount="1" deletionRule="Nullify" destinationEntity="TimeSignatureType" inverseName="usingCell" inverseEntity="TimeSignatureType" syncable="YES"/>
         <relationship name="voiceType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VoiceType" inverseName="usingCell" inverseEntity="VoiceType" syncable="YES"/>
     </entity>
     <entity name="TempoList" representedClassName="TempoList" syncable="YES">
+        <attribute name="focusCellIndex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="sortIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="tempoListName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cellBelongTo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TempoCell" inverseName="listOwner" inverseEntity="TempoCell" syncable="YES"/>
+        <relationship name="musicInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MusicBindingInfo" inverseName="owner" inverseEntity="MusicBindingInfo" syncable="YES"/>
     </entity>
     <entity name="TimeSignatureType" representedClassName="TimeSignatureType" syncable="YES">
         <attribute name="sortIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -34,9 +45,10 @@
     <fetchRequest name="FetchOwerFromSingleName" entity="TempoCell"/>
     <elements>
         <element name="DbConfig" positionX="153" positionY="18" width="128" height="60"/>
-        <element name="TempoCell" positionX="-63" positionY="-18" width="128" height="193"/>
-        <element name="TempoList" positionX="349" positionY="-127" width="128" height="73"/>
+        <element name="TempoCell" positionX="-63" positionY="-18" width="128" height="208"/>
+        <element name="TempoList" positionX="349" positionY="-127" width="128" height="118"/>
         <element name="TimeSignatureType" positionX="412" positionY="80" width="128" height="88"/>
         <element name="VoiceType" positionX="144" positionY="0" width="128" height="88"/>
+        <element name="MusicBindingInfo" positionX="144" positionY="9" width="128" height="118"/>
     </elements>
 </model>

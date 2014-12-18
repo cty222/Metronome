@@ -223,12 +223,18 @@
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
     
+    TempoCell* CurrentLastCell  = Parent.CurrentCellsDataTable[Parent.CurrentCellsDataTable.count - 1];
+    
     // 新增一筆進資料庫
-    [gMetronomeModel AddNewTempoCell];
+    [gMetronomeModel AddNewTempoCell: Parent.CurrentTempoListCell : ([CurrentLastCell.sortIndex intValue] +1)];
     
     // 重新顯示
     [Parent FetchCurrentCellListFromModel];
-    [GlobalConfig SetLastFocusCellIndex: (int)(Parent.CurrentCellsDataTable.count - 1)];
+    
+    TempoList * CurrentListCell = [GlobalConfig GetCurrentListCell];
+    CurrentListCell.focusCellIndex = [NSNumber numberWithInt:(int)(Parent.CurrentCellsDataTable.count - 1)];
+    [gMetronomeModel Save];
+    
     [Parent ReflashCellListAndFocusCellByCurrentData];
 }
 
@@ -263,8 +269,11 @@
     }
     Parent.FocusIndex = CurrentFocusIndex;
     
-    [GlobalConfig SetLastFocusCellIndex: Parent.FocusIndex];
-
+    
+    TempoList * CurrentListCell = [GlobalConfig GetCurrentListCell];
+    CurrentListCell.focusCellIndex = [NSNumber numberWithInt:Parent.FocusIndex];
+    [gMetronomeModel Save];
+    
     // 重新顯示
     [Parent ReflashCellListAndFocusCellByCurrentData];
 

@@ -105,6 +105,8 @@
         TempoList* NewTempoList = [NSEntityDescription
                                    insertNewObjectForEntityForName:NSStringFromClass([TempoList class]) inManagedObjectContext:_ManagedObjectContext];
         NewTempoList.tempoListName = [NSString stringWithFormat:@"Default%d", Index];
+        NewTempoList.focusCellIndex = @0;
+        NewTempoList.sortIndex = [NSNumber numberWithInt:Index];
     }
     [_ManagedObjectContext save:nil];
 }
@@ -148,23 +150,31 @@
     
     for (int Row = 0; Row < self.TempoListDataTable.count; Row++)
     {
-        for (int Index=0;Index < (3 + Row); Index++)
+        for (int Index = 0 ;Index < 3; Index++)
         {
             TempoCell* NewTempoList = [NSEntityDescription
                                        insertNewObjectForEntityForName:NSStringFromClass([TempoCell class])  inManagedObjectContext:_ManagedObjectContext];
             NewTempoList.bpmValue = [NSNumber numberWithInt:(50 + (Index + Row) *10)];
             NewTempoList.loopCount = @1;
-            NewTempoList.accentVolume = @8.2;
-            NewTempoList.quarterNoteVolume = @4.0;
-            NewTempoList.eighthNoteVolume = @7.2;
-            NewTempoList.sixteenNoteVolume = @(-0.5);
+            NewTempoList.accentVolume = @10.0;
+            NewTempoList.quarterNoteVolume = @10.0;
+            NewTempoList.eighthNoteVolume = @7.0;
+            NewTempoList.sixteenNoteVolume = @0;
             NewTempoList.trippleNoteVolume = @0;
             NewTempoList.timeSignatureType = self.TimeSignatureTypeDataTable[3];
             NewTempoList.listOwner = self.TempoListDataTable[Row];
+            NewTempoList.sortIndex = [NSNumber numberWithInt:Index];
         }
     }
     [_ManagedObjectContext save:nil];
+}
 
+- (MusicBindingInfo *) CreateNewMusicInfo
+{
+    MusicBindingInfo *NewInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:NSStringFromClass([MusicBindingInfo class])  inManagedObjectContext:_ManagedObjectContext];
+    [_ManagedObjectContext save:nil];
+    return NewInfo;
 }
 
 //
@@ -197,6 +207,11 @@
         self.TempoListEntityFetch = [[NSFetchRequest alloc] init];
         Entity = [NSEntityDescription entityForName:NSStringFromClass([TempoList class]) inManagedObjectContext:_ManagedObjectContext];
         [self.TempoListEntityFetch setEntity:Entity];
+        
+        // Sort
+        NSSortDescriptor *Sort = [[NSSortDescriptor alloc] initWithKey:@"sortIndex" ascending:YES];
+        NSArray *SortArray = [[NSArray alloc] initWithObjects:Sort, nil];
+        [self.TempoListEntityFetch setSortDescriptors:SortArray];
     }
     return [_ManagedObjectContext executeFetchRequest:self.TempoListEntityFetch error:nil];
 }
@@ -257,6 +272,11 @@
         
         self.TempoCellEntitySigleOwnerFetch = [_ManagedObjectModel fetchRequestFromTemplateWithName:@"FetchCellFromSigleOwner" substitutionVariables:[NSDictionary dictionaryWithObject:listOwner forKey:@"listOwner"]];
         [self.TempoCellEntitySigleOwnerFetch setEntity:Entity];
+        
+        // Sort
+        NSSortDescriptor *Sort = [[NSSortDescriptor alloc] initWithKey:@"sortIndex" ascending:YES];
+        NSArray *SortArray = [[NSArray alloc] initWithObjects:Sort, nil];
+        [self.TempoCellEntitySigleOwnerFetch setSortDescriptors:SortArray];
     }
     
     return [_ManagedObjectContext executeFetchRequest:self.TempoCellEntitySigleOwnerFetch error:nil];
@@ -275,7 +295,7 @@
     [_ManagedObjectContext save:nil];
 }
 
-- (void) AddNewTempoCell
+- (void) AddNewTempoCell : (TempoList *) CellOwner : (int) SortIndex
 {
     TempoCell* NewTempoList = [NSEntityDescription
                                insertNewObjectForEntityForName:NSStringFromClass([TempoCell class])  inManagedObjectContext:_ManagedObjectContext];
@@ -287,8 +307,9 @@
     NewTempoList.sixteenNoteVolume = @0;
     NewTempoList.trippleNoteVolume = @0;
     NewTempoList.timeSignatureType = self.TimeSignatureTypeDataTable[3];
-    NewTempoList.listOwner = self.TempoListDataTable[0];
-    
+    NewTempoList.listOwner = CellOwner;
+    NewTempoList.sortIndex = [NSNumber numberWithInt:SortIndex];
+
     [self Save];
 }
 

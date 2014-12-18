@@ -46,6 +46,7 @@ typedef enum {
 @property NSArray * CurrentCellsDataTable;
 @property (nonatomic, strong) BeepBound* CurrentVoice;
 @property (nonatomic, strong) NSString* CurrentTimeSignature;
+@property (nonatomic, strong) TempoList* CurrentTempoListCell;
 
 @property TempoCell* CurrentCell;
 @property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;

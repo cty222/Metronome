@@ -230,7 +230,8 @@
 //
 - (void) FetchCurrentCellListFromModel
 {
-    NSNumber *LastSelecedtListIndex = [GlobalConfig LastSelecedtListIndex];
+    self.CurrentTempoListCell = [GlobalConfig GetCurrentListCell];
+    NSNumber *LastSelecedtListIndex = self.CurrentTempoListCell.focusCellIndex;
     self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[[LastSelecedtListIndex intValue]]];
 
     if (self.CurrentCellsDataTable == nil)

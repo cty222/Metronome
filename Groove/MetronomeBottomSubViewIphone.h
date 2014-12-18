@@ -9,7 +9,7 @@
 
 #import "XibViewInterface.h"
 #import "MetronomeSelectBar.h"
-#import "MetronomeModel.h"
+#import "GlobalConfig.h"
 #import "CircleButton.h"
 
 #import "UINSOperation.h"

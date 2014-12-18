@@ -238,16 +238,7 @@ static NSMutableDictionary * ThisPlist;
     return [ThisPlist objectForKey:@"DbVersion"];
 }
 
-+ (NSNumber *) LastSelecedtListIndex
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return nil;
-    }
-    
-    return [ThisPlist objectForKey:@"LastSelecedtListIndex"];
-}
-
+// ========================================
 + (void) SetLastSelecedtListIndex : (int) NewValue
 {
     if (![GlobalConfig IsInitialized])
@@ -259,26 +250,20 @@ static NSMutableDictionary * ThisPlist;
     
 }
 
-+ (NSNumber *) LastFocusCellIndex
++ (TempoList *) GetCurrentListCell
 {
     if (![GlobalConfig IsInitialized])
     {
         return nil;
     }
     
-    return [ThisPlist objectForKey:@"LastFocusCellIndex"];
+    int Index = [[ThisPlist objectForKey:@"LastSelecedtListIndex"] intValue];
+    return gMetronomeModel.TempoListDataTable[Index];
 }
 
-+ (void) SetLastFocusCellIndex : (int) NewValue
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return;
-    }
-    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"LastFocusCellIndex"];
-    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+// ========================================
 
-}
+
 
 + (NSNumber *) LoopValueMax
 {

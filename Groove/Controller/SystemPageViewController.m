@@ -14,7 +14,7 @@
 @implementation SystemPageViewController
 {
     MPMediaPickerController *MusicPicker;
-
+    TempoList *_CurrentList;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,9 +29,10 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSNumber *LastSelecedtListIndex = [GlobalConfig LastSelecedtListIndex];
-    TempoList * CurrentList = gMetronomeModel.TempoListDataTable[[LastSelecedtListIndex intValue]];
-    self.CurrentSelectedList.text = CurrentList.tempoListName;
+    
+    _CurrentList = [GlobalConfig GetCurrentListCell];
+    
+    self.CurrentSelectedList.text = _CurrentList.tempoListName;
     
     if (MusicPicker == nil)
     {
@@ -40,6 +41,19 @@
         MusicPicker.allowsPickingMultipleItems = NO;
         MusicPicker.showsCloudItems = NO;
     }
+    
+    if (_CurrentList.musicInfo == nil)
+    {
+        _CurrentList.musicInfo = [gMetronomeModel CreateNewMusicInfo];
+        [gMetronomeModel Save];
+    }
+
+    if (_CurrentList.musicInfo.persistentID != nil)
+    {
+        MPMediaItem *Item =  [self GetFirstMPMediaItemFromPersistentID : _CurrentList.musicInfo.persistentID ];
+        [self DoAllMusicSetupSteps: Item];
+    }
+    
 }
 
 - (void)viewDidLoad
@@ -72,10 +86,8 @@
     UITapGestureRecognizer *TabSelectedMusic =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChooseMusic:)];
     [self.CurrentSelectedMusic addGestureRecognizer:TabSelectedMusic];
-    
-    gPlayMusicChannel.delegate = self;
-    
 }
+
 - (IBAction)ReturnToMetronome:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:kChangeToMetronomeView object:nil];
 }
@@ -85,24 +97,49 @@
     [self presentViewController:MusicPicker animated:YES completion:nil];
 }
 
-- (void) mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
+- (MPMediaItem *) GetFirstMPMediaItemFromPersistentID : (NSNumber *)PersistentID
 {
-    MPMediaItem * Item = mediaItemCollection.items[0];
+    MPMediaPropertyPredicate * Predicate = [MPMediaPropertyPredicate predicateWithValue:PersistentID forProperty:MPMediaItemPropertyPersistentID];
+    
+    MPMediaQuery *songQuery = [[MPMediaQuery alloc] init];
+    [songQuery addFilterPredicate: Predicate];
+    if (songQuery.items.count > 0)
+    {
+        //song exists
+        return [songQuery.items objectAtIndex:0];
+    }
+    return nil;
+}
+
+- (void) FillSongInfo : (MPMediaItem *) Item
+{
+    if (Item == nil) {
+        self.CurrentSelectedMusic.text = @"";
+        return;
+    }
+    
+    self.CurrentSelectedMusic.text = [Item valueForProperty:MPMediaItemPropertyArtist];
+    self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:@" - "];
+    self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:[Item valueForProperty:MPMediaItemPropertyTitle]];
+}
+
+- (void) UpdateListCellPersistentID : (MPMediaItem *) Item
+{
     if (Item != nil)
     {
-        
-        self.CurrentSelectedMusic.text = [Item valueForProperty:MPMediaItemPropertyArtist];
-        self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:@" - "];
-        self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:[Item valueForProperty:MPMediaItemPropertyTitle]];
+        _CurrentList.musicInfo.persistentID = [Item valueForProperty:MPMediaItemPropertyPersistentID];
     }
     else
     {
-        self.CurrentSelectedMusic.text = @"";
+        _CurrentList.musicInfo.persistentID = nil;
     }
-    
+    [gMetronomeModel Save];
+}
+
+- (void) PrepareMusicToplay : (MPMediaItem *) Item
+{
     NSURL *url = [Item valueForProperty:MPMediaItemPropertyAssetURL];
     
-
     if (gPlayMusicChannel != nil)
     {
         [gPlayMusicChannel Stop];
@@ -110,24 +147,22 @@
     else
     {
         gPlayMusicChannel = [PlayerForSongs alloc];
+        gPlayMusicChannel.delegate = self;
     }
     
     [gPlayMusicChannel initWithContentsOfURL:url Info:nil];
-   
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
+- (void) DoAllMusicSetupSteps : (MPMediaItem *) Item
 {
-    self.CurrentSelectedMusic.text = @"";
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self FillSongInfo:Item];
+    [self UpdateListCellPersistentID:Item];
+    if (Item == Nil)
+    {
+        return;
+    }
+    
+    [self PrepareMusicToplay: Item];
 }
 
 - (IBAction)MusicValueChange:(UISlider *)sender
@@ -173,6 +208,39 @@
         
     }
 }
+
+//
+// ==========================
+
+// ==========================
+// delegate
+//
+
+- (void) mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
+{
+    MPMediaItem * Item = mediaItemCollection.items[0];
+    
+    [self DoAllMusicSetupSteps: Item];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void) mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
+{
+    self.CurrentSelectedMusic.text = @"";
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+//
+// ==========================
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 /*
 #pragma mark - Navigation

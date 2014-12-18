@@ -11,6 +11,7 @@
 // ************************************************
 
 #import <Foundation/Foundation.h>
+#import "MetronomeModel.h"
 
 @class GlobalConfig;
 
@@ -32,6 +33,7 @@ enum {
     IPHONE_5S_WIDTH = 320
 } DEVICE_WIDTH;
 
+
 @interface GlobalConfig : NSObject
 + (BOOL) ReBuildDbFlag;
 + (void) Initialize : (UIWindow *) MainWindows;
@@ -41,18 +43,15 @@ enum {
 + (NSNumber *) BPMMinValue;
 + (NSNumber *) BPMMaxValue;
 + (NSNumber *) DbVersion;
-+ (NSNumber *) LastFocusCellIndex;
-+ (NSNumber *) LastSelecedtListIndex;
-
 + (NSNumber *) LoopValueMin;
 + (NSNumber *) LoopValueMax;
 + (NSNumber *) LoopCellMaxCount;
 + (BOOL) PlayCellListNoneStop;
-
-
-+ (void) SetLastFocusCellIndex : (int) NewValue;
 + (void) SetPlayCellListNoneStop : (BOOL) NewValue;
 
+
++ (TempoList *) GetCurrentListCell;
++ (void) SetLastSelecedtListIndex : (int) NewValue;
 
 // Main View
 + (UIViewController *) SystemPageViewControllerIphone;

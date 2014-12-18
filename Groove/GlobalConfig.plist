@@ -5,12 +5,10 @@
 	<key>PlayCellListNoneStop</key>
 	<true/>
 	<key>VersionID</key>
-	<real>4016</real>
+	<real>4025</real>
 	<key>DbVersion</key>
-	<real>1007</real>
+	<real>1016</real>
 	<key>LastSelecedtListIndex</key>
-	<integer>0</integer>
-	<key>LastFocusCellIndex</key>
 	<integer>0</integer>
 	<key>LoopCellMaxCount</key>
 	<integer>30</integer>

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "PlayerForSongs.h"
 #import "GlobalConfig.h"
-#import "MetronomeModel.h"
 #import "PlayerForSongs.h"
 
 @interface SystemPageViewController : UIViewController <MPMediaPickerControllerDelegate, AVAudioPlayerDelegate>

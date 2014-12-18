@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Groove/CoreDataSubClass/MetronomeModel.h"
-            timestampString = "438720640.500425"
+            timestampString = "440613077.94788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "TempoCellDataTable"
             landmarkType = "19">
          </BreakpointContent>

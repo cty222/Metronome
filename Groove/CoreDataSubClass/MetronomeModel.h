@@ -14,6 +14,7 @@
 #import "TempoList.h"
 #import "TimeSignatureType.h"
 #import "VoiceType.h"
+#import "MusicBindingInfo.h"
 #import "DbConfig.h"
 
 @class MetronomeModel;
@@ -43,7 +44,8 @@ MetronomeModel * gMetronomeModel;
                   DbVersion : (NSNumber *) DbVersion;
 
 - (void) Save;
-- (void) AddNewTempoCell;
+- (void) AddNewTempoCell : (TempoList *) CellOwner : (int) SortIndex;
 - (void) DeleteTargetTempoCell : (TempoCell *) TargetCell;
+- (MusicBindingInfo *) CreateNewMusicInfo;
 
 @end
