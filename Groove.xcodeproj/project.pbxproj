@@ -98,8 +98,11 @@
 		0071A9B91A2B090100EA57D2 /* TrippleNote.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9B41A2B090100EA57D2 /* TrippleNote.pdf */; };
 		0071A9CF1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9CD1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf */; };
 		0071A9D01A2B0EB300EA57D2 /* SystemButton.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9CE1A2B0EB300EA57D2 /* SystemButton.pdf */; };
+		008D8E7F1A447CB600EF18A3 /* MusicTimePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008D8E7E1A447CB600EF18A3 /* MusicTimePicker.xib */; };
+		008D8E821A447CCC00EF18A3 /* MusicTimePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 008D8E811A447CCC00EF18A3 /* MusicTimePicker.m */; };
+		008D8E851A4481F500EF18A3 /* InputSubmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 008D8E841A4481F500EF18A3 /* InputSubmitView.m */; };
+		008D8E8E1A44887E00EF18A3 /* MusicBindingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 008D8E8D1A44887E00EF18A3 /* MusicBindingInfo.m */; };
 		00A0B8111A23A9AD00D93ABB /* UIWindowWithHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A0B8101A23A9AD00D93ABB /* UIWindowWithHook.m */; };
-		00A8404D1A434BB600EA11B8 /* MusicBindingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A8404C1A434BB600EA11B8 /* MusicBindingInfo.m */; };
 		00A840501A43509200EA11B8 /* TempoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A8404F1A43509200EA11B8 /* TempoList.m */; };
 		00A840531A43509200EA11B8 /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A840521A43509200EA11B8 /* TempoCell.m */; };
 		00AB03781A2783C500352DD7 /* SystemPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AB03761A2783C400352DD7 /* SystemPageViewController.m */; };
@@ -266,10 +269,15 @@
 		0071A9B41A2B090100EA57D2 /* TrippleNote.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TrippleNote.pdf; sourceTree = "<group>"; };
 		0071A9CD1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ScrollViewBackGround.pdf; sourceTree = "<group>"; };
 		0071A9CE1A2B0EB300EA57D2 /* SystemButton.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SystemButton.pdf; sourceTree = "<group>"; };
+		008D8E7E1A447CB600EF18A3 /* MusicTimePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MusicTimePicker.xib; path = UITools/MusicTimePicker.xib; sourceTree = "<group>"; };
+		008D8E801A447CCC00EF18A3 /* MusicTimePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicTimePicker.h; path = UITools/MusicTimePicker.h; sourceTree = "<group>"; };
+		008D8E811A447CCC00EF18A3 /* MusicTimePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MusicTimePicker.m; path = UITools/MusicTimePicker.m; sourceTree = "<group>"; };
+		008D8E831A4481F500EF18A3 /* InputSubmitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputSubmitView.h; path = UITools/InputSubmitView.h; sourceTree = "<group>"; };
+		008D8E841A4481F500EF18A3 /* InputSubmitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputSubmitView.m; path = UITools/InputSubmitView.m; sourceTree = "<group>"; };
+		008D8E8C1A44887E00EF18A3 /* MusicBindingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicBindingInfo.h; path = CoreDataSubClass/MusicBindingInfo.h; sourceTree = "<group>"; };
+		008D8E8D1A44887E00EF18A3 /* MusicBindingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MusicBindingInfo.m; path = CoreDataSubClass/MusicBindingInfo.m; sourceTree = "<group>"; };
 		00A0B80F1A23A9AD00D93ABB /* UIWindowWithHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIWindowWithHook.h; path = SuperClass/UIWindowWithHook.h; sourceTree = "<group>"; };
 		00A0B8101A23A9AD00D93ABB /* UIWindowWithHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIWindowWithHook.m; path = SuperClass/UIWindowWithHook.m; sourceTree = "<group>"; };
-		00A8404B1A434BB600EA11B8 /* MusicBindingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicBindingInfo.h; path = CoreDataSubClass/MusicBindingInfo.h; sourceTree = "<group>"; };
-		00A8404C1A434BB600EA11B8 /* MusicBindingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MusicBindingInfo.m; path = CoreDataSubClass/MusicBindingInfo.m; sourceTree = "<group>"; };
 		00A8404E1A43509100EA11B8 /* TempoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoList.h; path = CoreDataSubClass/TempoList.h; sourceTree = "<group>"; };
 		00A8404F1A43509200EA11B8 /* TempoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoList.m; path = CoreDataSubClass/TempoList.m; sourceTree = "<group>"; };
 		00A840511A43509200EA11B8 /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
@@ -378,12 +386,12 @@
 			isa = PBXGroup;
 			children = (
 				001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */,
+				008D8E8C1A44887E00EF18A3 /* MusicBindingInfo.h */,
+				008D8E8D1A44887E00EF18A3 /* MusicBindingInfo.m */,
 				00A840511A43509200EA11B8 /* TempoCell.h */,
 				00A840521A43509200EA11B8 /* TempoCell.m */,
 				00A8404E1A43509100EA11B8 /* TempoList.h */,
 				00A8404F1A43509200EA11B8 /* TempoList.m */,
-				00A8404B1A434BB600EA11B8 /* MusicBindingInfo.h */,
-				00A8404C1A434BB600EA11B8 /* MusicBindingInfo.m */,
 				005A93951A2CE10A00280507 /* TimeSignatureType.h */,
 				005A93961A2CE10A00280507 /* TimeSignatureType.m */,
 				005A93921A2CE10900280507 /* VoiceType.h */,
@@ -524,6 +532,11 @@
 				005233C31A38C656008DF620 /* SmallLeftValuePicker.xib */,
 				005233C51A38C6D6008DF620 /* SmallLeftValuePicker.h */,
 				005233C61A38C6D6008DF620 /* SmallLeftValuePicker.m */,
+				008D8E7E1A447CB600EF18A3 /* MusicTimePicker.xib */,
+				008D8E801A447CCC00EF18A3 /* MusicTimePicker.h */,
+				008D8E811A447CCC00EF18A3 /* MusicTimePicker.m */,
+				008D8E831A4481F500EF18A3 /* InputSubmitView.h */,
+				008D8E841A4481F500EF18A3 /* InputSubmitView.m */,
 			);
 			name = ValuePicker;
 			sourceTree = "<group>";
@@ -919,6 +932,7 @@
 				001BFDA01A3F4DCC00A56947 /* NomalHiClickVoice.pdf in Resources */,
 				004BE65519B2DDC8002CD995 /* Images.xcassets in Resources */,
 				00DA13B419F4F77000F27E25 /* HiE.wav in Resources */,
+				008D8E7F1A447CB600EF18A3 /* MusicTimePicker.xib in Resources */,
 				00E5F8C819C0BFE600661D1C /* MetronomeBottomSubViewIphone.xib in Resources */,
 				001BFDD11A3F5F2200A56947 /* LoopCellBackGround.pdf in Resources */,
 				004BE68519B2E670002CD995 /* GlobalConfig.plist in Resources */,
@@ -945,12 +959,12 @@
 				001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */,
 				00677B0519BC4C09007A3085 /* MetronmoneTopSubViewIphone.m in Sources */,
 				004BE68019B2E131002CD995 /* MetronomeMainViewControllerIphone.m in Sources */,
-				00A8404D1A434BB600EA11B8 /* MusicBindingInfo.m in Sources */,
 				004BE67519B2E014002CD995 /* XibViewInterface.m in Sources */,
 				00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */,
 				00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */,
 				001B2B3019D3CF190057A22E /* DbConfig.m in Sources */,
 				005233B61A38ACDD008DF620 /* ValueScrollView.m in Sources */,
+				008D8E821A447CCC00EF18A3 /* MusicTimePicker.m in Sources */,
 				005DAFC61A34C7EB008D5F2D /* VoiceTypePickerView.m in Sources */,
 				006175C21A0BD4A300113560 /* CircleButton.m in Sources */,
 				00D92FD01A15C3D800AEC17F /* CellParameterSettingControl.m in Sources */,
@@ -967,6 +981,7 @@
 				00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */,
 				00A840531A43509200EA11B8 /* TempoCell.m in Sources */,
 				004BE68819B2EA93002CD995 /* GlobalConfig.m in Sources */,
+				008D8E851A4481F500EF18A3 /* InputSubmitView.m in Sources */,
 				004BE64C19B2DDC8002CD995 /* main.m in Sources */,
 				00AB03781A2783C500352DD7 /* SystemPageViewController.m in Sources */,
 				005A93941A2CE10900280507 /* VoiceType.m in Sources */,
@@ -977,6 +992,7 @@
 				005233BC1A38AFBB008DF620 /* ValuePickerTemplate.m in Sources */,
 				00039D221A24ED4500710E0E /* SubPropertySelector.m in Sources */,
 				005A93971A2CE10A00280507 /* TimeSignatureType.m in Sources */,
+				008D8E8E1A44887E00EF18A3 /* MusicBindingInfo.m in Sources */,
 				00DA131119F4E94700F27E25 /* NotesTool.m in Sources */,
 				00BDD13C1A33820B00B24D30 /* SelectBarCell.m in Sources */,
 				00A840501A43509200EA11B8 /* TempoList.m in Sources */,

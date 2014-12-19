@@ -20,6 +20,11 @@
     TempoCell * _DeletedCell;
 }
 
+- (void) MainViewDidAppear
+{
+    [self PlayMusicStatusChangedCallBack:nil];
+}
+
 - (void) InitlizePlayingItems
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
@@ -58,6 +63,13 @@
                                              selector:@selector(PlayMusicWithCellList:)
                                                  name:kMusicLoudEnoughEvent
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(PlayMusicStatusChangedCallBack:)
+                                                 name:kPlayMusicStatusChangedEvent
+                                               object:nil];
+    
+    
 }
 
 - (void) InitializeLoopControlItem

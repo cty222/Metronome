@@ -10,6 +10,10 @@
 
 @implementation SystemPageControl
 
+- (void) MainViewDidAppear
+{
+}
+
 - (void) InitializeSystemButton
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;

@@ -8,6 +8,7 @@
         <attribute name="endTime" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="persistentID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="volume" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TempoList" inverseName="musicInfo" inverseEntity="TempoList" syncable="YES"/>
     </entity>
     <entity name="TempoCell" representedClassName="TempoCell" syncable="YES">
@@ -45,10 +46,10 @@
     <fetchRequest name="FetchOwerFromSingleName" entity="TempoCell"/>
     <elements>
         <element name="DbConfig" positionX="153" positionY="18" width="128" height="60"/>
+        <element name="MusicBindingInfo" positionX="144" positionY="9" width="128" height="135"/>
         <element name="TempoCell" positionX="-63" positionY="-18" width="128" height="208"/>
         <element name="TempoList" positionX="349" positionY="-127" width="128" height="118"/>
         <element name="TimeSignatureType" positionX="412" positionY="80" width="128" height="88"/>
         <element name="VoiceType" positionX="144" positionY="0" width="128" height="88"/>
-        <element name="MusicBindingInfo" positionX="144" positionY="9" width="128" height="118"/>
     </elements>
 </model>

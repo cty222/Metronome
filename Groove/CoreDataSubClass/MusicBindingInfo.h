@@ -2,7 +2,7 @@
 //  MusicBindingInfo.h
 //  Groove
 //
-//  Created by C-ty on 2014/12/19.
+//  Created by C-ty on 2014/12/20.
 //  Copyright (c) 2014年 Cty. All rights reserved.
 //
 
@@ -13,10 +13,11 @@
 
 @interface MusicBindingInfo : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * enableMusic;
+@property (nonatomic, retain) NSNumber * endTime;
 @property (nonatomic, retain) NSNumber * persistentID;
 @property (nonatomic, retain) NSNumber * startTime;
-@property (nonatomic, retain) NSNumber * endTime;
-@property (nonatomic, retain) NSNumber * enableMusic;
+@property (nonatomic, retain) NSNumber * volume;
 @property (nonatomic, retain) TempoList *owner;
 
 @end

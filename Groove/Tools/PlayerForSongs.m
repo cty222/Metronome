@@ -13,7 +13,7 @@ static MPMusicPlayerController * MusicPlayer = nil;
 @implementation PlayerForSongs
 {
     AVAudioPlayer * _Player;
-    
+    NSTimeInterval _StartTime;
     NSTimeInterval _EndTime;
     id<AVAudioPlayerDelegate> _delegate;
     BOOL _CellListPlayWithMusicEvent;
@@ -32,23 +32,13 @@ static MPMusicPlayerController * MusicPlayer = nil;
     if (TimeInfo == nil)
     {
         self.CurrentTime = 0.0f;
-        self.EndTime = _Player.duration;
+        self.EndTime = self.duration;
     }
-}
-
-- (NSTimeInterval) ReturnCurrentTime
-{
-    return [_Player currentTime];
-}
-
-- (void) SetStartTimeLoction : (NSTimeInterval) NewTimeLoction
-{
-    _Player.currentTime = NewTimeLoction;
 }
 
 - (void) Play
 {
-    _Player.currentTime = 0.0f;
+    _Player.currentTime = self.StartTime;
     
     [_Player play];
     
@@ -79,7 +69,15 @@ static MPMusicPlayerController * MusicPlayer = nil;
 
 - (void) Stop
 {
+    
+    if (_TestingTimer!= nil)
+    {
+        [_TestingTimer invalidate];
+        _TestingTimer =nil;
+    }
     [_Player pause];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayMusicStatusChangedEvent object:nil];
+
 }
 
 
@@ -113,9 +111,13 @@ static MPMusicPlayerController * MusicPlayer = nil;
     return _Player.url;
 }
 
-- (void) SetCurrentTime : (NSTimeInterval) StartTime
+- (void) SetCurrentTime : (NSTimeInterval) NewCurrentTime
 {
-    _Player.currentTime = StartTime;
+    if (NewCurrentTime > self.duration)
+    {
+        NewCurrentTime = self.duration;
+    }
+    _Player.currentTime = NewCurrentTime;
 }
 
 - (NSTimeInterval) GetCurrentTime
@@ -123,9 +125,24 @@ static MPMusicPlayerController * MusicPlayer = nil;
     return _Player.currentTime;
 }
 
+- (void) SetStartTime : (NSTimeInterval) NewStartTime
+{
+    if (NewStartTime <0)
+    {
+        NewStartTime = 0;
+    }
+    _StartTime = NewStartTime;
+}
+
+- (NSTimeInterval) GetStartTime
+{
+    return _StartTime;
+}
+
+
 - (void) SetEndTime : (NSTimeInterval) NewEndTime
 {
-    if (_Player.duration < NewEndTime)
+    if (NewEndTime > _Player.duration)
     {
         NewEndTime = _Player.duration;
     }
@@ -135,7 +152,7 @@ static MPMusicPlayerController * MusicPlayer = nil;
 
 - (NSTimeInterval) GetEndTime
 {
-    if (_Player.duration < _EndTime)
+    if (_EndTime > _Player.duration)
     {
         _EndTime = _Player.duration;
     }
@@ -143,24 +160,25 @@ static MPMusicPlayerController * MusicPlayer = nil;
     return _EndTime;
 }
 
-
+- (NSTimeInterval) GetDuration
+{
+    return [_Player duration];
+}
 
 - (void) DisplayInfo
 {
     NSLog(@"音樂總長度 %f", [_Player duration]);
-    NSLog(@"聲道數目 %d", [_Player numberOfChannels]);
+    NSLog(@"聲道數目 %lu", (unsigned long)[_Player numberOfChannels]);
 }
 
 - (void) SetPlayRateToHalf
 {
-    NSLog(@"SetPlayRateToHalf");
     _Player.enableRate = YES;
     _Player.rate = 0.5;
 }
 
 - (void) SetPlayRateToNormal
 {
-    NSLog(@"SetPlayRateToNormal");
     _Player.enableRate = NO;
     _Player.rate = 1;
 }
@@ -179,5 +197,17 @@ static MPMusicPlayerController * MusicPlayer = nil;
     NSLog(@"目前peakPowerForChannel %f", [_Player peakPowerForChannel:0]);
 #endif
 
+}
+
+- (NSString *) ReturnTimeValueToString : (NSTimeInterval) Time
+{
+    
+    int Hours =  (Time / 60) / 60;
+    int Minutes = (int)(Time - Hours * 60 * 60) / 60;
+    int Seconds = (int)Time % 60;
+    
+    NSString * ReturnStr = [NSString stringWithFormat:@"%d:%02d:%02d",Hours, Minutes, Seconds];
+    
+    return ReturnStr;
 }
 @end

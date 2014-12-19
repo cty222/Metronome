@@ -7,11 +7,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SystemPageViewController">
             <connections>
+                <outlet property="CancelSubInputView" destination="F3a-JR-8vl" id="0vo-hQ-jmI"/>
                 <outlet property="CurrentSelectedList" destination="GNY-5i-RXS" id="P3Q-bW-0O4"/>
                 <outlet property="CurrentSelectedMusic" destination="xP8-BX-2AP" id="Ter-D6-uco"/>
+                <outlet property="EndTimeLabel" destination="IwM-Ei-tAr" id="qsb-7a-AdR"/>
                 <outlet property="FullView" destination="i5M-Pr-FkT" id="1ma-41-DK3"/>
+                <outlet property="MusicTimePicker" destination="A7w-VM-ga3" id="E0Y-MH-qGJ"/>
                 <outlet property="MusicTotalVolume" destination="ZIv-SU-6HS" id="8oN-3E-Gfa"/>
                 <outlet property="ReturnButton" destination="BNK-rm-aF6" id="C7N-xn-Bkq"/>
+                <outlet property="StartTimeLabel" destination="x5v-Nf-0A8" id="EQc-If-qyc"/>
+                <outlet property="SubInputView" destination="VnB-2r-kof" id="ApI-oC-M2z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,6 +25,22 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view alpha="0.69999999999999996" contentMode="scaleToFill" id="VnB-2r-kof">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="A7w-VM-ga3" customClass="MusicTimePicker">
+                            <rect key="frame" x="0.0" y="330" width="320" height="238"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="0.67428845319999997" green="1" blue="0.90542151240000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="F3a-JR-8vl">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BNK-rm-aF6">
                     <rect key="frame" x="86" y="32" width="129" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -126,14 +147,14 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x5v-Nf-0A8">
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x5v-Nf-0A8">
                     <rect key="frame" x="73" y="279" width="72" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IwM-Ei-tAr">
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IwM-Ei-tAr">
                     <rect key="frame" x="221" y="279" width="72" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>

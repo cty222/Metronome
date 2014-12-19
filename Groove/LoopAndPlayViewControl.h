@@ -22,6 +22,8 @@
 
 @property UIViewController *ParrentController;
 
+- (void) MainViewDidAppear;
+
 - (void) InitlizePlayingItems;
 - (void) InitializeLoopControlItem;
 - (void) ChangeButtonDisplayByPlayMode;

@@ -25,15 +25,14 @@ PlayerForSongs * gPlayMusicChannel;
 @property (setter=SetDelegate:, getter=GetDelegate) id<AVAudioPlayerDelegate> delegate;
 @property (setter=SetVolume:, getter=GetVolume) float Volume;
 @property (setter=SetCurrentTime:, getter=GetCurrentTime) NSTimeInterval CurrentTime;
+@property (setter=SetStartTime:, getter=GetStartTime) NSTimeInterval StartTime;
 @property (setter=SetEndTime:, getter=GetEndTime) NSTimeInterval EndTime;
 
 @property(readonly, getter=isPlaying) BOOL Playing; /* is it playing or not? */
 @property(readonly, getter=GetURL) NSURL *URL; /* returns nil if object was not created with a URL */
-
+@property(readonly, getter=GetDuration) NSTimeInterval duration;
 
 - (void) initWithContentsOfURL:(NSURL*) url Info:(NSMutableDictionary *)TimeInfo;
-
-- (void) SetStartTimeLoction : (NSTimeInterval) NewTimeLoction;
 
 - (void) Play;
 
@@ -44,5 +43,7 @@ PlayerForSongs * gPlayMusicChannel;
 - (void) SetPlayRateToHalf;
 
 - (void) SetPlayRateToNormal;
+
+- (NSString *) ReturnTimeValueToString : (NSTimeInterval) Time;
 
 @end

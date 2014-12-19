@@ -138,7 +138,7 @@
         // Check whether delegate have this selector
         if([self.delegate respondsToSelector:@selector(SetBPMValue:)])
         {
-            [self.delegate SetBPMValue: _Value];
+            [self.delegate SetBPMValue: self];
         }
     }
 }

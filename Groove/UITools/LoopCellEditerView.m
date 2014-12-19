@@ -20,13 +20,6 @@
     BOOL _CanDelete;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -65,7 +58,7 @@
     self.CanDelete = NO;
 }
 
-- (void) SetValue : (int) NewValue
+- (void) SetValue : (id) Picker
 {
     [self ChangeValue:self :self.ValueScrollView];
 }
@@ -98,5 +91,13 @@
     self.CanDelete = !self.CanDelete;
 }
 
+
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end

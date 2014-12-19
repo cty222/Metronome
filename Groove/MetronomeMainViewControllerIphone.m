@@ -49,6 +49,11 @@
     {
         [self.CellParameterSettingSubController MainViewDidAppear];
     }
+    
+    if (self.LoopAndPlayViewSubController != nil)
+    {
+        [self.LoopAndPlayViewSubController MainViewDidAppear];
+    }
 }
 
 - (void)viewDidLoad

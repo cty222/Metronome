@@ -15,7 +15,7 @@
 
 @optional
 
-- (void) SetValue : (int) NewValue;
+- (void) SetValue : (ValuePickerTemplate *) ThisPicker;
 - (void) ShortPress: (ValuePickerTemplate *) ThisPicker;
 @end
 
@@ -26,9 +26,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *UpArrow;
 @property (strong, nonatomic) IBOutlet UIImageView *DownArrow;
 
-@property (getter=GetMaxLimit, setter=SetMaxLimit:) int MaxLimit;
-@property (getter=GetMinLimit, setter=SetMinLimit:) int MinLimit;
-@property (getter = GetValue, setter = SetValue:) int Value;
+@property (getter=GetMaxLimit, setter=SetMaxLimit:) float MaxLimit;
+@property (getter=GetMinLimit, setter=SetMinLimit:) float MinLimit;
+@property (getter = GetValue, setter = SetValue:) float Value;
 @property (getter = GetShortPressSecond, setter = SetShortPressSecond:) float ShortPressSecond;
 - (void) SetValueWithoutDelegate : (int) NewValue;
 

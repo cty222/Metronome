@@ -20,7 +20,7 @@
 
 @optional
 
-- (void) SetBPMValue : (int) NewValue;
+- (void) SetBPMValue : (LargeBPMPicker *) ThisPicker;
 - (void) ShortPress: (LargeBPMPicker *) ThisPicker;
 @end
 

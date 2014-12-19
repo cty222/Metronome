@@ -18,9 +18,9 @@
 
 @implementation ValuePickerTemplate
 {
-    int _Value;
-    int _MaxLimit;
-    int _MinLimit;
+    float _Value;
+    float _MaxLimit;
+    float _MinLimit;
     
     // Touch Event
     CGPoint OriginalLocation;
@@ -41,7 +41,7 @@
 
 - (int) Sensitivity
 {
-    return 5;
+    return 3;
 }
 
 - (void) awakeFromNib
@@ -83,12 +83,12 @@
 }
 
 
-- (int) GetValue
+- (float) GetValue
 {
     return _Value;
 }
 
-- (void) SetValue : (int) NewValue
+- (void) SetValue : (float) NewValue
 {
     if (NewValue > _MaxLimit || NewValue < _MinLimit)
     {
@@ -97,7 +97,7 @@
     
     _Value = NewValue;
     
-    [self.ValueLabel setText:[NSString stringWithFormat:@"%d", self.Value]];
+    [self.ValueLabel setText:[NSString stringWithFormat:@"%d", (int)self.Value]];
     
     // Pass to parent view.
     if (self.delegate != nil)
@@ -105,7 +105,7 @@
         // Check whether delegate have this selector
         if([self.delegate respondsToSelector:@selector(SetValue:)])
         {
-            [self.delegate SetValue: _Value];
+            [self.delegate SetValue: self];
         }
     }
 }
@@ -119,7 +119,7 @@
     
     _Value = NewValue;
     
-    [self.ValueLabel setText:[NSString stringWithFormat:@"%d", self.Value]];
+    [self.ValueLabel setText:[NSString stringWithFormat:@"%d", (int)self.Value]];
 
 }
 

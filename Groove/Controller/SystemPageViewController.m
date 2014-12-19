@@ -37,7 +37,6 @@
     if (MusicPicker == nil)
     {
         MusicPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
-        MusicPicker.delegate = self;
         MusicPicker.allowsPickingMultipleItems = NO;
         MusicPicker.showsCloudItems = NO;
     }
@@ -52,8 +51,11 @@
     {
         MPMediaItem *Item =  [self GetFirstMPMediaItemFromPersistentID : _CurrentList.musicInfo.persistentID ];
         [self DoAllMusicSetupSteps: Item];
+        [self SyncStartAndEndTime];
+
     }
-    
+
+    self.SubInputView.hidden = YES;
 }
 
 - (void)viewDidLoad
@@ -86,6 +88,26 @@
     UITapGestureRecognizer *TabSelectedMusic =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChooseMusic:)];
     [self.CurrentSelectedMusic addGestureRecognizer:TabSelectedMusic];
+    
+    
+    UITapGestureRecognizer *TapStartTimeRecognizer =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(TapStartTime:)];
+    [self.StartTimeLabel addGestureRecognizer:TapStartTimeRecognizer];
+    
+    UITapGestureRecognizer *TapEndTimeRecognizer =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(TapEndTime:)];
+    [self.EndTimeLabel addGestureRecognizer:TapEndTimeRecognizer];
+    
+    UITapGestureRecognizer *CloseSubInputViewRecognizer =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(CloseSubInputViewAction:)];
+    [self.CancelSubInputView addGestureRecognizer:CloseSubInputViewRecognizer];
+    
+    self.SubInputView.hidden = YES;
+    
+    [self.MusicTimePicker removeFromSuperview];
+    self.MusicTimePicker = [[MusicTimePicker alloc] initWithFrame:self.MusicTimePicker.frame];
+    [self.SubInputView addSubview:self.MusicTimePicker];
+    self.MusicTimePicker.delegate = self;
 }
 
 - (IBAction)ReturnToMetronome:(id)sender {
@@ -95,6 +117,37 @@
 - (IBAction)ChooseMusic:(id)sender {
 
     [self presentViewController:MusicPicker animated:YES completion:nil];
+}
+
+- (IBAction)TapStartTime:(id)sender
+{
+    self.MusicTimePicker.ID = MUSIC_STAR_TIME_ID;
+    self.MusicTimePicker.Value = gPlayMusicChannel.StartTime;
+    [self ShowMusicPicker];
+}
+
+- (IBAction)TapEndTime:(id)sender
+{
+    self.MusicTimePicker.ID = MUSIC_END_TIME_ID;
+    self.MusicTimePicker.Value = gPlayMusicChannel.EndTime;
+    [self ShowMusicPicker];
+}
+
+- (void) ShowMusicPicker
+{
+    self.SubInputView.hidden = NO;
+    self.MusicTimePicker.hidden = NO;
+    [self.FullView bringSubviewToFront:self.SubInputView];
+}
+
+- (void) CloseSubInputView
+{
+    self.SubInputView.hidden = YES;
+}
+
+- (IBAction) CloseSubInputViewAction : (UIView *) TargetView
+{
+    [self CloseSubInputView];
 }
 
 - (MPMediaItem *) GetFirstMPMediaItemFromPersistentID : (NSNumber *)PersistentID
@@ -153,6 +206,19 @@
     [gPlayMusicChannel initWithContentsOfURL:url Info:nil];
 }
 
+- (void) SyncStartAndEndTime
+{
+    NSLog(@"%@", _CurrentList.musicInfo);
+   
+    gPlayMusicChannel.StartTime = [_CurrentList.musicInfo.startTime floatValue];
+    gPlayMusicChannel.EndTime = [_CurrentList.musicInfo.endTime floatValue];
+    
+    self.StartTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.StartTime];
+    self.EndTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.EndTime];
+
+    
+}
+
 - (void) DoAllMusicSetupSteps : (MPMediaItem *) Item
 {
     [self FillSongInfo:Item];
@@ -171,10 +237,6 @@
     gPlayMusicChannel.Volume = sender.value;
 }
 
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag;
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayMusicStatusChangedEvent object:nil];
-}
 
 - (IBAction)PlayRateToHave:(UISwitch *)sender {
     if (sender.isOn)
@@ -230,6 +292,36 @@
     self.CurrentSelectedMusic.text = @"";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+// InputSubmitViewProtocol
+- (IBAction) Save: (UIButton *) SaveButton
+{
+    if (self.MusicTimePicker.ID == MUSIC_STAR_TIME_ID)
+    {
+        self.StartTimeLabel.text = [self.MusicTimePicker ReturnCurrentValueString];
+        gPlayMusicChannel.StartTime = self.MusicTimePicker.Value;
+        _CurrentList.musicInfo.startTime = [NSNumber numberWithFloat:self.MusicTimePicker.Value];
+
+    }
+    else if (self.MusicTimePicker.ID == MUSIC_END_TIME_ID)
+    {
+        
+        self.EndTimeLabel.text = [self.MusicTimePicker ReturnCurrentValueString];
+        gPlayMusicChannel.EndTime = self.MusicTimePicker.Value;
+        _CurrentList.musicInfo.endTime = [NSNumber numberWithFloat:self.MusicTimePicker.Value];
+    }
+    
+    [gMetronomeModel Save];
+    [self CloseSubInputView];
+}
+
+- (IBAction) Cancel : (UIButton *) CancelButton
+{
+    NSLog(@"Cancel");
+    [self CloseSubInputView];
+}
+
 
 //
 // ==========================

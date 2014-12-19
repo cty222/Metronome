@@ -32,7 +32,6 @@
     [self.EighthNoteCircleVolumeButton ResetHandle];
     [self.SixteenthNoteCircleVolumeButton ResetHandle];
     [self.TrippleNoteCircleVolumeButton ResetHandle];
-    
 }
 
 -(void) InitializeVolumeSets
@@ -361,18 +360,21 @@
     [gMetronomeModel Save];
 }
 
-- (void) SetBPMValue : (int) NewValue
+- (void) SetBPMValue : (id) Picker
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
 
-    Parent.CurrentCell.bpmValue = [NSNumber numberWithInt:NewValue];
-    
-    // TODO : 不要save這麼頻繁
-    [gMetronomeModel Save];
-    
-    if (Parent.PlayingMode != STOP_PLAYING)
+    if (Picker == self.BPMPicker)
     {
-        Parent.ChangeBPMValueFlag = YES;
+        Parent.CurrentCell.bpmValue = [NSNumber numberWithInt:self.BPMPicker.Value];
+    
+        // TODO : 不要save這麼頻繁
+        [gMetronomeModel Save];
+    
+        if (Parent.PlayingMode != STOP_PLAYING)
+        {
+            Parent.ChangeBPMValueFlag = YES;
+        }
     }
 }
 //
