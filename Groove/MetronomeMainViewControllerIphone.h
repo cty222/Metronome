@@ -53,6 +53,7 @@ typedef enum {
 @property (getter = GetPlayingMode, setter = SetPlayingMode:) METRONOME_PLAYING_MODE PlayingMode;
 
 @property BOOL ChangeBPMValueFlag;
+@property NSMutableDictionary * MusicProperty;
 
 
 - (void) FetchCurrentCellListFromModel;

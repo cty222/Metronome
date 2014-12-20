@@ -49,9 +49,17 @@ enum {
 + (BOOL) PlayCellListNoneStop;
 + (void) SetPlayCellListNoneStop : (BOOL) NewValue;
 
-
 + (TempoList *) GetCurrentListCell;
 + (void) SetLastSelecedtListIndex : (int) NewValue;
+
+
+// Music bounds flags
++ (NSMutableDictionary * ) GetMusicBoundsFlags;
++ (void) SetMusicFunctionEnable : (BOOL) NewValue;
++ (void) SetMusicHalfRate : (BOOL) NewValue;
++ (void) SetPlaySingleCellWithMusic : (BOOL) NewValue;
++ (void) SetPlayListWithMusic : (BOOL) NewValue;
++ (void) SetShowMusicPlayButton : (BOOL) NewValue;
 
 // Main View
 + (UIViewController *) SystemPageViewControllerIphone;

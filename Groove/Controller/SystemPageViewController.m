@@ -28,7 +28,14 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    NSLog(@"viewDidAppear");
     [super viewDidAppear:animated];
+    
+    if (gPlayMusicChannel == nil)
+    {
+        gPlayMusicChannel = [PlayerForSongs alloc];
+        gPlayMusicChannel.delegate = self;
+    }
     
     _CurrentList = [GlobalConfig GetCurrentListCell];
     
@@ -39,6 +46,7 @@
         MusicPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
         MusicPicker.allowsPickingMultipleItems = NO;
         MusicPicker.showsCloudItems = NO;
+        MusicPicker.delegate = self;
     }
     
     if (_CurrentList.musicInfo == nil)
@@ -52,7 +60,6 @@
         MPMediaItem *Item =  [self GetFirstMPMediaItemFromPersistentID : _CurrentList.musicInfo.persistentID ];
         [self DoAllMusicSetupSteps: Item];
         [self SyncStartAndEndTime];
-
     }
 
     self.SubInputView.hidden = YES;
@@ -166,14 +173,18 @@
 
 - (void) FillSongInfo : (MPMediaItem *) Item
 {
-    if (Item == nil) {
-        self.CurrentSelectedMusic.text = @"";
-        return;
+    if (Item != nil)
+    {
+        self.DurationLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.duration];
+        self.CurrentSelectedMusic.text = [Item valueForProperty:MPMediaItemPropertyArtist];
+        self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:@" - "];
+        self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:[Item valueForProperty:MPMediaItemPropertyTitle]];
     }
-    
-    self.CurrentSelectedMusic.text = [Item valueForProperty:MPMediaItemPropertyArtist];
-    self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:@" - "];
-    self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:[Item valueForProperty:MPMediaItemPropertyTitle]];
+    else
+    {
+        self.DurationLabel.text = [gPlayMusicChannel ReturnTimeValueToString:0.0f];
+        self.CurrentSelectedMusic.text = @"";
+    }
 }
 
 - (void) UpdateListCellPersistentID : (MPMediaItem *) Item
@@ -197,49 +208,23 @@
     {
         [gPlayMusicChannel Stop];
     }
-    else
-    {
-        gPlayMusicChannel = [PlayerForSongs alloc];
-        gPlayMusicChannel.delegate = self;
-    }
-    
+
     [gPlayMusicChannel initWithContentsOfURL:url Info:nil];
 }
 
 - (void) SyncStartAndEndTime
 {
-    NSLog(@"%@", _CurrentList.musicInfo);
    
     gPlayMusicChannel.StartTime = [_CurrentList.musicInfo.startTime floatValue];
     gPlayMusicChannel.EndTime = [_CurrentList.musicInfo.endTime floatValue];
     
     self.StartTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.StartTime];
     self.EndTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.EndTime];
-
-    
 }
 
-- (void) DoAllMusicSetupSteps : (MPMediaItem *) Item
+- (void) MusicHalfRateEnable : (BOOL) NewValue
 {
-    [self FillSongInfo:Item];
-    [self UpdateListCellPersistentID:Item];
-    if (Item == Nil)
-    {
-        return;
-    }
-    
-    [self PrepareMusicToplay: Item];
-}
-
-- (IBAction)MusicValueChange:(UISlider *)sender
-{
-
-    gPlayMusicChannel.Volume = sender.value;
-}
-
-
-- (IBAction)PlayRateToHave:(UISwitch *)sender {
-    if (sender.isOn)
+    if (NewValue)
     {
         [gPlayMusicChannel SetPlayRateToHalf];
     }
@@ -249,7 +234,37 @@
     }
 }
 
+- (void) DoAllMusicSetupSteps : (MPMediaItem *) Item
+{
+    [self UpdateListCellPersistentID:Item];
+    
+    [self PrepareMusicToplay: Item];
+    
+    [self FillSongInfo:Item];
+}
+
+- (IBAction)MusicValueChange:(UISlider *)sender
+{
+    gPlayMusicChannel.Volume = sender.value;
+}
+
+- (IBAction)EnableMusicFunction:(UISwitch *)sender {
+    [GlobalConfig SetMusicFunctionEnable:sender.isOn];
+    if (sender.isOn)
+    {
+    }
+    else
+    {
+    }
+}
+
+- (IBAction)PlayRateToHave:(UISwitch *)sender {
+    [GlobalConfig SetMusicHalfRate:sender.isOn];
+    [self MusicHalfRateEnable: sender.isOn];
+}
+
 - (IBAction)PlaySingleCellWithMusic:(UISwitch *)sender {
+    [GlobalConfig SetPlaySingleCellWithMusic:sender.isOn];
     if (sender.isOn)
     {
         
@@ -261,6 +276,7 @@
 }
 
 - (IBAction)PlayCellListWithMusic:(UISwitch *)sender {
+    [GlobalConfig SetPlayListWithMusic:sender.isOn];
     if (sender.isOn)
     {
         
@@ -268,6 +284,16 @@
     else
     {
         
+    }
+}
+
+- (IBAction) ShowPlayMusicButton:(UISwitch *)sender {
+    [GlobalConfig SetShowMusicPlayButton:sender.isOn];
+    if (sender.isOn)
+    {
+    }
+    else
+    {
     }
 }
 
@@ -280,16 +306,17 @@
 
 - (void) mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
 {
+
     MPMediaItem * Item = mediaItemCollection.items[0];
     
-    [self DoAllMusicSetupSteps: Item];
+    [self UpdateListCellPersistentID:Item];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void) mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
 {
-    self.CurrentSelectedMusic.text = @"";
+    [self UpdateListCellPersistentID:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

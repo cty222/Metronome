@@ -312,9 +312,91 @@ static NSMutableDictionary * ThisPlist;
     }
     [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"PlayCellListNoneStop"];
     [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
-    
 }
 
+//
+// ============================
+
+// ============================
+// Music bounds Flag
+//
++ (NSMutableDictionary * ) GetMusicBoundsFlags
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return nil;
+    }
+    
+    NSMutableDictionary * Flags = [[NSMutableDictionary alloc] init];
+    BOOL MusicFunctionEnable = [[ThisPlist objectForKey:@"MusicFunctionEnable"] boolValue];
+    
+    if (MusicFunctionEnable)
+    {
+        [Flags setObject:[ThisPlist objectForKey:@"MusicHalfRate"] forKey:@"MusicHalfRate"];
+        [Flags setObject:[ThisPlist objectForKey:@"PlaySingleCellWithMusic"] forKey:@"PlaySingleCellWithMusic"];
+        [Flags setObject:[ThisPlist objectForKey:@"PlayListWithMusic"] forKey:@"PlayListWithMusic"];
+        [Flags setObject:[ThisPlist objectForKey:@"ShowMusicPlayButton"] forKey:@"ShowMusicPlayButton"];
+    }
+    else
+    {
+        [Flags setObject:[NSNumber numberWithBool:NO] forKey:@"MusicHalfRate"];
+        [Flags setObject:[NSNumber numberWithBool:NO] forKey:@"PlaySingleCellWithMusic"];
+        [Flags setObject:[NSNumber numberWithBool:NO] forKey:@"PlayListWithMusic"];
+        [Flags setObject:[NSNumber numberWithBool:NO] forKey:@"ShowMusicPlayButton"];
+    }
+    
+    return Flags;
+}
+
++ (void) SetMusicFunctionEnable : (BOOL) NewValue
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return;
+    }
+    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"MusicFunctionEnable"];
+    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+}
+
++ (void) SetMusicHalfRate : (BOOL) NewValue
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return;
+    }
+    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"MusicHalfRate"];
+    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+}
+
++ (void) SetPlaySingleCellWithMusic : (BOOL) NewValue
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return;
+    }
+    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"PlaySingleCellWithMusic"];
+    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+}
+
++ (void) SetPlayListWithMusic : (BOOL) NewValue
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return;
+    }
+    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"PlayListWithMusic"];
+    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+}
+
++ (void) SetShowMusicPlayButton : (BOOL) NewValue
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return;
+    }
+    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"ShowMusicPlayButton"];
+    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+}
 //
 // ============================
 

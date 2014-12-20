@@ -20,25 +20,23 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self.HourValuePicker removeFromSuperview];
-        self.HourValuePicker = [[SmallLeftValuePicker alloc] initWithFrame:self.HourValuePicker.frame];
-        [self addSubview:self.HourValuePicker];
-        self.HourValuePicker.MaxLimit = 24;
-        self.HourValuePicker.MinLimit = 0;
-        
         [self.MinuteValuePicker removeFromSuperview];
-        self.MinuteValuePicker = [[SmallLeftValuePicker alloc] initWithFrame:self.MinuteValuePicker.frame];
+        self.MinuteValuePicker = [[TwoDigitsValuePicker alloc] initWithFrame:self.MinuteValuePicker.frame];
         [self addSubview:self.MinuteValuePicker];
-        self.MinuteValuePicker.MaxLimit = 60;
+        self.MinuteValuePicker.MaxLimit = 99;
         self.MinuteValuePicker.MinLimit = 0;
         
         [self.SecondValuePicker removeFromSuperview];
-        self.SecondValuePicker = [[SmallLeftValuePicker alloc] initWithFrame:self.SecondValuePicker.frame];
+        self.SecondValuePicker = [[TwoDigitsValuePicker alloc] initWithFrame:self.SecondValuePicker.frame];
         [self addSubview:self.SecondValuePicker];
-        self.SecondValuePicker.MaxLimit = 60;
+        self.SecondValuePicker.MaxLimit = 59;
         self.SecondValuePicker.MinLimit = 0;
 
-
+        [self.CentisecondsPicker removeFromSuperview];
+        self.CentisecondsPicker = [[TwoDigitsValuePicker alloc] initWithFrame:self.CentisecondsPicker.frame];
+        [self addSubview:self.CentisecondsPicker];
+        self.CentisecondsPicker.MaxLimit = 99;
+        self.CentisecondsPicker.MinLimit = 0;
     }
     return self;
 }
@@ -86,30 +84,40 @@
 {
     NSLog(@"SetValue!!!");
     _Value = NewValue;
-    int Hours = (_Value / 60) / 60;
-    int Minutes = (int)(self.Value - Hours * 60 * 60) / 60;
+    int Minutes = ((int)(self.Value) / 60);
+    if (Minutes > 60)
+    {
+        Minutes = 60;
+    }
     int Seconds = (int)self.Value % 60;
+    int Centiseconds = (int)((self.Value - (int)self.Value) * 100);
+
     
-    self.HourValuePicker.Value = Hours;
     self.MinuteValuePicker.Value = Minutes;
     self.SecondValuePicker.Value = Seconds;
+    self.CentisecondsPicker.Value = Centiseconds;
+
 }
 
 - (void) SyncUIValue
 {
-    _Value = ((int)self.HourValuePicker.Value * 60 * 60 + (int)self.MinuteValuePicker.Value * 60 + (int)self.SecondValuePicker.Value);
+    _Value = ((int)self.MinuteValuePicker.Value * 60 + (int)self.SecondValuePicker.Value + self.CentisecondsPicker.Value/100);
     NSLog(@"%f",_Value);
 
 }
 
 - (NSString *) ReturnCurrentValueString
 {
-
-    int Hours =  (self.Value / 60) / 60;
-    int Minutes = (int)(self.Value - Hours * 60 * 60) / 60;
+    int Minutes = ((int)(self.Value) / 60);
+    if (Minutes > 60)
+    {
+        Minutes = 60;
+    }
+    
     int Seconds = (int)self.Value % 60;
-
-    NSString * ReturnStr = [NSString stringWithFormat:@"%d:%02d:%02d",Hours, Minutes, Seconds];
+    int Centiseconds = (int)((self.Value - (int)self.Value) * 100);
+    
+    NSString * ReturnStr = [NSString stringWithFormat:@"%02d:%02d.%02d", Minutes, Seconds, Centiseconds];
     
     return ReturnStr;
 }

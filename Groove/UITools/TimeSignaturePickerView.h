@@ -8,7 +8,7 @@
 
 #import "SubPropertySelector.h"
 #import "TimeSignatureType.h"
-#import "SmallLeftValuePicker.h"
+#import "TwoDigitsValuePicker.h"
 
 @interface TimeSignaturePickerView : SubPropertySelector<ValuePickerTemplateProtocol>
 

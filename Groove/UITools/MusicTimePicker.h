@@ -7,12 +7,15 @@
 //
 
 #import "InputSubmitView.h"
-#import "SmallLeftValuePicker.h"
+#import "OneDigitsValuePicker.h"
+#import "TwoDigitsValuePicker.h"
+#import "ThreeDigitsValuePicker.h"
 
 @interface MusicTimePicker : InputSubmitView
-@property (strong, nonatomic) IBOutlet SmallLeftValuePicker *HourValuePicker;
-@property (strong, nonatomic) IBOutlet SmallLeftValuePicker *MinuteValuePicker;
-@property (strong, nonatomic) IBOutlet SmallLeftValuePicker *SecondValuePicker;
+@property (strong, nonatomic) IBOutlet TwoDigitsValuePicker *MinuteValuePicker;
+@property (strong, nonatomic) IBOutlet TwoDigitsValuePicker *SecondValuePicker;
+@property (strong, nonatomic) IBOutlet TwoDigitsValuePicker *CentisecondsPicker;
+
 @property (strong, nonatomic) IBOutlet UIButton *SaveButton;
 @property (strong, nonatomic) IBOutlet UIButton *PlayButton;
 @property (strong, nonatomic) IBOutlet UIButton *CancelButton;

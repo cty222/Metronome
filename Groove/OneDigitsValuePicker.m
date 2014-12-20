@@ -1,14 +1,14 @@
 //
-//  SmallLeftValuePicker.m
+//  OneDigitsValuePicker.m
 //  Groove
 //
-//  Created by C-ty on 2014/12/11.
+//  Created by C-ty on 2014/12/21.
 //  Copyright (c) 2014年 Cty. All rights reserved.
 //
 
-#import "SmallLeftValuePicker.h"
+#import "OneDigitsValuePicker.h"
 
-@implementation SmallLeftValuePicker
+@implementation OneDigitsValuePicker
 
 /*
 // Only override drawRect: if you perform custom drawing.

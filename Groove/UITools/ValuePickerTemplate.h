@@ -31,6 +31,7 @@
 @property (getter = GetValue, setter = SetValue:) float Value;
 @property (getter = GetShortPressSecond, setter = SetShortPressSecond:) float ShortPressSecond;
 - (void) SetValueWithoutDelegate : (int) NewValue;
+- (void) SyncValueLabelFromValue;
 
 
 @property (nonatomic, assign) id<ValuePickerTemplateProtocol> delegate;

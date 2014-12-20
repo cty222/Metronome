@@ -39,6 +39,10 @@
 		003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */; };
 		0036173D19D5CC9900848A35 /* loop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0036173C19D5CC9900848A35 /* loop.png */; };
 		003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 003A56A819D3293A00747EB3 /* MetronomeModel.m */; };
+		003AD6021A45EA5800EC343A /* OneDigitsValuePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 003AD6011A45EA5800EC343A /* OneDigitsValuePicker.m */; };
+		003AD6041A45EAD400EC343A /* OneDigitsValuePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003AD6031A45EAD400EC343A /* OneDigitsValuePicker.xib */; };
+		003AD6071A45EC7E00EC343A /* ThreeDigitsValuePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 003AD6061A45EC7E00EC343A /* ThreeDigitsValuePicker.m */; };
+		003AD6091A45EC9300EC343A /* ThreeDigitsValuePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003AD6081A45EC9300EC343A /* ThreeDigitsValuePicker.xib */; };
 		0049ECBC1A40BA990016EA3D /* LoopCellPickerButton.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0049ECBB1A40BA990016EA3D /* LoopCellPickerButton.pdf */; };
 		0049ECC61A40BE2B0016EA3D /* TapAnimation_1_gray.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0049ECC51A40BE2B0016EA3D /* TapAnimation_1_gray.pdf */; };
 		0049ECC81A40BE310016EA3D /* TapAnimation_2_gray.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0049ECC71A40BE310016EA3D /* TapAnimation_2_gray.pdf */; };
@@ -71,8 +75,8 @@
 		005233B31A38AB7E008DF620 /* ValueScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005233B21A38AB7E008DF620 /* ValueScrollView.xib */; };
 		005233B61A38ACDD008DF620 /* ValueScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005233B51A38ACDD008DF620 /* ValueScrollView.m */; };
 		005233BC1A38AFBB008DF620 /* ValuePickerTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 005233BB1A38AFBB008DF620 /* ValuePickerTemplate.m */; };
-		005233C41A38C656008DF620 /* SmallLeftValuePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005233C31A38C656008DF620 /* SmallLeftValuePicker.xib */; };
-		005233C71A38C6D6008DF620 /* SmallLeftValuePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 005233C61A38C6D6008DF620 /* SmallLeftValuePicker.m */; };
+		005233C41A38C656008DF620 /* TwoDigitsValuePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005233C31A38C656008DF620 /* TwoDigitsValuePicker.xib */; };
+		005233C71A38C6D6008DF620 /* TwoDigitsValuePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 005233C61A38C6D6008DF620 /* TwoDigitsValuePicker.m */; };
 		005A93941A2CE10900280507 /* VoiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 005A93931A2CE10900280507 /* VoiceType.m */; };
 		005A93971A2CE10A00280507 /* TimeSignatureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 005A93961A2CE10A00280507 /* TimeSignatureType.m */; };
 		005DAFC01A34567F008D5F2D /* TimeSignaturePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DAFBF1A34567F008D5F2D /* TimeSignaturePickerView.m */; };
@@ -191,6 +195,12 @@
 		0036173C19D5CC9900848A35 /* loop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loop.png; sourceTree = "<group>"; };
 		003A56A719D3293A00747EB3 /* MetronomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetronomeModel.h; path = CoreDataSubClass/MetronomeModel.h; sourceTree = "<group>"; };
 		003A56A819D3293A00747EB3 /* MetronomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetronomeModel.m; path = CoreDataSubClass/MetronomeModel.m; sourceTree = "<group>"; };
+		003AD6001A45EA5800EC343A /* OneDigitsValuePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneDigitsValuePicker.h; sourceTree = "<group>"; };
+		003AD6011A45EA5800EC343A /* OneDigitsValuePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneDigitsValuePicker.m; sourceTree = "<group>"; };
+		003AD6031A45EAD400EC343A /* OneDigitsValuePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OneDigitsValuePicker.xib; path = UITools/OneDigitsValuePicker.xib; sourceTree = "<group>"; };
+		003AD6051A45EC7E00EC343A /* ThreeDigitsValuePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThreeDigitsValuePicker.h; path = UITools/ThreeDigitsValuePicker.h; sourceTree = "<group>"; };
+		003AD6061A45EC7E00EC343A /* ThreeDigitsValuePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThreeDigitsValuePicker.m; path = UITools/ThreeDigitsValuePicker.m; sourceTree = "<group>"; };
+		003AD6081A45EC9300EC343A /* ThreeDigitsValuePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ThreeDigitsValuePicker.xib; path = UITools/ThreeDigitsValuePicker.xib; sourceTree = "<group>"; };
 		0049ECBB1A40BA990016EA3D /* LoopCellPickerButton.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LoopCellPickerButton.pdf; sourceTree = "<group>"; };
 		0049ECC51A40BE2B0016EA3D /* TapAnimation_1_gray.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TapAnimation_1_gray.pdf; sourceTree = "<group>"; };
 		0049ECC71A40BE310016EA3D /* TapAnimation_2_gray.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TapAnimation_2_gray.pdf; sourceTree = "<group>"; };
@@ -232,9 +242,9 @@
 		005233B51A38ACDD008DF620 /* ValueScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValueScrollView.m; path = UITools/ValueScrollView.m; sourceTree = "<group>"; };
 		005233BA1A38AFBB008DF620 /* ValuePickerTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValuePickerTemplate.h; path = UITools/ValuePickerTemplate.h; sourceTree = "<group>"; };
 		005233BB1A38AFBB008DF620 /* ValuePickerTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValuePickerTemplate.m; path = UITools/ValuePickerTemplate.m; sourceTree = "<group>"; };
-		005233C31A38C656008DF620 /* SmallLeftValuePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallLeftValuePicker.xib; sourceTree = "<group>"; };
-		005233C51A38C6D6008DF620 /* SmallLeftValuePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmallLeftValuePicker.h; path = UITools/SmallLeftValuePicker.h; sourceTree = "<group>"; };
-		005233C61A38C6D6008DF620 /* SmallLeftValuePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmallLeftValuePicker.m; path = UITools/SmallLeftValuePicker.m; sourceTree = "<group>"; };
+		005233C31A38C656008DF620 /* TwoDigitsValuePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoDigitsValuePicker.xib; sourceTree = "<group>"; };
+		005233C51A38C6D6008DF620 /* TwoDigitsValuePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwoDigitsValuePicker.h; path = UITools/TwoDigitsValuePicker.h; sourceTree = "<group>"; };
+		005233C61A38C6D6008DF620 /* TwoDigitsValuePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwoDigitsValuePicker.m; path = UITools/TwoDigitsValuePicker.m; sourceTree = "<group>"; };
 		005A93921A2CE10900280507 /* VoiceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoiceType.h; path = CoreDataSubClass/VoiceType.h; sourceTree = "<group>"; };
 		005A93931A2CE10900280507 /* VoiceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoiceType.m; path = CoreDataSubClass/VoiceType.m; sourceTree = "<group>"; };
 		005A93951A2CE10A00280507 /* TimeSignatureType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSignatureType.h; path = CoreDataSubClass/TimeSignatureType.h; sourceTree = "<group>"; };
@@ -529,14 +539,20 @@
 				005233B51A38ACDD008DF620 /* ValueScrollView.m */,
 				005233BA1A38AFBB008DF620 /* ValuePickerTemplate.h */,
 				005233BB1A38AFBB008DF620 /* ValuePickerTemplate.m */,
-				005233C31A38C656008DF620 /* SmallLeftValuePicker.xib */,
-				005233C51A38C6D6008DF620 /* SmallLeftValuePicker.h */,
-				005233C61A38C6D6008DF620 /* SmallLeftValuePicker.m */,
+				005233C31A38C656008DF620 /* TwoDigitsValuePicker.xib */,
+				005233C51A38C6D6008DF620 /* TwoDigitsValuePicker.h */,
+				005233C61A38C6D6008DF620 /* TwoDigitsValuePicker.m */,
 				008D8E7E1A447CB600EF18A3 /* MusicTimePicker.xib */,
 				008D8E801A447CCC00EF18A3 /* MusicTimePicker.h */,
 				008D8E811A447CCC00EF18A3 /* MusicTimePicker.m */,
 				008D8E831A4481F500EF18A3 /* InputSubmitView.h */,
 				008D8E841A4481F500EF18A3 /* InputSubmitView.m */,
+				003AD6001A45EA5800EC343A /* OneDigitsValuePicker.h */,
+				003AD6011A45EA5800EC343A /* OneDigitsValuePicker.m */,
+				003AD6031A45EAD400EC343A /* OneDigitsValuePicker.xib */,
+				003AD6051A45EC7E00EC343A /* ThreeDigitsValuePicker.h */,
+				003AD6061A45EC7E00EC343A /* ThreeDigitsValuePicker.m */,
+				003AD6081A45EC9300EC343A /* ThreeDigitsValuePicker.xib */,
 			);
 			name = ValuePicker;
 			sourceTree = "<group>";
@@ -863,6 +879,7 @@
 				00DA13B519F4F77000F27E25 /* HiFirst.wav in Resources */,
 				00E8C0201A3610FD00D53F82 /* AccentRed.pdf in Resources */,
 				0049ECBC1A40BA990016EA3D /* LoopCellPickerButton.pdf in Resources */,
+				003AD6041A45EAD400EC343A /* OneDigitsValuePicker.xib in Resources */,
 				001BFDCE1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf in Resources */,
 				001BFDBD1A3F550200A56947 /* BPMArrowDown.pdf in Resources */,
 				0071A9B71A2B090100EA57D2 /* Accent.pdf in Resources */,
@@ -888,7 +905,7 @@
 				004BE68119B2E131002CD995 /* MetronomeMainViewControllerIphone.xib in Resources */,
 				00E8C01E1A3610FD00D53F82 /* 16NoteRed.pdf in Resources */,
 				001BFDC91A3F5EBD00A56947 /* AppIcon_60x2.png in Resources */,
-				005233C41A38C656008DF620 /* SmallLeftValuePicker.xib in Resources */,
+				005233C41A38C656008DF620 /* TwoDigitsValuePicker.xib in Resources */,
 				003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */,
 				004DF46B1A40A6AD00E79C0E /* TapAnimation_2_red.pdf in Resources */,
 				00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */,
@@ -929,6 +946,7 @@
 				001F01191A05511300189941 /* IssueAndInfo.txt in Resources */,
 				001BFDA81A3F4E2100A56947 /* SystemButton_4S.pdf in Resources */,
 				005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */,
+				003AD6091A45EC9300EC343A /* ThreeDigitsValuePicker.xib in Resources */,
 				001BFDA01A3F4DCC00A56947 /* NomalHiClickVoice.pdf in Resources */,
 				004BE65519B2DDC8002CD995 /* Images.xcassets in Resources */,
 				00DA13B419F4F77000F27E25 /* HiE.wav in Resources */,
@@ -961,6 +979,7 @@
 				004BE68019B2E131002CD995 /* MetronomeMainViewControllerIphone.m in Sources */,
 				004BE67519B2E014002CD995 /* XibViewInterface.m in Sources */,
 				00677B1319BC5DA4007A3085 /* LargeBPMPicker.m in Sources */,
+				003AD6071A45EC7E00EC343A /* ThreeDigitsValuePicker.m in Sources */,
 				00B9689B19CEF10900AAD1AF /* MetronomeSelectBar.m in Sources */,
 				001B2B3019D3CF190057A22E /* DbConfig.m in Sources */,
 				005233B61A38ACDD008DF620 /* ValueScrollView.m in Sources */,
@@ -969,7 +988,7 @@
 				006175C21A0BD4A300113560 /* CircleButton.m in Sources */,
 				00D92FD01A15C3D800AEC17F /* CellParameterSettingControl.m in Sources */,
 				00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */,
-				005233C71A38C6D6008DF620 /* SmallLeftValuePicker.m in Sources */,
+				005233C71A38C6D6008DF620 /* TwoDigitsValuePicker.m in Sources */,
 				00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */,
 				00D92FD31A15EDFD00AEC17F /* LoopAndPlayViewControl.m in Sources */,
 				00DA131E19F4EF1900F27E25 /* NomalHiClickVoice.m in Sources */,
@@ -989,6 +1008,7 @@
 				004DF4731A40A84D00E79C0E /* TapAnimationImage.m in Sources */,
 				00D92FD61A15FE5700AEC17F /* SystemPageControl.m in Sources */,
 				003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */,
+				003AD6021A45EA5800EC343A /* OneDigitsValuePicker.m in Sources */,
 				005233BC1A38AFBB008DF620 /* ValuePickerTemplate.m in Sources */,
 				00039D221A24ED4500710E0E /* SubPropertySelector.m in Sources */,
 				005A93971A2CE10A00280507 /* TimeSignatureType.m in Sources */,

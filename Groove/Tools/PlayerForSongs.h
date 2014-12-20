@@ -12,9 +12,6 @@
 
 #define kMusicLoudEnoughEvent @"kMusicLoudEnoughEvent"
 #define kPlayMusicStatusChangedEvent @"kPlayMusicStatusChangedEvent"
-#define kPlayMusicWithSingleCellEvent @"kPlayMusicWithSingleCellEvent"
-#define kPlayMusicWithCellListEvent @"kPlayMusicWithCellListEvent"
-
 
 @class PlayerForSongs;
 

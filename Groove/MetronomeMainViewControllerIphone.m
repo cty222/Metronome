@@ -38,12 +38,16 @@
     BOOL _ListChangeFocusFlag;
     //
     // ========================
+    
+    
 
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    self.MusicProperty = [GlobalConfig GetMusicBoundsFlags];
     
     if (self.CellParameterSettingSubController != nil)
     {
@@ -349,12 +353,31 @@
         case STOP_PLAYING:
             [self StopClick];
             [self ResetCounter];
+            if (gPlayMusicChannel.isPlaying)
+            {
+                [gPlayMusicChannel Stop];
+            }
             break;
         case SINGLE_PLAYING:
-            // TODO : 要改成Stop圖
             [self StartClick];
+            if ([self.MusicProperty objectForKey:@"PlaySingleCellWithMusic"])
+            {
+                if (gPlayMusicChannel.isPlaying)
+                {
+                    [gPlayMusicChannel Stop];
+                }
+                [gPlayMusicChannel Play];
+            }
             break;
         case LIST_PLAYING:
+            if ([self.MusicProperty objectForKey:@"PlayListWithMusic"])
+            {
+                if (gPlayMusicChannel.isPlaying)
+                {
+                    [gPlayMusicChannel Stop];
+                }
+                [gPlayMusicChannel Play];
+            }
             [self StartClick];
             break;
         default:

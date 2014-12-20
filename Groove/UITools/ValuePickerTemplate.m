@@ -97,7 +97,7 @@
     
     _Value = NewValue;
     
-    [self.ValueLabel setText:[NSString stringWithFormat:@"%d", (int)self.Value]];
+    [self SyncValueLabelFromValue];
     
     // Pass to parent view.
     if (self.delegate != nil)
@@ -108,6 +108,11 @@
             [self.delegate SetValue: self];
         }
     }
+}
+
+- (void) SyncValueLabelFromValue
+{
+    [self.ValueLabel setText:[NSString stringWithFormat:@"%d", (int)self.Value]];
 }
 
 - (void) SetValueWithoutDelegate : (int) NewValue

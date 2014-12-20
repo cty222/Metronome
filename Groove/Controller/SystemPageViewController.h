@@ -32,5 +32,12 @@ enum SYSTEM_INPUT_ID {
 @property (strong, nonatomic) IBOutlet UIView *SubInputView;
 @property (strong, nonatomic) IBOutlet MusicTimePicker *MusicTimePicker;
 @property (strong, nonatomic) IBOutlet UIView *CancelSubInputView;
+@property (strong, nonatomic) IBOutlet UILabel *DurationLabel;
+
+
+@property (strong, nonatomic) IBOutlet UISwitch *MusicRateToHalfSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *PlayCellListWithMusicSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *PlaySingleCellWithMusicSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *ShowMusicButtonInMainViewSwitch;
 
 @end

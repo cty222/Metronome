@@ -8,6 +8,6 @@
 
 #import "ValuePickerTemplate.h"
 
-@interface SmallLeftValuePicker : ValuePickerTemplate
+@interface TwoDigitsValuePicker : ValuePickerTemplate
 
 @end

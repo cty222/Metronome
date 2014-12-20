@@ -39,20 +39,8 @@ static MPMusicPlayerController * MusicPlayer = nil;
 - (void) Play
 {
     _Player.currentTime = self.StartTime;
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayMusicStatusChangedEvent object:nil];
     [_Player play];
-    
-    
-    if (_SingleCellPlayWithMusicEvent)
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kPlayMusicWithSingleCellEvent object:nil];
-    }
-    
-    if (_CellListPlayWithMusicEvent)
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kPlayMusicWithCellListEvent object:nil];
-    }
-
     
     if (_TestingTimer!= nil)
     {
@@ -162,6 +150,7 @@ static MPMusicPlayerController * MusicPlayer = nil;
 
 - (NSTimeInterval) GetDuration
 {
+    NSLog(@"[_Player duration] %f", [_Player duration]);
     return [_Player duration];
 }
 
@@ -201,13 +190,18 @@ static MPMusicPlayerController * MusicPlayer = nil;
 
 - (NSString *) ReturnTimeValueToString : (NSTimeInterval) Time
 {
+    int Minutes = ((int)(Time) / 60);
+    if (Minutes > 60)
+    {
+        Minutes = 60;
+    }
     
-    int Hours =  (Time / 60) / 60;
-    int Minutes = (int)(Time - Hours * 60 * 60) / 60;
     int Seconds = (int)Time % 60;
+    int Centiseconds = (int)((Time - (int)Time) * 100);
     
-    NSString * ReturnStr = [NSString stringWithFormat:@"%d:%02d:%02d",Hours, Minutes, Seconds];
+    NSString * ReturnStr = [NSString stringWithFormat:@"%02d:%02d.%02d", Minutes, Seconds, Centiseconds];
     
     return ReturnStr;
 }
+
 @end
