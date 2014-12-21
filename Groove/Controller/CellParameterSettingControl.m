@@ -25,7 +25,7 @@
 }
 
 
-- (void) MainViewDidAppear
+- (void) MainViewWillAppear
 {
     [self.AccentCircleVolumeButton ResetHandle];
     [self.QuarterCircleVolumeButton ResetHandle];

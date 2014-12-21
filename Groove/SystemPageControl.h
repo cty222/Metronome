@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *SystemButton;
 @property(nonatomic,retain)IBOutlet ADBannerView *adView;
 
-- (void) MainViewDidAppear;
+- (void) MainViewWillAppear;
 
 - (void) InitializeSystemButton;
 

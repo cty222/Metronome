@@ -41,7 +41,6 @@
     return self;
 }
 
-
 - (IBAction) Save: (UIButton *) SaveButton
 {
     [self SyncUIValue];
@@ -51,6 +50,18 @@
 - (IBAction) Cancel : (UIButton *) CancelButton
 {
     [super Cancel:CancelButton];
+}
+
+- (IBAction) Liston : (UIButton *) ListonButton
+{
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(Liston:)])
+        {
+            [self.delegate Liston: ListonButton];
+        }
+    }
 }
 
 - (IBAction)PlayMusic: (UIButton *) PlayButton
@@ -99,11 +110,15 @@
 
 }
 
+- (NSTimeInterval) GetUIValue
+{
+    NSTimeInterval TempValue = ((int)self.MinuteValuePicker.Value * 60 + (int)self.SecondValuePicker.Value + self.CentisecondsPicker.Value/100);
+    return TempValue;
+}
+
 - (void) SyncUIValue
 {
-    _Value = ((int)self.MinuteValuePicker.Value * 60 + (int)self.SecondValuePicker.Value + self.CentisecondsPicker.Value/100);
-    NSLog(@"%f",_Value);
-
+    _Value = [self GetUIValue];
 }
 
 - (NSString *) ReturnCurrentValueString

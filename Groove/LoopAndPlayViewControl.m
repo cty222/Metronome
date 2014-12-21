@@ -20,7 +20,7 @@
     TempoCell * _DeletedCell;
 }
 
-- (void) MainViewDidAppear
+- (void) MainViewWillAppear
 {
     [self PlayMusicStatusChangedCallBack:nil];
 }

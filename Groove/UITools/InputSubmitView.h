@@ -15,6 +15,7 @@
 @optional
 - (IBAction) Save: (UIButton *) SaveButton;
 - (IBAction) Cancel : (UIButton *) CancelButton;
+
 @end
 
 @interface InputSubmitView : XibViewInterface

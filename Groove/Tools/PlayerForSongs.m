@@ -14,33 +14,64 @@ static MPMusicPlayerController * MusicPlayer = nil;
 {
     AVAudioPlayer * _Player;
     NSTimeInterval _StartTime;
-    NSTimeInterval _EndTime;
-    id<AVAudioPlayerDelegate> _delegate;
-    BOOL _CellListPlayWithMusicEvent;
-    BOOL _SingleCellPlayWithMusicEvent;
+    NSTimeInterval _StopTime;
+    NSTimeInterval _TickStopTime;
 
-    
+    BOOL _IsReadyToPlay;
+   
     NSTimer * _TestingTimer;
+    
+    UIAlertView *_MusicTimeAlert;
+
 }
 
-- (void) initWithContentsOfURL:(NSURL*) url Info:(NSMutableDictionary *)TimeInfo
+// =======================
+// Function tools
+//
+- (void) initWithContentsOfURL:(NSURL*) url
 {
-    _Player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    if (_Player == nil)
+    {
+        _Player = [AVAudioPlayer alloc];
+    }
+    
+    _Player = [_Player initWithContentsOfURL:url error:nil];
+    
     _Player.meteringEnabled = YES;
     _Player.numberOfLoops = 0;
-    
-    if (TimeInfo == nil)
-    {
-        self.CurrentTime = 0.0f;
-        self.EndTime = self.duration;
-    }
+    _Player.delegate = self;
 }
 
 - (void) Play
 {
-    _Player.currentTime = self.StartTime;
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayMusicStatusChangedEvent object:nil];
+    NSLog(@"self.StopTime:%f",self.StopTime);
+    [self PlayWithTempStartAndStopTime:self.StartTime :self.StopTime];
+}
+
+- (void) PlayWithTempStartAndStopTime : (NSTimeInterval) StartTime : (NSTimeInterval) StopTime
+{
+    if (StopTime < StartTime)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kStopTimeLowerThanStartTimeEvent object:nil];
+        if (_MusicTimeAlert == nil)
+        {
+            _MusicTimeAlert = [[UIAlertView alloc]
+                               initWithTitle:@"MusicStopTimeWarming"
+                               message:@"Your stop time is lower than start time,\n please set currectly!!"
+                               delegate:nil
+                               cancelButtonTitle:@"OK, I know it."
+                               otherButtonTitles:nil, nil];
+        }
+        [_MusicTimeAlert show];
+        return;
+    }
+
+    _Player.currentTime = StartTime;
+    _TickStopTime = StopTime;
+    
     [_Player play];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayMusicStatusChangedEvent object:nil];
     
     if (_TestingTimer!= nil)
     {
@@ -48,16 +79,14 @@ static MPMusicPlayerController * MusicPlayer = nil;
         _TestingTimer =nil;
     }
     _TestingTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                                       target:self
-                                                     selector:@selector(DisplayCallback:)
-                                                     userInfo:nil
-                                                      repeats:YES];
-
+                                                     target:self
+                                                   selector:@selector(StopMusicTick:)
+                                                   userInfo:nil
+                                                    repeats:YES];
 }
 
 - (void) Stop
 {
-    
     if (_TestingTimer!= nil)
     {
         [_TestingTimer invalidate];
@@ -65,20 +94,65 @@ static MPMusicPlayerController * MusicPlayer = nil;
     }
     [_Player pause];
     [[NSNotificationCenter defaultCenter] postNotificationName:kPlayMusicStatusChangedEvent object:nil];
-
+    
 }
-
-
-- (void) SetDelegate: (id<AVAudioPlayerDelegate>) NewDelegate
+- (MPMediaItem *) GetFirstMPMediaItemFromPersistentID : (NSNumber *)PersistentID
 {
-    _Player.delegate =  NewDelegate;
+    MPMediaPropertyPredicate * Predicate = [MPMediaPropertyPredicate predicateWithValue:PersistentID forProperty:MPMediaItemPropertyPersistentID];
+    
+    MPMediaQuery *songQuery = [[MPMediaQuery alloc] init];
+    [songQuery addFilterPredicate: Predicate];
+    if (songQuery.items.count > 0)
+    {
+        //song exists
+        return [songQuery.items objectAtIndex:0];
+    }
+    return nil;
 }
 
- - (id<AVAudioPlayerDelegate>) GetDelegate
+- (void) PrepareMusicToplay : (MPMediaItem *) Item
 {
-    return _Player.delegate;
+    NSURL *url = [Item valueForProperty:MPMediaItemPropertyAssetURL];
+    
+    if (gPlayMusicChannel != nil && gPlayMusicChannel.isPlaying)
+    {
+        [gPlayMusicChannel Stop];
+    }
+    
+    [gPlayMusicChannel initWithContentsOfURL:url];
+    if (!_IsReadyToPlay)
+    {
+        _IsReadyToPlay = YES;
+    }
 }
 
+- (NSString *) ReturnTimeValueToString : (NSTimeInterval) Time
+{
+    int Minutes = ((int)(Time) / 60);
+    if (Minutes > 60)
+    {
+        Minutes = 60;
+    }
+    
+    int Seconds = (int)Time % 60;
+    int Centiseconds = (int)((Time - (int)Time) * 100);
+    
+    NSString * ReturnStr = [NSString stringWithFormat:@"%02d:%02d.%02d", Minutes, Seconds, Centiseconds];
+    
+    return ReturnStr;
+}
+
+- (void) DisplayInfo
+{
+    NSLog(@"音樂總長度 %f", [_Player duration]);
+    NSLog(@"聲道數目 %lu", (unsigned long)[_Player numberOfChannels]);
+}
+//
+// =======================
+
+// =================
+// Property
+//
 - (void) SetVolume:(float) NewVolume
 {
     _Player.volume = NewVolume;
@@ -128,37 +202,26 @@ static MPMusicPlayerController * MusicPlayer = nil;
 }
 
 
-- (void) SetEndTime : (NSTimeInterval) NewEndTime
+- (void) SetStopTime : (NSTimeInterval) NewStopTime
 {
-    if (NewEndTime > _Player.duration)
-    {
-        NewEndTime = _Player.duration;
-    }
-    
-    _EndTime = NewEndTime;
+    _StopTime = NewStopTime;
 }
 
-- (NSTimeInterval) GetEndTime
+- (NSTimeInterval) GetStopTime
 {
-    if (_EndTime > _Player.duration)
-    {
-        _EndTime = _Player.duration;
-    }
-    
-    return _EndTime;
+    return _StopTime;
 }
 
 - (NSTimeInterval) GetDuration
 {
+    
+#if 0
     NSLog(@"[_Player duration] %f", [_Player duration]);
+#endif
+    
     return [_Player duration];
 }
 
-- (void) DisplayInfo
-{
-    NSLog(@"音樂總長度 %f", [_Player duration]);
-    NSLog(@"聲道數目 %lu", (unsigned long)[_Player numberOfChannels]);
-}
 
 - (void) SetPlayRateToHalf
 {
@@ -172,36 +235,49 @@ static MPMusicPlayerController * MusicPlayer = nil;
     _Player.rate = 1;
 }
 
-- (void) DisplayCallback: (NSTimer *) ThisTimer
+- (BOOL) GetIsReadyToPlay
 {
+    return _IsReadyToPlay;
+}
+//
+// =======================
+
+
+
+// =======================
+// Timer tick
+//
+- (void) StopMusicTick: (NSTimer *) ThisTimer
+{
+    NSLog(@"StopMusicTick, %f",_TickStopTime);
     [_Player updateMeters];
 
-    if (_Player.currentTime >= self.EndTime)
+    if (_Player.currentTime >= _TickStopTime)
     {
         [self Stop];
     }
     
-#if 0
+#if 1
     NSLog(@"目前播放位置 %f", [_Player currentTime]);
     NSLog(@"目前peakPowerForChannel %f", [_Player peakPowerForChannel:0]);
 #endif
 
 }
 
-- (NSString *) ReturnTimeValueToString : (NSTimeInterval) Time
+//
+// =======================
+
+
+// =========================
+// AVAudioPlayerDelegate
+//
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
-    int Minutes = ((int)(Time) / 60);
-    if (Minutes > 60)
-    {
-        Minutes = 60;
-    }
-    
-    int Seconds = (int)Time % 60;
-    int Centiseconds = (int)((Time - (int)Time) * 100);
-    
-    NSString * ReturnStr = [NSString stringWithFormat:@"%02d:%02d.%02d", Minutes, Seconds, Centiseconds];
-    
-    return ReturnStr;
+    NSLog(@"audioPlayerDidFinishPlaying");
+    [self Stop];
 }
+
+//
+// =========================
 
 @end

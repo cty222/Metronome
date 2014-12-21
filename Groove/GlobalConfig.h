@@ -12,6 +12,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MetronomeModel.h"
+#import "MusicProperties.h"
 
 @class GlobalConfig;
 
@@ -54,12 +55,8 @@ enum {
 
 
 // Music bounds flags
-+ (NSMutableDictionary * ) GetMusicBoundsFlags;
-+ (void) SetMusicFunctionEnable : (BOOL) NewValue;
-+ (void) SetMusicHalfRate : (BOOL) NewValue;
-+ (void) SetPlaySingleCellWithMusic : (BOOL) NewValue;
-+ (void) SetPlayListWithMusic : (BOOL) NewValue;
-+ (void) SetShowMusicPlayButton : (BOOL) NewValue;
++ (MusicProperties *) GetMusicProperties;
++ (void) SetMusicProperties : (MusicProperties *) NewMusicProperties;
 
 // Main View
 + (UIViewController *) SystemPageViewControllerIphone;

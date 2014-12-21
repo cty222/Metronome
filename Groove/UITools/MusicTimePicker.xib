@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -19,12 +20,6 @@
                         <action selector="Save:" destination="MEX-k0-pWT" eventType="touchUpInside" id="Uj0-QN-CeR"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6e-F7-j7X">
-                    <rect key="frame" x="117" y="184" width="86" height="46"/>
-                    <state key="normal" title="Play">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="snx-6x-u7S" customClass="TwoDigitsValuePicker">
                     <rect key="frame" x="110" y="0.0" width="70" height="185"/>
                     <color key="backgroundColor" red="1" green="0.94132335840000003" blue="0.1584888968" alpha="1" colorSpace="calibratedRGB"/>
@@ -32,11 +27,34 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l58-Jg-TYr">
                     <rect key="frame" x="80" y="74" width="22" height="37"/>
                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" cyan="0.080000000000000002" magenta="0.01" yellow="0.040000000000000001" black="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rFR-wr-9fL" customClass="TwoDigitsValuePicker">
+                    <rect key="frame" x="8" y="0.0" width="70" height="185"/>
+                    <color key="backgroundColor" red="1" green="0.94132335840000003" blue="0.1584888968" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRX-a0-7rU">
+                    <rect key="frame" x="188" y="74" width="22" height="37"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                    <color key="textColor" cyan="0.080000000000000002" magenta="0.01" yellow="0.040000000000000001" black="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QGt-g6-arU" customClass="TwoDigitsValuePicker">
+                    <rect key="frame" x="218" y="0.0" width="70" height="185"/>
+                    <color key="backgroundColor" red="1" green="0.94132335840000003" blue="0.1584888968" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6e-F7-j7X">
+                    <rect key="frame" x="102" y="184" width="86" height="46"/>
+                    <state key="normal" title="Liston">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="Liston:" destination="MEX-k0-pWT" eventType="touchUpInside" id="7wX-uz-50c"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iqm-kd-VTk">
-                    <rect key="frame" x="234" y="184" width="86" height="46"/>
+                    <rect key="frame" x="210" y="184" width="86" height="46"/>
                     <state key="normal" title="Cancel">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -44,28 +62,14 @@
                         <action selector="Cancel:" destination="MEX-k0-pWT" eventType="touchUpInside" id="oHD-Ti-mAE"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rFR-wr-9fL" customClass="TwoDigitsValuePicker">
-                    <rect key="frame" x="8" y="0.0" width="70" height="185"/>
-                    <color key="backgroundColor" red="1" green="0.94132335840000003" blue="0.1584888968" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRX-a0-7rU">
-                    <rect key="frame" x="188" y="74" width="22" height="37"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QGt-g6-arU" customClass="TwoDigitsValuePicker">
-                    <rect key="frame" x="218" y="0.0" width="70" height="185"/>
-                    <color key="backgroundColor" red="1" green="0.94132335840000003" blue="0.1584888968" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
             </subviews>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="CancelButton" destination="Iqm-kd-VTk" id="XsM-Jp-KF1"/>
                 <outlet property="CentisecondsPicker" destination="QGt-g6-arU" id="IE7-cl-ISQ"/>
+                <outlet property="ListonButton" destination="g6e-F7-j7X" id="i6x-qU-ZNv"/>
                 <outlet property="MinuteValuePicker" destination="rFR-wr-9fL" id="TaU-cX-sYK"/>
-                <outlet property="PlayButton" destination="g6e-F7-j7X" id="2x9-IB-MFp"/>
                 <outlet property="SaveButton" destination="g3h-lX-wvZ" id="4uF-6j-l5I"/>
                 <outlet property="SecondValuePicker" destination="snx-6x-u7S" id="Nyn-7b-7Wt"/>
             </connections>

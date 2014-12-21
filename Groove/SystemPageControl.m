@@ -9,9 +9,13 @@
 #import "SystemPageControl.h"
 
 @implementation SystemPageControl
-
-- (void) MainViewDidAppear
 {
+    UIAlertView *_MusicTimeAlert;
+}
+
+- (void) MainViewWillAppear
+{
+
 }
 
 - (void) InitializeSystemButton
@@ -24,10 +28,13 @@
     
     [self.SystemButton addTarget:self
                                 action:@selector(ChangeToGrooveMainViewControllerIphone:) forControlEvents:UIControlEventTouchDown];
-    
+   
     self.adView.delegate = self;
 }
 
+- (void) StopTimeLowerThanStartTimeCallBack:(NSNotification *)Notification
+{
+}
 
 // =================================
 // iAD function

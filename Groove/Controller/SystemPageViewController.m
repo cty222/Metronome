@@ -13,8 +13,9 @@
 
 @implementation SystemPageViewController
 {
-    MPMediaPickerController *MusicPicker;
+    MPMediaPickerController *_MusicPicker;
     TempoList *_CurrentList;
+    MusicProperties * _MusicProperty;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -26,27 +27,28 @@
     return self;
 }
 
-- (void) viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"viewDidAppear");
-    [super viewDidAppear:animated];
-    
-    if (gPlayMusicChannel == nil)
+    [super viewWillAppear:animated];
+  
+    if (_MusicPicker == nil)
     {
-        gPlayMusicChannel = [PlayerForSongs alloc];
-        gPlayMusicChannel.delegate = self;
+        _MusicPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
+        _MusicPicker.allowsPickingMultipleItems = NO;
+        _MusicPicker.showsCloudItems = NO;
+        _MusicPicker.delegate = self;
     }
     
     _CurrentList = [GlobalConfig GetCurrentListCell];
     
     self.CurrentSelectedList.text = _CurrentList.tempoListName;
     
-    if (MusicPicker == nil)
+    
+    // ===================
+    // Setup music by model music info
+    if (gPlayMusicChannel == nil)
     {
-        MusicPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
-        MusicPicker.allowsPickingMultipleItems = NO;
-        MusicPicker.showsCloudItems = NO;
-        MusicPicker.delegate = self;
+        gPlayMusicChannel = [PlayerForSongs alloc];
     }
     
     if (_CurrentList.musicInfo == nil)
@@ -54,15 +56,24 @@
         _CurrentList.musicInfo = [gMetronomeModel CreateNewMusicInfo];
         [gMetronomeModel Save];
     }
-
+    
     if (_CurrentList.musicInfo.persistentID != nil)
     {
-        MPMediaItem *Item =  [self GetFirstMPMediaItemFromPersistentID : _CurrentList.musicInfo.persistentID ];
+        MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : _CurrentList.musicInfo.persistentID ];
         [self DoAllMusicSetupSteps: Item];
-        [self SyncStartAndEndTime];
     }
-
+    
+    // ===================
+    // UI state Sync
+    [self SyncMusicPropertyFromGlobalConfig];
+    [self SyncStartAndEndTime];
+    
     self.SubInputView.hidden = YES;
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)viewDidLoad
@@ -115,6 +126,11 @@
     self.MusicTimePicker = [[MusicTimePicker alloc] initWithFrame:self.MusicTimePicker.frame];
     [self.SubInputView addSubview:self.MusicTimePicker];
     self.MusicTimePicker.delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(PlayMusicStatusChangedCallBack:)
+                                                 name:kPlayMusicStatusChangedEvent
+                                               object:nil];
 }
 
 - (IBAction)ReturnToMetronome:(id)sender {
@@ -123,11 +139,20 @@
 
 - (IBAction)ChooseMusic:(id)sender {
 
-    [self presentViewController:MusicPicker animated:YES completion:nil];
+    if (self.CurrentSelectedMusic.enabled == NO)
+    {
+        return;
+    }
+    
+    [self presentViewController:_MusicPicker animated:YES completion:nil];
 }
 
 - (IBAction)TapStartTime:(id)sender
 {
+    if (self.StartTimeLabel.enabled == NO)
+    {
+        return;
+    }
     self.MusicTimePicker.ID = MUSIC_STAR_TIME_ID;
     self.MusicTimePicker.Value = gPlayMusicChannel.StartTime;
     [self ShowMusicPicker];
@@ -135,8 +160,12 @@
 
 - (IBAction)TapEndTime:(id)sender
 {
+    if (self.EndTimeLabel.enabled == NO)
+    {
+        return;
+    }
     self.MusicTimePicker.ID = MUSIC_END_TIME_ID;
-    self.MusicTimePicker.Value = gPlayMusicChannel.EndTime;
+    self.MusicTimePicker.Value = gPlayMusicChannel.StopTime;
     [self ShowMusicPicker];
 }
 
@@ -155,20 +184,6 @@
 - (IBAction) CloseSubInputViewAction : (UIView *) TargetView
 {
     [self CloseSubInputView];
-}
-
-- (MPMediaItem *) GetFirstMPMediaItemFromPersistentID : (NSNumber *)PersistentID
-{
-    MPMediaPropertyPredicate * Predicate = [MPMediaPropertyPredicate predicateWithValue:PersistentID forProperty:MPMediaItemPropertyPersistentID];
-    
-    MPMediaQuery *songQuery = [[MPMediaQuery alloc] init];
-    [songQuery addFilterPredicate: Predicate];
-    if (songQuery.items.count > 0)
-    {
-        //song exists
-        return [songQuery.items objectAtIndex:0];
-    }
-    return nil;
 }
 
 - (void) FillSongInfo : (MPMediaItem *) Item
@@ -200,26 +215,16 @@
     [gMetronomeModel Save];
 }
 
-- (void) PrepareMusicToplay : (MPMediaItem *) Item
-{
-    NSURL *url = [Item valueForProperty:MPMediaItemPropertyAssetURL];
-    
-    if (gPlayMusicChannel != nil)
-    {
-        [gPlayMusicChannel Stop];
-    }
-
-    [gPlayMusicChannel initWithContentsOfURL:url Info:nil];
-}
-
 - (void) SyncStartAndEndTime
 {
-   
+    NSLog(@"");
+    NSLog(@"");
+
     gPlayMusicChannel.StartTime = [_CurrentList.musicInfo.startTime floatValue];
-    gPlayMusicChannel.EndTime = [_CurrentList.musicInfo.endTime floatValue];
+    gPlayMusicChannel.StopTime = [_CurrentList.musicInfo.endTime floatValue];
     
     self.StartTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.StartTime];
-    self.EndTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.EndTime];
+    self.EndTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.StopTime];
 }
 
 - (void) MusicHalfRateEnable : (BOOL) NewValue
@@ -238,7 +243,7 @@
 {
     [self UpdateListCellPersistentID:Item];
     
-    [self PrepareMusicToplay: Item];
+    [gPlayMusicChannel PrepareMusicToplay: Item];
     
     [self FillSongInfo:Item];
 }
@@ -248,23 +253,68 @@
     gPlayMusicChannel.Volume = sender.value;
 }
 
-- (IBAction)EnableMusicFunction:(UISwitch *)sender {
-    [GlobalConfig SetMusicFunctionEnable:sender.isOn];
-    if (sender.isOn)
+
+// =============================
+// Music Property switch
+//
+
+- (void) SyncMusicPropertyFromGlobalConfig
+{
+    _MusicProperty = [GlobalConfig GetMusicProperties];
+    [self.EnableMusicFunction setOn: _MusicProperty.MusicFunctionEnable];
+    [self.MusicRateToHalfSwitch setOn: _MusicProperty.MusicHalfRateEnable];
+    [self.PlaySingleCellWithMusicSwitch setOn: _MusicProperty.PlaySingleCellWithMusicEnable];
+    [self.PlayListWithMusicSwitch setOn: _MusicProperty.PlayListWithMusicEnable];
+    [self.ShowMusicButtonInMainViewSwitch setOn: _MusicProperty.ShowMusicButtonInMainViewEnable];
+    
+    [self ChangeMusicFunctionUIState:_MusicProperty.MusicFunctionEnable];
+}
+
+- (void) ChangeMusicFunctionUIState : (BOOL) MusicFunctionEnable
+{
+    if (MusicFunctionEnable)
     {
+        self.ShowMusicButtonInMainViewSwitch.enabled = YES;
+        self.PlayListWithMusicSwitch.enabled = YES;
+        self.PlaySingleCellWithMusicSwitch.enabled = YES;
+        self.MusicRateToHalfSwitch.enabled = YES;
+        self.MusicTotalVolume.enabled = YES;
+        self.CurrentSelectedMusic.enabled = YES;
+        self.DurationLabel.enabled = YES;
+        self.StartTimeLabel.enabled = YES;
+        self.EndTimeLabel.enabled = YES;
+        
     }
     else
     {
+        self.ShowMusicButtonInMainViewSwitch.enabled = NO;
+        self.PlayListWithMusicSwitch.enabled = NO;
+        self.PlaySingleCellWithMusicSwitch.enabled = NO;
+        self.MusicRateToHalfSwitch.enabled = NO;
+        self.MusicTotalVolume.enabled = NO;
+        self.CurrentSelectedMusic.enabled = NO;
+        self.DurationLabel.enabled = NO;
+        self.StartTimeLabel.enabled = NO;
+        self.EndTimeLabel.enabled = NO;
     }
 }
 
-- (IBAction)PlayRateToHave:(UISwitch *)sender {
-    [GlobalConfig SetMusicHalfRate:sender.isOn];
+- (IBAction)EnableMusicFunction:(UISwitch *)sender {
+    _MusicProperty.MusicFunctionEnable = sender.isOn;
+    [GlobalConfig SetMusicProperties:_MusicProperty];
+    
+    [self ChangeMusicFunctionUIState:sender.isOn];
+}
+
+- (IBAction)PlayRateToHaveSwitched:(UISwitch *)sender {
+    _MusicProperty.MusicHalfRateEnable = sender.isOn;
+    [GlobalConfig SetMusicProperties:_MusicProperty];
     [self MusicHalfRateEnable: sender.isOn];
 }
 
-- (IBAction)PlaySingleCellWithMusic:(UISwitch *)sender {
-    [GlobalConfig SetPlaySingleCellWithMusic:sender.isOn];
+- (IBAction)PlaySingleCellWithMusicSwitched:(UISwitch *)sender {
+    _MusicProperty.PlaySingleCellWithMusicEnable = sender.isOn;
+    [GlobalConfig SetMusicProperties:_MusicProperty];
     if (sender.isOn)
     {
         
@@ -275,8 +325,9 @@
     }
 }
 
-- (IBAction)PlayCellListWithMusic:(UISwitch *)sender {
-    [GlobalConfig SetPlayListWithMusic:sender.isOn];
+- (IBAction)PlayListWithMusicSwitched:(UISwitch *)sender {
+    _MusicProperty.PlayListWithMusicEnable = sender.isOn;
+    [GlobalConfig SetMusicProperties:_MusicProperty];
     if (sender.isOn)
     {
         
@@ -287,8 +338,9 @@
     }
 }
 
-- (IBAction) ShowPlayMusicButton:(UISwitch *)sender {
-    [GlobalConfig SetShowMusicPlayButton:sender.isOn];
+- (IBAction) ShowPlayMusicButtonSwitched:(UISwitch *)sender {
+    _MusicProperty.ShowMusicButtonInMainViewEnable = sender.isOn;
+    [GlobalConfig SetMusicProperties:_MusicProperty];
     if (sender.isOn)
     {
     }
@@ -309,14 +361,13 @@
 
     MPMediaItem * Item = mediaItemCollection.items[0];
     
-    [self UpdateListCellPersistentID:Item];
+    [self DoAllMusicSetupSteps:Item];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void) mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
 {
-    [self UpdateListCellPersistentID:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -329,14 +380,21 @@
         self.StartTimeLabel.text = [self.MusicTimePicker ReturnCurrentValueString];
         gPlayMusicChannel.StartTime = self.MusicTimePicker.Value;
         _CurrentList.musicInfo.startTime = [NSNumber numberWithFloat:self.MusicTimePicker.Value];
+        if (gPlayMusicChannel.isPlaying)
+        {
+            [gPlayMusicChannel Stop];
+        }
 
     }
     else if (self.MusicTimePicker.ID == MUSIC_END_TIME_ID)
     {
-        
         self.EndTimeLabel.text = [self.MusicTimePicker ReturnCurrentValueString];
-        gPlayMusicChannel.EndTime = self.MusicTimePicker.Value;
+        gPlayMusicChannel.StopTime = self.MusicTimePicker.Value;
         _CurrentList.musicInfo.endTime = [NSNumber numberWithFloat:self.MusicTimePicker.Value];
+        if (gPlayMusicChannel.isPlaying)
+        {
+            [gPlayMusicChannel Stop];
+        }
     }
     
     [gMetronomeModel Save];
@@ -345,10 +403,48 @@
 
 - (IBAction) Cancel : (UIButton *) CancelButton
 {
-    NSLog(@"Cancel");
+    if (self.MusicTimePicker.ID == MUSIC_STAR_TIME_ID)
+    {
+        if (gPlayMusicChannel.isPlaying)
+        {
+            [gPlayMusicChannel Stop];
+        }
+        
+    }
+    else if (self.MusicTimePicker.ID == MUSIC_END_TIME_ID)
+    {
+        if (gPlayMusicChannel.isPlaying)
+        {
+            [gPlayMusicChannel Stop];
+        }
+    }
+    
     [self CloseSubInputView];
 }
 
+- (IBAction) Liston : (UIButton *) ListonButton
+{
+    if (gPlayMusicChannel.isPlaying)
+    {
+        [gPlayMusicChannel Stop];
+    }
+    else
+    {
+        [gPlayMusicChannel PlayWithTempStartAndStopTime:[self.MusicTimePicker GetUIValue] :gPlayMusicChannel.duration];
+    }
+}
+
+- (void) PlayMusicStatusChangedCallBack:(NSNotification *)Notification
+{
+    if (gPlayMusicChannel.Playing)
+    {
+        [self.MusicTimePicker.ListonButton setTitle:@"Stop" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.MusicTimePicker.ListonButton setTitle:@"Liston" forState:UIControlStateNormal];
+    }
+}
 
 //
 // ==========================

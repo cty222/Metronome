@@ -22,7 +22,7 @@
 
 @property UIViewController *ParrentController;
 
-- (void) MainViewDidAppear;
+- (void) MainViewWillAppear;
 
 - (void) InitlizePlayingItems;
 - (void) InitializeLoopControlItem;

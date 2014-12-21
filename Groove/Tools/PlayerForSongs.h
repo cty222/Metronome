@@ -12,24 +12,30 @@
 
 #define kMusicLoudEnoughEvent @"kMusicLoudEnoughEvent"
 #define kPlayMusicStatusChangedEvent @"kPlayMusicStatusChangedEvent"
+#define kStopTimeLowerThanStartTimeEvent @"kStopTimeLowerThanStartTimeEvent"
 
 @class PlayerForSongs;
 
 PlayerForSongs * gPlayMusicChannel;
 
-@interface PlayerForSongs : NSObject
+@interface PlayerForSongs : NSObject < AVAudioPlayerDelegate>
 
-@property (setter=SetDelegate:, getter=GetDelegate) id<AVAudioPlayerDelegate> delegate;
 @property (setter=SetVolume:, getter=GetVolume) float Volume;
 @property (setter=SetCurrentTime:, getter=GetCurrentTime) NSTimeInterval CurrentTime;
 @property (setter=SetStartTime:, getter=GetStartTime) NSTimeInterval StartTime;
-@property (setter=SetEndTime:, getter=GetEndTime) NSTimeInterval EndTime;
+@property (setter=SetStopTime:, getter=GetStopTime) NSTimeInterval StopTime;
 
 @property(readonly, getter=isPlaying) BOOL Playing; /* is it playing or not? */
 @property(readonly, getter=GetURL) NSURL *URL; /* returns nil if object was not created with a URL */
 @property(readonly, getter=GetDuration) NSTimeInterval duration;
 
-- (void) initWithContentsOfURL:(NSURL*) url Info:(NSMutableDictionary *)TimeInfo;
+@property(readonly, getter=GetIsReadyToPlay) BOOL IsReadyToPlay;
+
+- (void) PrepareMusicToplay : (MPMediaItem *) Item;
+
+- (MPMediaItem *) GetFirstMPMediaItemFromPersistentID : (NSNumber *)PersistentID;
+
+- (void) PlayWithTempStartAndStopTime : (NSTimeInterval) StartTime : (NSTimeInterval) StopTime;
 
 - (void) Play;
 

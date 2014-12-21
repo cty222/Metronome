@@ -16,7 +16,7 @@ enum SYSTEM_INPUT_ID {
     MUSIC_END_TIME_ID
 };
 
-@interface SystemPageViewController : UIViewController <MPMediaPickerControllerDelegate, AVAudioPlayerDelegate, InputSubmitViewProtocol>
+@interface SystemPageViewController : UIViewController <MPMediaPickerControllerDelegate, AVAudioPlayerDelegate, MusicTimePickerProtocol>
 @property (strong, nonatomic) IBOutlet UIView *FullView;
 @property (strong, nonatomic) IBOutlet UIButton *ReturnButton;
 
@@ -34,10 +34,11 @@ enum SYSTEM_INPUT_ID {
 @property (strong, nonatomic) IBOutlet UIView *CancelSubInputView;
 @property (strong, nonatomic) IBOutlet UILabel *DurationLabel;
 
-
+@property (strong, nonatomic) IBOutlet UISwitch *EnableMusicFunction;
 @property (strong, nonatomic) IBOutlet UISwitch *MusicRateToHalfSwitch;
-@property (strong, nonatomic) IBOutlet UISwitch *PlayCellListWithMusicSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *PlaySingleCellWithMusicSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *PlayListWithMusicSwitch;
+
 @property (strong, nonatomic) IBOutlet UISwitch *ShowMusicButtonInMainViewSwitch;
 
 @end

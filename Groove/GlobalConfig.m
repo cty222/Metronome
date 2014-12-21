@@ -320,81 +320,33 @@ static NSMutableDictionary * ThisPlist;
 // ============================
 // Music bounds Flag
 //
-+ (NSMutableDictionary * ) GetMusicBoundsFlags
++ (MusicProperties * ) GetMusicProperties
 {
     if (![GlobalConfig IsInitialized])
     {
         return nil;
     }
     
-    NSMutableDictionary * Flags = [[NSMutableDictionary alloc] init];
-    BOOL MusicFunctionEnable = [[ThisPlist objectForKey:@"MusicFunctionEnable"] boolValue];
+    MusicProperties * Properties = [[MusicProperties alloc] init];
     
-    if (MusicFunctionEnable)
-    {
-        [Flags setObject:[ThisPlist objectForKey:@"MusicHalfRate"] forKey:@"MusicHalfRate"];
-        [Flags setObject:[ThisPlist objectForKey:@"PlaySingleCellWithMusic"] forKey:@"PlaySingleCellWithMusic"];
-        [Flags setObject:[ThisPlist objectForKey:@"PlayListWithMusic"] forKey:@"PlayListWithMusic"];
-        [Flags setObject:[ThisPlist objectForKey:@"ShowMusicPlayButton"] forKey:@"ShowMusicPlayButton"];
-    }
-    else
-    {
-        [Flags setObject:[NSNumber numberWithBool:NO] forKey:@"MusicHalfRate"];
-        [Flags setObject:[NSNumber numberWithBool:NO] forKey:@"PlaySingleCellWithMusic"];
-        [Flags setObject:[NSNumber numberWithBool:NO] forKey:@"PlayListWithMusic"];
-        [Flags setObject:[NSNumber numberWithBool:NO] forKey:@"ShowMusicPlayButton"];
-    }
+    Properties.MusicFunctionEnable = [[ThisPlist objectForKey:@"MusicFunctionEnable"] boolValue];
+    Properties.MusicHalfRateEnable = [[ThisPlist objectForKey:@"MusicHalfRate"] boolValue];
+    Properties.PlaySingleCellWithMusicEnable = [[ThisPlist objectForKey:@"PlaySingleCellWithMusic"] boolValue];
+    Properties.PlayListWithMusicEnable = [[ThisPlist objectForKey:@"PlayListWithMusic"] boolValue];
+    Properties.ShowMusicButtonInMainViewEnable = [[ThisPlist objectForKey:@"ShowMusicButtonInMainView"] boolValue];
     
-    return Flags;
+    return Properties;
 }
 
-+ (void) SetMusicFunctionEnable : (BOOL) NewValue
++ (void) SetMusicProperties : (MusicProperties *) NewMusicProperties
 {
-    if (![GlobalConfig IsInitialized])
-    {
-        return;
-    }
-    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"MusicFunctionEnable"];
-    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
-}
+    [ThisPlist setValue:[NSNumber numberWithBool:NewMusicProperties.MusicFunctionEnable] forKey:@"MusicFunctionEnable"];
+    [ThisPlist setValue:[NSNumber numberWithBool:NewMusicProperties.MusicHalfRateEnable] forKey:@"MusicHalfRate"];
+    [ThisPlist setValue:[NSNumber numberWithBool:NewMusicProperties.PlaySingleCellWithMusicEnable] forKey:@"PlaySingleCellWithMusic"];
+    [ThisPlist setValue:[NSNumber numberWithBool:NewMusicProperties.PlayListWithMusicEnable] forKey:@"PlayListWithMusic"];
+    [ThisPlist setValue:[NSNumber numberWithBool:NewMusicProperties.ShowMusicButtonInMainViewEnable] forKey:@"ShowMusicButtonInMainView"];
 
-+ (void) SetMusicHalfRate : (BOOL) NewValue
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return;
-    }
-    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"MusicHalfRate"];
-    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
-}
-
-+ (void) SetPlaySingleCellWithMusic : (BOOL) NewValue
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return;
-    }
-    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"PlaySingleCellWithMusic"];
-    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
-}
-
-+ (void) SetPlayListWithMusic : (BOOL) NewValue
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return;
-    }
-    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"PlayListWithMusic"];
-    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
-}
-
-+ (void) SetShowMusicPlayButton : (BOOL) NewValue
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return;
-    }
-    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"ShowMusicPlayButton"];
+    
     [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
 }
 //

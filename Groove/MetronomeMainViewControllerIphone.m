@@ -38,26 +38,62 @@
     BOOL _ListChangeFocusFlag;
     //
     // ========================
-    
-    
 
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+   
+    self.MusicProperty = [GlobalConfig GetMusicProperties];
+    
+    _LoopAndPlayViewSubController.PlayMusicButton.hidden = !self.MusicProperty.ShowMusicButtonInMainViewEnable;
+    
+    [self FetchCurrentCellListFromModel];
+    
+    [self ReflashCellListAndFocusCellByCurrentData];
+    
+    if (self.CellParameterSettingSubController != nil)
+    {
+        [self.CellParameterSettingSubController MainViewWillAppear];
+    }
+    
+    if (self.LoopAndPlayViewSubController != nil)
+    {
+        [self.LoopAndPlayViewSubController MainViewWillAppear];
+    }
+    
+    if (self.SystemPageController != nil)
+    {
+        [self.SystemPageController MainViewWillAppear];
+    }
+    
+    // ===================
+    // Setup music by model music info
+    if (gPlayMusicChannel == nil)
+    {
+        gPlayMusicChannel = [PlayerForSongs alloc];
+    }
+    
+    if (self.CurrentTempoListCell.musicInfo == nil)
+    {
+        self.CurrentTempoListCell.musicInfo = [gMetronomeModel CreateNewMusicInfo];
+        [gMetronomeModel Save];
+    }
+    
+    if (self.CurrentTempoListCell.musicInfo.persistentID != nil)
+    {
+        MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : self.CurrentTempoListCell.musicInfo.persistentID ];
+        [gPlayMusicChannel PrepareMusicToplay:Item];
+        gPlayMusicChannel.StartTime = [self.CurrentTempoListCell.musicInfo.startTime floatValue];
+        gPlayMusicChannel.StopTime = [self.CurrentTempoListCell.musicInfo.endTime floatValue];
+    }
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    self.MusicProperty = [GlobalConfig GetMusicBoundsFlags];
-    
-    if (self.CellParameterSettingSubController != nil)
-    {
-        [self.CellParameterSettingSubController MainViewDidAppear];
-    }
-    
-    if (self.LoopAndPlayViewSubController != nil)
-    {
-        [self.LoopAndPlayViewSubController MainViewDidAppear];
-    }
+
 }
 
 - (void)viewDidLoad
@@ -125,9 +161,6 @@
     
     [self GlobaleventInitialize];
     
-    [self FetchCurrentCellListFromModel];
-    [self ReflashCellListAndFocusCellByCurrentData];
-
 }
 
 - (void) GlobaleventInitialize
@@ -243,6 +276,7 @@
     NSNumber *LastSelecedtListIndex = self.CurrentTempoListCell.focusCellIndex;
     self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[[LastSelecedtListIndex intValue]]];
 
+    // 如果出錯
     if (self.CurrentCellsDataTable == nil)
     {
         self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]];
@@ -360,7 +394,7 @@
             break;
         case SINGLE_PLAYING:
             [self StartClick];
-            if ([self.MusicProperty objectForKey:@"PlaySingleCellWithMusic"])
+            if (self.MusicProperty.MusicFunctionEnable && self.MusicProperty.PlaySingleCellWithMusicEnable)
             {
                 if (gPlayMusicChannel.isPlaying)
                 {
@@ -370,7 +404,7 @@
             }
             break;
         case LIST_PLAYING:
-            if ([self.MusicProperty objectForKey:@"PlayListWithMusic"])
+            if (self.MusicProperty.MusicFunctionEnable && self.MusicProperty.PlayListWithMusicEnable)
             {
                 if (gPlayMusicChannel.isPlaying)
                 {
