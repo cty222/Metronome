@@ -12,6 +12,8 @@
 
 @interface TimeSignaturePickerView : SubPropertySelector<ValuePickerTemplateProtocol>
 
++ (UIColor *) TextFontColor;
+
 - (void) DisplayPropertyCell : (NSArray *) FillInData : (UIView *) TriggerButton;
 
 @end

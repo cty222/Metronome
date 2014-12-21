@@ -100,6 +100,7 @@
                                action:@selector(VoiceTypePickerDisplay:) forControlEvents:UIControlEventTouchDown];
     
     // Time Signature
+    [self.TimeSigaturePicker setTitleColor:[TimeSignaturePickerView TextFontColor] forState:UIControlStateNormal];
     [self InitilaizeTimeSignaturePickerView];
     [self.TimeSigaturePicker addTarget:self
                              action:@selector(TimeSigaturePickerDisplay:) forControlEvents:UIControlEventTouchDown];

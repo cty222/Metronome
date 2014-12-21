@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -17,7 +16,6 @@
                 <outlet property="MusicRateToHalfSwitch" destination="Cpc-Kx-Cwq" id="sCS-3o-uxL"/>
                 <outlet property="MusicTimePicker" destination="A7w-VM-ga3" id="E0Y-MH-qGJ"/>
                 <outlet property="MusicTotalVolume" destination="ZIv-SU-6HS" id="8oN-3E-Gfa"/>
-                <outlet property="PlayListWithMusicSwitch" destination="ZVY-bJ-Eg3" id="kCz-9u-zCN"/>
                 <outlet property="PlaySingleCellWithMusicSwitch" destination="Vsu-pW-Doa" id="DfU-G2-Y62"/>
                 <outlet property="ReturnButton" destination="BNK-rm-aF6" id="C7N-xn-Bkq"/>
                 <outlet property="ShowMusicButtonInMainViewSwitch" destination="mzh-d4-m0q" id="lT2-S0-p0A"/>
@@ -175,20 +173,6 @@
                                 <action selector="PlaySingleCellWithMusicSwitched:" destination="-1" eventType="valueChanged" id="KRJ-t1-dew"/>
                             </connections>
                         </switch>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play List with Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dX3-rg-kYI">
-                            <rect key="frame" x="73" y="92" width="187" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ZVY-bJ-Eg3">
-                            <rect key="frame" x="8" y="92" width="51" height="31"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <connections>
-                                <action selector="PlayListWithMusicSwitched:" destination="-1" eventType="valueChanged" id="Nad-As-b4u"/>
-                            </connections>
-                        </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Single Cell with Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PgI-BU-0QD">
                             <rect key="frame" x="73" y="49" width="207" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -197,14 +181,14 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="mzh-d4-m0q">
-                            <rect key="frame" x="8" y="136" width="51" height="31"/>
+                            <rect key="frame" x="8" y="92" width="51" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <connections>
                                 <action selector="ShowPlayMusicButtonSwitched:" destination="-1" eventType="valueChanged" id="vCJ-cs-1wy"/>
                             </connections>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show music play button" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pk5-O4-GVA">
-                            <rect key="frame" x="73" y="134" width="207" height="33"/>
+                            <rect key="frame" x="73" y="92" width="207" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

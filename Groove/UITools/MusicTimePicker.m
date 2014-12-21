@@ -12,8 +12,9 @@
 @implementation MusicTimePicker
 {
     NSTimeInterval _Value;
+    
+    NSTimer * _ScollValueUpdateTimer;
 }
-
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -37,13 +38,18 @@
         [self addSubview:self.CentisecondsPicker];
         self.CentisecondsPicker.MaxLimit = 99;
         self.CentisecondsPicker.MinLimit = 0;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(PlayMusicStatusChangedCallBack:)
+                                                     name:kPlayMusicStatusChangedEvent
+                                                   object:nil];
     }
     return self;
 }
 
 - (IBAction) Save: (UIButton *) SaveButton
 {
-    [self SyncUIValue];
+    [self SyncValueFormUIValue];
     [super Save:SaveButton];
 }
 
@@ -64,26 +70,12 @@
     }
 }
 
-- (IBAction)PlayMusic: (UIButton *) PlayButton
-{
-    if (gPlayMusicChannel.Playing)
-    {
-        [gPlayMusicChannel Stop];
-    }
-    else
-    {
-        [gPlayMusicChannel Play];
-    }
-    
-    if (gPlayMusicChannel.Playing)
-    {
-        [PlayButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+- (IBAction)TimeScrollValueChanged:(id)sender {
+    self.ScrollTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:self.TimeScrollBar.value];
+}
 
-    }
-    else
-    {
-        [PlayButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
+- (IBAction)UpdateScrollValueToUIValueClick:(id)sender {
+    [self SetUIValue: self.TimeScrollBar.value];
 }
 
 - (NSTimeInterval) GetValue
@@ -93,21 +85,27 @@
 
 - (void) SetValue: (NSTimeInterval) NewValue
 {
-    NSLog(@"SetValue!!!");
     _Value = NewValue;
-    int Minutes = ((int)(self.Value) / 60);
+
+    [self SetUIValue:_Value];
+    self.TimeScrollBar.value = _Value;
+    self.ScrollTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:_Value];
+}
+
+- (void) SetUIValue: (NSTimeInterval) NewValue
+{
+    int Minutes = ((int)(NewValue) / 60);
     if (Minutes > 60)
     {
         Minutes = 60;
     }
-    int Seconds = (int)self.Value % 60;
-    int Centiseconds = (int)((self.Value - (int)self.Value) * 100);
-
+    int Seconds = (int)NewValue % 60;
+    int Centiseconds = (int)((NewValue - (int)NewValue) * 100);
+    
     
     self.MinuteValuePicker.Value = Minutes;
     self.SecondValuePicker.Value = Seconds;
     self.CentisecondsPicker.Value = Centiseconds;
-
 }
 
 - (NSTimeInterval) GetUIValue
@@ -116,10 +114,11 @@
     return TempValue;
 }
 
-- (void) SyncUIValue
+- (void) SyncValueFormUIValue
 {
-    _Value = [self GetUIValue];
+    self.Value = [self GetUIValue];
 }
+
 
 - (NSString *) ReturnCurrentValueString
 {
@@ -135,6 +134,55 @@
     NSString * ReturnStr = [NSString stringWithFormat:@"%02d:%02d.%02d", Minutes, Seconds, Centiseconds];
     
     return ReturnStr;
+}
+
+// =======================
+// Timer
+//
+- (void) PlayMusicStatusChangedCallBack:(NSNotification *)Notification
+{
+    if ([gPlayMusicChannel isPlaying])
+    {
+        [self StartScollValueUpdateTimer];
+    }
+    else
+    {
+        [self StopScollValueUpdateTimer];
+    }
+}
+
+- (void) StopScollValueUpdateTimer
+{
+    [_ScollValueUpdateTimer invalidate];
+    _ScollValueUpdateTimer = nil;
+}
+
+- (void) StartScollValueUpdateTimer
+{
+    if(_ScollValueUpdateTimer != nil)
+    {
+        [self StopScollValueUpdateTimer];
+    }
+    
+    [self ScollValueUpdateTicker: nil];
+    
+    _ScollValueUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                              target:self
+                                                            selector:@selector(ScollValueUpdateTicker:)
+                                                            userInfo:nil
+                                                             repeats:YES];
+}
+
+- (void) ScollValueUpdateTicker: (NSTimer *) ThisTimer
+{
+    NSLog(@"ScollValueUpdateTicker");
+    if (![gPlayMusicChannel isPlaying])
+    {
+        [ThisTimer invalidate];
+        return;
+    }
+    self.TimeScrollBar.value = gPlayMusicChannel.CurrentTime;
+    self.ScrollTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.CurrentTime];
 }
 
 /*

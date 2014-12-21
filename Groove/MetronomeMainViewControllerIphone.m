@@ -49,7 +49,16 @@
    
     self.MusicProperty = [GlobalConfig GetMusicProperties];
     
-    _LoopAndPlayViewSubController.PlayMusicButton.hidden = !self.MusicProperty.ShowMusicButtonInMainViewEnable;
+    if (self.MusicProperty.ShowMusicButtonInMainViewEnable)
+    {
+        _LoopAndPlayViewSubController.PlayMusicButton.hidden = NO;
+        _LoopAndPlayViewSubController.PlayCellListButton.hidden = YES;
+    }
+    else
+    {
+        _LoopAndPlayViewSubController.PlayMusicButton.hidden = YES;
+        _LoopAndPlayViewSubController.PlayCellListButton.hidden = NO;
+    }
     
     [self SyncCurrentTempoListFromModel];
     
@@ -439,14 +448,6 @@
             }
             break;
         case LIST_PLAYING:
-            if (self.MusicProperty.MusicFunctionEnable && self.MusicProperty.PlayListWithMusicEnable)
-            {
-                if (gPlayMusicChannel.isPlaying)
-                {
-                    [gPlayMusicChannel Stop];
-                }
-                [gPlayMusicChannel Play];
-            }
             [self StartClick];
             break;
         default:

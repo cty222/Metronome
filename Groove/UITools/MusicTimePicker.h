@@ -35,4 +35,7 @@
 - (NSString *) ReturnCurrentValueString;
 @property (nonatomic, assign) id <MusicTimePickerProtocol> delegate;
 
+@property (strong, nonatomic) IBOutlet UIButton *SyncScrollValueToDigitsButton;
+@property (strong, nonatomic) IBOutlet UILabel *ScrollTimeLabel;
+@property (strong, nonatomic) IBOutlet UISlider *TimeScrollBar;
 @end

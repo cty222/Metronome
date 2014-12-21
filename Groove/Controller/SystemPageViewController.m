@@ -163,6 +163,8 @@
         return;
     }
     self.MusicTimePicker.ID = MUSIC_STAR_TIME_ID;
+    self.MusicTimePicker.TimeScrollBar.maximumValue = gPlayMusicChannel.duration;
+    self.MusicTimePicker.TimeScrollBar.minimumValue = 0.0f;
     self.MusicTimePicker.Value = gPlayMusicChannel.StartTime;
     [self ShowMusicPicker];
 }
@@ -174,6 +176,8 @@
         return;
     }
     self.MusicTimePicker.ID = MUSIC_END_TIME_ID;
+    self.MusicTimePicker.TimeScrollBar.maximumValue = gPlayMusicChannel.duration;
+    self.MusicTimePicker.TimeScrollBar.minimumValue = 0.0f;
     self.MusicTimePicker.Value = gPlayMusicChannel.StopTime;
     [self ShowMusicPicker];
 }
@@ -273,7 +277,6 @@
     [self.EnableMusicFunction setOn: _MusicProperty.MusicFunctionEnable];
     [self.MusicRateToHalfSwitch setOn: _MusicProperty.MusicHalfRateEnable];
     [self.PlaySingleCellWithMusicSwitch setOn: _MusicProperty.PlaySingleCellWithMusicEnable];
-    [self.PlayListWithMusicSwitch setOn: _MusicProperty.PlayListWithMusicEnable];
     [self.ShowMusicButtonInMainViewSwitch setOn: _MusicProperty.ShowMusicButtonInMainViewEnable];
     
     [self ChangeMusicFunctionUIState:_MusicProperty.MusicFunctionEnable];
@@ -323,19 +326,6 @@
 
 - (IBAction)PlaySingleCellWithMusicSwitched:(UISwitch *)sender {
     _MusicProperty.PlaySingleCellWithMusicEnable = sender.isOn;
-    [GlobalConfig SetMusicProperties:_MusicProperty];
-    if (sender.isOn)
-    {
-        
-    }
-    else
-    {
-        
-    }
-}
-
-- (IBAction)PlayListWithMusicSwitched:(UISwitch *)sender {
-    _MusicProperty.PlayListWithMusicEnable = sender.isOn;
     [GlobalConfig SetMusicProperties:_MusicProperty];
     if (sender.isOn)
     {

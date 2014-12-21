@@ -30,6 +30,12 @@
             self.TimeSigaturePicker.autoresizingMask = UIViewAutoresizingNone;
             self.VoiceTypePicker.autoresizingMask = UIViewAutoresizingNone;
             self.LoopCellEditer.autoresizingMask = UIViewAutoresizingNone;
+            
+            self.TimeSignaturePickerView.autoresizingMask = UIViewAutoresizingNone;
+            self.VoiceTypePickerView.autoresizingMask = UIViewAutoresizingNone;
+            self.LoopCellEditerView.autoresizingMask = UIViewAutoresizingNone;
+
+        
             float Margin = 5;
             float OptionScrollViewLocationX = self.SystemButton.frame.origin.x + (self.SystemButton.frame.size.width - self.OptionScrollView.frame.size.width)/2;
             self.OptionScrollView.frame = CGRectMake(OptionScrollViewLocationX,
@@ -89,12 +95,42 @@
                                                   self.TapAnimationImage.frame.size.width,
                                                   self.TapAnimationImage.frame.size.height
                                                   );
+            
+            // ================
+            // 三個位置要用相同的
+            self.TimeSignaturePickerView.frame = CGRectMake(self.TimeSignaturePickerView.frame.origin.x,
+                                                            7,
+                                                            self.TimeSignaturePickerView.frame.size.width,
+                                                            134
+                                                            );
+            
+            self.VoiceTypePickerView.frame = CGRectMake(self.TimeSignaturePickerView.frame.origin.x,
+                                                        self.TimeSignaturePickerView.frame.origin.y,
+                                                        self.TimeSignaturePickerView.frame.size.width,
+                                                        self.TimeSignaturePickerView.frame.size.height
+                                                        );
+            
+            self.LoopCellEditerView.frame = CGRectMake(self.TimeSignaturePickerView.frame.origin.x,
+                                                       self.TimeSignaturePickerView.frame.origin.y,
+                                                       self.TimeSignaturePickerView.frame.size.width,
+                                                       self.TimeSignaturePickerView.frame.size.height
+                                                       );
+            //
+            // ================
+            self.AddLoopCellButton.frame = CGRectMake(self.SystemButton.frame.origin.x - Margin,
+                                                      self.AddLoopCellButton.frame.origin.y,
+                                                      self.AddLoopCellButton.frame.size.width,
+                                                      self.AddLoopCellButton.frame.size.height
+                                                      );
+            
             break;
         case IPHONE_5S:
             break;
         default:
             break;
     }
+    
+    NSLog(@"%@",self.TimeSignaturePickerView);
 
 }
 

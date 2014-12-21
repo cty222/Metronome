@@ -14,6 +14,12 @@
 @end
 
 @implementation ValueScrollView
+
+- (int) Sensitivity
+{
+    return 2;
+}
+
 - (id)initWithFrame:(CGRect) frame
 {
     self = [super initWithFrame:frame];

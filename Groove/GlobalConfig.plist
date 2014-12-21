@@ -5,7 +5,7 @@
 	<key>PlayCellListNoneStop</key>
 	<true/>
 	<key>VersionID</key>
-	<real>4029</real>
+	<integer>4040</integer>
 	<key>DbVersion</key>
 	<real>1017</real>
 	<key>LastTempoListIndex</key>
@@ -35,8 +35,6 @@
 	<key>MusicHalfRate</key>
 	<false/>
 	<key>PlaySingleCellWithMusic</key>
-	<false/>
-	<key>PlayListWithMusic</key>
 	<false/>
 	<key>ShowMusicButtonInMainView</key>
 	<false/>

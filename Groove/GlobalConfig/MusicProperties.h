@@ -13,7 +13,6 @@
 @property (nonatomic) BOOL MusicFunctionEnable;
 @property (nonatomic) BOOL MusicHalfRateEnable;
 @property (nonatomic) BOOL PlaySingleCellWithMusicEnable;
-@property (nonatomic) BOOL PlayListWithMusicEnable;
 @property (nonatomic) BOOL ShowMusicButtonInMainViewEnable;
 
 @end

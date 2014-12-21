@@ -52,6 +52,7 @@
         UIButton * TmpButton = [[UIButton alloc] initWithFrame:NewFrame];
         TmpButton.tag = Index;
         [TmpButton setBackgroundImage:[UIImage imageNamed:@"ScrollViewCellBackGround"] forState:UIControlStateNormal];
+        [TmpButton setTitleColor:[TimeSignaturePickerView TextFontColor] forState:UIControlStateNormal];
         TimeSignatureType * tmp = FillInData[Index];
         
         [TmpButton setTitle:tmp.timeSignature forState:UIControlStateNormal];
@@ -59,6 +60,7 @@
                       action:@selector(ClickCell:)
             forControlEvents:UIControlEventTouchDown
          ];
+        
         [self.ContentScrollView addSubview:TmpButton];
         LastCellLoationY = TmpButton.frame.origin.y;
     }
@@ -66,6 +68,10 @@
     self.ContentScrollView.contentOffset = CGPointMake(0, Height);
 }
 
++ (UIColor *) TextFontColor
+{
+    return [UIColor colorWithWhite:0.2 alpha:1];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
