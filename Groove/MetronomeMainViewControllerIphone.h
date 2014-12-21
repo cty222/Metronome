@@ -46,7 +46,7 @@ typedef enum {
 @property NSArray * CurrentCellsDataTable;
 @property (nonatomic, strong) BeepBound* CurrentVoice;
 @property (nonatomic, strong) NSString* CurrentTimeSignature;
-@property (nonatomic, strong) TempoList* CurrentTempoListCell;
+@property (nonatomic, strong) TempoList* CurrentTempoList;
 
 @property TempoCell* CurrentCell;
 @property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
@@ -55,8 +55,8 @@ typedef enum {
 @property BOOL ChangeBPMValueFlag;
 @property MusicProperties * MusicProperty;
 
-
-- (void) FetchCurrentCellListFromModel;
+- (void) SyncCurrentTempoListFromModel;
+- (void) SyncCurrentFocusCellFromCurrentTempoList;
 - (void) ReflashCellListAndFocusCellByCurrentData;
 
 

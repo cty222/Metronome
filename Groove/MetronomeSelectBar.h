@@ -28,6 +28,7 @@ typedef enum{
 @property (getter = GetGrooveCellValueStringList, setter = SetGrooveCellValueStringList:) NSMutableArray* GrooveCellValueStringList;
 @property (nonatomic, assign) id<SelectBarProtocol> delegate;
 - (void) ChangeFocusIndexWithUIMoving : (int) NewIndex;
+- (void) DisplayUICellList: (int) FocusCellIndex;
 
 
 // loop button

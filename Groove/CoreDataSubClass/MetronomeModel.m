@@ -279,9 +279,30 @@
         [self.TempoCellEntitySigleOwnerFetch setSortDescriptors:SortArray];
     }
     
-    return [_ManagedObjectContext executeFetchRequest:self.TempoCellEntitySigleOwnerFetch error:nil];
+    NSError *Error;
+    NSArray *ReturnArray = [_ManagedObjectContext executeFetchRequest:self.TempoCellEntitySigleOwnerFetch error:&Error];
+    if (Error)
+    {
+        NSLog(@"%@", Error);
+    }
+    return ReturnArray;
 }
 
+- (TempoList *) FetchCurrentTempoListFromModel : (NSNumber * ) TempoListIndex
+{
+    TempoList * ReturnTempoList = nil;
+    
+    NSNumber *LastTempoListIndex = TempoListIndex;
+    
+    NSArray* TempoListDataTable = gMetronomeModel.TempoListDataTable;
+    
+    if (TempoListDataTable.count > [LastTempoListIndex intValue])
+    {
+        ReturnTempoList = TempoListDataTable[[LastTempoListIndex intValue]];
+    }
+   
+    return ReturnTempoList;
+}
 
 //
 // ==============================

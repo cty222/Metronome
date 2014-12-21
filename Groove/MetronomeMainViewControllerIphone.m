@@ -43,13 +43,17 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    NSLog(@"viewWillAppear");
+
     [super viewWillAppear:animated];
    
     self.MusicProperty = [GlobalConfig GetMusicProperties];
     
     _LoopAndPlayViewSubController.PlayMusicButton.hidden = !self.MusicProperty.ShowMusicButtonInMainViewEnable;
     
-    [self FetchCurrentCellListFromModel];
+    [self SyncCurrentTempoListFromModel];
+    
+    [self SyncCurrentFocusCellFromCurrentTempoList];
     
     [self ReflashCellListAndFocusCellByCurrentData];
     
@@ -75,18 +79,18 @@
         gPlayMusicChannel = [PlayerForSongs alloc];
     }
     
-    if (self.CurrentTempoListCell.musicInfo == nil)
+    if (self.CurrentTempoList.musicInfo == nil)
     {
-        self.CurrentTempoListCell.musicInfo = [gMetronomeModel CreateNewMusicInfo];
+        self.CurrentTempoList.musicInfo = [gMetronomeModel CreateNewMusicInfo];
         [gMetronomeModel Save];
     }
     
-    if (self.CurrentTempoListCell.musicInfo.persistentID != nil)
+    if (self.CurrentTempoList.musicInfo.persistentID != nil)
     {
-        MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : self.CurrentTempoListCell.musicInfo.persistentID ];
+        MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : self.CurrentTempoList.musicInfo.persistentID ];
         [gPlayMusicChannel PrepareMusicToplay:Item];
-        gPlayMusicChannel.StartTime = [self.CurrentTempoListCell.musicInfo.startTime floatValue];
-        gPlayMusicChannel.StopTime = [self.CurrentTempoListCell.musicInfo.endTime floatValue];
+        gPlayMusicChannel.StartTime = [self.CurrentTempoList.musicInfo.startTime floatValue];
+        gPlayMusicChannel.StopTime = [self.CurrentTempoList.musicInfo.endTime floatValue];
     }
 }
 
@@ -158,6 +162,7 @@
     [self.LoopAndPlayViewSubController InitializeLoopControlItem];
    
     [self.SystemPageController InitializeSystemButton];
+    
     
     [self GlobaleventInitialize];
     
@@ -270,15 +275,41 @@
 //
 // TODO : Testing
 //
-- (void) FetchCurrentCellListFromModel
+-(void) SyncCurrentTempoListFromModel
 {
-    self.CurrentTempoListCell = [GlobalConfig GetCurrentListCell];
-    NSNumber *LastSelecedtListIndex = self.CurrentTempoListCell.focusCellIndex;
-    self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[[LastSelecedtListIndex intValue]]];
-
-    // 如果出錯
-    if (self.CurrentCellsDataTable == nil)
+    NSNumber *LastTempoListIndex = [GlobalConfig GetLastTempoListIndex];
+    
+    self.CurrentTempoList =  [gMetronomeModel FetchCurrentTempoListFromModel:LastTempoListIndex];
+   
+    if (self.CurrentTempoList == nil)
     {
+        NSLog(@"嚴重錯誤: Last TempoList 同步錯誤 Error!!!");
+
+        self.CurrentTempoList = [gMetronomeModel FetchCurrentTempoListFromModel:@0];
+        if (self.CurrentTempoList == nil)
+        {
+            NSLog(@"嚴重錯誤: TempoList 資料庫需要reset");
+        }
+    }
+}
+
+- (void) SyncCurrentFocusCellFromCurrentTempoList
+{
+    if (self.CurrentTempoList == nil)
+    {
+        NSLog(@"錯誤: SyncCurrentFocusCellFromCurrentTempoList CurrentTempoList == nil");
+        return;
+    }
+    
+    NSNumber *LastFocusCellIndex = self.CurrentTempoList.focusCellIndex;
+    
+    if (gMetronomeModel.TempoListDataTable.count > [LastFocusCellIndex intValue])
+    {
+        self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[[LastFocusCellIndex intValue]]];
+    }
+    else
+    {
+        NSLog(@"SyncCurrentFocusCellFromCurrentTempoList 嚴重錯誤: LastFocusCellIndex Error!!!");
         self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]];
     }
 }
@@ -342,8 +373,12 @@
         _ListChangeFocusFlag = NO;
     }
     
-    
     _FocusIndex = NewValue;
+    
+    // 同步到 Model
+    self.CurrentTempoList.focusCellIndex = [NSNumber numberWithInt:_FocusIndex];
+    [gMetronomeModel Save];
+    
     self.CurrentCell = self.CurrentCellsDataTable[_FocusIndex];
     
     // Set BPM

@@ -47,7 +47,7 @@
 }
 
 
-- (void) DisplayCellList
+- (void) DisplayUICellList: (int) FocusCellIndex
 {
     UIScrollView * ControlView = self.GrooveCellListView;
     
@@ -76,10 +76,8 @@
   
     ControlView.contentInset = UIEdgeInsetsMake (0, ([self FocusLine] -  CellWidth/2), 0,  CellWidth * (self.GrooveCellValueStringList.count -1)  + ([self FocusLine] +  CellWidth/2));
     
-    TempoList * CurrentListCell = [GlobalConfig GetCurrentListCell];
-    [self ChangeFocusIndexWithUIMoving: [CurrentListCell.focusCellIndex intValue]];
     
-    
+    [self ChangeFocusIndexWithUIMoving: FocusCellIndex];
 }
 
 
@@ -158,7 +156,6 @@
     if (NewValue != _GrooveCellValueStringList)
     {
         _GrooveCellValueStringList = NewValue;
-        [self DisplayCellList];
     }
 }
 
@@ -211,9 +208,6 @@
     }
 
     _FocusIndex = NewValue;
-    TempoList * CurrentListCell = [GlobalConfig GetCurrentListCell];
-    CurrentListCell.focusCellIndex = [NSNumber numberWithInt:_FocusIndex];
-    [gMetronomeModel Save];
     
     // Set from code, not user touch, CurrentMove will be Zero.
     // (MoveToCenterTimer == nil) is for avoid recursive error.

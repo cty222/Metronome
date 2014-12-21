@@ -239,26 +239,25 @@ static NSMutableDictionary * ThisPlist;
 }
 
 // ========================================
-+ (void) SetLastSelecedtListIndex : (int) NewValue
++ (void) SetLastTempoListIndex : (int) NewValue
 {
     if (![GlobalConfig IsInitialized])
     {
         return;
     }
-    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"LastSelecedtListIndex"];
+    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"LastTempoListIndex"];
     [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
     
 }
 
-+ (TempoList *) GetCurrentListCell
++ (NSNumber *) GetLastTempoListIndex
 {
     if (![GlobalConfig IsInitialized])
     {
         return nil;
     }
     
-    int Index = [[ThisPlist objectForKey:@"LastSelecedtListIndex"] intValue];
-    return gMetronomeModel.TempoListDataTable[Index];
+    return [ThisPlist objectForKey:@"LastTempoListIndex"];
 }
 
 // ========================================

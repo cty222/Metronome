@@ -39,7 +39,16 @@
         _MusicPicker.delegate = self;
     }
     
-    _CurrentList = [GlobalConfig GetCurrentListCell];
+    _CurrentList = [gMetronomeModel FetchCurrentTempoListFromModel:[GlobalConfig GetLastTempoListIndex]];
+    if (_CurrentList == nil)
+    {
+        NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from LastTempoListIndex Error");
+        _CurrentList = [gMetronomeModel FetchCurrentTempoListFromModel:@0];
+        if (_CurrentList == nil)
+        {
+            NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from 0 Error");
+        }
+    }
     
     self.CurrentSelectedList.text = _CurrentList.tempoListName;
     

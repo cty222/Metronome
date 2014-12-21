@@ -109,12 +109,17 @@
 
 - (void) CopyCellListToSelectBar : (NSArray *) CellDataTable
 {
+    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    
     _CellValueToStringList = [[NSMutableArray alloc]init];
     for (TempoCell *Cell in CellDataTable)
     {
         [_CellValueToStringList addObject:[NSString stringWithFormat:@"%d", [Cell.loopCount intValue]]];
     }
     self.SelectGrooveBar.GrooveCellValueStringList = _CellValueToStringList;
+    
+    [self.SelectGrooveBar DisplayUICellList: [Parent.CurrentTempoList.focusCellIndex intValue]];
+
 }
 
 // =========================
@@ -212,7 +217,10 @@
     
     [_CellValueToStringList replaceObjectAtIndex:Index withObject:[NSString stringWithFormat:@"%d", NewValue]];
     
-    [Parent FetchCurrentCellListFromModel];
+    [Parent SyncCurrentTempoListFromModel];
+    
+    [Parent SyncCurrentFocusCellFromCurrentTempoList];
+    
     [Parent ReflashCellListAndFocusCellByCurrentData];
 
 }
@@ -224,14 +232,19 @@
     TempoCell* CurrentLastCell  = Parent.CurrentCellsDataTable[Parent.CurrentCellsDataTable.count - 1];
     
     // 新增一筆進資料庫
-    [gMetronomeModel AddNewTempoCell: Parent.CurrentTempoListCell : ([CurrentLastCell.sortIndex intValue] +1)];
+    [gMetronomeModel AddNewTempoCell: Parent.CurrentTempoList : ([CurrentLastCell.sortIndex intValue] +1)];
     
     // 重新顯示
-    [Parent FetchCurrentCellListFromModel];
+    [Parent SyncCurrentTempoListFromModel];
     
-    TempoList * CurrentListCell = [GlobalConfig GetCurrentListCell];
+    [Parent SyncCurrentFocusCellFromCurrentTempoList];
+    
+    TempoList * CurrentListCell = Parent.CurrentTempoList;
+    
+    // TODO : 嚴重 同步問題！！！
     CurrentListCell.focusCellIndex = [NSNumber numberWithInt:(int)(Parent.CurrentCellsDataTable.count - 1)];
     [gMetronomeModel Save];
+    
     
     [Parent ReflashCellListAndFocusCellByCurrentData];
 }
@@ -257,7 +270,9 @@
     _DeletedCell = nil;
 
     // 重讀資料庫
-    [Parent FetchCurrentCellListFromModel];
+    [Parent SyncCurrentTempoListFromModel];
+    
+    [Parent SyncCurrentFocusCellFromCurrentTempoList];
     
     // 如果刪掉的是最後一個
     // 向前移一個
@@ -267,10 +282,11 @@
     }
     Parent.FocusIndex = CurrentFocusIndex;
     
-    
-    TempoList * CurrentListCell = [GlobalConfig GetCurrentListCell];
+    // TODO : 嚴重 同步問題！！！
+    TempoList * CurrentListCell = Parent.CurrentTempoList;
     CurrentListCell.focusCellIndex = [NSNumber numberWithInt:Parent.FocusIndex];
     [gMetronomeModel Save];
+    // ================
     
     // 重新顯示
     [Parent ReflashCellListAndFocusCellByCurrentData];
@@ -283,7 +299,6 @@
 // =========================
 // delegate
 //
-// 不會設下去到Bottom View UI
 - (void) SetFocusIndex:(int) NewValue
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;

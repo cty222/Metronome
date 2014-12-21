@@ -50,8 +50,8 @@ enum {
 + (BOOL) PlayCellListNoneStop;
 + (void) SetPlayCellListNoneStop : (BOOL) NewValue;
 
-+ (TempoList *) GetCurrentListCell;
-+ (void) SetLastSelecedtListIndex : (int) NewValue;
++ (NSNumber *) GetLastTempoListIndex;
++ (void) SetLastTempoListIndex : (int) NewValue;
 
 
 // Music bounds flags
