@@ -39,6 +39,7 @@ MetronomeModel * gMetronomeModel;
 - (NSArray *) FetchTimeSignatureType;
 - (NSArray *) FetchVoiceType;
 - (TempoList *) FetchCurrentTempoListFromModel : (NSNumber * ) TempoListIndex;
+- (TempoList *) GetTargetTempoListFromDataTable : (NSNumber * ) TempoListIndex : (NSArray* )TempoListDataTable;
 
 - (void) InitializeCoreData : (NSManagedObjectContext *) ManagedObjectContext
          ManagedObjectModel : (NSManagedObjectModel *) ManagedObjectModel

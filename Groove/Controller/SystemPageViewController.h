@@ -10,13 +10,16 @@
 #import "PlayerForSongs.h"
 #import "GlobalConfig.h"
 #import "MusicTimePicker.h"
+#import "ListTablePicker.h"
 
 enum SYSTEM_INPUT_ID {
-    MUSIC_STAR_TIME_ID,
-    MUSIC_END_TIME_ID
+    NONE_ID,
+    MUSIC_STAR_TIME_ID = 1,
+    MUSIC_END_TIME_ID,
+    TEMPO_LIST_PICKER_ID = 10,
 };
 
-@interface SystemPageViewController : UIViewController <MPMediaPickerControllerDelegate, AVAudioPlayerDelegate, MusicTimePickerProtocol>
+@interface SystemPageViewController : UIViewController <MPMediaPickerControllerDelegate, AVAudioPlayerDelegate, MusicTimePickerProtocol, UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UIView *FullView;
 @property (strong, nonatomic) IBOutlet UIButton *ReturnButton;
 
@@ -41,4 +44,6 @@ enum SYSTEM_INPUT_ID {
 
 @property (strong, nonatomic) IBOutlet UISwitch *ShowMusicButtonInMainViewSwitch;
 
+
+@property (strong, nonatomic)  ListTablePicker * ListTablePicker;
 @end

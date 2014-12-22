@@ -304,6 +304,19 @@
     return ReturnTempoList;
 }
 
+- (TempoList *) GetTargetTempoListFromDataTable : (NSNumber * ) TempoListIndex : (NSArray* )TempoListDataTable
+{
+    TempoList * ReturnTempoList = nil;
+
+    if (TempoListDataTable.count > [TempoListIndex intValue])
+    {
+        ReturnTempoList = TempoListDataTable[[TempoListIndex intValue]];
+    }
+
+    return ReturnTempoList;
+}
+
+
 //
 // ==============================
 

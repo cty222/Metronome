@@ -16,6 +16,8 @@
     MPMediaPickerController *_MusicPicker;
     TempoList *_CurrentList;
     MusicProperties * _MusicProperty;
+   
+    NSMutableArray * _TempoListDataTable;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -25,6 +27,37 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void) SyncPageInfoByCurrentTempoList
+{
+    _CurrentList =[gMetronomeModel GetTargetTempoListFromDataTable: [GlobalConfig GetLastTempoListIndex] :_TempoListDataTable];
+    if (_CurrentList == nil)
+    {
+        NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from LastTempoListIndex Error");
+        _CurrentList =[gMetronomeModel GetTargetTempoListFromDataTable:@0 :_TempoListDataTable];
+        if (_CurrentList == nil)
+        {
+            NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from 0 Error");
+        }
+    }
+    
+    self.CurrentSelectedList.text = _CurrentList.tempoListName;
+    
+    if (_CurrentList.musicInfo == nil)
+    {
+        _CurrentList.musicInfo = [gMetronomeModel CreateNewMusicInfo];
+        [gMetronomeModel Save];
+    }
+    
+    if (_CurrentList.musicInfo.persistentID != nil)
+    {
+        MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : _CurrentList.musicInfo.persistentID ];
+        if (![gPlayMusicChannel isPlaying])
+        {
+            [self DoAllMusicSetupSteps: Item];
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -39,20 +72,6 @@
         _MusicPicker.delegate = self;
     }
     
-    _CurrentList = [gMetronomeModel FetchCurrentTempoListFromModel:[GlobalConfig GetLastTempoListIndex]];
-    if (_CurrentList == nil)
-    {
-        NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from LastTempoListIndex Error");
-        _CurrentList = [gMetronomeModel FetchCurrentTempoListFromModel:@0];
-        if (_CurrentList == nil)
-        {
-            NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from 0 Error");
-        }
-    }
-    
-    self.CurrentSelectedList.text = _CurrentList.tempoListName;
-    
-    
     // ===================
     // Setup music by model music info
 
@@ -61,23 +80,11 @@
         gPlayMusicChannel = [PlayerForSongs alloc];
     }
     
-    if (_CurrentList.musicInfo == nil)
-    {
-        _CurrentList.musicInfo = [gMetronomeModel CreateNewMusicInfo];
-        [gMetronomeModel Save];
-    }
+    _TempoListDataTable = [NSMutableArray arrayWithArray:gMetronomeModel.TempoListDataTable];
     
-
-    if (_CurrentList.musicInfo.persistentID != nil)
-    {
-        MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : _CurrentList.musicInfo.persistentID ];
-        if (![gPlayMusicChannel isPlaying])
-        {
-            [self DoAllMusicSetupSteps: Item];
-        }
-    }
     // ===================
     // UI state Sync
+    [self SyncPageInfoByCurrentTempoList];
     [self SyncMusicPropertyFromGlobalConfig];
     [self SyncStartAndEndTime];
     
@@ -144,6 +151,23 @@
                                              selector:@selector(PlayMusicStatusChangedCallBack:)
                                                  name:kPlayMusicStatusChangedEvent
                                                object:nil];
+    
+    
+    // Cell slected
+    self.ListTablePicker = [[ListTablePicker alloc] initWithFrame:self.SubInputView.bounds];
+    [self.SubInputView addSubview:self.ListTablePicker];
+    self.ListTablePicker.hidden = YES;
+    self.ListTablePicker.delegate = self;
+    
+    
+    self.ListTablePicker.TableView.delegate = self;
+    self.ListTablePicker.TableView.dataSource = self;
+    //[self.ListTablePicker.TableView reloadData];
+    
+    UITapGestureRecognizer *TapSelectTempoListRecognizer =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(SelectTempoList:)];
+    [self.CurrentSelectedList addGestureRecognizer:TapSelectTempoListRecognizer];
+    
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -166,7 +190,7 @@
     [self presentViewController:_MusicPicker animated:YES completion:nil];
 }
 
-- (IBAction)TapStartTime:(id)sender
+- (IBAction) TapStartTime:(id)sender
 {
     if (self.StartTimeLabel.enabled == NO)
     {
@@ -179,7 +203,7 @@
     [self ShowMusicPicker];
 }
 
-- (IBAction)TapEndTime:(id)sender
+- (IBAction) TapEndTime:(id)sender
 {
     if (self.EndTimeLabel.enabled == NO)
     {
@@ -190,6 +214,15 @@
     self.MusicTimePicker.TimeScrollBar.minimumValue = 0.0f;
     self.MusicTimePicker.Value = gPlayMusicChannel.StopTime;
     [self ShowMusicPicker];
+}
+
+- (IBAction) SelectTempoList:(id)sender
+{
+    self.ListTablePicker.ID = TEMPO_LIST_PICKER_ID;
+    self.SubInputView.hidden = NO;
+    self.ListTablePicker.hidden = NO;
+    [self.FullView bringSubviewToFront:self.SubInputView];
+
 }
 
 - (void) ShowMusicPicker
@@ -383,6 +416,7 @@
 {
     if (self.MusicTimePicker.ID == MUSIC_STAR_TIME_ID)
     {
+        self.MusicTimePicker.ID = NONE_ID;
         self.StartTimeLabel.text = [self.MusicTimePicker ReturnCurrentValueString];
         gPlayMusicChannel.StartTime = self.MusicTimePicker.Value;
         _CurrentList.musicInfo.startTime = [NSNumber numberWithFloat:self.MusicTimePicker.Value];
@@ -394,6 +428,7 @@
     }
     else if (self.MusicTimePicker.ID == MUSIC_END_TIME_ID)
     {
+        self.MusicTimePicker.ID = NONE_ID;
         self.EndTimeLabel.text = [self.MusicTimePicker ReturnCurrentValueString];
         gPlayMusicChannel.StopTime = self.MusicTimePicker.Value;
         _CurrentList.musicInfo.endTime = [NSNumber numberWithFloat:self.MusicTimePicker.Value];
@@ -401,6 +436,11 @@
         {
             [gPlayMusicChannel Stop];
         }
+    }
+    else if (self.ListTablePicker.ID == TEMPO_LIST_PICKER_ID)
+    {
+        self.ListTablePicker.ID = NONE_ID;
+        self.ListTablePicker.hidden = YES;
     }
     
     [gMetronomeModel Save];
@@ -411,6 +451,8 @@
 {
     if (self.MusicTimePicker.ID == MUSIC_STAR_TIME_ID)
     {
+        self.MusicTimePicker.ID = NONE_ID;
+
         if (gPlayMusicChannel.isPlaying)
         {
             [gPlayMusicChannel Stop];
@@ -419,10 +461,17 @@
     }
     else if (self.MusicTimePicker.ID == MUSIC_END_TIME_ID)
     {
+        self.MusicTimePicker.ID = NONE_ID;
+
         if (gPlayMusicChannel.isPlaying)
         {
             [gPlayMusicChannel Stop];
         }
+    }
+    else if (self.ListTablePicker.ID == TEMPO_LIST_PICKER_ID)
+    {
+        self.ListTablePicker.ID = NONE_ID;
+        self.ListTablePicker.hidden = YES;
     }
     
     [self CloseSubInputView];
@@ -454,6 +503,63 @@
 
 //
 // ==========================
+
+
+
+//================================
+//TableView protocol function
+//
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _TempoListDataTable.count; //回傳有幾筆資料要呈現
+}
+
+- (BOOL) tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+
+static NSString *Identifier = @"tableidentifier"; //設定一個就算離開畫面也還是抓得到的辨識目標
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { //在繪製每一列時會呼叫的方法
+    
+    TempoListUICell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
+    if(cell == nil)
+    {
+        cell = [[TempoListUICell alloc] init];
+        TempoList * CellList = [_TempoListDataTable objectAtIndex:indexPath.row];
+
+        cell.LblName.text = CellList.tempoListName;
+    }
+    
+    return cell;
+}
+
+//
+// select cell
+//
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [GlobalConfig SetLastTempoListIndex:indexPath.row];
+    
+    [self SyncPageInfoByCurrentTempoList];
+    [self SyncMusicPropertyFromGlobalConfig];
+    [self SyncStartAndEndTime];
+    
+    self.ListTablePicker.hidden = YES;
+    [self CloseSubInputView];
+}
+// ========================================
 
 
 - (void)didReceiveMemoryWarning

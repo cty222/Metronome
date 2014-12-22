@@ -34,6 +34,11 @@
 		001BFDD11A3F5F2200A56947 /* LoopCellBackGround.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDCF1A3F5F2200A56947 /* LoopCellBackGround.pdf */; };
 		001F01191A05511300189941 /* IssueAndInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 001F01181A05511300189941 /* IssueAndInfo.txt */; };
 		001F011B1A05679D00189941 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001F011A1A05679D00189941 /* iAd.framework */; };
+		00268EE71A4884B900A31A37 /* ListTablePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 00268EE61A4884B900A31A37 /* ListTablePicker.m */; };
+		00268EEB1A4884E700A31A37 /* ListTablePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00268EEA1A4884E700A31A37 /* ListTablePicker.xib */; };
+		00268EEF1A488CAE00A31A37 /* TempoListUICell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00268EED1A488CAE00A31A37 /* TempoListUICell.m */; };
+		00268EF01A488CAF00A31A37 /* TempoListUICell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00268EEE1A488CAE00A31A37 /* TempoListUICell.xib */; };
+		00268EF31A488CE600A31A37 /* XibTableViewCellInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 00268EF21A488CE600A31A37 /* XibTableViewCellInterface.m */; };
 		00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 00319FB91A0F2EED00CF3C83 /* UINSOperation.m */; };
 		0034734E1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0034734C1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf */; };
 		0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */; };
@@ -190,6 +195,14 @@
 		001BFDCF1A3F5F2200A56947 /* LoopCellBackGround.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LoopCellBackGround.pdf; sourceTree = "<group>"; };
 		001F01181A05511300189941 /* IssueAndInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IssueAndInfo.txt; sourceTree = "<group>"; };
 		001F011A1A05679D00189941 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		00268EE51A4884B900A31A37 /* ListTablePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListTablePicker.h; path = UITools/ListTablePicker.h; sourceTree = "<group>"; };
+		00268EE61A4884B900A31A37 /* ListTablePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListTablePicker.m; path = UITools/ListTablePicker.m; sourceTree = "<group>"; };
+		00268EEA1A4884E700A31A37 /* ListTablePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListTablePicker.xib; path = UITools/ListTablePicker.xib; sourceTree = "<group>"; };
+		00268EEC1A488CAE00A31A37 /* TempoListUICell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempoListUICell.h; sourceTree = "<group>"; };
+		00268EED1A488CAE00A31A37 /* TempoListUICell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempoListUICell.m; sourceTree = "<group>"; };
+		00268EEE1A488CAE00A31A37 /* TempoListUICell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TempoListUICell.xib; sourceTree = "<group>"; };
+		00268EF11A488CE500A31A37 /* XibTableViewCellInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibTableViewCellInterface.h; sourceTree = "<group>"; };
+		00268EF21A488CE600A31A37 /* XibTableViewCellInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibTableViewCellInterface.m; sourceTree = "<group>"; };
 		00319FB81A0F2EED00CF3C83 /* UINSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UINSOperation.h; path = Tools/UINSOperation.h; sourceTree = "<group>"; };
 		00319FB91A0F2EED00CF3C83 /* UINSOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UINSOperation.m; path = Tools/UINSOperation.m; sourceTree = "<group>"; };
 		0034734C1A0FE5B4003C9F3C /* NewCircleButton_f3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f3.pdf; sourceTree = "<group>"; };
@@ -515,6 +528,8 @@
 		004BE67619B2E01E002CD995 /* SuperClass */ = {
 			isa = PBXGroup;
 			children = (
+				00268EF11A488CE500A31A37 /* XibTableViewCellInterface.h */,
+				00268EF21A488CE600A31A37 /* XibTableViewCellInterface.m */,
 				004BE67319B2E014002CD995 /* XibViewInterface.h */,
 				004BE67419B2E014002CD995 /* XibViewInterface.m */,
 				00A0B80F1A23A9AD00D93ABB /* UIWindowWithHook.h */,
@@ -603,8 +618,11 @@
 		00677B1019BC5D5B007A3085 /* MetronmeItems */ = {
 			isa = PBXGroup;
 			children = (
-				005233BD1A38C4EF008DF620 /* ValuePicker */,
 				005DAFC31A34C586008D5F2D /* SubPropertySelector */,
+				005233BD1A38C4EF008DF620 /* ValuePicker */,
+				00268EEC1A488CAE00A31A37 /* TempoListUICell.h */,
+				00268EED1A488CAE00A31A37 /* TempoListUICell.m */,
+				00268EEE1A488CAE00A31A37 /* TempoListUICell.xib */,
 				00677B1119BC5DA4007A3085 /* LargeBPMPicker.h */,
 				00677B1219BC5DA4007A3085 /* LargeBPMPicker.m */,
 				00BB6DDD19BD918600E3C068 /* LargeBPMPicker.xib */,
@@ -620,6 +638,9 @@
 				004DF4711A40A84D00E79C0E /* TapAnimationImage.h */,
 				004DF4721A40A84D00E79C0E /* TapAnimationImage.m */,
 				004DF4761A40A87900E79C0E /* TapAnimationImage.xib */,
+				00268EE51A4884B900A31A37 /* ListTablePicker.h */,
+				00268EE61A4884B900A31A37 /* ListTablePicker.m */,
+				00268EEA1A4884E700A31A37 /* ListTablePicker.xib */,
 			);
 			name = MetronmeItems;
 			sourceTree = "<group>";
@@ -922,6 +943,7 @@
 				005DAFC81A34C7FF008D5F2D /* VoiceTypePickerView.xib in Resources */,
 				001BFDC71A3F5EBD00A56947 /* AppIcon_40x2.png in Resources */,
 				0071A9B51A2B090100EA57D2 /* 16Note.pdf in Resources */,
+				00268EF01A488CAF00A31A37 /* TempoListUICell.xib in Resources */,
 				0071A9CF1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf in Resources */,
 				0036173D19D5CC9900848A35 /* loop.png in Resources */,
 				0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */,
@@ -935,6 +957,7 @@
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
 				001BFDCC1A3F5EE600A56947 /* BPMArrowDown_4S.pdf in Resources */,
 				001BFDAC1A3F4E9200A56947 /* ValueUpArrow.pdf in Resources */,
+				00268EEB1A4884E700A31A37 /* ListTablePicker.xib in Resources */,
 				00E8C01F1A3610FD00D53F82 /* 8NotesRed.pdf in Resources */,
 				004DF4621A40A69900E79C0E /* SwitchButtonLock.pdf in Resources */,
 				00B9689F19CEF1C400AAD1AF /* MetronomeSelectBar.xib in Resources */,
@@ -992,12 +1015,14 @@
 				008D8E821A447CCC00EF18A3 /* MusicTimePicker.m in Sources */,
 				005DAFC61A34C7EB008D5F2D /* VoiceTypePickerView.m in Sources */,
 				006175C21A0BD4A300113560 /* CircleButton.m in Sources */,
+				00268EF31A488CE600A31A37 /* XibTableViewCellInterface.m in Sources */,
 				00D92FD01A15C3D800AEC17F /* CellParameterSettingControl.m in Sources */,
 				00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */,
 				005233C71A38C6D6008DF620 /* TwoDigitsValuePicker.m in Sources */,
 				00E5F8C619C0BFCD00661D1C /* MetronomeBottomSubViewIphone.m in Sources */,
 				00D92FD31A15EDFD00AEC17F /* LoopAndPlayViewControl.m in Sources */,
 				00DA131E19F4EF1900F27E25 /* NomalHiClickVoice.m in Sources */,
+				00268EE71A4884B900A31A37 /* ListTablePicker.m in Sources */,
 				005DAFC01A34567F008D5F2D /* TimeSignaturePickerView.m in Sources */,
 				00677B0E19BC538F007A3085 /* GrooveMainViewControllerIpone.m in Sources */,
 				004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */,
@@ -1012,6 +1037,7 @@
 				005A93941A2CE10900280507 /* VoiceType.m in Sources */,
 				00DA131C19F4EF1900F27E25 /* BeepBound.m in Sources */,
 				004DF4731A40A84D00E79C0E /* TapAnimationImage.m in Sources */,
+				00268EEF1A488CAE00A31A37 /* TempoListUICell.m in Sources */,
 				00D92FD61A15FE5700AEC17F /* SystemPageControl.m in Sources */,
 				003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */,
 				003AD6021A45EA5800EC343A /* OneDigitsValuePicker.m in Sources */,
