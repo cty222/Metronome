@@ -55,6 +55,7 @@
     
     // ===================
     // Setup music by model music info
+
     if (gPlayMusicChannel == nil)
     {
         gPlayMusicChannel = [PlayerForSongs alloc];
@@ -66,12 +67,15 @@
         [gMetronomeModel Save];
     }
     
+
     if (_CurrentList.musicInfo.persistentID != nil)
     {
         MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : _CurrentList.musicInfo.persistentID ];
-        [self DoAllMusicSetupSteps: Item];
+        if (![gPlayMusicChannel isPlaying])
+        {
+            [self DoAllMusicSetupSteps: Item];
+        }
     }
-    
     // ===================
     // UI state Sync
     [self SyncMusicPropertyFromGlobalConfig];
@@ -140,6 +144,12 @@
                                              selector:@selector(PlayMusicStatusChangedCallBack:)
                                                  name:kPlayMusicStatusChangedEvent
                                                object:nil];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [gPlayMusicChannel Stop];
 }
 
 - (IBAction)ReturnToMetronome:(id)sender {
@@ -230,9 +240,6 @@
 
 - (void) SyncStartAndEndTime
 {
-    NSLog(@"");
-    NSLog(@"");
-
     gPlayMusicChannel.StartTime = [_CurrentList.musicInfo.startTime floatValue];
     gPlayMusicChannel.StopTime = [_CurrentList.musicInfo.endTime floatValue];
     

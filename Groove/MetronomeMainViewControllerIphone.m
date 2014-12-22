@@ -43,8 +43,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"viewWillAppear");
-
     [super viewWillAppear:animated];
    
     self.MusicProperty = [GlobalConfig GetMusicProperties];
@@ -97,7 +95,10 @@
     if (self.CurrentTempoList.musicInfo.persistentID != nil)
     {
         MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : self.CurrentTempoList.musicInfo.persistentID ];
-        [gPlayMusicChannel PrepareMusicToplay:Item];
+        if (![gPlayMusicChannel isPlaying])
+        {
+            [gPlayMusicChannel PrepareMusicToplay:Item];
+        }
         gPlayMusicChannel.StartTime = [self.CurrentTempoList.musicInfo.startTime floatValue];
         gPlayMusicChannel.StopTime = [self.CurrentTempoList.musicInfo.endTime floatValue];
     }
@@ -106,7 +107,13 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+}
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.PlayingMode = STOP_PLAYING;
+    [gPlayMusicChannel Stop];
 }
 
 - (void)viewDidLoad
