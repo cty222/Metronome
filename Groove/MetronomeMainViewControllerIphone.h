@@ -56,7 +56,10 @@ typedef enum {
 @property MusicProperties * MusicProperty;
 
 - (void) SyncCurrentTempoListFromModel;
-- (void) SyncCurrentFocusCellFromCurrentTempoList;
+- (void) SyncCurrentTempoCellDatatableWithModel;
+- (int) GetFocusCellWithCurrentTempoList;
+
+
 - (void) ReflashCellListAndFocusCellByCurrentData;
 
 

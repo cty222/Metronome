@@ -8,11 +8,23 @@
 
 #import "MetronomeModel.h"
 
+// private property
+@interface MetronomeModel ()
+
+@property NSFetchRequest* TempoCellEntityFetch;
+@property NSFetchRequest* TempoCellEntitySigleOwnerFetch;
+@property NSFetchRequest* TempoListEntityFetch;
+@property NSFetchRequest* TimeSignatureTypeEntityFetch;
+@property NSFetchRequest* VoiceTypeEntityFetch;
+@property NSFetchRequest* DbConfigEntityFetch;
+
+@end
+
 @implementation MetronomeModel
 {
     NSManagedObjectContext * _ManagedObjectContext;
     NSManagedObjectModel * _ManagedObjectModel;
-    NSNumber * _DbVersion;
+    NSNumber * _DbVersion; // For compare with pList checking
 }
 
 - (void) InitializeCoreData : (NSManagedObjectContext *) ManagedObjectContext
@@ -47,13 +59,13 @@
 
     // Fetch All Data
     // Select TimeSignatureType
-    self.TimeSignatureTypeDataTable = [self FetchTimeSignatureType];
+    [self SyncTimeSignatureTypeDataTableWithModel];
+    
+    [self SyncVoiceTypeWithModel];
     
     // Select TempoList
-    self.TempoListDataTable = [self FetchTempoList];
-    
-    // Select TempoCell
-    self.TempoCellDataTable = [self FetchTempoCell];
+    [self SyncTempoListDataTableWithModel];
+   
     
 #if DEBUG_CLOSE
     // Debug Test
@@ -95,20 +107,16 @@
     DbConfig* NewDbConfig = [NSEntityDescription
                              insertNewObjectForEntityForName:NSStringFromClass([DbConfig class]) inManagedObjectContext:_ManagedObjectContext];
     NewDbConfig.dbVersion = NewDBVersion;
-    [_ManagedObjectContext save:nil];
+    [self Save];
 }
 
 - (void) CreateDefaultTempoList
 {
     for (int Index=0;Index <3; Index++)
     {
-        TempoList* NewTempoList = [NSEntityDescription
-                                   insertNewObjectForEntityForName:NSStringFromClass([TempoList class]) inManagedObjectContext:_ManagedObjectContext];
-        NewTempoList.tempoListName = [NSString stringWithFormat:@"Default%d", Index];
-        NewTempoList.focusCellIndex = @0;
-        NewTempoList.sortIndex = [NSNumber numberWithInt:Index];
+        [self AddNewTempoList: [NSString stringWithFormat:@"Default%d", Index]];
     }
-    [_ManagedObjectContext save:nil];
+    [self Save];
 }
 
 - (void) CreateDefaultTimeSignatureType
@@ -122,12 +130,11 @@
         NewTimeSignatureType.sortIndex = [NSNumber numberWithInt:Index];
         NSLog(@"%@", NewTimeSignatureType);
     }
-    [_ManagedObjectContext save:nil];
+    [self Save];
 }
 
 - (void) CreateDefaultVoiceType
 {
-
     NSArray *VoiceTypeArray =[NSArray arrayWithObjects:@"NomalHiClickVoice", @"NomalLowClickVoice", @"HumanVoice", nil];
     for (int Index=0;Index <VoiceTypeArray.count; Index++)
     {
@@ -136,17 +143,22 @@
         NewVoiceType.voiceType = (NSString *)VoiceTypeArray[Index];
         NewVoiceType.sortIndex = [NSNumber numberWithInt:Index];
     }
-    [_ManagedObjectContext save:nil];
-
+    [self Save];
 }
 
 - (void) CreateDefaultTempoCell
 {
     // Select TimeSignatureType
-    self.TimeSignatureTypeDataTable = [self FetchTimeSignatureType];
+    if (self.TimeSignatureTypeDataTable == nil)
+    {
+        [self SyncTimeSignatureTypeDataTableWithModel];
+    }
     
     // Select TempoList
-    self.TempoListDataTable = [self FetchTempoList];
+    if (self.TempoListDataTable == nil)
+    {
+        [self SyncTempoListDataTableWithModel];
+    }
     
     for (int Row = 0; Row < self.TempoListDataTable.count; Row++)
     {
@@ -166,14 +178,15 @@
             NewTempoList.sortIndex = [NSNumber numberWithInt:Index];
         }
     }
-    [_ManagedObjectContext save:nil];
+    [self Save];
 }
 
 - (MusicBindingInfo *) CreateNewMusicInfo
 {
     MusicBindingInfo *NewInfo = [NSEntityDescription
                                 insertNewObjectForEntityForName:NSStringFromClass([MusicBindingInfo class])  inManagedObjectContext:_ManagedObjectContext];
-    [_ManagedObjectContext save:nil];
+    [self Save];
+
     return NewInfo;
 }
 
@@ -199,7 +212,12 @@
     return [_ManagedObjectContext executeFetchRequest:self.DbConfigEntityFetch error:nil];
 }
 
-- (NSArray *) FetchTempoList
+- (void) SyncTempoListDataTableWithModel
+{
+    self.TempoListDataTable = [self FetchTempoListWithSort];
+}
+
+- (NSArray *) FetchTempoListWithSort
 {
     if (self.TempoListEntityFetch == nil)
     {
@@ -214,6 +232,11 @@
         [self.TempoListEntityFetch setSortDescriptors:SortArray];
     }
     return [_ManagedObjectContext executeFetchRequest:self.TempoListEntityFetch error:nil];
+}
+
+- (void) SyncTimeSignatureTypeDataTableWithModel
+{
+    self.TimeSignatureTypeDataTable = [self FetchTimeSignatureType];
 }
 
 - (NSArray *) FetchTimeSignatureType
@@ -232,6 +255,11 @@
         [self.TimeSignatureTypeEntityFetch setSortDescriptors:SortArray];
     }
     return [_ManagedObjectContext executeFetchRequest:self.TimeSignatureTypeEntityFetch error:nil];
+}
+
+- (void) SyncVoiceTypeWithModel
+{
+    self.VoiceTypeDataTable = [self FetchVoiceType];
 }
 
 - (NSArray *) FetchVoiceType
@@ -263,7 +291,7 @@
     return [_ManagedObjectContext executeFetchRequest:self.TempoCellEntityFetch error:nil];
 }
 
-- (NSArray *) FetchTempoCellWhereListName : (TempoList *) listOwner
+- (NSArray *) FetchTempoCellFromTempoListWithSort : (TempoList *) listOwner
 {
     if (self.TempoCellEntitySigleOwnerFetch == nil)
     {
@@ -288,7 +316,7 @@
     return ReturnArray;
 }
 
-- (TempoList *) FetchCurrentTempoListFromModel : (NSNumber * ) TempoListIndex
+- (TempoList *) PickTargetTempoListFromDataTable : (NSNumber * ) TempoListIndex
 {
     TempoList * ReturnTempoList = nil;
     
@@ -329,20 +357,36 @@
     [_ManagedObjectContext save:nil];
 }
 
-- (void) AddNewTempoCell : (TempoList *) CellOwner : (int) SortIndex
+// TODO : 要Fix 效能
+- (int) GetNewEmptySortIndexForTempoCell: (TempoList *) CellOwner
 {
-    TempoCell* NewTempoList = [NSEntityDescription
+    NSArray *TempoCellArrayInTempoList = [self FetchTempoCellFromTempoListWithSort:CellOwner];
+    if (TempoCellArrayInTempoList.count == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        TempoCell * Cell = TempoCellArrayInTempoList[TempoCellArrayInTempoList.count - 1];
+        return [Cell.sortIndex intValue] + 1;
+    }
+
+}
+
+- (void) AddNewTempoCell : (TempoList *) CellOwner
+{
+    TempoCell* NewTempoCell = [NSEntityDescription
                                insertNewObjectForEntityForName:NSStringFromClass([TempoCell class])  inManagedObjectContext:_ManagedObjectContext];
-    NewTempoList.bpmValue = [NSNumber numberWithInt:(120)];
-    NewTempoList.loopCount = @1;
-    NewTempoList.accentVolume = @10.0;
-    NewTempoList.quarterNoteVolume = @10.0;
-    NewTempoList.eighthNoteVolume = @0;
-    NewTempoList.sixteenNoteVolume = @0;
-    NewTempoList.trippleNoteVolume = @0;
-    NewTempoList.timeSignatureType = self.TimeSignatureTypeDataTable[3];
-    NewTempoList.listOwner = CellOwner;
-    NewTempoList.sortIndex = [NSNumber numberWithInt:SortIndex];
+    NewTempoCell.bpmValue = [NSNumber numberWithInt:(120)];
+    NewTempoCell.loopCount = @1;
+    NewTempoCell.accentVolume = @10.0;
+    NewTempoCell.quarterNoteVolume = @10.0;
+    NewTempoCell.eighthNoteVolume = @0;
+    NewTempoCell.sixteenNoteVolume = @0;
+    NewTempoCell.trippleNoteVolume = @0;
+    NewTempoCell.timeSignatureType = self.TimeSignatureTypeDataTable[3];
+    NewTempoCell.listOwner = CellOwner;
+    NewTempoCell.sortIndex = [NSNumber numberWithInt:[self GetNewEmptySortIndexForTempoCell:CellOwner] ];
 
     [self Save];
 }
@@ -352,6 +396,39 @@
     [_ManagedObjectContext deleteObject:TargetCell];
     
     [self Save];
+}
+
+// TODO : 要Fix 效能
+- (int) GetNewEmptySortIndexForTempoList
+{
+    [self SyncTempoListDataTableWithModel];
+    if (self.TempoListDataTable.count == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        TempoList * OldLastTempoList  = self.TempoListDataTable[self.TempoListDataTable.count - 1];
+        return [OldLastTempoList.sortIndex intValue] + 1;
+    }
+}
+
+- (void) AddNewTempoList : (NSString *) ListName
+{
+
+    TempoList* NewTempoList = [NSEntityDescription
+                               insertNewObjectForEntityForName:NSStringFromClass([TempoList class]) inManagedObjectContext:_ManagedObjectContext];
+    NewTempoList.tempoListName = ListName;
+    NewTempoList.focusCellIndex = @0;
+    NewTempoList.sortIndex = [NSNumber numberWithInt:[self GetNewEmptySortIndexForTempoList]];
+    
+    [self Save];
+}
+
+- (void) CreateNewDefaultTempoList: (NSString *) ListName
+{
+
+
 }
 //
 // ==============================

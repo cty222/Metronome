@@ -31,11 +31,11 @@
 
 - (void) SyncPageInfoByCurrentTempoList
 {
-    _CurrentList =[gMetronomeModel GetTargetTempoListFromDataTable: [GlobalConfig GetLastTempoListIndex] :_TempoListDataTable];
+    _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndex]];
     if (_CurrentList == nil)
     {
         NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from LastTempoListIndex Error");
-        _CurrentList =[gMetronomeModel GetTargetTempoListFromDataTable:@0 :_TempoListDataTable];
+        _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndex]];
         if (_CurrentList == nil)
         {
             NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from 0 Error");

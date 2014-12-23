@@ -118,7 +118,7 @@
     }
     self.SelectGrooveBar.GrooveCellValueStringList = _CellValueToStringList;
     
-    [self.SelectGrooveBar DisplayUICellList: [Parent.CurrentTempoList.focusCellIndex intValue]];
+    [self.SelectGrooveBar DisplayUICellList: [Parent GetFocusCellWithCurrentTempoList]];
 
 }
 
@@ -219,7 +219,7 @@
     
     [Parent SyncCurrentTempoListFromModel];
     
-    [Parent SyncCurrentFocusCellFromCurrentTempoList];
+    [Parent SyncCurrentTempoCellDatatableWithModel];
     
     [Parent ReflashCellListAndFocusCellByCurrentData];
 
@@ -229,15 +229,13 @@
 {
     MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
     
-    TempoCell* CurrentLastCell  = Parent.CurrentCellsDataTable[Parent.CurrentCellsDataTable.count - 1];
-    
     // 新增一筆進資料庫
-    [gMetronomeModel AddNewTempoCell: Parent.CurrentTempoList : ([CurrentLastCell.sortIndex intValue] +1)];
+    [gMetronomeModel AddNewTempoCell: Parent.CurrentTempoList];
     
     // 重新顯示
     [Parent SyncCurrentTempoListFromModel];
     
-    [Parent SyncCurrentFocusCellFromCurrentTempoList];
+    [Parent SyncCurrentTempoCellDatatableWithModel];
     
     TempoList * CurrentListCell = Parent.CurrentTempoList;
     
@@ -272,7 +270,7 @@
     // 重讀資料庫
     [Parent SyncCurrentTempoListFromModel];
     
-    [Parent SyncCurrentFocusCellFromCurrentTempoList];
+    [Parent SyncCurrentTempoCellDatatableWithModel];
     
     // 如果刪掉的是最後一個
     // 向前移一個

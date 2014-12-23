@@ -60,8 +60,8 @@
     
     [self SyncCurrentTempoListFromModel];
     
-    [self SyncCurrentFocusCellFromCurrentTempoList];
-    
+    [self SyncCurrentTempoCellDatatableWithModel];
+
     [self ReflashCellListAndFocusCellByCurrentData];
     
     if (self.CellParameterSettingSubController != nil)
@@ -291,17 +291,17 @@
 //
 // TODO : Testing
 //
--(void) SyncCurrentTempoListFromModel
+- (void) SyncCurrentTempoListFromModel
 {
     NSNumber *LastTempoListIndex = [GlobalConfig GetLastTempoListIndex];
     
-    self.CurrentTempoList =  [gMetronomeModel FetchCurrentTempoListFromModel:LastTempoListIndex];
+    self.CurrentTempoList =  [gMetronomeModel PickTargetTempoListFromDataTable:LastTempoListIndex];
    
     if (self.CurrentTempoList == nil)
     {
         NSLog(@"嚴重錯誤: Last TempoList 同步錯誤 Error!!!");
 
-        self.CurrentTempoList = [gMetronomeModel FetchCurrentTempoListFromModel:@0];
+        self.CurrentTempoList = [gMetronomeModel PickTargetTempoListFromDataTable:@0];
         if (self.CurrentTempoList == nil)
         {
             NSLog(@"嚴重錯誤: TempoList 資料庫需要reset");
@@ -309,24 +309,38 @@
     }
 }
 
-- (void) SyncCurrentFocusCellFromCurrentTempoList
+- (void) SyncCurrentTempoCellDatatableWithModel
 {
     if (self.CurrentTempoList == nil)
     {
         NSLog(@"錯誤: SyncCurrentFocusCellFromCurrentTempoList CurrentTempoList == nil");
         return;
     }
+
+    self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellFromTempoListWithSort:self.CurrentTempoList];
+    if (self.CurrentCellsDataTable == nil)
+    {
+        self.CurrentCellsDataTable = gMetronomeModel.TempoListDataTable[0];
+    }
+}
+
+- (int) GetFocusCellWithCurrentTempoList
+{
+    if (self.CurrentTempoList == nil)
+    {
+        NSLog(@"錯誤: SyncCurrentFocusCellFromCurrentTempoList CurrentTempoList == nil");
+        return 0;
+    }
     
     NSNumber *LastFocusCellIndex = self.CurrentTempoList.focusCellIndex;
-    
-    if (gMetronomeModel.TempoListDataTable.count > [LastFocusCellIndex intValue])
+
+    if (self.CurrentCellsDataTable.count > [LastFocusCellIndex intValue])
     {
-        self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[[LastFocusCellIndex intValue]]];
+        return [LastFocusCellIndex intValue];
     }
     else
     {
-        NSLog(@"SyncCurrentFocusCellFromCurrentTempoList 嚴重錯誤: LastFocusCellIndex Error!!!");
-        self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellWhereListName:gMetronomeModel.TempoListDataTable[0]];
+        return 0;
     }
 }
 

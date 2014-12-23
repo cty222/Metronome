@@ -127,7 +127,7 @@
 
 - (void) InitilaizeVoiceTypePickerView
 {
-    NSArray *VoiceTypeArray = [gMetronomeModel FetchVoiceType];
+    NSArray *VoiceTypeArray = gMetronomeModel.VoiceTypeDataTable;
     self.VoiceTypePickerView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.VoiceTypePickerView.frame.origin.y;
     self.VoiceTypePickerView.ArrowCenterLine = self.VoiceTypePicker.frame.origin.y + self.VoiceTypePicker.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
     self.VoiceTypePickerView.TriggerButton = self.VoiceTypePicker;
@@ -140,7 +140,7 @@
 - (void) InitilaizeTimeSignaturePickerView
 {
     // If nil, create data view
-    NSArray *TimeSignatureTypeArray = [gMetronomeModel FetchTimeSignatureType];
+    NSArray *TimeSignatureTypeArray = gMetronomeModel.TimeSignatureTypeDataTable;
     self.TimeSignaturePickerView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.TimeSignaturePickerView.frame.origin.y;
     self.TimeSignaturePickerView.ArrowCenterLine = self.TimeSigaturePicker.frame.origin.y + self.TimeSigaturePicker.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
     self.TimeSignaturePickerView.TriggerButton = self.TimeSigaturePicker;
@@ -187,7 +187,7 @@
 
 - (IBAction) ChangeVoiceType:(UIButton *)TriggerItem
 {
-    NSArray *VoiceTypeArray = [gMetronomeModel FetchVoiceType];
+    NSArray *VoiceTypeArray = gMetronomeModel.VoiceTypeDataTable;
 
     if (gClickVoiceList.count <= TriggerItem.tag || VoiceTypeArray.count <= TriggerItem.tag)
     {
@@ -235,7 +235,7 @@
 
 - (IBAction) ChangeTimeSignature:(UIButton *)TriggerItem
 {
-    NSArray *TimeSignatureTypeArray = [gMetronomeModel FetchTimeSignatureType];
+    NSArray *TimeSignatureTypeArray = gMetronomeModel.TimeSignatureTypeDataTable;
     
     if (TimeSignatureTypeArray.count <= TriggerItem.tag)
     {

@@ -23,30 +23,25 @@ MetronomeModel * gMetronomeModel;
 
 @interface MetronomeModel : NSObject
 
-@property NSFetchRequest* TempoCellEntityFetch;
-@property NSFetchRequest* TempoCellEntitySigleOwnerFetch;
-@property NSFetchRequest* TempoListEntityFetch;
-@property NSFetchRequest* TimeSignatureTypeEntityFetch;
-@property NSFetchRequest* VoiceTypeEntityFetch;
-@property NSFetchRequest* DbConfigEntityFetch;
-
-@property NSArray* TempoCellDataTable;
 @property NSArray* TempoListDataTable;
 @property NSArray* TimeSignatureTypeDataTable;
+@property NSArray* VoiceTypeDataTable;
 @property NSArray* DbVersionDataTable;
 
-- (NSArray *) FetchTempoCellWhereListName : (NSString *) listOwner;
-- (NSArray *) FetchTimeSignatureType;
-- (NSArray *) FetchVoiceType;
-- (TempoList *) FetchCurrentTempoListFromModel : (NSNumber * ) TempoListIndex;
-- (TempoList *) GetTargetTempoListFromDataTable : (NSNumber * ) TempoListIndex : (NSArray* )TempoListDataTable;
+- (NSArray *) FetchTempoCellFromTempoListWithSort : (TempoList *) listOwner;
+- (void) SyncTimeSignatureTypeDataTableWithModel;
+- (void) SyncVoiceTypeWithModel;
+- (void) SyncTempoListDataTableWithModel;
+
 
 - (void) InitializeCoreData : (NSManagedObjectContext *) ManagedObjectContext
          ManagedObjectModel : (NSManagedObjectModel *) ManagedObjectModel
                   DbVersion : (NSNumber *) DbVersion;
 
+- (TempoList *) PickTargetTempoListFromDataTable : (NSNumber * ) TempoListIndex;
+
 - (void) Save;
-- (void) AddNewTempoCell : (TempoList *) CellOwner : (int) SortIndex;
+- (void) AddNewTempoCell : (TempoList *) CellOwner;
 - (void) DeleteTargetTempoCell : (TempoCell *) TargetCell;
 - (MusicBindingInfo *) CreateNewMusicInfo;
 
