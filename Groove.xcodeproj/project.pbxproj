@@ -221,7 +221,7 @@
 		0049ECC51A40BE2B0016EA3D /* TapAnimation_1_gray.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TapAnimation_1_gray.pdf; sourceTree = "<group>"; };
 		0049ECC71A40BE310016EA3D /* TapAnimation_2_gray.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TapAnimation_2_gray.pdf; sourceTree = "<group>"; };
 		0049ECC91A40C0500016EA3D /* NewCircle_Big_Inner.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircle_Big_Inner.pdf; sourceTree = "<group>"; };
-		004BE63A19B2DDC7002CD995 /* Rock Metromone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rock Metromone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		004BE63A19B2DDC7002CD995 /* Rock Metromone : Song Click .app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rock Metromone : Song Click .app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		004BE63D19B2DDC7002CD995 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		004BE63F19B2DDC7002CD995 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		004BE64119B2DDC7002CD995 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -443,7 +443,7 @@
 		004BE63B19B2DDC7002CD995 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				004BE63A19B2DDC7002CD995 /* Rock Metromone.app */,
+				004BE63A19B2DDC7002CD995 /* Rock Metromone : Song Click .app */,
 				004BE65A19B2DDC8002CD995 /* GrooveTests.xctest */,
 			);
 			name = Products;
@@ -841,7 +841,7 @@
 			);
 			name = Groove;
 			productName = Groove;
-			productReference = 004BE63A19B2DDC7002CD995 /* Rock Metromone.app */;
+			productReference = 004BE63A19B2DDC7002CD995 /* Rock Metromone : Song Click .app */;
 			productType = "com.apple.product-type.application";
 		};
 		004BE65919B2DDC8002CD995 /* GrooveTests */ = {
@@ -1174,7 +1174,7 @@
 				INFOPLIST_FILE = "Groove/Groove-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "Rock Metromone";
+				PRODUCT_NAME = "Rock Metromone : Song Click ";
 				SWIFT_OBJC_BRIDGING_HEADER = "Groove/Groove-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1194,7 +1194,7 @@
 				INFOPLIST_FILE = "Groove/Groove-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "Rock Metromone";
+				PRODUCT_NAME = "Rock Metromone : Song Click ";
 				SWIFT_OBJC_BRIDGING_HEADER = "Groove/Groove-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
