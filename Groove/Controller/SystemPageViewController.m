@@ -17,7 +17,7 @@
     TempoList *_CurrentList;
     MusicProperties * _MusicProperty;
    
-    NSMutableArray * _TempoListDataTable;
+    NSArray * _TempoListDataTable;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -80,8 +80,8 @@
         gPlayMusicChannel = [PlayerForSongs alloc];
     }
     
-    _TempoListDataTable = [NSMutableArray arrayWithArray:gMetronomeModel.TempoListDataTable];
-    
+    [self FillTempoListFromModel];
+
     // ===================
     // UI state Sync
     [self SyncPageInfoByCurrentTempoList];
@@ -159,11 +159,6 @@
     self.ListTablePicker.hidden = YES;
     self.ListTablePicker.delegate = self;
     
-    
-    self.ListTablePicker.TableView.delegate = self;
-    self.ListTablePicker.TableView.dataSource = self;
-    //[self.ListTablePicker.TableView reloadData];
-    
     UITapGestureRecognizer *TapSelectTempoListRecognizer =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(SelectTempoList:)];
     [self.CurrentSelectedList addGestureRecognizer:TapSelectTempoListRecognizer];
@@ -219,6 +214,8 @@
 - (IBAction) SelectTempoList:(id)sender
 {
     self.ListTablePicker.ID = TEMPO_LIST_PICKER_ID;
+    [self.ListTablePicker SetSelectedCell : _CurrentList];
+
     self.SubInputView.hidden = NO;
     self.ListTablePicker.hidden = NO;
     [self.FullView bringSubviewToFront:self.SubInputView];
@@ -440,6 +437,12 @@
     else if (self.ListTablePicker.ID == TEMPO_LIST_PICKER_ID)
     {
         self.ListTablePicker.ID = NONE_ID;
+        [GlobalConfig SetLastTempoListIndex:(int)[self.ListTablePicker GetSelectedIndex]];
+        
+        [self SyncPageInfoByCurrentTempoList];
+        [self SyncMusicPropertyFromGlobalConfig];
+        [self SyncStartAndEndTime];
+        
         self.ListTablePicker.hidden = YES;
     }
     
@@ -489,6 +492,31 @@
     }
 }
 
+- (IBAction) AddNewItem: (UIButton *) AddButton
+{
+    [gMetronomeModel CreateNewDefaultTempoList:@"GG In In der"];
+    [gMetronomeModel SyncTempoListDataTableWithModel];
+    [self FillTempoListFromModel];
+}
+
+- (IBAction) DeletItem : (TempoList *) TargetTempoList;
+{
+    if (_TempoListDataTable.count <= 1 )
+    {
+        return;
+    }
+    
+    [gMetronomeModel DeleteTempoList:TargetTempoList];
+    [gMetronomeModel SyncTempoListDataTableWithModel];
+    [self FillTempoListFromModel];
+}
+
+- (void) FillTempoListFromModel
+{
+    _TempoListDataTable = gMetronomeModel.TempoListDataTable;
+    self.ListTablePicker.TempoListArrayForBinding = _TempoListDataTable;
+}
+
 - (void) PlayMusicStatusChangedCallBack:(NSNotification *)Notification
 {
     if (gPlayMusicChannel.Playing)
@@ -500,66 +528,6 @@
         [self.MusicTimePicker.ListonButton setTitle:@"Liston" forState:UIControlStateNormal];
     }
 }
-
-//
-// ==========================
-
-
-
-//================================
-//TableView protocol function
-//
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return _TempoListDataTable.count; //回傳有幾筆資料要呈現
-}
-
-- (BOOL) tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 50;
-}
-
-static NSString *Identifier = @"tableidentifier"; //設定一個就算離開畫面也還是抓得到的辨識目標
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { //在繪製每一列時會呼叫的方法
-    
-    TempoListUICell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
-    if(cell == nil)
-    {
-        cell = [[TempoListUICell alloc] init];
-        TempoList * CellList = [_TempoListDataTable objectAtIndex:indexPath.row];
-
-        cell.LblName.text = CellList.tempoListName;
-    }
-    
-    return cell;
-}
-
-//
-// select cell
-//
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [GlobalConfig SetLastTempoListIndex:indexPath.row];
-    
-    [self SyncPageInfoByCurrentTempoList];
-    [self SyncMusicPropertyFromGlobalConfig];
-    [self SyncStartAndEndTime];
-    
-    self.ListTablePicker.hidden = YES;
-    [self CloseSubInputView];
-}
-// ========================================
 
 
 - (void)didReceiveMemoryWarning

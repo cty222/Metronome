@@ -10,7 +10,6 @@
 
 @implementation SystemPageControl
 {
-    UIAlertView *_MusicTimeAlert;
 }
 
 - (void) MainViewWillAppear

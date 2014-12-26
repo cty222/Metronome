@@ -19,7 +19,7 @@ enum SYSTEM_INPUT_ID {
     TEMPO_LIST_PICKER_ID = 10,
 };
 
-@interface SystemPageViewController : UIViewController <MPMediaPickerControllerDelegate, AVAudioPlayerDelegate, MusicTimePickerProtocol, UITableViewDataSource, UITableViewDelegate>
+@interface SystemPageViewController : UIViewController <MPMediaPickerControllerDelegate, AVAudioPlayerDelegate, MusicTimePickerProtocol,ListTablePickerProtocol>
 @property (strong, nonatomic) IBOutlet UIView *FullView;
 @property (strong, nonatomic) IBOutlet UIButton *ReturnButton;
 

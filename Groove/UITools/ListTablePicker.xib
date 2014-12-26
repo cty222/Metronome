@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -8,14 +9,14 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="tfj-oK-Rf0" customClass="ListTablePicker">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="aIH-QO-HLm">
-                    <rect key="frame" x="0.0" y="154" width="320" height="414"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="0.0" y="58" width="320" height="510"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="FKp-4c-bZB">
-                            <rect key="frame" x="0.0" y="77" width="320" height="337"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="510"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="sectionIndexBackgroundColor" red="0.98724205590000003" green="1" blue="0.26242883839999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -23,24 +24,24 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.28190266250000001" blue="0.1408895587" alpha="1" colorSpace="calibratedRGB"/>
                 </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OHC-G2-35q">
+                    <rect key="frame" x="0.0" y="0.0" width="84" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Save">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="Save:" destination="tfj-oK-Rf0" eventType="touchUpInside" id="SlW-T5-yeM"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oI7-xP-SDv">
-                    <rect key="frame" x="0.0" y="96" width="84" height="50"/>
+                    <rect key="frame" x="236" y="0.0" width="84" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Add">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="AddNewTempoList:" destination="tfj-oK-Rf0" eventType="touchUpInside" id="eSd-L2-69S"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OHC-G2-35q">
-                    <rect key="frame" x="236" y="96" width="84" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Cancel">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="Cancel:" destination="tfj-oK-Rf0" eventType="touchUpInside" id="kfQ-wU-ofq"/>
+                        <action selector="AddNewItem:" destination="tfj-oK-Rf0" eventType="touchUpInside" id="Eyd-0i-p8z"/>
                     </connections>
                 </button>
             </subviews>
@@ -48,7 +49,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="AddButton" destination="oI7-xP-SDv" id="fXD-XG-Ad9"/>
-                <outlet property="CancelButton" destination="OHC-G2-35q" id="ATP-7T-Wuy"/>
+                <outlet property="SaveButton" destination="OHC-G2-35q" id="5ck-Yz-3Dd"/>
                 <outlet property="TableView" destination="FKp-4c-bZB" id="3vX-fb-UIV"/>
             </connections>
             <point key="canvasLocation" x="377" y="352"/>

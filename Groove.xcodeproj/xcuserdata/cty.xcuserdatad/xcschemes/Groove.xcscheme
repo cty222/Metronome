@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "004BE63919B2DDC7002CD995"
-               BuildableName = "Groove.app"
+               BuildableName = "Rock Metromone : Song Click .app"
                BlueprintName = "Groove"
                ReferencedContainer = "container:Groove.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "004BE63919B2DDC7002CD995"
-            BuildableName = "Groove.app"
+            BuildableName = "Rock Metromone : Song Click .app"
             BlueprintName = "Groove"
             ReferencedContainer = "container:Groove.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "004BE63919B2DDC7002CD995"
-            BuildableName = "Groove.app"
+            BuildableName = "Rock Metromone : Song Click .app"
             BlueprintName = "Groove"
             ReferencedContainer = "container:Groove.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "004BE63919B2DDC7002CD995"
-            BuildableName = "Groove.app"
+            BuildableName = "Rock Metromone : Song Click .app"
             BlueprintName = "Groove"
             ReferencedContainer = "container:Groove.xcodeproj">
          </BuildableReference>

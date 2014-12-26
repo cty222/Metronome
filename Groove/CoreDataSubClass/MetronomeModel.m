@@ -293,19 +293,16 @@
 
 - (NSArray *) FetchTempoCellFromTempoListWithSort : (TempoList *) listOwner
 {
-    if (self.TempoCellEntitySigleOwnerFetch == nil)
-    {
-        NSEntityDescription *Entity;
-        Entity = [NSEntityDescription entityForName:NSStringFromClass([TempoCell class]) inManagedObjectContext:_ManagedObjectContext];
-        
-        self.TempoCellEntitySigleOwnerFetch = [_ManagedObjectModel fetchRequestFromTemplateWithName:@"FetchCellFromSigleOwner" substitutionVariables:[NSDictionary dictionaryWithObject:listOwner forKey:@"listOwner"]];
-        [self.TempoCellEntitySigleOwnerFetch setEntity:Entity];
-        
-        // Sort
-        NSSortDescriptor *Sort = [[NSSortDescriptor alloc] initWithKey:@"sortIndex" ascending:YES];
-        NSArray *SortArray = [[NSArray alloc] initWithObjects:Sort, nil];
-        [self.TempoCellEntitySigleOwnerFetch setSortDescriptors:SortArray];
-    }
+    NSEntityDescription *Entity;
+    Entity = [NSEntityDescription entityForName:NSStringFromClass([TempoCell class]) inManagedObjectContext:_ManagedObjectContext];
+    
+    self.TempoCellEntitySigleOwnerFetch = [_ManagedObjectModel fetchRequestFromTemplateWithName:@"FetchCellFromSigleOwner" substitutionVariables:[NSDictionary dictionaryWithObject:listOwner forKey:@"listOwner"]];
+    [self.TempoCellEntitySigleOwnerFetch setEntity:Entity];
+    
+    // Sort
+    NSSortDescriptor *Sort = [[NSSortDescriptor alloc] initWithKey:@"sortIndex" ascending:YES];
+    NSArray *SortArray = [[NSArray alloc] initWithObjects:Sort, nil];
+    [self.TempoCellEntitySigleOwnerFetch setSortDescriptors:SortArray];
     
     NSError *Error;
     NSArray *ReturnArray = [_ManagedObjectContext executeFetchRequest:self.TempoCellEntitySigleOwnerFetch error:&Error];
@@ -329,6 +326,7 @@
         ReturnTempoList = TempoListDataTable[[LastTempoListIndex intValue]];
     }
    
+    NSLog(@"%@",ReturnTempoList);
     return ReturnTempoList;
 }
 
@@ -413,7 +411,7 @@
     }
 }
 
-- (void) AddNewTempoList : (NSString *) ListName
+- (TempoList*) AddNewTempoList : (NSString *) ListName
 {
 
     TempoList* NewTempoList = [NSEntityDescription
@@ -423,12 +421,21 @@
     NewTempoList.sortIndex = [NSNumber numberWithInt:[self GetNewEmptySortIndexForTempoList]];
     
     [self Save];
+    
+    return NewTempoList;
+}
+
+- (void) DeleteTempoList : (TempoList *) TargetTempoList
+{
+    [_ManagedObjectContext deleteObject:TargetTempoList];
+    
+    [self Save];
 }
 
 - (void) CreateNewDefaultTempoList: (NSString *) ListName
 {
-
-
+    TempoList * NewTempoList = [self AddNewTempoList:ListName];
+    [self AddNewTempoCell:NewTempoList];
 }
 //
 // ==============================

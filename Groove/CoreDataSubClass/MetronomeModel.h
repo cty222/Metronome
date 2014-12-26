@@ -43,6 +43,9 @@ MetronomeModel * gMetronomeModel;
 - (void) Save;
 - (void) AddNewTempoCell : (TempoList *) CellOwner;
 - (void) DeleteTargetTempoCell : (TempoCell *) TargetCell;
+- (void) CreateNewDefaultTempoList: (NSString *) ListName;
+- (void) DeleteTempoList : (TempoList *) TargetTempoList;
+
 - (MusicBindingInfo *) CreateNewMusicInfo;
 
 @end

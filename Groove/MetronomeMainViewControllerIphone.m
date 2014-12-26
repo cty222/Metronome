@@ -294,6 +294,7 @@
 - (void) SyncCurrentTempoListFromModel
 {
     NSNumber *LastTempoListIndex = [GlobalConfig GetLastTempoListIndex];
+    NSLog(@"%@", LastTempoListIndex);
     
     self.CurrentTempoList =  [gMetronomeModel PickTargetTempoListFromDataTable:LastTempoListIndex];
    
@@ -322,6 +323,8 @@
     {
         self.CurrentCellsDataTable = gMetronomeModel.TempoListDataTable[0];
     }
+    
+    NSLog(@"%@", self.CurrentCellsDataTable);
 }
 
 - (int) GetFocusCellWithCurrentTempoList
