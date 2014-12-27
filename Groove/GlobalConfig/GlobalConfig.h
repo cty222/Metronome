@@ -59,11 +59,14 @@ enum {
 + (void) SetMusicProperties : (MusicProperties *) NewMusicProperties;
 
 // Main View
-+ (UIViewController *) SystemPageViewControllerIphone;
-+ (UIViewController *) MetronomeMainViewControllerIphone;
++ (UIViewController *) SystemPageViewController;
++ (UIViewController *) MetronomeMainViewController;
++ (UIViewController *) TempoListController;
 
 // GlobalEvent
 #define kChangeToSystemPageView @"kChangeToSystemPageView"
-#define kChangeToMetronomeView @"kChangeToMetronomeView"
+#define kChangeBackToMetronomeView @"kChangeBackToMetronomeView"
 
+#define kChangeToTempoListPickerView @"kChangeToTempoListPickerView"
+#define kChangeBackToSystemPageView @"kChangeBackToSystemPageView"
 @end

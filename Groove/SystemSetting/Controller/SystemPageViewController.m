@@ -29,37 +29,6 @@
     return self;
 }
 
-- (void) SyncPageInfoByCurrentTempoList
-{
-    _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndex]];
-    if (_CurrentList == nil)
-    {
-        NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from LastTempoListIndex Error");
-        _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndex]];
-        if (_CurrentList == nil)
-        {
-            NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from 0 Error");
-        }
-    }
-    
-    self.CurrentSelectedList.text = _CurrentList.tempoListName;
-    
-    if (_CurrentList.musicInfo == nil)
-    {
-        _CurrentList.musicInfo = [gMetronomeModel CreateNewMusicInfo];
-        [gMetronomeModel Save];
-    }
-    
-    if (_CurrentList.musicInfo.persistentID != nil)
-    {
-        MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : _CurrentList.musicInfo.persistentID ];
-        if (![gPlayMusicChannel isPlaying])
-        {
-            [self DoAllMusicSetupSteps: Item];
-        }
-    }
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -80,7 +49,7 @@
         gPlayMusicChannel = [PlayerForSongs alloc];
     }
     
-    [self FillTempoListFromModel];
+    _TempoListDataTable = gMetronomeModel.TempoListDataTable;
 
     // ===================
     // UI state Sync
@@ -151,18 +120,12 @@
                                              selector:@selector(PlayMusicStatusChangedCallBack:)
                                                  name:kPlayMusicStatusChangedEvent
                                                object:nil];
-    
-    
-    // Cell slected
-    self.ListTablePicker = [[ListTablePicker alloc] initWithFrame:self.SubInputView.bounds];
-    [self.SubInputView addSubview:self.ListTablePicker];
-    self.ListTablePicker.hidden = YES;
-    self.ListTablePicker.delegate = self;
-    
+
     UITapGestureRecognizer *TapSelectTempoListRecognizer =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(SelectTempoList:)];
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChangeToTempoListPickerControllerView:)];
     [self.CurrentSelectedList addGestureRecognizer:TapSelectTempoListRecognizer];
     
+    [self ChangeControllerEventInitialize];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -171,8 +134,50 @@
     [gPlayMusicChannel Stop];
 }
 
-- (IBAction)ReturnToMetronome:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kChangeToMetronomeView object:nil];
+
+- (void) ChangeControllerEventInitialize
+{
+    // Change View Controller
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(ChangePageToTempoListView:)
+                                                 name:kChangeToTempoListPickerView
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(ChangePageBackToSystemView:)
+                                                 name:kChangeBackToSystemPageView
+                                               object:nil];
+}
+
+- (void) SyncPageInfoByCurrentTempoList
+{
+    _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndex]];
+    if (_CurrentList == nil)
+    {
+        NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from LastTempoListIndex Error");
+        _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndex]];
+        if (_CurrentList == nil)
+        {
+            NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from 0 Error");
+        }
+    }
+    
+    self.CurrentSelectedList.text = _CurrentList.tempoListName;
+    
+    if (_CurrentList.musicInfo == nil)
+    {
+        _CurrentList.musicInfo = [gMetronomeModel CreateNewMusicInfo];
+        [gMetronomeModel Save];
+    }
+    
+    if (_CurrentList.musicInfo.persistentID != nil)
+    {
+        MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : _CurrentList.musicInfo.persistentID ];
+        if (![gPlayMusicChannel isPlaying])
+        {
+            [self DoAllMusicSetupSteps: Item];
+        }
+    }
 }
 
 - (IBAction)ChooseMusic:(id)sender {
@@ -209,17 +214,6 @@
     self.MusicTimePicker.TimeScrollBar.minimumValue = 0.0f;
     self.MusicTimePicker.Value = gPlayMusicChannel.StopTime;
     [self ShowMusicPicker];
-}
-
-- (IBAction) SelectTempoList:(id)sender
-{
-    self.ListTablePicker.ID = TEMPO_LIST_PICKER_ID;
-    [self.ListTablePicker SetSelectedCell : _CurrentList];
-
-    self.SubInputView.hidden = NO;
-    self.ListTablePicker.hidden = NO;
-    [self.FullView bringSubviewToFront:self.SubInputView];
-
 }
 
 - (void) ShowMusicPicker
@@ -407,7 +401,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
 // InputSubmitViewProtocol
 - (IBAction) Save: (UIButton *) SaveButton
 {
@@ -433,17 +426,6 @@
         {
             [gPlayMusicChannel Stop];
         }
-    }
-    else if (self.ListTablePicker.ID == TEMPO_LIST_PICKER_ID)
-    {
-        self.ListTablePicker.ID = NONE_ID;
-        [GlobalConfig SetLastTempoListIndex:(int)[self.ListTablePicker GetSelectedIndex]];
-        
-        [self SyncPageInfoByCurrentTempoList];
-        [self SyncMusicPropertyFromGlobalConfig];
-        [self SyncStartAndEndTime];
-        
-        self.ListTablePicker.hidden = YES;
     }
     
     [gMetronomeModel Save];
@@ -471,12 +453,7 @@
             [gPlayMusicChannel Stop];
         }
     }
-    else if (self.ListTablePicker.ID == TEMPO_LIST_PICKER_ID)
-    {
-        self.ListTablePicker.ID = NONE_ID;
-        self.ListTablePicker.hidden = YES;
-    }
-    
+ 
     [self CloseSubInputView];
 }
 
@@ -492,30 +469,6 @@
     }
 }
 
-- (IBAction) AddNewItem: (UIButton *) AddButton
-{
-    [gMetronomeModel CreateNewDefaultTempoList:@"GG In In der"];
-    [gMetronomeModel SyncTempoListDataTableWithModel];
-    [self FillTempoListFromModel];
-}
-
-- (IBAction) DeletItem : (TempoList *) TargetTempoList;
-{
-    if (_TempoListDataTable.count <= 1 )
-    {
-        return;
-    }
-    
-    [gMetronomeModel DeleteTempoList:TargetTempoList];
-    [gMetronomeModel SyncTempoListDataTableWithModel];
-    [self FillTempoListFromModel];
-}
-
-- (void) FillTempoListFromModel
-{
-    _TempoListDataTable = gMetronomeModel.TempoListDataTable;
-    self.ListTablePicker.TempoListArrayForBinding = _TempoListDataTable;
-}
 
 - (void) PlayMusicStatusChangedCallBack:(NSNotification *)Notification
 {
@@ -528,6 +481,32 @@
         [self.MusicTimePicker.ListonButton setTitle:@"Liston" forState:UIControlStateNormal];
     }
 }
+
+
+// ===============================
+// Change Controller event
+//
+- (void) ChangePageToTempoListView:(NSNotification *)Notification
+{
+    [self presentViewController:[GlobalConfig TempoListController] animated:YES completion:nil];
+}
+
+- (void) ChangePageBackToSystemView:(NSNotification *)Notification
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction) ChangeToTempoListPickerControllerView : (id) Button
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kChangeToTempoListPickerView object:nil];
+}
+
+- (IBAction)ReturnToMetronome:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kChangeBackToMetronomeView object:nil];
+}
+
+//
+// ===============================
 
 
 - (void)didReceiveMemoryWarning

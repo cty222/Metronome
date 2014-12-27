@@ -6,14 +6,14 @@
 //  Copyright (c) 2014年 Cty. All rights reserved.
 //
 
-#import "MetronomeMainViewControllerIphone.h"
+#import "MetronomeMainViewController.h"
 
 
-@interface MetronomeMainViewControllerIphone ()
+@interface MetronomeMainViewController ()
 
 @end
 
-@implementation MetronomeMainViewControllerIphone
+@implementation MetronomeMainViewController
 {
     // Index
     int _FocusIndex;
@@ -200,13 +200,13 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(ChangePageToMetronomeView:)
-                                                 name:kChangeToMetronomeView
+                                                 name:kChangeBackToMetronomeView
                                                object:nil];
 }
 
 - (void) ChangePageToSystemView:(NSNotification *)Notification
 {
-    [self presentViewController:[GlobalConfig SystemPageViewControllerIphone] animated:YES completion:nil];
+    [self presentViewController:[GlobalConfig SystemPageViewController] animated:YES completion:nil];
 }
 
 - (void) ChangePageToMetronomeView:(NSNotification *)Notification
@@ -289,7 +289,7 @@
 
 // ============
 //
-// TODO : Testing
+// TODO : Model Sync
 //
 - (void) SyncCurrentTempoListFromModel
 {

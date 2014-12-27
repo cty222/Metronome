@@ -7,7 +7,7 @@
 //
 
 #import "GlobalConfig.h"
-#import "MetronomeMainViewControllerIphone.h"
+#import "MetronomeMainViewController.h"
 #import "SystemPageViewController.h"
 
 static BOOL _IsInitialized;
@@ -161,8 +161,8 @@ static NSMutableDictionary * ThisPlist;
     //
     // TODO: Self testing
     //
-    if (self.MetronomeMainViewControllerIphone == nil ||
-        self.SystemPageViewControllerIphone == nil
+    if (self.MetronomeMainViewController == nil ||
+        self.SystemPageViewController == nil
         )
     {
         _IsInitialized = NO;
@@ -352,28 +352,28 @@ static NSMutableDictionary * ThisPlist;
 // ============================
 // Main View Initialize
 //
-+ (UIViewController *) MetronomeMainViewControllerIphone
++ (UIViewController *) MetronomeMainViewController
 {
-    static MetronomeMainViewControllerIphone* _MetronomeMainViewControllerIphone;
+    static MetronomeMainViewController* _MetronomeMainViewController;
     static dispatch_once_t _MMVCIToken;
     dispatch_once(&_MMVCIToken, ^{
-        _MetronomeMainViewControllerIphone = [[MetronomeMainViewControllerIphone alloc] initWithNibName:NSStringFromClass([MetronomeMainViewControllerIphone class]) bundle:nil];
+        _MetronomeMainViewController = [[MetronomeMainViewController alloc] initWithNibName:NSStringFromClass([_MetronomeMainViewController class]) bundle:nil];
     });
     
     if (![GlobalConfig IsInitialized])
     {
         return nil;
     }
-    return _MetronomeMainViewControllerIphone;
+    return _MetronomeMainViewController;
 }
 
-+ (UIViewController *) SystemPageViewControllerIphone
++ (UIViewController *) SystemPageViewController
 {
-    static SystemPageViewController* _SystemPageViewControllerIphone;
-    static dispatch_once_t _GMVCIToken;
-    dispatch_once(&_GMVCIToken, ^{
-        _SystemPageViewControllerIphone = [[SystemPageViewController alloc] initWithNibName:NSStringFromClass([_SystemPageViewControllerIphone class]) bundle:nil];
-        _SystemPageViewControllerIphone.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    static SystemPageViewController* _SystemPageViewController;
+    static dispatch_once_t _SPVCToken;
+    dispatch_once(&_SPVCToken, ^{
+        _SystemPageViewController = [[SystemPageViewController alloc] initWithNibName:NSStringFromClass([_SystemPageViewController class]) bundle:nil];
+        _SystemPageViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 
     });
     
@@ -381,7 +381,24 @@ static NSMutableDictionary * ThisPlist;
     {
         return nil;
     }
-    return _SystemPageViewControllerIphone;
+    return _SystemPageViewController;
+}
+
++ (UIViewController *) TempoListController
+{
+    static TempoListViewController* _TempoListViewController;
+    static dispatch_once_t _TLCIToken;
+    dispatch_once(&_TLCIToken, ^{
+        _TempoListViewController = [[TempoListViewController alloc] initWithNibName:NSStringFromClass([_TempoListViewController class]) bundle:nil];
+        _TempoListViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        
+    });
+    
+    if (![GlobalConfig IsInitialized])
+    {
+        return nil;
+    }
+    return _TempoListViewController;
 }
 //
 // ============================

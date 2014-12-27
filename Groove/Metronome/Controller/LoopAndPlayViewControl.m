@@ -27,7 +27,7 @@
 
 - (void) InitlizePlayingItems
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
     self.PlayCellListButton = Parent.TopSubView.PlayCellListButton;
     self.PlayCurrentCellButton = Parent.BottomSubView.PlayCurrentCellButton;
@@ -70,7 +70,7 @@
 
 - (void) InitializeLoopControlItem
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
     self.SelectGrooveBar = Parent.BottomSubView.SelectGrooveBar;
     self.AddLoopCellButton = Parent.TopSubView.AddLoopCellButton;
@@ -83,7 +83,7 @@
 
 - (void) ChangeButtonDisplayByPlayMode
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
     switch (Parent.PlayingMode) {
         case STOP_PLAYING:
@@ -109,7 +109,7 @@
 
 - (void) CopyCellListToSelectBar : (NSArray *) CellDataTable
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
     _CellValueToStringList = [[NSMutableArray alloc]init];
     for (TempoCell *Cell in CellDataTable)
@@ -128,7 +128,7 @@
 
 - (IBAction) PlayCellListButtonClick: (UIButton *) ThisClickedButton
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
     if (Parent.PlayingMode == SINGLE_PLAYING)
     {
@@ -148,7 +148,7 @@
 
 - (IBAction) PlayCurrentCellButtonClick: (UIButton *) ThisClickedButton
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
     if (Parent.PlayingMode == STOP_PLAYING)
     {
@@ -196,7 +196,7 @@
 // Loop 增減
 - (void) SetTargetCellLoopCountAdd: (int) Index Value:(int)NewValue
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
     TempoCell * TargetCell = Parent.CurrentCellsDataTable[Index];
     
@@ -227,7 +227,7 @@
 
 - (IBAction) AddLoopCellButtonClick: (UIButton *) ThisClickedButton
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
     // 新增一筆進資料庫
     [gMetronomeModel AddNewTempoCell: Parent.CurrentTempoList];
@@ -249,7 +249,7 @@
 
 - (void) DeleteTargetIndexCell: (int) CurrentFocusIndex
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
     // 不可以刪掉最後一個, 或大於Count > 或負數Index
     if ((Parent.CurrentCellsDataTable.count <= 1 )
@@ -299,7 +299,7 @@
 //
 - (void) SetFocusIndex:(int) NewValue
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     Parent.FocusIndex = NewValue;
     
 }

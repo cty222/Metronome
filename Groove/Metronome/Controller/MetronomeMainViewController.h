@@ -36,7 +36,7 @@ typedef enum {
     LIST_PLAYING,
 } METRONOME_PLAYING_MODE;
 
-@interface MetronomeMainViewControllerIphone : UIViewController <NoteProtocol>
+@interface MetronomeMainViewController : UIViewController <NoteProtocol>
 @property (strong, nonatomic) IBOutlet UIView *FullView;
 @property (weak, nonatomic) IBOutlet UIView *TopView;
 @property (weak, nonatomic) IBOutlet UIView *BottomView;

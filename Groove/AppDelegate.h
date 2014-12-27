@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIWindowWithHook.h"
 #import "GlobalConfig.h"
-#import "MetronomeMainViewControllerIphone.h"
+#import "MetronomeMainViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

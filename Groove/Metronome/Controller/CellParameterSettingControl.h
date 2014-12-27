@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MetronomeMainViewControllerIphone.h"
+#import "MetronomeMainViewController.h"
 
 typedef enum{
     ACCENT_VOLUME_BUTTON = 101,

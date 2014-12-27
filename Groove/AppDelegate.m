@@ -54,7 +54,7 @@
                      ManagedObjectModel : self.managedObjectModel
                               DbVersion : [GlobalConfig DbVersion]];
     
-    self.window.rootViewController =  [GlobalConfig MetronomeMainViewControllerIphone];
+    self.window.rootViewController =  [GlobalConfig MetronomeMainViewController];
 
     
     // System add

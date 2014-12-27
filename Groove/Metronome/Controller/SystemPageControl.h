@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MetronomeMainViewControllerIphone.h"
+#import "MetronomeMainViewController.h"
 
 @interface SystemPageControl : NSObject <ADBannerViewDelegate>
 

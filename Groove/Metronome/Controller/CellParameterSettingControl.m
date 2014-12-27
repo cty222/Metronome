@@ -36,7 +36,7 @@
 
 -(void) InitializeVolumeSets
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     self.AccentCircleVolumeButton = Parent.BottomSubView.AccentCircleVolumeButton;
     self.QuarterCircleVolumeButton = Parent.BottomSubView.QuarterCircleVolumeButton;
     self.EighthNoteCircleVolumeButton = Parent.BottomSubView.EighthNoteCircleVolumeButton;
@@ -79,7 +79,7 @@
 {
     [self InitializeVolumeSets];
     
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     self.BPMPicker = Parent.TopSubView.BPMPicker;
     self.OptionScrollView = Parent.TopSubView.OptionScrollView;
     self.VoiceTypePicker = Parent.TopSubView.VoiceTypePicker;
@@ -178,7 +178,7 @@
 
 -(IBAction) LoopCellEditerDisplay:(UIButton *)sender
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     TempoCell * TargetCell = Parent.CurrentCellsDataTable[Parent.FocusIndex];
     self.LoopCellEditerView.ValueScrollView.Value =  [TargetCell.loopCount intValue];
     
@@ -194,7 +194,7 @@
         return;
     }
     
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
     // Because 0 is no voice
     NSInteger VoiceIndex = TriggerItem.tag;
@@ -242,7 +242,7 @@
         return;
     }
     
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     Parent.CurrentCell.timeSignatureType = (TimeSignatureType *)TimeSignatureTypeArray[TriggerItem.tag];
     
     // TODO : 不要save這麼頻繁
@@ -253,7 +253,7 @@
 
 - (IBAction) ChangeCellCounter:(id)TriggerItem
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
     if (self.LoopCellEditerView.ValueScrollView == TriggerItem)
     {
@@ -334,7 +334,7 @@
 
 - (IBAction) CircleButtonValueChanged:(CircleButton*) ThisCircleButton;
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
     float Value = ThisCircleButton.IndexValue;
     switch (ThisCircleButton.tag) {
@@ -363,7 +363,7 @@
 
 - (void) SetBPMValue : (id) Picker
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
     if (Picker == self.BPMPicker)
     {

@@ -19,14 +19,14 @@
 
 - (void) InitializeSystemButton
 {
-    MetronomeMainViewControllerIphone * Parent = (MetronomeMainViewControllerIphone *)self.ParrentController;
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
     self.SystemButton = Parent.TopSubView.SystemButton;
     self.adView = Parent.BottomSubView.adView;
     
     
     [self.SystemButton addTarget:self
-                                action:@selector(ChangeToGrooveMainViewControllerIphone:) forControlEvents:UIControlEventTouchDown];
+                                action:@selector(ChangeToSystemSettingControllerView:) forControlEvents:UIControlEventTouchDown];
    
     self.adView.delegate = self;
 }
@@ -73,7 +73,7 @@
 //  =========================
 //
 //
-- (IBAction) ChangeToGrooveMainViewControllerIphone : (id) Button
+- (IBAction) ChangeToSystemSettingControllerView : (id) Button
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:kChangeToSystemPageView object:nil];
 }

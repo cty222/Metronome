@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MetronomeMainViewControllerIphone.h"
+#import "MetronomeMainViewController.h"
 
 @interface LoopAndPlayViewControl : NSObject <SelectBarProtocol>
 
