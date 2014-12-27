@@ -276,7 +276,7 @@
         CGRect SubFrame = self.BottomView.frame;
         SubFrame.origin = CGPointMake(0, 0);
         
-        self.BottomSubView = [[MetronomeBottomSubViewIphone alloc] initWithFrame:SubFrame];
+        self.BottomSubView = [[MetronomeBottomView alloc] initWithFrame:SubFrame];
     }
     if (self.BottomView.subviews.count != 0)
     {

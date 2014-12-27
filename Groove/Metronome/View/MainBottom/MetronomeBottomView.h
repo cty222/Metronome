@@ -1,5 +1,5 @@
 //
-//  MetronomeBottomSubViewIphone.h
+//  MetronomeBottomView.h
 //  Groove
 //
 //  Created by C-ty on 2014/9/11.
@@ -15,7 +15,7 @@
 #import "UINSOperation.h"
 
 
-@interface MetronomeBottomSubViewIphone : XibViewInterface
+@interface MetronomeBottomView : XibViewInterface
 @property (strong, nonatomic) IBOutlet MetronomeSelectBar *SelectGrooveBar;
 
 // Volume button

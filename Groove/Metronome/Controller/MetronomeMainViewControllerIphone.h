@@ -13,7 +13,7 @@
 
 // View
 #import "MetronmoneTopSubViewIphone.h"
-#import "MetronomeBottomSubViewIphone.h"
+#import "MetronomeBottomView.h"
 #import "MetronomeSelectBar.h"
 
 // Tools
@@ -41,7 +41,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIView *TopView;
 @property (weak, nonatomic) IBOutlet UIView *BottomView;
 @property (nonatomic) MetronmoneTopSubViewIphone *TopSubView;
-@property (nonatomic) MetronomeBottomSubViewIphone *BottomSubView;
+@property (nonatomic) MetronomeBottomView *BottomSubView;
 
 @property NSArray * CurrentCellsDataTable;
 @property (nonatomic, strong) BeepBound* CurrentVoice;
