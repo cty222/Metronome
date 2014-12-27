@@ -427,6 +427,21 @@
 
 - (void) DeleteTempoList : (TempoList *) TargetTempoList
 {
+    // 如果沒有清空相依性, _ManagedObjectContext會假裝沒有
+    // 但model裡還是存在, 刪不掉
+    
+    NSArray * CellArray = [self FetchTempoCellFromTempoListWithSort:TargetTempoList];
+    
+    for (TempoCell *tmpCell in CellArray)
+    {
+        [_ManagedObjectContext deleteObject:tmpCell];
+    }
+    
+    if (TargetTempoList.musicInfo != nil)
+    {
+        [_ManagedObjectContext deleteObject:TargetTempoList.musicInfo];
+    }
+
     [_ManagedObjectContext deleteObject:TargetTempoList];
     
     [self Save];
