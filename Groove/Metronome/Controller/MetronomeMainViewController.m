@@ -455,9 +455,12 @@
         case STOP_PLAYING:
             [self StopClick];
             [self ResetCounter];
-            if (gPlayMusicChannel.isPlaying)
+            if (self.MusicProperty.MusicFunctionEnable && self.MusicProperty.PlaySingleCellWithMusicEnable)
             {
-                [gPlayMusicChannel Stop];
+                if (gPlayMusicChannel.isPlaying)
+                {
+                    [gPlayMusicChannel Stop];
+                }
             }
             break;
         case SINGLE_PLAYING:
