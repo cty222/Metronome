@@ -308,7 +308,7 @@
     [self.EnableMusicFunction setOn: _MusicProperty.MusicFunctionEnable];
     [self.MusicRateToHalfSwitch setOn: _MusicProperty.MusicHalfRateEnable];
     [self.PlaySingleCellWithMusicSwitch setOn: _MusicProperty.PlaySingleCellWithMusicEnable];
-    [self.ShowMusicButtonInMainViewSwitch setOn: _MusicProperty.ShowMusicButtonInMainViewEnable];
+    [self.PlayMusicLoopingSwitch setOn: _MusicProperty.PlayMusicLoopingEnable];
     
     [self ChangeMusicFunctionUIState:_MusicProperty.MusicFunctionEnable];
 }
@@ -317,7 +317,7 @@
 {
     if (MusicFunctionEnable)
     {
-        self.ShowMusicButtonInMainViewSwitch.enabled = YES;
+        self.PlayMusicLoopingSwitch.enabled = YES;
         self.PlayListWithMusicSwitch.enabled = YES;
         self.PlaySingleCellWithMusicSwitch.enabled = YES;
         self.MusicRateToHalfSwitch.enabled = YES;
@@ -330,7 +330,7 @@
     }
     else
     {
-        self.ShowMusicButtonInMainViewSwitch.enabled = NO;
+        self.PlayMusicLoopingSwitch.enabled = NO;
         self.PlayListWithMusicSwitch.enabled = NO;
         self.PlaySingleCellWithMusicSwitch.enabled = NO;
         self.MusicRateToHalfSwitch.enabled = NO;
@@ -368,15 +368,10 @@
     }
 }
 
-- (IBAction) ShowPlayMusicButtonSwitched:(UISwitch *)sender {
-    _MusicProperty.ShowMusicButtonInMainViewEnable = sender.isOn;
+- (IBAction) PlayMusicLoopingEnableSwitched:(UISwitch *)sender {
+    _MusicProperty.PlayMusicLoopingEnable = sender.isOn;
     [GlobalConfig SetMusicProperties:_MusicProperty];
-    if (sender.isOn)
-    {
-    }
-    else
-    {
-    }
+    [gPlayMusicChannel SetPlayMusicLoopingEnable: _MusicProperty.PlayMusicLoopingEnable];
 }
 
 //

@@ -23,6 +23,7 @@ static MPMusicPlayerController * MusicPlayer = nil;
     
     UIAlertView *_MusicTimeAlert;
 
+    BOOL _LoopingEnable;
 }
 
 // =======================
@@ -38,13 +39,12 @@ static MPMusicPlayerController * MusicPlayer = nil;
     _Player = [_Player initWithContentsOfURL:url error:nil];
     
     _Player.meteringEnabled = YES;
-    _Player.numberOfLoops = 0;
+    [self SetPlayMusicLoopingEnable:NO];
     _Player.delegate = self;
 }
 
 - (void) Play
 {
-    NSLog(@"self.StopTime:%f",self.StopTime);
     [self PlayWithTempStartAndStopTime:self.StartTime :self.StopTime];
 }
 
@@ -70,7 +70,7 @@ static MPMusicPlayerController * MusicPlayer = nil;
     _TickStopTime = StopTime;
     
     [_Player play];
-    
+   
     [[NSNotificationCenter defaultCenter] postNotificationName:kPlayMusicStatusChangedEvent object:nil];
     
     if (_TestingTimer!= nil)
@@ -78,11 +78,11 @@ static MPMusicPlayerController * MusicPlayer = nil;
         [_TestingTimer invalidate];
         _TestingTimer =nil;
     }
-    _TestingTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+    _TestingTimer = [NSTimer scheduledTimerWithTimeInterval:(StopTime - StartTime + 0.01)
                                                      target:self
                                                    selector:@selector(StopMusicTick:)
                                                    userInfo:nil
-                                                    repeats:YES];
+                                                    repeats:NO];
 }
 
 - (void) Stop
@@ -243,6 +243,12 @@ static MPMusicPlayerController * MusicPlayer = nil;
     _Player.rate = 1;
 }
 
+- (void) SetPlayMusicLoopingEnable : (BOOL) Enable
+{
+    _LoopingEnable = Enable;
+}
+
+
 - (BOOL) GetIsReadyToPlay
 {
     return _IsReadyToPlay;
@@ -263,8 +269,19 @@ static MPMusicPlayerController * MusicPlayer = nil;
     if (_Player.currentTime >= _TickStopTime)
     {
         [self Stop];
+        if (_LoopingEnable)
+        {
+            [self Play];
+        }
     }
-    
+    else
+    {
+        _TestingTimer = [NSTimer scheduledTimerWithTimeInterval:_TickStopTime - [_Player currentTime] + 0.001
+                                                         target:self
+                                                       selector:@selector(StopMusicTick:)
+                                                       userInfo:nil
+                                                        repeats:NO];
+    }
 #if 1
     NSLog(@"目前播放位置 %f", [_Player currentTime]);
     NSLog(@"目前peakPowerForChannel %f", [_Player peakPowerForChannel:0]);
@@ -283,6 +300,10 @@ static MPMusicPlayerController * MusicPlayer = nil;
 {
     NSLog(@"audioPlayerDidFinishPlaying");
     [self Stop];
+    if (_LoopingEnable)
+    {
+        [self Play];
+    }
 }
 
 //

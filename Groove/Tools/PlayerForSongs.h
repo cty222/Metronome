@@ -47,6 +47,8 @@ PlayerForSongs * gPlayMusicChannel;
 
 - (void) SetPlayRateToNormal;
 
+- (void) SetPlayMusicLoopingEnable : (BOOL) Enable;
+
 - (NSString *) ReturnTimeValueToString : (NSTimeInterval) Time;
 
 @end

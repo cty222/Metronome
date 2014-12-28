@@ -17,9 +17,9 @@
                 <outlet property="MusicRateToHalfSwitch" destination="Cpc-Kx-Cwq" id="sCS-3o-uxL"/>
                 <outlet property="MusicTimePicker" destination="A7w-VM-ga3" id="E0Y-MH-qGJ"/>
                 <outlet property="MusicTotalVolume" destination="ZIv-SU-6HS" id="8oN-3E-Gfa"/>
+                <outlet property="PlayMusicLoopingSwitch" destination="mzh-d4-m0q" id="B8r-IC-yTi"/>
                 <outlet property="PlaySingleCellWithMusicSwitch" destination="Vsu-pW-Doa" id="DfU-G2-Y62"/>
                 <outlet property="ReturnButton" destination="BNK-rm-aF6" id="C7N-xn-Bkq"/>
-                <outlet property="ShowMusicButtonInMainViewSwitch" destination="mzh-d4-m0q" id="lT2-S0-p0A"/>
                 <outlet property="StartTimeLabel" destination="x5v-Nf-0A8" id="EQc-If-qyc"/>
                 <outlet property="SubInputView" destination="VnB-2r-kof" id="ApI-oC-M2z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -160,7 +160,7 @@
                                 <action selector="PlayRateToHaveSwitched:" destination="-1" eventType="valueChanged" id="ZJc-If-gyc"/>
                             </connections>
                         </switch>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music Play Rate x 0.5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7as-MW-HXs">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music play rate x0.5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7as-MW-HXs">
                             <rect key="frame" x="73" y="8" width="167" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -174,8 +174,8 @@
                                 <action selector="PlaySingleCellWithMusicSwitched:" destination="-1" eventType="valueChanged" id="KRJ-t1-dew"/>
                             </connections>
                         </switch>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Single Cell with Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PgI-BU-0QD">
-                            <rect key="frame" x="73" y="49" width="207" height="33"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play metronome with music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PgI-BU-0QD">
+                            <rect key="frame" x="73" y="49" width="213" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -185,10 +185,10 @@
                             <rect key="frame" x="8" y="92" width="51" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <connections>
-                                <action selector="ShowPlayMusicButtonSwitched:" destination="-1" eventType="valueChanged" id="vCJ-cs-1wy"/>
+                                <action selector="PlayMusicLoopingEnableSwitched:" destination="-1" eventType="valueChanged" id="uxw-5D-pRB"/>
                             </connections>
                         </switch>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show music play button" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pk5-O4-GVA">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music looping enable " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pk5-O4-GVA">
                             <rect key="frame" x="73" y="92" width="207" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>

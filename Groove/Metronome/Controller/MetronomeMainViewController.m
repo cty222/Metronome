@@ -58,6 +58,9 @@
         {
             [gPlayMusicChannel SetPlayRateToNormal];
         }
+        
+        [gPlayMusicChannel SetPlayMusicLoopingEnable: self.MusicProperty.PlayMusicLoopingEnable];
+
     }
     else
     {

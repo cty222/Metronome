@@ -331,7 +331,7 @@ static NSMutableDictionary * ThisPlist;
     Properties.MusicFunctionEnable = [[ThisPlist objectForKey:@"MusicFunctionEnable"] boolValue];
     Properties.MusicHalfRateEnable = [[ThisPlist objectForKey:@"MusicHalfRate"] boolValue];
     Properties.PlaySingleCellWithMusicEnable = [[ThisPlist objectForKey:@"PlaySingleCellWithMusic"] boolValue];
-    Properties.ShowMusicButtonInMainViewEnable = [[ThisPlist objectForKey:@"ShowMusicButtonInMainView"] boolValue];
+    Properties.PlayMusicLoopingEnable = [[ThisPlist objectForKey:@"PlayMusicLoopingEnable"] boolValue];
     
     return Properties;
 }
@@ -341,7 +341,7 @@ static NSMutableDictionary * ThisPlist;
     [ThisPlist setValue:[NSNumber numberWithBool:NewMusicProperties.MusicFunctionEnable] forKey:@"MusicFunctionEnable"];
     [ThisPlist setValue:[NSNumber numberWithBool:NewMusicProperties.MusicHalfRateEnable] forKey:@"MusicHalfRate"];
     [ThisPlist setValue:[NSNumber numberWithBool:NewMusicProperties.PlaySingleCellWithMusicEnable] forKey:@"PlaySingleCellWithMusic"];
-    [ThisPlist setValue:[NSNumber numberWithBool:NewMusicProperties.ShowMusicButtonInMainViewEnable] forKey:@"ShowMusicButtonInMainView"];
+    [ThisPlist setValue:[NSNumber numberWithBool:NewMusicProperties.PlayMusicLoopingEnable] forKey:@"PlayMusicLoopingEnable"];
 
     
     [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
