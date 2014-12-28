@@ -41,23 +41,35 @@
 
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void) SyncMusicPropertyFromGlobalConfig
 {
-    [super viewWillAppear:animated];
-   
     self.MusicProperty = [GlobalConfig GetMusicProperties];
-    
-    if (self.MusicProperty.ShowMusicButtonInMainViewEnable)
+    if (self.MusicProperty.MusicFunctionEnable)
     {
         _LoopAndPlayViewSubController.PlayMusicButton.hidden = NO;
         _LoopAndPlayViewSubController.PlayCellListButton.hidden = YES;
+        
+        // Sync music property
+        if (self.MusicProperty.MusicHalfRateEnable)
+        {
+            [gPlayMusicChannel SetPlayRateToHalf];
+        }
+        else
+        {
+            [gPlayMusicChannel SetPlayRateToNormal];
+        }
     }
     else
     {
         _LoopAndPlayViewSubController.PlayMusicButton.hidden = YES;
         _LoopAndPlayViewSubController.PlayCellListButton.hidden = NO;
     }
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+   
     [self SyncCurrentTempoListFromModel];
     
     [self SyncCurrentTempoCellDatatableWithModel];
@@ -102,6 +114,8 @@
         gPlayMusicChannel.StartTime = [self.CurrentTempoList.musicInfo.startTime floatValue];
         gPlayMusicChannel.StopTime = [self.CurrentTempoList.musicInfo.endTime floatValue];
     }
+    
+    [self SyncMusicPropertyFromGlobalConfig];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -294,7 +308,6 @@
 - (void) SyncCurrentTempoListFromModel
 {
     NSNumber *LastTempoListIndex = [GlobalConfig GetLastTempoListIndex];
-    NSLog(@"%@", LastTempoListIndex);
     
     self.CurrentTempoList =  [gMetronomeModel PickTargetTempoListFromDataTable:LastTempoListIndex];
    

@@ -129,8 +129,6 @@
         default:
             break;
     }
-    
-    NSLog(@"%@",self.TimeSignaturePickerView);
 
 }
 

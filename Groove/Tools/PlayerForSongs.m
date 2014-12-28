@@ -225,12 +225,20 @@ static MPMusicPlayerController * MusicPlayer = nil;
 
 - (void) SetPlayRateToHalf
 {
+    if (_Player.prepareToPlay)
+    {
+        [_Player stop];
+    }
     _Player.enableRate = YES;
     _Player.rate = 0.5;
 }
 
 - (void) SetPlayRateToNormal
 {
+    if (_Player.prepareToPlay)
+    {
+        [_Player stop];
+    }
     _Player.enableRate = NO;
     _Player.rate = 1;
 }

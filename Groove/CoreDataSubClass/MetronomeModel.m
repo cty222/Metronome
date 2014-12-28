@@ -326,7 +326,6 @@
         ReturnTempoList = TempoListDataTable[[LastTempoListIndex intValue]];
     }
    
-    NSLog(@"%@",ReturnTempoList);
     return ReturnTempoList;
 }
 

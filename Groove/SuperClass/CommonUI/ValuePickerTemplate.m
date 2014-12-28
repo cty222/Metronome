@@ -67,8 +67,6 @@
     if (self) {
         // Initialization code
         [self Initialize];
-        
-        NSLog(@"%@", self);
     };
     return self;
 }
