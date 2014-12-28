@@ -12,16 +12,16 @@
 @interface LargeBPMPicker ()
 
 @property (getter = GetIsValueChange, setter = SetIsValueChange:) BOOL IsValueChange;
-
+@property int Sensitivity;
+@property double StepValue;
+@property NSNumber * DeviceType;
 
 @end
 
 @implementation LargeBPMPicker
 {
-    // Picture Array
-    NSMutableArray * Digits;
-    
-    int _Value;
+    BPM_PICKER_MODE _Mode;
+    double _Value;
     int _MaxLimit;
     int _MinLimit;
     
@@ -43,11 +43,6 @@
     return 0.3;
 }
 
-- (int) Sensitivity
-{
-    return 5;
-}
-
 - (void) awakeFromNib
 {
     [super awakeFromNib];
@@ -57,12 +52,12 @@
 
 -(void) InitializeInAwakeFromNib
 {
-    NSNumber * DeviceType = [GlobalConfig DeviceType];
-    switch (DeviceType.intValue) {
+    
+    self.DeviceType = [GlobalConfig DeviceType];
+    switch (self.DeviceType.intValue) {
         case IPHONE_4S:
             self.UpArrow.image = [UIImage imageNamed:@"BPMArrowUp_4S"];
             self.DownArrow.image = [UIImage imageNamed:@"BPMArrowDown_4S"];
-            self.ValueLabel.font = [self.ValueLabel.font  fontWithSize:110];
             break;
         case IPHONE_5S:
             break;
@@ -70,10 +65,13 @@
             break;
     }
     
+    self.Mode = BPM_PICKER_INT_MODE;
+
     
     _MaxLimit = [[GlobalConfig BPMMaxValue] intValue];
     _MinLimit = [[GlobalConfig BPMMinValue] intValue];
 
+    
     self.Value = 120;
     self.ShortPressSecond = 0.5;
     
@@ -114,23 +112,67 @@
 }
 */
 
+// =================================
+// Property
+//
+- (BPM_PICKER_MODE) GetMode
+{
+    return _Mode;
+}
 
+- (void) SetMode: (BPM_PICKER_MODE) NewValue
+{
+    _Mode = NewValue;
+    switch (_Mode) {
+        case BPM_PICKER_INT_MODE:
+            self.Sensitivity = 5;
+            self.StepValue = 1;
+            if (self.DeviceType.intValue == IPHONE_4S) {
+                self.ValueLabel.font = [self.ValueLabel.font  fontWithSize:110];
+            }
+            else
+            {
+                self.ValueLabel.font = [self.ValueLabel.font  fontWithSize:180];
+            }
+            break;
+        case BPM_PICKER_DOUBLE_MODE:
+            self.Sensitivity = 2;
+            self.StepValue = 0.1;
+            self.ValueLabel.font = [self.ValueLabel.font  fontWithSize:95];
+            break;
+        default:
+            self.Mode = BPM_PICKER_INT_MODE;
+            break;
+    }
+}
 
-- (int) GetValue
+- (double) GetValue
 {
     return _Value;
 }
 
-- (void) SetValue : (int) NewValue
+- (void) SetValue : (double) NewValue
 {
     if (NewValue > _MaxLimit || NewValue < _MinLimit)
     {
         return;
     }
     
-    _Value = NewValue;
+    _Value =  ROUND_ONE_DECOMAL_FROM_DOUBLE(NewValue);
 
-    [self.ValueLabel setText:[NSString stringWithFormat:@"%d", self.Value]];
+    switch (self.Mode) {
+        case BPM_PICKER_INT_MODE:
+            [self.ValueLabel setText:[NSString stringWithFormat:@"%d", (int)self.Value]];
+            break;
+        case BPM_PICKER_DOUBLE_MODE:
+            [self.ValueLabel setText:[NSString stringWithFormat:@"%0.1f", self.Value]];
+            break;
+        default:
+            // Avoid Bug
+            self.Mode = BPM_PICKER_INT_MODE;
+            [self.ValueLabel setText:[NSString stringWithFormat:@"%d", (int)self.Value]];
+            break;
+    }
     
     // Pass to parent view.
     if (self.delegate != nil)
@@ -205,12 +247,12 @@
     
     if ((TouchLocation.x > UpArrowFrame.origin.x && TouchLocation.x < UpArrowFrame.origin.x + UpArrowFrame.size.width) && (TouchLocation.y > UpArrowFrame.origin.y && TouchLocation.y < UpArrowFrame.origin.y + UpArrowFrame.size.height))
     {
-        self.Value++;
+        self.Value += self.StepValue;
         self.IsValueChange = YES;
     }
     else if((TouchLocation.x > DownArrowFrame.origin.x && TouchLocation.x < DownArrowFrame.origin.x + DownArrowFrame.size.width) && (TouchLocation.y > DownArrowFrame.origin.y && TouchLocation.y < DownArrowFrame.origin.y + DownArrowFrame.size.height))
     {
-        self.Value--;
+        self.Value -= self.StepValue;
         self.IsValueChange = YES;
     }
     
@@ -332,11 +374,11 @@
     {
         CGPoint TouchLocation = [self GetLocationPoint: touches];
         // Because zero point is on left top, large point in on right bottom
-        int MoveUp = (double)(OriginalLocation.y - TouchLocation.y) / [self Sensitivity];
+        int MoveUp = (double)(OriginalLocation.y - TouchLocation.y) / self.Sensitivity;
         if (MoveUp != 0)
         {
             self.IsValueChange = YES;
-            self.Value += MoveUp;
+            self.Value += MoveUp * self.StepValue;
             OriginalLocation = TouchLocation;
         }
     }

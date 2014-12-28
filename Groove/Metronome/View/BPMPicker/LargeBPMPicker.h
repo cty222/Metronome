@@ -13,6 +13,11 @@
 #define DIGIT_ENABLE_FLAG 0
 #define kTapResetNotification @"kTapResetNotification"
 
+typedef enum{
+    BPM_PICKER_INT_MODE,
+    BPM_PICKER_DOUBLE_MODE
+} BPM_PICKER_MODE;
+
 @ class LargeBPMPicker;
 
 @protocol LargeBPMPickerProtocol <NSObject>
@@ -26,7 +31,8 @@
 
 @interface LargeBPMPicker : XibViewInterface
 
-@property (getter = GetValue, setter = SetValue:) int Value;
+@property (getter = GetMode, setter = SetMode:) BPM_PICKER_MODE Mode;
+@property (getter = GetValue, setter = SetValue:) double Value;
 @property (getter = GetShortPressSecond, setter = SetShortPressSecond:) float ShortPressSecond;
 
 @property (strong, nonatomic) IBOutlet UILabel *ValueLabel;

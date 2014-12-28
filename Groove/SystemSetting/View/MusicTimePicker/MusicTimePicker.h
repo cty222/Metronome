@@ -7,6 +7,7 @@
 //
 
 #import "InputSubmitView.h"
+#import "GlobalConfig.h"
 #import "OneDigitsValuePicker.h"
 #import "TwoDigitsValuePicker.h"
 #import "ThreeDigitsValuePicker.h"

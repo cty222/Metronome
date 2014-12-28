@@ -80,7 +80,7 @@
 
 - (NSTimeInterval) GetValue
 {
-    return _Value;
+    return ROUND_TWO_DECOMAL_FROM_DOUBLE(_Value);
 }
 
 - (void) SetValue: (NSTimeInterval) NewValue
@@ -129,7 +129,7 @@
     }
     
     int Seconds = (int)self.Value % 60;
-    int Centiseconds = (int)((self.Value - (int)self.Value) * 100);
+    int Centiseconds = floorf(((self.Value - floorf(self.Value)) * 100));
     
     NSString * ReturnStr = [NSString stringWithFormat:@"%02d:%02d.%02d", Minutes, Seconds, Centiseconds];
     
@@ -175,7 +175,6 @@
 
 - (void) ScollValueUpdateTicker: (NSTimer *) ThisTimer
 {
-    NSLog(@"ScollValueUpdateTicker");
     if (![gPlayMusicChannel isPlaying])
     {
         [ThisTimer invalidate];

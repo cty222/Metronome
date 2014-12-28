@@ -16,7 +16,8 @@
     MPMediaPickerController *_MusicPicker;
     TempoList *_CurrentList;
     MusicProperties * _MusicProperty;
-   
+    MetronomeBehaviorProperties * _MetronomeBehaviorProperties;
+    
     NSArray * _TempoListDataTable;
 }
 
@@ -53,6 +54,7 @@
 
     // ===================
     // UI state Sync
+    [self SyncMetronomePropertiesFromGlobalConfig];
     [self SyncPageInfoByCurrentTempoList];
     [self SyncMusicPropertyFromGlobalConfig];
     [self SyncStartAndEndTime];
@@ -296,7 +298,28 @@
 {
     gPlayMusicChannel.Volume = sender.value;
 }
+// =============================
+// Metronome behavior Property switch
+//
+- (void) SyncMetronomePropertiesFromGlobalConfig
+{
+    _MetronomeBehaviorProperties = [GlobalConfig GetMetronomeBehaviorProperties];
+    [self.EnableBPMDoubleMode setOn: _MetronomeBehaviorProperties.BPMDoubleEnable];
+    [self.EnableTempoListLooping setOn: _MetronomeBehaviorProperties.TempoListLoopingEnable];
+}
 
+- (IBAction)EnableBPMDoubleModeAction :(UISwitch *)sender {
+    _MetronomeBehaviorProperties.BPMDoubleEnable = sender.isOn;
+    [GlobalConfig SetMetronomeBehaviorProperties:_MetronomeBehaviorProperties];
+}
+
+- (IBAction)EnableTempoListLoopingAction :(UISwitch *)sender {
+    _MetronomeBehaviorProperties.TempoListLoopingEnable = sender.isOn;
+    [GlobalConfig SetMetronomeBehaviorProperties:_MetronomeBehaviorProperties];
+}
+
+//
+// =============================
 
 // =============================
 // Music Property switch
@@ -318,7 +341,6 @@
     if (MusicFunctionEnable)
     {
         self.PlayMusicLoopingSwitch.enabled = YES;
-        self.PlayListWithMusicSwitch.enabled = YES;
         self.PlaySingleCellWithMusicSwitch.enabled = YES;
         self.MusicRateToHalfSwitch.enabled = YES;
         self.MusicTotalVolume.enabled = YES;
@@ -327,11 +349,12 @@
         self.StartTimeLabel.enabled = YES;
         self.EndTimeLabel.enabled = YES;
         
+        // TempoList will change too
+        self.EnableTempoListLooping.enabled = NO;
     }
     else
     {
         self.PlayMusicLoopingSwitch.enabled = NO;
-        self.PlayListWithMusicSwitch.enabled = NO;
         self.PlaySingleCellWithMusicSwitch.enabled = NO;
         self.MusicRateToHalfSwitch.enabled = NO;
         self.MusicTotalVolume.enabled = NO;
@@ -339,13 +362,15 @@
         self.DurationLabel.enabled = NO;
         self.StartTimeLabel.enabled = NO;
         self.EndTimeLabel.enabled = NO;
+        
+        // TempoList will change too
+        self.EnableTempoListLooping.enabled = YES;
     }
 }
 
 - (IBAction)EnableMusicFunction:(UISwitch *)sender {
     _MusicProperty.MusicFunctionEnable = sender.isOn;
     [GlobalConfig SetMusicProperties:_MusicProperty];
-    
     [self ChangeMusicFunctionUIState:sender.isOn];
 }
 
@@ -404,7 +429,7 @@
         self.MusicTimePicker.ID = NONE_ID;
         self.StartTimeLabel.text = [self.MusicTimePicker ReturnCurrentValueString];
         gPlayMusicChannel.StartTime = self.MusicTimePicker.Value;
-        _CurrentList.musicInfo.startTime = [NSNumber numberWithFloat:self.MusicTimePicker.Value];
+        _CurrentList.musicInfo.startTime = [NSNumber numberWithFloat:ROUND_FILL_DOUBLE_IN_MODEL(self.MusicTimePicker.Value)];
         if (gPlayMusicChannel.isPlaying)
         {
             [gPlayMusicChannel Stop];
@@ -416,7 +441,7 @@
         self.MusicTimePicker.ID = NONE_ID;
         self.EndTimeLabel.text = [self.MusicTimePicker ReturnCurrentValueString];
         gPlayMusicChannel.StopTime = self.MusicTimePicker.Value;
-        _CurrentList.musicInfo.endTime = [NSNumber numberWithFloat:self.MusicTimePicker.Value];
+        _CurrentList.musicInfo.endTime = [NSNumber numberWithFloat:ROUND_FILL_DOUBLE_IN_MODEL(self.MusicTimePicker.Value)];
         if (gPlayMusicChannel.isPlaying)
         {
             [gPlayMusicChannel Stop];

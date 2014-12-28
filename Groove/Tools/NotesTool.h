@@ -60,7 +60,7 @@ typedef enum {
 #define START_SLIDER_BPM_VALUE (120)
 #define ONCE_TIME (60 / LAST_CLICK)
 
-#define BPM_TO_TIMER_VALUE(BPMValue) (((float)60/(float)BPMValue)/(float)LAST_CLICK)
+#define BPM_TO_TIMER_VALUE(BPMValue) (((double)60/(double)BPMValue)/(double)LAST_CLICK)
 
 #define SIGNATURE_NOTE 4
 

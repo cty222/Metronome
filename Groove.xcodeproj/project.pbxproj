@@ -66,6 +66,8 @@
 		00612D941A3B7572009A7C88 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00612D931A3B7572009A7C88 /* AVFoundation.framework */; };
 		006175BE1A0BCFE100113560 /* PlayLoop_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */; };
 		006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BD1A0BCFE100113560 /* PlayLoop.pdf */; };
+		006DAF2A1A50777900DEBA01 /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 006DAF291A50777900DEBA01 /* TempoCell.m */; };
+		006DAF2D1A5083AF00DEBA01 /* MetronomeBehaviorProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 006DAF2C1A5083AF00DEBA01 /* MetronomeBehaviorProperties.m */; };
 		0071A9AE1A2B075F00EA57D2 /* LoopCellScrollView.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9AD1A2B075F00EA57D2 /* LoopCellScrollView.pdf */; };
 		0071A9B51A2B090100EA57D2 /* 16Note.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9B01A2B090100EA57D2 /* 16Note.pdf */; };
 		0071A9B61A2B090100EA57D2 /* 8Notes.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9B11A2B090100EA57D2 /* 8Notes.pdf */; };
@@ -127,7 +129,6 @@
 		008A5D031A4F1A8E00BC744F /* SystemPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5D021A4F1A8E00BC744F /* SystemPageControl.m */; };
 		008D8E8E1A44887E00EF18A3 /* MusicBindingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 008D8E8D1A44887E00EF18A3 /* MusicBindingInfo.m */; };
 		00A840501A43509200EA11B8 /* TempoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A8404F1A43509200EA11B8 /* TempoList.m */; };
-		00A840531A43509200EA11B8 /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A840521A43509200EA11B8 /* TempoCell.m */; };
 		00DA131119F4E94700F27E25 /* NotesTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131019F4E94700F27E25 /* NotesTool.m */; };
 		00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131419F4EE1E00F27E25 /* AudioPlay.m */; };
 		00DA131C19F4EF1900F27E25 /* BeepBound.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131719F4EF1900F27E25 /* BeepBound.m */; };
@@ -231,6 +232,10 @@
 		00612D931A3B7572009A7C88 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop_red.pdf; sourceTree = "<group>"; };
 		006175BD1A0BCFE100113560 /* PlayLoop.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop.pdf; sourceTree = "<group>"; };
+		006DAF281A50777900DEBA01 /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
+		006DAF291A50777900DEBA01 /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
+		006DAF2B1A5083AF00DEBA01 /* MetronomeBehaviorProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetronomeBehaviorProperties.h; path = GlobalConfig/MetronomeBehaviorProperties.h; sourceTree = "<group>"; };
+		006DAF2C1A5083AF00DEBA01 /* MetronomeBehaviorProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetronomeBehaviorProperties.m; path = GlobalConfig/MetronomeBehaviorProperties.m; sourceTree = "<group>"; };
 		0071A9AD1A2B075F00EA57D2 /* LoopCellScrollView.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LoopCellScrollView.pdf; sourceTree = "<group>"; };
 		0071A9B01A2B090100EA57D2 /* 16Note.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 16Note.pdf; sourceTree = "<group>"; };
 		0071A9B11A2B090100EA57D2 /* 8Notes.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 8Notes.pdf; sourceTree = "<group>"; };
@@ -325,8 +330,6 @@
 		008D8E8D1A44887E00EF18A3 /* MusicBindingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MusicBindingInfo.m; path = CoreDataSubClass/MusicBindingInfo.m; sourceTree = "<group>"; };
 		00A8404E1A43509100EA11B8 /* TempoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoList.h; path = CoreDataSubClass/TempoList.h; sourceTree = "<group>"; };
 		00A8404F1A43509200EA11B8 /* TempoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoList.m; path = CoreDataSubClass/TempoList.m; sourceTree = "<group>"; };
-		00A840511A43509200EA11B8 /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
-		00A840521A43509200EA11B8 /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
 		00DA130F19F4E94600F27E25 /* NotesTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesTool.h; path = Tools/NotesTool.h; sourceTree = "<group>"; };
 		00DA131019F4E94700F27E25 /* NotesTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesTool.m; path = Tools/NotesTool.m; sourceTree = "<group>"; };
 		00DA131319F4EE1E00F27E25 /* AudioPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioPlay.h; path = Tools/AudioPlay.h; sourceTree = "<group>"; };
@@ -410,10 +413,10 @@
 			isa = PBXGroup;
 			children = (
 				001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */,
+				006DAF281A50777900DEBA01 /* TempoCell.h */,
+				006DAF291A50777900DEBA01 /* TempoCell.m */,
 				008D8E8C1A44887E00EF18A3 /* MusicBindingInfo.h */,
 				008D8E8D1A44887E00EF18A3 /* MusicBindingInfo.m */,
-				00A840511A43509200EA11B8 /* TempoCell.h */,
-				00A840521A43509200EA11B8 /* TempoCell.m */,
 				00A8404E1A43509100EA11B8 /* TempoList.h */,
 				00A8404F1A43509200EA11B8 /* TempoList.m */,
 				005A93951A2CE10A00280507 /* TimeSignatureType.h */,
@@ -522,6 +525,8 @@
 				008A5C081A4F00F100BC744F /* GlobalConfig.plist */,
 				000D46251A469B710066BE0A /* MusicProperties.h */,
 				000D46261A469B710066BE0A /* MusicProperties.m */,
+				006DAF2B1A5083AF00DEBA01 /* MetronomeBehaviorProperties.h */,
+				006DAF2C1A5083AF00DEBA01 /* MetronomeBehaviorProperties.m */,
 			);
 			name = GlobalConfig;
 			sourceTree = "<group>";
@@ -1142,12 +1147,13 @@
 				008A5CF11A4F0E7000BC744F /* InputSubmitView.m in Sources */,
 				008A5C961A4F0AE600BC744F /* SelectBarCell.m in Sources */,
 				004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */,
+				006DAF2D1A5083AF00DEBA01 /* MetronomeBehaviorProperties.m in Sources */,
+				006DAF2A1A50777900DEBA01 /* TempoCell.m in Sources */,
 				008A5C091A4F00F100BC744F /* GlobalConfig.m in Sources */,
 				008A5C941A4F0AE600BC744F /* MetronomeSelectBar.m in Sources */,
 				008A5CFF1A4F18E200BC744F /* TempoListViewController.m in Sources */,
 				008A5CC81A4F0E1B00BC744F /* SubPropertySelector.m in Sources */,
 				00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */,
-				00A840531A43509200EA11B8 /* TempoCell.m in Sources */,
 				008A5CCB1A4F0E1B00BC744F /* ValueScrollView.m in Sources */,
 				008A5C5D1A4F071600BC744F /* MetronomeMainViewController.m in Sources */,
 				008A5CDD1A4F0E3300BC744F /* MusicTimePicker.m in Sources */,

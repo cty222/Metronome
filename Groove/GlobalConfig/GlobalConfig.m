@@ -18,6 +18,11 @@ static NSMutableDictionary * ThisPlist;
 // ============================
 // function
 //
++ (void) Save
+{
+    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+}
+
 + (BOOL) ReBuildDbFlag
 {
     static BOOL _ReBuildDbFlag;
@@ -175,8 +180,8 @@ static NSMutableDictionary * ThisPlist;
     {
         return;
     }
-    
-    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+
+    [GlobalConfig Save];
 }
 
 + (NSNumber *) MainWindowWidth
@@ -246,8 +251,7 @@ static NSMutableDictionary * ThisPlist;
         return;
     }
     [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"LastTempoListIndex"];
-    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
-    
+    [GlobalConfig Save];
 }
 
 + (NSNumber *) GetLastTempoListIndex
@@ -261,8 +265,6 @@ static NSMutableDictionary * ThisPlist;
 }
 
 // ========================================
-
-
 
 + (NSNumber *) LoopValueMax
 {
@@ -310,7 +312,36 @@ static NSMutableDictionary * ThisPlist;
         return;
     }
     [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"PlayCellListNoneStop"];
-    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+    [GlobalConfig Save];
+}
+
+//
+// ============================
+
+// ============================
+// Metronome bounds properties
+//
++ (MetronomeBehaviorProperties *) GetMetronomeBehaviorProperties
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return nil;
+    }
+    
+    MetronomeBehaviorProperties *Properties = [[MetronomeBehaviorProperties alloc] init];
+    
+    Properties.BPMDoubleEnable = [[ThisPlist objectForKey:@"BPMDoubleEnable"] boolValue];
+    Properties.TempoListLoopingEnable = [[ThisPlist objectForKey:@"TempoListLoopingEnable"] boolValue];
+    
+    return Properties;
+}
+
++ (void) SetMetronomeBehaviorProperties : (MetronomeBehaviorProperties *) NewProperties
+{
+    [ThisPlist setValue:[NSNumber numberWithBool:NewProperties.BPMDoubleEnable] forKey:@"BPMDoubleEnable"];
+    [ThisPlist setValue:[NSNumber numberWithBool:NewProperties.TempoListLoopingEnable] forKey:@"TempoListLoopingEnable"];
+
+    [GlobalConfig Save];
 }
 
 //
@@ -344,7 +375,7 @@ static NSMutableDictionary * ThisPlist;
     [ThisPlist setValue:[NSNumber numberWithBool:NewMusicProperties.PlayMusicLoopingEnable] forKey:@"PlayMusicLoopingEnable"];
 
     
-    [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
+    [GlobalConfig Save];
 }
 //
 // ============================
@@ -400,6 +431,7 @@ static NSMutableDictionary * ThisPlist;
     }
     return _TempoListViewController;
 }
+
 //
 // ============================
 

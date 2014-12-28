@@ -108,7 +108,7 @@ static ALCcontext *openALContext;
     NSLog(@"Audio playSound, InsertVolume: %f", InsertVolume);
 #endif
     alSourcef(AudioFile.SourceID, AL_PITCH, 1.0f);
-    alSourcef(AudioFile.SourceID, AL_GAIN, InsertVolume);
+    alSourcef(AudioFile.SourceID, AL_GAIN, InsertVolume *10);
     
     alSourcePlay(AudioFile.SourceID);
 

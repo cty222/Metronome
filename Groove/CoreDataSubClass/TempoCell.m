@@ -2,7 +2,7 @@
 //  TempoCell.m
 //  Groove
 //
-//  Created by C-ty on 2014/12/19.
+//  Created by C-ty on 2014/12/29.
 //  Copyright (c) 2014年 Cty. All rights reserved.
 //
 
@@ -20,8 +20,8 @@
 @dynamic loopCount;
 @dynamic quarterNoteVolume;
 @dynamic sixteenNoteVolume;
-@dynamic trippleNoteVolume;
 @dynamic sortIndex;
+@dynamic trippleNoteVolume;
 @dynamic listOwner;
 @dynamic timeSignatureType;
 @dynamic voiceType;

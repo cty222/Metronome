@@ -135,7 +135,7 @@ static MPMusicPlayerController * MusicPlayer = nil;
     }
     
     int Seconds = (int)Time % 60;
-    int Centiseconds = (int)((Time - (int)Time) * 100);
+    int Centiseconds = floorf((Time - floorf(Time)) * 100);
     
     NSString * ReturnStr = [NSString stringWithFormat:@"%02d:%02d.%02d", Minutes, Seconds, Centiseconds];
     

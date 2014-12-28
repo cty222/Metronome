@@ -36,10 +36,10 @@
             self.LoopCellEditerView.autoresizingMask = UIViewAutoresizingNone;
 
         
-            float Margin = 5;
+            float Margin = 3;
             float OptionScrollViewLocationX = self.SystemButton.frame.origin.x + (self.SystemButton.frame.size.width - self.OptionScrollView.frame.size.width)/2;
             self.OptionScrollView.frame = CGRectMake(OptionScrollViewLocationX,
-                                                     0,
+                                                     15,
                                                      self.OptionScrollView.frame.size.width,
                                                      self.OptionScrollView.frame.size.height - 15
                                                      );
@@ -117,7 +117,7 @@
                                                        );
             //
             // ================
-            self.AddLoopCellButton.frame = CGRectMake(self.SystemButton.frame.origin.x - Margin,
+            self.AddLoopCellButton.frame = CGRectMake(self.SystemButton.frame.origin.x - 3 * Margin,
                                                       self.AddLoopCellButton.frame.origin.y,
                                                       self.AddLoopCellButton.frame.size.width,
                                                       self.AddLoopCellButton.frame.size.height

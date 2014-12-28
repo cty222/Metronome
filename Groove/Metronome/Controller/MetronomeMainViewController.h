@@ -53,7 +53,8 @@ typedef enum {
 @property (getter = GetPlayingMode, setter = SetPlayingMode:) METRONOME_PLAYING_MODE PlayingMode;
 
 @property BOOL ChangeBPMValueFlag;
-@property MusicProperties * MusicProperty;
+@property MusicProperties * MusicProperties;
+@property MetronomeBehaviorProperties * MetronomeBehaviorProperties;
 
 - (void) SyncCurrentTempoListFromModel;
 - (void) SyncCurrentTempoCellDatatableWithModel;

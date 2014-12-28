@@ -367,7 +367,8 @@
 
     if (Picker == self.BPMPicker)
     {
-        Parent.CurrentCell.bpmValue = [NSNumber numberWithInt:self.BPMPicker.Value];
+        // BPM Save
+        Parent.CurrentCell.bpmValue = [NSNumber numberWithFloat:self.BPMPicker.Value];
     
         // TODO : 不要save這麼頻繁
         [gMetronomeModel Save];
@@ -436,7 +437,7 @@
     if (_LastRecordTime_ms != 0 && self.TapTriggerCounter >= [self TapTriggerNumber])
     {
         double CurrentRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
-        int NewBPMvalue = 60000.f/(CurrentRecordTime_ms -_LastRecordTime_ms);
+        double NewBPMvalue = ((double)60000)/(CurrentRecordTime_ms -_LastRecordTime_ms);
         
         // 如果速度低於BPMMinValue, 就重算
         if( NewBPMvalue >= [[GlobalConfig BPMMinValue] intValue])

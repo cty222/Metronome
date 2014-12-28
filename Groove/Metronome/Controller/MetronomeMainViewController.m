@@ -41,16 +41,29 @@
 
 }
 
+- (void) SyncMetronomeBehaviorPropertiesFromGlobalConfig
+{
+    self.MetronomeBehaviorProperties = [GlobalConfig GetMetronomeBehaviorProperties];
+    if (self.MetronomeBehaviorProperties.BPMDoubleEnable)
+    {
+        _CellParameterSettingSubController.BPMPicker.Mode = BPM_PICKER_DOUBLE_MODE;
+    }
+    else
+    {
+        _CellParameterSettingSubController.BPMPicker.Mode = BPM_PICKER_INT_MODE;
+    }
+}
+
 - (void) SyncMusicPropertyFromGlobalConfig
 {
-    self.MusicProperty = [GlobalConfig GetMusicProperties];
-    if (self.MusicProperty.MusicFunctionEnable)
+    self.MusicProperties = [GlobalConfig GetMusicProperties];
+    if (self.MusicProperties.MusicFunctionEnable)
     {
         _LoopAndPlayViewSubController.PlayMusicButton.hidden = NO;
         _LoopAndPlayViewSubController.PlayCellListButton.hidden = YES;
         
         // Sync music property
-        if (self.MusicProperty.MusicHalfRateEnable)
+        if (self.MusicProperties.MusicHalfRateEnable)
         {
             [gPlayMusicChannel SetPlayRateToHalf];
         }
@@ -59,7 +72,7 @@
             [gPlayMusicChannel SetPlayRateToNormal];
         }
         
-        [gPlayMusicChannel SetPlayMusicLoopingEnable: self.MusicProperty.PlayMusicLoopingEnable];
+        [gPlayMusicChannel SetPlayMusicLoopingEnable: self.MusicProperties.PlayMusicLoopingEnable];
 
     }
     else
@@ -73,6 +86,9 @@
 {
     [super viewWillAppear:animated];
    
+    // Metronomoe propeties will make BPM picker change
+    [self SyncMetronomeBehaviorPropertiesFromGlobalConfig];
+    
     [self SyncCurrentTempoListFromModel];
     
     [self SyncCurrentTempoCellDatatableWithModel];
@@ -431,7 +447,7 @@
     self.CurrentCell = self.CurrentCellsDataTable[_FocusIndex];
     
     // Set BPM
-    self.TopSubView.BPMPicker.Value = [self.CurrentCell.bpmValue intValue];
+    self.TopSubView.BPMPicker.Value = [self.CurrentCell.bpmValue floatValue];
     
     // Set Volume Set
     [self.CellParameterSettingSubController SetVolumeBarVolume:self.CurrentCell];
@@ -471,7 +487,7 @@
         case STOP_PLAYING:
             [self StopClick];
             [self ResetCounter];
-            if (self.MusicProperty.MusicFunctionEnable && self.MusicProperty.PlaySingleCellWithMusicEnable)
+            if (self.MusicProperties.MusicFunctionEnable && self.MusicProperties.PlaySingleCellWithMusicEnable)
             {
                 if (gPlayMusicChannel.isPlaying)
                 {
@@ -481,7 +497,7 @@
             break;
         case SINGLE_PLAYING:
             [self StartClick];
-            if (self.MusicProperty.MusicFunctionEnable && self.MusicProperty.PlaySingleCellWithMusicEnable)
+            if (self.MusicProperties.MusicFunctionEnable && self.MusicProperties.PlaySingleCellWithMusicEnable)
             {
                 if (gPlayMusicChannel.isPlaying)
                 {
@@ -673,7 +689,7 @@
     
     [self MetronomeTicker: nil];
     
-    PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE([self.CurrentCell.bpmValue intValue])
+    PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE([self.CurrentCell.bpmValue floatValue])
                                                       target:self
                                                     selector:@selector(MetronomeTicker:)
                                                     userInfo:nil

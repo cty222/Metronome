@@ -5,9 +5,9 @@
 	<key>PlayCellListNoneStop</key>
 	<true/>
 	<key>VersionID</key>
-	<real>4041</real>
+	<real>4042</real>
 	<key>DbVersion</key>
-	<real>1017</real>
+	<real>1018</real>
 	<key>LastTempoListIndex</key>
 	<integer>0</integer>
 	<key>LoopCellMaxCount</key>
@@ -37,6 +37,10 @@
 	<key>PlaySingleCellWithMusic</key>
 	<false/>
 	<key>PlayMusicLoopingEnable</key>
+	<false/>
+	<key>BPMDoubleEnable</key>
+	<false/>
+	<key>TempoListLoopingEnable</key>
 	<false/>
 </dict>
 </plist>
