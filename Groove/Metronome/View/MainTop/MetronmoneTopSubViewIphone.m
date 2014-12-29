@@ -39,22 +39,22 @@
             float Margin = 3;
             float OptionScrollViewLocationX = self.SystemButton.frame.origin.x + (self.SystemButton.frame.size.width - self.OptionScrollView.frame.size.width)/2;
             self.OptionScrollView.frame = CGRectMake(OptionScrollViewLocationX,
-                                                     15,
+                                                     0,
                                                      self.OptionScrollView.frame.size.width,
-                                                     self.OptionScrollView.frame.size.height - 15
+                                                     self.OptionScrollView.frame.size.height
                                                      );
             self.TimeSigaturePicker.frame = CGRectMake(self.TimeSigaturePicker.frame.origin.x,
-                                                     self.TimeSigaturePicker.frame.origin.y - 6,
+                                                     self.TimeSigaturePicker.frame.origin.y,
                                                      self.TimeSigaturePicker.frame.size.width,
                                                      self.TimeSigaturePicker.frame.size.height
                                                      );
             self.VoiceTypePicker.frame = CGRectMake(self.VoiceTypePicker.frame.origin.x,
-                                                       self.VoiceTypePicker.frame.origin.y - 7,
+                                                       self.VoiceTypePicker.frame.origin.y,
                                                        self.VoiceTypePicker.frame.size.width,
                                                        self.VoiceTypePicker.frame.size.height
                                                        );
             self.LoopCellEditer.frame = CGRectMake(self.LoopCellEditer.frame.origin.x,
-                                                       self.LoopCellEditer.frame.origin.y - 8,
+                                                       self.LoopCellEditer.frame.origin.y,
                                                        self.LoopCellEditer.frame.size.width,
                                                        self.LoopCellEditer.frame.size.height
                                                        );
@@ -99,7 +99,7 @@
             // ================
             // 三個位置要用相同的
             self.TimeSignaturePickerView.frame = CGRectMake(self.TimeSignaturePickerView.frame.origin.x,
-                                                            7,
+                                                            14 + self.OptionScrollView.frame.origin.y,
                                                             self.TimeSignaturePickerView.frame.size.width,
                                                             134
                                                             );
