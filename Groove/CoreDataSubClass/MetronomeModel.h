@@ -17,6 +17,8 @@
 #import "MusicBindingInfo.h"
 #import "DbConfig.h"
 
+#define DefaultMusicVolume (0.4f)
+
 @class MetronomeModel;
 
 MetronomeModel * gMetronomeModel;

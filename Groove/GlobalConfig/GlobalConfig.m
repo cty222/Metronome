@@ -244,55 +244,75 @@ static NSMutableDictionary * ThisPlist;
 }
 
 // ========================================
-+ (void) SetLastTempoListIndex : (int) NewValue
++ (void) SetLastTempoListIndexUserSelected : (int) NewValue
 {
     if (![GlobalConfig IsInitialized])
     {
         return;
     }
-    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"LastTempoListIndex"];
+    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"LastTempoListIndexUserSelected"];
     [GlobalConfig Save];
 }
 
-+ (NSNumber *) GetLastTempoListIndex
++ (NSNumber *) GetLastTempoListIndexUserSelected
 {
     if (![GlobalConfig IsInitialized])
     {
         return nil;
     }
     
-    return [ThisPlist objectForKey:@"LastTempoListIndex"];
+    return [ThisPlist objectForKey:@"LastTempoListIndexUserSelected"];
 }
 
 // ========================================
-
-+ (NSNumber *) LoopValueMax
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return nil;
-    }
-    return [ThisPlist objectForKey:@"LoopValueMax"];
-}
-
-+ (NSNumber *) LoopValueMin
++ (NSNumber *) TempoCellNumberMax
 {
     if (![GlobalConfig IsInitialized])
     {
         return nil;
     }
     
-    return [ThisPlist objectForKey:@"LoopValueMin"];
+    return [ThisPlist objectForKey:@"TempoCellNumberMax"];
 }
 
-+ (NSNumber *) LoopCellMaxCount
++ (NSNumber *) TempoCellLoopCountMax
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return nil;
+    }
+    return [ThisPlist objectForKey:@"TempoCellLoopCountMax"];
+}
+
++ (NSNumber *) TempoCellLoopCountMin
 {
     if (![GlobalConfig IsInitialized])
     {
         return nil;
     }
     
-    return [ThisPlist objectForKey:@"LoopCellMaxCount"];
+    return [ThisPlist objectForKey:@"TempoCellLoopCountMin"];
+}
+
+
++ (NSNumber *) MusicVolumeMax
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return nil;
+    }
+    
+    return [ThisPlist objectForKey:@"MusicVolumeMax"];
+}
+
++ (NSNumber *) MusicVolumeMin
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return nil;
+    }
+    
+    return [ThisPlist objectForKey:@"MusicVolumeMin"];
 }
 
 + (BOOL) PlayCellListNoneStop

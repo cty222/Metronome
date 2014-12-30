@@ -159,8 +159,8 @@
     
     
     // ValueScrollView
-    self.LoopCellEditerView.ValueScrollView.MaxLimit  = [[GlobalConfig LoopValueMax] intValue];
-    self.LoopCellEditerView.ValueScrollView.MinLimit  = [[GlobalConfig LoopValueMin] intValue];
+    self.LoopCellEditerView.ValueScrollView.MaxLimit  = [[GlobalConfig TempoCellLoopCountMax] intValue];
+    self.LoopCellEditerView.ValueScrollView.MinLimit  = [[GlobalConfig TempoCellLoopCountMin] intValue];
     
 }
 

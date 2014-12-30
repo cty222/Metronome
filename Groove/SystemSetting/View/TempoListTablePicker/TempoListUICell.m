@@ -16,7 +16,7 @@
 - (void)awakeFromNib
 {
     // Initialization code
-    self.DeleteCellButton.hidden = YES;
+    //self.DeleteCellButton.hidden = YES;
 
 }
 
@@ -41,7 +41,7 @@
 -(void) SetTempoList : (TempoList *) NewTempoList
 {
     _TempoList = NewTempoList;
-    self.LblName.text = _TempoList.tempoListName;
+    self.textLabel.text = _TempoList.tempoListName;
 }
 //
 // ========================================
@@ -64,7 +64,7 @@
     }
 }
 
-- (IBAction)DeleteEnbale:(UISwitch *)sender {
+/*- (IBAction)DeleteEnbale:(UISwitch *)sender {
     if (sender.isOn)
     {
         if (self.DeleteCellButton.hidden == NO)
@@ -94,7 +94,7 @@
         self.DeleteCellButton.hidden = YES;
 
     }
-}
+}*/
 
 /*
 // Only override drawRect: if you perform custom drawing.

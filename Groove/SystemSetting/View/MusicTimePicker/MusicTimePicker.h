@@ -17,7 +17,7 @@
 
 @optional
 
-- (IBAction) Liston : (UIButton *) ListonButton;
+- (IBAction) Listen : (UIButton *) ListonButton;
 @end
 
 @interface MusicTimePicker : InputSubmitView
@@ -26,10 +26,10 @@
 @property (strong, nonatomic) IBOutlet TwoDigitsValuePicker *CentisecondsPicker;
 
 @property (strong, nonatomic) IBOutlet UIButton *SaveButton;
-@property (strong, nonatomic) IBOutlet UIButton *ListonButton;
+@property (strong, nonatomic) IBOutlet UIButton *ListenButton;
 @property (strong, nonatomic) IBOutlet UIButton *CancelButton;
 
-@property float MusicEnd;
+@property (getter=GetMusicDuration, setter=SetMusicDuration:) NSTimeInterval MusicDuration;
 @property (getter=GetValue, setter=SetValue:) NSTimeInterval Value;
 
 - (NSTimeInterval) GetUIValue;

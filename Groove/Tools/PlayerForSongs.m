@@ -50,6 +50,11 @@ static MPMusicPlayerController * MusicPlayer = nil;
 
 - (void) PlayWithTempStartAndStopTime : (NSTimeInterval) StartTime : (NSTimeInterval) StopTime
 {
+    if (!_IsReadyToPlay)
+    {
+        return;
+    }
+    
     if (StopTime < StartTime)
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:kStopTimeLowerThanStartTimeEvent object:nil];
@@ -126,6 +131,11 @@ static MPMusicPlayerController * MusicPlayer = nil;
     }
 }
 
+- (void) SetPrepareNotReady
+{
+    _IsReadyToPlay = NO;
+}
+
 - (NSString *) ReturnTimeValueToString : (NSTimeInterval) Time
 {
     int Minutes = ((int)(Time) / 60);
@@ -146,6 +156,27 @@ static MPMusicPlayerController * MusicPlayer = nil;
 {
     NSLog(@"音樂總長度 %f", [_Player duration]);
     NSLog(@"聲道數目 %lu", (unsigned long)[_Player numberOfChannels]);
+}
+
+- (void) PrintAllInfoOfItemProperty : (MPMediaItem *) Item
+{
+    NSLog(@"=======================");
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyMediaType]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyTitle]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyAlbumTitle]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyArtist]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyAlbumArtist]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyGenre]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyComposer]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyPlaybackDuration]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyAlbumTrackNumber]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyAlbumTrackCount]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyDiscNumber]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyDiscCount]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyArtwork]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyLyrics]);
+    NSLog(@"%@",[Item valueForProperty:MPMediaItemPropertyIsCompilation]);
+    NSLog(@"=======================");
 }
 //
 // =======================

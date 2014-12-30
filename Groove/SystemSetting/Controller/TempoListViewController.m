@@ -44,11 +44,11 @@
 
 - (void) SyncCurrentListFromModel
 {
-    _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndex]];
+    _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndexUserSelected]];
     if (_CurrentList == nil)
     {
-        NSLog(@"TempoListViewController : FetchCurrentTempoListFromModel from LastTempoListIndex Error");
-        _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndex]];
+        NSLog(@"TempoListViewController : FetchCurrentTempoListFromModel from LastTempoListIndexUserSelected Error");
+        _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndexUserSelected]];
         if (_CurrentList == nil)
         {
             NSLog(@"TempoListViewController : FetchCurrentTempoListFromModel from 0 Error");
@@ -58,7 +58,7 @@
 
 - (IBAction) Save: (UIButton *) SaveButton
 {
-    [GlobalConfig SetLastTempoListIndex:(int)[self.ListTablePicker GetSelectedIndex]];
+    [GlobalConfig SetLastTempoListIndexUserSelected:(int)[self.ListTablePicker GetSelectedIndex]];
     [gMetronomeModel Save];
     [self ChangeToTempoListPickerControllerView];
 }

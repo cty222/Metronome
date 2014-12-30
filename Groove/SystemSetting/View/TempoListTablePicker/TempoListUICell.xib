@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -13,38 +12,8 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="324" height="89"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCS-L9-Vxo">
-                        <rect key="frame" x="8" y="11" width="250" height="40"/>
-                        <color key="backgroundColor" red="1" green="0.91926775289999996" blue="0.17028449179999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fai-6X-k09">
-                        <rect key="frame" x="267" y="15" width="51" height="31"/>
-                        <color key="onTintColor" red="1" green="0.28190266250000001" blue="0.1408895587" alpha="1" colorSpace="calibratedRGB"/>
-                        <connections>
-                            <action selector="DeleteEnbale:" destination="KGk-i7-Jjw" eventType="valueChanged" id="eiY-Od-93e"/>
-                        </connections>
-                    </switch>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16R-ed-LGZ">
-                        <rect key="frame" x="208" y="11" width="50" height="40"/>
-                        <state key="normal" title="Delete">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="Delete:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YxR-3x-O2F"/>
-                        </connections>
-                    </button>
-                </subviews>
             </tableViewCellContentView>
-            <connections>
-                <outlet property="DeleteCellButton" destination="16R-ed-LGZ" id="b2f-jT-bU6"/>
-                <outlet property="DeleteEnableSwitch" destination="fai-6X-k09" id="LNC-k2-fdK"/>
-                <outlet property="LblName" destination="RCS-L9-Vxo" id="ViH-ch-4u4"/>
-            </connections>
-            <point key="canvasLocation" x="140" y="148"/>
+            <point key="canvasLocation" x="140" y="147"/>
         </tableViewCell>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -185,6 +185,7 @@
 {
     MusicBindingInfo *NewInfo = [NSEntityDescription
                                 insertNewObjectForEntityForName:NSStringFromClass([MusicBindingInfo class])  inManagedObjectContext:_ManagedObjectContext];
+    NewInfo.volume = [NSNumber numberWithFloat:DefaultMusicVolume];
     [self Save];
 
     return NewInfo;
@@ -317,13 +318,13 @@
 {
     TempoList * ReturnTempoList = nil;
     
-    NSNumber *LastTempoListIndex = TempoListIndex;
+    NSNumber *LastTempoListIndexUserSelected = TempoListIndex;
     
     NSArray* TempoListDataTable = gMetronomeModel.TempoListDataTable;
     
-    if (TempoListDataTable.count > [LastTempoListIndex intValue])
+    if (TempoListDataTable.count > [LastTempoListIndexUserSelected intValue])
     {
-        ReturnTempoList = TempoListDataTable[[LastTempoListIndex intValue]];
+        ReturnTempoList = TempoListDataTable[[LastTempoListIndexUserSelected intValue]];
     }
    
     return ReturnTempoList;

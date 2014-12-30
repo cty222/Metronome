@@ -12,7 +12,7 @@
 @implementation MusicTimePicker
 {
     NSTimeInterval _Value;
-    
+    NSTimeInterval _MusicDuration;
     NSTimer * _ScollValueUpdateTimer;
 }
 
@@ -58,24 +58,42 @@
     [super Cancel:CancelButton];
 }
 
-- (IBAction) Liston : (UIButton *) ListonButton
+- (IBAction) Listen : (UIButton *) ListenButton
 {
+    self.ScrollTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:[self GetUIValue]];
+
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(Liston:)])
+        if([self.delegate respondsToSelector:@selector(Listen:)])
         {
-            [self.delegate Liston: ListonButton];
+            [self.delegate Listen: ListenButton];
         }
     }
 }
 
-- (IBAction)TimeScrollValueChanged:(id)sender {
+- (IBAction)TimeScrollValueChangedByHuman:(id)sender {
+    // 這只有手動會進來, 用code改值不會進來
     self.ScrollTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:self.TimeScrollBar.value];
 }
 
-- (IBAction)UpdateScrollValueToUIValueClick:(id)sender {
+- (IBAction)UpdateScrollValueToUIValuePicker:(id)sender {
     [self SetUIValue: self.TimeScrollBar.value];
+}
+
+- (NSTimeInterval) GetMusicDuration
+{
+    return _MusicDuration;
+}
+
+- (void)SetMusicDuration:(NSTimeInterval)NewValue
+{
+    _MusicDuration = NewValue;
+    int Minutes = ((int)(_MusicDuration) / 60);
+    self.MinuteValuePicker.MaxLimit = Minutes + 0.5;
+    
+    self.TimeScrollBar.maximumValue = _MusicDuration;
+    self.TimeScrollBar.minimumValue = 0.0f;
 }
 
 - (NSTimeInterval) GetValue
@@ -85,6 +103,10 @@
 
 - (void) SetValue: (NSTimeInterval) NewValue
 {
+    if (self.MusicDuration > 0 && NewValue > self.MusicDuration)
+    {
+        NewValue = self.MusicDuration;
+    }
     _Value = NewValue;
 
     [self SetUIValue:_Value];

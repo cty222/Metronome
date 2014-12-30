@@ -326,9 +326,9 @@
 //
 - (void) SyncCurrentTempoListFromModel
 {
-    NSNumber *LastTempoListIndex = [GlobalConfig GetLastTempoListIndex];
+    NSNumber *LastTempoListIndexUserSelected = [GlobalConfig GetLastTempoListIndexUserSelected];
     
-    self.CurrentTempoList =  [gMetronomeModel PickTargetTempoListFromDataTable:LastTempoListIndex];
+    self.CurrentTempoList =  [gMetronomeModel PickTargetTempoListFromDataTable:LastTempoListIndexUserSelected];
    
     if (self.CurrentTempoList == nil)
     {

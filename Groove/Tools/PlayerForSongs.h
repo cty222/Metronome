@@ -32,6 +32,7 @@ PlayerForSongs * gPlayMusicChannel;
 @property(readonly, getter=GetIsReadyToPlay) BOOL IsReadyToPlay;
 
 - (void) PrepareMusicToplay : (MPMediaItem *) Item;
+- (void) SetPrepareNotReady;
 
 - (MPMediaItem *) GetFirstMPMediaItemFromPersistentID : (NSNumber *)PersistentID;
 
@@ -50,5 +51,8 @@ PlayerForSongs * gPlayMusicChannel;
 - (void) SetPlayMusicLoopingEnable : (BOOL) Enable;
 
 - (NSString *) ReturnTimeValueToString : (NSTimeInterval) Time;
+
+// Debug
+- (void) PrintAllInfoOfItemProperty : (MPMediaItem *) Item;
 
 @end

@@ -4,7 +4,6 @@
         <attribute name="dbVersion" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
     </entity>
     <entity name="MusicBindingInfo" representedClassName="MusicBindingInfo" syncable="YES">
-        <attribute name="enableMusic" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="persistentID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -46,7 +45,7 @@
     <fetchRequest name="FetchOwerFromSingleName" entity="TempoCell"/>
     <elements>
         <element name="DbConfig" positionX="153" positionY="18" width="128" height="60"/>
-        <element name="MusicBindingInfo" positionX="144" positionY="9" width="128" height="135"/>
+        <element name="MusicBindingInfo" positionX="144" positionY="9" width="128" height="118"/>
         <element name="TempoCell" positionX="-63" positionY="-18" width="128" height="210"/>
         <element name="TempoList" positionX="349" positionY="-127" width="128" height="118"/>
         <element name="TimeSignatureType" positionX="412" positionY="80" width="128" height="88"/>

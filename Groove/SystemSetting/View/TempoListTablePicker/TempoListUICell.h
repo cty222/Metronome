@@ -22,9 +22,6 @@
 
 @interface TempoListUICell : XibTableViewCellInterface
 
-@property (weak, nonatomic) IBOutlet UILabel *LblName;
-@property (weak, nonatomic) IBOutlet UISwitch *DeleteEnableSwitch;
-@property (strong, nonatomic) IBOutlet UIButton *DeleteCellButton;
 @property (nonatomic, assign) id <TempoListUICellProtocol> delegate;
 @property (getter=GetTempoList, setter=SetTempoList:)TempoList*  TempoList;
 @end

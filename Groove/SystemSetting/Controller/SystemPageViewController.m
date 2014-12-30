@@ -118,6 +118,10 @@
     [self.SubInputView addSubview:self.MusicTimePicker];
     self.MusicTimePicker.delegate = self;
     
+    // TODO: fill in global plist
+    self.MusicTotalVolume.maximumValue = [[GlobalConfig MusicVolumeMax] floatValue];
+    self.MusicTotalVolume.minimumValue = [[GlobalConfig MusicVolumeMin] floatValue];
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(PlayMusicStatusChangedCallBack:)
                                                  name:kPlayMusicStatusChangedEvent
@@ -153,11 +157,11 @@
 
 - (void) SyncPageInfoByCurrentTempoList
 {
-    _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndex]];
+    _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndexUserSelected]];
     if (_CurrentList == nil)
     {
-        NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from LastTempoListIndex Error");
-        _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndex]];
+        NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from LastTempoListIndexUserSelected Error");
+        _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndexUserSelected]];
         if (_CurrentList == nil)
         {
             NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from 0 Error");
@@ -179,6 +183,16 @@
         {
             [self DoAllMusicSetupSteps: Item];
         }
+        
+        // TODO: 如果有其他的值
+        [self.MusicTotalVolume setValue:[_CurrentList.musicInfo.volume floatValue] animated:YES];
+        gPlayMusicChannel.Volume = self.MusicTotalVolume.value;
+    }
+    else
+    {
+        // TODO: 如果沒有歌曲
+        [gPlayMusicChannel SetPrepareNotReady];
+        [self FillSongInfo:nil];
     }
 }
 
@@ -199,9 +213,8 @@
         return;
     }
     self.MusicTimePicker.ID = MUSIC_STAR_TIME_ID;
-    self.MusicTimePicker.TimeScrollBar.maximumValue = gPlayMusicChannel.duration;
-    self.MusicTimePicker.TimeScrollBar.minimumValue = 0.0f;
     self.MusicTimePicker.Value = gPlayMusicChannel.StartTime;
+    self.MusicTimePicker.MusicDuration = gPlayMusicChannel.duration;
     [self ShowMusicPicker];
 }
 
@@ -212,9 +225,9 @@
         return;
     }
     self.MusicTimePicker.ID = MUSIC_END_TIME_ID;
-    self.MusicTimePicker.TimeScrollBar.maximumValue = gPlayMusicChannel.duration;
-    self.MusicTimePicker.TimeScrollBar.minimumValue = 0.0f;
     self.MusicTimePicker.Value = gPlayMusicChannel.StopTime;
+    self.MusicTimePicker.MusicDuration = gPlayMusicChannel.duration;
+
     [self ShowMusicPicker];
 }
 
@@ -240,28 +253,67 @@
     if (Item != nil)
     {
         self.DurationLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.duration];
-        self.CurrentSelectedMusic.text = [Item valueForProperty:MPMediaItemPropertyArtist];
-        self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:@" - "];
-        self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:[Item valueForProperty:MPMediaItemPropertyTitle]];
+        
+        NSString *SongName = [Item valueForProperty:MPMediaItemPropertyTitle];
+        if (SongName == nil)
+        {
+            // for Appending
+            SongName = @"";
+        }
+        
+        NSString *ArtistName = [Item valueForProperty:MPMediaItemPropertyArtist];
+        if (ArtistName == nil)
+        {
+            // for Appending
+            ArtistName = @"";
+        }
+
+        self.CurrentSelectedMusic.text = SongName;
+        if(!([SongName isEqualToString:@""] || [ArtistName isEqualToString:@""]))
+        {
+            self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:@" - "];
+        }
+        self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:ArtistName];
     }
     else
     {
         self.DurationLabel.text = [gPlayMusicChannel ReturnTimeValueToString:0.0f];
-        self.CurrentSelectedMusic.text = @"";
+        self.CurrentSelectedMusic.text = @"Please select a song";
     }
 }
 
-- (void) UpdateListCellPersistentID : (MPMediaItem *) Item
+- (void) UpdateListCellMusicInfo : (MPMediaItem *) Item
 {
     if (Item != nil)
     {
-        _CurrentList.musicInfo.persistentID = [Item valueForProperty:MPMediaItemPropertyPersistentID];
+         NSNumber *NewPersistentID = [Item valueForProperty:MPMediaItemPropertyPersistentID];
+
+        // 如果不一樣就代表換歌了
+        if (![NewPersistentID isEqualToNumber: _CurrentList.musicInfo.persistentID])
+        {
+            _CurrentList.musicInfo.startTime = [NSNumber numberWithFloat:0.0f];
+            _CurrentList.musicInfo.endTime = [NSNumber numberWithFloat:gPlayMusicChannel.duration];
+        }
+        _CurrentList.musicInfo.persistentID = NewPersistentID;
+
     }
     else
     {
         _CurrentList.musicInfo.persistentID = nil;
+        _CurrentList.musicInfo.startTime = [NSNumber numberWithFloat:0.0f];
+        _CurrentList.musicInfo.endTime = [NSNumber numberWithFloat:0.0f];
     }
     [gMetronomeModel Save];
+}
+
+- (void) DoAllMusicSetupSteps : (MPMediaItem *) Item
+{
+    [gPlayMusicChannel PrepareMusicToplay: Item];
+    
+    [self FillSongInfo:Item];
+    
+    [self UpdateListCellMusicInfo:Item];
+    
 }
 
 - (void) SyncStartAndEndTime
@@ -272,6 +324,7 @@
     self.StartTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.StartTime];
     self.EndTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.StopTime];
 }
+
 
 - (void) MusicHalfRateEnable : (BOOL) NewValue
 {
@@ -285,18 +338,16 @@
     }
 }
 
-- (void) DoAllMusicSetupSteps : (MPMediaItem *) Item
-{
-    [self UpdateListCellPersistentID:Item];
-    
-    [gPlayMusicChannel PrepareMusicToplay: Item];
-    
-    [self FillSongInfo:Item];
-}
-
 - (IBAction)MusicValueChange:(UISlider *)sender
 {
-    gPlayMusicChannel.Volume = sender.value;
+    [self ChangeMusicVolume: sender.value];
+}
+
+- (void) ChangeMusicVolume : (float) NewVolume
+{
+    gPlayMusicChannel.Volume = NewVolume;
+    _CurrentList.musicInfo.volume = [NSNumber numberWithFloat: gPlayMusicChannel.Volume];
+    [gMetronomeModel Save];
 }
 // =============================
 // Metronome behavior Property switch
@@ -340,11 +391,19 @@
 {
     if (MusicFunctionEnable)
     {
+        self.CurrentSelectedMusic.enabled = YES;
+    }
+    else
+    {
+        self.CurrentSelectedMusic.enabled = NO;
+    }
+
+    if (MusicFunctionEnable && gPlayMusicChannel.IsReadyToPlay)
+    {
         self.PlayMusicLoopingSwitch.enabled = YES;
         self.PlaySingleCellWithMusicSwitch.enabled = YES;
         self.MusicRateToHalfSwitch.enabled = YES;
         self.MusicTotalVolume.enabled = YES;
-        self.CurrentSelectedMusic.enabled = YES;
         self.DurationLabel.enabled = YES;
         self.StartTimeLabel.enabled = YES;
         self.EndTimeLabel.enabled = YES;
@@ -358,7 +417,6 @@
         self.PlaySingleCellWithMusicSwitch.enabled = NO;
         self.MusicRateToHalfSwitch.enabled = NO;
         self.MusicTotalVolume.enabled = NO;
-        self.CurrentSelectedMusic.enabled = NO;
         self.DurationLabel.enabled = NO;
         self.StartTimeLabel.enabled = NO;
         self.EndTimeLabel.enabled = NO;
@@ -412,6 +470,8 @@
     MPMediaItem * Item = mediaItemCollection.items[0];
     
     [self DoAllMusicSetupSteps:Item];
+    
+    [self SyncStartAndEndTime];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -477,7 +537,7 @@
     [self CloseSubInputView];
 }
 
-- (IBAction) Liston : (UIButton *) ListonButton
+- (IBAction) Listen : (UIButton *) ListenButton
 {
     if (gPlayMusicChannel.isPlaying)
     {
@@ -494,11 +554,11 @@
 {
     if (gPlayMusicChannel.Playing)
     {
-        [self.MusicTimePicker.ListonButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [self.MusicTimePicker.ListenButton setTitle:@"Stop" forState:UIControlStateNormal];
     }
     else
     {
-        [self.MusicTimePicker.ListonButton setTitle:@"Liston" forState:UIControlStateNormal];
+        [self.MusicTimePicker.ListenButton setTitle:@"Listen" forState:UIControlStateNormal];
     }
 }
 
@@ -534,7 +594,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 /*
 #pragma mark - Navigation

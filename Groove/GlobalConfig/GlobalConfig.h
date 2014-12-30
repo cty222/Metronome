@@ -49,14 +49,16 @@ enum {
 + (NSNumber *) BPMMinValue;
 + (NSNumber *) BPMMaxValue;
 + (NSNumber *) DbVersion;
-+ (NSNumber *) LoopValueMin;
-+ (NSNumber *) LoopValueMax;
-+ (NSNumber *) LoopCellMaxCount;
++ (NSNumber *) TempoCellNumberMax;
++ (NSNumber *) TempoCellLoopCountMin;
++ (NSNumber *) TempoCellLoopCountMax;
++ (NSNumber *) MusicVolumeMax;
++ (NSNumber *) MusicVolumeMin;
 + (BOOL) PlayCellListNoneStop;
 + (void) SetPlayCellListNoneStop : (BOOL) NewValue;
 
-+ (NSNumber *) GetLastTempoListIndex;
-+ (void) SetLastTempoListIndex : (int) NewValue;
++ (NSNumber *) GetLastTempoListIndexUserSelected;
++ (void) SetLastTempoListIndexUserSelected : (int) NewValue;
 
 // Metronome property
 + (MetronomeBehaviorProperties *) GetMetronomeBehaviorProperties;

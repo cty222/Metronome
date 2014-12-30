@@ -11,7 +11,7 @@
 
 @implementation ListTablePicker
 {
-    NSArray * _TempoListArrayForBinding;
+    NSMutableArray * _TempoListArrayForBinding;
     
     UIAlertView *_NoSelectedAlert;
 
@@ -25,6 +25,11 @@
         self.TableView.delegate = self;
         self.TableView.dataSource = self;
         self.TableView.multipleTouchEnabled = NO;
+        self.TableView.allowsSelectionDuringEditing = YES;
+        self.TableView.separatorColor = [UIColor blackColor];
+        self.TableView.backgroundColor = [UIColor grayColor];
+        self.TableView.editing = NO;
+
     }
     return self;
 }
@@ -40,7 +45,7 @@
 
 - (void) SetTempoListArrayForBinding : (NSArray *)NewDataTableArray
 {
-    _TempoListArrayForBinding = NewDataTableArray;
+    _TempoListArrayForBinding = [NSMutableArray arrayWithArray:NewDataTableArray];
     [self.TableView reloadData];
 }
 
@@ -94,9 +99,11 @@
 //================================
 //TableView protocol function
 //
+
+//回傳有幾筆資料要呈現
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.TempoListArrayForBinding.count; //回傳有幾筆資料要呈現
+    return self.TempoListArrayForBinding.count;
 }
 
 - (BOOL) tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,15 +116,15 @@
     return YES;
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60;
 }
 
-static NSString *Identifier = @"tableidentifier"; //設定一個就算離開畫面也還是抓得到的辨識目標
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { //在繪製每一列時會呼叫的方法
-    
+//在繪製每一列時會呼叫的方法
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *Identifier = @"tableidentifier"; //設定一個就算離開畫面也還是抓得到的辨識目標
+
     TempoListUICell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
     if(cell == nil)
     {
@@ -126,12 +133,45 @@ static NSString *Identifier = @"tableidentifier"; //設定一個就算離開畫�
         
         cell.TempoList = CellList;
         cell.delegate = self;
-       // cell.SwitchMute
     }
-    
+ 
+    /*UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    CGRect frame = CGRectMake( 0.0, 0.0, 50, 50);
+    button.frame = frame;
+    button.backgroundColor = [UIColor redColor];
+    cell.accessoryView = button;
+    [button addTarget:self action:@selector(checkButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside];*/
+
     return cell;
 }
 
+- (void)checkButtonTapped:(id)sender event:(id)event{
+    NSLog(@"Tapping!!");
+}
+
+- (void) tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    TempoList * CellListSource = _TempoListArrayForBinding[sourceIndexPath.row];
+    TempoList * CellListDestination = _TempoListArrayForBinding[destinationIndexPath.row];
+    NSNumber * SrcSortIndex = CellListSource.sortIndex;
+    NSNumber * DstSortIndex = CellListDestination.sortIndex;
+    CellListSource.sortIndex = DstSortIndex;
+    CellListDestination.sortIndex = SrcSortIndex;
+    [gMetronomeModel Save];
+    
+    [_TempoListArrayForBinding exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
+}
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"刪除";
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"tap  accessoryButton");
+}
 //
 // select cell
 //
@@ -145,6 +185,49 @@ static NSString *Identifier = @"tableidentifier"; //設定一個就算離開畫�
     {
         // 改成selected
         NewSelectedUITempoList.selected = YES;
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   // [self HideDeleteIcon: cell];
+}
+
+- (void) HideDeleteIcon : (UITableViewCell *)Cell
+{
+    for (UIView *Subview in Cell.subviews) {
+        if ([NSStringFromClass([Subview class]) isEqualToString:@"UITableViewCellScrollView"])
+        {
+            NSLog(@"%@", Subview.subviews);
+            for (UIView *ControlView in Subview.subviews) {
+                if ([NSStringFromClass([ControlView class]) isEqualToString:@"UITableViewCellEditControl"])
+                {
+                    ControlView.hidden = YES;
+                    return;
+                }
+            }
+        }
+    }
+}
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+-(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (editingStyle) {
+        case UITableViewCellEditingStyleDelete:
+            NSLog(@"Delete!!");
+            break;
+            
+        default:
+            break;
     }
 }
 

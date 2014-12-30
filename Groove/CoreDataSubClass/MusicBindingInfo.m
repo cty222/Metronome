@@ -2,7 +2,7 @@
 //  MusicBindingInfo.m
 //  Groove
 //
-//  Created by C-ty on 2014/12/20.
+//  Created by C-ty on 2014/12/31.
 //  Copyright (c) 2014年 Cty. All rights reserved.
 //
 
@@ -12,7 +12,6 @@
 
 @implementation MusicBindingInfo
 
-@dynamic enableMusic;
 @dynamic endTime;
 @dynamic persistentID;
 @dynamic startTime;

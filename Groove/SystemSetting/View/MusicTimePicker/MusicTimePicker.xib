@@ -39,11 +39,11 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6e-F7-j7X">
                     <rect key="frame" x="110" y="0.0" width="86" height="46"/>
-                    <state key="normal" title="Liston">
+                    <state key="normal" title="Listen">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="Liston:" destination="MEX-k0-pWT" eventType="touchUpInside" id="7wX-uz-50c"/>
+                        <action selector="Listen:" destination="MEX-k0-pWT" eventType="touchUpInside" id="CPH-zx-dnb"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iqm-kd-VTk">
@@ -64,7 +64,7 @@
                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="0JL-Xc-8KT">
                     <rect key="frame" x="75" y="210" width="172" height="31"/>
                     <connections>
-                        <action selector="TimeScrollValueChanged:" destination="MEX-k0-pWT" eventType="valueChanged" id="7VJ-rw-8T3"/>
+                        <action selector="TimeScrollValueChangedByHuman:" destination="MEX-k0-pWT" eventType="valueChanged" id="EON-lG-CjV"/>
                     </connections>
                 </slider>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syv-3K-Dag">
@@ -73,7 +73,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="UpdateScrollValueToUIValueClick:" destination="MEX-k0-pWT" eventType="touchUpInside" id="qqh-j1-RHc"/>
+                        <action selector="UpdateScrollValueToUIValuePicker:" destination="MEX-k0-pWT" eventType="touchUpInside" id="Y0Q-Mt-64O"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRX-a0-7rU">
@@ -88,7 +88,7 @@
             <connections>
                 <outlet property="CancelButton" destination="Iqm-kd-VTk" id="XsM-Jp-KF1"/>
                 <outlet property="CentisecondsPicker" destination="QGt-g6-arU" id="IE7-cl-ISQ"/>
-                <outlet property="ListonButton" destination="g6e-F7-j7X" id="i6x-qU-ZNv"/>
+                <outlet property="ListenButton" destination="g6e-F7-j7X" id="8Ph-Cb-3aX"/>
                 <outlet property="MinuteValuePicker" destination="rFR-wr-9fL" id="TaU-cX-sYK"/>
                 <outlet property="SaveButton" destination="g3h-lX-wvZ" id="4uF-6j-l5I"/>
                 <outlet property="ScrollTimeLabel" destination="NHf-Tq-E8y" id="aCp-Ri-obU"/>

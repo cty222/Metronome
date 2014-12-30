@@ -201,13 +201,13 @@
     TempoCell * TargetCell = Parent.CurrentCellsDataTable[Index];
     
     
-    if (NewValue < [[GlobalConfig LoopValueMin] intValue])
+    if (NewValue < [[GlobalConfig TempoCellLoopCountMin] intValue])
     {
-        NewValue = [[GlobalConfig LoopValueMin] intValue];
+        NewValue = [[GlobalConfig TempoCellLoopCountMin] intValue];
     }
-    else if (NewValue > [[GlobalConfig LoopValueMax] intValue])
+    else if (NewValue > [[GlobalConfig TempoCellLoopCountMax] intValue])
     {
-        NewValue = [[GlobalConfig LoopValueMax] intValue];
+        NewValue = [[GlobalConfig TempoCellLoopCountMax] intValue];
     }
     
     TargetCell.loopCount = [NSNumber numberWithInt:NewValue];
@@ -228,6 +228,13 @@
 - (IBAction) AddLoopCellButtonClick: (UIButton *) ThisClickedButton
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
+    
+    if (Parent.CurrentCellsDataTable.count >= [[GlobalConfig TempoCellNumberMax] integerValue])
+    {
+        // TODO: 警告數量超過了
+        // 超過了
+        return;
+    }
     
     // 新增一筆進資料庫
     [gMetronomeModel AddNewTempoCell: Parent.CurrentTempoList];

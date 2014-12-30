@@ -8,7 +8,7 @@
 
 #import "InputSubmitView.h"
 #import "TempoListUICell.h"
-#import "TempoList.h"
+#import "GlobalConfig.h"
 
 @protocol  ListTablePickerProtocol <InputSubmitViewProtocol>
 @required

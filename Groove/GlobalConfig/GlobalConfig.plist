@@ -5,16 +5,16 @@
 	<key>PlayCellListNoneStop</key>
 	<true/>
 	<key>VersionID</key>
-	<real>4042</real>
+	<real>4044</real>
 	<key>DbVersion</key>
-	<real>1018</real>
-	<key>LastTempoListIndex</key>
+	<real>1019</real>
+	<key>LastTempoListIndexUserSelected</key>
 	<integer>0</integer>
-	<key>LoopCellMaxCount</key>
+	<key>TempoCellNumberMax</key>
 	<integer>30</integer>
-	<key>LoopValueMax</key>
+	<key>TempoCellLoopCountMax</key>
 	<integer>999</integer>
-	<key>LoopValueMin</key>
+	<key>TempoCellLoopCountMin</key>
 	<integer>0</integer>
 	<key>BPMMinValue</key>
 	<integer>30</integer>
@@ -26,10 +26,6 @@
 	<integer>320</integer>
 	<key>DeviceType</key>
 	<integer>0</integer>
-	<key>MusicTotalValue</key>
-	<integer>10</integer>
-	<key>ClickTotalValue</key>
-	<integer>10</integer>
 	<key>MusicFunctionEnable</key>
 	<false/>
 	<key>MusicHalfRate</key>
@@ -42,5 +38,9 @@
 	<false/>
 	<key>TempoListLoopingEnable</key>
 	<false/>
+	<key>MusicVolumeMax</key>
+	<real>0.8</real>
+	<key>MusicVolumeMin</key>
+	<integer>0</integer>
 </dict>
 </plist>
