@@ -165,7 +165,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return @"刪除";
+    return @"Delete";
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
@@ -221,11 +221,12 @@
 
 -(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    TempoListUICell * UITempoList = (TempoListUICell *)[tableView cellForRowAtIndexPath:indexPath];
+
     switch (editingStyle) {
         case UITableViewCellEditingStyleDelete:
-            NSLog(@"Delete!!");
+            [self DeleteCell:UITempoList];
             break;
-            
         default:
             break;
     }

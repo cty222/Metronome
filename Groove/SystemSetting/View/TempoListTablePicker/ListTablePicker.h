@@ -20,6 +20,7 @@
 @end
 
 @interface ListTablePicker : InputSubmitView <UITableViewDataSource, UITableViewDelegate, TempoListUICellProtocol>
+@property (strong, nonatomic) IBOutlet UIScrollView *ScrolView;
 @property (strong, nonatomic) IBOutlet UITableView *TableView;
 @property (strong, nonatomic) IBOutlet UIButton *AddButton;
 @property (strong, nonatomic) IBOutlet UIButton *SaveButton;
