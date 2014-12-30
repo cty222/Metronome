@@ -286,10 +286,12 @@
 {
     if (Item != nil)
     {
-         NSNumber *NewPersistentID = [Item valueForProperty:MPMediaItemPropertyPersistentID];
-
-        // 如果不一樣就代表換歌了
-        if (![NewPersistentID isEqualToNumber: _CurrentList.musicInfo.persistentID])
+        NSNumber *NewPersistentID = [Item valueForProperty:MPMediaItemPropertyPersistentID];
+        
+        // 如果不一樣就代表換歌了, persistentID == nil 不能做 isEqualToNumber, 會crash
+        // !!! 要小心 persistentID == nil的判斷要在前面
+        if (_CurrentList.musicInfo.persistentID == nil
+            || ![NewPersistentID isEqualToNumber: _CurrentList.musicInfo.persistentID])
         {
             _CurrentList.musicInfo.startTime = [NSNumber numberWithFloat:0.0f];
             _CurrentList.musicInfo.endTime = [NSNumber numberWithFloat:gPlayMusicChannel.duration];
