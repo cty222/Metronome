@@ -50,6 +50,7 @@ typedef enum{
 - (void) InitlizeCellParameterControlItems;
 - (void) SetVolumeBarVolume : (TempoCell *)Cell;
 - (int) DecodeTimeSignatureToValue : (NSString *)TimeSignatureString;
+- (float) GetBPMValueWithSyncMode;
 
 
 - (void) ChangeVoiceTypePickerImage: (int) TagNumber;

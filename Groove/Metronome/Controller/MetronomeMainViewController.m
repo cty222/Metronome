@@ -689,7 +689,10 @@
     
     [self MetronomeTicker: nil];
     
-    PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE([self.CurrentCell.bpmValue floatValue])
+    
+    float CurrentBPMValue = [_CellParameterSettingSubController GetBPMValueWithSyncMode];
+
+    PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE(CurrentBPMValue)
                                                       target:self
                                                     selector:@selector(MetronomeTicker:)
                                                     userInfo:nil

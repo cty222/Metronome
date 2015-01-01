@@ -22,6 +22,7 @@
     double _LastRecordTime_ms;
     NSDate * _Date;;
     int _TapTriggerCounter;
+    NSMutableArray * _TapQueue;
 }
 
 
@@ -379,6 +380,20 @@
         }
     }
 }
+
+- (float) GetBPMValueWithSyncMode
+{
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
+    
+    if (self.BPMPicker.Mode == BPM_PICKER_INT_MODE)
+    {
+        return ROUND_NO_DECOMAL_FROM_DOUBLE([Parent.CurrentCell.bpmValue floatValue]);
+    }
+    else
+    {
+        return ROUND_ONE_DECOMAL_FROM_DOUBLE([Parent.CurrentCell.bpmValue floatValue]);
+    }
+}
 //
 // =========================
 
@@ -411,6 +426,10 @@
         // check icon
         // Hidden Icon
         self.TapAlertImage.hidden = YES;
+        if (_TapQueue != nil)
+        {
+            [_TapQueue removeAllObjects];
+        }
     }
     
     _TapTriggerCounter = NewValue;
@@ -434,21 +453,35 @@
         _Date = [NSDate date];
     }
     
-    if (_LastRecordTime_ms != 0 && self.TapTriggerCounter >= [self TapTriggerNumber])
+    if (_TapQueue == nil)
+    {
+        _TapQueue = [[NSMutableArray alloc] init];
+    }
+    
+    if (_LastRecordTime_ms != 0)
     {
         double CurrentRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
-        double NewBPMvalue = ((double)60000)/(CurrentRecordTime_ms -_LastRecordTime_ms);
+        NSNumber *NewBPMvalue = [NSNumber numberWithDouble:((double)60000)/(CurrentRecordTime_ms -_LastRecordTime_ms)];
         
         // 如果速度低於BPMMinValue, 就重算
-        if( NewBPMvalue >= [[GlobalConfig BPMMinValue] intValue])
+        if( [NewBPMvalue doubleValue] >= [[GlobalConfig BPMMinValue] intValue])
         {
-            // 和上一次Tap成功平均
-            if (self.TapTriggerCounter >= [self TapTriggerNumber]+1)
+            // 因為self.TapTriggerCounter = 0不會進來
+            // 沒有 _LastRecordTime_ms, 所以實際上記錄的是 1 2 3, 4 5 6
+            if (_TapQueue.count < [self TapTriggerNumber])
             {
-                NewBPMvalue = (self.BPMPicker.Value + NewBPMvalue)/2;
+                [_TapQueue addObject:NewBPMvalue];
             }
-            
-            self.BPMPicker.Value = NewBPMvalue;
+            else
+            {
+                int ObjectIndex = (self.TapTriggerCounter % [self TapTriggerNumber]);
+                [_TapQueue replaceObjectAtIndex:ObjectIndex withObject:NewBPMvalue];
+                
+                // 和上一次Tap成功平均
+                float NewValue = [self GetAvarageTapValue];
+                
+                self.BPMPicker.Value = NewValue;
+            }
         }
         else
         {
@@ -458,6 +491,16 @@
     
     _LastRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
     self.TapTriggerCounter++;
+}
+
+- (double) GetAvarageTapValue
+{
+    double ValueSum = 0;
+    for(NSNumber *Value in _TapQueue)
+    {
+        ValueSum += [Value doubleValue];
+    }
+    return (ValueSum / _TapQueue.count);
 }
 
 // If using scroll or single step to change BPM value, need to clean TapTriggerCounter
