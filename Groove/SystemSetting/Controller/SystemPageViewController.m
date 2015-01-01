@@ -167,7 +167,9 @@
         }
     }
     
-    [self.CurrentSelectedTempoList setTitle:_CurrentList.tempoListName forState:UIControlStateNormal];
+    NSString *DisplayName = @"Tempo :   ";
+    DisplayName = [DisplayName stringByAppendingString:_CurrentList.tempoListName];
+    [self.CurrentSelectedTempoList setTitle:DisplayName forState:UIControlStateNormal];
     
     
     if (_CurrentList.musicInfo == nil)
@@ -268,7 +270,8 @@
             ArtistName = @"";
         }
 
-        NSString * CurrentSelectedMusicString = SongName;
+        NSString *CurrentSelectedMusicString = @"Muisc :   ";
+        CurrentSelectedMusicString = [CurrentSelectedMusicString stringByAppendingString:SongName];
         if(!([SongName isEqualToString:@""] || [ArtistName isEqualToString:@""]))
         {
             CurrentSelectedMusicString = [CurrentSelectedMusicString stringByAppendingString:@" - "];
