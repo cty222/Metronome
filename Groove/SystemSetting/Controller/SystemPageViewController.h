@@ -24,13 +24,13 @@ enum SYSTEM_INPUT_ID {
 @property (strong, nonatomic) IBOutlet UIView *FullView;
 @property (strong, nonatomic) IBOutlet UIButton *ReturnButton;
 
-@property (strong, nonatomic) IBOutlet UILabel *CurrentSelectedList;
+@property (strong, nonatomic) IBOutlet UIButton *CurrentSelectedTempoList;
 
-@property (strong, nonatomic) IBOutlet UILabel *CurrentSelectedMusic;
+@property (strong, nonatomic) IBOutlet UIButton *CurrentSelectedMusic;
 @property (strong, nonatomic) IBOutlet UISlider *MusicTotalVolume;
 
-@property (strong, nonatomic) IBOutlet UILabel *StartTimeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *EndTimeLabel;
+@property (strong, nonatomic) IBOutlet UIButton *StartTimeLabel;
+@property (strong, nonatomic) IBOutlet UIButton *EndTimeLabel;
 
 
 @property (strong, nonatomic) IBOutlet UIView *SubInputView;

@@ -19,6 +19,7 @@
     MetronomeBehaviorProperties * _MetronomeBehaviorProperties;
     
     NSArray * _TempoListDataTable;
+    BOOL _TwickLingEnable;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,7 +34,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-  
+    
+    [self StartTwickLing];
+    
     if (_MusicPicker == nil)
     {
         _MusicPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
@@ -90,23 +93,7 @@
     }
     
     self.FullView.frame = FullViewFrame;
-    
-    self.CurrentSelectedList.userInteractionEnabled = YES;
-    self.CurrentSelectedMusic.userInteractionEnabled = YES;
 
-    UITapGestureRecognizer *TabSelectedMusic =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChooseMusic:)];
-    [self.CurrentSelectedMusic addGestureRecognizer:TabSelectedMusic];
-    
-    
-    UITapGestureRecognizer *TapStartTimeRecognizer =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(TapStartTime:)];
-    [self.StartTimeLabel addGestureRecognizer:TapStartTimeRecognizer];
-    
-    UITapGestureRecognizer *TapEndTimeRecognizer =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(TapEndTime:)];
-    [self.EndTimeLabel addGestureRecognizer:TapEndTimeRecognizer];
-    
     UITapGestureRecognizer *CloseSubInputViewRecognizer =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(CloseSubInputViewAction:)];
     [self.CancelSubInputView addGestureRecognizer:CloseSubInputViewRecognizer];
@@ -126,18 +113,30 @@
                                              selector:@selector(PlayMusicStatusChangedCallBack:)
                                                  name:kPlayMusicStatusChangedEvent
                                                object:nil];
-
-    UITapGestureRecognizer *TapSelectTempoListRecognizer =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChangeToTempoListPickerControllerView:)];
-    [self.CurrentSelectedList addGestureRecognizer:TapSelectTempoListRecognizer];
-    
+   
     [self ChangeControllerEventInitialize];
+    
+    [self InitMusicPropertyButtonStateTextColor];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [gPlayMusicChannel Stop];
+    [self StopTwickLing];
+}
+
+- (void) InitMusicPropertyButtonStateTextColor
+{
+    [self SetButtonStateTextColor: self.CurrentSelectedMusic];
+    [self SetButtonStateTextColor: self.StartTimeLabel];
+    [self SetButtonStateTextColor: self.EndTimeLabel];
+}
+
+- (void) SetButtonStateTextColor : (UIButton *) Button
+{
+    [Button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [Button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 
@@ -168,7 +167,8 @@
         }
     }
     
-    self.CurrentSelectedList.text = _CurrentList.tempoListName;
+    [self.CurrentSelectedTempoList setTitle:_CurrentList.tempoListName forState:UIControlStateNormal];
+    
     
     if (_CurrentList.musicInfo == nil)
     {
@@ -268,17 +268,19 @@
             ArtistName = @"";
         }
 
-        self.CurrentSelectedMusic.text = SongName;
+        NSString * CurrentSelectedMusicString = SongName;
         if(!([SongName isEqualToString:@""] || [ArtistName isEqualToString:@""]))
         {
-            self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:@" - "];
+            CurrentSelectedMusicString = [CurrentSelectedMusicString stringByAppendingString:@" - "];
         }
-        self.CurrentSelectedMusic.text = [self.CurrentSelectedMusic.text stringByAppendingString:ArtistName];
+        CurrentSelectedMusicString= [CurrentSelectedMusicString stringByAppendingString:ArtistName];
+        
+        [self.CurrentSelectedMusic setTitle:CurrentSelectedMusicString forState:UIControlStateNormal];
     }
     else
     {
         self.DurationLabel.text = [gPlayMusicChannel ReturnTimeValueToString:0.0f];
-        self.CurrentSelectedMusic.text = @"Please select a song";
+        [self.CurrentSelectedMusic setTitle:@"Please select a song" forState:UIControlStateNormal];
     }
 }
 
@@ -322,9 +324,8 @@
 {
     gPlayMusicChannel.StartTime = [_CurrentList.musicInfo.startTime floatValue];
     gPlayMusicChannel.StopTime = [_CurrentList.musicInfo.endTime floatValue];
-    
-    self.StartTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.StartTime];
-    self.EndTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.StopTime];
+    [self.StartTimeLabel setTitle:[gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.StartTime] forState:UIControlStateNormal];
+    [self.EndTimeLabel setTitle:[gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.StartTime] forState:UIControlStateNormal];
 }
 
 
@@ -489,7 +490,7 @@
     if (self.MusicTimePicker.ID == MUSIC_STAR_TIME_ID)
     {
         self.MusicTimePicker.ID = NONE_ID;
-        self.StartTimeLabel.text = [self.MusicTimePicker ReturnCurrentValueString];
+        [self.StartTimeLabel setTitle:[self.MusicTimePicker ReturnCurrentValueString] forState:UIControlStateNormal];
         gPlayMusicChannel.StartTime = self.MusicTimePicker.Value;
         _CurrentList.musicInfo.startTime = [NSNumber numberWithFloat:ROUND_FILL_DOUBLE_IN_MODEL(self.MusicTimePicker.Value)];
         if (gPlayMusicChannel.isPlaying)
@@ -501,7 +502,7 @@
     else if (self.MusicTimePicker.ID == MUSIC_END_TIME_ID)
     {
         self.MusicTimePicker.ID = NONE_ID;
-        self.EndTimeLabel.text = [self.MusicTimePicker ReturnCurrentValueString];
+        [self.EndTimeLabel setTitle:[self.MusicTimePicker ReturnCurrentValueString] forState:UIControlStateNormal];
         gPlayMusicChannel.StopTime = self.MusicTimePicker.Value;
         _CurrentList.musicInfo.endTime = [NSNumber numberWithFloat:ROUND_FILL_DOUBLE_IN_MODEL(self.MusicTimePicker.Value)];
         if (gPlayMusicChannel.isPlaying)
@@ -585,6 +586,61 @@
 
 - (IBAction)ReturnToMetronome:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:kChangeBackToMetronomeView object:nil];
+}
+
+//
+// ===============================
+
+// ===============================
+//
+
+- (void) StartTwickLing
+{
+    _TwickLingEnable = YES;
+    [self TwickLingToRed];
+}
+
+- (void) StopTwickLing
+{
+    _TwickLingEnable = NO;
+}
+
+
+- (void) TwickLingToRed
+{
+    if (!_TwickLingEnable)
+    {
+        return;
+    }
+
+    [UIView animateWithDuration:2.5
+                          delay:0.01
+                        options: UIViewAnimationOptionCurveLinear
+                                |UIViewKeyframeAnimationOptionAllowUserInteraction
+                     animations:^{
+                         self.view.backgroundColor = [UIColor colorWithRed:0.6 green:0 blue:0 alpha:1.0];
+                     }
+                     completion:^(BOOL finished){
+                         [self TwickLingToBlack];
+                     }];
+}
+
+- (void) TwickLingToBlack
+{
+    if (!_TwickLingEnable)
+    {
+        return;
+    }
+    [UIView animateWithDuration:3
+                          delay:0.01
+                        options: UIViewAnimationOptionCurveLinear
+                                |UIViewKeyframeAnimationOptionAllowUserInteraction
+                     animations:^{
+                         self.view.backgroundColor = [UIColor blackColor];
+                     }
+                     completion:^(BOOL finished){
+                         [self TwickLingToRed];
+                     }];
 }
 
 //
