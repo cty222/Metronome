@@ -42,6 +42,7 @@
         switch (DeviceType.intValue) {
             case IPHONE_4S:
                 self.BackgroundView.image = [UIImage imageNamed:@"PropertyDialog_4S"];
+                self.CellDeleteButton.frame = CGRectMake(self.CellDeleteButton.frame.origin.x, self.CellDeleteButton.frame.origin.y + 8, self.CellDeleteButton.frame.size.width, self.CellDeleteButton.frame.size.height);
                 break;
             case IPHONE_5S:
                 break;

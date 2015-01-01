@@ -41,9 +41,9 @@
 {
     float Width  = TriggerButton.frame.size.width;
     float Height = TriggerButton.frame.size.height;
-    float XOffset = Width / 2;
+    float XOffset = Width * 0.8;
     float YOffset = Height / 2;
-    float RightMargin = Width / 2;
+    float RightMargin = Width * 0.6;
     float DownMargin = Height / 2;
     int MaxColumn = (self.frame.size.width - XOffset)/ (Width + RightMargin);
     float LastCellLoationY = 0;
@@ -57,7 +57,6 @@
                                      );
         UIButton * TmpButton = [[UIButton alloc] initWithFrame:NewFrame];
         TmpButton.tag = Index;
-        [TmpButton setBackgroundImage:[UIImage imageNamed:@"ScrollViewCellBackGround"] forState:UIControlStateNormal];
         VoiceType * tmp = FillInData[Index];
         
         [TmpButton setBackgroundImage:[UIImage imageNamed:tmp.voiceType] forState:UIControlStateNormal];
