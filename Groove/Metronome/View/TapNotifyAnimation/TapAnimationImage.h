@@ -14,6 +14,7 @@ typedef enum {
 } TAP_ANIMATION_MODE;
 
 @interface TapAnimationImage : XibViewInterface
+@property (strong, nonatomic) IBOutlet UIView *AnimateWorkVeiw;
 @property (strong, nonatomic) IBOutlet UIImageView *ImageGrayStep1;
 @property (strong, nonatomic) IBOutlet UIImageView *ImageGrayStep2;
 @property (strong, nonatomic) IBOutlet UIImageView *ImageRedStep1;

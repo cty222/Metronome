@@ -11,11 +11,15 @@
 @implementation TapAnimationImage
 {
     TAP_ANIMATION_MODE _Mode;
-    BOOL _hidden;
     NSTimer *_AnimationTimer;
 
     UIImageView * _CurrentStep1;
     UIImageView * _CurrentStep2;
+    
+    CGRect _DisplayFrame;
+    CGRect _HideFrame;
+    BOOL _EnableAnimation;
+
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -24,8 +28,17 @@
     if (self) {
         // Initialization code
         self.Mode = TAP_ALERT_GRAY;
+        _DisplayFrame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        _HideFrame = CGRectMake(0, 0, frame.size.width + 1, frame.size.height);
+        _CurrentStep1.hidden = NO;
+        _CurrentStep2.hidden = YES;
     }
     return self;
+}
+
+- (float) AnimationDelayTime
+{
+    return 0.5;
 }
 
 - (TAP_ANIMATION_MODE) GetMode
@@ -38,8 +51,8 @@
     _Mode = NewValue;
     if (_Mode == TAP_ALERT_GRAY)
     {
-        self.ImageGrayStep1.hidden = NO;
-        self.ImageGrayStep2.hidden = YES;
+        self.ImageGrayStep1.hidden = _CurrentStep1.hidden;
+        self.ImageGrayStep2.hidden = _CurrentStep2.hidden;
         self.ImageRedStep1.hidden = YES;
         self.ImageRedStep2.hidden = YES;
         _CurrentStep1 = self.ImageGrayStep1;
@@ -49,63 +62,101 @@
     {
         self.ImageGrayStep1.hidden = YES;
         self.ImageGrayStep2.hidden = YES;
-        self.ImageRedStep1.hidden = NO;
-        self.ImageRedStep2.hidden = YES;
+        self.ImageRedStep1.hidden = _CurrentStep1.hidden;
+        self.ImageRedStep2.hidden = _CurrentStep2.hidden;
         _CurrentStep1 = self.ImageRedStep1;
         _CurrentStep2 = self.ImageRedStep2;
     }
-
 }
 
 - (BOOL) GetHidden
 {
-    return _hidden;
+    return [super isHidden];
 }
 
 - (void) SetHidden:(BOOL)hidden
 {
-    if (hidden == _hidden)
+    if (hidden == self.hidden)
     {
         return;
     }
     
-    _hidden = hidden;
-    [super setHidden:_hidden];
-    if(_hidden)
+    [super setHidden:hidden];
+    if(self.hidden)
     {
+        [self StopAnimation];
         self.Mode = TAP_ALERT_GRAY;
     }
     else
     {
-        if (_AnimationTimer != nil)
-        {
-            [_AnimationTimer invalidate];
-            _AnimationTimer = nil;
-        }
-        _AnimationTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                                             target:self
-                                                           selector:@selector(TapAnimationTicker:)
-                                                           userInfo:nil
-                                                            repeats:YES];
+        [self PlayAnimation];
     }
 }
 
-
-- (void) TapAnimationTicker: (NSTimer *) ThisTimer
+- (void) PlayAnimation
 {
     if (self.hidden)
     {
-        [ThisTimer invalidate];
-        _AnimationTimer = nil;
+        return;
     }
-    
-    NSLog(@"TapAnimationStart");
 
-    _CurrentStep1.hidden = !_CurrentStep1.hidden;
-    _CurrentStep2.hidden = !_CurrentStep2.hidden;
+    _EnableAnimation = YES;
+    [self AnitmationPushDown];
+}
+
+- (void) StopAnimation
+{
+    [self.AnimateWorkVeiw.layer removeAllAnimations];
+    _EnableAnimation = NO;
 
 }
 
+- (void) AnitmationPushDown
+{
+    if (!_EnableAnimation)
+    {
+        return;
+    }
+
+    // Workaround : 用一個看不見的view來驅動animate
+    // show and hidden 不能驅動 animate
+    self.AnimateWorkVeiw.frame = _HideFrame;
+
+    [UIView animateWithDuration:0
+                          delay:[self AnimationDelayTime]
+                        options:UIViewAnimationOptionLayoutSubviews
+                     animations:^{
+                         self.AnimateWorkVeiw.frame = _DisplayFrame;
+                     }
+                     completion:^(BOOL finished){
+                         _CurrentStep1.hidden = YES;
+                         _CurrentStep2.hidden = NO;
+                         [self AnitmationPushUp];
+                     }];
+}
+
+- (void) AnitmationPushUp
+{
+    if (!_EnableAnimation)
+    {
+        return;
+    }
+    self.AnimateWorkVeiw.frame = _HideFrame;
+
+    // Workaround : 用一個看不見的view來驅動animate
+    // show and hidden 不能驅動 animate
+    [UIView animateWithDuration:0
+                          delay:[self AnimationDelayTime]
+                        options: UIViewAnimationOptionLayoutSubviews
+                     animations:^{
+                         self.AnimateWorkVeiw.frame = _DisplayFrame;
+                     }
+                     completion:^(BOOL finished){
+                         _CurrentStep1.hidden = NO;
+                         _CurrentStep2.hidden = YES;
+                         [self AnitmationPushDown];
+                     }];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
