@@ -132,7 +132,7 @@
             }
             else
             {
-                self.ValueLabel.font = [self.ValueLabel.font  fontWithSize:180];
+                self.ValueLabel.font = [self.ValueLabel.font  fontWithSize:140];
             }
             break;
         case BPM_PICKER_DOUBLE_MODE:
