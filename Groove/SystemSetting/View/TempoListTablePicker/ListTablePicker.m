@@ -30,10 +30,44 @@
         self.TableView.backgroundColor = [UIColor grayColor];
         self.TableView.editing = NO;
 
+        [self InitializeEditerView];
     }
     return self;
 }
 
+
+- (void) InitializeEditerView
+{
+    [self.NameEditer removeFromSuperview];
+    self.NameEditer = [[NameEditer alloc] initWithFrame:self.NameEditer.frame];
+    [self.EditerView addSubview:self.NameEditer];
+    self.NameEditer.delegate = self;
+    
+    [self CloseEditerView];
+}
+
+- (IBAction) EditTempListName : (TempoListUICell *) Cell
+{
+    self.NameEditer.ID = YES;
+    if (Cell != nil)
+    {
+        self.NameEditer.TempoList = Cell.TempoList;
+        self.NameEditer.NewName.text = Cell.TempoList.tempoListName;
+    }
+    else
+    {
+       self.NameEditer.NewName.text = @"";
+    }
+
+    self.EditerView.hidden = NO;
+}
+
+- (void) CloseEditerView
+{
+    [self.NameEditer.NewName resignFirstResponder];
+    self.NameEditer.ID = NO;
+    self.EditerView.hidden = YES;
+}
 
 // =============================
 // property
@@ -53,17 +87,23 @@
 // =============================
 - (IBAction) AddNewItem: (UIButton *) AddButton
 {
+    // nil 代表要新增
+    [self EditTempListName : nil];
+}
+
+- (IBAction) AddCell: (NSString *) CellName
+{
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
         if([self.delegate respondsToSelector:@selector(AddNewItem:)])
         {
-            [self.delegate AddNewItem: AddButton];
+            [self.delegate AddNewItem: CellName];
         }
     }
 }
 
-- (IBAction)DeleteCell: (TempoListUICell *) Cell
+- (IBAction) DeleteCell: (TempoListUICell *) Cell
 {
     if (self.delegate != nil)
     {
@@ -75,9 +115,30 @@
     }
 }
 
+- (IBAction) EditCell:(TempoListUICell *) Cell
+{
+    [self EditTempListName: Cell];
+}
 
 - (IBAction) Save: (UIButton *) SaveButton
 {
+    if (self.NameEditer.ID)
+    {
+        if (self.NameEditer.TempoList != nil)
+        {
+            self.NameEditer.TempoList.tempoListName = self.NameEditer.NewName.text;
+            self.NameEditer.TempoList = nil;
+            [gMetronomeModel Save];
+        }
+        else
+        {
+            [self AddCell: self.NameEditer.NewName.text];
+        }
+        [self.TableView reloadData];
+        [self CloseEditerView];
+        return;
+    }
+    
     if ([self GetSelectedIndex] <0)
     {
         if (_NoSelectedAlert == nil)
@@ -94,6 +155,15 @@
     }
     
     [super Save:SaveButton];
+}
+
+- (IBAction) Cancel : (UIButton *) CancelButton
+{
+    if (self.NameEditer.ID)
+    {
+        [self CloseEditerView];
+        return;
+    }
 }
 
 //================================
@@ -134,13 +204,6 @@
         cell.TempoList = CellList;
         cell.delegate = self;
     }
- 
-    /*UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect frame = CGRectMake( 0.0, 0.0, 50, 50);
-    button.frame = frame;
-    button.backgroundColor = [UIColor redColor];
-    cell.accessoryView = button;
-    [button addTarget:self action:@selector(checkButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside];*/
 
     return cell;
 }

@@ -12,8 +12,22 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="324" height="89"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqK-6Z-7fK">
+                        <rect key="frame" x="251" y="-1" width="73" height="63"/>
+                        <state key="normal" title="Edit">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="EditName:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zne-Hh-mun"/>
+                        </connections>
+                    </button>
+                </subviews>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="140" y="147"/>
+            <connections>
+                <outlet property="EditButton" destination="NqK-6Z-7fK" id="J9H-7A-ZNT"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="144.5"/>
         </tableViewCell>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

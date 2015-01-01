@@ -48,6 +48,4 @@ enum SYSTEM_INPUT_ID {
 @property (strong, nonatomic) IBOutlet UISwitch *PlaySingleCellWithMusicSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *PlayMusicLoopingSwitch;
 
-
-
 @end

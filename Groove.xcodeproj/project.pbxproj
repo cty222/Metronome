@@ -67,6 +67,9 @@
 		00612D941A3B7572009A7C88 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00612D931A3B7572009A7C88 /* AVFoundation.framework */; };
 		006175BE1A0BCFE100113560 /* PlayLoop_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */; };
 		006175BF1A0BCFE100113560 /* PlayLoop.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006175BD1A0BCFE100113560 /* PlayLoop.pdf */; };
+		006739321A55CA62008B6A2F /* System.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006739311A55CA62008B6A2F /* System.pdf */; };
+		006739361A55D256008B6A2F /* NameEditer.m in Sources */ = {isa = PBXBuildFile; fileRef = 006739351A55D256008B6A2F /* NameEditer.m */; };
+		006739381A55D26B008B6A2F /* NameEditer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006739371A55D26B008B6A2F /* NameEditer.xib */; };
 		006DAF2A1A50777900DEBA01 /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 006DAF291A50777900DEBA01 /* TempoCell.m */; };
 		006DAF2D1A5083AF00DEBA01 /* MetronomeBehaviorProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 006DAF2C1A5083AF00DEBA01 /* MetronomeBehaviorProperties.m */; };
 		0071A9AE1A2B075F00EA57D2 /* LoopCellScrollView.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9AD1A2B075F00EA57D2 /* LoopCellScrollView.pdf */; };
@@ -76,7 +79,6 @@
 		0071A9B81A2B090100EA57D2 /* QuarterNote.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9B31A2B090100EA57D2 /* QuarterNote.pdf */; };
 		0071A9B91A2B090100EA57D2 /* TrippleNote.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9B41A2B090100EA57D2 /* TrippleNote.pdf */; };
 		0071A9CF1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9CD1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf */; };
-		0071A9D01A2B0EB300EA57D2 /* SystemButton.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9CE1A2B0EB300EA57D2 /* SystemButton.pdf */; };
 		008A5C091A4F00F100BC744F /* GlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C071A4F00F100BC744F /* GlobalConfig.m */; };
 		008A5C0A1A4F00F100BC744F /* GlobalConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 008A5C081A4F00F100BC744F /* GlobalConfig.plist */; };
 		008A5C491A4F06AD00BC744F /* SystemPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C451A4F06AD00BC744F /* SystemPageViewController.m */; };
@@ -234,6 +236,10 @@
 		00612D931A3B7572009A7C88 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		006175BC1A0BCFE100113560 /* PlayLoop_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop_red.pdf; sourceTree = "<group>"; };
 		006175BD1A0BCFE100113560 /* PlayLoop.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop.pdf; sourceTree = "<group>"; };
+		006739311A55CA62008B6A2F /* System.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = System.pdf; sourceTree = "<group>"; };
+		006739341A55D256008B6A2F /* NameEditer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameEditer.h; sourceTree = "<group>"; };
+		006739351A55D256008B6A2F /* NameEditer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameEditer.m; sourceTree = "<group>"; };
+		006739371A55D26B008B6A2F /* NameEditer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameEditer.xib; sourceTree = "<group>"; };
 		006DAF281A50777900DEBA01 /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
 		006DAF291A50777900DEBA01 /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
 		006DAF2B1A5083AF00DEBA01 /* MetronomeBehaviorProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetronomeBehaviorProperties.h; path = GlobalConfig/MetronomeBehaviorProperties.h; sourceTree = "<group>"; };
@@ -245,7 +251,6 @@
 		0071A9B31A2B090100EA57D2 /* QuarterNote.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = QuarterNote.pdf; sourceTree = "<group>"; };
 		0071A9B41A2B090100EA57D2 /* TrippleNote.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TrippleNote.pdf; sourceTree = "<group>"; };
 		0071A9CD1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ScrollViewBackGround.pdf; sourceTree = "<group>"; };
-		0071A9CE1A2B0EB300EA57D2 /* SystemButton.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SystemButton.pdf; sourceTree = "<group>"; };
 		008A5C051A4F00F100BC744F /* DebugHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DebugHeader.h; path = GlobalConfig/DebugHeader.h; sourceTree = "<group>"; };
 		008A5C061A4F00F100BC744F /* GlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalConfig.h; path = GlobalConfig/GlobalConfig.h; sourceTree = "<group>"; };
 		008A5C071A4F00F100BC744F /* GlobalConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalConfig.m; path = GlobalConfig/GlobalConfig.m; sourceTree = "<group>"; };
@@ -531,6 +536,16 @@
 			name = GlobalConfig;
 			sourceTree = "<group>";
 		};
+		006739331A55D23B008B6A2F /* NameEditer */ = {
+			isa = PBXGroup;
+			children = (
+				006739341A55D256008B6A2F /* NameEditer.h */,
+				006739351A55D256008B6A2F /* NameEditer.m */,
+				006739371A55D26B008B6A2F /* NameEditer.xib */,
+			);
+			path = NameEditer;
+			sourceTree = "<group>";
+		};
 		0071A9AC1A2B075F00EA57D2 /* MetronomeSelectBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -562,7 +577,7 @@
 			children = (
 				001BFDA71A3F4E2100A56947 /* SystemButton_4S.pdf */,
 				0071A9CD1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf */,
-				0071A9CE1A2B0EB300EA57D2 /* SystemButton.pdf */,
+				006739311A55CA62008B6A2F /* System.pdf */,
 			);
 			path = ScrollView;
 			sourceTree = "<group>";
@@ -787,6 +802,7 @@
 		008A5CD11A4F0E3300BC744F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				006739331A55D23B008B6A2F /* NameEditer */,
 				008A5CD21A4F0E3300BC744F /* MusicTimePicker */,
 				008A5CD61A4F0E3300BC744F /* TempoListTablePicker */,
 			);
@@ -1067,9 +1083,9 @@
 				008A5CA31A4F0B1200BC744F /* MetronmoneTopSubViewIphone.xib in Resources */,
 				004DF46B1A40A6AD00E79C0E /* TapAnimation_2_red.pdf in Resources */,
 				00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */,
-				0071A9D01A2B0EB300EA57D2 /* SystemButton.pdf in Resources */,
 				001BFDC81A3F5EBD00A56947 /* AppIcon_40x3.png in Resources */,
 				008A5C911A4F0AE600BC744F /* CircleButton.xib in Resources */,
+				006739381A55D26B008B6A2F /* NameEditer.xib in Resources */,
 				008A5CD01A4F0E1B00BC744F /* VoiceTypePickerView.xib in Resources */,
 				001BFDBE1A3F550200A56947 /* BPMArrowUp.pdf in Resources */,
 				008A5C951A4F0AE600BC744F /* MetronomeSelectBar.xib in Resources */,
@@ -1088,6 +1104,7 @@
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
 				001BFDCC1A3F5EE600A56947 /* BPMArrowDown_4S.pdf in Resources */,
 				001BFDAC1A3F4E9200A56947 /* ValueUpArrow.pdf in Resources */,
+				006739321A55CA62008B6A2F /* System.pdf in Resources */,
 				00E8C01F1A3610FD00D53F82 /* 8NotesRed.pdf in Resources */,
 				008A5CCC1A4F0E1B00BC744F /* ValueScrollView.xib in Resources */,
 				004DF4621A40A69900E79C0E /* SwitchButtonLock.pdf in Resources */,
@@ -1174,6 +1191,7 @@
 				003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */,
 				008A5CCF1A4F0E1B00BC744F /* VoiceTypePickerView.m in Sources */,
 				008A5CF51A4F0E7000BC744F /* XibViewInterface.m in Sources */,
+				006739361A55D256008B6A2F /* NameEditer.m in Sources */,
 				005A93971A2CE10A00280507 /* TimeSignatureType.m in Sources */,
 				00DA131119F4E94700F27E25 /* NotesTool.m in Sources */,
 				008A5CAF1A4F0DF400BC744F /* OneDigitsValuePicker.m in Sources */,

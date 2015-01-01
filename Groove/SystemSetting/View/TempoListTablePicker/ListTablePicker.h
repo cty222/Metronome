@@ -8,6 +8,7 @@
 
 #import "InputSubmitView.h"
 #import "TempoListUICell.h"
+#import "NameEditer.h"
 #import "GlobalConfig.h"
 
 @protocol  ListTablePickerProtocol <InputSubmitViewProtocol>
@@ -16,14 +17,16 @@
 @optional
 
 - (IBAction) DeletItem : (TempoList *) TargetTempoList;
-- (IBAction) AddNewItem : (UIButton *) AddButton;
+- (IBAction) AddNewItem : (NSString *) ItemName;
 @end
 
-@interface ListTablePicker : InputSubmitView <UITableViewDataSource, UITableViewDelegate, TempoListUICellProtocol>
+@interface ListTablePicker : InputSubmitView <UITableViewDataSource, UITableViewDelegate, TempoListUICellProtocol, InputSubmitViewProtocol>
 @property (strong, nonatomic) IBOutlet UIScrollView *ScrolView;
 @property (strong, nonatomic) IBOutlet UITableView *TableView;
 @property (strong, nonatomic) IBOutlet UIButton *AddButton;
 @property (strong, nonatomic) IBOutlet UIButton *SaveButton;
+@property (strong, nonatomic) IBOutlet UIView *EditerView;
+@property (strong, nonatomic) IBOutlet NameEditer *NameEditer;
 @property (nonatomic, assign) id <ListTablePickerProtocol> delegate;
 @property (strong, nonatomic, getter = GetTempoListArrayForBinding, setter = SetTempoListArrayForBinding:) NSArray * TempoListArrayForBinding;
 

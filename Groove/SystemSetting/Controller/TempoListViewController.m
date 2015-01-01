@@ -63,9 +63,9 @@
     [self ChangeToTempoListPickerControllerView];
 }
 
-- (IBAction) AddNewItem: (UIButton *) AddButton
+- (IBAction) AddNewItem: (NSString *) ItemName
 {
-    [gMetronomeModel CreateNewDefaultTempoList:@"GG In In der"];
+    [gMetronomeModel CreateNewDefaultTempoList:ItemName];
     [gMetronomeModel SyncTempoListDataTableWithModel];
     [self FillTempoListFromModel];
 }

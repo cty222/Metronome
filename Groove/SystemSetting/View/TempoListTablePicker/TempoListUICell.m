@@ -64,6 +64,17 @@
     }
 }
 
+- (IBAction)EditName:(UIButton *)EditNameButton {
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(EditCell:)])
+        {
+            [self.delegate EditCell: self];
+        }
+    }
+}
+
 /*- (IBAction)DeleteEnbale:(UISwitch *)sender {
     if (sender.isOn)
     {

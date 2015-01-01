@@ -11,12 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="FKp-4c-bZB">
-                    <rect key="frame" x="0.0" y="58" width="320" height="510"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="sectionIndexBackgroundColor" red="0.98724205590000003" green="1" blue="0.26242883839999998" alpha="1" colorSpace="calibratedRGB"/>
-                </tableView>
                 <view contentMode="scaleToFill" id="yiS-G7-P0a">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -44,11 +38,34 @@
                     </subviews>
                     <color key="backgroundColor" cyan="0.080000000000000002" magenta="0.01" yellow="0.040000000000000001" black="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="FKp-4c-bZB">
+                    <rect key="frame" x="0.0" y="58" width="320" height="510"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexBackgroundColor" red="0.98724205590000003" green="1" blue="0.26242883839999998" alpha="1" colorSpace="calibratedRGB"/>
+                </tableView>
+                <view contentMode="scaleToFill" id="k1D-9k-0vt">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view alpha="0.69999999999999996" contentMode="scaleToFill" id="bSb-4x-ugQ">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="584"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="pXc-b0-lS8" customClass="NameEditer">
+                            <rect key="frame" x="0.0" y="50" width="320" height="115"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </view>
+                    </subviews>
+                </view>
             </subviews>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="AddButton" destination="oI7-xP-SDv" id="fXD-XG-Ad9"/>
+                <outlet property="EditerView" destination="k1D-9k-0vt" id="QtJ-VF-kV0"/>
+                <outlet property="NameEditer" destination="pXc-b0-lS8" id="Scl-kh-gsH"/>
                 <outlet property="SaveButton" destination="OHC-G2-35q" id="5ck-Yz-3Dd"/>
                 <outlet property="TableView" destination="FKp-4c-bZB" id="3vX-fb-UIV"/>
             </connections>
