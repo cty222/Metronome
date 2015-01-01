@@ -101,14 +101,13 @@
     }
 
     _EnableAnimation = YES;
-    [self AnitmationPushDown];
+    [self AnitmationPushUp];
 }
 
 - (void) StopAnimation
 {
     [self.AnimateWorkVeiw.layer removeAllAnimations];
     _EnableAnimation = NO;
-
 }
 
 - (void) AnitmationPushDown
