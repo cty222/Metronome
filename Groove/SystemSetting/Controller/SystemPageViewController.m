@@ -616,12 +616,12 @@
         return;
     }
 
-    [UIView animateWithDuration:2.5
+    [UIView animateWithDuration:5
                           delay:0.01
                         options: UIViewAnimationOptionCurveLinear
                                 |UIViewKeyframeAnimationOptionAllowUserInteraction
                      animations:^{
-                         self.view.backgroundColor = [UIColor colorWithRed:0.6 green:0 blue:0 alpha:1.0];
+                         self.view.backgroundColor = [UIColor colorWithRed:0.5 green:0.1 blue:0.1 alpha:1.0];
                      }
                      completion:^(BOOL finished){
                          [self TwickLingToBlack];
@@ -634,7 +634,7 @@
     {
         return;
     }
-    [UIView animateWithDuration:3
+    [UIView animateWithDuration:7
                           delay:0.01
                         options: UIViewAnimationOptionCurveLinear
                                 |UIViewKeyframeAnimationOptionAllowUserInteraction
