@@ -41,47 +41,6 @@
 
 }
 
-- (void) SyncMetronomeBehaviorPropertiesFromGlobalConfig
-{
-    self.MetronomeBehaviorProperties = [GlobalConfig GetMetronomeBehaviorProperties];
-    if (self.MetronomeBehaviorProperties.BPMDoubleEnable)
-    {
-        _CellParameterSettingSubController.BPMPicker.Mode = BPM_PICKER_DOUBLE_MODE;
-    }
-    else
-    {
-        _CellParameterSettingSubController.BPMPicker.Mode = BPM_PICKER_INT_MODE;
-    }
-}
-
-- (void) SyncMusicPropertyFromGlobalConfig
-{
-    self.MusicProperties = [GlobalConfig GetMusicProperties];
-    if (self.MusicProperties.MusicFunctionEnable)
-    {
-        _LoopAndPlayViewSubController.PlayMusicButton.hidden = NO;
-        _LoopAndPlayViewSubController.PlayCellListButton.hidden = YES;
-        
-        // Sync music property
-        if (self.MusicProperties.MusicHalfRateEnable)
-        {
-            [gPlayMusicChannel SetPlayRateToHalf];
-        }
-        else
-        {
-            [gPlayMusicChannel SetPlayRateToNormal];
-        }
-        
-        [gPlayMusicChannel SetPlayMusicLoopingEnable: self.MusicProperties.PlayMusicLoopingEnable];
-
-    }
-    else
-    {
-        _LoopAndPlayViewSubController.PlayMusicButton.hidden = YES;
-        _LoopAndPlayViewSubController.PlayCellListButton.hidden = NO;
-    }
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -123,17 +82,8 @@
         [gMetronomeModel Save];
     }
     
-    if (self.CurrentTempoList.musicInfo.persistentID != nil)
-    {
-        MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : self.CurrentTempoList.musicInfo.persistentID ];
-        if (![gPlayMusicChannel isPlaying])
-        {
-            [gPlayMusicChannel PrepareMusicToplay:Item];
-        }
-        gPlayMusicChannel.StartTime = [self.CurrentTempoList.musicInfo.startTime floatValue];
-        gPlayMusicChannel.StopTime = [self.CurrentTempoList.musicInfo.endTime floatValue];
-    }
-    
+    [self SyncMusicInfoFromTempList];
+
     [self SyncMusicPropertyFromGlobalConfig];
 }
 
@@ -219,12 +169,6 @@
 
 - (void) GlobaleventInitialize
 {
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(TouchedNotificationCallBack:)
-                                                 name:kTouchGlobalHookNotification
-                                               object:nil];
-    
     // Change View Controller
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(ChangePageToSystemView:)
@@ -245,14 +189,6 @@
 - (void) ChangePageToMetronomeView:(NSNotification *)Notification
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)TouchedNotificationCallBack:(NSNotification *)Notification
-{
-/*    UIEvent *Event = [Notification object];
-    NSSet *touches = [Event allTouches];
-    UITouch *touch = [touches anyObject];
-    UIView * target = [touch view];*/
 }
 
 - (void) InitializeSubController
@@ -324,6 +260,7 @@
 //
 // TODO : Model Sync
 //
+
 - (void) SyncCurrentTempoListFromModel
 {
     NSNumber *LastTempoListIndexUserSelected = [GlobalConfig GetLastTempoListIndexUserSelected];
@@ -339,6 +276,62 @@
         {
             NSLog(@"嚴重錯誤: TempoList 資料庫需要reset");
         }
+    }
+}
+
+- (void) SyncMetronomeBehaviorPropertiesFromGlobalConfig
+{
+    self.MetronomeBehaviorProperties = [GlobalConfig GetMetronomeBehaviorProperties];
+    if (self.MetronomeBehaviorProperties.BPMDoubleEnable)
+    {
+        _CellParameterSettingSubController.BPMPicker.Mode = BPM_PICKER_DOUBLE_MODE;
+    }
+    else
+    {
+        _CellParameterSettingSubController.BPMPicker.Mode = BPM_PICKER_INT_MODE;
+    }
+}
+
+- (void) SyncMusicPropertyFromGlobalConfig
+{
+    self.MusicProperties = [GlobalConfig GetMusicProperties];
+    if (self.MusicProperties.MusicFunctionEnable)
+    {
+        _LoopAndPlayViewSubController.PlayMusicButton.hidden = NO;
+        _LoopAndPlayViewSubController.PlayCellListButton.hidden = YES;
+        
+        // Sync music property
+        if (self.MusicProperties.MusicHalfRateEnable)
+        {
+            [gPlayMusicChannel SetPlayRateToHalf];
+        }
+        else
+        {
+            [gPlayMusicChannel SetPlayRateToNormal];
+        }
+        
+        [gPlayMusicChannel SetPlayMusicLoopingEnable: self.MusicProperties.PlayMusicLoopingEnable];
+        
+    }
+    else
+    {
+        _LoopAndPlayViewSubController.PlayMusicButton.hidden = YES;
+        _LoopAndPlayViewSubController.PlayCellListButton.hidden = NO;
+    }
+}
+
+- (void) SyncMusicInfoFromTempList
+{
+    if (self.CurrentTempoList.musicInfo.persistentID != nil)
+    {
+        MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : self.CurrentTempoList.musicInfo.persistentID ];
+        if (![gPlayMusicChannel isPlaying])
+        {
+            [gPlayMusicChannel PrepareMusicToplay:Item];
+        }
+        gPlayMusicChannel.StartTime = [self.CurrentTempoList.musicInfo.startTime floatValue];
+        gPlayMusicChannel.StopTime = [self.CurrentTempoList.musicInfo.endTime floatValue];
+        gPlayMusicChannel.Volume = [self.CurrentTempoList.musicInfo.volume floatValue];
     }
 }
 
