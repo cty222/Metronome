@@ -171,8 +171,8 @@
 		001B2B2C19D3CA0C0057A22E /* Groove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Groove.xcdatamodel; sourceTree = "<group>"; };
 		001B2B2E19D3CF190057A22E /* DbConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DbConfig.h; path = CoreDataSubClass/DbConfig.h; sourceTree = "<group>"; };
 		001B2B2F19D3CF190057A22E /* DbConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DbConfig.m; path = CoreDataSubClass/DbConfig.m; sourceTree = "<group>"; };
-		001BF2961A531D9A00558052 /* MusicBindingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicBindingInfo.h; path = Groove/CoreDataSubClass/MusicBindingInfo.h; sourceTree = "<group>"; };
-		001BF2971A531D9A00558052 /* MusicBindingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MusicBindingInfo.m; path = Groove/CoreDataSubClass/MusicBindingInfo.m; sourceTree = "<group>"; };
+		001BF2961A531D9A00558052 /* MusicBindingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicBindingInfo.h; path = CoreDataSubClass/MusicBindingInfo.h; sourceTree = "<group>"; };
+		001BF2971A531D9A00558052 /* MusicBindingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MusicBindingInfo.m; path = CoreDataSubClass/MusicBindingInfo.m; sourceTree = "<group>"; };
 		001BFD9F1A3F4DCC00A56947 /* NomalHiClickVoice.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NomalHiClickVoice.pdf; sourceTree = "<group>"; };
 		001BFDA11A3F4DE900A56947 /* NomalLowClickVoice.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NomalLowClickVoice.pdf; sourceTree = "<group>"; };
 		001BFDA31A3F4DF100A56947 /* PropertyDialog_4S.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PropertyDialog_4S.pdf; sourceTree = "<group>"; };
@@ -412,6 +412,8 @@
 		003A56A619D3285800747EB3 /* CoreDataModel */ = {
 			isa = PBXGroup;
 			children = (
+				001BF2961A531D9A00558052 /* MusicBindingInfo.h */,
+				001BF2971A531D9A00558052 /* MusicBindingInfo.m */,
 				001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */,
 				006DAF281A50777900DEBA01 /* TempoCell.h */,
 				006DAF291A50777900DEBA01 /* TempoCell.m */,
@@ -432,8 +434,6 @@
 		004BE63119B2DDC7002CD995 = {
 			isa = PBXGroup;
 			children = (
-				001BF2961A531D9A00558052 /* MusicBindingInfo.h */,
-				001BF2971A531D9A00558052 /* MusicBindingInfo.m */,
 				004BE64519B2DDC7002CD995 /* Groove */,
 				004BE66219B2DDC8002CD995 /* GrooveTests */,
 				004BE63C19B2DDC7002CD995 /* Frameworks */,
