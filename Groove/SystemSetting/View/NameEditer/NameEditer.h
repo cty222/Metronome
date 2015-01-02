@@ -11,10 +11,8 @@
 
 @interface NameEditer : InputSubmitView
 
-@property (strong, nonatomic) IBOutlet UILabel *NowTitle;
-@property (strong, nonatomic) IBOutlet UILabel *NewTitle;
 @property (strong, nonatomic) IBOutlet UILabel *CurrentName;
 @property (strong, nonatomic) IBOutlet UITextField *NewName;
-@property TempoList*  TempoList;
+@property (getter=GetTempoList, setter=SetTempoList:) TempoList*  TempoList;
 
 @end

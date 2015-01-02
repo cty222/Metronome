@@ -52,11 +52,10 @@
     if (Cell != nil)
     {
         self.NameEditer.TempoList = Cell.TempoList;
-        self.NameEditer.NewName.text = Cell.TempoList.tempoListName;
     }
     else
     {
-       self.NameEditer.NewName.text = @"";
+       self.NameEditer.TempoList = nil;
     }
 
     self.EditerView.hidden = NO;

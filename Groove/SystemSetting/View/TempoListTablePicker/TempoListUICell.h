@@ -9,6 +9,8 @@
 
 #import "XibTableViewCellInterface.h"
 #import "TempoList.h"
+#import "CustomerButton.h"
+
 
 @class TempoListUICell;
 
@@ -21,8 +23,9 @@
 - (IBAction)EditCell:(TempoListUICell *) Cell;
 @end
 
-@interface TempoListUICell : XibTableViewCellInterface
-@property (strong, nonatomic) IBOutlet UIButton *EditButton;
+@interface TempoListUICell : XibTableViewCellInterface <CustomerButtonProtocol>
+@property (strong, nonatomic) IBOutlet CustomerButton *EditButton;
+@property (strong, nonatomic) IBOutlet UILabel *NameLabel;
 
 @property (nonatomic, assign) id <TempoListUICellProtocol> delegate;
 @property (getter=GetTempoList, setter=SetTempoList:)TempoList*  TempoList;

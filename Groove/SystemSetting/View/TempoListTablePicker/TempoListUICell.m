@@ -20,15 +20,34 @@
 
 }
 
-/*
+- (id) init
+{
+    self = [super init];
+    if (self) {
+        // Initialization code
+        [self.EditButton removeFromSuperview];
+        self.EditButton = [[CustomerButton alloc] initWithFrame:self.EditButton.frame];
+        [self addSubview:self.EditButton];
+        self.EditButton.ShortPressSecond = 0.1f;
+        self.EditButton.delegate = self;
+        self.EditButton.NameLabel.text = @"Edit";
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        [self.EditButton removeFromSuperview];
+        self.EditButton = [[CustomerButton alloc] initWithFrame:self.EditButton.frame];
+        [self addSubview:self.EditButton];
+        self.EditButton.delegate = self;
+        self.EditButton.NameLabel.text = @"Edit";
     }
     return self;
-}*/
+}
 
 // ========================================
 // property
@@ -41,7 +60,8 @@
 -(void) SetTempoList : (TempoList *) NewTempoList
 {
     _TempoList = NewTempoList;
-    self.textLabel.text = _TempoList.tempoListName;
+    //self.textLabel.text = _TempoList.tempoListName;
+    self.NameLabel.text = _TempoList.tempoListName;
 }
 //
 // ========================================
@@ -64,7 +84,12 @@
     }
 }
 
-- (IBAction)EditName:(UIButton *)EditNameButton {
+- (void) ShortPress: (CustomerButton *) ThisPicker
+{
+    [self EditName];
+}
+
+- (void) EditName {
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector

@@ -60,7 +60,11 @@
 
 - (IBAction) Listen : (UIButton *) ListenButton
 {
-    self.ScrollTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:[self GetUIValue]];
+    // 播放前要先reset
+    if (!gPlayMusicChannel.isPlaying)
+    {
+        self.ScrollTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:[self GetUIValue]];
+    }
 
     if (self.delegate != nil)
     {

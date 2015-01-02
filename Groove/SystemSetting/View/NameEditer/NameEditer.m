@@ -8,8 +8,17 @@
 
 #import "NameEditer.h"
 
+@interface NameEditer ()
+@property (strong, nonatomic) IBOutlet UILabel *NowTitle;
+@property (strong, nonatomic) IBOutlet UILabel *NewTitle;
+@property (strong, nonatomic) IBOutlet UILabel *AlertTextLabel;
+
+@end
+
 @implementation NameEditer
 {
+    TempoList *_TempoList;
+
     UIAlertView * _NameErrorAlert;
     UIAlertView * _NameTooLongAlert;
 
@@ -22,17 +31,36 @@
         self.NowTitle.textColor = [UIColor whiteColor];
         self.CurrentName.textColor = [UIColor whiteColor];
         self.NewTitle.textColor = [UIColor whiteColor];
-
+        self.AlertTextLabel.textColor = [UIColor whiteColor];
     }
     return self;
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+// ========================================
+// property
+//
+-(TempoList *) GetTempoList
+{
+    return _TempoList;
 }
-*/
+
+-(void) SetTempoList : (TempoList *) NewTempoList
+{
+    _TempoList = NewTempoList;
+
+    if (NewTempoList != nil)
+    {
+        self.NewName.text = _TempoList.tempoListName;
+        self.CurrentName.text = _TempoList.tempoListName;
+    }
+    else
+    {
+        self.CurrentName.text = @"None";
+        self.NewName.text = @"";
+    }
+}
+//
+// ========================================
+
 - (IBAction)TextFieldEnd:(UITextField *)sender {
     // 要打開才有用
 }

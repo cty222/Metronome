@@ -69,6 +69,8 @@
 		0059D15D1A5710490058C5E3 /* SystemButtonBar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0059D15C1A5710490058C5E3 /* SystemButtonBar.pdf */; };
 		0059D1611A5710850058C5E3 /* PlayLoop.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0059D15F1A5710850058C5E3 /* PlayLoop.pdf */; };
 		0059D1621A5710850058C5E3 /* PlayLoop_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0059D1601A5710850058C5E3 /* PlayLoop_red.pdf */; };
+		0059D1691A5719770058C5E3 /* CustomerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0059D1681A5719770058C5E3 /* CustomerButton.m */; };
+		0059D16B1A571BCE0058C5E3 /* CustomerButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0059D16A1A571BCE0058C5E3 /* CustomerButton.xib */; };
 		005A93941A2CE10900280507 /* VoiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 005A93931A2CE10900280507 /* VoiceType.m */; };
 		005A93971A2CE10A00280507 /* TimeSignatureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 005A93961A2CE10A00280507 /* TimeSignatureType.m */; };
 		005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */; };
@@ -241,6 +243,9 @@
 		0059D15C1A5710490058C5E3 /* SystemButtonBar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SystemButtonBar.pdf; sourceTree = "<group>"; };
 		0059D15F1A5710850058C5E3 /* PlayLoop.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop.pdf; sourceTree = "<group>"; };
 		0059D1601A5710850058C5E3 /* PlayLoop_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayLoop_red.pdf; sourceTree = "<group>"; };
+		0059D1671A5719770058C5E3 /* CustomerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerButton.h; sourceTree = "<group>"; };
+		0059D1681A5719770058C5E3 /* CustomerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerButton.m; sourceTree = "<group>"; };
+		0059D16A1A571BCE0058C5E3 /* CustomerButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerButton.xib; sourceTree = "<group>"; };
 		005A93921A2CE10900280507 /* VoiceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoiceType.h; path = CoreDataSubClass/VoiceType.h; sourceTree = "<group>"; };
 		005A93931A2CE10900280507 /* VoiceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoiceType.m; path = CoreDataSubClass/VoiceType.m; sourceTree = "<group>"; };
 		005A93951A2CE10A00280507 /* TimeSignatureType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSignatureType.h; path = CoreDataSubClass/TimeSignatureType.h; sourceTree = "<group>"; };
@@ -566,6 +571,16 @@
 			path = PlayButton;
 			sourceTree = "<group>";
 		};
+		0059D1661A5719770058C5E3 /* CustomerButton */ = {
+			isa = PBXGroup;
+			children = (
+				0059D1671A5719770058C5E3 /* CustomerButton.h */,
+				0059D1681A5719770058C5E3 /* CustomerButton.m */,
+				0059D16A1A571BCE0058C5E3 /* CustomerButton.xib */,
+			);
+			path = CustomerButton;
+			sourceTree = "<group>";
+		};
 		006739331A55D23B008B6A2F /* NameEditer */ = {
 			isa = PBXGroup;
 			children = (
@@ -756,6 +771,7 @@
 		008A5CA41A4F0DF400BC744F /* UITools */ = {
 			isa = PBXGroup;
 			children = (
+				0059D1661A5719770058C5E3 /* CustomerButton */,
 				008A5CA51A4F0DF400BC744F /* DigitsPicker */,
 			);
 			path = UITools;
@@ -1130,6 +1146,7 @@
 				0071A9B51A2B090100EA57D2 /* 16Note.pdf in Resources */,
 				0071A9CF1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf in Resources */,
 				008A5D001A4F18E200BC744F /* TempoListViewController.xib in Resources */,
+				0059D16B1A571BCE0058C5E3 /* CustomerButton.xib in Resources */,
 				008A5CCE1A4F0E1B00BC744F /* TimeSignaturePickerView.xib in Resources */,
 				0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */,
 				0059D1481A57012C0058C5E3 /* System.pdf in Resources */,
@@ -1206,6 +1223,7 @@
 				008A5C941A4F0AE600BC744F /* MetronomeSelectBar.m in Sources */,
 				008A5CFF1A4F18E200BC744F /* TempoListViewController.m in Sources */,
 				008A5CC81A4F0E1B00BC744F /* SubPropertySelector.m in Sources */,
+				0059D1691A5719770058C5E3 /* CustomerButton.m in Sources */,
 				00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */,
 				008A5CCB1A4F0E1B00BC744F /* ValueScrollView.m in Sources */,
 				008A5C5D1A4F071600BC744F /* MetronomeMainViewController.m in Sources */,

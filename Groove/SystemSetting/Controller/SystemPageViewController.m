@@ -552,11 +552,11 @@
 {
     if (gPlayMusicChannel.Playing)
     {
-        [self.MusicTimePicker.ListenButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [self.MusicTimePicker.ListenButton setTitle:@"Stop Music" forState:UIControlStateNormal];
     }
     else
     {
-        [self.MusicTimePicker.ListenButton setTitle:@"Listen" forState:UIControlStateNormal];
+        [self.MusicTimePicker.ListenButton setTitle:@"Play Music" forState:UIControlStateNormal];
     }
 }
 
