@@ -54,6 +54,7 @@
         TmpButton.tag = Index;
         [TmpButton setBackgroundImage:[UIImage imageNamed:@"ScrollViewCellBackGround"] forState:UIControlStateNormal];
         [TmpButton setTitleColor:[TimeSignaturePickerView TextFontColor] forState:UIControlStateNormal];
+
         TimeSignatureType * tmp = FillInData[Index];
         
         [TmpButton setTitle:tmp.timeSignature forState:UIControlStateNormal];

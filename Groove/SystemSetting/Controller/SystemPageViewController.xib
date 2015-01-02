@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SystemPageViewController">
@@ -61,22 +62,21 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BNK-rm-aF6">
-                            <rect key="frame" x="223" y="8" width="89" height="41"/>
+                        <view contentMode="scaleToFill" id="mvW-25-TLv">
+                            <rect key="frame" x="4" y="57" width="312" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.98724205590000003" green="1" blue="0.26242883839999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal" title="Return Main">
+                            <color key="backgroundColor" red="0.35429972627737227" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BNK-rm-aF6">
+                            <rect key="frame" x="270" y="9" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="ReturnButton">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="ReturnToMetronome:" destination="-1" eventType="touchUpInside" id="e4B-Kl-SuC"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" id="mvW-25-TLv">
-                            <rect key="frame" x="4" y="58" width="312" height="1"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.35429972627737227" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </view>
                     </subviews>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="mE9-Cx-DSb">
@@ -90,7 +90,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lhg-wx-8TA">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="ListName" backgroundImage="LoopCellScrollView">
+                                    <state key="normal" title="ListName" backgroundImage="SystemButtonBar">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -98,7 +98,6 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="CzR-N6-02d">
                             <rect key="frame" x="0.0" y="50" width="320" height="140"/>
@@ -167,7 +166,7 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4uf-Qi-7a8">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TimeClock" id="4uf-Qi-7a8">
                                     <rect key="frame" x="8" y="65" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
@@ -178,7 +177,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2dz-WA-1Sg">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="MusicName" backgroundImage="LoopCellScrollView">
+                                            <state key="normal" title="MusicName" backgroundImage="SystemButtonBar">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -187,7 +186,6 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="ZIv-SU-6HS">
                                     <rect key="frame" x="153" y="63" width="150" height="31"/>
@@ -197,8 +195,8 @@
                                         <action selector="MusicValueChange:" destination="-1" eventType="valueChanged" id="ceF-yl-lYQ"/>
                                     </connections>
                                 </slider>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="kSw-MH-pH5">
-                                    <rect key="frame" x="117" y="65" width="25" height="25"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MusicVolume" id="kSw-MH-pH5">
+                                    <rect key="frame" x="122" y="65" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                             </subviews>
@@ -226,7 +224,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="591-X8-ltK">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="00:00.00" backgroundImage="LoopCellScrollView">
+                                            <state key="normal" title="00:00.00" backgroundImage="SystemButtonBar">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -234,7 +232,6 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tJn-1w-DCK">
                                     <rect key="frame" x="165" y="0.0" width="40" height="45"/>
@@ -250,7 +247,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eTg-jy-K42">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="00:00.00" backgroundImage="LoopCellScrollView">
+                                            <state key="normal" title="00:00.00" backgroundImage="SystemButtonBar">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -258,7 +255,6 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                             </subviews>
                         </view>
@@ -324,7 +320,10 @@
         </view>
     </objects>
     <resources>
-        <image name="LoopCellScrollView" width="320" height="50"/>
+        <image name="MusicVolume" width="40" height="40"/>
+        <image name="ReturnButton" width="40" height="40"/>
+        <image name="SystemButtonBar" width="320" height="50"/>
+        <image name="TimeClock" width="40" height="40"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
