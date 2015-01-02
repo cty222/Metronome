@@ -608,7 +608,7 @@
         
         if (NewIndex >= self.CurrentCellsDataTable.count)
         {
-            if ([GlobalConfig PlayCellListNoneStop])
+            if (_MetronomeBehaviorProperties.TempoListLoopingEnable)
             {
                 NewIndex = 0;
                 _ListChangeFocusFlag = YES;

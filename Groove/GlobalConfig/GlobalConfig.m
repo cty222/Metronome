@@ -315,16 +315,6 @@ static NSMutableDictionary * ThisPlist;
     return [ThisPlist objectForKey:@"MusicVolumeMin"];
 }
 
-+ (BOOL) PlayCellListNoneStop
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return NO;
-    }
-    
-    return [[ThisPlist objectForKey:@"PlayCellListNoneStop"] boolValue];
-}
-
 + (void) SetPlayCellListNoneStop : (BOOL) NewValue
 {
     if (![GlobalConfig IsInitialized])

@@ -2,10 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>PlayCellListNoneStop</key>
-	<true/>
 	<key>VersionID</key>
-	<real>4044</real>
+	<integer>4045</integer>
 	<key>DbVersion</key>
 	<real>1019</real>
 	<key>LastTempoListIndexUserSelected</key>

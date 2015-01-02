@@ -447,14 +447,6 @@
 - (IBAction)PlaySingleCellWithMusicSwitched:(UISwitch *)sender {
     _MusicProperty.PlaySingleCellWithMusicEnable = sender.isOn;
     [GlobalConfig SetMusicProperties:_MusicProperty];
-    if (sender.isOn)
-    {
-        
-    }
-    else
-    {
-        
-    }
 }
 
 - (IBAction) PlayMusicLoopingEnableSwitched:(UISwitch *)sender {
