@@ -27,6 +27,19 @@ typedef struct{
     AUDIO_FILE ABeatVoice;
     AUDIO_FILE GiBeatVoice;
     AUDIO_FILE GaBeatVoice;
+
+// HumanVoice
+    AUDIO_FILE TwoBeatVoice;
+    AUDIO_FILE ThreeBeatVoice;
+    AUDIO_FILE FourBeatVoice;
+    AUDIO_FILE FiveBeatVoice;
+    AUDIO_FILE SixBeatVoice;
+    AUDIO_FILE SevenBeatVoice;
+    AUDIO_FILE EightBeatVoice;
+    AUDIO_FILE NineBeatVoice;
+    AUDIO_FILE TenBeatVoice;
+    AUDIO_FILE ElevenBeatVoice;
+    AUDIO_FILE TweleveBeatVoice;
 }
 
 @property NSString *AccentPath;
@@ -36,6 +49,21 @@ typedef struct{
 @property NSString *ABeatPath;
 @property NSString *GiBeatPath;
 @property NSString *GaBeatPath;
+
+// HumanVoice
+@property NSString *TwoBeatPath;
+@property NSString *ThreeBeatPath;
+@property NSString *FourBeatPath;
+@property NSString *FiveBeatPath;
+@property NSString *SixBeatPath;
+@property NSString *SevenBeatPath;
+@property NSString *EightBeatPath;
+@property NSString *NineBeatPath;
+@property NSString *TenBeatPath;
+@property NSString *ElevenBeatPath;
+@property NSString *TweleveBeatPath;
+
+
 
 - (void) InitializeVoicePath;
 - (void) ReleaseVoice;
@@ -48,4 +76,19 @@ typedef struct{
 - (AUDIO_FILE) GetAbeatVoice;
 - (AUDIO_FILE) GetGibeatVoice;
 - (AUDIO_FILE) GetGabeatVoice;
+
+
+// HumanVoice
+- (AUDIO_FILE) GetTwoBeatVoice;
+- (AUDIO_FILE) GetThreeBeatVoice;
+- (AUDIO_FILE) GetFourBeatVoice;
+- (AUDIO_FILE) GetFiveBeatVoice;
+- (AUDIO_FILE) GetSixBeatVoice;
+- (AUDIO_FILE) GetSevenBeatVoice;
+- (AUDIO_FILE) GetEightBeatVoice;
+- (AUDIO_FILE) GetNineBeatVoice;
+- (AUDIO_FILE) GetTenBeatVoice;
+- (AUDIO_FILE) GetElevenBeatVoice;
+- (AUDIO_FILE) GetTweleveBeatVoice;
+
 @end

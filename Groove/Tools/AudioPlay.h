@@ -16,7 +16,7 @@
 
 // Click voice class
 #import "NomalHiClickVoice.h"
-
+#import "HumanVoice.h"
 #import "DebugHeader.h"
 
 

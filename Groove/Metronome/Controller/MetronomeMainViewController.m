@@ -518,6 +518,60 @@
 //  =========================
 // delegate
 //
+- (void) HumanVoiceDynamicFirstBeat
+{
+    switch (_TimeSignatureCounter) {
+        case 0:
+            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.CurrentVoice GetFirstBeatVoice]];
+            break;
+        case 1:
+            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.CurrentVoice GetTwoBeatVoice]];
+            break;
+        case 2:
+            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.CurrentVoice GetThreeBeatVoice]];
+            break;
+        case 3:
+            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.CurrentVoice GetFourBeatVoice]];
+            break;
+        case 4:
+            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.CurrentVoice GetFiveBeatVoice]];
+            break;
+        case 5:
+            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.CurrentVoice GetSixBeatVoice]];
+            break;
+        case 6:
+            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.CurrentVoice GetSevenBeatVoice]];
+            break;
+        case 7:
+            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.CurrentVoice GetEightBeatVoice]];
+            break;
+        case 8:
+            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.CurrentVoice GetNineBeatVoice]];
+            break;
+        case 9:
+            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.CurrentVoice GetTenBeatVoice]];
+            break;
+        case 10:
+            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.CurrentVoice GetElevenBeatVoice]];
+            break;
+        case 11:
+            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.CurrentVoice GetTweleveBeatVoice]];
+            break;
+    }
+}
+
 - (void) FirstBeatFunc
 {
     // Accent
@@ -533,8 +587,16 @@
         _AccentCounter = 0;
     }
     
-    [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                        : [self.CurrentVoice GetFirstBeatVoice]];
+    // TODO: Change Voice
+    if ([@"HumanVoice" isEqualToString:NSStringFromClass([self.CurrentVoice class])])
+    {
+        [self HumanVoiceDynamicFirstBeat];
+    }
+    else
+    {
+        [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                            : [self.CurrentVoice GetFirstBeatVoice]];
+    }
     if ([self.CurrentCell.quarterNoteVolume floatValue] > 0)
     {
         [_CellParameterSettingSubController.QuarterCircleVolumeButton TwickLing];
@@ -565,7 +627,7 @@
 - (void) ABeatFunc
 {
     [gPlayUnit playSound: [self.CurrentCell.sixteenNoteVolume floatValue] / MAX_VOLUME
-                        : [self.CurrentVoice GetEbeatVoice]];
+                        : [self.CurrentVoice GetAbeatVoice]];
     if ([self.CurrentCell.sixteenNoteVolume floatValue] > 0)
     {
         [_CellParameterSettingSubController.SixteenthNoteCircleVolumeButton TwickLing];
@@ -708,12 +770,12 @@
     {
         _CurrentPlayingNoteCounter = FIRST_CLICK;
         
-        if (self.PlayingMode == LIST_PLAYING)
+        _TimeSignatureCounter++;
+        if (_TimeSignatureCounter == [self.CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
         {
-            _TimeSignatureCounter++;
-            if (_TimeSignatureCounter == [self.CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
+            _TimeSignatureCounter = 0;
+            if (self.PlayingMode == LIST_PLAYING)
             {
-                _TimeSignatureCounter = 0;
                 _LoopCountCounter++;
                 if (_LoopCountCounter >= [self.CurrentCell.loopCount intValue])
                 {

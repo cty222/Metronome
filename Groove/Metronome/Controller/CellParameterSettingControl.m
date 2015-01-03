@@ -245,6 +245,7 @@
     
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     Parent.CurrentCell.timeSignatureType = (TimeSignatureType *)TimeSignatureTypeArray[TriggerItem.tag];
+    Parent.CurrentTimeSignature = TriggerItem.titleLabel.text;
     
     // TODO : 不要save這麼頻繁
     [gMetronomeModel Save];
@@ -310,18 +311,31 @@
     else if ([TimeSignatureString isEqualToString:@"6/4"])
     {
         return 6;
-        
     }
     else if ([TimeSignatureString isEqualToString:@"7/4"])
     {
         return 7;
-        
     }
     else if ([TimeSignatureString isEqualToString:@"8/4"])
     {
         return 8;
     }
-    
+    else if ([TimeSignatureString isEqualToString:@"9/4"])
+    {
+        return 9;
+    }
+    else if ([TimeSignatureString isEqualToString:@"10/4"])
+    {
+        return 10;
+    }
+    else if ([TimeSignatureString isEqualToString:@"11/4"])
+    {
+        return 11;
+    }
+    else if ([TimeSignatureString isEqualToString:@"12/4"])
+    {
+        return 12;
+    }
     return 4;
 }
 
