@@ -28,6 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *SaveButton;
 @property (strong, nonatomic) IBOutlet UIButton *ListenButton;
 @property (strong, nonatomic) IBOutlet UIButton *CancelButton;
+@property (strong, nonatomic) IBOutlet UILabel *DurationTime;
 
 @property (getter=GetMusicDuration, setter=SetMusicDuration:) NSTimeInterval MusicDuration;
 @property (getter=GetValue, setter=SetValue:) NSTimeInterval Value;

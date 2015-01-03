@@ -235,6 +235,7 @@
 
 - (void) ShowMusicPicker
 {
+    self.MusicTimePicker.DurationTime.text = self.DurationLabel.text;
     self.SubInputView.hidden = NO;
     self.MusicTimePicker.hidden = NO;
     [self.FullView bringSubviewToFront:self.SubInputView];
@@ -328,7 +329,7 @@
     gPlayMusicChannel.StartTime = [_CurrentList.musicInfo.startTime floatValue];
     gPlayMusicChannel.StopTime = [_CurrentList.musicInfo.endTime floatValue];
     [self.StartTimeLabel setTitle:[gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.StartTime] forState:UIControlStateNormal];
-    [self.EndTimeLabel setTitle:[gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.StartTime] forState:UIControlStateNormal];
+    [self.EndTimeLabel setTitle:[gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.StopTime] forState:UIControlStateNormal];
 }
 
 
@@ -552,11 +553,12 @@
 {
     if (gPlayMusicChannel.Playing)
     {
-        [self.MusicTimePicker.ListenButton setTitle:@"Stop Music" forState:UIControlStateNormal];
+        [self.MusicTimePicker.ListenButton setBackgroundImage:[UIImage imageNamed:@"LoopPlay_red"] forState:UIControlStateNormal];
+        
     }
     else
     {
-        [self.MusicTimePicker.ListenButton setTitle:@"Play Music" forState:UIControlStateNormal];
+        [self.MusicTimePicker.ListenButton setBackgroundImage:[UIImage imageNamed:@"LoopPlay_black"] forState:UIControlStateNormal];
     }
 }
 
