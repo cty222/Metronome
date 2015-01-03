@@ -96,6 +96,8 @@
         case LIST_PLAYING:
             // TODO : 要改成Stop圖
             [self.PlayCellListButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayCurrentImage];
+
             break;
     }
 }
