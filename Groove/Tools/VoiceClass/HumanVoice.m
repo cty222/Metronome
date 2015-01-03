@@ -16,8 +16,8 @@
     self.AndBeatPath = [[NSBundle mainBundle] pathForResource:@"Human_and" ofType:@"wav"];
     self.EBeatPath = [[NSBundle mainBundle] pathForResource:@"Human_e" ofType:@"wav"];
     self.ABeatPath = [[NSBundle mainBundle] pathForResource:@"Human_a" ofType:@"wav"];
-    self.GiBeatPath = [[NSBundle mainBundle] pathForResource:@"Human_Gi" ofType:@"wav"];
-    self.GaBeatPath = [[NSBundle mainBundle] pathForResource:@"Human_Ga" ofType:@"wav"];
+    self.GiBeatPath = [[NSBundle mainBundle] pathForResource:@"Human_Tic" ofType:@"wav"];
+    self.GaBeatPath = [[NSBundle mainBundle] pathForResource:@"Human_Toc" ofType:@"wav"];
     
     self.TwoBeatPath = [[NSBundle mainBundle] pathForResource:@"Two" ofType:@"wav"];
     self.ThreeBeatPath = [[NSBundle mainBundle] pathForResource:@"Three" ofType:@"wav"];

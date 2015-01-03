@@ -766,15 +766,15 @@
     [NotesTool NotesFunc:_CurrentPlayingNoteCounter :_NTool];
     _CurrentPlayingNoteCounter++;
     
-    if (_CurrentPlayingNoteCounter == RESET_CLICK)
+    if (_CurrentPlayingNoteCounter >= RESET_CLICK)
     {
         _CurrentPlayingNoteCounter = FIRST_CLICK;
         
         _TimeSignatureCounter++;
-        if (_TimeSignatureCounter == [self.CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
+        if (_TimeSignatureCounter >= [self.CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
         {
             _TimeSignatureCounter = 0;
-            if (self.PlayingMode == LIST_PLAYING)
+            if (self.PlayingMode >= LIST_PLAYING)
             {
                 _LoopCountCounter++;
                 if (_LoopCountCounter >= [self.CurrentCell.loopCount intValue])
