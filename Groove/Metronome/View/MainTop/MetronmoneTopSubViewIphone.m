@@ -10,11 +10,55 @@
 
 @implementation MetronmoneTopSubViewIphone
 {
-    
+    UINib* _ThisNib;
+    dispatch_once_t _ThisNibToken;
+}
+
+- (UINib*) ThisNib
+{
+    NSNumber * DeviceType = [GlobalConfig DeviceType];
+    if (DeviceType.intValue == IPHONE_4S)
+    {
+        dispatch_once(&_ThisNibToken, ^{
+            _ThisNib = [UINib nibWithNibName:@"MetronmoneTopSubViewIphone4S" bundle:nil];
+        });
+        
+        return _ThisNib;
+    }
+    else
+    {
+        return [super ThisNib];
+    }
 }
 
 - (void) awakeFromNib
 {
+#if 1
+
+    [super awakeFromNib];
+    NSNumber * DeviceType = [GlobalConfig DeviceType];
+    if (DeviceType.intValue == IPHONE_4S)
+    {
+        self.BPMPicker = self.BPMPicker4S;
+        self.PlayMusicButton = self.PlayMusicButton4S;
+        
+        self.PlayCellListButton = self.PlayCellListButton4S;
+        self.VoiceTypePicker = self.VoiceTypePicker4S;
+        self.TimeSigaturePicker = self.TimeSigaturePicker4S;
+        self.LoopCellEditer = self.LoopCellEditer4S;
+        self.SystemButton = self.SystemButton4S;
+        
+        self.AddLoopCellButton = self.AddLoopCellButton4S;
+        self.OptionScrollView = self.OptionScrollView4S;
+        self.TimeSignaturePickerView = self.TimeSignaturePickerView4S;
+        self.VoiceTypePickerView = self.VoiceTypePickerView4S;
+        self.LoopCellEditerView = self.LoopCellEditerView4S;
+        self.TapAnimationImage = self.TapAnimationImage4S;
+
+    }
+
+#else
+
     [super awakeFromNib];
     NSNumber * DeviceType = [GlobalConfig DeviceType];
     switch (DeviceType.intValue) {
@@ -25,7 +69,7 @@
             self.SystemButton.autoresizesSubviews = NO;
             self.SystemButton.autoresizingMask = UIViewAutoresizingNone;
             [self.SystemButton setBackgroundImage:[UIImage imageNamed:@"SystemButton_4S"] forState:UIControlStateNormal];
-            
+
             self.TapAnimationImage.autoresizingMask = UIViewAutoresizingNone;
             self.TimeSigaturePicker.autoresizingMask = UIViewAutoresizingNone;
             self.VoiceTypePicker.autoresizingMask = UIViewAutoresizingNone;
@@ -129,7 +173,7 @@
         default:
             break;
     }
-
+#endif
 }
 
 - (id)initWithFrame:(CGRect)frame

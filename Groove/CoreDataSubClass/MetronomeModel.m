@@ -162,7 +162,7 @@
     
     for (int Row = 0; Row < self.TempoListDataTable.count; Row++)
     {
-        for (int Index = 0 ;Index < 3; Index++)
+        for (int Index = 0 ;Index < 2; Index++)
         {
             TempoCell* NewTempoList = [NSEntityDescription
                                        insertNewObjectForEntityForName:NSStringFromClass([TempoCell class])  inManagedObjectContext:_ManagedObjectContext];
@@ -186,6 +186,7 @@
     MusicBindingInfo *NewInfo = [NSEntityDescription
                                 insertNewObjectForEntityForName:NSStringFromClass([MusicBindingInfo class])  inManagedObjectContext:_ManagedObjectContext];
     NewInfo.volume = [NSNumber numberWithFloat:DefaultMusicVolume];
+    NewInfo.persistentID = nil;
     [self Save];
 
     return NewInfo;

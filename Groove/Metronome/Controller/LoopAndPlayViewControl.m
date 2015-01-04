@@ -10,10 +10,6 @@
 
 @implementation LoopAndPlayViewControl
 {
-    // PlayCell Image
-    UIImage *_RedPlayCurrentImage;
-    UIImage *_BlackPlayCurrentImage;
-    
     NSMutableArray * _CellValueToStringList;
     
     // Delete Cell
@@ -35,19 +31,7 @@
     
     
     // PlayLoopCellButton Initalize
-    // red  playloop button
-    UIGraphicsBeginImageContext(self.PlayCurrentCellButton.frame.size);
-    [[UIImage imageNamed:@"LoopPlay_red"] drawInRect:self.PlayCurrentCellButton.bounds];
-    _RedPlayCurrentImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    // bloak  playloop button
-    UIGraphicsBeginImageContext(self.PlayCurrentCellButton.frame.size);
-    [[UIImage imageNamed:@"LoopPlay_black"] drawInRect:self.PlayCurrentCellButton.bounds];
-    _BlackPlayCurrentImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_BlackPlayCurrentImage];
-
+    // black  playloop button
     [self.PlayCurrentCellButton addTarget:self
                                    action:@selector(PlayCurrentCellButtonClick:) forControlEvents:UIControlEventTouchDown];
     
@@ -87,16 +71,16 @@
 
     switch (Parent.PlayingMode) {
         case STOP_PLAYING:
-            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_BlackPlayCurrentImage];
+            [self.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayBlack"] forState:UIControlStateNormal];
             [self.PlayCellListButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             break;
         case SINGLE_PLAYING:
-            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayCurrentImage];
+            [self.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
             break;
         case LIST_PLAYING:
             // TODO : 要改成Stop圖
             [self.PlayCellListButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-            self.PlayCurrentCellButton.backgroundColor = [UIColor colorWithPatternImage:_RedPlayCurrentImage];
+            [self.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
 
             break;
     }

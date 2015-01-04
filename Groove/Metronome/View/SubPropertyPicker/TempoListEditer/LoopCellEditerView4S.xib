@@ -7,61 +7,61 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="ltB-4j-cgl" customClass="LoopCellEditerView">
-            <rect key="frame" x="0.0" y="0.0" width="252" height="200"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LoopCellEditerView">
+            <rect key="frame" x="0.0" y="0.0" width="252" height="135"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PropertyDialog_5S" id="1QB-be-3ZD">
-                    <rect key="frame" x="0.0" y="0.0" width="237" height="200"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PropertyDialog_4S" id="DUv-fJ-7uY" userLabel="PropertyDialog_4S">
+                    <rect key="frame" x="0.0" y="0.0" width="237" height="135"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PropertyDialogArrow" id="zJo-yL-8oH">
-                    <rect key="frame" x="237" y="83" width="16" height="28"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PropertyDialogArrow" id="0RF-ON-NA2">
+                    <rect key="frame" x="237" y="19" width="16" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="68L-7D-LWH">
-                    <rect key="frame" x="0.0" y="8" width="225" height="184"/>
+                <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="O35-Mk-kGT">
+                    <rect key="frame" x="6" y="8" width="225" height="119"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" id="mFi-hg-9lz" customClass="ValueScrollView">
-                            <rect key="frame" x="15" y="10" width="200" height="100"/>
+                        <view contentMode="scaleToFill" id="xj5-Lo-9Hq" customClass="ValueScrollView">
+                            <rect key="frame" x="12" y="8" width="200" height="55"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwitchButtonLock" id="PXn-mK-Da5">
-                            <rect key="frame" x="40" y="125" width="60" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" id="d5i-uO-WXK">
-                            <rect key="frame" x="160" y="130" width="40" height="40"/>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" id="Sqx-TJ-QeL">
+                            <rect key="frame" x="160" y="71" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <color key="tintColor" red="1" green="0.15579608019999999" blue="0.14642800040000001" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" backgroundImage="DeleteCellGray">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="CellDeleteChange:" destination="ltB-4j-cgl" eventType="touchUpInside" id="mJW-Z5-0NO"/>
+                                <action selector="CellDeleteChange:" destination="iN0-l3-epB" eventType="touchUpInside" id="awW-RW-Lpd"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwitchButtonLock" id="Ckr-4I-R3N">
+                            <rect key="frame" x="40" y="71" width="50" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
                     </subviews>
                 </scrollView>
             </subviews>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="ArrowView" destination="zJo-yL-8oH" id="Sac-eE-kgb"/>
-                <outlet property="BackgroundView" destination="1QB-be-3ZD" id="Gmp-qw-8hs"/>
-                <outlet property="CellDeleteButton" destination="d5i-uO-WXK" id="DnY-mH-ymM"/>
-                <outlet property="ContentScrollView" destination="68L-7D-LWH" id="Frx-fD-dhe"/>
-                <outlet property="DeleteUnLock" destination="PXn-mK-Da5" id="ex9-Ty-Qpb"/>
-                <outlet property="ValueScrollView" destination="mFi-hg-9lz" id="kbn-0y-b0C"/>
+                <outlet property="ArrowView" destination="0RF-ON-NA2" id="uy5-ru-95n"/>
+                <outlet property="BackgroundView" destination="DUv-fJ-7uY" id="nvp-tK-mNo"/>
+                <outlet property="CellDeleteButton4S" destination="Sqx-TJ-QeL" id="cpl-zz-Odg"/>
+                <outlet property="ContentScrollView" destination="O35-Mk-kGT" id="5lp-Mi-Fct"/>
+                <outlet property="DeleteUnLock4S" destination="Ckr-4I-R3N" id="C0g-OS-abV"/>
+                <outlet property="ValueScrollView4S" destination="xj5-Lo-9Hq" id="BIV-Co-jif"/>
             </connections>
-            <point key="canvasLocation" x="324" y="352"/>
+            <point key="canvasLocation" x="251" y="378.5"/>
         </view>
     </objects>
     <resources>
         <image name="DeleteCellGray" width="40" height="40"/>
         <image name="PropertyDialogArrow" width="15" height="33"/>
-        <image name="PropertyDialog_5S" width="237" height="200"/>
+        <image name="PropertyDialog_4S" width="252" height="135"/>
         <image name="SwitchButtonLock" width="60" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

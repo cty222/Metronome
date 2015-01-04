@@ -14,4 +14,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *DeleteUnLock;
 @property (strong, nonatomic) IBOutlet ValueScrollView *ValueScrollView;
 
+
+// 4S
+@property (strong, nonatomic) IBOutlet UIButton *CellDeleteButton4S;
+@property (strong, nonatomic) IBOutlet UIImageView *DeleteUnLock4S;
+@property (strong, nonatomic) IBOutlet ValueScrollView *ValueScrollView4S;
 @end

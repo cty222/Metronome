@@ -31,4 +31,21 @@
 @property (strong, nonatomic) IBOutlet LoopCellEditerView *LoopCellEditerView;
 @property (strong, nonatomic) IBOutlet TapAnimationImage *TapAnimationImage;
 
+
+// 4S
+@property (strong, nonatomic) IBOutlet LargeBPMPicker *BPMPicker4S;
+@property (strong, nonatomic) IBOutlet UIButton *PlayMusicButton4S;
+
+@property (strong, nonatomic) IBOutlet UIButton *PlayCellListButton4S;
+@property (strong, nonatomic) IBOutlet UIButton *VoiceTypePicker4S;
+@property (strong, nonatomic) IBOutlet UIButton *TimeSigaturePicker4S;
+@property (strong, nonatomic) IBOutlet UIButton *LoopCellEditer4S;
+@property (strong, nonatomic) IBOutlet UIButton *SystemButton4S;
+
+@property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton4S;
+@property (strong, nonatomic) IBOutlet UIScrollView *OptionScrollView4S;
+@property (strong, nonatomic) IBOutlet TimeSignaturePickerView *TimeSignaturePickerView4S;
+@property (strong, nonatomic) IBOutlet VoiceTypePickerView *VoiceTypePickerView4S;
+@property (strong, nonatomic) IBOutlet LoopCellEditerView *LoopCellEditerView4S;
+@property (strong, nonatomic) IBOutlet TapAnimationImage *TapAnimationImage4S;
 @end

@@ -193,6 +193,7 @@
     else
     {
         // TODO: 如果沒有歌曲
+        NSLog(@"???");
         [gPlayMusicChannel SetPrepareNotReady];
         [self FillSongInfo:nil];
     }
@@ -553,12 +554,12 @@
 {
     if (gPlayMusicChannel.Playing)
     {
-        [self.MusicTimePicker.ListenButton setBackgroundImage:[UIImage imageNamed:@"LoopPlay_red"] forState:UIControlStateNormal];
+        [self.MusicTimePicker.ListenButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
         
     }
     else
     {
-        [self.MusicTimePicker.ListenButton setBackgroundImage:[UIImage imageNamed:@"LoopPlay_black"] forState:UIControlStateNormal];
+        [self.MusicTimePicker.ListenButton setBackgroundImage:[UIImage imageNamed:@"MusicListen"] forState:UIControlStateNormal];
     }
 }
 

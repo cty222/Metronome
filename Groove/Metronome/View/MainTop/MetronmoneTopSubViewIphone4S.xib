@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MetronmoneTopSubViewIphone">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="hIV-mM-sXB" customClass="TimeSignaturePickerView">
+                    <rect key="frame" x="5" y="15" width="252" height="135"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </view>
+                <view contentMode="scaleToFill" id="7JQ-g5-n4u" customClass="VoiceTypePickerView">
+                    <rect key="frame" x="5" y="15" width="252" height="135"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </view>
+                <view contentMode="scaleToFill" id="x9P-lB-seH" customClass="LoopCellEditerView">
+                    <rect key="frame" x="5" y="15" width="252" height="135"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="NcK-cM-VLw">
+                    <rect key="frame" x="254" y="0.0" width="60" height="162"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ScrollViewBackGround" id="GAI-hb-Pa0">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="162"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bhm-lw-jtx">
+                            <rect key="frame" x="10" y="12" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                            <state key="normal" backgroundImage="ScrollViewCellBackGround">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CGi-0Y-ZlW">
+                            <rect key="frame" x="10" y="61" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="HumanVoice">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K5c-EL-ITO">
+                            <rect key="frame" x="10" y="110" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="LoopCellPickerButton">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="162"/>
+                </scrollView>
+                <view contentMode="scaleToFill" id="8An-0g-E6I" customClass="LargeBPMPicker">
+                    <rect key="frame" x="8" y="0.0" width="240" height="180"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </view>
+                <view contentMode="scaleToFill" id="A7e-zK-t1L" customClass="TapAnimationImage">
+                    <rect key="frame" x="5" y="5" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iZW-QR-6Jf">
+                    <rect key="frame" x="210" y="135" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Marion-Bold" family="Marion" pointSize="23"/>
+                    <state key="normal" backgroundImage="AddCellGray">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4LO-2u-yFr">
+                    <rect key="frame" x="8" y="145" width="80" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Marion-Bold" family="Marion" pointSize="23"/>
+                    <state key="normal" backgroundImage="PlayList">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IRr-rB-h55">
+                    <rect key="frame" x="210" y="5" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="SystemButton_4S">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ufm-Is-xDA">
+                    <rect key="frame" x="8" y="145" width="80" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Marion-Bold" family="Marion" pointSize="23"/>
+                    <state key="normal" backgroundImage="PlayMusic">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" cyan="0.76000000000000001" magenta="0.69000000000000006" yellow="0.64000000000000001" black="0.20999999999999999" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="AddLoopCellButton4S" destination="iZW-QR-6Jf" id="kTU-HJ-hoc"/>
+                <outlet property="BPMPicker4S" destination="8An-0g-E6I" id="lqa-oz-lqW"/>
+                <outlet property="LoopCellEditer4S" destination="K5c-EL-ITO" id="GYb-FD-D9B"/>
+                <outlet property="LoopCellEditerView4S" destination="x9P-lB-seH" id="SQA-mO-G91"/>
+                <outlet property="OptionScrollView4S" destination="NcK-cM-VLw" id="WYc-wL-aug"/>
+                <outlet property="PlayCellListButton4S" destination="4LO-2u-yFr" id="ovP-nz-zDM"/>
+                <outlet property="PlayMusicButton4S" destination="Ufm-Is-xDA" id="KP3-ty-cyd"/>
+                <outlet property="SystemButton4S" destination="IRr-rB-h55" id="1fz-JA-ifY"/>
+                <outlet property="TapAnimationImage4S" destination="A7e-zK-t1L" id="3QV-Nl-jHN"/>
+                <outlet property="TimeSigaturePicker4S" destination="bhm-lw-jtx" id="b3b-md-Wr0"/>
+                <outlet property="TimeSignaturePickerView4S" destination="hIV-mM-sXB" id="0zL-nP-RGp"/>
+                <outlet property="VoiceTypePicker4S" destination="CGi-0Y-ZlW" id="e4y-kx-xdU"/>
+                <outlet property="VoiceTypePickerView4S" destination="7JQ-g5-n4u" id="h8q-BQ-uej"/>
+            </connections>
+            <point key="canvasLocation" x="251" y="379"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AddCellGray" width="40" height="40"/>
+        <image name="HumanVoice" width="40" height="40"/>
+        <image name="LoopCellPickerButton" width="40" height="40"/>
+        <image name="PlayList" width="100" height="40"/>
+        <image name="PlayMusic" width="100" height="40"/>
+        <image name="ScrollViewBackGround" width="60" height="162"/>
+        <image name="ScrollViewCellBackGround" width="40" height="40"/>
+        <image name="SystemButton_4S" width="40" height="40"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

@@ -17,7 +17,42 @@
 
 @implementation LoopCellEditerView
 {
+    // Override
+    UINib* _ThisNib;
+    dispatch_once_t _ThisNibToken;
+    
+    //
     BOOL _CanDelete;
+}
+
+- (UINib*) ThisNib
+{
+    NSNumber * DeviceType = [GlobalConfig DeviceType];
+    if (DeviceType.intValue == IPHONE_4S)
+    {
+        dispatch_once(&_ThisNibToken, ^{
+            _ThisNib = [UINib nibWithNibName:@"LoopCellEditerView4S" bundle:nil];
+        });
+        
+        return _ThisNib;
+    }
+    else
+    {
+        return [super ThisNib];
+    }
+    
+}
+
+- (void) awakeFromNib
+{
+    [super awakeFromNib];
+    NSNumber * DeviceType = [GlobalConfig DeviceType];
+    if (DeviceType.intValue == IPHONE_4S)
+    {
+        self.CellDeleteButton = self.CellDeleteButton4S;
+        self.DeleteUnLock = self.DeleteUnLock4S;
+        self.ValueScrollView = self.ValueScrollView4S;
+    }
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -37,18 +72,17 @@
         UITapGestureRecognizer *TabUnlockSwitch =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(CellDeleteUnlock:)];
         [self.DeleteUnLock addGestureRecognizer:TabUnlockSwitch];
-        
+/*
         NSNumber * DeviceType = [GlobalConfig DeviceType];
         switch (DeviceType.intValue) {
             case IPHONE_4S:
                 self.BackgroundView.image = [UIImage imageNamed:@"PropertyDialog_4S"];
-                self.CellDeleteButton.frame = CGRectMake(self.CellDeleteButton.frame.origin.x, self.CellDeleteButton.frame.origin.y + 8, self.CellDeleteButton.frame.size.width, self.CellDeleteButton.frame.size.height);
                 break;
             case IPHONE_5S:
                 break;
             default:
                 break;
-        }
+        }*/
     }
     return self;
 }
@@ -76,11 +110,14 @@
     {
         self.DeleteUnLock.image  = [UIImage imageNamed:@"SwitchButtonUnLock"];
         self.CellDeleteButton.enabled = YES;
+        [self.CellDeleteButton setBackgroundImage:[UIImage imageNamed:@"DeleteCellRed"] forState:UIControlStateNormal];
+
     }
     else
     {
         self.DeleteUnLock.image  = [UIImage imageNamed:@"SwitchButtonLock"];
         self.CellDeleteButton.enabled = NO;
+        [self.CellDeleteButton setBackgroundImage:[UIImage imageNamed:@"DeleteCellGray"] forState:UIControlStateNormal];
     }
 }
 
