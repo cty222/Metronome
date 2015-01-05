@@ -31,10 +31,17 @@
         self.TableView.editing = NO;
 
         [self InitializeEditerView];
+        
+        [self LocalizedStringInitialize];
     }
     return self;
 }
 
+- (void) LocalizedStringInitialize
+{
+    [self.SaveButton setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
+    [self.AddButton setTitle:NSLocalizedString(@"Add", nil) forState:UIControlStateNormal];
+}
 
 - (void) InitializeEditerView
 {
@@ -207,10 +214,6 @@
     return cell;
 }
 
-- (void)checkButtonTapped:(id)sender event:(id)event{
-    NSLog(@"Tapping!!");
-}
-
 - (void) tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     TempoList * CellListSource = _TempoListArrayForBinding[sourceIndexPath.row];
@@ -227,7 +230,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return @"Delete";
+    return NSLocalizedString(@"Delete", nil);
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
@@ -265,7 +268,6 @@
     for (UIView *Subview in Cell.subviews) {
         if ([NSStringFromClass([Subview class]) isEqualToString:@"UITableViewCellScrollView"])
         {
-            NSLog(@"%@", Subview.subviews);
             for (UIView *ControlView in Subview.subviews) {
                 if ([NSStringFromClass([ControlView class]) isEqualToString:@"UITableViewCellEditControl"])
                 {

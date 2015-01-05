@@ -49,4 +49,19 @@ enum SYSTEM_INPUT_ID {
 @property (strong, nonatomic) IBOutlet UISwitch *PlaySingleCellWithMusicSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *PlayMusicLoopingSwitch;
 
+// Localized
+@property (strong, nonatomic) IBOutlet UILabel *SettingsTitle;
+@property (strong, nonatomic) IBOutlet UILabel *BPMFloatEnableLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ListAutoRepeatLabel;
+@property (strong, nonatomic) IBOutlet UILabel *EnableMusicPlayLabel;
+@property (strong, nonatomic) IBOutlet UILabel *DisableListWarmingLabel;
+@property (strong, nonatomic) IBOutlet UILabel *StartTimeWordLabel;
+@property (strong, nonatomic) IBOutlet UILabel *EndTimeWordLabel;
+@property (strong, nonatomic) IBOutlet UILabel *PlayMetronomeWithMusicLabel;
+@property (strong, nonatomic) IBOutlet UILabel *MusicAutoRepeatLabel;
+@property (strong, nonatomic) IBOutlet UILabel *MusicHalfSpeedLabel;
+
+
+
+
 @end

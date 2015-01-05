@@ -1,0 +1,36 @@
+/* 
+  Localizable.strings
+  Groove
+
+  Created by C-ty on 2015/1/6.
+  Copyright (c) 2015年 Cty. All rights reserved.
+*/
+
+// Settings
+"Settings" = "設定";
+"TempoListName" = "列表名稱: ";
+"MusicName" = "音樂名稱: ";
+"BPMFloatEnable" = "開啟BPM小數點";
+"ListRepeat" = "節拍列表自動重播";
+"MusicPlayerOn" = "打開音樂播放器";
+"DisableListWarming" = "(關閉列表播放器)";
+"StartTime" = "開始: ";
+"StopTime" = "結束: ";
+"PlayWithMusic" = "節拍器與音樂一起播放";
+"MusicReapeat" = "音樂自動重播";
+"MusicSpeedHalf" = "音樂速度減半";
+"PleaseSelectASong" = "請選擇一首歌";
+
+// Save Done and Cancel
+"Save" = "儲存";
+"Done" = "完成";
+"Cancel" = "取消";
+"Edit" = "編輯";
+"Add" = "新增";
+"Delete" = "刪除";
+"None" = "沒有";
+"Edit: " = "目前: ";
+"New: " =  "修改: ";
+"(25 charactors max)" = "(最多輸入25個字)";
+
+// Alert

@@ -30,23 +30,15 @@
         [self addSubview:self.EditButton];
         self.EditButton.ShortPressSecond = 0.1f;
         self.EditButton.delegate = self;
-        self.EditButton.NameLabel.text = @"Edit";
+        
+        [self LocalizedStringInitialize];
     }
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (void) LocalizedStringInitialize
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-        [self.EditButton removeFromSuperview];
-        self.EditButton = [[CustomerButton alloc] initWithFrame:self.EditButton.frame];
-        [self addSubview:self.EditButton];
-        self.EditButton.delegate = self;
-        self.EditButton.NameLabel.text = @"Edit";
-    }
-    return self;
+    self.EditButton.NameLabel.text = NSLocalizedString(@"Edit", nil);
 }
 
 // ========================================

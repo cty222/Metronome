@@ -14,5 +14,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *CurrentName;
 @property (strong, nonatomic) IBOutlet UITextField *NewName;
 @property (getter=GetTempoList, setter=SetTempoList:) TempoList*  TempoList;
+@property (strong, nonatomic) IBOutlet UIButton *SaveButton;
+@property (strong, nonatomic) IBOutlet UIButton *CancelButton;
 
 @end

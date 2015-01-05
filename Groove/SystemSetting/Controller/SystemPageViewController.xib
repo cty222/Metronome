@@ -7,23 +7,33 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SystemPageViewController">
             <connections>
+                <outlet property="BPMFloatEnableLabel" destination="08l-M8-doI" id="x6i-60-z7D"/>
                 <outlet property="CancelSubInputView" destination="oU2-v6-2IJ" id="nt2-CA-VmI"/>
                 <outlet property="CurrentSelectedMusic" destination="2dz-WA-1Sg" id="A8F-Gy-ZOd"/>
                 <outlet property="CurrentSelectedTempoList" destination="Lhg-wx-8TA" id="oIY-dy-B52"/>
+                <outlet property="DisableListWarmingLabel" destination="kDN-4D-LnA" id="aXi-mF-682"/>
                 <outlet property="DurationLabel" destination="YsH-FN-23f" id="tew-WD-rg1"/>
                 <outlet property="EnableBPMDoubleMode" destination="I58-1t-ceu" id="ym5-ox-pkg"/>
                 <outlet property="EnableMusicFunction" destination="3gt-f9-ddo" id="YF5-xn-9TR"/>
+                <outlet property="EnableMusicPlayLabel" destination="DDl-GG-7ho" id="gVL-f6-sr6"/>
                 <outlet property="EnableTempoListLooping" destination="Mvq-1s-Djb" id="fTm-2k-hTg"/>
                 <outlet property="EndTimeLabel" destination="eTg-jy-K42" id="zRu-va-Bg9"/>
+                <outlet property="EndTimeWordLabel" destination="tJn-1w-DCK" id="S73-KI-lvF"/>
                 <outlet property="FullView" destination="i5M-Pr-FkT" id="1ma-41-DK3"/>
+                <outlet property="ListAutoRepeatLabel" destination="hm9-5g-7dk" id="YTy-yt-zyK"/>
+                <outlet property="MusicAutoRepeatLabel" destination="pk5-O4-GVA" id="YPD-nT-9V2"/>
+                <outlet property="MusicHalfSpeedLabel" destination="7as-MW-HXs" id="1mP-iM-DJd"/>
                 <outlet property="MusicRateToHalfSwitch" destination="Cpc-Kx-Cwq" id="sCS-3o-uxL"/>
                 <outlet property="MusicTimePicker" destination="A7w-VM-ga3" id="E0Y-MH-qGJ"/>
                 <outlet property="MusicTotalVolume" destination="ZIv-SU-6HS" id="8oN-3E-Gfa"/>
+                <outlet property="PlayMetronomeWithMusicLabel" destination="PgI-BU-0QD" id="Udi-WY-wdF"/>
                 <outlet property="PlayMusicLoopingSwitch" destination="mzh-d4-m0q" id="B8r-IC-yTi"/>
                 <outlet property="PlaySingleCellWithMusicSwitch" destination="Vsu-pW-Doa" id="DfU-G2-Y62"/>
                 <outlet property="ResetTimeRepeatButton" destination="eoB-tF-Mrq" id="Efz-5f-iKD"/>
                 <outlet property="ReturnButton" destination="BNK-rm-aF6" id="C7N-xn-Bkq"/>
-                <outlet property="StartTimeLabel" destination="591-X8-ltK" id="gyy-l5-8Dw"/>
+                <outlet property="SettingsTitle" destination="q9d-PC-fVd" id="PBr-sg-lNx"/>
+                <outlet property="StartTimeLabel" destination="591-X8-ltK" id="Lif-2j-Qgt"/>
+                <outlet property="StartTimeWordLabel" destination="YJD-EZ-icr" id="Ht5-vI-k4S"/>
                 <outlet property="SubInputView" destination="VnB-2r-kof" id="ApI-oC-M2z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -155,7 +165,7 @@
                                     <color key="backgroundColor" red="0.35429972630000001" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Disable list)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kDN-4D-LnA">
-                                    <rect key="frame" x="241" y="97" width="79" height="33"/>
+                                    <rect key="frame" x="242" y="97" width="90" height="33"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                     <color key="textColor" red="1" green="0.15579608019999999" blue="0.14642800040000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -240,13 +250,6 @@
                                         <action selector="TapEndTime:" destination="-1" eventType="touchUpInside" id="N3P-5O-IZw"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tJn-1w-DCK">
-                                    <rect key="frame" x="190" y="0.0" width="35" height="45"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eoB-tF-Mrq">
                                     <rect key="frame" x="9" y="6" width="35" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -262,6 +265,13 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tJn-1w-DCK">
+                                    <rect key="frame" x="185" y="0.0" width="36" height="45"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>

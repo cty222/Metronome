@@ -58,17 +58,17 @@
                         <action selector="Cancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="nMf-bN-YEQ"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(25 charactors)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ex0-Ah-bbM">
-                    <rect key="frame" x="180" y="91" width="124" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yf2-W5-GDb">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yf2-W5-GDb">
                     <rect key="frame" x="8" y="60" width="60" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(25 charactors max)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ex0-Ah-bbM">
+                    <rect key="frame" x="143" y="91" width="161" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -77,10 +77,12 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="AlertTextLabel" destination="Ex0-Ah-bbM" id="H6U-JV-cPn"/>
+                <outlet property="CancelButton" destination="GcD-AX-1TO" id="jfl-6B-NqD"/>
                 <outlet property="CurrentName" destination="8v4-Um-1Ew" id="mtf-Qv-PRQ"/>
                 <outlet property="NewName" destination="O5e-Dl-Tax" id="ReD-87-ecJ"/>
                 <outlet property="NewTitle" destination="Yf2-W5-GDb" id="w2m-qv-apW"/>
                 <outlet property="NowTitle" destination="MIs-i0-eny" id="ksP-NR-IMi"/>
+                <outlet property="SaveButton" destination="KNq-oG-Hsk" id="Iqv-ng-3E9"/>
             </connections>
             <point key="canvasLocation" x="136" y="-71"/>
         </view>

@@ -117,6 +117,8 @@
     [self ChangeControllerEventInitialize];
     
     [self InitMusicPropertyButtonStateTextColor];
+    
+    [self LocalizedStringInitialize];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -124,6 +126,27 @@
     [super viewDidAppear:animated];
     [gPlayMusicChannel Stop];
     [self StopTwickLing];
+}
+
+- (void) LocalizedStringInitialize
+{
+    self.SettingsTitle.text = NSLocalizedString(@"Settings", nil);
+    self.BPMFloatEnableLabel.text = NSLocalizedString(@"BPMFloatEnable", nil);
+    self.ListAutoRepeatLabel.text = NSLocalizedString(@"ListRepeat", nil);
+    self.EnableMusicPlayLabel.text = NSLocalizedString(@"MusicPlayerOn", nil);
+    self.DisableListWarmingLabel.text = NSLocalizedString(@"DisableListWarming", nil);
+    self.StartTimeWordLabel.text = NSLocalizedString(@"StartTime", nil);
+    self.EndTimeWordLabel.text = NSLocalizedString(@"StopTime", nil);
+    self.PlayMetronomeWithMusicLabel.text = NSLocalizedString(@"PlayWithMusic", nil);
+    self.MusicAutoRepeatLabel.text = NSLocalizedString(@"MusicReapeat", nil);
+    self.MusicHalfSpeedLabel.text = NSLocalizedString(@"MusicSpeedHalf", nil);
+    
+    if ([self.DisableListWarmingLabel.text isEqualToString:@"(關閉列表播放器)"])
+    {
+        CGRect WarmingFrame = self.DisableListWarmingLabel.frame;
+        self.DisableListWarmingLabel.frame = CGRectMake(WarmingFrame.origin.x - 45, WarmingFrame.origin.y
+                                                        , WarmingFrame.size.width + 20,  WarmingFrame.size.height);
+    }
 }
 
 - (void) InitMusicPropertyButtonStateTextColor
@@ -167,7 +190,7 @@
         }
     }
     
-    NSString *DisplayName = @"Tempo :   ";
+    NSString *DisplayName = NSLocalizedString(@"TempoListName", nil);
     DisplayName = [DisplayName stringByAppendingString:_CurrentList.tempoListName];
     [self.CurrentSelectedTempoList setTitle:DisplayName forState:UIControlStateNormal];
     
@@ -186,14 +209,11 @@
             [self DoAllMusicSetupSteps: Item];
         }
         
-        // TODO: 如果有其他的值
         [self.MusicTotalVolume setValue:[_CurrentList.musicInfo.volume floatValue] animated:YES];
         gPlayMusicChannel.Volume = self.MusicTotalVolume.value;
     }
     else
     {
-        // TODO: 如果沒有歌曲
-        NSLog(@"???");
         [gPlayMusicChannel SetPrepareNotReady];
         [self FillSongInfo:nil];
     }
@@ -281,7 +301,7 @@
             ArtistName = @"";
         }
 
-        NSString *CurrentSelectedMusicString = @"Muisc :   ";
+        NSString *CurrentSelectedMusicString = NSLocalizedString(@"MusicName", nil);
         CurrentSelectedMusicString = [CurrentSelectedMusicString stringByAppendingString:SongName];
         if(!([SongName isEqualToString:@""] || [ArtistName isEqualToString:@""]))
         {
@@ -294,7 +314,7 @@
     else
     {
         self.DurationLabel.text = [gPlayMusicChannel ReturnTimeValueToString:0.0f];
-        [self.CurrentSelectedMusic setTitle:@"Please select a song" forState:UIControlStateNormal];
+        [self.CurrentSelectedMusic setTitle:NSLocalizedString(@"PleaseSelectASong", nil) forState:UIControlStateNormal];
     }
 }
 

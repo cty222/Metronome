@@ -43,9 +43,18 @@
                                                  selector:@selector(PlayMusicStatusChangedCallBack:)
                                                      name:kPlayMusicStatusChangedEvent
                                                    object:nil];
+        
+        [self LocalizedStringInitialize];
     }
     return self;
 }
+
+- (void) LocalizedStringInitialize
+{
+    [self.SaveButton setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
+    [self.CancelButton setTitle:NSLocalizedString(@"Cancel", nil) forState:UIControlStateNormal];
+}
+
 
 - (IBAction) Save: (UIButton *) SaveButton
 {

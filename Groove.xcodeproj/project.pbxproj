@@ -33,6 +33,7 @@
 		001BFDD11A3F5F2200A56947 /* LoopCellBackGround.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDCF1A3F5F2200A56947 /* LoopCellBackGround.pdf */; };
 		001F01191A05511300189941 /* IssueAndInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 001F01181A05511300189941 /* IssueAndInfo.txt */; };
 		001F011B1A05679D00189941 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001F011A1A05679D00189941 /* iAd.framework */; };
+		0027FC5B1A5B06C300257397 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0027FC5D1A5B06C300257397 /* Localizable.strings */; };
 		00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 00319FB91A0F2EED00CF3C83 /* UINSOperation.m */; };
 		0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */; };
 		003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */; };
@@ -230,6 +231,10 @@
 		001BFDCF1A3F5F2200A56947 /* LoopCellBackGround.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LoopCellBackGround.pdf; sourceTree = "<group>"; };
 		001F01181A05511300189941 /* IssueAndInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IssueAndInfo.txt; sourceTree = "<group>"; };
 		001F011A1A05679D00189941 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		0027FC5C1A5B06C300257397 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0027FC651A5B099400257397 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0027FC661A5B099400257397 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		0027FC671A5B099400257397 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		00319FB81A0F2EED00CF3C83 /* UINSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UINSOperation.h; path = Tools/UINSOperation.h; sourceTree = "<group>"; };
 		00319FB91A0F2EED00CF3C83 /* UINSOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UINSOperation.m; path = Tools/UINSOperation.m; sourceTree = "<group>"; };
 		0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f4.pdf; sourceTree = "<group>"; };
@@ -486,6 +491,14 @@
 			path = Document;
 			sourceTree = "<group>";
 		};
+		0027FC561A5B059300257397 /* StringList */ = {
+			isa = PBXGroup;
+			children = (
+				0027FC5D1A5B06C300257397 /* Localizable.strings */,
+			);
+			path = StringList;
+			sourceTree = "<group>";
+		};
 		003A56A619D3285800747EB3 /* CoreDataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,6 +560,7 @@
 		004BE64519B2DDC7002CD995 /* Groove */ = {
 			isa = PBXGroup;
 			children = (
+				0027FC561A5B059300257397 /* StringList */,
 				008A5CE31A4F0E7000BC744F /* SuperClass */,
 				008A5CA41A4F0DF400BC744F /* UITools */,
 				008A5C4B1A4F071500BC744F /* Metronome */,
@@ -1189,6 +1203,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hant",
 			);
 			mainGroup = 004BE63119B2DDC7002CD995;
 			productRefGroup = 004BE63B19B2DDC7002CD995 /* Products */;
@@ -1314,6 +1329,7 @@
 				004BE65519B2DDC8002CD995 /* Images.xcassets in Resources */,
 				008A5CE01A4F0E3300BC744F /* ListTablePicker.xib in Resources */,
 				008A5CDE1A4F0E3300BC744F /* MusicTimePicker.xib in Resources */,
+				0027FC5B1A5B06C300257397 /* Localizable.strings in Resources */,
 				008A5C8F1A4F0AE600BC744F /* LargeBPMPicker.xib in Resources */,
 				00DA13B419F4F77000F27E25 /* HiE.wav in Resources */,
 				00E1D89A1A585796008A006D /* One.wav in Resources */,
@@ -1411,10 +1427,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0027FC5D1A5B06C300257397 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0027FC5C1A5B06C300257397 /* en */,
+				0027FC651A5B099400257397 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		004BE64819B2DDC7002CD995 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				004BE64919B2DDC7002CD995 /* en */,
+				0027FC661A5B099400257397 /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1423,6 +1449,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				004BE66619B2DDC8002CD995 /* en */,
+				0027FC671A5B099400257397 /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

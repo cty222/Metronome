@@ -32,9 +32,21 @@
         self.CurrentName.textColor = [UIColor whiteColor];
         self.NewTitle.textColor = [UIColor whiteColor];
         self.AlertTextLabel.textColor = [UIColor whiteColor];
+        
+        [self LocalizedStringInitialize];
     }
     return self;
 }
+
+- (void) LocalizedStringInitialize
+{
+    self.NewTitle.text = NSLocalizedString(@"Edit: ", nil);
+    self.NowTitle.text = NSLocalizedString(@"New: ", nil);
+    self.AlertTextLabel.text = NSLocalizedString(@"(25 charactors max)", nil);
+    [self.SaveButton setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
+    [self.CancelButton setTitle:NSLocalizedString(@"Cancel", nil) forState:UIControlStateNormal];
+}
+
 // ========================================
 // property
 //
@@ -54,7 +66,7 @@
     }
     else
     {
-        self.CurrentName.text = @"None";
+        self.CurrentName.text = NSLocalizedString(@"None", nil);
         self.NewName.text = @"";
     }
 }
