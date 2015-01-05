@@ -16,7 +16,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PropertyDialogArrow" id="0RF-ON-NA2">
-                    <rect key="frame" x="237" y="19" width="16" height="28"/>
+                    <rect key="frame" x="237" y="19" width="16" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="O35-Mk-kGT">
@@ -48,7 +48,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="ArrowView" destination="0RF-ON-NA2" id="uy5-ru-95n"/>
+                <outlet property="ArrowView" destination="0RF-ON-NA2" id="lUV-6l-UCD"/>
                 <outlet property="BackgroundView" destination="DUv-fJ-7uY" id="nvp-tK-mNo"/>
                 <outlet property="CellDeleteButton4S" destination="Sqx-TJ-QeL" id="cpl-zz-Odg"/>
                 <outlet property="ContentScrollView" destination="O35-Mk-kGT" id="5lp-Mi-Fct"/>
