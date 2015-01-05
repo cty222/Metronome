@@ -234,6 +234,15 @@
     [self ShowMusicPicker];
 }
 
+- (IBAction)ResetStartAndStopTime:(id)sender
+{
+    _CurrentList.musicInfo.startTime = [NSNumber numberWithFloat:0.0f];
+    _CurrentList.musicInfo.endTime = [NSNumber numberWithFloat:gPlayMusicChannel.duration];
+    [self SyncStartAndEndTime];
+    
+    [gMetronomeModel Save];
+}
+
 - (void) ShowMusicPicker
 {
     self.MusicTimePicker.DurationTime.text = self.DurationLabel.text;

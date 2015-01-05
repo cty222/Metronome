@@ -31,6 +31,7 @@ enum SYSTEM_INPUT_ID {
 
 @property (strong, nonatomic) IBOutlet UIButton *StartTimeLabel;
 @property (strong, nonatomic) IBOutlet UIButton *EndTimeLabel;
+@property (strong, nonatomic) IBOutlet UIButton *ResetTimeRepeatButton;
 
 
 @property (strong, nonatomic) IBOutlet UIView *SubInputView;
