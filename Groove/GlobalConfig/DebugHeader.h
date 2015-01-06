@@ -15,7 +15,7 @@
 #define DEBUG_CLOSE 0
 
 // Display Audio log
-#define AUDIO_LOG DEBUG_OPEN
+#define AUDIO_LOG DEBUG_CLOSE
 #define CTY_DEBUG DEBUG_CLOSE
 
 #endif
