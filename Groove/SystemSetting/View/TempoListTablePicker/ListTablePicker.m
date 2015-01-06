@@ -150,10 +150,10 @@
         if (_NoSelectedAlert == nil)
         {
             _NoSelectedAlert = [[UIAlertView alloc]
-                                initWithTitle:@"Selected Warming"
-                                message:@"No Selected Item"
+                                initWithTitle:NSLocalizedString(@"Selected Warming", nil)
+                                message:NSLocalizedString(@"No Selected Item", nil)
                                 delegate:nil
-                                cancelButtonTitle:@"OK, I know it."
+                                cancelButtonTitle:NSLocalizedString(@"OK, I know it.", nil)
                                 otherButtonTitles:nil, nil];
         }
         [_NoSelectedAlert show];

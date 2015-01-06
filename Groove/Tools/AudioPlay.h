@@ -11,14 +11,15 @@
 #import <OpenAl/al.h>
 #import <OpenAl/alc.h>
 #import <AudioToolbox/AudioToolbox.h>
-#import "BeepBound.h"
 #import <AVFoundation/AVFoundation.h>
 
 // Click voice class
+#import "BeepBound.h"
 #import "NomalHiClickVoice.h"
 #import "HumanVoice.h"
-#import "DebugHeader.h"
 
+#import "GlobalConfig.h"
+#import "DebugHeader.h"
 
 @class AudioPlay;
 // it won't work if add static

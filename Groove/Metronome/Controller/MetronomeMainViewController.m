@@ -163,11 +163,11 @@
     [self.SystemPageController InitializeSystemButton];
     
     
-    [self GlobaleventInitialize];
+    [self GlobalEventInitialize];
     
 }
 
-- (void) GlobaleventInitialize
+- (void) GlobalEventInitialize
 {
     // Change View Controller
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -179,6 +179,11 @@
                                              selector:@selector(ChangePageToMetronomeView:)
                                                  name:kChangeBackToMetronomeView
                                                object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(VoiceStopByInterrupt:)
+                                                 name:kVoiceStopByInterrupt
+                                               object:nil];
 }
 
 - (void) ChangePageToSystemView:(NSNotification *)Notification
@@ -189,6 +194,11 @@
 - (void) ChangePageToMetronomeView:(NSNotification *)Notification
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) VoiceStopByInterrupt: (NSNotification *)Notification
+{
+    self.PlayingMode = STOP_PLAYING;
 }
 
 - (void) InitializeSubController

@@ -137,6 +137,8 @@ static ALCcontext *openALContext;
     
     if (Type == AVAudioSessionInterruptionTypeBegan)
     {
+        // 關掉所有音樂
+        [[NSNotificationCenter defaultCenter] postNotificationName:kVoiceStopByInterrupt object:nil];
     }
     else if (Type == AVAudioSessionInterruptionTypeEnded)
     {

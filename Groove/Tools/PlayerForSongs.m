@@ -337,6 +337,18 @@ static MPMusicPlayerController * MusicPlayer = nil;
     }
 }
 
+- (void)audioPlayerBeginInterruption:(AVAudioPlayer *)player
+{
+    // By pass
+    //NSLog(@"audioPlayerBeginInterruption");
+}
+
+- (void)audioPlayerEndInterruption:(AVAudioPlayer *)player
+{
+    // By pass
+    //NSLog(@"audioPlayerEndInterruption");
+}
+
 //
 // =========================
 

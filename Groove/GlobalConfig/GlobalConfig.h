@@ -79,4 +79,7 @@ enum {
 
 #define kChangeToTempoListPickerView @"kChangeToTempoListPickerView"
 #define kChangeBackToSystemPageView @"kChangeBackToSystemPageView"
+
+#define kVoiceStopByInterrupt @"kVoiceStopByInterrupt"
+
 @end

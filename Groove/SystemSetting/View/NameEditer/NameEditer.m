@@ -82,11 +82,12 @@
     {
         if (_NameErrorAlert == nil)
         {
+            
             _NameErrorAlert = [[UIAlertView alloc]
-                               initWithTitle:@"Name Error"
-                               message:@"No Name !!"
+                               initWithTitle:NSLocalizedString(@"Name Error", nil)
+                               message:NSLocalizedString(@"No Name !!", nil)
                                delegate:nil
-                               cancelButtonTitle:@"OK, I know it."
+                               cancelButtonTitle:NSLocalizedString(@"OK, I know it.", nil)
                                otherButtonTitles:nil, nil];
         }
         [_NameErrorAlert show];
@@ -99,10 +100,10 @@
         if (_NameTooLongAlert == nil)
         {
             _NameTooLongAlert = [[UIAlertView alloc]
-                               initWithTitle:@"Name Error"
-                               message:@"Name is too long, it can't over 25 character."
+                               initWithTitle:NSLocalizedString(@"Name Error", nil)
+                               message:NSLocalizedString(@"Name is too long, it can't over 25 character.", nil)
                                delegate:nil
-                               cancelButtonTitle:@"OK, I know it."
+                               cancelButtonTitle:NSLocalizedString(@"OK, I know it.", nil)
                                otherButtonTitles:nil, nil];
         }
         [_NameTooLongAlert show];
