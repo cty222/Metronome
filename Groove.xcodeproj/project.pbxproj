@@ -80,6 +80,12 @@
 		006739361A55D256008B6A2F /* NameEditer.m in Sources */ = {isa = PBXBuildFile; fileRef = 006739351A55D256008B6A2F /* NameEditer.m */; };
 		006739381A55D26B008B6A2F /* NameEditer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006739371A55D26B008B6A2F /* NameEditer.xib */; };
 		0069994D1A5C458900B01E5F /* VoiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0069994C1A5C458900B01E5F /* VoiceType.m */; };
+		0069994F1A5C653200B01E5F /* fNewCircleButton_f3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0069994E1A5C653200B01E5F /* fNewCircleButton_f3.pdf */; };
+		006999541A5C656100B01E5F /* PlayList_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006999501A5C656100B01E5F /* PlayList_red.pdf */; };
+		006999551A5C656100B01E5F /* PlayList.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006999511A5C656100B01E5F /* PlayList.pdf */; };
+		006999561A5C656100B01E5F /* PlayMusic_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006999521A5C656100B01E5F /* PlayMusic_red.pdf */; };
+		006999571A5C656100B01E5F /* PlayMusic.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006999531A5C656100B01E5F /* PlayMusic.pdf */; };
+		0069995B1A5C69DD00B01E5F /* ResetTime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0069995A1A5C69DD00B01E5F /* ResetTime.pdf */; };
 		006DAF2A1A50777900DEBA01 /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 006DAF291A50777900DEBA01 /* TempoCell.m */; };
 		006DAF2D1A5083AF00DEBA01 /* MetronomeBehaviorProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 006DAF2C1A5083AF00DEBA01 /* MetronomeBehaviorProperties.m */; };
 		0071A9AE1A2B075F00EA57D2 /* LoopCellScrollView.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9AD1A2B075F00EA57D2 /* LoopCellScrollView.pdf */; };
@@ -145,10 +151,7 @@
 		0098D7C41A5999A90001DE00 /* Delete.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7C01A5999A90001DE00 /* Delete.pdf */; };
 		0098D7C51A5999A90001DE00 /* Delete_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7C11A5999A90001DE00 /* Delete_red.pdf */; };
 		0098D7C71A5999C50001DE00 /* MusicListen.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7C61A5999C50001DE00 /* MusicListen.pdf */; };
-		0098D7CA1A5999D10001DE00 /* PlayList.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7C81A5999D10001DE00 /* PlayList.pdf */; };
-		0098D7CB1A5999D10001DE00 /* PlayMusic.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7C91A5999D10001DE00 /* PlayMusic.pdf */; };
 		0098D7CD1A5999DA0001DE00 /* SyncTime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7CC1A5999DA0001DE00 /* SyncTime.pdf */; };
-		0098D7CF1A5999E60001DE00 /* NewCircleButton_f3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7CE1A5999E60001DE00 /* NewCircleButton_f3.pdf */; };
 		0098D7D11A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7D01A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib */; };
 		0098D7D41A59B0680001DE00 /* LoopCellEditerView4S.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7D31A59B0680001DE00 /* LoopCellEditerView4S.xib */; };
 		00A840501A43509200EA11B8 /* TempoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A8404F1A43509200EA11B8 /* TempoList.m */; };
@@ -293,6 +296,12 @@
 		006739371A55D26B008B6A2F /* NameEditer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameEditer.xib; sourceTree = "<group>"; };
 		0069994B1A5C458900B01E5F /* VoiceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoiceType.h; path = CoreDataSubClass/VoiceType.h; sourceTree = "<group>"; };
 		0069994C1A5C458900B01E5F /* VoiceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoiceType.m; path = CoreDataSubClass/VoiceType.m; sourceTree = "<group>"; };
+		0069994E1A5C653200B01E5F /* fNewCircleButton_f3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = fNewCircleButton_f3.pdf; sourceTree = "<group>"; };
+		006999501A5C656100B01E5F /* PlayList_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayList_red.pdf; sourceTree = "<group>"; };
+		006999511A5C656100B01E5F /* PlayList.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayList.pdf; sourceTree = "<group>"; };
+		006999521A5C656100B01E5F /* PlayMusic_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayMusic_red.pdf; sourceTree = "<group>"; };
+		006999531A5C656100B01E5F /* PlayMusic.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayMusic.pdf; sourceTree = "<group>"; };
+		0069995A1A5C69DD00B01E5F /* ResetTime.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ResetTime.pdf; sourceTree = "<group>"; };
 		006DAF281A50777900DEBA01 /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
 		006DAF291A50777900DEBA01 /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
 		006DAF2B1A5083AF00DEBA01 /* MetronomeBehaviorProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetronomeBehaviorProperties.h; path = GlobalConfig/MetronomeBehaviorProperties.h; sourceTree = "<group>"; };
@@ -391,10 +400,7 @@
 		0098D7C01A5999A90001DE00 /* Delete.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Delete.pdf; sourceTree = "<group>"; };
 		0098D7C11A5999A90001DE00 /* Delete_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Delete_red.pdf; sourceTree = "<group>"; };
 		0098D7C61A5999C50001DE00 /* MusicListen.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = MusicListen.pdf; sourceTree = "<group>"; };
-		0098D7C81A5999D10001DE00 /* PlayList.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayList.pdf; sourceTree = "<group>"; };
-		0098D7C91A5999D10001DE00 /* PlayMusic.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayMusic.pdf; sourceTree = "<group>"; };
 		0098D7CC1A5999DA0001DE00 /* SyncTime.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SyncTime.pdf; sourceTree = "<group>"; };
-		0098D7CE1A5999E60001DE00 /* NewCircleButton_f3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f3.pdf; sourceTree = "<group>"; };
 		0098D7D01A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronmoneTopSubViewIphone4S.xib; sourceTree = "<group>"; };
 		0098D7D31A59B0680001DE00 /* LoopCellEditerView4S.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoopCellEditerView4S.xib; sourceTree = "<group>"; };
 		00A8404E1A43509100EA11B8 /* TempoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoList.h; path = CoreDataSubClass/TempoList.h; sourceTree = "<group>"; };
@@ -625,6 +631,7 @@
 		0059D13E1A56FFA60058C5E3 /* SystemSetting */ = {
 			isa = PBXGroup;
 			children = (
+				0069995A1A5C69DD00B01E5F /* ResetTime.pdf */,
 				0098D7CC1A5999DA0001DE00 /* SyncTime.pdf */,
 				0098D7C61A5999C50001DE00 /* MusicListen.pdf */,
 				0059D15C1A5710490058C5E3 /* SystemButtonBar.pdf */,
@@ -638,8 +645,10 @@
 		0059D15E1A5710850058C5E3 /* PlayButton */ = {
 			isa = PBXGroup;
 			children = (
-				0098D7C81A5999D10001DE00 /* PlayList.pdf */,
-				0098D7C91A5999D10001DE00 /* PlayMusic.pdf */,
+				006999501A5C656100B01E5F /* PlayList_red.pdf */,
+				006999511A5C656100B01E5F /* PlayList.pdf */,
+				006999521A5C656100B01E5F /* PlayMusic_red.pdf */,
+				006999531A5C656100B01E5F /* PlayMusic.pdf */,
 				0059D15F1A5710850058C5E3 /* PlayBlack.pdf */,
 				0059D1601A5710850058C5E3 /* PlayRed.pdf */,
 			);
@@ -1048,7 +1057,7 @@
 				0049ECC91A40C0500016EA3D /* NewCircle_Big_Inner.pdf */,
 				003473501A0FE7CE003C9F3C /* NewCircleButton_f2.pdf */,
 				0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */,
-				0098D7CE1A5999E60001DE00 /* NewCircleButton_f3.pdf */,
+				0069994E1A5C653200B01E5F /* fNewCircleButton_f3.pdf */,
 				001BFDBB1A3F550200A56947 /* BPMArrowDown.pdf */,
 				001BFDBC1A3F550200A56947 /* BPMArrowUp.pdf */,
 				001BFDCB1A3F5EE600A56947 /* BPMArrowDown_4S.pdf */,
@@ -1227,7 +1236,9 @@
 				001BFDCE1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf in Resources */,
 				008A5CE21A4F0E3300BC744F /* TempoListUICell.xib in Resources */,
 				001BFDBD1A3F550200A56947 /* BPMArrowDown.pdf in Resources */,
+				0069995B1A5C69DD00B01E5F /* ResetTime.pdf in Resources */,
 				00E1D8CE1A587032008A006D /* Nine.wav in Resources */,
+				0069994F1A5C653200B01E5F /* fNewCircleButton_f3.pdf in Resources */,
 				0071A9B71A2B090100EA57D2 /* Accent.pdf in Resources */,
 				001BFDAB1A3F4E9200A56947 /* ValueDownArrow.pdf in Resources */,
 				0098D7C71A5999C50001DE00 /* MusicListen.pdf in Resources */,
@@ -1250,6 +1261,7 @@
 				00E8C0421A36119200D53F82 /* 8NotesYellow.pdf in Resources */,
 				0059D15D1A5710490058C5E3 /* SystemButtonBar.pdf in Resources */,
 				00E1D8CC1A586F44008A006D /* Four.wav in Resources */,
+				006999541A5C656100B01E5F /* PlayList_red.pdf in Resources */,
 				0059D1611A5710850058C5E3 /* PlayBlack.pdf in Resources */,
 				0049ECCA1A40C0500016EA3D /* NewCircle_Big_Inner.pdf in Resources */,
 				001BFDA21A3F4DE900A56947 /* NomalLowClickVoice.pdf in Resources */,
@@ -1270,6 +1282,7 @@
 				008A5CA31A4F0B1200BC744F /* MetronmoneTopSubViewIphone.xib in Resources */,
 				004DF46B1A40A6AD00E79C0E /* TapAnimation_2_red.pdf in Resources */,
 				00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */,
+				006999551A5C656100B01E5F /* PlayList.pdf in Resources */,
 				0098D7C41A5999A90001DE00 /* Delete.pdf in Resources */,
 				001BFDC81A3F5EBD00A56947 /* AppIcon_40x3.png in Resources */,
 				008A5C911A4F0AE600BC744F /* CircleButton.xib in Resources */,
@@ -1283,14 +1296,12 @@
 				008A5C951A4F0AE600BC744F /* MetronomeSelectBar.xib in Resources */,
 				001BFDC71A3F5EBD00A56947 /* AppIcon_40x2.png in Resources */,
 				0071A9B51A2B090100EA57D2 /* 16Note.pdf in Resources */,
-				0098D7CF1A5999E60001DE00 /* NewCircleButton_f3.pdf in Resources */,
 				0071A9CF1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf in Resources */,
 				008A5D001A4F18E200BC744F /* TempoListViewController.xib in Resources */,
 				0059D16B1A571BCE0058C5E3 /* CustomerButton.xib in Resources */,
 				008A5CCE1A4F0E1B00BC744F /* TimeSignaturePickerView.xib in Resources */,
 				0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */,
 				00E1D8BE1A586859008A006D /* Six.wav in Resources */,
-				0098D7CB1A5999D10001DE00 /* PlayMusic.pdf in Resources */,
 				0059D1481A57012C0058C5E3 /* System.pdf in Resources */,
 				001BFDCA1A3F5EBD00A56947 /* AppIcon_60x3.png in Resources */,
 				0049ECC61A40BE2B0016EA3D /* TapAnimation_1_gray.pdf in Resources */,
@@ -1306,13 +1317,13 @@
 				004DF4621A40A69900E79C0E /* SwitchButtonLock.pdf in Resources */,
 				008A5C5E1A4F071600BC744F /* MetronomeMainViewController.xib in Resources */,
 				001BFDC51A3F5EBD00A56947 /* AppIcon_29x2.png in Resources */,
+				006999561A5C656100B01E5F /* PlayMusic_red.pdf in Resources */,
 				00E1D8B61A5863A3008A006D /* Eight.wav in Resources */,
 				00E1D8D21A58724E008A006D /* Seven.wav in Resources */,
 				00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */,
 				00E8C0441A36119200D53F82 /* QuarterNoteYellow.pdf in Resources */,
 				00E8C0221A3610FD00D53F82 /* TrippleNoteRed.pdf in Resources */,
 				00E1D8D01A587037008A006D /* Ten.wav in Resources */,
-				0098D7CA1A5999D10001DE00 /* PlayList.pdf in Resources */,
 				00E1D89E1A585796008A006D /* Three.wav in Resources */,
 				00E8C0451A36119200D53F82 /* TrippleNoteYellow.pdf in Resources */,
 				00E1D8B21A586160008A006D /* Human_and.wav in Resources */,
@@ -1330,6 +1341,7 @@
 				008A5CE01A4F0E3300BC744F /* ListTablePicker.xib in Resources */,
 				008A5CDE1A4F0E3300BC744F /* MusicTimePicker.xib in Resources */,
 				0027FC5B1A5B06C300257397 /* Localizable.strings in Resources */,
+				006999571A5C656100B01E5F /* PlayMusic.pdf in Resources */,
 				008A5C8F1A4F0AE600BC744F /* LargeBPMPicker.xib in Resources */,
 				00DA13B419F4F77000F27E25 /* HiE.wav in Resources */,
 				00E1D89A1A585796008A006D /* One.wav in Resources */,

@@ -72,16 +72,15 @@
     switch (Parent.PlayingMode) {
         case STOP_PLAYING:
             [self.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayBlack"] forState:UIControlStateNormal];
-            [self.PlayCellListButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [self.PlayCellListButton setBackgroundImage:[UIImage imageNamed:@"PlayList"] forState:UIControlStateNormal];
             break;
         case SINGLE_PLAYING:
             [self.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
             break;
         case LIST_PLAYING:
             // TODO : 要改成Stop圖
-            [self.PlayCellListButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             [self.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
-
+            [self.PlayCellListButton setBackgroundImage:[UIImage imageNamed:@"PlayList_Red"] forState:UIControlStateNormal];
             break;
     }
 }
@@ -169,12 +168,11 @@
 {
     if (gPlayMusicChannel.Playing)
     {
-        [self.PlayMusicButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        
+        [self.PlayMusicButton setBackgroundImage:[UIImage imageNamed:@"PlayMusic_Red"] forState:UIControlStateNormal];
     }
     else
     {
-        [self.PlayMusicButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.PlayMusicButton setBackgroundImage:[UIImage imageNamed:@"PlayMusic"] forState:UIControlStateNormal];
     }
 }
 
