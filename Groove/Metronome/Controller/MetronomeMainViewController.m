@@ -220,7 +220,7 @@
     _PlayingMode = STOP_PLAYING;
     _FocusIndex = -1;
     
-    self.ChangeBPMValueFlag = NO;
+    self.IsNeededToRestartMetronomeClick = NO;
 }
 
 - (void) InitializeTopSubView
@@ -718,6 +718,9 @@
 //Start click
 - (void) StartClick
 {
+    //重要!! 只要被改過值都會被設成YES.
+    self.IsNeededToRestartMetronomeClick = NO;
+
     if (PlaySoundTimer != nil) {
         [self StopClick];
         [self ResetCounter];
@@ -745,7 +748,7 @@
     
     
     float CurrentBPMValue = [_CellParameterSettingSubController GetBPMValueWithSyncMode];
-
+    
     PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE(CurrentBPMValue)
                                                       target:self
                                                     selector:@selector(MetronomeTicker:)
@@ -760,9 +763,26 @@
         [self ResetCounter];
         [self StopClick];
         [ThisTimer invalidate];
+        return;
     }
     
-    [NotesTool NotesFunc:_CurrentPlayingNoteCounter :_NTool];
+    // Play function
+    [self TriggerMetronomeSounds];
+    
+    [self AddMetronomeCounter];
+    
+    if ([self IsLoopCounterIsLargerThenSetupValue])
+    {
+        [ThisTimer invalidate];
+        return;
+    }
+    
+    [self RestartClickIfBPMValueBeSetWhenPlaying];
+}
+
+- (void) AddMetronomeCounter
+{
+    // Count script
     _CurrentPlayingNoteCounter++;
     
     if (_CurrentPlayingNoteCounter >= RESET_CLICK)
@@ -776,22 +796,39 @@
             if (self.PlayingMode >= LIST_PLAYING)
             {
                 _LoopCountCounter++;
-                if (_LoopCountCounter >= [self.CurrentCell.loopCount intValue])
-                {
-                    [self ChangeToNextLoopCell];
-                    return;
-                }
             }
         }
     }
-    
-    if(self.ChangeBPMValueFlag && ThisTimer != nil && self.PlayingMode != STOP_PLAYING)
+}
+
+- (BOOL) IsLoopCounterIsLargerThenSetupValue
+{
+    if (self.PlayingMode >= LIST_PLAYING)
     {
-        self.ChangeBPMValueFlag = NO;
+        if (_LoopCountCounter >= [self.CurrentCell.loopCount intValue])
+        {
+            [self ChangeToNextLoopCell];
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (void) RestartClickIfBPMValueBeSetWhenPlaying
+{
+    if(self.IsNeededToRestartMetronomeClick && self.PlayingMode != STOP_PLAYING)
+    {
         [self StopClick];
         [self StartClick];
     }
 }
+
+- (void) TriggerMetronomeSounds
+{
+    [NotesTool NotesFunc:_CurrentPlayingNoteCounter :_NTool];
+}
+
 
 
 

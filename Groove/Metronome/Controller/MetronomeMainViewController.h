@@ -52,7 +52,7 @@ typedef enum {
 @property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
 @property (getter = GetPlayingMode, setter = SetPlayingMode:) METRONOME_PLAYING_MODE PlayingMode;
 
-@property BOOL ChangeBPMValueFlag;
+@property BOOL IsNeededToRestartMetronomeClick;
 @property MusicProperties * MusicProperties;
 @property MetronomeBehaviorProperties * MetronomeBehaviorProperties;
 

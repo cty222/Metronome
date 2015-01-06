@@ -392,7 +392,7 @@
     
         if (Parent.PlayingMode != STOP_PLAYING)
         {
-            Parent.ChangeBPMValueFlag = YES;
+            Parent.IsNeededToRestartMetronomeClick = YES;
         }
     }
 }
