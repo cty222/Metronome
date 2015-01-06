@@ -71,7 +71,6 @@
 		0059D1621A5710850058C5E3 /* PlayRed.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0059D1601A5710850058C5E3 /* PlayRed.pdf */; };
 		0059D1691A5719770058C5E3 /* CustomerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0059D1681A5719770058C5E3 /* CustomerButton.m */; };
 		0059D16B1A571BCE0058C5E3 /* CustomerButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0059D16A1A571BCE0058C5E3 /* CustomerButton.xib */; };
-		005A93941A2CE10900280507 /* VoiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 005A93931A2CE10900280507 /* VoiceType.m */; };
 		005A93971A2CE10A00280507 /* TimeSignatureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 005A93961A2CE10A00280507 /* TimeSignatureType.m */; };
 		005CDA731A57B9E300B85E4C /* BeepBound.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CDA6E1A57B9E300B85E4C /* BeepBound.m */; };
 		005CDA741A57B9E300B85E4C /* HumanVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CDA701A57B9E300B85E4C /* HumanVoice.m */; };
@@ -80,6 +79,7 @@
 		00612D941A3B7572009A7C88 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00612D931A3B7572009A7C88 /* AVFoundation.framework */; };
 		006739361A55D256008B6A2F /* NameEditer.m in Sources */ = {isa = PBXBuildFile; fileRef = 006739351A55D256008B6A2F /* NameEditer.m */; };
 		006739381A55D26B008B6A2F /* NameEditer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006739371A55D26B008B6A2F /* NameEditer.xib */; };
+		0069994D1A5C458900B01E5F /* VoiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0069994C1A5C458900B01E5F /* VoiceType.m */; };
 		006DAF2A1A50777900DEBA01 /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 006DAF291A50777900DEBA01 /* TempoCell.m */; };
 		006DAF2D1A5083AF00DEBA01 /* MetronomeBehaviorProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 006DAF2C1A5083AF00DEBA01 /* MetronomeBehaviorProperties.m */; };
 		0071A9AE1A2B075F00EA57D2 /* LoopCellScrollView.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9AD1A2B075F00EA57D2 /* LoopCellScrollView.pdf */; };
@@ -278,8 +278,6 @@
 		0059D1671A5719770058C5E3 /* CustomerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerButton.h; sourceTree = "<group>"; };
 		0059D1681A5719770058C5E3 /* CustomerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerButton.m; sourceTree = "<group>"; };
 		0059D16A1A571BCE0058C5E3 /* CustomerButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerButton.xib; sourceTree = "<group>"; };
-		005A93921A2CE10900280507 /* VoiceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoiceType.h; path = CoreDataSubClass/VoiceType.h; sourceTree = "<group>"; };
-		005A93931A2CE10900280507 /* VoiceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoiceType.m; path = CoreDataSubClass/VoiceType.m; sourceTree = "<group>"; };
 		005A93951A2CE10A00280507 /* TimeSignatureType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSignatureType.h; path = CoreDataSubClass/TimeSignatureType.h; sourceTree = "<group>"; };
 		005A93961A2CE10A00280507 /* TimeSignatureType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeSignatureType.m; path = CoreDataSubClass/TimeSignatureType.m; sourceTree = "<group>"; };
 		005CDA6D1A57B9E300B85E4C /* BeepBound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeepBound.h; sourceTree = "<group>"; };
@@ -293,6 +291,8 @@
 		006739341A55D256008B6A2F /* NameEditer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameEditer.h; sourceTree = "<group>"; };
 		006739351A55D256008B6A2F /* NameEditer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameEditer.m; sourceTree = "<group>"; };
 		006739371A55D26B008B6A2F /* NameEditer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameEditer.xib; sourceTree = "<group>"; };
+		0069994B1A5C458900B01E5F /* VoiceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoiceType.h; path = CoreDataSubClass/VoiceType.h; sourceTree = "<group>"; };
+		0069994C1A5C458900B01E5F /* VoiceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoiceType.m; path = CoreDataSubClass/VoiceType.m; sourceTree = "<group>"; };
 		006DAF281A50777900DEBA01 /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
 		006DAF291A50777900DEBA01 /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
 		006DAF2B1A5083AF00DEBA01 /* MetronomeBehaviorProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetronomeBehaviorProperties.h; path = GlobalConfig/MetronomeBehaviorProperties.h; sourceTree = "<group>"; };
@@ -509,10 +509,10 @@
 				006DAF291A50777900DEBA01 /* TempoCell.m */,
 				00A8404E1A43509100EA11B8 /* TempoList.h */,
 				00A8404F1A43509200EA11B8 /* TempoList.m */,
+				0069994B1A5C458900B01E5F /* VoiceType.h */,
+				0069994C1A5C458900B01E5F /* VoiceType.m */,
 				005A93951A2CE10A00280507 /* TimeSignatureType.h */,
 				005A93961A2CE10A00280507 /* TimeSignatureType.m */,
-				005A93921A2CE10900280507 /* VoiceType.h */,
-				005A93931A2CE10900280507 /* VoiceType.m */,
 				001B2B2E19D3CF190057A22E /* DbConfig.h */,
 				001B2B2F19D3CF190057A22E /* DbConfig.m */,
 				003A56A719D3293A00747EB3 /* MetronomeModel.h */,
@@ -1389,7 +1389,6 @@
 				004BE64C19B2DDC8002CD995 /* main.m in Sources */,
 				008A5CF41A4F0E7000BC744F /* XibTableViewCellInterface.m in Sources */,
 				008A5CC91A4F0E1B00BC744F /* LoopCellEditerView.m in Sources */,
-				005A93941A2CE10900280507 /* VoiceType.m in Sources */,
 				008A5C5C1A4F071600BC744F /* LoopAndPlayViewControl.m in Sources */,
 				008A5CF21A4F0E7000BC744F /* ValuePickerTemplate.m in Sources */,
 				001BF2981A531D9A00558052 /* MusicBindingInfo.m in Sources */,
@@ -1401,6 +1400,7 @@
 				008A5CCF1A4F0E1B00BC744F /* VoiceTypePickerView.m in Sources */,
 				008A5CF51A4F0E7000BC744F /* XibViewInterface.m in Sources */,
 				006739361A55D256008B6A2F /* NameEditer.m in Sources */,
+				0069994D1A5C458900B01E5F /* VoiceType.m in Sources */,
 				005A93971A2CE10A00280507 /* TimeSignatureType.m in Sources */,
 				00DA131119F4E94700F27E25 /* NotesTool.m in Sources */,
 				008A5CAF1A4F0DF400BC744F /* OneDigitsValuePicker.m in Sources */,

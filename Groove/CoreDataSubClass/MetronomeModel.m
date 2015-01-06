@@ -128,7 +128,6 @@
                                                    insertNewObjectForEntityForName:NSStringFromClass([TimeSignatureType class]) inManagedObjectContext:_ManagedObjectContext];
         NewTimeSignatureType.timeSignature = (NSString *)TimeSignatureArray[Index];
         NewTimeSignatureType.sortIndex = [NSNumber numberWithInt:Index];
-        NSLog(@"%@", NewTimeSignatureType);
     }
     [self Save];
 }
@@ -154,6 +153,12 @@
         [self SyncTimeSignatureTypeDataTableWithModel];
     }
     
+    // Select TimeSignatureType
+    if (self.VoiceTypeDataTable == nil)
+    {
+        [self SyncVoiceTypeWithModel];
+    }
+    
     // Select TempoList
     if (self.TempoListDataTable == nil)
     {
@@ -164,18 +169,19 @@
     {
         for (int Index = 0 ;Index < 2; Index++)
         {
-            TempoCell* NewTempoList = [NSEntityDescription
+            TempoCell* NewTempoCell = [NSEntityDescription
                                        insertNewObjectForEntityForName:NSStringFromClass([TempoCell class])  inManagedObjectContext:_ManagedObjectContext];
-            NewTempoList.bpmValue = [NSNumber numberWithInt:(50 + (Index + Row) *10)];
-            NewTempoList.loopCount = @1;
-            NewTempoList.accentVolume = @10.0;
-            NewTempoList.quarterNoteVolume = @10.0;
-            NewTempoList.eighthNoteVolume = @7.0;
-            NewTempoList.sixteenNoteVolume = @0;
-            NewTempoList.trippleNoteVolume = @0;
-            NewTempoList.timeSignatureType = self.TimeSignatureTypeDataTable[3];
-            NewTempoList.listOwner = self.TempoListDataTable[Row];
-            NewTempoList.sortIndex = [NSNumber numberWithInt:Index];
+            NewTempoCell.bpmValue = [NSNumber numberWithInt:(50 + (Index + Row) *10)];
+            NewTempoCell.loopCount = @1;
+            NewTempoCell.accentVolume = @10.0;
+            NewTempoCell.quarterNoteVolume = @10.0;
+            NewTempoCell.eighthNoteVolume = @7.0;
+            NewTempoCell.sixteenNoteVolume = @0;
+            NewTempoCell.trippleNoteVolume = @0;
+            NewTempoCell.timeSignatureType = self.TimeSignatureTypeDataTable[3];
+            NewTempoCell.voiceType = self.VoiceTypeDataTable[0];
+            NewTempoCell.listOwner = self.TempoListDataTable[Row];
+            NewTempoCell.sortIndex = [NSNumber numberWithInt:Index];
         }
     }
     [self Save];
@@ -383,6 +389,7 @@
     NewTempoCell.eighthNoteVolume = @0;
     NewTempoCell.sixteenNoteVolume = @0;
     NewTempoCell.trippleNoteVolume = @0;
+    NewTempoCell.voiceType = self.VoiceTypeDataTable[0];
     NewTempoCell.timeSignatureType = self.TimeSignatureTypeDataTable[3];
     NewTempoCell.listOwner = CellOwner;
     NewTempoCell.sortIndex = [NSNumber numberWithInt:[self GetNewEmptySortIndexForTempoCell:CellOwner] ];

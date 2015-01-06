@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="DbConfig" representedClassName="DbConfig" syncable="YES">
         <attribute name="dbVersion" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
     </entity>
@@ -38,7 +38,7 @@
     <entity name="VoiceType" representedClassName="VoiceType" syncable="YES">
         <attribute name="sortIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="voiceType" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="usingCell" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TempoCell" inverseName="voiceType" inverseEntity="TempoCell" syncable="YES"/>
+        <relationship name="usingCell" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TempoCell" inverseName="voiceType" inverseEntity="TempoCell" syncable="YES"/>
     </entity>
     <fetchRequest name="FetchCellFromSigleOwner" entity="TempoCell" predicateString="listOwner == $listOwner"/>
     <fetchRequest name="FetchDbVersion" entity="DbConfig" predicateString="dbVersion >= $DbVersion"/>

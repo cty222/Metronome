@@ -447,7 +447,6 @@
     
     // Set Voice
     self.CurrentVoice = [gClickVoiceList objectAtIndex:[self.CurrentCell.voiceType.sortIndex intValue]];
-    self.CurrentCell.voiceType = self.CurrentCell.voiceType;
     [_CellParameterSettingSubController ChangeVoiceTypePickerImage:[self.CurrentCell.voiceType.sortIndex intValue]];
     
     // Set TimeSignature

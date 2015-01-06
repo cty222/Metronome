@@ -199,13 +199,15 @@
     
     // Because 0 is no voice
     NSInteger VoiceIndex = TriggerItem.tag;
-    Parent.CurrentVoice = [gClickVoiceList objectAtIndex:VoiceIndex];
     Parent.CurrentCell.voiceType = (VoiceType *)VoiceTypeArray[TriggerItem.tag];
+    Parent.CurrentVoice = [gClickVoiceList objectAtIndex:VoiceIndex];
+    
+    // TODO : 不要save這麼頻繁
+    [gMetronomeModel Save];
     
     [self.VoiceTypePicker setBackgroundImage:[TriggerItem backgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];
 
-    // TODO : 不要save這麼頻繁
-    [gMetronomeModel Save];
+
 }
 
 - (void) ChangeVoiceTypePickerImage: (int) TagNumber
