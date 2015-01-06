@@ -28,15 +28,15 @@
 "Edit" = "編輯";
 "Add" = "新增";
 "Delete" = "刪除";
-"None" = "沒有";
+"None" = "(沒有)";
 "Edit: " = "目前: ";
 "New: " =  "修改: ";
 "(25 charactors max)" = "(最多輸入25個字)";
 
 // Alert
-"Selected Warming" = "選擇警告";
+"Selected Warming" = "警告";
 "No Selected Item" = "沒有選擇任何項目";
-"OK, I know it." = "我知道";
+"OK, I know it." = "好, 我知道了";
 
 "Name Error" = "名字錯誤";
 "No Name !!" = "沒有輸入名字!!";

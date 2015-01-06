@@ -48,18 +48,28 @@
     if (_CurrentList == nil)
     {
         NSLog(@"TempoListViewController : FetchCurrentTempoListFromModel from LastTempoListIndexUserSelected Error");
-        _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndexUserSelected]];
+        _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:@0];
         if (_CurrentList == nil)
         {
             NSLog(@"TempoListViewController : FetchCurrentTempoListFromModel from 0 Error");
+        }
+        else
+        {
+            // 修正嚴重錯誤
+            [GlobalConfig SetLastTempoListIndexUserSelected:0];
         }
     }
 }
 
 - (IBAction) Save: (UIButton *) SaveButton
 {
-    [GlobalConfig SetLastTempoListIndexUserSelected:(int)[self.ListTablePicker GetSelectedIndex]];
-    [gMetronomeModel Save];
+    int NewIndex = (int)[self.ListTablePicker GetSelectedIndex];
+    if (NewIndex < 0)
+    {
+        NSLog(@"Error: 有錯誤");
+        NewIndex = 0;
+    }
+    [GlobalConfig SetLastTempoListIndexUserSelected:NewIndex];
     [self ChangeToTempoListPickerControllerView];
 }
 
@@ -77,9 +87,26 @@
         return;
     }
     
+    if ([_CurrentList isEqual:TargetTempoList])
+    {
+        for (TempoList * TmpList in gMetronomeModel.TempoListDataTable)
+        {
+            if (![TmpList isEqual:TargetTempoList])
+            {
+                _CurrentList = TmpList;
+                break;
+            }
+        }
+    }
+    
     [gMetronomeModel DeleteTempoList:TargetTempoList];
     [gMetronomeModel SyncTempoListDataTableWithModel];
     [self FillTempoListFromModel];
+    
+    // 重要??
+    [self.ListTablePicker SetSelectedCell: _CurrentList];
+    int NewSelectIndex = (int)[self.ListTablePicker GetSelectedIndex];
+    [GlobalConfig SetLastTempoListIndexUserSelected:NewSelectIndex];
 }
 
 - (void) FillTempoListFromModel

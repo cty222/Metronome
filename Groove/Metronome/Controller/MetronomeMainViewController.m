@@ -286,6 +286,10 @@
         {
             NSLog(@"嚴重錯誤: TempoList 資料庫需要reset");
         }
+        else
+        {
+            [GlobalConfig SetLastTempoListIndexUserSelected:0];
+        }
     }
 }
 
