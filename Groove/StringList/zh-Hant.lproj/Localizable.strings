@@ -7,7 +7,7 @@
 */
 
 // Settings
-"Settings" = "設定";
+"Settings" = "設置";
 "TempoListName" = "列表名稱: ";
 "MusicName" = "音樂名稱: ";
 "BPMFloatEnable" = "開啟BPM小數點";
@@ -39,5 +39,5 @@
 "OK, I know it." = "我知道";
 
 "Name Error" = "名字錯誤";
-"No Name !!" = "沒有名字 !!";
+"No Name !!" = "沒有輸入名字!!";
 "Name is too long, it can't over 25 character." = "名字太長, 不能輸入超過25個字";
