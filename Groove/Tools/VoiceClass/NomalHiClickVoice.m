@@ -15,12 +15,12 @@
 //================================
 - (void) InitializeVoicePath
 {
-    self.AccentPath = [[NSBundle mainBundle] pathForResource:@"HiAccent" ofType:@"wav"];
-    self.FirstBeatPath = [[NSBundle mainBundle] pathForResource:@"HiFirst" ofType:@"wav"];
-    self.AndBeatPath = [[NSBundle mainBundle] pathForResource:@"HiAnd" ofType:@"wav"];
-    self.EBeatPath = [[NSBundle mainBundle] pathForResource:@"HiE" ofType:@"wav"];
-    self.ABeatPath = [[NSBundle mainBundle] pathForResource:@"HiE" ofType:@"wav"];
-    self.TicBeatPath = [[NSBundle mainBundle] pathForResource:@"HiGa" ofType:@"wav"];
-    self.TocBeatPath = [[NSBundle mainBundle] pathForResource:@"HiGa" ofType:@"wav"];
+    self.AccentPath = [[NSBundle mainBundle] pathForResource:@"Accent_Hi" ofType:@"wav"];
+    self.FirstBeatPath = [[NSBundle mainBundle] pathForResource:@"Quarter_Hi" ofType:@"wav"];
+    self.AndBeatPath = [[NSBundle mainBundle] pathForResource:@"And_Hi" ofType:@"wav"];
+    self.EBeatPath = [[NSBundle mainBundle] pathForResource:@"E_Hi" ofType:@"wav"];
+    self.ABeatPath = [[NSBundle mainBundle] pathForResource:@"E_Hi" ofType:@"wav"];
+    self.TicBeatPath = [[NSBundle mainBundle] pathForResource:@"Tic_Hi" ofType:@"wav"];
+    self.TocBeatPath = [[NSBundle mainBundle] pathForResource:@"Tic_Hi" ofType:@"wav"];
 }
 @end

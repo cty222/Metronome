@@ -39,5 +39,5 @@
 "OK, I know it." = "OK, I know it.";
 
 "Name Error" = "Name Error";
-"No Name !!" = "No Name !!";
-"Name is too long, it can't over 25 character." = "Name is too long, it can't over 25 character.";
+"No Name !!" = "No input name !!";
+"Name is too long, it can't over 25 character." = "This name is too long, it can't over 25 character.";
