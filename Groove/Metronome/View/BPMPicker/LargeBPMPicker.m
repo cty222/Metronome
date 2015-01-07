@@ -242,8 +242,8 @@
         return;
     }
     
-    CGRect UpArrowFrame = self.UpArrow.frame;
-    CGRect DownArrowFrame = self.DownArrow.frame;
+    CGRect UpArrowFrame = self.UpValueFrameView.frame;
+    CGRect DownArrowFrame = self.DownValueFrameView.frame;
     
     if ((TouchLocation.x > UpArrowFrame.origin.x && TouchLocation.x < UpArrowFrame.origin.x + UpArrowFrame.size.width) && (TouchLocation.y > UpArrowFrame.origin.y && TouchLocation.y < UpArrowFrame.origin.y + UpArrowFrame.size.height))
     {

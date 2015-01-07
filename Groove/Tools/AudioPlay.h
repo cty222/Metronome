@@ -15,7 +15,8 @@
 
 // Click voice class
 #import "BeepBound.h"
-#import "NomalHiClickVoice.h"
+#import "NormalHiClickVoice.h"
+#import "NormalLowClickVoice.h"
 #import "HumanVoice.h"
 
 #import "GlobalConfig.h"

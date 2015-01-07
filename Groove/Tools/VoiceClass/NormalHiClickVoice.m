@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 C-ty. All rights reserved.
 //
 
-#import "NomalHiClickVoice.h"
+#import "NormalHiClickVoice.h"
 
-@implementation NomalHiClickVoice
+@implementation NormalHiClickVoice
 
 //================================
 // It need to be override

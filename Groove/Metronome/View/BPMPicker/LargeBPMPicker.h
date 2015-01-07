@@ -39,6 +39,8 @@ typedef enum{
 
 @property (weak, nonatomic) IBOutlet UIImageView *UpArrow;
 @property (weak, nonatomic) IBOutlet UIImageView *DownArrow;
+@property (strong, nonatomic) IBOutlet UIView *UpValueFrameView;
+@property (strong, nonatomic) IBOutlet UIView *DownValueFrameView;
 
 //
 @property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
