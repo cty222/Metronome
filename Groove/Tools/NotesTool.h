@@ -32,7 +32,7 @@ typedef enum {
     TWO_NOTE            = 2,
     FOUR_NOTE           = 4,
     EIGHT_NOTE          = 8,
-    TWELEVE_NOTE        = 12,
+    TWELVE_NOTE        = 12,
     SIXTEEN_NOTE        = 16,
     TWENTY_FOUR_NOTE    = 24,
 } NOTES_FAMILY;

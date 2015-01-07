@@ -580,7 +580,7 @@
             break;
         case 11:
             [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                                : [self.CurrentVoice GetTweleveBeatVoice]];
+                                : [self.CurrentVoice GetTwelveBeatVoice]];
             break;
     }
 }

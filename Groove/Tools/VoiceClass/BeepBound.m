@@ -44,7 +44,7 @@
     [self LoadVoice: &NineBeatVoice : [self NineBeatPath]];
     [self LoadVoice: &TenBeatVoice : [self TenBeatPath]];
     [self LoadVoice: &ElevenBeatVoice : [self ElevenBeatPath]];
-    [self LoadVoice: &TweleveBeatVoice : [self TweleveBeatPath]];
+    [self LoadVoice: &TwelveBeatVoice : [self TwelveBeatPath]];
 
     return self;
 }
@@ -162,11 +162,11 @@
         alDeleteSources(1, &ElevenBeatVoice.SourceID);
         alDeleteBuffers(1, &ElevenBeatVoice.outputBuffer);
     }
-    if (TweleveBeatVoice.Buf)
+    if (TwelveBeatVoice.Buf)
     {
-        free(TweleveBeatVoice.Buf);
-        alDeleteSources(1, &TweleveBeatVoice.SourceID);
-        alDeleteBuffers(1, &TweleveBeatVoice.outputBuffer);
+        free(TwelveBeatVoice.Buf);
+        alDeleteSources(1, &TwelveBeatVoice.SourceID);
+        alDeleteBuffers(1, &TwelveBeatVoice.outputBuffer);
     }
     AccentVoice.Buf       = nil;
     AccentVoice.Size      = 0;
@@ -205,8 +205,8 @@
     TenBeatVoice.Size  = 0;
     ElevenBeatVoice.Buf   = nil;
     ElevenBeatVoice.Size  = 0;
-    TweleveBeatVoice.Buf   = nil;
-    TweleveBeatVoice.Size  = 0;
+    TwelveBeatVoice.Buf   = nil;
+    TwelveBeatVoice.Size  = 0;
 }
 
 - (void) LoadVoice  : (AUDIO_FILE *) VoicePtr : (NSString *) wavFilePath
@@ -352,9 +352,9 @@
     return ElevenBeatVoice;
 }
 
-- (AUDIO_FILE) GetTweleveBeatVoice
+- (AUDIO_FILE) GetTwelveBeatVoice
 {
-    return TweleveBeatVoice;
+    return TwelveBeatVoice;
 
 }
 

@@ -39,7 +39,7 @@ typedef struct{
     AUDIO_FILE NineBeatVoice;
     AUDIO_FILE TenBeatVoice;
     AUDIO_FILE ElevenBeatVoice;
-    AUDIO_FILE TweleveBeatVoice;
+    AUDIO_FILE TwelveBeatVoice;
 }
 
 @property NSString *AccentPath;
@@ -61,7 +61,7 @@ typedef struct{
 @property NSString *NineBeatPath;
 @property NSString *TenBeatPath;
 @property NSString *ElevenBeatPath;
-@property NSString *TweleveBeatPath;
+@property NSString *TwelveBeatPath;
 
 
 
@@ -89,6 +89,6 @@ typedef struct{
 - (AUDIO_FILE) GetNineBeatVoice;
 - (AUDIO_FILE) GetTenBeatVoice;
 - (AUDIO_FILE) GetElevenBeatVoice;
-- (AUDIO_FILE) GetTweleveBeatVoice;
+- (AUDIO_FILE) GetTwelveBeatVoice;
 
 @end

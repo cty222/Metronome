@@ -29,7 +29,7 @@
     self.NineBeatPath = [[NSBundle mainBundle] pathForResource:@"Nine" ofType:@"wav"];
     self.TenBeatPath = [[NSBundle mainBundle] pathForResource:@"Ten" ofType:@"wav"];
     self.ElevenBeatPath = [[NSBundle mainBundle] pathForResource:@"Eleven" ofType:@"wav"];
-    self.TweleveBeatPath = [[NSBundle mainBundle] pathForResource:@"Twelve" ofType:@"wav"];
+    self.TwelveBeatPath = [[NSBundle mainBundle] pathForResource:@"Twelve" ofType:@"wav"];
 
 }
 @end
