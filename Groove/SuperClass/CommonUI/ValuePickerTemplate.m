@@ -80,6 +80,25 @@
     return self;
 }
 
+-(float) GetMaxLimit
+{
+    return _MaxLimit;
+}
+
+- (void)SetMaxLimit : (float) NewValue
+{
+    _MaxLimit = NewValue;
+}
+
+-(float) GetMinLimit
+{
+    return _MinLimit;
+}
+
+- (void)SetMinLimit : (float) NewValue
+{
+    _MinLimit = NewValue;
+}
 
 - (float) GetValue
 {

@@ -113,6 +113,11 @@
 		007598A31A5D2096000A6B78 /* Six.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598A21A5D2096000A6B78 /* Six.wav */; };
 		007598A91A5D2612000A6B78 /* Seven.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598A81A5D2612000A6B78 /* Seven.wav */; };
 		007598AB1A5D2617000A6B78 /* Twelve.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598AA1A5D2617000A6B78 /* Twelve.wav */; };
+		007598E31A5D3DFE000A6B78 /* Accent_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598DE1A5D3DFE000A6B78 /* Accent_Hi.wav */; };
+		007598E41A5D3DFE000A6B78 /* And_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598DF1A5D3DFE000A6B78 /* And_Hi.wav */; };
+		007598E51A5D3DFE000A6B78 /* E_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598E01A5D3DFE000A6B78 /* E_Hi.wav */; };
+		007598E61A5D3DFE000A6B78 /* Quarter_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598E11A5D3DFE000A6B78 /* Quarter_Hi.wav */; };
+		007598E71A5D3DFE000A6B78 /* Tic_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598E21A5D3DFE000A6B78 /* Tic_Hi.wav */; };
 		008A5C091A4F00F100BC744F /* GlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C071A4F00F100BC744F /* GlobalConfig.m */; };
 		008A5C0A1A4F00F100BC744F /* GlobalConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 008A5C081A4F00F100BC744F /* GlobalConfig.plist */; };
 		008A5C491A4F06AD00BC744F /* SystemPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C451A4F06AD00BC744F /* SystemPageViewController.m */; };
@@ -177,11 +182,6 @@
 		00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131419F4EE1E00F27E25 /* AudioPlay.m */; };
 		00DA132019F4F38000F27E25 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DA131F19F4F38000F27E25 /* AudioToolbox.framework */; };
 		00DA132219F4F38A00F27E25 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DA132119F4F38A00F27E25 /* OpenAL.framework */; };
-		00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00DA13AD19F4F77000F27E25 /* HiAccent.wav */; };
-		00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00DA13AE19F4F77000F27E25 /* HiAnd.wav */; };
-		00DA13B419F4F77000F27E25 /* HiE.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00DA13AF19F4F77000F27E25 /* HiE.wav */; };
-		00DA13B519F4F77000F27E25 /* HiFirst.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00DA13B019F4F77000F27E25 /* HiFirst.wav */; };
-		00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00DA13B119F4F77000F27E25 /* HiGa.wav */; };
 		00E8C01E1A3610FD00D53F82 /* 16NoteRed.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C0191A3610FD00D53F82 /* 16NoteRed.pdf */; };
 		00E8C01F1A3610FD00D53F82 /* 8NotesRed.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C01A1A3610FD00D53F82 /* 8NotesRed.pdf */; };
 		00E8C0201A3610FD00D53F82 /* AccentRed.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C01B1A3610FD00D53F82 /* AccentRed.pdf */; };
@@ -332,6 +332,11 @@
 		007598A21A5D2096000A6B78 /* Six.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Six.wav; sourceTree = "<group>"; };
 		007598A81A5D2612000A6B78 /* Seven.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Seven.wav; sourceTree = "<group>"; };
 		007598AA1A5D2617000A6B78 /* Twelve.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Twelve.wav; sourceTree = "<group>"; };
+		007598DE1A5D3DFE000A6B78 /* Accent_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Accent_Hi.wav; sourceTree = "<group>"; };
+		007598DF1A5D3DFE000A6B78 /* And_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = And_Hi.wav; sourceTree = "<group>"; };
+		007598E01A5D3DFE000A6B78 /* E_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = E_Hi.wav; sourceTree = "<group>"; };
+		007598E11A5D3DFE000A6B78 /* Quarter_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Quarter_Hi.wav; sourceTree = "<group>"; };
+		007598E21A5D3DFE000A6B78 /* Tic_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Tic_Hi.wav; sourceTree = "<group>"; };
 		008A5C051A4F00F100BC744F /* DebugHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DebugHeader.h; path = GlobalConfig/DebugHeader.h; sourceTree = "<group>"; };
 		008A5C061A4F00F100BC744F /* GlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalConfig.h; path = GlobalConfig/GlobalConfig.h; sourceTree = "<group>"; };
 		008A5C071A4F00F100BC744F /* GlobalConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalConfig.m; path = GlobalConfig/GlobalConfig.m; sourceTree = "<group>"; };
@@ -430,11 +435,6 @@
 		00DA131419F4EE1E00F27E25 /* AudioPlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioPlay.m; path = Tools/AudioPlay.m; sourceTree = "<group>"; };
 		00DA131F19F4F38000F27E25 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		00DA132119F4F38A00F27E25 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
-		00DA13AD19F4F77000F27E25 /* HiAccent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiAccent.wav; sourceTree = "<group>"; };
-		00DA13AE19F4F77000F27E25 /* HiAnd.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiAnd.wav; sourceTree = "<group>"; };
-		00DA13AF19F4F77000F27E25 /* HiE.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiE.wav; sourceTree = "<group>"; };
-		00DA13B019F4F77000F27E25 /* HiFirst.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiFirst.wav; sourceTree = "<group>"; };
-		00DA13B119F4F77000F27E25 /* HiGa.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiGa.wav; sourceTree = "<group>"; };
 		00E8C0191A3610FD00D53F82 /* 16NoteRed.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 16NoteRed.pdf; sourceTree = "<group>"; };
 		00E8C01A1A3610FD00D53F82 /* 8NotesRed.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 8NotesRed.pdf; sourceTree = "<group>"; };
 		00E8C01B1A3610FD00D53F82 /* AccentRed.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AccentRed.pdf; sourceTree = "<group>"; };
@@ -1098,11 +1098,11 @@
 		00DA13AC19F4F77000F27E25 /* NormalHi */ = {
 			isa = PBXGroup;
 			children = (
-				00DA13AD19F4F77000F27E25 /* HiAccent.wav */,
-				00DA13AE19F4F77000F27E25 /* HiAnd.wav */,
-				00DA13AF19F4F77000F27E25 /* HiE.wav */,
-				00DA13B019F4F77000F27E25 /* HiFirst.wav */,
-				00DA13B119F4F77000F27E25 /* HiGa.wav */,
+				007598DE1A5D3DFE000A6B78 /* Accent_Hi.wav */,
+				007598DF1A5D3DFE000A6B78 /* And_Hi.wav */,
+				007598E01A5D3DFE000A6B78 /* E_Hi.wav */,
+				007598E11A5D3DFE000A6B78 /* Quarter_Hi.wav */,
+				007598E21A5D3DFE000A6B78 /* Tic_Hi.wav */,
 			);
 			path = NormalHi;
 			sourceTree = "<group>";
@@ -1239,17 +1239,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00DA13B519F4F77000F27E25 /* HiFirst.wav in Resources */,
 				00E8C0201A3610FD00D53F82 /* AccentRed.pdf in Resources */,
 				0049ECBC1A40BA990016EA3D /* LoopCellPickerButton.pdf in Resources */,
 				001BFDCE1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf in Resources */,
 				008A5CE21A4F0E3300BC744F /* TempoListUICell.xib in Resources */,
+				007598E51A5D3DFE000A6B78 /* E_Hi.wav in Resources */,
 				001BFDBD1A3F550200A56947 /* BPMArrowDown.pdf in Resources */,
 				0069995B1A5C69DD00B01E5F /* ResetTime.pdf in Resources */,
+				007598E31A5D3DFE000A6B78 /* Accent_Hi.wav in Resources */,
 				0069994F1A5C653200B01E5F /* fNewCircleButton_f3.pdf in Resources */,
 				0071A9B71A2B090100EA57D2 /* Accent.pdf in Resources */,
 				001BFDAB1A3F4E9200A56947 /* ValueDownArrow.pdf in Resources */,
 				0098D7C71A5999C50001DE00 /* MusicListen.pdf in Resources */,
+				007598E61A5D3DFE000A6B78 /* Quarter_Hi.wav in Resources */,
 				0071A9B91A2B090100EA57D2 /* TrippleNote.pdf in Resources */,
 				0098D7D11A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib in Resources */,
 				0098D7C51A5999A90001DE00 /* Delete_red.pdf in Resources */,
@@ -1262,6 +1264,7 @@
 				0075989F1A5D1E8C000A6B78 /* Two.wav in Resources */,
 				00E8C0411A36119200D53F82 /* 16NoteYellow.pdf in Resources */,
 				004DF4691A40A6AD00E79C0E /* TapAnimation_1_red.pdf in Resources */,
+				007598E71A5D3DFE000A6B78 /* Tic_Hi.wav in Resources */,
 				001BFDC61A3F5EBD00A56947 /* AppIcon_29x3.png in Resources */,
 				007598941A5D1E8C000A6B78 /* Five.wav in Resources */,
 				0059D1571A57096F0058C5E3 /* System_4S.pdf in Resources */,
@@ -1271,6 +1274,7 @@
 				008A5C0A1A4F00F100BC744F /* GlobalConfig.plist in Resources */,
 				00E8C0421A36119200D53F82 /* 8NotesYellow.pdf in Resources */,
 				0059D15D1A5710490058C5E3 /* SystemButtonBar.pdf in Resources */,
+				007598E41A5D3DFE000A6B78 /* And_Hi.wav in Resources */,
 				006999541A5C656100B01E5F /* PlayList_red.pdf in Resources */,
 				007598A31A5D2096000A6B78 /* Six.wav in Resources */,
 				0059D1611A5710850058C5E3 /* PlayBlack.pdf in Resources */,
@@ -1279,7 +1283,6 @@
 				0075989C1A5D1E8C000A6B78 /* Human_Tic.wav in Resources */,
 				008A5CB01A4F0DF400BC744F /* OneDigitsValuePicker.xib in Resources */,
 				0059D1531A57092E0058C5E3 /* PropetyBackGround_red.pdf in Resources */,
-				00DA13B619F4F77000F27E25 /* HiGa.wav in Resources */,
 				00E8C0431A36119200D53F82 /* AccentYellow.pdf in Resources */,
 				0059D1621A5710850058C5E3 /* PlayRed.pdf in Resources */,
 				00E8C01E1A3610FD00D53F82 /* 16NoteRed.pdf in Resources */,
@@ -1293,7 +1296,6 @@
 				008A5CCA1A4F0E1B00BC744F /* LoopCellEditerView.xib in Resources */,
 				008A5CA31A4F0B1200BC744F /* MetronmoneTopSubViewIphone.xib in Resources */,
 				004DF46B1A40A6AD00E79C0E /* TapAnimation_2_red.pdf in Resources */,
-				00DA13B319F4F77000F27E25 /* HiAnd.wav in Resources */,
 				006999551A5C656100B01E5F /* PlayList.pdf in Resources */,
 				0075988F1A5D1E8C000A6B78 /* Human_a.wav in Resources */,
 				0098D7C41A5999A90001DE00 /* Delete.pdf in Resources */,
@@ -1332,7 +1334,6 @@
 				0075989B1A5D1E8C000A6B78 /* Three.wav in Resources */,
 				001BFDC51A3F5EBD00A56947 /* AppIcon_29x2.png in Resources */,
 				006999561A5C656100B01E5F /* PlayMusic_red.pdf in Resources */,
-				00DA13B219F4F77000F27E25 /* HiAccent.wav in Resources */,
 				00E8C0441A36119200D53F82 /* QuarterNoteYellow.pdf in Resources */,
 				00E8C0221A3610FD00D53F82 /* TrippleNoteRed.pdf in Resources */,
 				00E8C0451A36119200D53F82 /* TrippleNoteYellow.pdf in Resources */,
@@ -1351,7 +1352,6 @@
 				0027FC5B1A5B06C300257397 /* Localizable.strings in Resources */,
 				006999571A5C656100B01E5F /* PlayMusic.pdf in Resources */,
 				008A5C8F1A4F0AE600BC744F /* LargeBPMPicker.xib in Resources */,
-				00DA13B419F4F77000F27E25 /* HiE.wav in Resources */,
 				001BFDD11A3F5F2200A56947 /* LoopCellBackGround.pdf in Resources */,
 				007598901A5D1E8C000A6B78 /* Human_and.wav in Resources */,
 				007598AB1A5D2617000A6B78 /* Twelve.wav in Resources */,

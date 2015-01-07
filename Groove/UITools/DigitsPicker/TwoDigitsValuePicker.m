@@ -18,6 +18,16 @@
 }
 */
 
+- (void)SetMaxLimit : (float) NewValue
+{
+    if (NewValue >= 100)
+    {
+        NewValue = 99.1f;
+    }
+    [super SetMaxLimit: NewValue];
+}
+
+
 - (void) SyncValueLabelFromValue
 {
     [self.ValueLabel setText:[NSString stringWithFormat:@"%02d", (int)self.Value]];
