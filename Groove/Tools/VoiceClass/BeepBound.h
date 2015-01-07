@@ -19,36 +19,14 @@ typedef struct{
 } AUDIO_FILE;
 
 @interface BeepBound : NSObject
-{
-    AUDIO_FILE AccentVoice;
-    AUDIO_FILE FirstBeatVoice;
-    AUDIO_FILE AndBeatVoice;
-    AUDIO_FILE EBeatVoice;
-    AUDIO_FILE ABeatVoice;
-    AUDIO_FILE GiBeatVoice;
-    AUDIO_FILE GaBeatVoice;
-
-// HumanVoice
-    AUDIO_FILE TwoBeatVoice;
-    AUDIO_FILE ThreeBeatVoice;
-    AUDIO_FILE FourBeatVoice;
-    AUDIO_FILE FiveBeatVoice;
-    AUDIO_FILE SixBeatVoice;
-    AUDIO_FILE SevenBeatVoice;
-    AUDIO_FILE EightBeatVoice;
-    AUDIO_FILE NineBeatVoice;
-    AUDIO_FILE TenBeatVoice;
-    AUDIO_FILE ElevenBeatVoice;
-    AUDIO_FILE TwelveBeatVoice;
-}
 
 @property NSString *AccentPath;
 @property NSString *FirstBeatPath;
 @property NSString *AndBeatPath;
 @property NSString *EBeatPath;
 @property NSString *ABeatPath;
-@property NSString *GiBeatPath;
-@property NSString *GaBeatPath;
+@property NSString *TicBeatPath;
+@property NSString *TocBeatPath;
 
 // HumanVoice
 @property NSString *TwoBeatPath;
@@ -74,8 +52,8 @@ typedef struct{
 - (AUDIO_FILE) GetAndBeatVoice;
 - (AUDIO_FILE) GetEbeatVoice;
 - (AUDIO_FILE) GetAbeatVoice;
-- (AUDIO_FILE) GetGibeatVoice;
-- (AUDIO_FILE) GetGabeatVoice;
+- (AUDIO_FILE) GetTicbeatVoice;
+- (AUDIO_FILE) GetTocbeatVoice;
 
 
 // HumanVoice

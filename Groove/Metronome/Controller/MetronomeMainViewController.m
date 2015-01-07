@@ -647,10 +647,10 @@
     }
 }
 
-- (void) GiBeatFunc
+- (void) TicBeatFunc
 {
     [gPlayUnit playSound: [self.CurrentCell.trippleNoteVolume floatValue] / MAX_VOLUME
-                        : [self.CurrentVoice GetGibeatVoice]];
+                        : [self.CurrentVoice GetTicbeatVoice]];
     
     if ([self.CurrentCell.trippleNoteVolume floatValue] > 0)
     {
@@ -658,10 +658,10 @@
     }
 }
 
-- (void) GaBeatFunc
+- (void) TocBeatFunc
 {
     [gPlayUnit playSound: [self.CurrentCell.trippleNoteVolume floatValue] / MAX_VOLUME
-                        : [self.CurrentVoice GetGabeatVoice]];
+                        : [self.CurrentVoice GetTocbeatVoice]];
     if ([self.CurrentCell.trippleNoteVolume floatValue] > 0)
     {
         [_CellParameterSettingSubController.TrippleNoteCircleVolumeButton TwickLing];

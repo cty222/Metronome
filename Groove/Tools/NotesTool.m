@@ -25,17 +25,17 @@
         case A_CLICK:
             [TargetNotesTool ABeatFunc];
             break;
-        case F_GI_CLICK:
-            [TargetNotesTool FrontGiBeatFunc];
+        case F_TIC_CLICK:
+            [TargetNotesTool FrontTicBeatFunc];
             break;
-        case GI_CLICK:
-            [TargetNotesTool GiBeatFunc];
+        case TIC_CLICK:
+            [TargetNotesTool TicBeatFunc];
             break;
-        case GA_CLICK:
-            [TargetNotesTool GaBeatFunc];
+        case TOC_CLICK:
+            [TargetNotesTool TocBeatFunc];
             break;
-        case AF_GA_CLICK:
-            [TargetNotesTool AfterGaBeatFunc];
+        case AF_TOC_CLICK:
+            [TargetNotesTool AfterTocBeatFunc];
             break;
         default:
             [TargetNotesTool DefaultFunc];
@@ -95,53 +95,54 @@
     }
 }
 
-- (void) FrontGiBeatFunc;
+- (void) FrontTicBeatFunc;
 {
     // For Override
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(FrontGiBeatFunc)])
+        if([self.delegate respondsToSelector:@selector(FrontTicBeatFunc)])
         {
-            [self.delegate FrontGiBeatFunc];
-        }
-    }
-}
-- (void) GiBeatFunc
-{
-    // For Override
-    if (self.delegate != nil)
-    {
-        // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(GiBeatFunc)])
-        {
-            [self.delegate GiBeatFunc];
+            [self.delegate FrontTicBeatFunc];
         }
     }
 }
 
-- (void) GaBeatFunc
+- (void) TicBeatFunc
 {
     // For Override
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(GaBeatFunc)])
+        if([self.delegate respondsToSelector:@selector(TicBeatFunc)])
         {
-            [self.delegate GaBeatFunc];
+            [self.delegate TicBeatFunc];
         }
     }
 }
 
-- (void) AfterGaBeatFunc
+- (void) TocBeatFunc
 {
     // For Override
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(AfterGaBeatFunc)])
+        if([self.delegate respondsToSelector:@selector(TocBeatFunc)])
         {
-            [self.delegate AfterGaBeatFunc];
+            [self.delegate TocBeatFunc];
+        }
+    }
+}
+
+- (void) AfterTocBeatFunc
+{
+    // For Override
+    if (self.delegate != nil)
+    {
+        // Check whether delegate have this selector
+        if([self.delegate respondsToSelector:@selector(AfterTocBeatFunc)])
+        {
+            [self.delegate AfterTocBeatFunc];
         }
     }
 }

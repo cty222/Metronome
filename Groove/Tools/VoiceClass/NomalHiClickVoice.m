@@ -20,7 +20,7 @@
     self.AndBeatPath = [[NSBundle mainBundle] pathForResource:@"HiAnd" ofType:@"wav"];
     self.EBeatPath = [[NSBundle mainBundle] pathForResource:@"HiE" ofType:@"wav"];
     self.ABeatPath = [[NSBundle mainBundle] pathForResource:@"HiE" ofType:@"wav"];
-    self.GiBeatPath = [[NSBundle mainBundle] pathForResource:@"HiGa" ofType:@"wav"];
-    self.GaBeatPath = [[NSBundle mainBundle] pathForResource:@"HiGa" ofType:@"wav"];
+    self.TicBeatPath = [[NSBundle mainBundle] pathForResource:@"HiGa" ofType:@"wav"];
+    self.TocBeatPath = [[NSBundle mainBundle] pathForResource:@"HiGa" ofType:@"wav"];
 }
 @end

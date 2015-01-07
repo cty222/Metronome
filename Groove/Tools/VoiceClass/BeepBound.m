@@ -9,6 +9,28 @@
 #import "BeepBound.h"
 
 @implementation BeepBound
+{
+    AUDIO_FILE _AccentVoice;
+    AUDIO_FILE _FirstBeatVoice;
+    AUDIO_FILE _AndBeatVoice;
+    AUDIO_FILE _EBeatVoice;
+    AUDIO_FILE _ABeatVoice;
+    AUDIO_FILE _TicBeatVoice;
+    AUDIO_FILE _TocBeatVoice;
+    
+    // HumanVoice
+    AUDIO_FILE _TwoBeatVoice;
+    AUDIO_FILE _ThreeBeatVoice;
+    AUDIO_FILE _FourBeatVoice;
+    AUDIO_FILE _FiveBeatVoice;
+    AUDIO_FILE _SixBeatVoice;
+    AUDIO_FILE _SevenBeatVoice;
+    AUDIO_FILE _EightBeatVoice;
+    AUDIO_FILE _NineBeatVoice;
+    AUDIO_FILE _TenBeatVoice;
+    AUDIO_FILE _ElevenBeatVoice;
+    AUDIO_FILE _TwelveBeatVoice;
+}
 
 //================================
 // It need to be override
@@ -24,27 +46,27 @@
     
     [self InitializeVoicePath];
     
-    [self LoadVoice: &AccentVoice : [self AccentPath]];
+    [self LoadVoice: &_AccentVoice : [self AccentPath]];
     
-    [self LoadVoice: &FirstBeatVoice : [self FirstBeatPath]];
-    [self LoadVoice: &AndBeatVoice : [self AndBeatPath]];
-    [self LoadVoice: &EBeatVoice : [self EBeatPath]];
-    [self LoadVoice: &ABeatVoice : [self ABeatPath]];
-    [self LoadVoice: &GiBeatVoice : [self GiBeatPath]];
-    [self LoadVoice: &GaBeatVoice : [self GaBeatPath]];
+    [self LoadVoice: &_FirstBeatVoice : [self FirstBeatPath]];
+    [self LoadVoice: &_AndBeatVoice : [self AndBeatPath]];
+    [self LoadVoice: &_EBeatVoice : [self EBeatPath]];
+    [self LoadVoice: &_ABeatVoice : [self ABeatPath]];
+    [self LoadVoice: &_TicBeatVoice : [self TicBeatPath]];
+    [self LoadVoice: &_TocBeatVoice : [self TocBeatPath]];
     
     // Human
-    [self LoadVoice: &TwoBeatVoice : [self TwoBeatPath]];
-    [self LoadVoice: &ThreeBeatVoice : [self ThreeBeatPath]];
-    [self LoadVoice: &FourBeatVoice : [self FourBeatPath]];
-    [self LoadVoice: &FiveBeatVoice : [self FiveBeatPath]];
-    [self LoadVoice: &SixBeatVoice : [self SixBeatPath]];
-    [self LoadVoice: &SevenBeatVoice : [self SevenBeatPath]];
-    [self LoadVoice: &EightBeatVoice : [self EightBeatPath]];
-    [self LoadVoice: &NineBeatVoice : [self NineBeatPath]];
-    [self LoadVoice: &TenBeatVoice : [self TenBeatPath]];
-    [self LoadVoice: &ElevenBeatVoice : [self ElevenBeatPath]];
-    [self LoadVoice: &TwelveBeatVoice : [self TwelveBeatPath]];
+    [self LoadVoice: &_TwoBeatVoice : [self TwoBeatPath]];
+    [self LoadVoice: &_ThreeBeatVoice : [self ThreeBeatPath]];
+    [self LoadVoice: &_FourBeatVoice : [self FourBeatPath]];
+    [self LoadVoice: &_FiveBeatVoice : [self FiveBeatPath]];
+    [self LoadVoice: &_SixBeatVoice : [self SixBeatPath]];
+    [self LoadVoice: &_SevenBeatVoice : [self SevenBeatPath]];
+    [self LoadVoice: &_EightBeatVoice : [self EightBeatPath]];
+    [self LoadVoice: &_NineBeatVoice : [self NineBeatPath]];
+    [self LoadVoice: &_TenBeatVoice : [self TenBeatPath]];
+    [self LoadVoice: &_ElevenBeatVoice : [self ElevenBeatPath]];
+    [self LoadVoice: &_TwelveBeatVoice : [self TwelveBeatPath]];
 
     return self;
 }
@@ -58,155 +80,155 @@
 
 -(void) ReleaseVoice
 {
-    if (AccentVoice.Buf)
+    if (_AccentVoice.Buf)
     {
-        free(AccentVoice.Buf);
-        alDeleteSources(1, &AccentVoice.SourceID);
-        alDeleteBuffers(1, &AccentVoice.outputBuffer);
+        free(_AccentVoice.Buf);
+        alDeleteSources(1, &_AccentVoice.SourceID);
+        alDeleteBuffers(1, &_AccentVoice.outputBuffer);
     }
-    if (FirstBeatVoice.Buf)
+    if (_FirstBeatVoice.Buf)
     {
-        free(FirstBeatVoice.Buf);
-        alDeleteSources(1, &FirstBeatVoice.SourceID);
-        alDeleteBuffers(1, &FirstBeatVoice.outputBuffer);
+        free(_FirstBeatVoice.Buf);
+        alDeleteSources(1, &_FirstBeatVoice.SourceID);
+        alDeleteBuffers(1, &_FirstBeatVoice.outputBuffer);
     }
-    if (AndBeatVoice.Buf)
+    if (_AndBeatVoice.Buf)
     {
-        free(AndBeatVoice.Buf);
-        alDeleteSources(1, &AndBeatVoice.SourceID);
-        alDeleteBuffers(1, &AndBeatVoice.outputBuffer);
+        free(_AndBeatVoice.Buf);
+        alDeleteSources(1, &_AndBeatVoice.SourceID);
+        alDeleteBuffers(1, &_AndBeatVoice.outputBuffer);
     }
-    if (EBeatVoice.Buf)
+    if (_EBeatVoice.Buf)
     {
-        free(EBeatVoice.Buf);
-        alDeleteSources(1, &EBeatVoice.SourceID);
-        alDeleteBuffers(1, &EBeatVoice.outputBuffer);
+        free(_EBeatVoice.Buf);
+        alDeleteSources(1, &_EBeatVoice.SourceID);
+        alDeleteBuffers(1, &_EBeatVoice.outputBuffer);
     }
-    if (ABeatVoice.Buf)
+    if (_ABeatVoice.Buf)
     {
-        free(ABeatVoice.Buf);
-        alDeleteSources(1, &ABeatVoice.SourceID);
-        alDeleteBuffers(1, &ABeatVoice.outputBuffer);
+        free(_ABeatVoice.Buf);
+        alDeleteSources(1, &_ABeatVoice.SourceID);
+        alDeleteBuffers(1, &_ABeatVoice.outputBuffer);
     }
-    if (GiBeatVoice.Buf)
+    if (_TicBeatVoice.Buf)
     {
-        free(GiBeatVoice.Buf);
-        alDeleteSources(1, &GiBeatVoice.SourceID);
-        alDeleteBuffers(1, &GiBeatVoice.outputBuffer);
+        free(_TicBeatVoice.Buf);
+        alDeleteSources(1, &_TicBeatVoice.SourceID);
+        alDeleteBuffers(1, &_TicBeatVoice.outputBuffer);
     }
-    if (GaBeatVoice.Buf)
+    if (_TocBeatVoice.Buf)
     {
-        free(GaBeatVoice.Buf);
-        alDeleteSources(1, &GaBeatVoice.SourceID);
-        alDeleteBuffers(1, &GaBeatVoice.outputBuffer);
+        free(_TocBeatVoice.Buf);
+        alDeleteSources(1, &_TocBeatVoice.SourceID);
+        alDeleteBuffers(1, &_TocBeatVoice.outputBuffer);
     }
     
     // Human
-    if (TwoBeatVoice.Buf)
+    if (_TwoBeatVoice.Buf)
     {
-        free(TwoBeatVoice.Buf);
-        alDeleteSources(1, &TwoBeatVoice.SourceID);
-        alDeleteBuffers(1, &TwoBeatVoice.outputBuffer);
+        free(_TwoBeatVoice.Buf);
+        alDeleteSources(1, &_TwoBeatVoice.SourceID);
+        alDeleteBuffers(1, &_TwoBeatVoice.outputBuffer);
     }
-    if (ThreeBeatVoice.Buf)
+    if (_ThreeBeatVoice.Buf)
     {
-        free(ThreeBeatVoice.Buf);
-        alDeleteSources(1, &ThreeBeatVoice.SourceID);
-        alDeleteBuffers(1, &ThreeBeatVoice.outputBuffer);
+        free(_ThreeBeatVoice.Buf);
+        alDeleteSources(1, &_ThreeBeatVoice.SourceID);
+        alDeleteBuffers(1, &_ThreeBeatVoice.outputBuffer);
     }
-    if (FourBeatVoice.Buf)
+    if (_FourBeatVoice.Buf)
     {
-        free(FourBeatVoice.Buf);
-        alDeleteSources(1, &FourBeatVoice.SourceID);
-        alDeleteBuffers(1, &FourBeatVoice.outputBuffer);
+        free(_FourBeatVoice.Buf);
+        alDeleteSources(1, &_FourBeatVoice.SourceID);
+        alDeleteBuffers(1, &_FourBeatVoice.outputBuffer);
     }
-    if (FiveBeatVoice.Buf)
+    if (_FiveBeatVoice.Buf)
     {
-        free(FiveBeatVoice.Buf);
-        alDeleteSources(1, &FiveBeatVoice.SourceID);
-        alDeleteBuffers(1, &FiveBeatVoice.outputBuffer);
+        free(_FiveBeatVoice.Buf);
+        alDeleteSources(1, &_FiveBeatVoice.SourceID);
+        alDeleteBuffers(1, &_FiveBeatVoice.outputBuffer);
     }
-    if (SixBeatVoice.Buf)
+    if (_SixBeatVoice.Buf)
     {
-        free(SixBeatVoice.Buf);
-        alDeleteSources(1, &SixBeatVoice.SourceID);
-        alDeleteBuffers(1, &SixBeatVoice.outputBuffer);
+        free(_SixBeatVoice.Buf);
+        alDeleteSources(1, &_SixBeatVoice.SourceID);
+        alDeleteBuffers(1, &_SixBeatVoice.outputBuffer);
     }
-    if (SevenBeatVoice.Buf)
+    if (_SevenBeatVoice.Buf)
     {
-        free(SevenBeatVoice.Buf);
-        alDeleteSources(1, &SevenBeatVoice.SourceID);
-        alDeleteBuffers(1, &SevenBeatVoice.outputBuffer);
+        free(_SevenBeatVoice.Buf);
+        alDeleteSources(1, &_SevenBeatVoice.SourceID);
+        alDeleteBuffers(1, &_SevenBeatVoice.outputBuffer);
     }
-    if (EightBeatVoice.Buf)
+    if (_EightBeatVoice.Buf)
     {
-        free(EightBeatVoice.Buf);
-        alDeleteSources(1, &EightBeatVoice.SourceID);
-        alDeleteBuffers(1, &EightBeatVoice.outputBuffer);
+        free(_EightBeatVoice.Buf);
+        alDeleteSources(1, &_EightBeatVoice.SourceID);
+        alDeleteBuffers(1, &_EightBeatVoice.outputBuffer);
     }
-    if (NineBeatVoice.Buf)
+    if (_NineBeatVoice.Buf)
     {
-        free(NineBeatVoice.Buf);
-        alDeleteSources(1, &NineBeatVoice.SourceID);
-        alDeleteBuffers(1, &NineBeatVoice.outputBuffer);
+        free(_NineBeatVoice.Buf);
+        alDeleteSources(1, &_NineBeatVoice.SourceID);
+        alDeleteBuffers(1, &_NineBeatVoice.outputBuffer);
     }
-    if (TenBeatVoice.Buf)
+    if (_TenBeatVoice.Buf)
     {
-        free(TenBeatVoice.Buf);
-        alDeleteSources(1, &TenBeatVoice.SourceID);
-        alDeleteBuffers(1, &TenBeatVoice.outputBuffer);
+        free(_TenBeatVoice.Buf);
+        alDeleteSources(1, &_TenBeatVoice.SourceID);
+        alDeleteBuffers(1, &_TenBeatVoice.outputBuffer);
     }
-    if (ElevenBeatVoice.Buf)
+    if (_ElevenBeatVoice.Buf)
     {
-        free(ElevenBeatVoice.Buf);
-        alDeleteSources(1, &ElevenBeatVoice.SourceID);
-        alDeleteBuffers(1, &ElevenBeatVoice.outputBuffer);
+        free(_ElevenBeatVoice.Buf);
+        alDeleteSources(1, &_ElevenBeatVoice.SourceID);
+        alDeleteBuffers(1, &_ElevenBeatVoice.outputBuffer);
     }
-    if (TwelveBeatVoice.Buf)
+    if (_TwelveBeatVoice.Buf)
     {
-        free(TwelveBeatVoice.Buf);
-        alDeleteSources(1, &TwelveBeatVoice.SourceID);
-        alDeleteBuffers(1, &TwelveBeatVoice.outputBuffer);
+        free(_TwelveBeatVoice.Buf);
+        alDeleteSources(1, &_TwelveBeatVoice.SourceID);
+        alDeleteBuffers(1, &_TwelveBeatVoice.outputBuffer);
     }
-    AccentVoice.Buf       = nil;
-    AccentVoice.Size      = 0;
-    FirstBeatVoice.Buf     = nil;
-    FirstBeatVoice.Size    = 0;
-    AndBeatVoice.Buf    = nil;
-    AndBeatVoice.Size   = 0;
-    EBeatVoice.Buf  = nil;
-    EBeatVoice.Size = 0;
-    ABeatVoice.Buf  = nil;
-    ABeatVoice.Size = 0;
-    GiBeatVoice.Buf   = nil;
-    GiBeatVoice.Size  = 0;
-    GaBeatVoice.Buf   = nil;
-    GaBeatVoice.Size  = 0;
+    _AccentVoice.Buf       = nil;
+    _AccentVoice.Size      = 0;
+    _FirstBeatVoice.Buf     = nil;
+    _FirstBeatVoice.Size    = 0;
+    _AndBeatVoice.Buf    = nil;
+    _AndBeatVoice.Size   = 0;
+    _EBeatVoice.Buf  = nil;
+    _EBeatVoice.Size = 0;
+    _ABeatVoice.Buf  = nil;
+    _ABeatVoice.Size = 0;
+    _TicBeatVoice.Buf   = nil;
+    _TicBeatVoice.Size  = 0;
+    _TocBeatVoice.Buf   = nil;
+    _TocBeatVoice.Size  = 0;
     
     
     // HumanVoice
-    TwoBeatVoice.Buf   = nil;
-    TwoBeatVoice.Size  = 0;
-    ThreeBeatVoice.Buf   = nil;
-    ThreeBeatVoice.Size  = 0;
-    FourBeatVoice.Buf   = nil;
-    FourBeatVoice.Size  = 0;
-    FiveBeatVoice.Buf   = nil;
-    FiveBeatVoice.Size  = 0;
-    SixBeatVoice.Buf   = nil;
-    SixBeatVoice.Size  = 0;
-    SevenBeatVoice.Buf   = nil;
-    SevenBeatVoice.Size  = 0;
-    EightBeatVoice.Buf   = nil;
-    EightBeatVoice.Size  = 0;
-    NineBeatVoice.Buf   = nil;
-    NineBeatVoice.Size  = 0;
-    TenBeatVoice.Buf   = nil;
-    TenBeatVoice.Size  = 0;
-    ElevenBeatVoice.Buf   = nil;
-    ElevenBeatVoice.Size  = 0;
-    TwelveBeatVoice.Buf   = nil;
-    TwelveBeatVoice.Size  = 0;
+    _TwoBeatVoice.Buf   = nil;
+    _TwoBeatVoice.Size  = 0;
+    _ThreeBeatVoice.Buf   = nil;
+    _ThreeBeatVoice.Size  = 0;
+    _FourBeatVoice.Buf   = nil;
+    _FourBeatVoice.Size  = 0;
+    _FiveBeatVoice.Buf   = nil;
+    _FiveBeatVoice.Size  = 0;
+    _SixBeatVoice.Buf   = nil;
+    _SixBeatVoice.Size  = 0;
+    _SevenBeatVoice.Buf   = nil;
+    _SevenBeatVoice.Size  = 0;
+    _EightBeatVoice.Buf   = nil;
+    _EightBeatVoice.Size  = 0;
+    _NineBeatVoice.Buf   = nil;
+    _NineBeatVoice.Size  = 0;
+    _TenBeatVoice.Buf   = nil;
+    _TenBeatVoice.Size  = 0;
+    _ElevenBeatVoice.Buf   = nil;
+    _ElevenBeatVoice.Size  = 0;
+    _TwelveBeatVoice.Buf   = nil;
+    _TwelveBeatVoice.Size  = 0;
 }
 
 - (void) LoadVoice  : (AUDIO_FILE *) VoicePtr : (NSString *) wavFilePath
@@ -274,87 +296,87 @@
 
 - (AUDIO_FILE) GetAccentVoice
 {
-    return AccentVoice;
+    return _AccentVoice;
 }
 - (AUDIO_FILE) GetFirstBeatVoice
 {
-    return FirstBeatVoice;
+    return _FirstBeatVoice;
 }
 - (AUDIO_FILE) GetAndBeatVoice
 {
-    return AndBeatVoice;
+    return _AndBeatVoice;
 }
 - (AUDIO_FILE) GetEbeatVoice
 {
-    return EBeatVoice;
+    return _EBeatVoice;
 }
 - (AUDIO_FILE) GetAbeatVoice
 {
-    return ABeatVoice;
+    return _ABeatVoice;
 }
-- (AUDIO_FILE) GetGibeatVoice
+- (AUDIO_FILE) GetTicbeatVoice
 {
-    return GiBeatVoice;
+    return _TicBeatVoice;
 }
-- (AUDIO_FILE) GetGabeatVoice
+- (AUDIO_FILE) GetTocbeatVoice
 {
-    return GaBeatVoice;
+    return _TocBeatVoice;
 }
 
 // Human
 - (AUDIO_FILE) GetTwoBeatVoice
 {
-    return TwoBeatVoice;
+    return _TwoBeatVoice;
 }
 
 - (AUDIO_FILE) GetThreeBeatVoice
 {
-    return ThreeBeatVoice;
+    return _ThreeBeatVoice;
 }
 
 - (AUDIO_FILE) GetFourBeatVoice
 {
-    return FourBeatVoice;
+    return _FourBeatVoice;
 }
 
 - (AUDIO_FILE) GetFiveBeatVoice
 {
-    return FiveBeatVoice;
+    return _FiveBeatVoice;
 }
 
 - (AUDIO_FILE) GetSixBeatVoice
 {
-    return SixBeatVoice;
+    return _SixBeatVoice;
 }
 
 - (AUDIO_FILE) GetSevenBeatVoice
 {
-    return SevenBeatVoice;
+    return _SevenBeatVoice;
 }
 
 - (AUDIO_FILE) GetEightBeatVoice
 {
-    return EightBeatVoice;
+    return _EightBeatVoice;
 }
 
 - (AUDIO_FILE) GetNineBeatVoice
 {
-    return NineBeatVoice;
+    return _NineBeatVoice;
 }
 
 - (AUDIO_FILE) GetTenBeatVoice
 {
-    return TenBeatVoice;
+    return _TenBeatVoice;
 }
 
 - (AUDIO_FILE) GetElevenBeatVoice
 {
-    return ElevenBeatVoice;
+    return _ElevenBeatVoice;
 }
 
 - (AUDIO_FILE) GetTwelveBeatVoice
 {
-    return TwelveBeatVoice;
+    return _TwelveBeatVoice;
 
 }
 

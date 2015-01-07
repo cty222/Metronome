@@ -11,17 +11,17 @@
 // Display
 //1 2 3 4 5 6 7 8 9 10 11 12
 //1     e     &      a
-//1       gi      ga
+//1       tic      toc
 typedef enum {
     NONE_CLICK = 0,
     FIRST_CLICK = 1,
-    F_GI_CLICK  = 3,
+    F_TIC_CLICK  = 3,
     E_CLICK     = 4,
-    GI_CLICK    = 5,
+    TIC_CLICK    = 5,
     AND_CLICK   = 7,
-    GA_CLICK    = 9,
+    TOC_CLICK    = 9,
     A_CLICK     = 10,
-    AF_GA_CLICK = 11,
+    AF_TOC_CLICK = 11,
     LAST_CLICK  = 12,
     RESET_CLICK = 13,
     ACCENT_CLICK
@@ -45,10 +45,10 @@ typedef enum {
 - (void) EBeatFunc;
 - (void) AndBeatFunc;
 - (void) ABeatFunc;
-- (void) FrontGiBeatFunc;
-- (void) GiBeatFunc;
-- (void) GaBeatFunc;
-- (void) AfterGaBeatFunc;
+- (void) FrontTicBeatFunc;
+- (void) TicBeatFunc;
+- (void) TocBeatFunc;
+- (void) AfterTocBeatFunc;
 - (void) DefaultFunc;
 
 @end
