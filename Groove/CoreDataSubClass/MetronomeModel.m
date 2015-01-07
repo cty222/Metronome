@@ -171,8 +171,8 @@
         {
             TempoCell* NewTempoCell = [NSEntityDescription
                                        insertNewObjectForEntityForName:NSStringFromClass([TempoCell class])  inManagedObjectContext:_ManagedObjectContext];
-            NewTempoCell.bpmValue = [NSNumber numberWithInt:(50 + (Index + Row) *10)];
-            NewTempoCell.loopCount = @1;
+            NewTempoCell.bpmValue = [NSNumber numberWithInt:(100 + (Index + Row) *10)];
+            NewTempoCell.loopCount = [NSNumber numberWithInt:Index + 1];
             NewTempoCell.accentVolume = @10.0;
             NewTempoCell.quarterNoteVolume = @10.0;
             NewTempoCell.eighthNoteVolume = @7.0;

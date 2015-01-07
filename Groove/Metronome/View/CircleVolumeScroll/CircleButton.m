@@ -150,6 +150,7 @@
     _Touched = NewValue;
     if (_Touched)
     {
+        [self.superview bringSubviewToFront:self];
         // 如果觸碰
         // 最內環會變大, 便最外環
         // 不用animate 是因為動作設不快???
