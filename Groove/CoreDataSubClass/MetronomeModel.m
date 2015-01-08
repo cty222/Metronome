@@ -451,18 +451,28 @@
     // 如果沒有清空相依性, _ManagedObjectContext會假裝沒有
     // 但model裡還是存在, 刪不掉
     
-    NSArray * CellArray = [self FetchTempoCellFromTempoListWithSort:TargetTempoList];
+    // Get All TempoCells for delete
+    NSArray * CellsArray = [self FetchTempoCellFromTempoListWithSort:TargetTempoList];
     
-    for (TempoCell *tmpCell in CellArray)
+    // Delete all TempoCells
+    for (TempoCell *tmpCell in CellsArray)
     {
         [_ManagedObjectContext deleteObject:tmpCell];
     }
     
+    // Delete musicInfo
     if (TargetTempoList.musicInfo != nil)
     {
         [_ManagedObjectContext deleteObject:TargetTempoList.musicInfo];
     }
-
+    
+    // Delete privateProperties
+    if (TargetTempoList.privateProperties != nil)
+    {
+        [_ManagedObjectContext deleteObject:TargetTempoList.privateProperties];
+    }
+    
+    // Delete self
     [_ManagedObjectContext deleteObject:TargetTempoList];
     
     [self Save];
