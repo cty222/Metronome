@@ -25,6 +25,10 @@
                     <rect key="frame" x="16" y="45" width="70" height="160"/>
                     <color key="backgroundColor" red="1" green="0.94132335840000003" blue="0.1584888968" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="haO-7f-yxd">
+                    <rect key="frame" x="8" y="215" width="304" height="1"/>
+                    <color key="backgroundColor" red="0.35429972630000001" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QGt-g6-arU" customClass="TwoDigitsValuePicker">
                     <rect key="frame" x="226" y="45" width="70" height="160"/>
                     <color key="backgroundColor" red="1" green="0.94132335840000003" blue="0.1584888968" alpha="1" colorSpace="calibratedRGB"/>
