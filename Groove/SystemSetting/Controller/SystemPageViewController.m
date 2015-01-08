@@ -444,8 +444,9 @@
         self.DurationLabel.enabled = YES;
         self.StartTimeLabel.enabled = YES;
         self.EndTimeLabel.enabled = YES;
+        self.ResetTimeRepeatButton.enabled = YES;
         
-        // TempoList will change too
+        // TempoList behavior switch will change too
         self.EnableTempoListLooping.enabled = NO;
     }
     else
@@ -457,8 +458,9 @@
         self.DurationLabel.enabled = NO;
         self.StartTimeLabel.enabled = NO;
         self.EndTimeLabel.enabled = NO;
-        
-        // TempoList will change too
+        self.ResetTimeRepeatButton.enabled = NO;
+
+        // TempoList behavior switch will change too
         self.EnableTempoListLooping.enabled = YES;
     }
 }
