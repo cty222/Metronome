@@ -75,7 +75,7 @@
 
 - (IBAction) AddNewItem: (NSString *) ItemName
 {
-    [gMetronomeModel CreateNewDefaultTempoList:ItemName];
+    [gMetronomeModel CreateNewTempoList:ItemName];
     [gMetronomeModel SyncTempoListDataTableWithModel];
     [self FillTempoListFromModel];
 }

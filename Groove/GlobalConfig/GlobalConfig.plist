@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>VersionID</key>
-	<real>4050</real>
+	<real>4051</real>
 	<key>DbVersion</key>
-	<real>1024</real>
+	<real>1025</real>
 	<key>LastTempoListIndexUserSelected</key>
 	<integer>0</integer>
 	<key>TempoCellNumberMax</key>
@@ -31,10 +31,6 @@
 	<key>PlaySingleCellWithMusic</key>
 	<false/>
 	<key>PlayMusicLoopingEnable</key>
-	<false/>
-	<key>BPMDoubleEnable</key>
-	<false/>
-	<key>TempoListLoopingEnable</key>
 	<false/>
 	<key>MusicVolumeMax</key>
 	<real>0.8</real>

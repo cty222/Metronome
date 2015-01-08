@@ -328,34 +328,6 @@ static NSMutableDictionary * ThisPlist;
 //
 // ============================
 
-// ============================
-// Metronome bounds properties
-//
-+ (MetronomeBehaviorProperties *) GetMetronomeBehaviorProperties
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return nil;
-    }
-    
-    MetronomeBehaviorProperties *Properties = [[MetronomeBehaviorProperties alloc] init];
-    
-    Properties.BPMDoubleEnable = [[ThisPlist objectForKey:@"BPMDoubleEnable"] boolValue];
-    Properties.TempoListLoopingEnable = [[ThisPlist objectForKey:@"TempoListLoopingEnable"] boolValue];
-    
-    return Properties;
-}
-
-+ (void) SetMetronomeBehaviorProperties : (MetronomeBehaviorProperties *) NewProperties
-{
-    [ThisPlist setValue:[NSNumber numberWithBool:NewProperties.BPMDoubleEnable] forKey:@"BPMDoubleEnable"];
-    [ThisPlist setValue:[NSNumber numberWithBool:NewProperties.TempoListLoopingEnable] forKey:@"TempoListLoopingEnable"];
-
-    [GlobalConfig Save];
-}
-
-//
-// ============================
 
 // ============================
 // Music bounds Flag

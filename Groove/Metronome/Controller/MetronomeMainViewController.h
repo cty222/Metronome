@@ -54,7 +54,6 @@ typedef enum {
 
 @property BOOL IsNeededToRestartMetronomeClick;
 @property MusicProperties * MusicProperties;
-@property MetronomeBehaviorProperties * MetronomeBehaviorProperties;
 
 - (void) SyncCurrentTempoListFromModel;
 - (void) SyncCurrentTempoCellDatatableWithModel;

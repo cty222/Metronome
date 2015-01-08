@@ -13,7 +13,6 @@
 #import <Foundation/Foundation.h>
 #import "MetronomeModel.h"
 #import "MusicProperties.h"
-#import "MetronomeBehaviorProperties.h"
 
 #define ROUND_NO_DECOMAL_FROM_DOUBLE(value) (floor(value + 0.5))
 #define ROUND_ONE_DECOMAL_FROM_DOUBLE(value) (floor(value * 10 + 0.5)/10)
@@ -59,10 +58,6 @@ enum {
 
 + (NSNumber *) GetLastTempoListIndexUserSelected;
 + (void) SetLastTempoListIndexUserSelected : (int) NewValue;
-
-// Metronome property
-+ (MetronomeBehaviorProperties *) GetMetronomeBehaviorProperties;
-+ (void) SetMetronomeBehaviorProperties : (MetronomeBehaviorProperties *) NewProperties;
 
 // Music bounds flags
 + (MusicProperties *) GetMusicProperties;

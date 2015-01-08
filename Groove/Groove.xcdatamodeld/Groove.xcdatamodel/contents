@@ -19,7 +19,7 @@
         <attribute name="sixteenNoteVolume" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="sortIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="trippleNoteVolume" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
-        <relationship name="listOwner" maxCount="1" deletionRule="Nullify" destinationEntity="TempoList" inverseName="cellBelongTo" inverseEntity="TempoList" syncable="YES"/>
+        <relationship name="listOwner" maxCount="1" deletionRule="Nullify" destinationEntity="TempoList" inverseName="cellsArray" inverseEntity="TempoList" syncable="YES"/>
         <relationship name="timeSignatureType" maxCount="1" deletionRule="Nullify" destinationEntity="TimeSignatureType" inverseName="usingCell" inverseEntity="TimeSignatureType" syncable="YES"/>
         <relationship name="voiceType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VoiceType" inverseName="usingCell" inverseEntity="VoiceType" syncable="YES"/>
     </entity>
@@ -27,8 +27,14 @@
         <attribute name="focusCellIndex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="sortIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="tempoListName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cellBelongTo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TempoCell" inverseName="listOwner" inverseEntity="TempoCell" syncable="YES"/>
+        <relationship name="cellsArray" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TempoCell" inverseName="listOwner" inverseEntity="TempoCell" syncable="YES"/>
         <relationship name="musicInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MusicBindingInfo" inverseName="owner" inverseEntity="MusicBindingInfo" syncable="YES"/>
+        <relationship name="privateProperties" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TempoPrivateProperties" inverseName="owner" inverseEntity="TempoPrivateProperties" syncable="YES"/>
+    </entity>
+    <entity name="TempoPrivateProperties" representedClassName="TempoPrivateProperties" syncable="YES">
+        <attribute name="doubleValueEnable" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="tempoListLoopingEnable" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TempoList" inverseName="privateProperties" inverseEntity="TempoList" syncable="YES"/>
     </entity>
     <entity name="TimeSignatureType" representedClassName="TimeSignatureType" syncable="YES">
         <attribute name="sortIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -47,7 +53,8 @@
         <element name="DbConfig" positionX="153" positionY="18" width="128" height="60"/>
         <element name="MusicBindingInfo" positionX="144" positionY="9" width="128" height="118"/>
         <element name="TempoCell" positionX="-63" positionY="-18" width="128" height="210"/>
-        <element name="TempoList" positionX="349" positionY="-127" width="128" height="118"/>
+        <element name="TempoList" positionX="349" positionY="-127" width="128" height="133"/>
+        <element name="TempoPrivateProperties" positionX="144" positionY="18" width="128" height="90"/>
         <element name="TimeSignatureType" positionX="412" positionY="80" width="128" height="88"/>
         <element name="VoiceType" positionX="144" positionY="0" width="128" height="88"/>
     </elements>

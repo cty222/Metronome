@@ -45,9 +45,6 @@
 {
     [super viewWillAppear:animated];
    
-    // Metronomoe propeties will make BPM picker change
-    [self SyncMetronomeBehaviorPropertiesFromGlobalConfig];
-    
     [self SyncCurrentTempoListFromModel];
     
     [self SyncCurrentTempoCellDatatableWithModel];
@@ -291,12 +288,23 @@
             [GlobalConfig SetLastTempoListIndexUserSelected:0];
         }
     }
+    
+    if (self.CurrentTempoList != nil)
+    {
+        [self SyncMetronomePrivateProperties];
+    }
 }
 
-- (void) SyncMetronomeBehaviorPropertiesFromGlobalConfig
+- (void) SyncMetronomePrivateProperties
 {
-    self.MetronomeBehaviorProperties = [GlobalConfig GetMetronomeBehaviorProperties];
-    if (self.MetronomeBehaviorProperties.BPMDoubleEnable)
+    if (self.CurrentTempoList == nil)
+    {
+        NSLog(@"Error: Using Error CurrentList is nil!!");
+        [self SyncCurrentTempoListFromModel];
+        return;
+    }
+    
+    if ([self.CurrentTempoList.privateProperties.doubleValueEnable boolValue])
     {
         _CellParameterSettingSubController.BPMPicker.Mode = BPM_PICKER_DOUBLE_MODE;
     }
@@ -683,7 +691,7 @@
         
         if (NewIndex >= self.CurrentCellsDataTable.count)
         {
-            if (_MetronomeBehaviorProperties.TempoListLoopingEnable)
+            if ([self.CurrentTempoList.privateProperties.tempoListLoopingEnable boolValue])
             {
                 NewIndex = 0;
                 _ListChangeFocusFlag = YES;

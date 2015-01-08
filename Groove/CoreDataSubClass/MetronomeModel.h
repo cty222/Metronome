@@ -15,8 +15,10 @@
 #import "TimeSignatureType.h"
 #import "VoiceType.h"
 #import "MusicBindingInfo.h"
+#import "TempoPrivateProperties.h"
 #import "DbConfig.h"
 
+#define DEFAULT_TEMPLE_LIST_COUNT 3
 #define DefaultMusicVolume (0.4f)
 
 @class MetronomeModel;
@@ -45,7 +47,7 @@ MetronomeModel * gMetronomeModel;
 - (void) Save;
 - (void) AddNewTempoCell : (TempoList *) CellOwner;
 - (void) DeleteTargetTempoCell : (TempoCell *) TargetCell;
-- (void) CreateNewDefaultTempoList: (NSString *) ListName;
+- (void) CreateNewTempoList: (NSString *) ListName;
 - (void) DeleteTempoList : (TempoList *) TargetTempoList;
 
 - (MusicBindingInfo *) CreateNewMusicInfo;

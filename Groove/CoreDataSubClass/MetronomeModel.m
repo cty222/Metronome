@@ -112,7 +112,7 @@
 
 - (void) CreateDefaultTempoList
 {
-    for (int Index=0;Index <3; Index++)
+    for (int Index=0;Index < DEFAULT_TEMPLE_LIST_COUNT; Index++)
     {
         [self AddNewTempoList: [NSString stringWithFormat:@"Default%d", Index]];
     }
@@ -419,6 +419,18 @@
     }
 }
 
+- (TempoPrivateProperties * ) CreateTempoListPrivateProperties
+{
+    TempoPrivateProperties* NewProperty = [NSEntityDescription
+                               insertNewObjectForEntityForName:NSStringFromClass([TempoPrivateProperties class]) inManagedObjectContext:_ManagedObjectContext];
+    NewProperty.doubleValueEnable = [NSNumber numberWithBool:NO];
+    NewProperty.tempoListLoopingEnable  = [NSNumber numberWithBool:NO];
+    
+    [self Save];
+
+    return NewProperty;
+}
+
 - (TempoList*) AddNewTempoList : (NSString *) ListName
 {
 
@@ -427,6 +439,7 @@
     NewTempoList.tempoListName = ListName;
     NewTempoList.focusCellIndex = @0;
     NewTempoList.sortIndex = [NSNumber numberWithInt:[self GetNewEmptySortIndexForTempoList]];
+    NewTempoList.privateProperties = [self CreateTempoListPrivateProperties];
     
     [self Save];
     
@@ -455,7 +468,7 @@
     [self Save];
 }
 
-- (void) CreateNewDefaultTempoList: (NSString *) ListName
+- (void) CreateNewTempoList: (NSString *) ListName
 {
     TempoList * NewTempoList = [self AddNewTempoList:ListName];
     [self AddNewTempoCell:NewTempoList];

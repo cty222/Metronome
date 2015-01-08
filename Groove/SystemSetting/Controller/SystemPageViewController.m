@@ -16,7 +16,6 @@
     MPMediaPickerController *_MusicPicker;
     TempoList *_CurrentList;
     MusicProperties * _MusicProperty;
-    MetronomeBehaviorProperties * _MetronomeBehaviorProperties;
     
     NSArray * _TempoListDataTable;
     BOOL _TwickLingEnable;
@@ -57,8 +56,10 @@
 
     // ===================
     // UI state Sync
-    [self SyncMetronomePropertiesFromGlobalConfig];
+    [self SyncCurrentListFormGlobalConfig];
+    
     [self SyncPageInfoByCurrentTempoList];
+    [self SyncMetronomePrivateProperties];
     [self SyncMusicPropertyFromGlobalConfig];
     [self SyncStartAndEndTime];
     
@@ -177,17 +178,31 @@
                                                object:nil];
 }
 
-- (void) SyncPageInfoByCurrentTempoList
+- (void) SyncCurrentListFormGlobalConfig
 {
     _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndexUserSelected]];
     if (_CurrentList == nil)
     {
         NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from LastTempoListIndexUserSelected Error");
-        _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:[GlobalConfig GetLastTempoListIndexUserSelected]];
+        _CurrentList = [gMetronomeModel PickTargetTempoListFromDataTable:@0];
         if (_CurrentList == nil)
         {
             NSLog(@"SystemPageViewController : FetchCurrentTempoListFromModel from 0 Error");
         }
+        else
+        {
+            [GlobalConfig SetLastTempoListIndexUserSelected:0];
+        }
+    }
+}
+
+- (void) SyncPageInfoByCurrentTempoList
+{
+    if (_CurrentList == nil)
+    {
+        NSLog(@"SyncPageInfoByCurrentTempoList behavior Error!!!");
+        [self SyncCurrentListFormGlobalConfig];
+        return;
     }
     
     NSString *DisplayName = NSLocalizedString(@"TempoListName", nil);
@@ -389,21 +404,20 @@
 // =============================
 // Metronome behavior Property switch
 //
-- (void) SyncMetronomePropertiesFromGlobalConfig
+- (void) SyncMetronomePrivateProperties
 {
-    _MetronomeBehaviorProperties = [GlobalConfig GetMetronomeBehaviorProperties];
-    [self.EnableBPMDoubleMode setOn: _MetronomeBehaviorProperties.BPMDoubleEnable];
-    [self.EnableTempoListLooping setOn: _MetronomeBehaviorProperties.TempoListLoopingEnable];
+    [self.EnableBPMDoubleMode setOn: [_CurrentList.privateProperties.doubleValueEnable boolValue]];
+    [self.EnableTempoListLooping setOn:  [_CurrentList.privateProperties.tempoListLoopingEnable boolValue]];
 }
 
 - (IBAction)EnableBPMDoubleModeAction :(UISwitch *)sender {
-    _MetronomeBehaviorProperties.BPMDoubleEnable = sender.isOn;
-    [GlobalConfig SetMetronomeBehaviorProperties:_MetronomeBehaviorProperties];
+    _CurrentList.privateProperties.doubleValueEnable = [NSNumber numberWithBool:sender.isOn];
+    [gMetronomeModel Save];
 }
 
 - (IBAction)EnableTempoListLoopingAction :(UISwitch *)sender {
-    _MetronomeBehaviorProperties.TempoListLoopingEnable = sender.isOn;
-    [GlobalConfig SetMetronomeBehaviorProperties:_MetronomeBehaviorProperties];
+    _CurrentList.privateProperties.tempoListLoopingEnable = [NSNumber numberWithBool:sender.isOn];
+    [gMetronomeModel Save];
 }
 
 //
