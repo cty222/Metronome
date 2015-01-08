@@ -22,12 +22,6 @@
 		001BFDAE1A3F4EA600A56947 /* HumanVoice.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDAD1A3F4EA500A56947 /* HumanVoice.pdf */; };
 		001BFDBD1A3F550200A56947 /* BPMArrowDown.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDBB1A3F550200A56947 /* BPMArrowDown.pdf */; };
 		001BFDBE1A3F550200A56947 /* BPMArrowUp.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDBC1A3F550200A56947 /* BPMArrowUp.pdf */; };
-		001BFDC51A3F5EBD00A56947 /* AppIcon_29x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDBF1A3F5EBD00A56947 /* AppIcon_29x2.png */; };
-		001BFDC61A3F5EBD00A56947 /* AppIcon_29x3.png in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDC01A3F5EBD00A56947 /* AppIcon_29x3.png */; };
-		001BFDC71A3F5EBD00A56947 /* AppIcon_40x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDC11A3F5EBD00A56947 /* AppIcon_40x2.png */; };
-		001BFDC81A3F5EBD00A56947 /* AppIcon_40x3.png in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDC21A3F5EBD00A56947 /* AppIcon_40x3.png */; };
-		001BFDC91A3F5EBD00A56947 /* AppIcon_60x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDC31A3F5EBD00A56947 /* AppIcon_60x2.png */; };
-		001BFDCA1A3F5EBD00A56947 /* AppIcon_60x3.png in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDC41A3F5EBD00A56947 /* AppIcon_60x3.png */; };
 		001BFDCC1A3F5EE600A56947 /* BPMArrowDown_4S.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDCB1A3F5EE600A56947 /* BPMArrowDown_4S.pdf */; };
 		001BFDCE1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDCD1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf */; };
 		001BFDD11A3F5F2200A56947 /* LoopCellBackGround.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDCF1A3F5F2200A56947 /* LoopCellBackGround.pdf */; };
@@ -198,6 +192,11 @@
 		00E8C0451A36119200D53F82 /* TrippleNoteYellow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C0401A36119200D53F82 /* TrippleNoteYellow.pdf */; };
 		00ED15871A5EEC5D002D442F /* TempoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ED15861A5EEC5D002D442F /* TempoList.m */; };
 		00ED158A1A5EEC5D002D442F /* TempoPrivateProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ED15891A5EEC5D002D442F /* TempoPrivateProperties.m */; };
+		00ED15901A5F0FDD002D442F /* AppIcon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ED158B1A5F0FDD002D442F /* AppIcon_58.png */; };
+		00ED15911A5F0FDD002D442F /* AppIcon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ED158C1A5F0FDD002D442F /* AppIcon_80.png */; };
+		00ED15921A5F0FDD002D442F /* AppIcon_87.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ED158D1A5F0FDD002D442F /* AppIcon_87.png */; };
+		00ED15931A5F0FDD002D442F /* AppIcon_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ED158E1A5F0FDD002D442F /* AppIcon_120.png */; };
+		00ED15941A5F0FDD002D442F /* AppIcon_180.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ED158F1A5F0FDD002D442F /* AppIcon_180.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,12 +229,6 @@
 		001BFDAD1A3F4EA500A56947 /* HumanVoice.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HumanVoice.pdf; sourceTree = "<group>"; };
 		001BFDBB1A3F550200A56947 /* BPMArrowDown.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BPMArrowDown.pdf; sourceTree = "<group>"; };
 		001BFDBC1A3F550200A56947 /* BPMArrowUp.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BPMArrowUp.pdf; sourceTree = "<group>"; };
-		001BFDBF1A3F5EBD00A56947 /* AppIcon_29x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_29x2.png; sourceTree = "<group>"; };
-		001BFDC01A3F5EBD00A56947 /* AppIcon_29x3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_29x3.png; sourceTree = "<group>"; };
-		001BFDC11A3F5EBD00A56947 /* AppIcon_40x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_40x2.png; sourceTree = "<group>"; };
-		001BFDC21A3F5EBD00A56947 /* AppIcon_40x3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_40x3.png; sourceTree = "<group>"; };
-		001BFDC31A3F5EBD00A56947 /* AppIcon_60x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_60x2.png; sourceTree = "<group>"; };
-		001BFDC41A3F5EBD00A56947 /* AppIcon_60x3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_60x3.png; sourceTree = "<group>"; };
 		001BFDCB1A3F5EE600A56947 /* BPMArrowDown_4S.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BPMArrowDown_4S.pdf; sourceTree = "<group>"; };
 		001BFDCD1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BPMArrowUp_4S.pdf; sourceTree = "<group>"; };
 		001BFDCF1A3F5F2200A56947 /* LoopCellBackGround.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LoopCellBackGround.pdf; sourceTree = "<group>"; };
@@ -458,6 +451,11 @@
 		00ED15861A5EEC5D002D442F /* TempoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoList.m; path = CoreDataSubClass/TempoList.m; sourceTree = "<group>"; };
 		00ED15881A5EEC5D002D442F /* TempoPrivateProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoPrivateProperties.h; path = CoreDataSubClass/TempoPrivateProperties.h; sourceTree = "<group>"; };
 		00ED15891A5EEC5D002D442F /* TempoPrivateProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoPrivateProperties.m; path = CoreDataSubClass/TempoPrivateProperties.m; sourceTree = "<group>"; };
+		00ED158B1A5F0FDD002D442F /* AppIcon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_58.png; sourceTree = "<group>"; };
+		00ED158C1A5F0FDD002D442F /* AppIcon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_80.png; sourceTree = "<group>"; };
+		00ED158D1A5F0FDD002D442F /* AppIcon_87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_87.png; sourceTree = "<group>"; };
+		00ED158E1A5F0FDD002D442F /* AppIcon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_120.png; sourceTree = "<group>"; };
+		00ED158F1A5F0FDD002D442F /* AppIcon_180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_180.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,12 +493,11 @@
 		001BFD941A3F4C7600A56947 /* AppIcon */ = {
 			isa = PBXGroup;
 			children = (
-				001BFDBF1A3F5EBD00A56947 /* AppIcon_29x2.png */,
-				001BFDC01A3F5EBD00A56947 /* AppIcon_29x3.png */,
-				001BFDC11A3F5EBD00A56947 /* AppIcon_40x2.png */,
-				001BFDC21A3F5EBD00A56947 /* AppIcon_40x3.png */,
-				001BFDC31A3F5EBD00A56947 /* AppIcon_60x2.png */,
-				001BFDC41A3F5EBD00A56947 /* AppIcon_60x3.png */,
+				00ED158B1A5F0FDD002D442F /* AppIcon_58.png */,
+				00ED158C1A5F0FDD002D442F /* AppIcon_80.png */,
+				00ED158D1A5F0FDD002D442F /* AppIcon_87.png */,
+				00ED158E1A5F0FDD002D442F /* AppIcon_120.png */,
+				00ED158F1A5F0FDD002D442F /* AppIcon_180.png */,
 			);
 			name = AppIcon;
 			sourceTree = "<group>";
@@ -1282,6 +1279,7 @@
 				007598E61A5D3DFE000A6B78 /* Quarter_Hi.wav in Resources */,
 				0071A9B91A2B090100EA57D2 /* TrippleNote.pdf in Resources */,
 				0098D7D11A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib in Resources */,
+				00ED15931A5F0FDD002D442F /* AppIcon_120.png in Resources */,
 				0098D7C51A5999A90001DE00 /* Delete_red.pdf in Resources */,
 				00E8C0211A3610FD00D53F82 /* QuarterNoteRed.pdf in Resources */,
 				008A5CB41A4F0DF400BC744F /* TwoDigitsValuePicker.xib in Resources */,
@@ -1293,7 +1291,6 @@
 				00E8C0411A36119200D53F82 /* 16NoteYellow.pdf in Resources */,
 				004DF4691A40A6AD00E79C0E /* TapAnimation_1_red.pdf in Resources */,
 				007598E71A5D3DFE000A6B78 /* Tic_Hi.wav in Resources */,
-				001BFDC61A3F5EBD00A56947 /* AppIcon_29x3.png in Resources */,
 				007598941A5D1E8C000A6B78 /* Five.wav in Resources */,
 				0059D1571A57096F0058C5E3 /* System_4S.pdf in Resources */,
 				007598A91A5D2612000A6B78 /* Seven.wav in Resources */,
@@ -1315,7 +1312,6 @@
 				00E8C0431A36119200D53F82 /* AccentYellow.pdf in Resources */,
 				0059D1621A5710850058C5E3 /* PlayRed.pdf in Resources */,
 				00E8C01E1A3610FD00D53F82 /* 16NoteRed.pdf in Resources */,
-				001BFDC91A3F5EBD00A56947 /* AppIcon_60x2.png in Resources */,
 				0075989A1A5D1E8C000A6B78 /* Ten.wav in Resources */,
 				008A5C931A4F0AE600BC744F /* TapAnimationImage.xib in Resources */,
 				0098D7D41A59B0680001DE00 /* LoopCellEditerView4S.xib in Resources */,
@@ -1326,17 +1322,17 @@
 				008A5CA31A4F0B1200BC744F /* MetronmoneTopSubViewIphone.xib in Resources */,
 				004DF46B1A40A6AD00E79C0E /* TapAnimation_2_red.pdf in Resources */,
 				006999551A5C656100B01E5F /* PlayList.pdf in Resources */,
+				00ED15921A5F0FDD002D442F /* AppIcon_87.png in Resources */,
 				0075988F1A5D1E8C000A6B78 /* Human_a.wav in Resources */,
 				0098D7C41A5999A90001DE00 /* Delete.pdf in Resources */,
-				001BFDC81A3F5EBD00A56947 /* AppIcon_40x3.png in Resources */,
 				008A5C911A4F0AE600BC744F /* CircleButton.xib in Resources */,
 				006739381A55D26B008B6A2F /* NameEditer.xib in Resources */,
 				008A5CD01A4F0E1B00BC744F /* VoiceTypePickerView.xib in Resources */,
 				001BFDBE1A3F550200A56947 /* BPMArrowUp.pdf in Resources */,
+				00ED15901A5F0FDD002D442F /* AppIcon_58.png in Resources */,
 				0059D15B1A5709830058C5E3 /* SystemRetunButton.pdf in Resources */,
 				0059D1421A56FFD20058C5E3 /* MusicVolume.pdf in Resources */,
 				008A5C951A4F0AE600BC744F /* MetronomeSelectBar.xib in Resources */,
-				001BFDC71A3F5EBD00A56947 /* AppIcon_40x2.png in Resources */,
 				0071A9B51A2B090100EA57D2 /* 16Note.pdf in Resources */,
 				0071A9CF1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf in Resources */,
 				008A5D001A4F18E200BC744F /* TempoListViewController.xib in Resources */,
@@ -1347,12 +1343,12 @@
 				007598911A5D1E8C000A6B78 /* Human_e.wav in Resources */,
 				0059D1481A57012C0058C5E3 /* System.pdf in Resources */,
 				0075989D1A5D1E8C000A6B78 /* Human_Toc.wav in Resources */,
-				001BFDCA1A3F5EBD00A56947 /* AppIcon_60x3.png in Resources */,
 				0049ECC61A40BE2B0016EA3D /* TapAnimation_1_gray.pdf in Resources */,
 				008A5CB21A4F0DF400BC744F /* ThreeDigitsValuePicker.xib in Resources */,
 				004DF4631A40A69900E79C0E /* SwitchButtonUnLock.pdf in Resources */,
 				0049ECC81A40BE310016EA3D /* TapAnimation_2_gray.pdf in Resources */,
 				001BFDAE1A3F4EA600A56947 /* HumanVoice.pdf in Resources */,
+				00ED15941A5F0FDD002D442F /* AppIcon_180.png in Resources */,
 				004BE64A19B2DDC7002CD995 /* InfoPlist.strings in Resources */,
 				001BFDCC1A3F5EE600A56947 /* BPMArrowDown_4S.pdf in Resources */,
 				001BFDAC1A3F4E9200A56947 /* ValueUpArrow.pdf in Resources */,
@@ -1361,7 +1357,6 @@
 				004DF4621A40A69900E79C0E /* SwitchButtonLock.pdf in Resources */,
 				008A5C5E1A4F071600BC744F /* MetronomeMainViewController.xib in Resources */,
 				0075989B1A5D1E8C000A6B78 /* Three.wav in Resources */,
-				001BFDC51A3F5EBD00A56947 /* AppIcon_29x2.png in Resources */,
 				006999561A5C656100B01E5F /* PlayMusic_red.pdf in Resources */,
 				00E8C0441A36119200D53F82 /* QuarterNoteYellow.pdf in Resources */,
 				00E8C0221A3610FD00D53F82 /* TrippleNoteRed.pdf in Resources */,
@@ -1383,6 +1378,7 @@
 				008A5CDE1A4F0E3300BC744F /* MusicTimePicker.xib in Resources */,
 				0027FC5B1A5B06C300257397 /* Localizable.strings in Resources */,
 				006999571A5C656100B01E5F /* PlayMusic.pdf in Resources */,
+				00ED15911A5F0FDD002D442F /* AppIcon_80.png in Resources */,
 				008A5C8F1A4F0AE600BC744F /* LargeBPMPicker.xib in Resources */,
 				001BFDD11A3F5F2200A56947 /* LoopCellBackGround.pdf in Resources */,
 				007598901A5D1E8C000A6B78 /* Human_and.wav in Resources */,
@@ -1568,7 +1564,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
