@@ -114,6 +114,11 @@
                                              selector:@selector(PlayMusicStatusChangedCallBack:)
                                                  name:kPlayMusicStatusChangedEvent
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(VoiceStopByInterrupt:)
+                                                 name:kVoiceStopByInterrupt
+                                               object:nil];
    
     [self ChangeControllerEventInitialize];
     
@@ -533,7 +538,7 @@
     {
         self.MusicTimePicker.ID = NONE_ID;
         [self.StartTimeLabel setTitle:[self.MusicTimePicker ReturnCurrentValueString] forState:UIControlStateNormal];
-        gPlayMusicChannel.StartTime = self.MusicTimePicker.Value;
+        gPlayMusicChannel.StartTime = ROUND_FILL_DOUBLE_IN_MODEL(self.MusicTimePicker.Value);
         _CurrentList.musicInfo.startTime = [NSNumber numberWithFloat:ROUND_FILL_DOUBLE_IN_MODEL(self.MusicTimePicker.Value)];
         if (gPlayMusicChannel.isPlaying)
         {
@@ -545,7 +550,7 @@
     {
         self.MusicTimePicker.ID = NONE_ID;
         [self.EndTimeLabel setTitle:[self.MusicTimePicker ReturnCurrentValueString] forState:UIControlStateNormal];
-        gPlayMusicChannel.StopTime = self.MusicTimePicker.Value;
+        gPlayMusicChannel.StopTime = ROUND_FILL_DOUBLE_IN_MODEL(self.MusicTimePicker.Value);
         _CurrentList.musicInfo.endTime = [NSNumber numberWithFloat:ROUND_FILL_DOUBLE_IN_MODEL(self.MusicTimePicker.Value)];
         if (gPlayMusicChannel.isPlaying)
         {
@@ -594,6 +599,13 @@
     }
 }
 
+- (void) VoiceStopByInterrupt: (NSNotification *)Notification
+{
+    if (gPlayMusicChannel.isPlaying)
+    {
+        [gPlayMusicChannel Stop];
+    }
+}
 
 - (void) PlayMusicStatusChangedCallBack:(NSNotification *)Notification
 {

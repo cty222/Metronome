@@ -501,6 +501,7 @@
         case STOP_PLAYING:
             [self StopClick];
             [self ResetCounter];
+
             if (self.MusicProperties.MusicFunctionEnable && self.MusicProperties.PlaySingleCellWithMusicEnable)
             {
                 if (gPlayMusicChannel.isPlaying)

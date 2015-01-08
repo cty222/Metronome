@@ -14,6 +14,8 @@
 #define kPlayMusicStatusChangedEvent @"kPlayMusicStatusChangedEvent"
 #define kStopTimeLowerThanStartTimeEvent @"kStopTimeLowerThanStartTimeEvent"
 
+#define ROUND_DOUBLE_TIME(value) (floor(value * 1000)/1000 + 0.0001)
+
 @class PlayerForSongs;
 
 PlayerForSongs * gPlayMusicChannel;

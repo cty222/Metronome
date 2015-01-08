@@ -12,6 +12,11 @@
 #import "TwoDigitsValuePicker.h"
 #import "ThreeDigitsValuePicker.h"
 
+// 0.01f use 28% cpu
+// 0.02f use 16% cpu
+// 0.04f use 8%  cpu
+#define SCROLL_LABEL_UPDATE_RATE (0.04f)
+
 @protocol  MusicTimePickerProtocol <InputSubmitViewProtocol>
 @required
 

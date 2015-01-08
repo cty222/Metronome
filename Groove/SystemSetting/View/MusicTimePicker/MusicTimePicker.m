@@ -171,9 +171,11 @@
     return ReturnStr;
 }
 
+
 // =======================
 // Timer
 //
+
 - (void) PlayMusicStatusChangedCallBack:(NSNotification *)Notification
 {
     if ([gPlayMusicChannel isPlaying])
@@ -201,7 +203,8 @@
     
     [self ScollValueUpdateTicker: nil];
     
-    _ScollValueUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1
+    // 
+    _ScollValueUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:SCROLL_LABEL_UPDATE_RATE
                                                               target:self
                                                             selector:@selector(ScollValueUpdateTicker:)
                                                             userInfo:nil

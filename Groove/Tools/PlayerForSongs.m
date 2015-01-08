@@ -97,7 +97,7 @@ static MPMusicPlayerController * MusicPlayer = nil;
         [_TestingTimer invalidate];
         _TestingTimer =nil;
     }
-    [_Player pause];
+    [_Player stop];
     [[NSNotificationCenter defaultCenter] postNotificationName:kPlayMusicStatusChangedEvent object:nil];
     
 }
@@ -215,7 +215,7 @@ static MPMusicPlayerController * MusicPlayer = nil;
 
 - (NSTimeInterval) GetCurrentTime
 {
-    return _Player.currentTime;
+    return ROUND_DOUBLE_TIME(_Player.currentTime);
 }
 
 - (void) SetStartTime : (NSTimeInterval) NewStartTime
@@ -229,7 +229,7 @@ static MPMusicPlayerController * MusicPlayer = nil;
 
 - (NSTimeInterval) GetStartTime
 {
-    return _StartTime;
+    return ROUND_DOUBLE_TIME(_StartTime);
 }
 
 
@@ -240,7 +240,7 @@ static MPMusicPlayerController * MusicPlayer = nil;
 
 - (NSTimeInterval) GetStopTime
 {
-    return _StopTime;
+    return ROUND_DOUBLE_TIME(_StopTime);
 }
 
 - (NSTimeInterval) GetDuration
@@ -250,7 +250,7 @@ static MPMusicPlayerController * MusicPlayer = nil;
     NSLog(@"[_Player duration] %f", [_Player duration]);
 #endif
     
-    return [_Player duration];
+    return ROUND_DOUBLE_TIME([_Player duration]);
 }
 
 
