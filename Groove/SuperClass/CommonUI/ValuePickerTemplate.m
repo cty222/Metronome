@@ -111,11 +111,11 @@
     {
         return;
     }
-    
+  
     _Value = NewValue;
     
     [self SyncValueLabelFromValue];
-    
+
     // Pass to parent view.
     if (self.delegate != nil)
     {

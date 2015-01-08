@@ -181,7 +181,11 @@
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     TempoCell * TargetCell = Parent.CurrentCellsDataTable[Parent.FocusIndex];
-    self.LoopCellEditerView.ValueScrollView.Value =  [TargetCell.loopCount intValue];
+    
+    if ([TargetCell.loopCount intValue] != ROUND_NO_DECOMAL_FROM_DOUBLE(self.LoopCellEditerView.ValueScrollView.Value))
+    {
+        self.LoopCellEditerView.ValueScrollView.Value =  ROUND_ONE_DECOMAL_FROM_DOUBLE([TargetCell.loopCount intValue]);
+    }
     
     self.LoopCellEditerView.hidden = !self.LoopCellEditerView.hidden;
 }
