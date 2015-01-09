@@ -41,6 +41,8 @@ static ALCcontext *openALContext;
     [gClickVoiceList addObject: [[NormalHiClickVoice alloc] init]];
     [gClickVoiceList addObject: [[NormalLowClickVoice alloc] init]];
     [gClickVoiceList addObject: [[HumanVoice alloc] init]];
+    [gClickVoiceList addObject: [[DrumVoice1 alloc] init]];
+
 }
 
 + (void) InitAlcDevice

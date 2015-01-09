@@ -36,7 +36,7 @@
     float Width  = TriggerButton.frame.size.width;
     float Height = TriggerButton.frame.size.height;
     float XOffset = Width * 0.8;
-    float YOffset = Height / 2;
+    float YOffset = Height * 0.3;
     float RightMargin = Width * 0.6;
     float DownMargin = Height / 2;
     

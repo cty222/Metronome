@@ -10,6 +10,22 @@
 		0007F2091A3A1D43003F6927 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0007F2081A3A1D43003F6927 /* MediaPlayer.framework */; };
 		0007F20F1A3A22B9003F6927 /* PlayerForSongs.m in Sources */ = {isa = PBXBuildFile; fileRef = 0007F20E1A3A22B9003F6927 /* PlayerForSongs.m */; };
 		000D46271A469B710066BE0A /* MusicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 000D46261A469B710066BE0A /* MusicProperties.m */; };
+		0010C5A61A60607200BC5E51 /* Accent_Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5A11A60607200BC5E51 /* Accent_Low.wav */; };
+		0010C5A71A60607200BC5E51 /* And_Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5A21A60607200BC5E51 /* And_Low.wav */; };
+		0010C5A81A60607200BC5E51 /* E_Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5A31A60607200BC5E51 /* E_Low.wav */; };
+		0010C5A91A60607200BC5E51 /* Quarter_Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5A41A60607200BC5E51 /* Quarter_Low.wav */; };
+		0010C5AA1A60607200BC5E51 /* Tic_Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5A51A60607200BC5E51 /* Tic_Low.wav */; };
+		0010C5BE1A60669100BC5E51 /* Accent_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5B91A60669100BC5E51 /* Accent_Hi.wav */; };
+		0010C5BF1A60669100BC5E51 /* And_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5BA1A60669100BC5E51 /* And_Hi.wav */; };
+		0010C5C01A60669100BC5E51 /* E_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5BB1A60669100BC5E51 /* E_Hi.wav */; };
+		0010C5C11A60669100BC5E51 /* Quarter_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5BC1A60669100BC5E51 /* Quarter_Hi.wav */; };
+		0010C5C21A60669100BC5E51 /* Tic_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5BD1A60669100BC5E51 /* Tic_Hi.wav */; };
+		0010C5CE1A60682600BC5E51 /* DrumVoice1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0010C5CD1A60682600BC5E51 /* DrumVoice1.m */; };
+		0010C5D41A606C4500BC5E51 /* BassDrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5D01A606C4500BC5E51 /* BassDrum.wav */; };
+		0010C5D51A606C4500BC5E51 /* HiHatsClose.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5D11A606C4500BC5E51 /* HiHatsClose.wav */; };
+		0010C5D61A606C4500BC5E51 /* HiHatsOpen.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5D21A606C4500BC5E51 /* HiHatsOpen.wav */; };
+		0010C5D71A606C4500BC5E51 /* RideHard.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5D31A606C4500BC5E51 /* RideHard.wav */; };
+		0010C5D91A606DE500BC5E51 /* ScrollViewCellBackGround.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5D81A606DE500BC5E51 /* ScrollViewCellBackGround.pdf */; };
 		001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */; };
 		001B2B3019D3CF190057A22E /* DbConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 001B2B2F19D3CF190057A22E /* DbConfig.m */; };
 		001BF2981A531D9A00558052 /* MusicBindingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 001BF2971A531D9A00558052 /* MusicBindingInfo.m */; };
@@ -106,16 +122,6 @@
 		007598A31A5D2096000A6B78 /* Six.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598A21A5D2096000A6B78 /* Six.wav */; };
 		007598A91A5D2612000A6B78 /* Seven.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598A81A5D2612000A6B78 /* Seven.wav */; };
 		007598AB1A5D2617000A6B78 /* Twelve.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598AA1A5D2617000A6B78 /* Twelve.wav */; };
-		007598E31A5D3DFE000A6B78 /* Accent_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598DE1A5D3DFE000A6B78 /* Accent_Hi.wav */; };
-		007598E41A5D3DFE000A6B78 /* And_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598DF1A5D3DFE000A6B78 /* And_Hi.wav */; };
-		007598E51A5D3DFE000A6B78 /* E_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598E01A5D3DFE000A6B78 /* E_Hi.wav */; };
-		007598E61A5D3DFE000A6B78 /* Quarter_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598E11A5D3DFE000A6B78 /* Quarter_Hi.wav */; };
-		007598E71A5D3DFE000A6B78 /* Tic_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598E21A5D3DFE000A6B78 /* Tic_Hi.wav */; };
-		007598EE1A5D9845000A6B78 /* Accent_Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598E91A5D9845000A6B78 /* Accent_Low.wav */; };
-		007598EF1A5D9845000A6B78 /* And_Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598EA1A5D9845000A6B78 /* And_Low.wav */; };
-		007598F01A5D9845000A6B78 /* E_Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598EB1A5D9845000A6B78 /* E_Low.wav */; };
-		007598F11A5D9845000A6B78 /* Quarter_Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598EC1A5D9845000A6B78 /* Quarter_Low.wav */; };
-		007598F21A5D9845000A6B78 /* Tic_Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 007598ED1A5D9845000A6B78 /* Tic_Low.wav */; };
 		007598F51A5D9896000A6B78 /* NormalLowClickVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 007598F41A5D9896000A6B78 /* NormalLowClickVoice.m */; };
 		008A5C091A4F00F100BC744F /* GlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C071A4F00F100BC744F /* GlobalConfig.m */; };
 		008A5C0A1A4F00F100BC744F /* GlobalConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 008A5C081A4F00F100BC744F /* GlobalConfig.plist */; };
@@ -215,6 +221,23 @@
 		0007F20E1A3A22B9003F6927 /* PlayerForSongs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerForSongs.m; path = Tools/PlayerForSongs.m; sourceTree = "<group>"; };
 		000D46251A469B710066BE0A /* MusicProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicProperties.h; path = GlobalConfig/MusicProperties.h; sourceTree = "<group>"; };
 		000D46261A469B710066BE0A /* MusicProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MusicProperties.m; path = GlobalConfig/MusicProperties.m; sourceTree = "<group>"; };
+		0010C5A11A60607200BC5E51 /* Accent_Low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Accent_Low.wav; sourceTree = "<group>"; };
+		0010C5A21A60607200BC5E51 /* And_Low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = And_Low.wav; sourceTree = "<group>"; };
+		0010C5A31A60607200BC5E51 /* E_Low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = E_Low.wav; sourceTree = "<group>"; };
+		0010C5A41A60607200BC5E51 /* Quarter_Low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Quarter_Low.wav; sourceTree = "<group>"; };
+		0010C5A51A60607200BC5E51 /* Tic_Low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Tic_Low.wav; sourceTree = "<group>"; };
+		0010C5B91A60669100BC5E51 /* Accent_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Accent_Hi.wav; sourceTree = "<group>"; };
+		0010C5BA1A60669100BC5E51 /* And_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = And_Hi.wav; sourceTree = "<group>"; };
+		0010C5BB1A60669100BC5E51 /* E_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = E_Hi.wav; sourceTree = "<group>"; };
+		0010C5BC1A60669100BC5E51 /* Quarter_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Quarter_Hi.wav; sourceTree = "<group>"; };
+		0010C5BD1A60669100BC5E51 /* Tic_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Tic_Hi.wav; sourceTree = "<group>"; };
+		0010C5CC1A60682600BC5E51 /* DrumVoice1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrumVoice1.h; sourceTree = "<group>"; };
+		0010C5CD1A60682600BC5E51 /* DrumVoice1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrumVoice1.m; sourceTree = "<group>"; };
+		0010C5D01A606C4500BC5E51 /* BassDrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BassDrum.wav; sourceTree = "<group>"; };
+		0010C5D11A606C4500BC5E51 /* HiHatsClose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiHatsClose.wav; sourceTree = "<group>"; };
+		0010C5D21A606C4500BC5E51 /* HiHatsOpen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiHatsOpen.wav; sourceTree = "<group>"; };
+		0010C5D31A606C4500BC5E51 /* RideHard.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = RideHard.wav; sourceTree = "<group>"; };
+		0010C5D81A606DE500BC5E51 /* ScrollViewCellBackGround.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ScrollViewCellBackGround.pdf; sourceTree = "<group>"; };
 		001B2B2C19D3CA0C0057A22E /* Groove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Groove.xcdatamodel; sourceTree = "<group>"; };
 		001B2B2E19D3CF190057A22E /* DbConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DbConfig.h; path = CoreDataSubClass/DbConfig.h; sourceTree = "<group>"; };
 		001B2B2F19D3CF190057A22E /* DbConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DbConfig.m; path = CoreDataSubClass/DbConfig.m; sourceTree = "<group>"; };
@@ -329,16 +352,6 @@
 		007598A21A5D2096000A6B78 /* Six.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Six.wav; sourceTree = "<group>"; };
 		007598A81A5D2612000A6B78 /* Seven.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Seven.wav; sourceTree = "<group>"; };
 		007598AA1A5D2617000A6B78 /* Twelve.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Twelve.wav; sourceTree = "<group>"; };
-		007598DE1A5D3DFE000A6B78 /* Accent_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Accent_Hi.wav; sourceTree = "<group>"; };
-		007598DF1A5D3DFE000A6B78 /* And_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = And_Hi.wav; sourceTree = "<group>"; };
-		007598E01A5D3DFE000A6B78 /* E_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = E_Hi.wav; sourceTree = "<group>"; };
-		007598E11A5D3DFE000A6B78 /* Quarter_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Quarter_Hi.wav; sourceTree = "<group>"; };
-		007598E21A5D3DFE000A6B78 /* Tic_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Tic_Hi.wav; sourceTree = "<group>"; };
-		007598E91A5D9845000A6B78 /* Accent_Low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Accent_Low.wav; sourceTree = "<group>"; };
-		007598EA1A5D9845000A6B78 /* And_Low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = And_Low.wav; sourceTree = "<group>"; };
-		007598EB1A5D9845000A6B78 /* E_Low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = E_Low.wav; sourceTree = "<group>"; };
-		007598EC1A5D9845000A6B78 /* Quarter_Low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Quarter_Low.wav; sourceTree = "<group>"; };
-		007598ED1A5D9845000A6B78 /* Tic_Low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Tic_Low.wav; sourceTree = "<group>"; };
 		007598F31A5D9896000A6B78 /* NormalLowClickVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalLowClickVoice.h; sourceTree = "<group>"; };
 		007598F41A5D9896000A6B78 /* NormalLowClickVoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalLowClickVoice.m; sourceTree = "<group>"; };
 		008A5C051A4F00F100BC744F /* DebugHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DebugHeader.h; path = GlobalConfig/DebugHeader.h; sourceTree = "<group>"; };
@@ -490,6 +503,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0010C5CF1A606C4500BC5E51 /* DrumVoice1 */ = {
+			isa = PBXGroup;
+			children = (
+				0010C5D01A606C4500BC5E51 /* BassDrum.wav */,
+				0010C5D11A606C4500BC5E51 /* HiHatsClose.wav */,
+				0010C5D21A606C4500BC5E51 /* HiHatsOpen.wav */,
+				0010C5D31A606C4500BC5E51 /* RideHard.wav */,
+			);
+			path = DrumVoice1;
+			sourceTree = "<group>";
+		};
 		001BFD941A3F4C7600A56947 /* AppIcon */ = {
 			isa = PBXGroup;
 			children = (
@@ -690,6 +714,8 @@
 				005CDA721A57B9E300B85E4C /* NormalHiClickVoice.m */,
 				007598F31A5D9896000A6B78 /* NormalLowClickVoice.h */,
 				007598F41A5D9896000A6B78 /* NormalLowClickVoice.m */,
+				0010C5CC1A60682600BC5E51 /* DrumVoice1.h */,
+				0010C5CD1A60682600BC5E51 /* DrumVoice1.m */,
 			);
 			name = VoiceClass;
 			path = Tools/VoiceClass;
@@ -744,6 +770,7 @@
 		0071A9D11A2B108B00EA57D2 /* PropertyButton */ = {
 			isa = PBXGroup;
 			children = (
+				0010C5D81A606DE500BC5E51 /* ScrollViewCellBackGround.pdf */,
 				0059D1521A57092E0058C5E3 /* PropetyBackGround_red.pdf */,
 				0049ECBB1A40BA990016EA3D /* LoopCellPickerButton.pdf */,
 				001BFDCF1A3F5F2200A56947 /* LoopCellBackGround.pdf */,
@@ -763,11 +790,11 @@
 		007598E81A5D9845000A6B78 /* NormalLow */ = {
 			isa = PBXGroup;
 			children = (
-				007598E91A5D9845000A6B78 /* Accent_Low.wav */,
-				007598EA1A5D9845000A6B78 /* And_Low.wav */,
-				007598EB1A5D9845000A6B78 /* E_Low.wav */,
-				007598EC1A5D9845000A6B78 /* Quarter_Low.wav */,
-				007598ED1A5D9845000A6B78 /* Tic_Low.wav */,
+				0010C5A11A60607200BC5E51 /* Accent_Low.wav */,
+				0010C5A21A60607200BC5E51 /* And_Low.wav */,
+				0010C5A31A60607200BC5E51 /* E_Low.wav */,
+				0010C5A41A60607200BC5E51 /* Quarter_Low.wav */,
+				0010C5A51A60607200BC5E51 /* Tic_Low.wav */,
 			);
 			path = NormalLow;
 			sourceTree = "<group>";
@@ -1113,6 +1140,7 @@
 		00DA13AB19F4F77000F27E25 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				0010C5CF1A606C4500BC5E51 /* DrumVoice1 */,
 				007598E81A5D9845000A6B78 /* NormalLow */,
 				00E1D87E1A585796008A006D /* HumanVoice */,
 				00DA13AC19F4F77000F27E25 /* NormalHi */,
@@ -1123,11 +1151,11 @@
 		00DA13AC19F4F77000F27E25 /* NormalHi */ = {
 			isa = PBXGroup;
 			children = (
-				007598DE1A5D3DFE000A6B78 /* Accent_Hi.wav */,
-				007598DF1A5D3DFE000A6B78 /* And_Hi.wav */,
-				007598E01A5D3DFE000A6B78 /* E_Hi.wav */,
-				007598E11A5D3DFE000A6B78 /* Quarter_Hi.wav */,
-				007598E21A5D3DFE000A6B78 /* Tic_Hi.wav */,
+				0010C5B91A60669100BC5E51 /* Accent_Hi.wav */,
+				0010C5BA1A60669100BC5E51 /* And_Hi.wav */,
+				0010C5BB1A60669100BC5E51 /* E_Hi.wav */,
+				0010C5BC1A60669100BC5E51 /* Quarter_Hi.wav */,
+				0010C5BD1A60669100BC5E51 /* Tic_Hi.wav */,
 			);
 			path = NormalHi;
 			sourceTree = "<group>";
@@ -1268,29 +1296,30 @@
 				0049ECBC1A40BA990016EA3D /* LoopCellPickerButton.pdf in Resources */,
 				001BFDCE1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf in Resources */,
 				008A5CE21A4F0E3300BC744F /* TempoListUICell.xib in Resources */,
-				007598E51A5D3DFE000A6B78 /* E_Hi.wav in Resources */,
 				001BFDBD1A3F550200A56947 /* BPMArrowDown.pdf in Resources */,
 				0069995B1A5C69DD00B01E5F /* ResetTime.pdf in Resources */,
-				007598E31A5D3DFE000A6B78 /* Accent_Hi.wav in Resources */,
 				0069994F1A5C653200B01E5F /* fNewCircleButton_f3.pdf in Resources */,
 				0071A9B71A2B090100EA57D2 /* Accent.pdf in Resources */,
 				001BFDAB1A3F4E9200A56947 /* ValueDownArrow.pdf in Resources */,
 				0098D7C71A5999C50001DE00 /* MusicListen.pdf in Resources */,
-				007598E61A5D3DFE000A6B78 /* Quarter_Hi.wav in Resources */,
 				0071A9B91A2B090100EA57D2 /* TrippleNote.pdf in Resources */,
+				0010C5BE1A60669100BC5E51 /* Accent_Hi.wav in Resources */,
 				0098D7D11A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib in Resources */,
 				00ED15931A5F0FDD002D442F /* AppIcon_120.png in Resources */,
 				0098D7C51A5999A90001DE00 /* Delete_red.pdf in Resources */,
 				00E8C0211A3610FD00D53F82 /* QuarterNoteRed.pdf in Resources */,
 				008A5CB41A4F0DF400BC744F /* TwoDigitsValuePicker.xib in Resources */,
+				0010C5D71A606C4500BC5E51 /* RideHard.wav in Resources */,
+				0010C5C21A60669100BC5E51 /* Tic_Hi.wav in Resources */,
 				007598961A5D1E8C000A6B78 /* Nine.wav in Resources */,
 				0098D7CD1A5999DA0001DE00 /* SyncTime.pdf in Resources */,
 				0071A9AE1A2B075F00EA57D2 /* LoopCellScrollView.pdf in Resources */,
 				0059D1411A56FFD20058C5E3 /* ClockIcon.pdf in Resources */,
+				0010C5C01A60669100BC5E51 /* E_Hi.wav in Resources */,
 				0075989F1A5D1E8C000A6B78 /* Two.wav in Resources */,
+				0010C5D41A606C4500BC5E51 /* BassDrum.wav in Resources */,
 				00E8C0411A36119200D53F82 /* 16NoteYellow.pdf in Resources */,
 				004DF4691A40A6AD00E79C0E /* TapAnimation_1_red.pdf in Resources */,
-				007598E71A5D3DFE000A6B78 /* Tic_Hi.wav in Resources */,
 				007598941A5D1E8C000A6B78 /* Five.wav in Resources */,
 				0059D1571A57096F0058C5E3 /* System_4S.pdf in Resources */,
 				007598A91A5D2612000A6B78 /* Seven.wav in Resources */,
@@ -1298,13 +1327,14 @@
 				001BFDA61A3F4DF900A56947 /* PropertyDialog_5S.pdf in Resources */,
 				008A5C0A1A4F00F100BC744F /* GlobalConfig.plist in Resources */,
 				00E8C0421A36119200D53F82 /* 8NotesYellow.pdf in Resources */,
+				0010C5D51A606C4500BC5E51 /* HiHatsClose.wav in Resources */,
 				0059D15D1A5710490058C5E3 /* SystemButtonBar.pdf in Resources */,
-				007598E41A5D3DFE000A6B78 /* And_Hi.wav in Resources */,
+				0010C5A91A60607200BC5E51 /* Quarter_Low.wav in Resources */,
 				006999541A5C656100B01E5F /* PlayList_red.pdf in Resources */,
 				007598A31A5D2096000A6B78 /* Six.wav in Resources */,
 				0059D1611A5710850058C5E3 /* PlayBlack.pdf in Resources */,
 				0049ECCA1A40C0500016EA3D /* NewCircle_Big_Inner.pdf in Resources */,
-				007598EE1A5D9845000A6B78 /* Accent_Low.wav in Resources */,
+				0010C5A61A60607200BC5E51 /* Accent_Low.wav in Resources */,
 				001BFDA21A3F4DE900A56947 /* NomalLowClickVoice.pdf in Resources */,
 				0075989C1A5D1E8C000A6B78 /* Human_Tic.wav in Resources */,
 				008A5CB01A4F0DF400BC744F /* OneDigitsValuePicker.xib in Resources */,
@@ -1331,6 +1361,7 @@
 				001BFDBE1A3F550200A56947 /* BPMArrowUp.pdf in Resources */,
 				00ED15901A5F0FDD002D442F /* AppIcon_58.png in Resources */,
 				0059D15B1A5709830058C5E3 /* SystemRetunButton.pdf in Resources */,
+				0010C5BF1A60669100BC5E51 /* And_Hi.wav in Resources */,
 				0059D1421A56FFD20058C5E3 /* MusicVolume.pdf in Resources */,
 				008A5C951A4F0AE600BC744F /* MetronomeSelectBar.xib in Resources */,
 				0071A9B51A2B090100EA57D2 /* 16Note.pdf in Resources */,
@@ -1344,6 +1375,7 @@
 				0059D1481A57012C0058C5E3 /* System.pdf in Resources */,
 				0075989D1A5D1E8C000A6B78 /* Human_Toc.wav in Resources */,
 				0049ECC61A40BE2B0016EA3D /* TapAnimation_1_gray.pdf in Resources */,
+				0010C5C11A60669100BC5E51 /* Quarter_Hi.wav in Resources */,
 				008A5CB21A4F0DF400BC744F /* ThreeDigitsValuePicker.xib in Resources */,
 				004DF4631A40A69900E79C0E /* SwitchButtonUnLock.pdf in Resources */,
 				0049ECC81A40BE310016EA3D /* TapAnimation_2_gray.pdf in Resources */,
@@ -1361,18 +1393,18 @@
 				00E8C0441A36119200D53F82 /* QuarterNoteYellow.pdf in Resources */,
 				00E8C0221A3610FD00D53F82 /* TrippleNoteRed.pdf in Resources */,
 				00E8C0451A36119200D53F82 /* TrippleNoteYellow.pdf in Resources */,
-				007598EF1A5D9845000A6B78 /* And_Low.wav in Resources */,
 				0098D7C21A5999A90001DE00 /* Add.pdf in Resources */,
+				0010C5A71A60607200BC5E51 /* And_Low.wav in Resources */,
 				0098D7C31A5999A90001DE00 /* Add_red.pdf in Resources */,
 				007598951A5D1E8C000A6B78 /* Four.wav in Resources */,
 				0071A9B61A2B090100EA57D2 /* 8Notes.pdf in Resources */,
 				001BFDA41A3F4DF100A56947 /* PropertyDialog_4S.pdf in Resources */,
 				001F01191A05511300189941 /* IssueAndInfo.txt in Resources */,
-				007598F01A5D9845000A6B78 /* E_Low.wav in Resources */,
 				005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */,
+				0010C5A81A60607200BC5E51 /* E_Low.wav in Resources */,
 				008A5C971A4F0AE600BC744F /* SelectBarCell.xib in Resources */,
 				001BFDA01A3F4DCC00A56947 /* NomalHiClickVoice.pdf in Resources */,
-				007598F21A5D9845000A6B78 /* Tic_Low.wav in Resources */,
+				0010C5AA1A60607200BC5E51 /* Tic_Low.wav in Resources */,
 				004BE65519B2DDC8002CD995 /* Images.xcassets in Resources */,
 				008A5CE01A4F0E3300BC744F /* ListTablePicker.xib in Resources */,
 				008A5CDE1A4F0E3300BC744F /* MusicTimePicker.xib in Resources */,
@@ -1380,12 +1412,13 @@
 				006999571A5C656100B01E5F /* PlayMusic.pdf in Resources */,
 				00ED15911A5F0FDD002D442F /* AppIcon_80.png in Resources */,
 				008A5C8F1A4F0AE600BC744F /* LargeBPMPicker.xib in Resources */,
+				0010C5D91A606DE500BC5E51 /* ScrollViewCellBackGround.pdf in Resources */,
 				001BFDD11A3F5F2200A56947 /* LoopCellBackGround.pdf in Resources */,
 				007598901A5D1E8C000A6B78 /* Human_and.wav in Resources */,
 				007598AB1A5D2617000A6B78 /* Twelve.wav in Resources */,
+				0010C5D61A606C4500BC5E51 /* HiHatsOpen.wav in Resources */,
 				007598921A5D1E8C000A6B78 /* Eight.wav in Resources */,
 				0071A9B81A2B090100EA57D2 /* QuarterNote.pdf in Resources */,
-				007598F11A5D9845000A6B78 /* Quarter_Low.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1435,6 +1468,7 @@
 				008A5CA21A4F0B1200BC744F /* MetronmoneTopSubViewIphone.m in Sources */,
 				008A5C5B1A4F071600BC744F /* CellParameterSettingControl.m in Sources */,
 				00ED15871A5EEC5D002D442F /* TempoList.m in Sources */,
+				0010C5CE1A60682600BC5E51 /* DrumVoice1.m in Sources */,
 				008A5CB11A4F0DF400BC744F /* ThreeDigitsValuePicker.m in Sources */,
 				004BE64C19B2DDC8002CD995 /* main.m in Sources */,
 				008A5CF41A4F0E7000BC744F /* XibTableViewCellInterface.m in Sources */,
@@ -1588,7 +1622,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1612,7 +1646,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

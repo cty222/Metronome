@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>VersionID</key>
-	<real>4051</real>
+	<real>4052</real>
 	<key>DbVersion</key>
-	<real>1025</real>
+	<real>1026</real>
 	<key>LastTempoListIndexUserSelected</key>
 	<integer>0</integer>
 	<key>TempoCellNumberMax</key>

@@ -18,6 +18,7 @@
 #import "NormalHiClickVoice.h"
 #import "NormalLowClickVoice.h"
 #import "HumanVoice.h"
+#import "DrumVoice1.h"
 
 #import "GlobalConfig.h"
 #import "DebugHeader.h"
