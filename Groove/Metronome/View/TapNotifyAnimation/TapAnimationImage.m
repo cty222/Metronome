@@ -100,6 +100,11 @@
         return;
     }
 
+    // TODO: 用_EnableAnimation會有同步問題
+    //       因為是Animation
+    // Workaround!!
+    [self StopAnimation];
+    
     _EnableAnimation = YES;
     [self AnitmationPushUp];
 }
