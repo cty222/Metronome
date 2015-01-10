@@ -134,7 +134,7 @@
 
 - (void) CreateDefaultVoiceType
 {
-    NSArray *VoiceTypeArray =[NSArray arrayWithObjects:@"NormalHiClickVoice", @"NormalLowClickVoice", @"HumanVoice", @"DrumVoice1", nil];
+    NSArray *VoiceTypeArray =[NSArray arrayWithObjects:@"NormalHiClickVoice", @"BlockVoice", @"HumanVoice", @"DrumVoice1", nil];
     for (int Index=0;Index <VoiceTypeArray.count; Index++)
     {
         VoiceType* NewVoiceType = [NSEntityDescription

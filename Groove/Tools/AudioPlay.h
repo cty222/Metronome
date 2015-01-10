@@ -16,7 +16,7 @@
 // Click voice class
 #import "BeepBound.h"
 #import "NormalHiClickVoice.h"
-#import "NormalLowClickVoice.h"
+#import "BlockVoice.h"
 #import "HumanVoice.h"
 #import "DrumVoice1.h"
 
@@ -33,9 +33,10 @@ NSMutableArray* gClickVoiceList;
 enum ClickVoice{
     NO_VOICE   = -1,
     NORMAL_HI_VOICE  = 0,
-    NORMAL_LOW_VOICE = 1,
+    BLOCK_VOICE = 1,
     HUMAN_VOICE = 2,
-    LAST_VOICE = HUMAN_VOICE,
+    DRUM_VOICE1 = 3,
+    LAST_VOICE = DRUM_VOICE1,
     FIRST_VOICE = NORMAL_HI_VOICE
 };
 

@@ -1,5 +1,5 @@
 //
-//  NormalLowClickVoice.h
+//  BlockVoice.h
 //  Groove
 //
 //  Created by C-ty on 2015/1/8.
@@ -8,6 +8,6 @@
 
 #import "BeepBound.h"
 
-@interface NormalLowClickVoice : BeepBound
+@interface BlockVoice : BeepBound
 
 @end

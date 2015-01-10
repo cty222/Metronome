@@ -136,7 +136,7 @@
             }
             break;
         case BPM_PICKER_DOUBLE_MODE:
-            self.Sensitivity = 2;
+            self.Sensitivity = 3;
             self.StepValue = 0.1;
             self.ValueLabel.font = [self.ValueLabel.font  fontWithSize:95];
             break;

@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 Cty. All rights reserved.
 //
 
-#import "NormalLowClickVoice.h"
+#import "BlockVoice.h"
 
-@implementation NormalLowClickVoice
+@implementation BlockVoice
 
 //================================
 // It need to be override
