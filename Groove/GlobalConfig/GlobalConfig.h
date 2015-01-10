@@ -49,6 +49,7 @@ enum {
 + (NSNumber *) BPMMinValue;
 + (NSNumber *) BPMMaxValue;
 + (NSNumber *) DbVersion;
++ (NSNumber *) TempoListNumberCountMax;
 + (NSNumber *) TempoCellNumberMax;
 + (NSNumber *) TempoCellLoopCountMin;
 + (NSNumber *) TempoCellLoopCountMax;

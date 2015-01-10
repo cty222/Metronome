@@ -243,6 +243,16 @@ static NSMutableDictionary * ThisPlist;
     return [ThisPlist objectForKey:@"DbVersion"];
 }
 
++ (NSNumber *) TempoListNumberCountMax
+{
+    if (![GlobalConfig IsInitialized])
+    {
+        return nil;
+    }
+    
+    return [ThisPlist objectForKey:@"TempoListNumberCountMax"];
+}
+
 // ========================================
 + (void) SetLastTempoListIndexUserSelected : (int) NewValue
 {

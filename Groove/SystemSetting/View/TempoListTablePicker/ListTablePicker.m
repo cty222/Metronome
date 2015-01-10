@@ -14,7 +14,7 @@
     NSMutableArray * _TempoListArrayForBinding;
     
     UIAlertView *_NoSelectedAlert;
-
+    UIAlertView *_TempoListOverMaxCountAlert;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -93,6 +93,20 @@
 // =============================
 - (IBAction) AddNewItem: (UIButton *) AddButton
 {
+    if (_TempoListArrayForBinding.count >= [[GlobalConfig TempoListNumberCountMax] intValue])
+    {
+        if (_TempoListOverMaxCountAlert ==nil)
+        {
+            _TempoListOverMaxCountAlert = [[UIAlertView alloc]
+                                           initWithTitle:NSLocalizedString(@"Too many tempo lists", nil)
+                                           message:NSLocalizedString(@"You can't add more than 20 tempo lists !!", nil)
+                                           delegate:nil
+                                           cancelButtonTitle:NSLocalizedString(@"OK, I know it.", nil)
+                                           otherButtonTitles:nil, nil];
+        }
+        [_TempoListOverMaxCountAlert show];
+        return;
+    }
     // nil 代表要新增
     [self EditTempListName : nil];
 }

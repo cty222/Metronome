@@ -14,6 +14,8 @@
     
     // Delete Cell
     TempoCell * _DeletedCell;
+    UIAlertView *_TempoCellOverMaxCountAlert;
+
 }
 
 - (void) MainViewWillAppear
@@ -217,6 +219,16 @@
     {
         // TODO: 警告數量超過了
         // 超過了
+        if (_TempoCellOverMaxCountAlert ==nil)
+        {
+            _TempoCellOverMaxCountAlert = [[UIAlertView alloc]
+                                           initWithTitle:NSLocalizedString(@"Too many tempo items", nil)
+                                           message:NSLocalizedString(@"You can't add more than 20 tempo items in one tempo list !!", nil)
+                                           delegate:nil
+                                           cancelButtonTitle:NSLocalizedString(@"OK, I know it.", nil)
+                                           otherButtonTitles:nil, nil];
+        }
+        [_TempoCellOverMaxCountAlert show];
         return;
     }
     

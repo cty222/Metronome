@@ -41,3 +41,8 @@
 "Name Error" = "名字錯誤";
 "No Name !!" = "沒有輸入名字!!";
 "Name is too long, it can't over 25 character." = "名字太長, 不能輸入超過25個字";
+
+"Too many tempo items" = "太多節拍";
+"You can't add more than 20 tempo items in one tempo list !!" = "每個節拍列表只能設20種節拍 !!";
+"Too many tempo lists" = "太多節拍列表";
+"You can't add more than 20 tempo lists !!" = "只能最多擁有20組節拍列表!!";

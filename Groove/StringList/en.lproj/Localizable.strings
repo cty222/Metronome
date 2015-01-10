@@ -41,3 +41,9 @@
 "Name Error" = "Name Error";
 "No Name !!" = "No input name !!";
 "Name is too long, it can't over 25 character." = "This name is too long, it can't over 25 character.";
+
+"Too many tempo items" = "Too many tempo items";
+"You can't add more than 20 tempo items in one tempo list !!" = "You can't add more than 20 tempo items in one tempo list !!";
+"Too many tempo lists" = "Too many tempo lists";
+"You can't add more than 20 tempo lists !!" = "You can't add more than 20 tempo lists !!";
+
