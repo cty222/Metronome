@@ -41,6 +41,10 @@ typedef struct{
 @property NSString *ElevenBeatPath;
 @property NSString *TwelveBeatPath;
 
+// Drum
+@property NSString *BassDrumPath;
+@property NSString *SnarePath;
+
 
 
 - (void) InitializeVoicePath;
@@ -69,4 +73,7 @@ typedef struct{
 - (AUDIO_FILE) GetElevenBeatVoice;
 - (AUDIO_FILE) GetTwelveBeatVoice;
 
+// Drum
+- (AUDIO_FILE) GetBassDrumVoice;
+- (AUDIO_FILE) GetSnareVoice;
 @end

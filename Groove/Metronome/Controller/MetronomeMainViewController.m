@@ -599,9 +599,9 @@
     // Accent
     if ( _AccentCounter == 0 || _AccentCounter >= [self.CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
     {
-
         [gPlayUnit playSound: [self.CurrentCell.accentVolume floatValue]/ MAX_VOLUME
-                            : [self.CurrentVoice GetAccentVoice]];
+                                : [self.CurrentVoice GetAccentVoice]];
+
         if ([self.CurrentCell.accentVolume floatValue] > 0)
         {
             [_CellParameterSettingSubController.AccentCircleVolumeButton TwickLing];
@@ -851,8 +851,6 @@
 {
     [NotesTool NotesFunc:_CurrentPlayingNoteCounter :_NTool];
 }
-
-
 
 
 - (void)didReceiveMemoryWarning

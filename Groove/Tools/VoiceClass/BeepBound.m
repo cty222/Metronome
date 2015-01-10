@@ -30,6 +30,10 @@
     AUDIO_FILE _TenBeatVoice;
     AUDIO_FILE _ElevenBeatVoice;
     AUDIO_FILE _TwelveBeatVoice;
+    
+    // Drum
+    AUDIO_FILE _BassDrumVoice;
+    AUDIO_FILE _SnareVoice;
 }
 
 //================================
@@ -67,6 +71,10 @@
     [self LoadVoice: &_TenBeatVoice : [self TenBeatPath]];
     [self LoadVoice: &_ElevenBeatVoice : [self ElevenBeatPath]];
     [self LoadVoice: &_TwelveBeatVoice : [self TwelveBeatPath]];
+    
+    // Drum
+    [self LoadVoice: &_BassDrumVoice : [self BassDrumPath]];
+    [self LoadVoice: &_SnareVoice : [self SnarePath]];
 
     return self;
 }
@@ -190,6 +198,22 @@
         alDeleteSources(1, &_TwelveBeatVoice.SourceID);
         alDeleteBuffers(1, &_TwelveBeatVoice.outputBuffer);
     }
+    
+    // Drum
+    if (_BassDrumVoice.Buf)
+    {
+        free(_BassDrumVoice.Buf);
+        alDeleteSources(1, &_BassDrumVoice.SourceID);
+        alDeleteBuffers(1, &_BassDrumVoice.outputBuffer);
+    }
+    if (_SnareVoice.Buf)
+    {
+        free(_SnareVoice.Buf);
+        alDeleteSources(1, &_SnareVoice.SourceID);
+        alDeleteBuffers(1, &_SnareVoice.outputBuffer);
+    }
+
+    
     _AccentVoice.Buf       = nil;
     _AccentVoice.Size      = 0;
     _FirstBeatVoice.Buf     = nil;
@@ -229,6 +253,12 @@
     _ElevenBeatVoice.Size  = 0;
     _TwelveBeatVoice.Buf   = nil;
     _TwelveBeatVoice.Size  = 0;
+    
+    // Drum
+    _BassDrumVoice.Buf   = nil;
+    _BassDrumVoice.Size  = 0;
+    _SnareVoice.Buf   = nil;
+    _SnareVoice.Size  = 0;
 }
 
 - (void) LoadVoice  : (AUDIO_FILE *) VoicePtr : (NSString *) wavFilePath
@@ -377,7 +407,18 @@
 - (AUDIO_FILE) GetTwelveBeatVoice
 {
     return _TwelveBeatVoice;
+}
 
+// Drum
+- (AUDIO_FILE) GetBassDrumVoice
+{
+    return _BassDrumVoice;
+}
+
+- (AUDIO_FILE) GetSnareVoice
+{
+    return _SnareVoice;
+    
 }
 
 @end
