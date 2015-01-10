@@ -294,7 +294,6 @@ static MPMusicPlayerController * MusicPlayer = nil;
 //
 - (void) StopMusicTick: (NSTimer *) ThisTimer
 {
-    NSLog(@"StopMusicTick, %f",_TickStopTime);
     [_Player updateMeters];
 
     if (_Player.currentTime >= _TickStopTime)
@@ -313,7 +312,7 @@ static MPMusicPlayerController * MusicPlayer = nil;
                                                        userInfo:nil
                                                         repeats:NO];
     }
-#if 1
+#if 0
     NSLog(@"目前播放位置 %f", [_Player currentTime]);
     NSLog(@"目前peakPowerForChannel %f", [_Player peakPowerForChannel:0]);
 #endif

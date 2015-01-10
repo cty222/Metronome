@@ -165,7 +165,6 @@
 		00BBB86E1A61905E005B9B28 /* Tic_Hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8691A61905E005B9B28 /* Tic_Hi.wav */; };
 		00BBB8731A61913E005B9B28 /* HiHatsClose.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB86F1A61913E005B9B28 /* HiHatsClose.wav */; };
 		00BBB8741A61913E005B9B28 /* HiHatsHard.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8701A61913E005B9B28 /* HiHatsHard.wav */; };
-		00BBB8791A619270005B9B28 /* Ride.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8771A619270005B9B28 /* Ride.wav */; };
 		00BBB87A1A619270005B9B28 /* Snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8781A619270005B9B28 /* Snare.wav */; };
 		00BBB89C1A6196BE005B9B28 /* Two.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB88B1A6196BE005B9B28 /* Two.wav */; };
 		00BBB8AD1A61997E005B9B28 /* Human_a.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB89D1A61997E005B9B28 /* Human_a.wav */; };
@@ -181,9 +180,10 @@
 		00BBB8B71A61997E005B9B28 /* Six.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8A71A61997E005B9B28 /* Six.wav */; };
 		00BBB8B81A61997E005B9B28 /* Ten.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8A81A61997E005B9B28 /* Ten.wav */; };
 		00BBB8B91A61997E005B9B28 /* Three.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8A91A61997E005B9B28 /* Three.wav */; };
-		00BBB8BA1A61997E005B9B28 /* Human_Tic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8AA1A61997E005B9B28 /* Human_Tic.wav */; };
-		00BBB8BB1A61997E005B9B28 /* Human_Toc.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8AB1A61997E005B9B28 /* Human_Toc.wav */; };
 		00BBB8BC1A61997E005B9B28 /* Twleve.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8AC1A61997E005B9B28 /* Twleve.wav */; };
+		00BBB8C31A61A4B5005B9B28 /* Human_Tic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8C11A61A4B5005B9B28 /* Human_Tic.wav */; };
+		00BBB8C41A61A4B5005B9B28 /* Human_Toc.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8C21A61A4B5005B9B28 /* Human_Toc.wav */; };
+		00BBB8C61A61A55C005B9B28 /* Ride.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8C51A61A55C005B9B28 /* Ride.wav */; };
 		00DA131119F4E94700F27E25 /* NotesTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131019F4E94700F27E25 /* NotesTool.m */; };
 		00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA131419F4EE1E00F27E25 /* AudioPlay.m */; };
 		00DA132019F4F38000F27E25 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DA131F19F4F38000F27E25 /* AudioToolbox.framework */; };
@@ -429,7 +429,6 @@
 		00BBB8691A61905E005B9B28 /* Tic_Hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Tic_Hi.wav; sourceTree = "<group>"; };
 		00BBB86F1A61913E005B9B28 /* HiHatsClose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiHatsClose.wav; sourceTree = "<group>"; };
 		00BBB8701A61913E005B9B28 /* HiHatsHard.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiHatsHard.wav; sourceTree = "<group>"; };
-		00BBB8771A619270005B9B28 /* Ride.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ride.wav; sourceTree = "<group>"; };
 		00BBB8781A619270005B9B28 /* Snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Snare.wav; sourceTree = "<group>"; };
 		00BBB88B1A6196BE005B9B28 /* Two.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Two.wav; sourceTree = "<group>"; };
 		00BBB89D1A61997E005B9B28 /* Human_a.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Human_a.wav; sourceTree = "<group>"; };
@@ -445,9 +444,10 @@
 		00BBB8A71A61997E005B9B28 /* Six.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Six.wav; sourceTree = "<group>"; };
 		00BBB8A81A61997E005B9B28 /* Ten.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ten.wav; sourceTree = "<group>"; };
 		00BBB8A91A61997E005B9B28 /* Three.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Three.wav; sourceTree = "<group>"; };
-		00BBB8AA1A61997E005B9B28 /* Human_Tic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Human_Tic.wav; sourceTree = "<group>"; };
-		00BBB8AB1A61997E005B9B28 /* Human_Toc.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Human_Toc.wav; sourceTree = "<group>"; };
 		00BBB8AC1A61997E005B9B28 /* Twleve.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Twleve.wav; sourceTree = "<group>"; };
+		00BBB8C11A61A4B5005B9B28 /* Human_Tic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Human_Tic.wav; sourceTree = "<group>"; };
+		00BBB8C21A61A4B5005B9B28 /* Human_Toc.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Human_Toc.wav; sourceTree = "<group>"; };
+		00BBB8C51A61A55C005B9B28 /* Ride.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ride.wav; sourceTree = "<group>"; };
 		00DA130F19F4E94600F27E25 /* NotesTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesTool.h; path = Tools/NotesTool.h; sourceTree = "<group>"; };
 		00DA131019F4E94700F27E25 /* NotesTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesTool.m; path = Tools/NotesTool.m; sourceTree = "<group>"; };
 		00DA131319F4EE1E00F27E25 /* AudioPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioPlay.h; path = Tools/AudioPlay.h; sourceTree = "<group>"; };
@@ -510,7 +510,7 @@
 		0010C5CF1A606C4500BC5E51 /* DrumVoice1 */ = {
 			isa = PBXGroup;
 			children = (
-				00BBB8771A619270005B9B28 /* Ride.wav */,
+				00BBB8C51A61A55C005B9B28 /* Ride.wav */,
 				00BBB8781A619270005B9B28 /* Snare.wav */,
 				00BBB86F1A61913E005B9B28 /* HiHatsClose.wav */,
 				00BBB8701A61913E005B9B28 /* HiHatsHard.wav */,
@@ -1169,6 +1169,8 @@
 		00E1D87E1A585796008A006D /* HumanVoice */ = {
 			isa = PBXGroup;
 			children = (
+				00BBB8C11A61A4B5005B9B28 /* Human_Tic.wav */,
+				00BBB8C21A61A4B5005B9B28 /* Human_Toc.wav */,
 				00BBB89D1A61997E005B9B28 /* Human_a.wav */,
 				00BBB89E1A61997E005B9B28 /* Human_and.wav */,
 				00BBB89F1A61997E005B9B28 /* Human_e.wav */,
@@ -1182,8 +1184,6 @@
 				00BBB8A71A61997E005B9B28 /* Six.wav */,
 				00BBB8A81A61997E005B9B28 /* Ten.wav */,
 				00BBB8A91A61997E005B9B28 /* Three.wav */,
-				00BBB8AA1A61997E005B9B28 /* Human_Tic.wav */,
-				00BBB8AB1A61997E005B9B28 /* Human_Toc.wav */,
 				00BBB8AC1A61997E005B9B28 /* Twleve.wav */,
 				00BBB88B1A6196BE005B9B28 /* Two.wav */,
 			);
@@ -1299,6 +1299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E8C0201A3610FD00D53F82 /* AccentRed.pdf in Resources */,
+				00BBB8C31A61A4B5005B9B28 /* Human_Tic.wav in Resources */,
 				00BBB8B51A61997E005B9B28 /* One.wav in Resources */,
 				0049ECBC1A40BA990016EA3D /* LoopCellPickerButton.pdf in Resources */,
 				001BFDCE1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf in Resources */,
@@ -1307,14 +1308,15 @@
 				0069995B1A5C69DD00B01E5F /* ResetTime.pdf in Resources */,
 				0069994F1A5C653200B01E5F /* fNewCircleButton_f3.pdf in Resources */,
 				0071A9B71A2B090100EA57D2 /* Accent.pdf in Resources */,
-				00BBB8791A619270005B9B28 /* Ride.wav in Resources */,
 				001BFDAB1A3F4E9200A56947 /* ValueDownArrow.pdf in Resources */,
 				0098D7C71A5999C50001DE00 /* MusicListen.pdf in Resources */,
 				0071A9B91A2B090100EA57D2 /* TrippleNote.pdf in Resources */,
 				0098D7D11A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib in Resources */,
 				00ED15931A5F0FDD002D442F /* AppIcon_120.png in Resources */,
 				0098D7C51A5999A90001DE00 /* Delete_red.pdf in Resources */,
+				00BBB8C61A61A55C005B9B28 /* Ride.wav in Resources */,
 				00E8C0211A3610FD00D53F82 /* QuarterNoteRed.pdf in Resources */,
+				00BBB8C41A61A4B5005B9B28 /* Human_Toc.wav in Resources */,
 				00BBB8B41A61997E005B9B28 /* Nine.wav in Resources */,
 				00BBB8B31A61997E005B9B28 /* Four.wav in Resources */,
 				008A5CB41A4F0DF400BC744F /* TwoDigitsValuePicker.xib in Resources */,
@@ -1340,7 +1342,6 @@
 				0010C5A61A60607200BC5E51 /* Accent_Low.wav in Resources */,
 				001BFDA21A3F4DE900A56947 /* NomalHiClickVoice.pdf in Resources */,
 				00BBB86E1A61905E005B9B28 /* Tic_Hi.wav in Resources */,
-				00BBB8BB1A61997E005B9B28 /* Human_Toc.wav in Resources */,
 				00BBB87A1A619270005B9B28 /* Snare.wav in Resources */,
 				008A5CB01A4F0DF400BC744F /* OneDigitsValuePicker.xib in Resources */,
 				00BBB8B01A61997E005B9B28 /* Eight.wav in Resources */,
@@ -1398,7 +1399,6 @@
 				00BBB8421A6180A7005B9B28 /* BassDrum.wav in Resources */,
 				008A5CCC1A4F0E1B00BC744F /* ValueScrollView.xib in Resources */,
 				00BBB86B1A61905E005B9B28 /* And_Hi.wav in Resources */,
-				00BBB8BA1A61997E005B9B28 /* Human_Tic.wav in Resources */,
 				004DF4621A40A69900E79C0E /* SwitchButtonLock.pdf in Resources */,
 				008A5C5E1A4F071600BC744F /* MetronomeMainViewController.xib in Resources */,
 				006999561A5C656100B01E5F /* PlayMusic_red.pdf in Resources */,

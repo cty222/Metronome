@@ -19,8 +19,8 @@
     self.AndBeatPath = [[NSBundle mainBundle] pathForResource:@"HiHatsClose" ofType:@"wav"];
     self.EBeatPath = [[NSBundle mainBundle] pathForResource:@"HiHatsClose" ofType:@"wav"];
     self.ABeatPath = [[NSBundle mainBundle] pathForResource:@"HiHatsClose" ofType:@"wav"];
-    self.TicBeatPath = [[NSBundle mainBundle] pathForResource:@"Ride" ofType:@"wav"];
-    self.TocBeatPath = [[NSBundle mainBundle] pathForResource:@"Ride" ofType:@"wav"];
+    self.TicBeatPath = [[NSBundle mainBundle] pathForResource:@"HiHatsClose" ofType:@"wav"];
+    self.TocBeatPath = [[NSBundle mainBundle] pathForResource:@"HiHatsHard" ofType:@"wav"];
     
     // NO use now
     self.BassDrumPath = [[NSBundle mainBundle] pathForResource:@"BassDrum" ofType:@"wav"];
