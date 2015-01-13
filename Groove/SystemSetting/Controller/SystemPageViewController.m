@@ -13,7 +13,7 @@
 
 @implementation SystemPageViewController
 {
-    MPMediaPickerController *_MusicPicker;
+    MPMediaPickerControllerHook *_MusicPicker;
     TempoList *_CurrentList;
     MusicProperties * _MusicProperty;
     
@@ -38,10 +38,11 @@
     
     if (_MusicPicker == nil)
     {
-        _MusicPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
+        _MusicPicker = [[MPMediaPickerControllerHook alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
         _MusicPicker.allowsPickingMultipleItems = NO;
         _MusicPicker.showsCloudItems = NO;
         _MusicPicker.delegate = self;
+        
     }
     
     // ===================

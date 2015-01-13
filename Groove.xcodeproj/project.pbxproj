@@ -77,6 +77,7 @@
 		005CDA751A57B9E300B85E4C /* NormalHiClickVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 005CDA721A57B9E300B85E4C /* NormalHiClickVoice.m */; };
 		005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */; };
 		00612D941A3B7572009A7C88 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00612D931A3B7572009A7C88 /* AVFoundation.framework */; };
+		00657D0B1A65AFBE0044E35F /* MPMediaPickerControllerHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 00657D0A1A65AFBE0044E35F /* MPMediaPickerControllerHook.m */; };
 		006739361A55D256008B6A2F /* NameEditer.m in Sources */ = {isa = PBXBuildFile; fileRef = 006739351A55D256008B6A2F /* NameEditer.m */; };
 		006739381A55D26B008B6A2F /* NameEditer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006739371A55D26B008B6A2F /* NameEditer.xib */; };
 		0069994D1A5C458900B01E5F /* VoiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0069994C1A5C458900B01E5F /* VoiceType.m */; };
@@ -306,6 +307,8 @@
 		005CDA721A57B9E300B85E4C /* NormalHiClickVoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalHiClickVoice.m; sourceTree = "<group>"; };
 		005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NewCircleButton_f1.pdf; sourceTree = "<group>"; };
 		00612D931A3B7572009A7C88 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		00657D091A65AFBE0044E35F /* MPMediaPickerControllerHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMediaPickerControllerHook.h; sourceTree = "<group>"; };
+		00657D0A1A65AFBE0044E35F /* MPMediaPickerControllerHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMediaPickerControllerHook.m; sourceTree = "<group>"; };
 		006739341A55D256008B6A2F /* NameEditer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameEditer.h; sourceTree = "<group>"; };
 		006739351A55D256008B6A2F /* NameEditer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameEditer.m; sourceTree = "<group>"; };
 		006739371A55D26B008B6A2F /* NameEditer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameEditer.xib; sourceTree = "<group>"; };
@@ -821,6 +824,8 @@
 				008A5C441A4F06AD00BC744F /* SystemPageViewController.h */,
 				008A5C451A4F06AD00BC744F /* SystemPageViewController.m */,
 				008A5C461A4F06AD00BC744F /* SystemPageViewController.xib */,
+				00657D091A65AFBE0044E35F /* MPMediaPickerControllerHook.h */,
+				00657D0A1A65AFBE0044E35F /* MPMediaPickerControllerHook.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1461,6 +1466,7 @@
 				00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */,
 				008A5CF11A4F0E7000BC744F /* InputSubmitView.m in Sources */,
 				008A5C961A4F0AE600BC744F /* SelectBarCell.m in Sources */,
+				00657D0B1A65AFBE0044E35F /* MPMediaPickerControllerHook.m in Sources */,
 				004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */,
 				006DAF2A1A50777900DEBA01 /* TempoCell.m in Sources */,
 				008A5C091A4F00F100BC744F /* GlobalConfig.m in Sources */,

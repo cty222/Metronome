@@ -12,6 +12,7 @@
 #import "TempoListViewController.h"
 #import "MusicTimePicker.h"
 #import "ListTablePicker.h"
+#import "MPMediaPickerControllerHook.h"
 
 enum SYSTEM_INPUT_ID {
     NONE_ID,
