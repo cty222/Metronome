@@ -385,10 +385,8 @@
 - (void) SetBPMValue : (id) Picker
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-
     if (Picker == self.BPMPicker)
     {
-        NSLog(@"cell pr %f", self.BPMPicker.Value);
         // BPM Save
         Parent.CurrentCell.bpmValue = [NSNumber numberWithFloat:self.BPMPicker.Value];
     

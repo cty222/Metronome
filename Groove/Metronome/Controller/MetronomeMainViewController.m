@@ -773,11 +773,8 @@
     // 所以必須要調整成先開始一次與最後多等一次
     [self MetronomeTicker: nil];
     
-    
     float CurrentBPMValue = [self.CurrentCell.bpmValue floatValue];
     
-
-
 
     if (_CellParameterSettingSubController.BPMPicker.Mode == BPM_PICKER_INT_MODE)
     {
