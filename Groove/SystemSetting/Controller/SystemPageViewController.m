@@ -701,6 +701,22 @@
 //
 // ===============================
 
+- (BOOL)shouldAutorotate {
+    //打開旋轉
+    return YES;
+}
+
+// 支持的旋转方向
+- (NSUInteger)supportedInterfaceOrientations {
+    //垂直與倒過來
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
+// 一开始的屏幕旋转方向
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return [[UIApplication sharedApplication] statusBarOrientation];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

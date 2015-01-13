@@ -14,10 +14,11 @@
 #import "MetronomeModel.h"
 #import "MusicProperties.h"
 
-#define ROUND_NO_DECOMAL_FROM_DOUBLE(value) (floor(value + 0.5))
-#define ROUND_ONE_DECOMAL_FROM_DOUBLE(value) (floor(value * 10 + 0.5)/10)
-#define ROUND_TWO_DECOMAL_FROM_DOUBLE(value) (floor(value * 100 + 0.5)/100)
+#define ROUND_NO_DECOMAL_FROM_DOUBLE(value) (floor(value + 0.1))
+#define ROUND_ONE_DECOMAL_FROM_DOUBLE(value) (floor(value * 10 + 0.1)/10)
+#define ROUND_TWO_DECOMAL_FROM_DOUBLE(value) (floor(value * 100 + 0.1)/100)
 #define ROUND_FILL_DOUBLE_IN_MODEL(value) (floor(value * 100)/100 + 0.0001)
+#define ROUND_FILL_DOUBLE_FROM_MODEL(value) (floor(value + 0.01))
 
 @class GlobalConfig;
 

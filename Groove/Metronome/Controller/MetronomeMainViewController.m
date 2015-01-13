@@ -36,6 +36,9 @@
     int _LoopCountCounter;
     int _TimeSignatureCounter;
     BOOL _ListChangeFocusFlag;
+    
+    
+    BOOL _IsNeedChangeToNextCell;
     //
     // ========================
 
@@ -722,6 +725,7 @@
 
 - (void) ResetCounter
 {
+    _IsNeedChangeToNextCell = NO;
     _LoopCountCounter = 0;
     _TimeSignatureCounter = 0;
     _AccentCounter = 0;
@@ -749,8 +753,6 @@
         [self ResetCounter];
     }
     
-    // 因為Timer的特性是先等再做
-    // 所以必須要調整成先開始一次與最後多等一次
     if (self.PlayingMode == LIST_PLAYING)
     {
         if (_LoopCountCounter >= [self.CurrentCell.loopCount intValue])
@@ -767,16 +769,43 @@
         _CurrentPlayingNoteCounter = FIRST_CLICK;
     }
     
+    // 因為Timer的特性是先等再做
+    // 所以必須要調整成先開始一次與最後多等一次
     [self MetronomeTicker: nil];
     
     
-    float CurrentBPMValue = [_CellParameterSettingSubController GetBPMValueWithSyncMode];
+    float CurrentBPMValue = [self.CurrentCell.bpmValue floatValue];
     
-    PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE(CurrentBPMValue)
-                                                      target:self
-                                                    selector:@selector(MetronomeTicker:)
-                                                    userInfo:nil
-                                                     repeats:YES];
+
+
+
+    if (_CellParameterSettingSubController.BPMPicker.Mode == BPM_PICKER_INT_MODE)
+    {
+        PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE(
+                                                                ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue))
+                                                          target:self
+                                                        selector:@selector(MetronomeTicker:)
+                                                        userInfo:nil
+                                                         repeats:YES];
+#if CTY_DEBUG
+        NSLog(@"CurrentBPMValue %f", CurrentBPMValue);
+        NSLog(@"BPM_TO_TIMER_VALUE %f", BPM_TO_TIMER_VALUE(                                                          ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue)));
+#endif
+
+    }
+    else
+    {
+        PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE(ROUND_ONE_DECOMAL_FROM_DOUBLE(CurrentBPMValue))
+                                                          target:self
+                                                        selector:@selector(MetronomeTicker:)
+                                                        userInfo:nil
+                                                         repeats:YES];
+#if CTY_DEBUG
+        NSLog(@"CurrentBPMValue %f", CurrentBPMValue);
+        NSLog(@"BPM_TO_TIMER_VALUE %f", BPM_TO_TIMER_VALUE(                                                          ROUND_ONE_DECOMAL_FROM_DOUBLE(CurrentBPMValue)));
+#endif
+    }
+
 }
 
 - (void) MetronomeTicker: (NSTimer *) ThisTimer
@@ -788,6 +817,19 @@
         [ThisTimer invalidate];
         return;
     }
+
+    // 必須要完整的delay
+    // 所以是最後一次跑完, 再進來才換.
+    if(_IsNeedChangeToNextCell)
+    {
+        _IsNeedChangeToNextCell = NO;
+        [self ChangeToNextLoopCell];
+        [ThisTimer invalidate];
+        return;
+    }
+    
+    NSLog(@"_CurrentPlayingNoteCounter %d", _CurrentPlayingNoteCounter);
+
     
     // Play function
     [self TriggerMetronomeSounds];
@@ -796,8 +838,7 @@
     
     if ([self IsLoopCounterIsLargerThenSetupValue])
     {
-        [ThisTimer invalidate];
-        return;
+        _IsNeedChangeToNextCell = YES;
     }
     
     [self RestartClickIfBPMValueBeSetWhenPlaying];
@@ -826,11 +867,10 @@
 
 - (BOOL) IsLoopCounterIsLargerThenSetupValue
 {
-    if (self.PlayingMode >= LIST_PLAYING)
+    if (self.PlayingMode == LIST_PLAYING)
     {
         if (_LoopCountCounter >= [self.CurrentCell.loopCount intValue])
         {
-            [self ChangeToNextLoopCell];
             return YES;
         }
     }
@@ -859,4 +899,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+// 支持的旋转方向
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
+// 一开始的屏幕旋转方向
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return [[UIApplication sharedApplication] statusBarOrientation];
+}
 @end

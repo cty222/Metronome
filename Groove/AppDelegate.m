@@ -21,6 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     self.window = [[UIWindowWithHook alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor blueColor];
@@ -55,7 +56,7 @@
                               DbVersion : [GlobalConfig DbVersion]];
     
     self.window.rootViewController =  [GlobalConfig MetronomeMainViewController];
-
+    
     
     // System add
     [self.window makeKeyAndVisible];

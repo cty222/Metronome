@@ -388,6 +388,7 @@
 
     if (Picker == self.BPMPicker)
     {
+        NSLog(@"cell pr %f", self.BPMPicker.Value);
         // BPM Save
         Parent.CurrentCell.bpmValue = [NSNumber numberWithFloat:self.BPMPicker.Value];
     
@@ -398,20 +399,6 @@
         {
             Parent.IsNeededToRestartMetronomeClick = YES;
         }
-    }
-}
-
-- (float) GetBPMValueWithSyncMode
-{
-    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-    
-    if (self.BPMPicker.Mode == BPM_PICKER_INT_MODE)
-    {
-        return ROUND_NO_DECOMAL_FROM_DOUBLE([Parent.CurrentCell.bpmValue floatValue]);
-    }
-    else
-    {
-        return ROUND_ONE_DECOMAL_FROM_DOUBLE([Parent.CurrentCell.bpmValue floatValue]);
     }
 }
 //
