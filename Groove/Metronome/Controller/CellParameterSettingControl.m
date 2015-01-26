@@ -410,7 +410,7 @@
 
 - (void) TapChangeBPMCallBack :(NSNotification *)Notification
 {
-    self.BPMPicker.Value = self.TapFunction.NewValue;
+    self.BPMPicker.Value = [self.TapFunction GetNewValue];
 }
 
 //

@@ -13,6 +13,7 @@
 
 // Tap Trigger ounter
 @property (getter = GetTapTriggerCounter, setter = SetTapTriggerCounter:) int TapTriggerCounter;
+@property float NewValue;
 
 @end
 
@@ -117,8 +118,10 @@
                 int ObjectIndex = (self.TapTriggerCounter % [self TapTriggerNumber]);
                 [_TapQueue replaceObjectAtIndex:ObjectIndex withObject:NewBPMvalue];
                 
-                // 和上一次Tap成功平均
+                // 和上一次Tap成功平均, 放進NewValue
                 self.NewValue = [self GetAvarageTapValue];
+                
+                // NSNotificationCenter 是同步執行, 應該不需要用delegate
                 [[NSNotificationCenter defaultCenter] postNotificationName:kTapChangeBPMValue object:nil];
             }
         }
@@ -132,6 +135,7 @@
     self.TapTriggerCounter++;
 }
 
+
 - (double) GetAvarageTapValue
 {
     double ValueSum = 0;
@@ -140,6 +144,12 @@
         ValueSum += [Value doubleValue];
     }
     return (ValueSum / _TapQueue.count);
+}
+
+
+- (float) GetNewValue
+{
+    return self.NewValue;
 }
 
 // If using scroll or single step to change BPM value, need to clean TapTriggerCounter

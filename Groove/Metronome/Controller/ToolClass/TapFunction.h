@@ -15,7 +15,7 @@
 @interface TapFunction : NSObject
 
 - (void) TapAreaBeingTap;
+- (float) GetNewValue;
 
 @property (strong, nonatomic) IBOutlet TapAnimationImage *TapAlertImage;
-@property float NewValue;
 @end
