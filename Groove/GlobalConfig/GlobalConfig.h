@@ -79,4 +79,6 @@ enum {
 
 #define kVoiceStopByInterrupt @"kVoiceStopByInterrupt"
 
+#define kTapResetNotification @"kTapResetNotification"
+
 @end

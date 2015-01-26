@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0007F2091A3A1D43003F6927 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0007F2081A3A1D43003F6927 /* MediaPlayer.framework */; };
 		0007F20F1A3A22B9003F6927 /* PlayerForSongs.m in Sources */ = {isa = PBXBuildFile; fileRef = 0007F20E1A3A22B9003F6927 /* PlayerForSongs.m */; };
+		000947AA1A76B5A40012492C /* TapFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 000947A91A76B5A40012492C /* TapFunction.m */; };
 		000D46271A469B710066BE0A /* MusicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 000D46261A469B710066BE0A /* MusicProperties.m */; };
 		0010C5A61A60607200BC5E51 /* Accent_Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5A11A60607200BC5E51 /* Accent_Low.wav */; };
 		0010C5A71A60607200BC5E51 /* And_Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5A21A60607200BC5E51 /* And_Low.wav */; };
@@ -222,6 +223,8 @@
 		0007F2081A3A1D43003F6927 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0007F20D1A3A22B9003F6927 /* PlayerForSongs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerForSongs.h; path = Tools/PlayerForSongs.h; sourceTree = "<group>"; };
 		0007F20E1A3A22B9003F6927 /* PlayerForSongs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerForSongs.m; path = Tools/PlayerForSongs.m; sourceTree = "<group>"; };
+		000947A81A76B5A40012492C /* TapFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapFunction.h; sourceTree = "<group>"; };
+		000947A91A76B5A40012492C /* TapFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapFunction.m; sourceTree = "<group>"; };
 		000D46251A469B710066BE0A /* MusicProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicProperties.h; path = GlobalConfig/MusicProperties.h; sourceTree = "<group>"; };
 		000D46261A469B710066BE0A /* MusicProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MusicProperties.m; path = GlobalConfig/MusicProperties.m; sourceTree = "<group>"; };
 		0010C5A11A60607200BC5E51 /* Accent_Low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Accent_Low.wav; sourceTree = "<group>"; };
@@ -510,6 +513,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000947A71A76B5640012492C /* ToolClass */ = {
+			isa = PBXGroup;
+			children = (
+				000947A81A76B5A40012492C /* TapFunction.h */,
+				000947A91A76B5A40012492C /* TapFunction.m */,
+			);
+			path = ToolClass;
+			sourceTree = "<group>";
+		};
 		0010C5CF1A606C4500BC5E51 /* DrumVoice1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,6 +854,7 @@
 		008A5C4C1A4F071500BC744F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				000947A71A76B5640012492C /* ToolClass */,
 				008A5D011A4F1A8E00BC744F /* SystemPageControl.h */,
 				008A5D021A4F1A8E00BC744F /* SystemPageControl.m */,
 				008A5C4D1A4F071500BC744F /* CellParameterSettingControl.h */,
@@ -1457,6 +1470,7 @@
 				008A5CDF1A4F0E3300BC744F /* ListTablePicker.m in Sources */,
 				008A5CA01A4F0B1200BC744F /* MetronomeBottomView.m in Sources */,
 				001B2B2D19D3CA0C0057A22E /* Groove.xcdatamodeld in Sources */,
+				000947AA1A76B5A40012492C /* TapFunction.m in Sources */,
 				000D46271A469B710066BE0A /* MusicProperties.m in Sources */,
 				005CDA751A57B9E300B85E4C /* NormalHiClickVoice.m in Sources */,
 				008A5CE11A4F0E3300BC744F /* TempoListUICell.m in Sources */,

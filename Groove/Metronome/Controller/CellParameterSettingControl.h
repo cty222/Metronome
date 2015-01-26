@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MetronomeMainViewController.h"
+#import "TapFunction.h"
 
 typedef enum{
     ACCENT_VOLUME_BUTTON = 101,

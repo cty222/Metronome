@@ -11,7 +11,6 @@
 
 
 #define DIGIT_ENABLE_FLAG 0
-#define kTapResetNotification @"kTapResetNotification"
 
 typedef enum{
     BPM_PICKER_INT_MODE,

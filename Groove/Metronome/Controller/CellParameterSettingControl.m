@@ -12,19 +12,14 @@
 @interface CellParameterSettingControl ()
 
 // Tap Trigger ounter
-@property (getter = GetTapTriggerCounter, setter = SetTapTriggerCounter:) int TapTriggerCounter;
-
+//@property (getter = GetTapTriggerCounter, setter = SetTapTriggerCounter:) int TapTriggerCounter;
+@property TapFunction * TapFunction;
 @end
 
 @implementation CellParameterSettingControl
 {
-    // Tap Fuction
-    double _LastRecordTime_ms;
-    NSDate * _Date;;
-    int _TapTriggerCounter;
-    NSMutableArray * _TapQueue;
+ 
 }
-
 
 - (void) MainViewWillAppear
 {
@@ -33,6 +28,62 @@
     [self.EighthNoteCircleVolumeButton ResetHandle];
     [self.SixteenthNoteCircleVolumeButton ResetHandle];
     [self.TrippleNoteCircleVolumeButton ResetHandle];
+}
+
+
+- (void) InitlizeCellParameterControlItems
+{
+    [self InitializeVolumeSets];
+    
+    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
+    self.BPMPicker = Parent.TopSubView.BPMPicker;
+    self.OptionScrollView = Parent.TopSubView.OptionScrollView;
+    self.VoiceTypePicker = Parent.TopSubView.VoiceTypePicker;
+    self.TimeSigaturePicker = Parent.TopSubView.TimeSigaturePicker;
+    self.LoopCellEditer = Parent.TopSubView.LoopCellEditer;
+    self.TapAlertImage = Parent.TopSubView.TapAnimationImage;
+    self.TimeSignaturePickerView = Parent.TopSubView.TimeSignaturePickerView;
+    self.VoiceTypePickerView = Parent.TopSubView.VoiceTypePickerView;
+    self.LoopCellEditerView = Parent.TopSubView.LoopCellEditerView;
+
+    // BPM Picker Initialize
+    self.BPMPicker.delegate = self;
+    
+    
+    //Init  TapFunction
+    self.TapFunction = [[TapFunction alloc] init];
+    self.TapFunction.TapAlertImage = self.TapAlertImage;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(TapChangeBPMCallBack:)
+                                                 name:kTapChangeBPMValue
+                                               object:nil];
+    
+    //VoiceTypePicker
+    [self InitilaizeVoiceTypePickerView];
+    [self.VoiceTypePicker addTarget:self
+                               action:@selector(VoiceTypePickerDisplay:) forControlEvents:UIControlEventTouchDown];
+    
+    // Time Signature
+    [self.TimeSigaturePicker setTitleColor:[TimeSignaturePickerView TextFontColor] forState:UIControlStateNormal];
+    [self InitilaizeTimeSignaturePickerView];
+    [self.TimeSigaturePicker addTarget:self
+                             action:@selector(TimeSigaturePickerDisplay:) forControlEvents:UIControlEventTouchDown];
+    
+
+    // LoopCellEditer
+    [self InitilaizeLoopCellEditerView];
+    [self.LoopCellEditer addTarget:self
+                                action:@selector(LoopCellEditerDisplay:) forControlEvents:UIControlEventTouchDown];
+
+
+   
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(TouchedNotificationCallBack:)
+                                                 name:kTouchGlobalHookNotification
+                                               object:nil];
+    
+
+    
 }
 
 -(void) InitializeVolumeSets
@@ -74,56 +125,6 @@
     self.TrippleNoteCircleVolumeButton.IndexRange = VolumeRange;
     self.TrippleNoteCircleVolumeButton.IndexValueSensitivity = 1;
     self.TrippleNoteCircleVolumeButton.tag = TRIPPLET_NOTE_VOLUME_BUTTON;
-}
-
-- (void) InitlizeCellParameterControlItems
-{
-    [self InitializeVolumeSets];
-    
-    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-    self.BPMPicker = Parent.TopSubView.BPMPicker;
-    self.OptionScrollView = Parent.TopSubView.OptionScrollView;
-    self.VoiceTypePicker = Parent.TopSubView.VoiceTypePicker;
-    self.TimeSigaturePicker = Parent.TopSubView.TimeSigaturePicker;
-    self.LoopCellEditer = Parent.TopSubView.LoopCellEditer;
-    self.TapAlertImage = Parent.TopSubView.TapAnimationImage;
-    self.TimeSignaturePickerView = Parent.TopSubView.TimeSignaturePickerView;
-    self.VoiceTypePickerView = Parent.TopSubView.VoiceTypePickerView;
-    self.LoopCellEditerView = Parent.TopSubView.LoopCellEditerView;
-
-    // BPM Picker Initialize
-    self.BPMPicker.delegate = self;
-    
-    
-    //VoiceTypePicker
-    [self InitilaizeVoiceTypePickerView];
-    [self.VoiceTypePicker addTarget:self
-                               action:@selector(VoiceTypePickerDisplay:) forControlEvents:UIControlEventTouchDown];
-    
-    // Time Signature
-    [self.TimeSigaturePicker setTitleColor:[TimeSignaturePickerView TextFontColor] forState:UIControlStateNormal];
-    [self InitilaizeTimeSignaturePickerView];
-    [self.TimeSigaturePicker addTarget:self
-                             action:@selector(TimeSigaturePickerDisplay:) forControlEvents:UIControlEventTouchDown];
-    
-
-    // LoopCellEditer
-    [self InitilaizeLoopCellEditerView];
-    [self.LoopCellEditer addTarget:self
-                                action:@selector(LoopCellEditerDisplay:) forControlEvents:UIControlEventTouchDown];
-
-
-   
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(TouchedNotificationCallBack:)
-                                                 name:kTouchGlobalHookNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(TapResetNotificationCallBack:)
-                                                 name:kTapResetNotification
-                                               object:nil];
-    
 }
 
 - (void) InitilaizeVoiceTypePickerView
@@ -350,7 +351,7 @@
 //
 - (void) ShortPress: (LargeBPMPicker *) ThisPicker
 {
-    [self TapBPMValueButtonClick:ThisPicker];
+    [self.TapFunction TapAreaBeingTap];
 }
 
 - (IBAction) CircleButtonValueChanged:(CircleButton*) ThisCircleButton;
@@ -402,131 +403,18 @@
 //
 // =========================
 
-
 // =========================
-// Property
+// Event callback
 //
-- (int) GetTapTriggerCounter
-{
-    return _TapTriggerCounter;
-}
 
-- (void) SetTapTriggerCounter: (int) NewValue
+
+- (void) TapChangeBPMCallBack :(NSNotification *)Notification
 {
-    // TODO: Open A Timer or animation to show Tap icon when Second Tap
-    if(NewValue >=1 && NewValue <  [self TapTriggerNumber])
-    {
-        // check icon
-        // Show normal Icon
-        self.TapAlertImage.hidden = NO;
-    }
-    else if (NewValue >= [self TapTriggerNumber])
-    {
-        // show
-        self.TapAlertImage.Mode = TAP_START_RED;
-        self.TapAlertImage.hidden = NO;
-    }
-    else
-    {
-        // check icon
-        // Hidden Icon
-        self.TapAlertImage.hidden = YES;
-        if (_TapQueue != nil)
-        {
-            [_TapQueue removeAllObjects];
-        }
-    }
-    
-    _TapTriggerCounter = NewValue;
+    self.BPMPicker.Value = self.TapFunction.NewValue;
 }
 
 //
 // =========================
 
-// =========================
-// Action
-//
-- (int) TapTriggerNumber
-{
-    return 3;
-}
 
-- (IBAction) TapBPMValueButtonClick: (id) ThisClickedButton
-{
-    if (_Date == nil)
-    {
-        _Date = [NSDate date];
-    }
-    
-    if (_TapQueue == nil)
-    {
-        _TapQueue = [[NSMutableArray alloc] init];
-    }
-    
-    if (_LastRecordTime_ms != 0)
-    {
-        double CurrentRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
-        NSNumber *NewBPMvalue = [NSNumber numberWithDouble:((double)60000)/(CurrentRecordTime_ms -_LastRecordTime_ms)];
-        
-        // 如果速度低於BPMMinValue, 就重算
-        if( [NewBPMvalue doubleValue] >= [[GlobalConfig BPMMinValue] intValue])
-        {
-            // 因為self.TapTriggerCounter = 0不會進來
-            // 沒有 _LastRecordTime_ms, 所以實際上記錄的是 1 2 3, 4 5 6
-            if (_TapQueue.count < [self TapTriggerNumber])
-            {
-                [_TapQueue addObject:NewBPMvalue];
-            }
-            else
-            {
-                int ObjectIndex = (self.TapTriggerCounter % [self TapTriggerNumber]);
-                [_TapQueue replaceObjectAtIndex:ObjectIndex withObject:NewBPMvalue];
-                
-                // 和上一次Tap成功平均
-                float NewValue = [self GetAvarageTapValue];
-                
-                self.BPMPicker.Value = NewValue;
-            }
-        }
-        else
-        {
-            self.TapTriggerCounter = 0;
-        }
-    }
-    
-    _LastRecordTime_ms = [_Date timeIntervalSinceNow] * -1000.0;
-    self.TapTriggerCounter++;
-}
-
-- (double) GetAvarageTapValue
-{
-    double ValueSum = 0;
-    for(NSNumber *Value in _TapQueue)
-    {
-        ValueSum += [Value doubleValue];
-    }
-    return (ValueSum / _TapQueue.count);
-}
-
-// If using scroll or single step to change BPM value, need to clean TapTriggerCounter
-- (void) TapResetNotificationCallBack :(NSNotification *)Notification
-{
-    [self TapResetTicker:nil];
-}
-
-
-- (void) TapResetTicker: (NSTimer *) theTimer
-{
-    if (_Date != nil)
-    {
-        _Date = nil;
-    }
-    _LastRecordTime_ms = 0;
-    self.TapTriggerCounter = 0;
-}
-
-
-
-//
-// =========================
 @end
