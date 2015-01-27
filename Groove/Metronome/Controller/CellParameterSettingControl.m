@@ -73,16 +73,7 @@
     [self InitilaizeLoopCellEditerView];
     [self.LoopCellEditer addTarget:self
                                 action:@selector(LoopCellEditerDisplay:) forControlEvents:UIControlEventTouchDown];
-
-
    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(TouchedNotificationCallBack:)
-                                                 name:kTouchGlobalHookNotification
-                                               object:nil];
-    
-
-    
 }
 
 
@@ -233,14 +224,6 @@
     {
         [Parent.LoopAndPlayViewSubController DeleteTargetIndexCell:Parent.FocusIndex];
     }
-}
-
-- (void)TouchedNotificationCallBack:(NSNotification *)Notification
-{
-   /*UIEvent *Event = [Notification object];
-    NSSet *touches = [Event allTouches];
-    UITouch *touch = [touches anyObject];
-    UIView * target = [touch view];*/
 }
 
 
