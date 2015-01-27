@@ -98,6 +98,7 @@
 		0071A9B91A2B090100EA57D2 /* TrippleNote.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9B41A2B090100EA57D2 /* TrippleNote.pdf */; };
 		0071A9CF1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9CD1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf */; };
 		007598F51A5D9896000A6B78 /* BlockVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 007598F41A5D9896000A6B78 /* BlockVoice.m */; };
+		00763BB81A78027A00E98FF7 /* VolumeSetsControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00763BB71A78027A00E98FF7 /* VolumeSetsControl.m */; };
 		008A5C091A4F00F100BC744F /* GlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C071A4F00F100BC744F /* GlobalConfig.m */; };
 		008A5C0A1A4F00F100BC744F /* GlobalConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 008A5C081A4F00F100BC744F /* GlobalConfig.plist */; };
 		008A5C491A4F06AD00BC744F /* SystemPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C451A4F06AD00BC744F /* SystemPageViewController.m */; };
@@ -335,6 +336,8 @@
 		0071A9CD1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ScrollViewBackGround.pdf; sourceTree = "<group>"; };
 		007598F31A5D9896000A6B78 /* BlockVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockVoice.h; sourceTree = "<group>"; };
 		007598F41A5D9896000A6B78 /* BlockVoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockVoice.m; sourceTree = "<group>"; };
+		00763BB61A78027A00E98FF7 /* VolumeSetsControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolumeSetsControl.h; sourceTree = "<group>"; };
+		00763BB71A78027A00E98FF7 /* VolumeSetsControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolumeSetsControl.m; sourceTree = "<group>"; };
 		008A5C051A4F00F100BC744F /* DebugHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DebugHeader.h; path = GlobalConfig/DebugHeader.h; sourceTree = "<group>"; };
 		008A5C061A4F00F100BC744F /* GlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalConfig.h; path = GlobalConfig/GlobalConfig.h; sourceTree = "<group>"; };
 		008A5C071A4F00F100BC744F /* GlobalConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalConfig.m; path = GlobalConfig/GlobalConfig.m; sourceTree = "<group>"; };
@@ -518,6 +521,8 @@
 			children = (
 				000947A81A76B5A40012492C /* TapFunction.h */,
 				000947A91A76B5A40012492C /* TapFunction.m */,
+				00763BB61A78027A00E98FF7 /* VolumeSetsControl.h */,
+				00763BB71A78027A00E98FF7 /* VolumeSetsControl.m */,
 			);
 			path = ToolClass;
 			sourceTree = "<group>";
@@ -1517,6 +1522,7 @@
 				0069994D1A5C458900B01E5F /* VoiceType.m in Sources */,
 				005A93971A2CE10A00280507 /* TimeSignatureType.m in Sources */,
 				00DA131119F4E94700F27E25 /* NotesTool.m in Sources */,
+				00763BB81A78027A00E98FF7 /* VolumeSetsControl.m in Sources */,
 				008A5CAF1A4F0DF400BC744F /* OneDigitsValuePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
