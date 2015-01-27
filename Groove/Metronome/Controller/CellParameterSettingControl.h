@@ -9,27 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "MetronomeMainViewController.h"
 #import "TapFunction.h"
+#import "VolumeSetsControl.h"
 
-typedef enum{
-    ACCENT_VOLUME_BUTTON = 101,
-    QUARTER_VOLUME_BUTTON,
-    EIGHTH_NOTE_VOLUME_BUTTON,
-    SIXTEENTH_NOTE_VOLUME_BUTTON,
-    TRIPPLET_NOTE_VOLUME_BUTTON
-} VOLUME_BUTTON_TAG;
+
 
 typedef enum{
     VOICE_TYPE_BUTTON = 201,
 } PARAMETER_BUTTON_TAG;
 
-@interface CellParameterSettingControl : NSObject <CircleButtonProtocol, LargeBPMPickerProtocol, SubPropertySelectorProtocol>
-
-// (1) Volume sets
-@property (strong, nonatomic) IBOutlet CircleButton *AccentCircleVolumeButton;
-@property (strong, nonatomic) IBOutlet CircleButton *QuarterCircleVolumeButton;
-@property (strong, nonatomic) IBOutlet CircleButton *EighthNoteCircleVolumeButton;
-@property (strong, nonatomic) IBOutlet CircleButton *SixteenthNoteCircleVolumeButton;
-@property (strong, nonatomic) IBOutlet CircleButton *TrippleNoteCircleVolumeButton;
+@interface CellParameterSettingControl : NSObject <LargeBPMPickerProtocol, SubPropertySelectorProtocol>
 
 // (2) Cell parameter control item
 @property (strong, nonatomic) IBOutlet LargeBPMPicker *BPMPicker;
@@ -46,10 +34,12 @@ typedef enum{
 
 @property UIViewController *ParrentController;
 
+// Tmp volumeset
+@property VolumeSetsControl * VolumeSetsControl;
+
+
 - (void) MainViewWillAppear;
-- (void) InitializeVolumeSets;
 - (void) InitlizeCellParameterControlItems;
-- (void) SetVolumeBarVolume : (TempoCell *)Cell;
 - (int) DecodeTimeSignatureToValue : (NSString *)TimeSignatureString;
 
 

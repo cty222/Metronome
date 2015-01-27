@@ -468,7 +468,7 @@
     self.TopSubView.BPMPicker.Value = [self.CurrentCell.bpmValue floatValue];
     
     // Set Volume Set
-    [self.CellParameterSettingSubController SetVolumeBarVolume:self.CurrentCell];
+    [self.CellParameterSettingSubController.VolumeSetsControl SetVolumeBarVolume:self.CurrentCell];
     
     // Set Voice
     self.CurrentVoice = [gClickVoiceList objectAtIndex:[self.CurrentCell.voiceType.sortIndex intValue]];
@@ -607,7 +607,7 @@
 
         if ([self.CurrentCell.accentVolume floatValue] > 0)
         {
-            [_CellParameterSettingSubController.AccentCircleVolumeButton TwickLing];
+            [_CellParameterSettingSubController.VolumeSetsControl.AccentCircleVolumeButton TwickLing];
         }
         _AccentCounter = 0;
     }
@@ -624,7 +624,7 @@
     }
     if ([self.CurrentCell.quarterNoteVolume floatValue] > 0)
     {
-        [_CellParameterSettingSubController.QuarterCircleVolumeButton TwickLing];
+        [_CellParameterSettingSubController.VolumeSetsControl.QuarterCircleVolumeButton TwickLing];
     }
     _AccentCounter++;
 }
@@ -635,7 +635,7 @@
                         : [self.CurrentVoice GetEbeatVoice]];
     if ([self.CurrentCell.sixteenNoteVolume floatValue] > 0)
     {
-        [_CellParameterSettingSubController.SixteenthNoteCircleVolumeButton TwickLing];
+        [_CellParameterSettingSubController.VolumeSetsControl.SixteenthNoteCircleVolumeButton TwickLing];
     }
 }
 
@@ -645,7 +645,7 @@
                         : [self.CurrentVoice GetAndBeatVoice]];
     if ([self.CurrentCell.eighthNoteVolume floatValue] > 0)
     {
-        [_CellParameterSettingSubController.EighthNoteCircleVolumeButton TwickLing];
+        [_CellParameterSettingSubController.VolumeSetsControl.EighthNoteCircleVolumeButton TwickLing];
     }
 }
 
@@ -655,7 +655,7 @@
                         : [self.CurrentVoice GetAbeatVoice]];
     if ([self.CurrentCell.sixteenNoteVolume floatValue] > 0)
     {
-        [_CellParameterSettingSubController.SixteenthNoteCircleVolumeButton TwickLing];
+        [_CellParameterSettingSubController.VolumeSetsControl.SixteenthNoteCircleVolumeButton TwickLing];
     }
 }
 
@@ -666,7 +666,7 @@
     
     if ([self.CurrentCell.trippleNoteVolume floatValue] > 0)
     {
-        [_CellParameterSettingSubController.TrippleNoteCircleVolumeButton TwickLing];
+        [_CellParameterSettingSubController.VolumeSetsControl.TrippleNoteCircleVolumeButton TwickLing];
     }
 }
 
@@ -676,7 +676,7 @@
                         : [self.CurrentVoice GetTocbeatVoice]];
     if ([self.CurrentCell.trippleNoteVolume floatValue] > 0)
     {
-        [_CellParameterSettingSubController.TrippleNoteCircleVolumeButton TwickLing];
+        [_CellParameterSettingSubController.VolumeSetsControl.TrippleNoteCircleVolumeButton TwickLing];
     }
 }
 //

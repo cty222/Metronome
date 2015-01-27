@@ -12,8 +12,8 @@
 @interface CellParameterSettingControl ()
 
 // Tap Trigger ounter
-//@property (getter = GetTapTriggerCounter, setter = SetTapTriggerCounter:) int TapTriggerCounter;
 @property TapFunction * TapFunction;
+
 @end
 
 @implementation CellParameterSettingControl
@@ -23,19 +23,18 @@
 
 - (void) MainViewWillAppear
 {
-    [self.AccentCircleVolumeButton ResetHandle];
-    [self.QuarterCircleVolumeButton ResetHandle];
-    [self.EighthNoteCircleVolumeButton ResetHandle];
-    [self.SixteenthNoteCircleVolumeButton ResetHandle];
-    [self.TrippleNoteCircleVolumeButton ResetHandle];
+    [self.VolumeSetsControl ResetVolumeSets];
 }
 
 
 - (void) InitlizeCellParameterControlItems
 {
-    [self InitializeVolumeSets];
-    
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
+
+    // Init Volumesets
+    self.VolumeSetsControl = [[VolumeSetsControl alloc] init: Parent];
+    
+    // Others
     self.BPMPicker = Parent.TopSubView.BPMPicker;
     self.OptionScrollView = Parent.TopSubView.OptionScrollView;
     self.VoiceTypePicker = Parent.TopSubView.VoiceTypePicker;
@@ -57,7 +56,7 @@
                                              selector:@selector(TapChangeBPMCallBack:)
                                                  name:kTapChangeBPMValue
                                                object:nil];
-    
+
     //VoiceTypePicker
     [self InitilaizeVoiceTypePickerView];
     [self.VoiceTypePicker addTarget:self
@@ -86,46 +85,7 @@
     
 }
 
--(void) InitializeVolumeSets
-{
-    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-    self.AccentCircleVolumeButton = Parent.BottomSubView.AccentCircleVolumeButton;
-    self.QuarterCircleVolumeButton = Parent.BottomSubView.QuarterCircleVolumeButton;
-    self.EighthNoteCircleVolumeButton = Parent.BottomSubView.EighthNoteCircleVolumeButton;
-    self.SixteenthNoteCircleVolumeButton = Parent.BottomSubView.SixteenthNoteCircleVolumeButton;
-    self.TrippleNoteCircleVolumeButton = Parent.BottomSubView.TrippleNoteCircleVolumeButton;
-    
-    self.AccentCircleVolumeButton.delegate = self;
-    self.QuarterCircleVolumeButton.delegate = self;
-    self.EighthNoteCircleVolumeButton.delegate = self;
-    self.SixteenthNoteCircleVolumeButton.delegate = self;
-    self.TrippleNoteCircleVolumeButton.delegate = self;
-    
-    CIRCLEBUTTON_RANGE VolumeRange;
-    VolumeRange.MaxIndex = 10.0;
-    VolumeRange.MinIndex = 0;
-    VolumeRange.UnitValue = 0.1;
-    
-    self.AccentCircleVolumeButton.IndexRange = VolumeRange;
-    self.AccentCircleVolumeButton.IndexValueSensitivity = 1;
-    self.AccentCircleVolumeButton.tag = ACCENT_VOLUME_BUTTON;
-    
-    self.QuarterCircleVolumeButton.IndexRange = VolumeRange;
-    self.QuarterCircleVolumeButton.IndexValueSensitivity = 1;
-    self.QuarterCircleVolumeButton.tag = QUARTER_VOLUME_BUTTON;
-    
-    self.EighthNoteCircleVolumeButton.IndexRange = VolumeRange;
-    self.EighthNoteCircleVolumeButton.IndexValueSensitivity = 1;
-    self.EighthNoteCircleVolumeButton.tag = EIGHTH_NOTE_VOLUME_BUTTON;
-    
-    self.SixteenthNoteCircleVolumeButton.IndexRange = VolumeRange;
-    self.SixteenthNoteCircleVolumeButton.IndexValueSensitivity = 1;
-    self.SixteenthNoteCircleVolumeButton.tag = SIXTEENTH_NOTE_VOLUME_BUTTON;
-    
-    self.TrippleNoteCircleVolumeButton.IndexRange = VolumeRange;
-    self.TrippleNoteCircleVolumeButton.IndexValueSensitivity = 1;
-    self.TrippleNoteCircleVolumeButton.tag = TRIPPLET_NOTE_VOLUME_BUTTON;
-}
+
 
 - (void) InitilaizeVoiceTypePickerView
 {
@@ -283,14 +243,6 @@
     UIView * target = [touch view];*/
 }
 
-- (void) SetVolumeBarVolume : (TempoCell *)Cell
-{
-    self.AccentCircleVolumeButton.IndexValue = [Cell.accentVolume floatValue];
-    self.QuarterCircleVolumeButton.IndexValue = [Cell.quarterNoteVolume floatValue];
-    self.EighthNoteCircleVolumeButton.IndexValue = [Cell.eighthNoteVolume floatValue];
-    self.SixteenthNoteCircleVolumeButton.IndexValue = [Cell.sixteenNoteVolume floatValue];
-    self.TrippleNoteCircleVolumeButton.IndexValue = [Cell.trippleNoteVolume floatValue];
-}
 
 - (int) DecodeTimeSignatureToValue : (NSString *)TimeSignatureString
 {
@@ -352,35 +304,6 @@
 - (void) ShortPress: (LargeBPMPicker *) ThisPicker
 {
     [self.TapFunction TapAreaBeingTap];
-}
-
-- (IBAction) CircleButtonValueChanged:(CircleButton*) ThisCircleButton;
-{
-    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-
-    float Value = ThisCircleButton.IndexValue;
-    switch (ThisCircleButton.tag) {
-        case ACCENT_VOLUME_BUTTON:
-            Parent.CurrentCell.accentVolume = [NSNumber numberWithFloat:Value];
-            break;
-        case QUARTER_VOLUME_BUTTON:
-            Parent.CurrentCell.quarterNoteVolume = [NSNumber numberWithFloat:Value];
-            break;
-        case EIGHTH_NOTE_VOLUME_BUTTON:
-            Parent.CurrentCell.eighthNoteVolume = [NSNumber numberWithFloat:Value];
-            break;
-        case SIXTEENTH_NOTE_VOLUME_BUTTON:
-            Parent.CurrentCell.sixteenNoteVolume = [NSNumber numberWithFloat:Value];
-            break;
-        case TRIPPLET_NOTE_VOLUME_BUTTON:
-            Parent.CurrentCell.trippleNoteVolume = [NSNumber numberWithFloat:Value];
-            break;
-        default:
-            break;
-    }
-    
-    // TODO : 不要save這麼頻繁
-    [gMetronomeModel Save];
 }
 
 - (void) SetBPMValue : (id) Picker
