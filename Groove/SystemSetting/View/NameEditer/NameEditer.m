@@ -40,11 +40,11 @@
 
 - (void) LocalizedStringInitialize
 {
-    self.NewTitle.text = NSLocalizedString(@"Edit: ", nil);
-    self.NowTitle.text = NSLocalizedString(@"New: ", nil);
-    self.AlertTextLabel.text = NSLocalizedString(@"(25 charactors max)", nil);
-    [self.SaveButton setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
-    [self.CancelButton setTitle:NSLocalizedString(@"Cancel", nil) forState:UIControlStateNormal];
+    self.NewTitle.text = LocalStringSync(@"Edit: ", nil);
+    self.NowTitle.text = LocalStringSync(@"New: ", nil);
+    self.AlertTextLabel.text = LocalStringSync(@"(25 charactors max)", nil);
+    [self.SaveButton setTitle:LocalStringSync(@"Save", nil) forState:UIControlStateNormal];
+    [self.CancelButton setTitle:LocalStringSync(@"Cancel", nil) forState:UIControlStateNormal];
 }
 
 // ========================================
@@ -66,7 +66,7 @@
     }
     else
     {
-        self.CurrentName.text = NSLocalizedString(@"None", nil);
+        self.CurrentName.text = LocalStringSync(@"None", nil);
         self.NewName.text = @"";
     }
 }
@@ -84,10 +84,10 @@
         {
             
             _NameErrorAlert = [[UIAlertView alloc]
-                               initWithTitle:NSLocalizedString(@"Name Error", nil)
-                               message:NSLocalizedString(@"No Name !!", nil)
+                               initWithTitle:LocalStringSync(@"Name Error", nil)
+                               message:LocalStringSync(@"No Name !!", nil)
                                delegate:nil
-                               cancelButtonTitle:NSLocalizedString(@"OK, I know it.", nil)
+                               cancelButtonTitle:LocalStringSync(@"OK, I know it.", nil)
                                otherButtonTitles:nil, nil];
         }
         [_NameErrorAlert show];
@@ -100,10 +100,10 @@
         if (_NameTooLongAlert == nil)
         {
             _NameTooLongAlert = [[UIAlertView alloc]
-                               initWithTitle:NSLocalizedString(@"Name Error", nil)
-                               message:NSLocalizedString(@"Name is too long, it can't over 25 character.", nil)
+                               initWithTitle:LocalStringSync(@"Name Error", nil)
+                               message:LocalStringSync(@"Name is too long, it can't over 25 character.", nil)
                                delegate:nil
-                               cancelButtonTitle:NSLocalizedString(@"OK, I know it.", nil)
+                               cancelButtonTitle:LocalStringSync(@"OK, I know it.", nil)
                                otherButtonTitles:nil, nil];
         }
         [_NameTooLongAlert show];

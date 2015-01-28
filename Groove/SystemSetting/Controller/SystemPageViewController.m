@@ -137,16 +137,16 @@
 
 - (void) LocalizedStringInitialize
 {
-    self.SettingsTitle.text = NSLocalizedString(@"Settings", nil);
-    self.BPMFloatEnableLabel.text = NSLocalizedString(@"BPMFloatEnable", nil);
-    self.ListAutoRepeatLabel.text = NSLocalizedString(@"ListRepeat", nil);
-    self.EnableMusicPlayLabel.text = NSLocalizedString(@"MusicPlayerOn", nil);
-    self.DisableListWarmingLabel.text = NSLocalizedString(@"DisableListWarming", nil);
-    self.StartTimeWordLabel.text = NSLocalizedString(@"StartTime", nil);
-    self.EndTimeWordLabel.text = NSLocalizedString(@"StopTime", nil);
-    self.PlayMetronomeWithMusicLabel.text = NSLocalizedString(@"PlayWithMusic", nil);
-    self.MusicAutoRepeatLabel.text = NSLocalizedString(@"MusicReapeat", nil);
-    self.MusicHalfSpeedLabel.text = NSLocalizedString(@"MusicSpeedHalf", nil);
+    self.SettingsTitle.text = LocalStringSync(@"Settings", nil);
+    self.BPMFloatEnableLabel.text = LocalStringSync(@"BPMFloatEnable", nil);
+    self.ListAutoRepeatLabel.text = LocalStringSync(@"ListRepeat", nil);
+    self.EnableMusicPlayLabel.text = LocalStringSync(@"MusicPlayerOn", nil);
+    self.DisableListWarmingLabel.text = LocalStringSync(@"DisableListWarming", nil);
+    self.StartTimeWordLabel.text = LocalStringSync(@"StartTime", nil);
+    self.EndTimeWordLabel.text = LocalStringSync(@"StopTime", nil);
+    self.PlayMetronomeWithMusicLabel.text = LocalStringSync(@"PlayWithMusic", nil);
+    self.MusicAutoRepeatLabel.text = LocalStringSync(@"MusicReapeat", nil);
+    self.MusicHalfSpeedLabel.text = LocalStringSync(@"MusicSpeedHalf", nil);
     
     if ([self.DisableListWarmingLabel.text isEqualToString:@"(關閉列表播放器)"])
     {
@@ -211,7 +211,7 @@
         return;
     }
     
-    NSString *DisplayName = NSLocalizedString(@"TempoListName", nil);
+    NSString *DisplayName = LocalStringSync(@"TempoListName", nil);
     DisplayName = [DisplayName stringByAppendingString:_CurrentList.tempoListName];
     [self.CurrentSelectedTempoList setTitle:DisplayName forState:UIControlStateNormal];
     
@@ -322,7 +322,7 @@
             ArtistName = @"";
         }
 
-        NSString *CurrentSelectedMusicString = NSLocalizedString(@"MusicName", nil);
+        NSString *CurrentSelectedMusicString = LocalStringSync(@"MusicName", nil);
         CurrentSelectedMusicString = [CurrentSelectedMusicString stringByAppendingString:SongName];
         if(!([SongName isEqualToString:@""] || [ArtistName isEqualToString:@""]))
         {
@@ -335,7 +335,7 @@
     else
     {
         self.DurationLabel.text = [gPlayMusicChannel ReturnTimeValueToString:0.0f];
-        [self.CurrentSelectedMusic setTitle:NSLocalizedString(@"PleaseSelectASong", nil) forState:UIControlStateNormal];
+        [self.CurrentSelectedMusic setTitle:LocalStringSync(@"PleaseSelectASong", nil) forState:UIControlStateNormal];
     }
 }
 

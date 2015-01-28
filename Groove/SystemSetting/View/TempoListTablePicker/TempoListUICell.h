@@ -10,7 +10,7 @@
 #import "XibTableViewCellInterface.h"
 #import "TempoList.h"
 #import "CustomerButton.h"
-
+#import "GlobalConfig.h"
 
 @class TempoListUICell;
 

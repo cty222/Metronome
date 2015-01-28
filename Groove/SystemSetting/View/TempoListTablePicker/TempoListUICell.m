@@ -38,7 +38,7 @@
 
 - (void) LocalizedStringInitialize
 {
-    self.EditButton.NameLabel.text = NSLocalizedString(@"Edit", nil);
+    self.EditButton.NameLabel.text = LocalStringSync(@"Edit", nil);
 }
 
 // ========================================

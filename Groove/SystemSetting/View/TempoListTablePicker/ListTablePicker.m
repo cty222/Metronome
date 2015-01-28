@@ -39,8 +39,8 @@
 
 - (void) LocalizedStringInitialize
 {
-    [self.SaveButton setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
-    [self.AddButton setTitle:NSLocalizedString(@"Add", nil) forState:UIControlStateNormal];
+    [self.SaveButton setTitle:LocalStringSync(@"Done", nil) forState:UIControlStateNormal];
+    [self.AddButton setTitle:LocalStringSync(@"Add", nil) forState:UIControlStateNormal];
 }
 
 - (void) InitializeEditerView
@@ -98,10 +98,10 @@
         if (_TempoListOverMaxCountAlert ==nil)
         {
             _TempoListOverMaxCountAlert = [[UIAlertView alloc]
-                                           initWithTitle:NSLocalizedString(@"Too many tempo lists", nil)
-                                           message:NSLocalizedString(@"You can't add more than 20 tempo lists !!", nil)
+                                           initWithTitle:LocalStringSync(@"Too many tempo lists", nil)
+                                           message:LocalStringSync(@"You can't add more than 20 tempo lists !!", nil)
                                            delegate:nil
-                                           cancelButtonTitle:NSLocalizedString(@"OK, I know it.", nil)
+                                           cancelButtonTitle:LocalStringSync(@"OK, I know it.", nil)
                                            otherButtonTitles:nil, nil];
         }
         [_TempoListOverMaxCountAlert show];
@@ -164,10 +164,10 @@
         if (_NoSelectedAlert == nil)
         {
             _NoSelectedAlert = [[UIAlertView alloc]
-                                initWithTitle:NSLocalizedString(@"Selected Warming", nil)
-                                message:NSLocalizedString(@"No Selected Item", nil)
+                                initWithTitle:LocalStringSync(@"Selected Warming", nil)
+                                message:LocalStringSync(@"No Selected Item", nil)
                                 delegate:nil
-                                cancelButtonTitle:NSLocalizedString(@"OK, I know it.", nil)
+                                cancelButtonTitle:LocalStringSync(@"OK, I know it.", nil)
                                 otherButtonTitles:nil, nil];
         }
         [_NoSelectedAlert show];
@@ -244,7 +244,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return NSLocalizedString(@"Delete", nil);
+    return LocalStringSync(@"Delete", nil);
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath

@@ -51,8 +51,8 @@
 
 - (void) LocalizedStringInitialize
 {
-    [self.SaveButton setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
-    [self.CancelButton setTitle:NSLocalizedString(@"Cancel", nil) forState:UIControlStateNormal];
+    [self.SaveButton setTitle:LocalStringSync(@"Save", nil) forState:UIControlStateNormal];
+    [self.CancelButton setTitle:LocalStringSync(@"Cancel", nil) forState:UIControlStateNormal];
 }
 
 

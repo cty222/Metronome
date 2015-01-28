@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0007F2091A3A1D43003F6927 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0007F2081A3A1D43003F6927 /* MediaPlayer.framework */; };
 		0007F20F1A3A22B9003F6927 /* PlayerForSongs.m in Sources */ = {isa = PBXBuildFile; fileRef = 0007F20E1A3A22B9003F6927 /* PlayerForSongs.m */; };
+		00088ADE1A798339004D83A3 /* LocalizedMutilanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 00088ADD1A798339004D83A3 /* LocalizedMutilanguage.m */; };
 		000947AA1A76B5A40012492C /* TapFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 000947A91A76B5A40012492C /* TapFunction.m */; };
 		000D46271A469B710066BE0A /* MusicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 000D46261A469B710066BE0A /* MusicProperties.m */; };
 		0010C5A61A60607200BC5E51 /* Accent_Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0010C5A11A60607200BC5E51 /* Accent_Low.wav */; };
@@ -224,6 +225,11 @@
 		0007F2081A3A1D43003F6927 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0007F20D1A3A22B9003F6927 /* PlayerForSongs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerForSongs.h; path = Tools/PlayerForSongs.h; sourceTree = "<group>"; };
 		0007F20E1A3A22B9003F6927 /* PlayerForSongs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerForSongs.m; path = Tools/PlayerForSongs.m; sourceTree = "<group>"; };
+		00088ADC1A798339004D83A3 /* LocalizedMutilanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalizedMutilanguage.h; path = Tools/LocalizedMutilanguage.h; sourceTree = "<group>"; };
+		00088ADD1A798339004D83A3 /* LocalizedMutilanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalizedMutilanguage.m; path = Tools/LocalizedMutilanguage.m; sourceTree = "<group>"; };
+		00088ADF1A7986AB004D83A3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		00088AE01A7986AB004D83A3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		00088AE11A7986AB004D83A3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		000947A81A76B5A40012492C /* TapFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapFunction.h; sourceTree = "<group>"; };
 		000947A91A76B5A40012492C /* TapFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapFunction.m; sourceTree = "<group>"; };
 		000D46251A469B710066BE0A /* MusicProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicProperties.h; path = GlobalConfig/MusicProperties.h; sourceTree = "<group>"; };
@@ -1162,6 +1168,8 @@
 				00319FB91A0F2EED00CF3C83 /* UINSOperation.m */,
 				0007F20D1A3A22B9003F6927 /* PlayerForSongs.h */,
 				0007F20E1A3A22B9003F6927 /* PlayerForSongs.m */,
+				00088ADC1A798339004D83A3 /* LocalizedMutilanguage.h */,
+				00088ADD1A798339004D83A3 /* LocalizedMutilanguage.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -1304,6 +1312,7 @@
 			knownRegions = (
 				en,
 				"zh-Hant",
+				"zh-Hans",
 			);
 			mainGroup = 004BE63119B2DDC7002CD995;
 			productRefGroup = 004BE63B19B2DDC7002CD995 /* Products */;
@@ -1510,6 +1519,7 @@
 				007598F51A5D9896000A6B78 /* BlockVoice.m in Sources */,
 				008A5CF21A4F0E7000BC744F /* ValuePickerTemplate.m in Sources */,
 				001BF2981A531D9A00558052 /* MusicBindingInfo.m in Sources */,
+				00088ADE1A798339004D83A3 /* LocalizedMutilanguage.m in Sources */,
 				008A5C901A4F0AE600BC744F /* CircleButton.m in Sources */,
 				005CDA731A57B9E300B85E4C /* BeepBound.m in Sources */,
 				008A5C921A4F0AE600BC744F /* TapAnimationImage.m in Sources */,
@@ -1551,6 +1561,7 @@
 			children = (
 				0027FC5C1A5B06C300257397 /* en */,
 				0027FC651A5B099400257397 /* zh-Hant */,
+				00088ADF1A7986AB004D83A3 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1560,6 +1571,7 @@
 			children = (
 				004BE64919B2DDC7002CD995 /* en */,
 				0027FC661A5B099400257397 /* zh-Hant */,
+				00088AE01A7986AB004D83A3 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1569,6 +1581,7 @@
 			children = (
 				004BE66619B2DDC8002CD995 /* en */,
 				0027FC671A5B099400257397 /* zh-Hant */,
+				00088AE11A7986AB004D83A3 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

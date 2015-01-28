@@ -222,10 +222,10 @@
         if (_TempoCellOverMaxCountAlert ==nil)
         {
             _TempoCellOverMaxCountAlert = [[UIAlertView alloc]
-                                           initWithTitle:NSLocalizedString(@"Too many tempo items", nil)
-                                           message:NSLocalizedString(@"You can't add more than 20 tempo items in one tempo list !!", nil)
+                                           initWithTitle:LocalStringSync(@"Too many tempo items", nil)
+                                           message:LocalStringSync(@"You can't add more than 20 tempo items in one tempo list !!", nil)
                                            delegate:nil
-                                           cancelButtonTitle:NSLocalizedString(@"OK, I know it.", nil)
+                                           cancelButtonTitle:LocalStringSync(@"OK, I know it.", nil)
                                            otherButtonTitles:nil, nil];
         }
         [_TempoCellOverMaxCountAlert show];
