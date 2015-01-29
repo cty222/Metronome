@@ -170,7 +170,6 @@
 		00BBB8731A61913E005B9B28 /* HiHatsClose.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB86F1A61913E005B9B28 /* HiHatsClose.wav */; };
 		00BBB8741A61913E005B9B28 /* HiHatsHard.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8701A61913E005B9B28 /* HiHatsHard.wav */; };
 		00BBB87A1A619270005B9B28 /* Snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8781A619270005B9B28 /* Snare.wav */; };
-		00BBB89C1A6196BE005B9B28 /* Two.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB88B1A6196BE005B9B28 /* Two.wav */; };
 		00BBB8AD1A61997E005B9B28 /* Human_a.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB89D1A61997E005B9B28 /* Human_a.wav */; };
 		00BBB8AE1A61997E005B9B28 /* Human_and.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB89E1A61997E005B9B28 /* Human_and.wav */; };
 		00BBB8AF1A61997E005B9B28 /* Human_e.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB89F1A61997E005B9B28 /* Human_e.wav */; };
@@ -180,11 +179,7 @@
 		00BBB8B31A61997E005B9B28 /* Four.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8A31A61997E005B9B28 /* Four.wav */; };
 		00BBB8B41A61997E005B9B28 /* Nine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8A41A61997E005B9B28 /* Nine.wav */; };
 		00BBB8B51A61997E005B9B28 /* One.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8A51A61997E005B9B28 /* One.wav */; };
-		00BBB8B61A61997E005B9B28 /* Seven.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8A61A61997E005B9B28 /* Seven.wav */; };
-		00BBB8B71A61997E005B9B28 /* Six.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8A71A61997E005B9B28 /* Six.wav */; };
-		00BBB8B81A61997E005B9B28 /* Ten.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8A81A61997E005B9B28 /* Ten.wav */; };
 		00BBB8B91A61997E005B9B28 /* Three.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8A91A61997E005B9B28 /* Three.wav */; };
-		00BBB8BC1A61997E005B9B28 /* Twleve.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8AC1A61997E005B9B28 /* Twleve.wav */; };
 		00BBB8C31A61A4B5005B9B28 /* Human_Tic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8C11A61A4B5005B9B28 /* Human_Tic.wav */; };
 		00BBB8C41A61A4B5005B9B28 /* Human_Toc.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8C21A61A4B5005B9B28 /* Human_Toc.wav */; };
 		00BBB8C61A61A55C005B9B28 /* Ride.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8C51A61A55C005B9B28 /* Ride.wav */; };
@@ -202,6 +197,11 @@
 		00E8C0431A36119200D53F82 /* AccentYellow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C03E1A36119200D53F82 /* AccentYellow.pdf */; };
 		00E8C0441A36119200D53F82 /* QuarterNoteYellow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C03F1A36119200D53F82 /* QuarterNoteYellow.pdf */; };
 		00E8C0451A36119200D53F82 /* TrippleNoteYellow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00E8C0401A36119200D53F82 /* TrippleNoteYellow.pdf */; };
+		00EC715B1A7AAC56000C16C4 /* Two.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00EC715A1A7AAC56000C16C4 /* Two.wav */; };
+		00EC715F1A7AAF78000C16C4 /* Six.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00EC715E1A7AAF78000C16C4 /* Six.wav */; };
+		00EC71611A7AB090000C16C4 /* Seven.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00EC71601A7AB090000C16C4 /* Seven.wav */; };
+		00EC71671A7AB578000C16C4 /* Ten.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00EC71661A7AB578000C16C4 /* Ten.wav */; };
+		00EC71691A7AB7BB000C16C4 /* Twelve.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00EC71681A7AB7BA000C16C4 /* Twelve.wav */; };
 		00ED15871A5EEC5D002D442F /* TempoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ED15861A5EEC5D002D442F /* TempoList.m */; };
 		00ED158A1A5EEC5D002D442F /* TempoPrivateProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ED15891A5EEC5D002D442F /* TempoPrivateProperties.m */; };
 		00ED15901A5F0FDD002D442F /* AppIcon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ED158B1A5F0FDD002D442F /* AppIcon_58.png */; };
@@ -445,7 +445,6 @@
 		00BBB86F1A61913E005B9B28 /* HiHatsClose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiHatsClose.wav; sourceTree = "<group>"; };
 		00BBB8701A61913E005B9B28 /* HiHatsHard.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HiHatsHard.wav; sourceTree = "<group>"; };
 		00BBB8781A619270005B9B28 /* Snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Snare.wav; sourceTree = "<group>"; };
-		00BBB88B1A6196BE005B9B28 /* Two.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Two.wav; sourceTree = "<group>"; };
 		00BBB89D1A61997E005B9B28 /* Human_a.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Human_a.wav; sourceTree = "<group>"; };
 		00BBB89E1A61997E005B9B28 /* Human_and.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Human_and.wav; sourceTree = "<group>"; };
 		00BBB89F1A61997E005B9B28 /* Human_e.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Human_e.wav; sourceTree = "<group>"; };
@@ -455,11 +454,7 @@
 		00BBB8A31A61997E005B9B28 /* Four.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Four.wav; sourceTree = "<group>"; };
 		00BBB8A41A61997E005B9B28 /* Nine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Nine.wav; sourceTree = "<group>"; };
 		00BBB8A51A61997E005B9B28 /* One.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = One.wav; sourceTree = "<group>"; };
-		00BBB8A61A61997E005B9B28 /* Seven.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Seven.wav; sourceTree = "<group>"; };
-		00BBB8A71A61997E005B9B28 /* Six.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Six.wav; sourceTree = "<group>"; };
-		00BBB8A81A61997E005B9B28 /* Ten.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ten.wav; sourceTree = "<group>"; };
 		00BBB8A91A61997E005B9B28 /* Three.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Three.wav; sourceTree = "<group>"; };
-		00BBB8AC1A61997E005B9B28 /* Twleve.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Twleve.wav; sourceTree = "<group>"; };
 		00BBB8C11A61A4B5005B9B28 /* Human_Tic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Human_Tic.wav; sourceTree = "<group>"; };
 		00BBB8C21A61A4B5005B9B28 /* Human_Toc.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Human_Toc.wav; sourceTree = "<group>"; };
 		00BBB8C51A61A55C005B9B28 /* Ride.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ride.wav; sourceTree = "<group>"; };
@@ -479,6 +474,11 @@
 		00E8C03E1A36119200D53F82 /* AccentYellow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AccentYellow.pdf; sourceTree = "<group>"; };
 		00E8C03F1A36119200D53F82 /* QuarterNoteYellow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = QuarterNoteYellow.pdf; sourceTree = "<group>"; };
 		00E8C0401A36119200D53F82 /* TrippleNoteYellow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TrippleNoteYellow.pdf; sourceTree = "<group>"; };
+		00EC715A1A7AAC56000C16C4 /* Two.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Two.wav; sourceTree = "<group>"; };
+		00EC715E1A7AAF78000C16C4 /* Six.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Six.wav; sourceTree = "<group>"; };
+		00EC71601A7AB090000C16C4 /* Seven.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Seven.wav; sourceTree = "<group>"; };
+		00EC71661A7AB578000C16C4 /* Ten.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ten.wav; sourceTree = "<group>"; };
+		00EC71681A7AB7BA000C16C4 /* Twelve.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Twelve.wav; sourceTree = "<group>"; };
 		00ED15851A5EEC5D002D442F /* TempoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoList.h; path = CoreDataSubClass/TempoList.h; sourceTree = "<group>"; };
 		00ED15861A5EEC5D002D442F /* TempoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoList.m; path = CoreDataSubClass/TempoList.m; sourceTree = "<group>"; };
 		00ED15881A5EEC5D002D442F /* TempoPrivateProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoPrivateProperties.h; path = CoreDataSubClass/TempoPrivateProperties.h; sourceTree = "<group>"; };
@@ -1200,6 +1200,10 @@
 		00E1D87E1A585796008A006D /* HumanVoice */ = {
 			isa = PBXGroup;
 			children = (
+				00EC71661A7AB578000C16C4 /* Ten.wav */,
+				00EC71601A7AB090000C16C4 /* Seven.wav */,
+				00EC715E1A7AAF78000C16C4 /* Six.wav */,
+				00EC715A1A7AAC56000C16C4 /* Two.wav */,
 				00BBB8C11A61A4B5005B9B28 /* Human_Tic.wav */,
 				00BBB8C21A61A4B5005B9B28 /* Human_Toc.wav */,
 				00BBB89D1A61997E005B9B28 /* Human_a.wav */,
@@ -1211,12 +1215,8 @@
 				00BBB8A31A61997E005B9B28 /* Four.wav */,
 				00BBB8A41A61997E005B9B28 /* Nine.wav */,
 				00BBB8A51A61997E005B9B28 /* One.wav */,
-				00BBB8A61A61997E005B9B28 /* Seven.wav */,
-				00BBB8A71A61997E005B9B28 /* Six.wav */,
-				00BBB8A81A61997E005B9B28 /* Ten.wav */,
 				00BBB8A91A61997E005B9B28 /* Three.wav */,
-				00BBB8AC1A61997E005B9B28 /* Twleve.wav */,
-				00BBB88B1A6196BE005B9B28 /* Two.wav */,
+				00EC71681A7AB7BA000C16C4 /* Twelve.wav */,
 			);
 			path = HumanVoice;
 			sourceTree = "<group>";
@@ -1330,6 +1330,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00EC71671A7AB578000C16C4 /* Ten.wav in Resources */,
+				00EC715F1A7AAF78000C16C4 /* Six.wav in Resources */,
+				00EC715B1A7AAC56000C16C4 /* Two.wav in Resources */,
 				00E8C0201A3610FD00D53F82 /* AccentRed.pdf in Resources */,
 				00BBB8C31A61A4B5005B9B28 /* Human_Tic.wav in Resources */,
 				00BBB8B51A61997E005B9B28 /* One.wav in Resources */,
@@ -1345,6 +1348,7 @@
 				0071A9B91A2B090100EA57D2 /* TrippleNote.pdf in Resources */,
 				0098D7D11A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib in Resources */,
 				00ED15931A5F0FDD002D442F /* AppIcon_120.png in Resources */,
+				00EC71611A7AB090000C16C4 /* Seven.wav in Resources */,
 				0098D7C51A5999A90001DE00 /* Delete_red.pdf in Resources */,
 				00BBB8C61A61A55C005B9B28 /* Ride.wav in Resources */,
 				00E8C0211A3610FD00D53F82 /* QuarterNoteRed.pdf in Resources */,
@@ -1353,7 +1357,6 @@
 				00BBB8B31A61997E005B9B28 /* Four.wav in Resources */,
 				008A5CB41A4F0DF400BC744F /* TwoDigitsValuePicker.xib in Resources */,
 				0098D7CD1A5999DA0001DE00 /* SyncTime.pdf in Resources */,
-				00BBB8BC1A61997E005B9B28 /* Twleve.wav in Resources */,
 				0071A9AE1A2B075F00EA57D2 /* LoopCellScrollView.pdf in Resources */,
 				0059D1411A56FFD20058C5E3 /* ClockIcon.pdf in Resources */,
 				00E8C0411A36119200D53F82 /* 16NoteYellow.pdf in Resources */,
@@ -1378,7 +1381,6 @@
 				008A5CB01A4F0DF400BC744F /* OneDigitsValuePicker.xib in Resources */,
 				00BBB8B01A61997E005B9B28 /* Eight.wav in Resources */,
 				0059D1531A57092E0058C5E3 /* PropetyBackGround_red.pdf in Resources */,
-				00BBB89C1A6196BE005B9B28 /* Two.wav in Resources */,
 				00E8C0431A36119200D53F82 /* AccentYellow.pdf in Resources */,
 				0059D1621A5710850058C5E3 /* PlayRed.pdf in Resources */,
 				00E8C01E1A3610FD00D53F82 /* 16NoteRed.pdf in Resources */,
@@ -1392,7 +1394,6 @@
 				008A5C4A1A4F06AD00BC744F /* SystemPageViewController.xib in Resources */,
 				008A5CCA1A4F0E1B00BC744F /* LoopCellEditerView.xib in Resources */,
 				008A5CA31A4F0B1200BC744F /* MetronmoneTopSubViewIphone.xib in Resources */,
-				00BBB8B61A61997E005B9B28 /* Seven.wav in Resources */,
 				004DF46B1A40A6AD00E79C0E /* TapAnimation_2_red.pdf in Resources */,
 				006999551A5C656100B01E5F /* PlayList.pdf in Resources */,
 				00ED15921A5F0FDD002D442F /* AppIcon_87.png in Resources */,
@@ -1401,6 +1402,7 @@
 				006739381A55D26B008B6A2F /* NameEditer.xib in Resources */,
 				008A5CD01A4F0E1B00BC744F /* VoiceTypePickerView.xib in Resources */,
 				001BFDBE1A3F550200A56947 /* BPMArrowUp.pdf in Resources */,
+				00EC71691A7AB7BB000C16C4 /* Twelve.wav in Resources */,
 				00ED15901A5F0FDD002D442F /* AppIcon_58.png in Resources */,
 				00BBB8B21A61997E005B9B28 /* Five.wav in Resources */,
 				0059D15B1A5709830058C5E3 /* SystemRetunButton.pdf in Resources */,
@@ -1409,7 +1411,6 @@
 				0071A9B51A2B090100EA57D2 /* 16Note.pdf in Resources */,
 				00BBB8AE1A61997E005B9B28 /* Human_and.wav in Resources */,
 				0071A9CF1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf in Resources */,
-				00BBB8B81A61997E005B9B28 /* Ten.wav in Resources */,
 				008A5D001A4F18E200BC744F /* TempoListViewController.xib in Resources */,
 				0059D16B1A571BCE0058C5E3 /* CustomerButton.xib in Resources */,
 				008A5CCE1A4F0E1B00BC744F /* TimeSignaturePickerView.xib in Resources */,
@@ -1454,7 +1455,6 @@
 				006999571A5C656100B01E5F /* PlayMusic.pdf in Resources */,
 				00BBB8AD1A61997E005B9B28 /* Human_a.wav in Resources */,
 				00ED15911A5F0FDD002D442F /* AppIcon_80.png in Resources */,
-				00BBB8B71A61997E005B9B28 /* Six.wav in Resources */,
 				008A5C8F1A4F0AE600BC744F /* LargeBPMPicker.xib in Resources */,
 				0010C5D91A606DE500BC5E51 /* ScrollViewCellBackGround.pdf in Resources */,
 				001BFDD11A3F5F2200A56947 /* LoopCellBackGround.pdf in Resources */,
