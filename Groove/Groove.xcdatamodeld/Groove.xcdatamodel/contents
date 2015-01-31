@@ -50,7 +50,7 @@
     <fetchRequest name="FetchDbVersion" entity="DbConfig" predicateString="dbVersion >= $DbVersion"/>
     <fetchRequest name="FetchOwerFromSingleName" entity="TempoCell"/>
     <elements>
-        <element name="DbConfig" positionX="153" positionY="18" width="128" height="60"/>
+        <element name="DbConfig" positionX="153" positionY="18" width="128" height="58"/>
         <element name="MusicBindingInfo" positionX="144" positionY="9" width="128" height="118"/>
         <element name="TempoCell" positionX="-63" positionY="-18" width="128" height="210"/>
         <element name="TempoList" positionX="349" positionY="-127" width="128" height="133"/>

@@ -661,6 +661,11 @@
 
 - (void) TicBeatFunc
 {
+    if ([self.CurrentTempoList.privateProperties.shuffleEnable boolValue])
+    {
+        return;
+    }
+    
     [gPlayUnit playSound: [self.CurrentCell.trippleNoteVolume floatValue] / MAX_VOLUME
                         : [self.CurrentVoice GetTicbeatVoice]];
     

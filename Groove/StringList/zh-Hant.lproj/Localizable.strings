@@ -10,6 +10,7 @@
 "Settings" = "設置";
 "TempoListName" = "列表名稱: ";
 "MusicName" = "音樂名稱: ";
+"ShuffleEnable" = "開啟Shuffle";
 "BPMFloatEnable" = "開啟BPM小數點";
 "ListRepeat" = "節拍列表自動重播";
 "MusicPlayerOn" = "打開音樂播放器";

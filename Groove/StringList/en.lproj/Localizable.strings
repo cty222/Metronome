@@ -10,6 +10,7 @@
 "Settings" = "Settings";
 "TempoListName" = "Tempo : ";
 "MusicName" = "Music : ";
+"ShuffleEnable" = "Change tripple to shuffle";
 "BPMFloatEnable" = "BPM with 1 decimal place";
 "ListRepeat" = "List auto repeat";
 "MusicPlayerOn" = "Enable music player";

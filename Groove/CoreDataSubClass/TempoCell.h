@@ -2,8 +2,8 @@
 //  TempoCell.h
 //  Groove
 //
-//  Created by C-ty on 2014/12/29.
-//  Copyright (c) 2014年 Cty. All rights reserved.
+//  Created by C-ty on 2015/2/1.
+//  Copyright (c) 2015年 Cty. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

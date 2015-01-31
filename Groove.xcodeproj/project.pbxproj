@@ -90,7 +90,6 @@
 		006999571A5C656100B01E5F /* PlayMusic.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 006999531A5C656100B01E5F /* PlayMusic.pdf */; };
 		0069995B1A5C69DD00B01E5F /* ResetTime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0069995A1A5C69DD00B01E5F /* ResetTime.pdf */; };
 		0069995D1A5C6F2300B01E5F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0069995C1A5C6F2300B01E5F /* StoreKit.framework */; };
-		006DAF2A1A50777900DEBA01 /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 006DAF291A50777900DEBA01 /* TempoCell.m */; };
 		0071A9AE1A2B075F00EA57D2 /* LoopCellScrollView.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9AD1A2B075F00EA57D2 /* LoopCellScrollView.pdf */; };
 		0071A9B51A2B090100EA57D2 /* 16Note.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9B01A2B090100EA57D2 /* 16Note.pdf */; };
 		0071A9B61A2B090100EA57D2 /* 8Notes.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0071A9B11A2B090100EA57D2 /* 8Notes.pdf */; };
@@ -159,6 +158,8 @@
 		0098D7CD1A5999DA0001DE00 /* SyncTime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7CC1A5999DA0001DE00 /* SyncTime.pdf */; };
 		0098D7D11A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7D01A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib */; };
 		0098D7D41A59B0680001DE00 /* LoopCellEditerView4S.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7D31A59B0680001DE00 /* LoopCellEditerView4S.xib */; };
+		00B238AD1A7D5EAE00DFC04B /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B238AC1A7D5EAE00DFC04B /* TempoCell.m */; };
+		00B238B31A7D62ED00DFC04B /* TempoPrivateProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B238B21A7D62ED00DFC04B /* TempoPrivateProperties.m */; };
 		00BBB83B1A61804E005B9B28 /* BlockVoice.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8391A61804E005B9B28 /* BlockVoice.pdf */; };
 		00BBB83C1A61804E005B9B28 /* DrumVoice1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB83A1A61804E005B9B28 /* DrumVoice1.pdf */; };
 		00BBB8421A6180A7005B9B28 /* BassDrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB83D1A6180A7005B9B28 /* BassDrum.wav */; };
@@ -203,7 +204,6 @@
 		00EC71671A7AB578000C16C4 /* Ten.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00EC71661A7AB578000C16C4 /* Ten.wav */; };
 		00EC71691A7AB7BB000C16C4 /* Twelve.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00EC71681A7AB7BA000C16C4 /* Twelve.wav */; };
 		00ED15871A5EEC5D002D442F /* TempoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ED15861A5EEC5D002D442F /* TempoList.m */; };
-		00ED158A1A5EEC5D002D442F /* TempoPrivateProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ED15891A5EEC5D002D442F /* TempoPrivateProperties.m */; };
 		00ED15901A5F0FDD002D442F /* AppIcon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ED158B1A5F0FDD002D442F /* AppIcon_58.png */; };
 		00ED15911A5F0FDD002D442F /* AppIcon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ED158C1A5F0FDD002D442F /* AppIcon_80.png */; };
 		00ED15921A5F0FDD002D442F /* AppIcon_87.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ED158D1A5F0FDD002D442F /* AppIcon_87.png */; };
@@ -222,6 +222,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0005F9431A7D4F7400E6EDF4 /* Groove_1028.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Groove_1028.xcdatamodel; sourceTree = "<group>"; };
 		0007F2081A3A1D43003F6927 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0007F20D1A3A22B9003F6927 /* PlayerForSongs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerForSongs.h; path = Tools/PlayerForSongs.h; sourceTree = "<group>"; };
 		0007F20E1A3A22B9003F6927 /* PlayerForSongs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerForSongs.m; path = Tools/PlayerForSongs.m; sourceTree = "<group>"; };
@@ -331,8 +332,6 @@
 		006999531A5C656100B01E5F /* PlayMusic.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PlayMusic.pdf; sourceTree = "<group>"; };
 		0069995A1A5C69DD00B01E5F /* ResetTime.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ResetTime.pdf; sourceTree = "<group>"; };
 		0069995C1A5C6F2300B01E5F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		006DAF281A50777900DEBA01 /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
-		006DAF291A50777900DEBA01 /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
 		0071A9AD1A2B075F00EA57D2 /* LoopCellScrollView.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LoopCellScrollView.pdf; sourceTree = "<group>"; };
 		0071A9B01A2B090100EA57D2 /* 16Note.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 16Note.pdf; sourceTree = "<group>"; };
 		0071A9B11A2B090100EA57D2 /* 8Notes.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 8Notes.pdf; sourceTree = "<group>"; };
@@ -434,6 +433,10 @@
 		0098D7CC1A5999DA0001DE00 /* SyncTime.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SyncTime.pdf; sourceTree = "<group>"; };
 		0098D7D01A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronmoneTopSubViewIphone4S.xib; sourceTree = "<group>"; };
 		0098D7D31A59B0680001DE00 /* LoopCellEditerView4S.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoopCellEditerView4S.xib; sourceTree = "<group>"; };
+		00B238AB1A7D5EAE00DFC04B /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
+		00B238AC1A7D5EAE00DFC04B /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
+		00B238B11A7D62ED00DFC04B /* TempoPrivateProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoPrivateProperties.h; path = CoreDataSubClass/TempoPrivateProperties.h; sourceTree = "<group>"; };
+		00B238B21A7D62ED00DFC04B /* TempoPrivateProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoPrivateProperties.m; path = CoreDataSubClass/TempoPrivateProperties.m; sourceTree = "<group>"; };
 		00BBB8391A61804E005B9B28 /* BlockVoice.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BlockVoice.pdf; sourceTree = "<group>"; };
 		00BBB83A1A61804E005B9B28 /* DrumVoice1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = DrumVoice1.pdf; sourceTree = "<group>"; };
 		00BBB83D1A6180A7005B9B28 /* BassDrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BassDrum.wav; sourceTree = "<group>"; };
@@ -481,8 +484,6 @@
 		00EC71681A7AB7BA000C16C4 /* Twelve.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Twelve.wav; sourceTree = "<group>"; };
 		00ED15851A5EEC5D002D442F /* TempoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoList.h; path = CoreDataSubClass/TempoList.h; sourceTree = "<group>"; };
 		00ED15861A5EEC5D002D442F /* TempoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoList.m; path = CoreDataSubClass/TempoList.m; sourceTree = "<group>"; };
-		00ED15881A5EEC5D002D442F /* TempoPrivateProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoPrivateProperties.h; path = CoreDataSubClass/TempoPrivateProperties.h; sourceTree = "<group>"; };
-		00ED15891A5EEC5D002D442F /* TempoPrivateProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoPrivateProperties.m; path = CoreDataSubClass/TempoPrivateProperties.m; sourceTree = "<group>"; };
 		00ED158B1A5F0FDD002D442F /* AppIcon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_58.png; sourceTree = "<group>"; };
 		00ED158C1A5F0FDD002D442F /* AppIcon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_80.png; sourceTree = "<group>"; };
 		00ED158D1A5F0FDD002D442F /* AppIcon_87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon_87.png; sourceTree = "<group>"; };
@@ -576,15 +577,15 @@
 		003A56A619D3285800747EB3 /* CoreDataModel */ = {
 			isa = PBXGroup;
 			children = (
-				00ED15881A5EEC5D002D442F /* TempoPrivateProperties.h */,
-				00ED15891A5EEC5D002D442F /* TempoPrivateProperties.m */,
+				00B238B11A7D62ED00DFC04B /* TempoPrivateProperties.h */,
+				00B238B21A7D62ED00DFC04B /* TempoPrivateProperties.m */,
 				00ED15851A5EEC5D002D442F /* TempoList.h */,
 				00ED15861A5EEC5D002D442F /* TempoList.m */,
 				001BF2961A531D9A00558052 /* MusicBindingInfo.h */,
 				001BF2971A531D9A00558052 /* MusicBindingInfo.m */,
 				001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */,
-				006DAF281A50777900DEBA01 /* TempoCell.h */,
-				006DAF291A50777900DEBA01 /* TempoCell.m */,
+				00B238AB1A7D5EAE00DFC04B /* TempoCell.h */,
+				00B238AC1A7D5EAE00DFC04B /* TempoCell.m */,
 				0069994B1A5C458900B01E5F /* VoiceType.h */,
 				0069994C1A5C458900B01E5F /* VoiceType.m */,
 				005A93951A2CE10A00280507 /* TimeSignatureType.h */,
@@ -1496,7 +1497,6 @@
 				008A5C961A4F0AE600BC744F /* SelectBarCell.m in Sources */,
 				00657D0B1A65AFBE0044E35F /* MPMediaPickerControllerHook.m in Sources */,
 				004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */,
-				006DAF2A1A50777900DEBA01 /* TempoCell.m in Sources */,
 				008A5C091A4F00F100BC744F /* GlobalConfig.m in Sources */,
 				008A5C941A4F0AE600BC744F /* MetronomeSelectBar.m in Sources */,
 				008A5CFF1A4F18E200BC744F /* TempoListViewController.m in Sources */,
@@ -1526,10 +1526,11 @@
 				003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */,
 				005CDA741A57B9E300B85E4C /* HumanVoice.m in Sources */,
 				008A5CCF1A4F0E1B00BC744F /* VoiceTypePickerView.m in Sources */,
+				00B238B31A7D62ED00DFC04B /* TempoPrivateProperties.m in Sources */,
 				008A5CF51A4F0E7000BC744F /* XibViewInterface.m in Sources */,
 				006739361A55D256008B6A2F /* NameEditer.m in Sources */,
-				00ED158A1A5EEC5D002D442F /* TempoPrivateProperties.m in Sources */,
 				0069994D1A5C458900B01E5F /* VoiceType.m in Sources */,
+				00B238AD1A7D5EAE00DFC04B /* TempoCell.m in Sources */,
 				005A93971A2CE10A00280507 /* TimeSignatureType.m in Sources */,
 				00DA131119F4E94700F27E25 /* NotesTool.m in Sources */,
 				00763BB81A78027A00E98FF7 /* VolumeSetsControl.m in Sources */,
@@ -1788,9 +1789,10 @@
 		001B2B2B19D3CA0C0057A22E /* Groove.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				0005F9431A7D4F7400E6EDF4 /* Groove_1028.xcdatamodel */,
 				001B2B2C19D3CA0C0057A22E /* Groove.xcdatamodel */,
 			);
-			currentVersion = 001B2B2C19D3CA0C0057A22E /* Groove.xcdatamodel */;
+			currentVersion = 0005F9431A7D4F7400E6EDF4 /* Groove_1028.xcdatamodel */;
 			path = Groove.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -138,6 +138,7 @@
 - (void) LocalizedStringInitialize
 {
     self.SettingsTitle.text = LocalStringSync(@"Settings", nil);
+    self.ShuffleEnableLabel.text = LocalStringSync(@"ShuffleEnable", nil);
     self.BPMFloatEnableLabel.text = LocalStringSync(@"BPMFloatEnable", nil);
     self.ListAutoRepeatLabel.text = LocalStringSync(@"ListRepeat", nil);
     self.EnableMusicPlayLabel.text = LocalStringSync(@"MusicPlayerOn", nil);
@@ -415,8 +416,15 @@
 //
 - (void) SyncMetronomePrivateProperties
 {
+
+    [self.EnableShuffleMode setOn: [_CurrentList.privateProperties.shuffleEnable boolValue]];
     [self.EnableBPMDoubleMode setOn: [_CurrentList.privateProperties.doubleValueEnable boolValue]];
     [self.EnableTempoListLooping setOn:  [_CurrentList.privateProperties.tempoListLoopingEnable boolValue]];
+}
+
+- (IBAction)EnableShuffleModeAction :(UISwitch *)sender {
+    _CurrentList.privateProperties.shuffleEnable = [NSNumber numberWithBool:sender.isOn];
+    [gMetronomeModel Save];
 }
 
 - (IBAction)EnableBPMDoubleModeAction :(UISwitch *)sender {
@@ -425,6 +433,7 @@
 }
 
 - (IBAction)EnableTempoListLoopingAction :(UISwitch *)sender {
+    // TODO: cty222
     _CurrentList.privateProperties.tempoListLoopingEnable = [NSNumber numberWithBool:sender.isOn];
     [gMetronomeModel Save];
 }

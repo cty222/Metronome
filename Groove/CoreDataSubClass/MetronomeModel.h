@@ -43,6 +43,7 @@ MetronomeModel * gMetronomeModel;
                   DbVersion : (NSNumber *) DbVersion;
 
 - (TempoList *) PickTargetTempoListFromDataTable : (NSNumber * ) TempoListIndex;
+- (void) UpdateDbVersion : (NSNumber *)NewDBVersion;
 
 - (void) Save;
 - (void) AddNewTempoCell : (TempoList *) CellOwner;

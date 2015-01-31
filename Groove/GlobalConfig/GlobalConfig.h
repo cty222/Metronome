@@ -14,6 +14,7 @@
 #import "MetronomeModel.h"
 #import "MusicProperties.h"
 #import "LocalizedMutilanguage.h"
+#import "DebugHeader.h"
 
 #define ROUND_NO_DECOMAL_FROM_DOUBLE(value) (floor(value + 0.1))
 #define ROUND_ONE_DECOMAL_FROM_DOUBLE(value) (floor(value * 10 + 0.1)/10)

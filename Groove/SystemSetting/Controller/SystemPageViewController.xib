@@ -16,6 +16,7 @@
                 <outlet property="EnableBPMDoubleMode" destination="I58-1t-ceu" id="ym5-ox-pkg"/>
                 <outlet property="EnableMusicFunction" destination="3gt-f9-ddo" id="YF5-xn-9TR"/>
                 <outlet property="EnableMusicPlayLabel" destination="DDl-GG-7ho" id="gVL-f6-sr6"/>
+                <outlet property="EnableShuffleMode" destination="V5k-PF-ZW4" id="K3S-Cf-joD"/>
                 <outlet property="EnableTempoListLooping" destination="Mvq-1s-Djb" id="fTm-2k-hTg"/>
                 <outlet property="EndTimeLabel" destination="eTg-jy-K42" id="zRu-va-Bg9"/>
                 <outlet property="EndTimeWordLabel" destination="tJn-1w-DCK" id="S73-KI-lvF"/>
@@ -32,6 +33,7 @@
                 <outlet property="ResetTimeRepeatButton" destination="eoB-tF-Mrq" id="Efz-5f-iKD"/>
                 <outlet property="ReturnButton" destination="BNK-rm-aF6" id="C7N-xn-Bkq"/>
                 <outlet property="SettingsTitle" destination="q9d-PC-fVd" id="PBr-sg-lNx"/>
+                <outlet property="ShuffleEnableLabel" destination="Z2t-6O-cA7" id="gVS-pl-rB6"/>
                 <outlet property="StartTimeLabel" destination="591-X8-ltK" id="Lif-2j-Qgt"/>
                 <outlet property="StartTimeWordLabel" destination="YJD-EZ-icr" id="Ht5-vI-k4S"/>
                 <outlet property="SubInputView" destination="VnB-2r-kof" id="ApI-oC-M2z"/>
@@ -111,70 +113,85 @@
                             </subviews>
                         </view>
                         <view contentMode="scaleToFill" id="CzR-N6-02d">
-                            <rect key="frame" x="0.0" y="50" width="320" height="140"/>
+                            <rect key="frame" x="0.0" y="50" width="320" height="181"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="I58-1t-ceu">
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="V5k-PF-ZW4">
                                     <rect key="frame" x="8" y="10" width="51" height="31"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="onTintColor" red="1" green="0.15579608019999999" blue="0.14642800040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="EnableShuffleModeAction:" destination="-1" eventType="valueChanged" id="tyQ-pp-WIO"/>
+                                    </connections>
+                                </switch>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change tripple to shuffle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z2t-6O-cA7">
+                                    <rect key="frame" x="72" y="11" width="235" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="I58-1t-ceu">
+                                    <rect key="frame" x="8" y="51" width="51" height="31"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="onTintColor" red="1" green="0.15579608019999999" blue="0.14642800040000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <action selector="EnableBPMDoubleModeAction:" destination="-1" eventType="valueChanged" id="WHl-NU-740"/>
                                     </connections>
                                 </switch>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM with 1 decimal place" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="08l-M8-doI">
+                                    <rect key="frame" x="72" y="51" width="235" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Mvq-1s-Djb">
-                                    <rect key="frame" x="8" y="51" width="51" height="31"/>
+                                    <rect key="frame" x="8" y="92" width="51" height="31"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="onTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <action selector="EnableTempoListLoopingAction:" destination="-1" eventType="valueChanged" id="4Zz-JK-0sC"/>
                                     </connections>
                                 </switch>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable music player " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DDl-GG-7ho">
-                                    <rect key="frame" x="72" y="92" width="169" height="33"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List auto repeat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hm9-5g-7dk">
+                                    <rect key="frame" x="72" y="92" width="167" height="33"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM with 1 decimal place" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="08l-M8-doI">
-                                    <rect key="frame" x="72" y="10" width="235" height="33"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="3gt-f9-ddo">
-                                    <rect key="frame" x="8" y="92" width="51" height="31"/>
+                                    <rect key="frame" x="8" y="133" width="51" height="31"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="onTintColor" red="1" green="0.15579608019999999" blue="0.14642800040000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <action selector="EnableMusicFunction:" destination="-1" eventType="valueChanged" id="u6i-Je-xkE"/>
                                     </connections>
                                 </switch>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List auto repeat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hm9-5g-7dk">
-                                    <rect key="frame" x="72" y="51" width="167" height="33"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable music player " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DDl-GG-7ho">
+                                    <rect key="frame" x="72" y="133" width="169" height="33"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" id="5tB-c0-NMy">
-                                    <rect key="frame" x="4" y="136" width="312" height="1"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.35429972630000001" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Disable list)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kDN-4D-LnA">
-                                    <rect key="frame" x="242" y="97" width="90" height="33"/>
+                                    <rect key="frame" x="242" y="138" width="90" height="33"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                     <color key="textColor" red="1" green="0.15579608019999999" blue="0.14642800040000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <view contentMode="scaleToFill" id="5tB-c0-NMy">
+                                    <rect key="frame" x="4" y="177" width="312" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.35429972630000001" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
                             </subviews>
                         </view>
                         <view contentMode="scaleToFill" id="hLW-YM-tig">
-                            <rect key="frame" x="0.0" y="190" width="320" height="95"/>
+                            <rect key="frame" x="0.0" y="231" width="320" height="95"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YsH-FN-23f">
@@ -220,7 +237,7 @@
                             </subviews>
                         </view>
                         <view contentMode="scaleToFill" id="R95-xC-oYp">
-                            <rect key="frame" x="0.0" y="285" width="320" height="50"/>
+                            <rect key="frame" x="0.0" y="326" width="320" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="Ka3-08-kji">
@@ -277,7 +294,7 @@
                             </subviews>
                         </view>
                         <view contentMode="scaleToFill" id="gfV-cS-7Sj">
-                            <rect key="frame" x="0.0" y="335" width="320" height="150"/>
+                            <rect key="frame" x="0.0" y="376" width="320" height="150"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Cpc-Kx-Cwq">
@@ -328,8 +345,8 @@
                             </subviews>
                         </view>
                     </subviews>
-                    <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="588"/>
-                    <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="588"/>
+                    <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="629"/>
+                    <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="629"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

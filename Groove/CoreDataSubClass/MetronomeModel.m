@@ -37,7 +37,7 @@
     _ManagedObjectModel = ManagedObjectModel;
     _DbVersion = DbVersion;
     
-    // CheckVersion
+    // CheckVersion,如果DBversion為空 就代表要重建
     self.DbVersionDataTable = [self FetchDbConfigWhereDbVersion : _DbVersion];
     if (self.DbVersionDataTable.count == 0)
     {
@@ -54,7 +54,7 @@
         // *****************
         
         // Create
-        [self ResetToDefaultDb: _DbVersion];
+        [self ResetToDefaultDb];
     }
 
     // Fetch All Data
@@ -79,7 +79,7 @@
 // ==============================
 // Reset to Default
 //
-- (void) ResetToDefaultDb : (NSNumber *)DBVersion
+- (void) ResetToDefaultDb
 {
     // Create TempoList
     NSLog(@"01 Create TempoList");
@@ -96,10 +96,7 @@
     // Create TempoCell
     NSLog(@"04 Create TempoCell");
     [self CreateDefaultTempoCell];
-    
-    // Update DbVersion
-    NSLog(@"04 Update DbVersion");
-    [self UpdateDbVersion:DBVersion];
+ 
 }
 
 - (void) UpdateDbVersion : (NSNumber *)NewDBVersion
@@ -424,8 +421,9 @@
     TempoPrivateProperties* NewProperty = [NSEntityDescription
                                insertNewObjectForEntityForName:NSStringFromClass([TempoPrivateProperties class]) inManagedObjectContext:_ManagedObjectContext];
     NewProperty.doubleValueEnable = [NSNumber numberWithBool:NO];
-    NewProperty.tempoListLoopingEnable  = [NSNumber numberWithBool:NO];
-    
+    NewProperty.tempoListLoopingEnable  = [NSNumber numberWithBool:YES];
+    NewProperty.shuffleEnable  = [NSNumber numberWithBool:NO];
+
     [self Save];
 
     return NewProperty;

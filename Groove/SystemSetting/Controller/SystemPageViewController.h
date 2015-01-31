@@ -41,6 +41,8 @@ enum SYSTEM_INPUT_ID {
 @property (strong, nonatomic) IBOutlet UILabel *DurationLabel;
 
 // Metronome Properties
+@property (strong, nonatomic) IBOutlet UISwitch *EnableShuffleMode;
+
 @property (strong, nonatomic) IBOutlet UISwitch *EnableBPMDoubleMode;
 @property (strong, nonatomic) IBOutlet UISwitch *EnableTempoListLooping;
 
@@ -52,6 +54,7 @@ enum SYSTEM_INPUT_ID {
 
 // Localized
 @property (strong, nonatomic) IBOutlet UILabel *SettingsTitle;
+@property (strong, nonatomic) IBOutlet UILabel *ShuffleEnableLabel;
 @property (strong, nonatomic) IBOutlet UILabel *BPMFloatEnableLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ListAutoRepeatLabel;
 @property (strong, nonatomic) IBOutlet UILabel *EnableMusicPlayLabel;

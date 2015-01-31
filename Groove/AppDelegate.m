@@ -12,6 +12,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "Audioplay.h"
 
+@interface AppDelegate ()
+@property NSDictionary *options;
+@end
 
 @implementation AppDelegate
 
@@ -29,17 +32,39 @@
     
     // 0. Disbale IdleTimer
     [UIApplication sharedApplication].idleTimerDisabled = YES;
-        
-    // DB會被放在 Documents裡, 找出目標file的URL
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Groove.sqlite"];
     
+
+// 移植資料庫
+// 1. Groove.xcdatamodeld上 Editor -> add Model version -> base選現在系統裡面的
+// 2. 加完新項目後->Class改成新的
+// DBVERSION_CHANGE_REBUILD_DB_FOR_TEST_ENABLE 改成0;
+    
+// 資料庫移植有base的概念
+// 不能隨意downgrade
+// 如果要downgrade
+// 方法一 再Upgrade
+// 方法二 刪掉重建舊的
+
+    self.options = nil;
     // 如果Db如果有做修改的話 刪掉
     if ([GlobalConfig ReBuildDbFlag])
     {
+#if DBVERSION_CHANGE_REBUILD_DB_FOR_TEST_ENABLE
         NSLog(@"RebuildDb");
+        // DB會被放在 Documents裡, 找出目標file的URL
+        NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Groove.sqlite"];
+        
         NSFileManager *FileManager = [[NSFileManager alloc] init];
         [FileManager removeItemAtURL:storeURL error:nil];
+#else
+        // Update DBVersion
+        self.options = [NSDictionary dictionaryWithObjectsAndKeys:
+        [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+         [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+#endif
     }
+
+    
     
     //
     // 1. Initize global config
@@ -54,7 +79,9 @@
     [gMetronomeModel InitializeCoreData : self.managedObjectContext
                      ManagedObjectModel : self.managedObjectModel
                               DbVersion : [GlobalConfig DbVersion]];
+    [gMetronomeModel UpdateDbVersion:[GlobalConfig DbVersion]];
     
+    //3. Set rootViewController
     self.window.rootViewController =  [GlobalConfig MetronomeMainViewController];
     
     
@@ -166,7 +193,7 @@
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
 
     
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:self.options error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
          
