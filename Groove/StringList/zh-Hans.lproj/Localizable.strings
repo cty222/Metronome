@@ -6,43 +6,43 @@
   Copyright (c) 2015年 Cty. All rights reserved.
 */
 
-// Settings
-"Settings" = "設置";
-"TempoListName" = "列表名稱: ";
-"MusicName" = "音樂名稱: ";
-"BPMFloatEnable" = "開啟BPM小數點";
-"ListRepeat" = "節拍列表自動重播";
-"MusicPlayerOn" = "打開音樂播放器";
-"DisableListWarming" = "(關閉列表播放器)";
-"StartTime" = "開始: ";
-"StopTime" = "結束: ";
-"PlayWithMusic" = "節拍器與音樂一起播放";
-"MusicReapeat" = "音樂自動重播";
-"MusicSpeedHalf" = "音樂速度減半";
-"PleaseSelectASong" = "請選擇一首歌";
+// Settings  => zh-Hans
+"Settings" = "设置";
+"TempoListName" = "列表名称: ";
+"MusicName" = "音乐名称: ";
+"BPMFloatEnable" = "开启BPM小数点";
+"ListRepeat" = "节拍列表自动重播";
+"MusicPlayerOn" = "打开音乐播放器";
+"DisableListWarming" = "(关闭列表播放器)";
+"StartTime" = "开始: ";
+"StopTime" = "结束: ";
+"PlayWithMusic" = "节拍器与音乐一起播放";
+"MusicReapeat" = "音乐自动重播";
+"MusicSpeedHalf" = "音乐速度减半";
+"PleaseSelectASong" = "请选择一首歌";
 
 // Save Done and Cancel
-"Save" = "儲存";
+"Save" = "储存";
 "Done" = "完成";
 "Cancel" = "取消";
-"Edit" = "編輯";
+"Edit" = "编辑";
 "Add" = "新增";
-"Delete" = "刪除";
-"None" = "(沒有)";
+"Delete" = "删除";
+"None" = "(没有)";
 "Edit: " = "目前: ";
 "New: " =  "修改: ";
-"(25 charactors max)" = "(最多輸入25個字)";
+"(25 charactors max)" = "(最多输入25个字)";
 
 // Alert
 "Selected Warming" = "警告";
-"No Selected Item" = "沒有選擇任何項目";
+"No Selected Item" = "没有选择任何项目";
 "OK, I know it." = "好, 我知道了";
 
-"Name Error" = "名字錯誤";
-"No Name !!" = "沒有輸入名字!!";
-"Name is too long, it can't over 25 character." = "名字太長, 不能輸入超過25個字";
+"Name Error" = "名字错误";
+"No Name !!" = "没有输入名字!!";
+"Name is too long, it can't over 25 character." = "名字太长, 不能输入超过25个字";
 
-"Too many tempo items" = "太多節拍";
-"You can't add more than 20 tempo items in one tempo list !!" = "每個節拍列表只能設20種節拍 !!";
-"Too many tempo lists" = "太多節拍列表";
-"You can't add more than 20 tempo lists !!" = "只能最多擁有20組節拍列表!!";
+"Too many tempo items" = "太多节拍";
+"You can't add more than 20 tempo items in one tempo list !!" = "每个节拍列表只能设20种节拍 !!";
+"Too many tempo lists" = "太多节拍列表";
+"You can't add more than 20 tempo lists !!" = "只能最多拥有20组节拍列表!!";
