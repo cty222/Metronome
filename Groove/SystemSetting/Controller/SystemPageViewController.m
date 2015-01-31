@@ -416,7 +416,6 @@
 //
 - (void) SyncMetronomePrivateProperties
 {
-
     [self.EnableShuffleMode setOn: [_CurrentList.privateProperties.shuffleEnable boolValue]];
     [self.EnableBPMDoubleMode setOn: [_CurrentList.privateProperties.doubleValueEnable boolValue]];
     [self.EnableTempoListLooping setOn:  [_CurrentList.privateProperties.tempoListLoopingEnable boolValue]];
@@ -433,7 +432,6 @@
 }
 
 - (IBAction)EnableTempoListLoopingAction :(UISwitch *)sender {
-    // TODO: cty222
     _CurrentList.privateProperties.tempoListLoopingEnable = [NSNumber numberWithBool:sender.isOn];
     [gMetronomeModel Save];
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
@@ -73,6 +72,9 @@
                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="0JL-Xc-8KT">
                     <rect key="frame" x="66" y="222" width="240" height="31"/>
                     <connections>
+                        <action selector="TimeScrollTouchedDown:" destination="MEX-k0-pWT" eventType="touchDown" id="NmE-Wf-9bi"/>
+                        <action selector="TimeScrollTouchedUp:" destination="MEX-k0-pWT" eventType="touchUpOutside" id="clU-3M-fwZ"/>
+                        <action selector="TimeScrollTouchedUp:" destination="MEX-k0-pWT" eventType="touchUpInside" id="m8M-HA-JOD"/>
                         <action selector="TimeScrollValueChangedByHuman:" destination="MEX-k0-pWT" eventType="valueChanged" id="EON-lG-CjV"/>
                     </connections>
                 </slider>

@@ -90,7 +90,7 @@ static MPMusicPlayerController * MusicPlayer = nil;
                                                     repeats:NO];
 }
 
-- (void) Stop
+- (void) StopWithOutNotification
 {
     if (_TestingTimer!= nil)
     {
@@ -98,6 +98,12 @@ static MPMusicPlayerController * MusicPlayer = nil;
         _TestingTimer =nil;
     }
     [_Player stop];
+}
+
+
+- (void) Stop
+{
+    [self StopWithOutNotification];
     [[NSNotificationCenter defaultCenter] postNotificationName:kPlayMusicStatusChangedEvent object:nil];
     
 }

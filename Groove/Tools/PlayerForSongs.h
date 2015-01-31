@@ -43,6 +43,7 @@ PlayerForSongs * gPlayMusicChannel;
 - (void) Play;
 
 - (void) Stop;
+- (void) StopWithOutNotification;
 
 - (void) DisplayInfo;
 

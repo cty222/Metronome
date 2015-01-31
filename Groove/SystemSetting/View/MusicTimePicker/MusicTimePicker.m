@@ -14,6 +14,9 @@
     NSTimeInterval _Value;
     NSTimeInterval _MusicDuration;
     NSTimer * _ScollValueUpdateTimer;
+    
+    BOOL _ByPassTimeScrollUpdateByTicker;
+    BOOL _TimeScrollChangeWhenPlaying;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -45,6 +48,9 @@
                                                    object:nil];
         
         [self LocalizedStringInitialize];
+        
+        _ByPassTimeScrollUpdateByTicker = NO;
+        _TimeScrollChangeWhenPlaying = NO;
     }
     return self;
 }
@@ -85,9 +91,34 @@
     }
 }
 
+- (IBAction)TimeScrollTouchedDown:(id)sender {
+    if (gPlayMusicChannel.isPlaying)
+    {
+        [gPlayMusicChannel StopWithOutNotification];
+        _TimeScrollChangeWhenPlaying = YES;
+    }
+
+    _ByPassTimeScrollUpdateByTicker = YES;
+}
+
+- (IBAction)TimeScrollTouchedUp:(id)sender {
+    if (_TimeScrollChangeWhenPlaying)
+    {
+        _TimeScrollChangeWhenPlaying = NO;
+       [gPlayMusicChannel PlayWithTempStartAndStopTime:gPlayMusicChannel.CurrentTime  :gPlayMusicChannel.StopTime];
+    }
+    
+    _ByPassTimeScrollUpdateByTicker = NO;
+}
+
 - (IBAction)TimeScrollValueChangedByHuman:(id)sender {
     // 這只有手動會進來, 用code改值不會進來
     self.ScrollTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:self.TimeScrollBar.value];
+    
+    if (_TimeScrollChangeWhenPlaying)
+    {
+        gPlayMusicChannel.CurrentTime = self.TimeScrollBar.value;
+    }
 }
 
 - (IBAction)UpdateScrollValueToUIValuePicker:(id)sender {
@@ -218,8 +249,13 @@
         [ThisTimer invalidate];
         return;
     }
-    self.TimeScrollBar.value = gPlayMusicChannel.CurrentTime;
-    self.ScrollTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.CurrentTime];
+    
+    if (_ByPassTimeScrollUpdateByTicker)
+    {
+        self.TimeScrollBar.value = gPlayMusicChannel.CurrentTime;
+        self.ScrollTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.CurrentTime];
+    }
+
 }
 
 /*
