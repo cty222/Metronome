@@ -148,7 +148,10 @@
     self.MusicAutoRepeatLabel.text = LocalStringSync(@"MusicReapeat", nil);
     self.MusicHalfSpeedLabel.text = LocalStringSync(@"MusicSpeedHalf", nil);
     
-    if ([self.DisableListWarmingLabel.text isEqualToString:@"(關閉列表播放器)"])
+    // 如果是中文就要靠在字旁邊
+    if ([self.DisableListWarmingLabel.text isEqualToString:@"(關閉列表播放器)"]
+        || [self.DisableListWarmingLabel.text isEqualToString:@"(关闭列表播放器)"]
+        )
     {
         CGRect WarmingFrame = self.DisableListWarmingLabel.frame;
         self.DisableListWarmingLabel.frame = CGRectMake(WarmingFrame.origin.x - 45, WarmingFrame.origin.y
