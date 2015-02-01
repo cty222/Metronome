@@ -13,6 +13,7 @@
 
 #define DEBUG_OPEN  1
 #define DEBUG_CLOSE 0
+#define WRONG_WAY_TO_RELOADDATA 0
 
 // Display Audio log
 #define AUDIO_LOG DEBUG_CLOSE

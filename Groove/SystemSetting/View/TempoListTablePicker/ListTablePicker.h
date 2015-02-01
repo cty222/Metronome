@@ -16,7 +16,7 @@
 
 @optional
 
-- (IBAction) DeletItem : (TempoList *) TargetTempoList;
+- (IBAction) DeleteItem : (TempoList *) TargetTempoList;
 - (IBAction) AddNewItem : (NSString *) ItemName;
 @end
 

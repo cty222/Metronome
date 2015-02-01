@@ -80,7 +80,7 @@
     [self FillTempoListFromModel];
 }
 
-- (IBAction) DeletItem : (TempoList *) TargetTempoList;
+- (IBAction) DeleteItem : (TempoList *) TargetTempoList;
 {
     if (_TempoListDataTable.count <= 1 )
     {
@@ -100,13 +100,16 @@
     }
     
     [gMetronomeModel DeleteTempoList:TargetTempoList];
+
     [gMetronomeModel SyncTempoListDataTableWithModel];
+
     [self FillTempoListFromModel];
-    
-    // 重要??
+
+    // 自動選擇之前選的Index
     [self.ListTablePicker SetSelectedCell: _CurrentList];
-    int NewSelectIndex = (int)[self.ListTablePicker GetSelectedIndex];
-    [GlobalConfig SetLastTempoListIndexUserSelected:NewSelectIndex];
+    int AutoSelectIndex = (int)[self.ListTablePicker GetSelectedIndex];
+    [GlobalConfig SetLastTempoListIndexUserSelected:AutoSelectIndex];
+    
 }
 
 - (void) FillTempoListFromModel

@@ -85,8 +85,15 @@
 
 - (void) SetTempoListArrayForBinding : (NSArray *)NewDataTableArray
 {
+#if WRONG_WAY_TO_RELOADDATA
     _TempoListArrayForBinding = [NSMutableArray arrayWithArray:NewDataTableArray];
     [self.TableView reloadData];
+#else
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _TempoListArrayForBinding = [NSMutableArray arrayWithArray:NewDataTableArray];
+        [self.TableView reloadData];
+    });
+#endif
 }
 
 //
@@ -128,9 +135,9 @@
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(DeletItem:)])
+        if([self.delegate respondsToSelector:@selector(DeleteItem:)])
         {
-            [self.delegate DeletItem: Cell.TempoList];
+            [self.delegate DeleteItem: Cell.TempoList];
         }
     }
 }
@@ -144,17 +151,24 @@
 {
     if (self.NameEditer.ID)
     {
-        if (self.NameEditer.TempoList != nil)
-        {
-            self.NameEditer.TempoList.tempoListName = self.NameEditer.NewName.text;
-            self.NameEditer.TempoList = nil;
-            [gMetronomeModel Save];
-        }
-        else
-        {
-            [self AddCell: self.NameEditer.NewName.text];
-        }
-        [self.TableView reloadData];
+        //Always change the dataSource and reloadData in the mainThread. What's more, reloadData should be called immediately after the dataSource change.
+        //If dataSource is changed but tableView's reloadData method is not called immediately, the tableView may crash if it's in scrolling.
+        //Crash Reason: There is still a time gap between the dataSource change and reloadData. If the table is scrolling during the time gap, the app may Crash!!!!
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.NameEditer.TempoList != nil)
+            {
+                self.NameEditer.TempoList.tempoListName = self.NameEditer.NewName.text;
+                self.NameEditer.TempoList = nil;
+                [gMetronomeModel Save];
+            }
+            else
+            {
+                [self AddCell: self.NameEditer.NewName.text];
+            }
+        
+           [self.TableView reloadData];
+        });
+        
         [self CloseEditerView];
         return;
     }

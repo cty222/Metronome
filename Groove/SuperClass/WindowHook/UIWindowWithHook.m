@@ -22,7 +22,6 @@
 - (void)sendEvent:(UIEvent *)event
 {
     [super sendEvent:event];  // Apple says you must always call this!
-    
     if (self.EnableTouchHookNotifications) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kTouchGlobalHookNotification object:event];
     }
