@@ -10,7 +10,7 @@
 "Settings" = "Settings";
 "TempoListName" = "Tempo : ";
 "MusicName" = "Music : ";
-"ShuffleEnable" = "Change tripple to shuffle";
+"ShuffleEnable" = "Enable shuffle";
 "BPMFloatEnable" = "BPM with 1 decimal place";
 "ListRepeat" = "List auto repeat";
 "MusicPlayerOn" = "Enable music player";
@@ -47,4 +47,3 @@
 "You can't add more than 20 tempo items in one tempo list !!" = "You can't add more than 20 tempo items in one tempo list !!";
 "Too many tempo lists" = "Too many tempo lists";
 "You can't add more than 20 tempo lists !!" = "You can't add more than 20 tempo lists !!";
-
