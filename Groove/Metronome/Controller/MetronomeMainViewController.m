@@ -783,6 +783,11 @@
 
     if (_CellParameterSettingSubController.BPMPicker.Mode == BPM_PICKER_INT_MODE)
     {
+        NSLog(@"CurrentBPMValue %f", CurrentBPMValue);
+
+        NSLog(@"ROUND_NO_DECOMAL_FROM_DOUBLE %f", ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue));
+
+        NSLog(@"BPM_TO_TIMER_VALUE %f", BPM_TO_TIMER_VALUE(ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue)));
         PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE(
                                                                 ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue))
                                                           target:self

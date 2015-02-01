@@ -16,7 +16,8 @@
 #import "LocalizedMutilanguage.h"
 #import "DebugHeader.h"
 
-#define ROUND_NO_DECOMAL_FROM_DOUBLE(value) (floor(value + 0.1))
+// because one decomal for smallest number
+#define ROUND_NO_DECOMAL_FROM_DOUBLE(value) (floor(value + 0.001))
 #define ROUND_ONE_DECOMAL_FROM_DOUBLE(value) (floor(value * 10 + 0.1)/10)
 #define ROUND_TWO_DECOMAL_FROM_DOUBLE(value) (floor(value * 100 + 0.1)/100)
 #define ROUND_FILL_DOUBLE_IN_MODEL(value) (floor(value * 100)/100 + 0.0001)
@@ -44,7 +45,7 @@ enum {
 
 
 @interface GlobalConfig : NSObject
-+ (BOOL) ReBuildDbFlag;
++ (BOOL) UpdateDbFlag;
 + (void) Initialize : (UIWindow *) MainWindows;
 + (NSNumber *) MainWindowWidth;
 + (NSNumber *) MainWindowHeight;

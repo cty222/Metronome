@@ -47,7 +47,7 @@
 
     self.options = nil;
     // 如果Db如果有做修改的話 刪掉
-    if ([GlobalConfig ReBuildDbFlag])
+    if ([GlobalConfig UpdateDbFlag])
     {
 #if DBVERSION_CHANGE_REBUILD_DB_FOR_TEST_ENABLE
         NSLog(@"RebuildDb");
@@ -69,6 +69,7 @@
     //
     // 1. Initize global config
     //
+    // will all so set or reset global plist
     [GlobalConfig Initialize:self.window];
     
     

@@ -153,6 +153,7 @@
 
 - (void) SetValue : (double) NewValue
 {
+    // 小數點的關係會讓300出不來
     if (NewValue > _MaxLimit || NewValue < _MinLimit)
     {
         return;

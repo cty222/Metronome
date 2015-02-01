@@ -1,0 +1,19 @@
+Noise Gate:
+1. Side Chain : High cut and low cut / monitor要按下才有反應
+
+2. Reduction  : Input level 減少多少 
+
+2. Threshold  : 從幾db開始驅動, 剩下(太小聲)的過濾掉
+
+3. Hysteresis : Threshold為驅動的Level, Hysteresis為 close的level 
+   (差值 比方說Threshold -20 Hysteresis: -5 => close level為 -25 比較自然)
+
+4. Attack     : 當input level超過 Threshold 要花多少時間output Level才會等於input level
+   (類似 fade in, 完全沒有會有開啟的聲音=>脈沖)
+
+5. Hold       : 當input level 低於Threshold後, output Level會先維持音量於Threshold level一陣子
+	 維持多久由Hold設定
+
+6. Release    : 當Hold時間結束後 output Level fade out 到 0 Level的時間
+
+7. LockaHead  : 對於下一個訊號多久才開始處理

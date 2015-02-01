@@ -23,7 +23,7 @@ static NSMutableDictionary * ThisPlist;
     [ThisPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
 }
 
-+ (BOOL) ReBuildDbFlag
++ (BOOL) UpdateDbFlag
 {
     static BOOL _ReBuildDbFlag;
 
@@ -70,7 +70,8 @@ static NSMutableDictionary * ThisPlist;
         NSFileManager *FileManager = [[NSFileManager alloc] init];
         NSString * TmpDistributionPath = [GlobalConfig DistributionFilePath];
         NSString * TmpSourcePath = [GlobalConfig SourceFilePath];
-
+        NSNumber * LastTempoListIndexUserSelected = @0;
+        
         NSNumber *SourceVersionID      = [[NSMutableDictionary dictionaryWithContentsOfFile:TmpSourcePath] objectForKey:@"VersionID"];
         if (![FileManager fileExistsAtPath:TmpDistributionPath])
         {
@@ -80,18 +81,27 @@ static NSMutableDictionary * ThisPlist;
         else
         {
             NSNumber *DistributionSourceID = [[NSMutableDictionary dictionaryWithContentsOfFile:TmpDistributionPath] objectForKey:@"VersionID"];
-            
-            // Init RebuldFlag at this moment, Important.
-            [GlobalConfig ReBuildDbFlag];
-            
+           
             if ([DistributionSourceID intValue] != [SourceVersionID intValue])
             {
+                // Sync LastTempoListIndexUserSelected
+                {
+                    NSMutableDictionary* OldPlist = [NSMutableDictionary dictionaryWithContentsOfFile:TmpDistributionPath];
+
+                    LastTempoListIndexUserSelected = [OldPlist objectForKey:@"LastTempoListIndexUserSelected"];
+                }
+                
+                
                 [FileManager removeItemAtPath:TmpDistributionPath error:nil];
                 [FileManager copyItemAtPath:TmpSourcePath toPath:TmpDistributionPath  error:nil];
                 NSLog(@"Change to VersionID %@", SourceVersionID);
             }
         }
         _GlobalConfigPlist = [NSMutableDictionary dictionaryWithContentsOfFile:TmpDistributionPath];
+        
+        // Sync LastTempoListIndexUserSelected
+        [_GlobalConfigPlist setValue:LastTempoListIndexUserSelected forKey:@"LastTempoListIndexUserSelected"];
+        [_GlobalConfigPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
     });
     
     return _GlobalConfigPlist;

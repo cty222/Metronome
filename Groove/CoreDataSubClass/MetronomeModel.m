@@ -17,6 +17,7 @@
 @property NSFetchRequest* TimeSignatureTypeEntityFetch;
 @property NSFetchRequest* VoiceTypeEntityFetch;
 @property NSFetchRequest* DbConfigEntityFetch;
+@property NSFetchRequest* DbConfigCompareEntityFetch;
 
 @end
 
@@ -32,22 +33,22 @@
                   DbVersion : (NSNumber *) DbVersion
 {
 
-    Boolean IsItNeedToInsertDBValue = NO;
+    Boolean NewUserCreateDBFlag = NO;
     _ManagedObjectContext = ManagedObjectContext;
     _ManagedObjectModel = ManagedObjectModel;
     _DbVersion = DbVersion;
     
-    // CheckVersion,如果DBversion為空 就代表要重建
-    self.DbVersionDataTable = [self FetchDbConfigWhereDbVersion : _DbVersion];
+    // Check Version,如果DBversion為空 就代表是新的User 要建default
+    self.DbVersionDataTable = [self FetchDbVersion];
     if (self.DbVersionDataTable.count == 0)
     {
-        IsItNeedToInsertDBValue = YES;
+        NewUserCreateDBFlag = YES;
     }
     
     // If need to set default
-    if (IsItNeedToInsertDBValue)
+    if (NewUserCreateDBFlag)
     {
-        NSLog(@"Reset Db");
+        NSLog(@"Insert default value in Db");
         
         // *****************
         // TODO: Delete all data
@@ -203,18 +204,33 @@
 // Fetch
 //
 
-- (NSArray *) FetchDbConfigWhereDbVersion : (NSNumber *) DbVersion
+- (NSArray *) FetchDbVersion
 {
     if (self.DbConfigEntityFetch == nil)
     {
         NSEntityDescription *Entity;
         Entity = [NSEntityDescription entityForName:NSStringFromClass([DbConfig class]) inManagedObjectContext:_ManagedObjectContext];
         
-        self.DbConfigEntityFetch = [_ManagedObjectModel fetchRequestFromTemplateWithName:@"FetchDbVersion" substitutionVariables:[NSDictionary dictionaryWithObject:DbVersion forKey:@"DbVersion"]];
+        self.DbConfigEntityFetch = [[NSFetchRequest alloc] init];
         [self.DbConfigEntityFetch setEntity:Entity];
     }
     
     return [_ManagedObjectContext executeFetchRequest:self.DbConfigEntityFetch error:nil];
+}
+
+// 是否有大於目標DBversion
+- (NSArray *) FetchDbConfigWhereDbVersionMoreThanEqualTo : (NSNumber *) DbVersion
+{
+    if (self.DbConfigCompareEntityFetch == nil)
+    {
+        NSEntityDescription *Entity;
+        Entity = [NSEntityDescription entityForName:NSStringFromClass([DbConfig class]) inManagedObjectContext:_ManagedObjectContext];
+        
+        self.DbConfigCompareEntityFetch = [_ManagedObjectModel fetchRequestFromTemplateWithName:@"FetchDbVersion" substitutionVariables:[NSDictionary dictionaryWithObject:DbVersion forKey:@"DbVersion"]];
+        [self.DbConfigCompareEntityFetch setEntity:Entity];
+    }
+    
+    return [_ManagedObjectContext executeFetchRequest:self.DbConfigCompareEntityFetch error:nil];
 }
 
 - (void) SyncTempoListDataTableWithModel

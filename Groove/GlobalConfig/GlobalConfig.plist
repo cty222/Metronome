@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>VersionID</key>
-	<real>4056</real>
+	<real>4057</real>
 	<key>DbVersion</key>
 	<real>1028</real>
 	<key>LastTempoListIndexUserSelected</key>
@@ -17,7 +17,7 @@
 	<key>TempoCellLoopCountMin</key>
 	<integer>0</integer>
 	<key>BPMMinValue</key>
-	<integer>30</integer>
+	<integer>15</integer>
 	<key>BPMMaxValue</key>
 	<integer>300</integer>
 	<key>MainWindowHight</key>
