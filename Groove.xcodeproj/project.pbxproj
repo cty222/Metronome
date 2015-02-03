@@ -80,6 +80,8 @@
 		005DBB811A0D425300120439 /* NewCircleButton_f1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 005DBB7D1A0D425300120439 /* NewCircleButton_f1.pdf */; };
 		00612D941A3B7572009A7C88 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00612D931A3B7572009A7C88 /* AVFoundation.framework */; };
 		00657D0B1A65AFBE0044E35F /* MPMediaPickerControllerHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 00657D0A1A65AFBE0044E35F /* MPMediaPickerControllerHook.m */; };
+		00669EE11A81175D00282DA3 /* Three.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00669EE01A81175D00282DA3 /* Three.wav */; };
+		00669EE31A8117AA00282DA3 /* Seven.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00669EE21A8117AA00282DA3 /* Seven.wav */; };
 		006739361A55D256008B6A2F /* NameEditer.m in Sources */ = {isa = PBXBuildFile; fileRef = 006739351A55D256008B6A2F /* NameEditer.m */; };
 		006739381A55D26B008B6A2F /* NameEditer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006739371A55D26B008B6A2F /* NameEditer.xib */; };
 		0069994D1A5C458900B01E5F /* VoiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0069994C1A5C458900B01E5F /* VoiceType.m */; };
@@ -161,9 +163,7 @@
 		00B238AD1A7D5EAE00DFC04B /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B238AC1A7D5EAE00DFC04B /* TempoCell.m */; };
 		00B238B31A7D62ED00DFC04B /* TempoPrivateProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B238B21A7D62ED00DFC04B /* TempoPrivateProperties.m */; };
 		00B238B71A7E1C1900DFC04B /* Noise gate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 00B238B61A7E1C1900DFC04B /* Noise gate.txt */; };
-		00B238CF1A7E227D00DFC04B /* Three.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00B238CE1A7E227D00DFC04B /* Three.wav */; };
 		00B238DB1A7E286F00DFC04B /* Two.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00B238D91A7E286F00DFC04B /* Two.wav */; };
-		00B238E11A7E2A7F00DFC04B /* Seven.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00B238E01A7E2A7F00DFC04B /* Seven.wav */; };
 		00B238E51A7E9B3E00DFC04B /* Six.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00B238E41A7E9B3E00DFC04B /* Six.wav */; };
 		00BBB83B1A61804E005B9B28 /* BlockVoice.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8391A61804E005B9B28 /* BlockVoice.pdf */; };
 		00BBB83C1A61804E005B9B28 /* DrumVoice1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB83A1A61804E005B9B28 /* DrumVoice1.pdf */; };
@@ -321,6 +321,8 @@
 		00612D931A3B7572009A7C88 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		00657D091A65AFBE0044E35F /* MPMediaPickerControllerHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMediaPickerControllerHook.h; sourceTree = "<group>"; };
 		00657D0A1A65AFBE0044E35F /* MPMediaPickerControllerHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMediaPickerControllerHook.m; sourceTree = "<group>"; };
+		00669EE01A81175D00282DA3 /* Three.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Three.wav; sourceTree = "<group>"; };
+		00669EE21A8117AA00282DA3 /* Seven.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Seven.wav; sourceTree = "<group>"; };
 		006739341A55D256008B6A2F /* NameEditer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameEditer.h; sourceTree = "<group>"; };
 		006739351A55D256008B6A2F /* NameEditer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameEditer.m; sourceTree = "<group>"; };
 		006739371A55D26B008B6A2F /* NameEditer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameEditer.xib; sourceTree = "<group>"; };
@@ -439,9 +441,7 @@
 		00B238B11A7D62ED00DFC04B /* TempoPrivateProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoPrivateProperties.h; path = CoreDataSubClass/TempoPrivateProperties.h; sourceTree = "<group>"; };
 		00B238B21A7D62ED00DFC04B /* TempoPrivateProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoPrivateProperties.m; path = CoreDataSubClass/TempoPrivateProperties.m; sourceTree = "<group>"; };
 		00B238B61A7E1C1900DFC04B /* Noise gate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Noise gate.txt"; sourceTree = "<group>"; };
-		00B238CE1A7E227D00DFC04B /* Three.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Three.wav; sourceTree = "<group>"; };
 		00B238D91A7E286F00DFC04B /* Two.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Two.wav; sourceTree = "<group>"; };
-		00B238E01A7E2A7F00DFC04B /* Seven.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Seven.wav; sourceTree = "<group>"; };
 		00B238E41A7E9B3E00DFC04B /* Six.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Six.wav; sourceTree = "<group>"; };
 		00BBB8391A61804E005B9B28 /* BlockVoice.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BlockVoice.pdf; sourceTree = "<group>"; };
 		00BBB83A1A61804E005B9B28 /* DrumVoice1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = DrumVoice1.pdf; sourceTree = "<group>"; };
@@ -1204,10 +1204,10 @@
 		00E1D87E1A585796008A006D /* HumanVoice */ = {
 			isa = PBXGroup;
 			children = (
+				00669EE21A8117AA00282DA3 /* Seven.wav */,
+				00669EE01A81175D00282DA3 /* Three.wav */,
 				00B238E41A7E9B3E00DFC04B /* Six.wav */,
-				00B238E01A7E2A7F00DFC04B /* Seven.wav */,
 				00B238D91A7E286F00DFC04B /* Two.wav */,
-				00B238CE1A7E227D00DFC04B /* Three.wav */,
 				00EC71661A7AB578000C16C4 /* Ten.wav */,
 				00BBB8C11A61A4B5005B9B28 /* Human_Tic.wav */,
 				00BBB8C21A61A4B5005B9B28 /* Human_Toc.wav */,
@@ -1386,12 +1386,12 @@
 				00E8C0431A36119200D53F82 /* AccentYellow.pdf in Resources */,
 				0059D1621A5710850058C5E3 /* PlayRed.pdf in Resources */,
 				00E8C01E1A3610FD00D53F82 /* 16NoteRed.pdf in Resources */,
-				00B238E11A7E2A7F00DFC04B /* Seven.wav in Resources */,
+				00669EE31A8117AA00282DA3 /* Seven.wav in Resources */,
 				008A5C931A4F0AE600BC744F /* TapAnimationImage.xib in Resources */,
 				0098D7D41A59B0680001DE00 /* LoopCellEditerView4S.xib in Resources */,
 				00BBB8AF1A61997E005B9B28 /* Human_e.wav in Resources */,
-				00B238CF1A7E227D00DFC04B /* Three.wav in Resources */,
 				003473511A0FE7CE003C9F3C /* NewCircleButton_f2.pdf in Resources */,
+				00669EE11A81175D00282DA3 /* Three.wav in Resources */,
 				00BBB8731A61913E005B9B28 /* HiHatsClose.wav in Resources */,
 				00B238DB1A7E286F00DFC04B /* Two.wav in Resources */,
 				00BBB86A1A61905E005B9B28 /* Accent_Hi.wav in Resources */,
