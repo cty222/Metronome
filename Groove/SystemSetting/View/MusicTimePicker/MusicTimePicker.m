@@ -250,12 +250,19 @@
         return;
     }
     
-    if (_ByPassTimeScrollUpdateByTicker)
+
+    if (!_ByPassTimeScrollUpdateByTicker)
     {
-        self.TimeScrollBar.value = gPlayMusicChannel.CurrentTime;
-        self.ScrollTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.CurrentTime];
+        [self UpdateTimeSrollSyncWithMusicPlayer];
     }
 
+}
+
+- (void) UpdateTimeSrollSyncWithMusicPlayer
+{
+    // Update Time scroll bar
+    self.TimeScrollBar.value = gPlayMusicChannel.CurrentTime;
+    self.ScrollTimeLabel.text = [gPlayMusicChannel ReturnTimeValueToString:gPlayMusicChannel.CurrentTime];
 }
 
 /*
