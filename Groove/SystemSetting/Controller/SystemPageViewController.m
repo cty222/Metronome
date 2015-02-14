@@ -62,7 +62,7 @@
     [self SyncPageInfoByCurrentTempoList];
     [self SyncMetronomePrivateProperties];
     [self SyncMusicPropertyFromGlobalConfig];
-    [self SyncStartAndEndTime];
+    [self FillInStartAndEndTimeInMusicPlayer];
     
     self.SubInputView.hidden = YES;
 }
@@ -149,15 +149,36 @@
     self.MusicAutoRepeatLabel.text = LocalStringSync(@"MusicReapeat", nil);
     self.MusicHalfSpeedLabel.text = LocalStringSync(@"MusicSpeedHalf", nil);
     
+    // TODO :修正
     // 如果是中文就要靠在字旁邊
     if ([self.DisableListWarmingLabel.text isEqualToString:@"(關閉列表播放器)"]
         || [self.DisableListWarmingLabel.text isEqualToString:@"(关闭列表播放器)"]
         )
     {
         CGRect WarmingFrame = self.DisableListWarmingLabel.frame;
-        self.DisableListWarmingLabel.frame = CGRectMake(WarmingFrame.origin.x - 45, WarmingFrame.origin.y
-                                                        , WarmingFrame.size.width + 20,  WarmingFrame.size.height);
+        self.DisableListWarmingLabel.frame = CGRectMake(WarmingFrame.origin.x - 45,
+                                                        WarmingFrame.origin.y,
+                                                        WarmingFrame.size.width + 20,
+                                                        WarmingFrame.size.height
+                                                        );
     }
+    
+    // 如果是日文 取消warming
+    if ([self.EnableMusicPlayLabel.text isEqualToString:@"ミュージックプレーヤー再生"]
+        )
+    {
+        self.DisableListWarmingLabel.hidden = YES;
+        CGRect EnableMusicPlayLabelFrame = self.EnableMusicPlayLabel.frame;
+        self.EnableMusicPlayLabel.frame = CGRectMake(EnableMusicPlayLabelFrame.origin.x,
+                                                     EnableMusicPlayLabelFrame.origin.y,
+                                                     EnableMusicPlayLabelFrame.size.width + 80,
+                                                     EnableMusicPlayLabelFrame.size.height
+                                                     );
+        self.StartTimeWordLabel.font = [self.StartTimeWordLabel.font fontWithSize:13.0];
+        self.EndTimeWordLabel.font = [self.EndTimeWordLabel.font fontWithSize:13.0];
+    }
+    
+    
 }
 
 - (void) InitMusicPropertyButtonStateTextColor
@@ -283,7 +304,7 @@
 {
     _CurrentList.musicInfo.startTime = [NSNumber numberWithFloat:0.0f];
     _CurrentList.musicInfo.endTime = [NSNumber numberWithFloat:gPlayMusicChannel.duration];
-    [self SyncStartAndEndTime];
+    [self FillInStartAndEndTimeInMusicPlayer];
     
     [gMetronomeModel Save];
 }
@@ -379,7 +400,7 @@
     
 }
 
-- (void) SyncStartAndEndTime
+- (void) FillInStartAndEndTimeInMusicPlayer
 {
     gPlayMusicChannel.StartTime = [_CurrentList.musicInfo.startTime floatValue];
     gPlayMusicChannel.StopTime = [_CurrentList.musicInfo.endTime floatValue];
@@ -459,10 +480,16 @@
     if (MusicFunctionEnable)
     {
         self.CurrentSelectedMusic.enabled = YES;
+        
+        // TempoList behavior switch will change too
+        self.EnableTempoListLooping.enabled = NO;
     }
     else
     {
         self.CurrentSelectedMusic.enabled = NO;
+        
+        // TempoList behavior switch will change too
+        self.EnableTempoListLooping.enabled = YES;
     }
 
     if (MusicFunctionEnable && gPlayMusicChannel.IsReadyToPlay)
@@ -476,8 +503,7 @@
         self.EndTimeLabel.enabled = YES;
         self.ResetTimeRepeatButton.enabled = YES;
         
-        // TempoList behavior switch will change too
-        self.EnableTempoListLooping.enabled = NO;
+
     }
     else
     {
@@ -490,8 +516,7 @@
         self.EndTimeLabel.enabled = NO;
         self.ResetTimeRepeatButton.enabled = NO;
 
-        // TempoList behavior switch will change too
-        self.EnableTempoListLooping.enabled = YES;
+
     }
 }
 
@@ -532,7 +557,7 @@
     
     [self DoAllMusicSetupSteps:Item];
     
-    [self SyncStartAndEndTime];
+    [self FillInStartAndEndTimeInMusicPlayer];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

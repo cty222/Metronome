@@ -40,8 +40,7 @@
 
 - (void) LocalizedStringInitialize
 {
-    self.NewTitle.text = LocalStringSync(@"Edit: ", nil);
-    self.NowTitle.text = LocalStringSync(@"New: ", nil);
+
     self.AlertTextLabel.text = LocalStringSync(@"(25 charactors max)", nil);
     [self.SaveButton setTitle:LocalStringSync(@"Save", nil) forState:UIControlStateNormal];
     [self.CancelButton setTitle:LocalStringSync(@"Cancel", nil) forState:UIControlStateNormal];
@@ -61,11 +60,15 @@
 
     if (NewTempoList != nil)
     {
+        self.NewTitle.text = LocalStringSync(@"Edit: ", nil);
+        self.NowTitle.text = LocalStringSync(@"Now: ", nil);
         self.NewName.text = _TempoList.tempoListName;
         self.CurrentName.text = _TempoList.tempoListName;
     }
     else
     {
+        self.NewTitle.text = LocalStringSync(@"New: ", nil);
+        self.NowTitle.text = LocalStringSync(@"Now: ", nil);
         self.CurrentName.text = LocalStringSync(@"None", nil);
         self.NewName.text = @"";
     }

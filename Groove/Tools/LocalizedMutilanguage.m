@@ -16,7 +16,7 @@ static NSBundle *DefaultLanguageBundle = nil;
     NSString *Language = [[NSLocale preferredLanguages] objectAtIndex:0];
     NSString *LocalizedString;
     
-    if ([@[@"en", @"zh-Hant", @"zh-Hans"] containsObject:Language]){
+    if ([@[@"en", @"zh-Hant", @"zh-Hans", @"ja"] containsObject:Language]){
         return NSLocalizedString(key, comment);
     }
     else{

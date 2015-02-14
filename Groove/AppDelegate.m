@@ -24,6 +24,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // 看語言順序
+    NSLog(@"%@", [NSLocale preferredLanguages]);
+
     
     self.window = [[UIWindowWithHook alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.

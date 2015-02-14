@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  Groove
+
+  Created by C-ty on 2015/1/6.
+  Copyright (c) 2015年 Cty. All rights reserved.
+*/
+
+// Settings
+"Settings" = "設定";
+"TempoListName" = "リストネーム: ";
+"MusicName" = "曲ネーム: ";
+"ShuffleEnable" = "Shuffle ＯＮ";  // ??????
+"BPMFloatEnable" = "ＢＰＭ小数ＯＮ"; // ??????
+"ListRepeat" = "リストリピート";
+"MusicPlayerOn" = "ミュージックプレーヤー再生";
+"DisableListWarming" = "(リストプレーヤー中止)";
+"StartTime" = "始める:"; //スタート ????
+"StopTime" = "終わり:";  //ストップ ????
+"PlayWithMusic" = "メトロノームと共に再生";
+"MusicReapeat" = "ミュージックリピート";
+"MusicSpeedHalf" = "音楽スピードが半分に";
+"PleaseSelectASong" = "曲を選択してください";
+// Save Done and Cancel
+"Save" = "セーフ";
+"Done" = "完了";
+"Cancel" = "キャンセル";
+"Edit" = "編集";
+"Add" = "加える";
+"Delete" = "削除";
+"None" = "(名前なし)";
+"Edit: " = "編集: ";
+"Now: " =  "現在: ";
+
+
+"New: " =  "編集: ";  // ??????
+
+"(25 charactors max)" = "(最大25字で入力する)";
+
+// Alert
+"Selected Warming" = "ご注意";
+"No Selected Item" = "選択した項目ありません";
+"OK, I know it." = "分かりました";
+"Name Error" = "ネームエラー";
+"No Name !!" = "ネーム設定してください!!";
+"Name is too long, it can't over 25 character." = "ネームが長すぎ、25字以上で入力することはできません";
+"Too many tempo items" = "あまりにも多くのテンポ";
+"You can't add more than 20 tempo items in one tempo list !!" = "リストの中には20種類以上のテンポを設定することはできません!!";
+"Too many tempo lists" = "あまりにも多くのリスト";
+"You can't add more than 20 tempo lists !!" = "20セット以上のリストを追加することはできません!!";

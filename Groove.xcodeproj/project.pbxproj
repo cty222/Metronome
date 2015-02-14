@@ -297,6 +297,9 @@
 		004DF4611A40A69900E79C0E /* SwitchButtonUnLock.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SwitchButtonUnLock.pdf; sourceTree = "<group>"; };
 		004DF4651A40A6AD00E79C0E /* TapAnimation_1_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TapAnimation_1_red.pdf; sourceTree = "<group>"; };
 		004DF4671A40A6AD00E79C0E /* TapAnimation_2_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TapAnimation_2_red.pdf; sourceTree = "<group>"; };
+		0053A5A61A8F848100DCE8FC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0053A5A71A8F848100DCE8FC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0053A5A81A8F848100DCE8FC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0059D13F1A56FFD20058C5E3 /* ClockIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ClockIcon.pdf; sourceTree = "<group>"; };
 		0059D1401A56FFD20058C5E3 /* MusicVolume.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = MusicVolume.pdf; sourceTree = "<group>"; };
 		0059D1471A57012C0058C5E3 /* System.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = System.pdf; sourceTree = "<group>"; };
@@ -1317,6 +1320,7 @@
 				en,
 				"zh-Hant",
 				"zh-Hans",
+				ja,
 			);
 			mainGroup = 004BE63119B2DDC7002CD995;
 			productRefGroup = 004BE63B19B2DDC7002CD995 /* Products */;
@@ -1567,6 +1571,7 @@
 				0027FC5C1A5B06C300257397 /* en */,
 				0027FC651A5B099400257397 /* zh-Hant */,
 				00088ADF1A7986AB004D83A3 /* zh-Hans */,
+				0053A5A61A8F848100DCE8FC /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1577,6 +1582,7 @@
 				004BE64919B2DDC7002CD995 /* en */,
 				0027FC661A5B099400257397 /* zh-Hant */,
 				00088AE01A7986AB004D83A3 /* zh-Hans */,
+				0053A5A71A8F848100DCE8FC /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1587,6 +1593,7 @@
 				004BE66619B2DDC8002CD995 /* en */,
 				0027FC671A5B099400257397 /* zh-Hant */,
 				00088AE11A7986AB004D83A3 /* zh-Hans */,
+				0053A5A81A8F848100DCE8FC /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

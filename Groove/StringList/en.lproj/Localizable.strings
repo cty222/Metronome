@@ -31,7 +31,9 @@
 "Delete" = "Delete";
 "None" = "(None)";
 "Edit: " = "Edit: ";
+"Now: " =  "Now: ";
 "New: " =  "New: ";
+
 "(25 charactors max)" = "(25 charactors max)";
 
 // Alert
