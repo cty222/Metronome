@@ -70,7 +70,7 @@ static NSMutableDictionary * ThisPlist;
         NSFileManager *FileManager = [[NSFileManager alloc] init];
         NSString * TmpDistributionPath = [GlobalConfig DistributionFilePath];
         NSString * TmpSourcePath = [GlobalConfig SourceFilePath];
-        NSNumber * LastTempoListIndexUserSelected = @0;
+        NSNumber * LastTempoListIndexUserSelected = nil;
         
         NSNumber *SourceVersionID      = [[NSMutableDictionary dictionaryWithContentsOfFile:TmpSourcePath] objectForKey:@"VersionID"];
         if (![FileManager fileExistsAtPath:TmpDistributionPath])
@@ -89,6 +89,7 @@ static NSMutableDictionary * ThisPlist;
                     NSMutableDictionary* OldPlist = [NSMutableDictionary dictionaryWithContentsOfFile:TmpDistributionPath];
 
                     LastTempoListIndexUserSelected = [OldPlist objectForKey:@"LastTempoListIndexUserSelected"];
+                    NSLog(@"Get old LastTempoListIndexUserSelected %@", LastTempoListIndexUserSelected);
                 }
                 
                 
@@ -100,7 +101,12 @@ static NSMutableDictionary * ThisPlist;
         _GlobalConfigPlist = [NSMutableDictionary dictionaryWithContentsOfFile:TmpDistributionPath];
         
         // Sync LastTempoListIndexUserSelected
-        [_GlobalConfigPlist setValue:LastTempoListIndexUserSelected forKey:@"LastTempoListIndexUserSelected"];
+        if (LastTempoListIndexUserSelected != nil)
+        {
+            NSLog(@"LastTempoListIndexUserSelected != nil sync = %@", LastTempoListIndexUserSelected);
+
+            [_GlobalConfigPlist setValue:LastTempoListIndexUserSelected forKey:@"LastTempoListIndexUserSelected"];
+        }
         [_GlobalConfigPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
     });
     
@@ -271,6 +277,7 @@ static NSMutableDictionary * ThisPlist;
         return;
     }
     [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"LastTempoListIndexUserSelected"];
+
     [GlobalConfig Save];
 }
 
@@ -333,16 +340,6 @@ static NSMutableDictionary * ThisPlist;
     }
     
     return [ThisPlist objectForKey:@"MusicVolumeMin"];
-}
-
-+ (void) SetPlayCellListNoneStop : (BOOL) NewValue
-{
-    if (![GlobalConfig IsInitialized])
-    {
-        return;
-    }
-    [ThisPlist setValue:[[NSNumber alloc] initWithInt:NewValue] forKey:@"PlayCellListNoneStop"];
-    [GlobalConfig Save];
 }
 
 //

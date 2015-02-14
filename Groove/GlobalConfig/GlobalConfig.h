@@ -59,7 +59,6 @@ enum {
 + (NSNumber *) TempoCellLoopCountMax;
 + (NSNumber *) MusicVolumeMax;
 + (NSNumber *) MusicVolumeMin;
-+ (void) SetPlayCellListNoneStop : (BOOL) NewValue;
 
 + (NSNumber *) GetLastTempoListIndexUserSelected;
 + (void) SetLastTempoListIndexUserSelected : (int) NewValue;
