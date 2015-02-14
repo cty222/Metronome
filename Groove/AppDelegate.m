@@ -30,10 +30,6 @@
     self.window.backgroundColor = [UIColor blueColor];
     self.window.EnableTouchHookNotifications = YES;
     
-    // 0. Disbale IdleTimer
-    [UIApplication sharedApplication].idleTimerDisabled = YES;
-    
-
 // 移植資料庫
 // 1. Groove.xcdatamodeld上 Editor -> add Model version -> base選現在系統裡面的
 // 2. 加完新項目後->Class改成新的
@@ -122,6 +118,9 @@
     
     // 防止其他程式關掉AlcDevice
    [AudioPlay RestartAlcDevice];
+    
+    // 0. Disbale IdleTimer
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
