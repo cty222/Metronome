@@ -10,13 +10,13 @@
 "Settings" = "設定";
 "TempoListName" = "リストネーム: ";
 "MusicName" = "曲ネーム: ";
-"ShuffleEnable" = "Shuffle ＯＮ";  // ??????
-"BPMFloatEnable" = "ＢＰＭ小数ＯＮ"; // ??????
+"ShuffleEnable" = "シャッフル使用";
+"BPMFloatEnable" = "ＢＰＭ小数使用";
 "ListRepeat" = "リストリピート";
 "MusicPlayerOn" = "ミュージックプレーヤー再生";
 "DisableListWarming" = "(リストプレーヤー中止)";
-"StartTime" = "始める:"; //スタート ????
-"StopTime" = "終わり:";  //ストップ ????
+"StartTime" = "始まり:";
+"StopTime" = "終わり:";
 "PlayWithMusic" = "メトロノームと共に再生";
 "MusicReapeat" = "ミュージックリピート";
 "MusicSpeedHalf" = "音楽スピードが半分に";
@@ -31,9 +31,7 @@
 "None" = "(名前なし)";
 "Edit: " = "編集: ";
 "Now: " =  "現在: ";
-
-
-"New: " =  "編集: ";  // ??????
+"New: " =  "編集: ";
 
 "(25 charactors max)" = "(最大25字で入力する)";
 
