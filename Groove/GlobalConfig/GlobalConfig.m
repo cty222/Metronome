@@ -70,7 +70,13 @@ static NSMutableDictionary * ThisPlist;
         NSFileManager *FileManager = [[NSFileManager alloc] init];
         NSString * TmpDistributionPath = [GlobalConfig DistributionFilePath];
         NSString * TmpSourcePath = [GlobalConfig SourceFilePath];
+        
+        BOOL isUpdate = NO;
         NSNumber * LastTempoListIndexUserSelected = nil;
+        NSNumber * MusicFunctionEnable = nil;
+        NSNumber * MusicHalfRate = nil;
+        NSNumber * PlaySingleCellWithMusic = nil;
+        NSNumber * PlayMusicLoopingEnable = nil;
         
         NSNumber *SourceVersionID      = [[NSMutableDictionary dictionaryWithContentsOfFile:TmpSourcePath] objectForKey:@"VersionID"];
         if (![FileManager fileExistsAtPath:TmpDistributionPath])
@@ -86,10 +92,14 @@ static NSMutableDictionary * ThisPlist;
             {
                 // Sync LastTempoListIndexUserSelected
                 {
+                    isUpdate = YES;
                     NSMutableDictionary* OldPlist = [NSMutableDictionary dictionaryWithContentsOfFile:TmpDistributionPath];
 
                     LastTempoListIndexUserSelected = [OldPlist objectForKey:@"LastTempoListIndexUserSelected"];
-                    NSLog(@"Get old LastTempoListIndexUserSelected %@", LastTempoListIndexUserSelected);
+                    MusicFunctionEnable = [OldPlist objectForKey:@"MusicFunctionEnable"];
+                    MusicHalfRate = [OldPlist objectForKey:@"MusicHalfRate"];
+                    PlaySingleCellWithMusic = [OldPlist objectForKey:@"PlaySingleCellWithMusic"];
+                    PlayMusicLoopingEnable = [OldPlist objectForKey:@"PlayMusicLoopingEnable"];
                 }
                 
                 
@@ -101,11 +111,13 @@ static NSMutableDictionary * ThisPlist;
         _GlobalConfigPlist = [NSMutableDictionary dictionaryWithContentsOfFile:TmpDistributionPath];
         
         // Sync LastTempoListIndexUserSelected
-        if (LastTempoListIndexUserSelected != nil)
+        if (isUpdate)
         {
-            NSLog(@"LastTempoListIndexUserSelected != nil sync = %@", LastTempoListIndexUserSelected);
-
             [_GlobalConfigPlist setValue:LastTempoListIndexUserSelected forKey:@"LastTempoListIndexUserSelected"];
+            [_GlobalConfigPlist setValue:MusicFunctionEnable forKey:@"MusicFunctionEnable"];
+            [_GlobalConfigPlist setValue:MusicHalfRate forKey:@"MusicHalfRate"];
+            [_GlobalConfigPlist setValue:PlaySingleCellWithMusic forKey:@"PlaySingleCellWithMusic"];
+            [_GlobalConfigPlist setValue:PlayMusicLoopingEnable forKey:@"PlayMusicLoopingEnable"];
         }
         [_GlobalConfigPlist writeToFile:[GlobalConfig DistributionFilePath] atomically:YES];
     });

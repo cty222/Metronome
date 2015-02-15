@@ -19,7 +19,7 @@
 #import "DbConfig.h"
 
 #define DEFAULT_TEMPLE_LIST_COUNT 3
-#define DefaultMusicVolume (0.4f)
+#define DefaultMusicVolume (0.6f)
 
 @class MetronomeModel;
 
