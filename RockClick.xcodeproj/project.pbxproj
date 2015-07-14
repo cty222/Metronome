@@ -35,6 +35,10 @@
 		001BFDD11A3F5F2200A56947 /* LoopCellBackGround.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 001BFDCF1A3F5F2200A56947 /* LoopCellBackGround.pdf */; };
 		001F01191A05511300189941 /* IssueAndInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 001F01181A05511300189941 /* IssueAndInfo.txt */; };
 		001F011B1A05679D00189941 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001F011A1A05679D00189941 /* iAd.framework */; };
+		001FF8E61B559C4F0025F78F /* MusicSpeedBottomSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 001FF8E41B559C4F0025F78F /* MusicSpeedBottomSubview.m */; };
+		001FF8E71B559C4F0025F78F /* MusicSpeedBottomSubview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001FF8E51B559C4F0025F78F /* MusicSpeedBottomSubview.xib */; };
+		001FF8EC1B559CFD0025F78F /* MusicSettingBottomSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 001FF8EA1B559CFD0025F78F /* MusicSettingBottomSubview.m */; };
+		001FF8ED1B559CFD0025F78F /* MusicSettingBottomSubview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001FF8EB1B559CFD0025F78F /* MusicSettingBottomSubview.xib */; };
 		0027FC5B1A5B06C300257397 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0027FC5D1A5B06C300257397 /* Localizable.strings */; };
 		00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 00319FB91A0F2EED00CF3C83 /* UINSOperation.m */; };
 		0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0034734D1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf */; };
@@ -262,6 +266,12 @@
 		001BFDCF1A3F5F2200A56947 /* LoopCellBackGround.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LoopCellBackGround.pdf; sourceTree = "<group>"; };
 		001F01181A05511300189941 /* IssueAndInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IssueAndInfo.txt; sourceTree = "<group>"; };
 		001F011A1A05679D00189941 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		001FF8E31B559C4F0025F78F /* MusicSpeedBottomSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicSpeedBottomSubview.h; sourceTree = "<group>"; };
+		001FF8E41B559C4F0025F78F /* MusicSpeedBottomSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicSpeedBottomSubview.m; sourceTree = "<group>"; };
+		001FF8E51B559C4F0025F78F /* MusicSpeedBottomSubview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicSpeedBottomSubview.xib; sourceTree = "<group>"; };
+		001FF8E91B559CFD0025F78F /* MusicSettingBottomSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicSettingBottomSubview.h; sourceTree = "<group>"; };
+		001FF8EA1B559CFD0025F78F /* MusicSettingBottomSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicSettingBottomSubview.m; sourceTree = "<group>"; };
+		001FF8EB1B559CFD0025F78F /* MusicSettingBottomSubview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicSettingBottomSubview.xib; sourceTree = "<group>"; };
 		0027FC5C1A5B06C300257397 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0027FC651A5B099400257397 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0027FC661A5B099400257397 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -570,6 +580,26 @@
 				001F01181A05511300189941 /* IssueAndInfo.txt */,
 			);
 			path = Document;
+			sourceTree = "<group>";
+		};
+		001FF8E21B559C4F0025F78F /* MusicSpeedBottomSubview */ = {
+			isa = PBXGroup;
+			children = (
+				001FF8E31B559C4F0025F78F /* MusicSpeedBottomSubview.h */,
+				001FF8E41B559C4F0025F78F /* MusicSpeedBottomSubview.m */,
+				001FF8E51B559C4F0025F78F /* MusicSpeedBottomSubview.xib */,
+			);
+			path = MusicSpeedBottomSubview;
+			sourceTree = "<group>";
+		};
+		001FF8E81B559CFC0025F78F /* MusicSettingBottomSubview */ = {
+			isa = PBXGroup;
+			children = (
+				001FF8E91B559CFD0025F78F /* MusicSettingBottomSubview.h */,
+				001FF8EA1B559CFD0025F78F /* MusicSettingBottomSubview.m */,
+				001FF8EB1B559CFD0025F78F /* MusicSettingBottomSubview.xib */,
+			);
+			path = MusicSettingBottomSubview;
 			sourceTree = "<group>";
 		};
 		0027FC561A5B059300257397 /* StringList */ = {
@@ -889,6 +919,8 @@
 		008A5C541A4F071500BC744F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				001FF8E81B559CFC0025F78F /* MusicSettingBottomSubview */,
+				001FF8E21B559C4F0025F78F /* MusicSpeedBottomSubview */,
 				008A5CB51A4F0E1B00BC744F /* SubPropertyPicker */,
 				008A5C981A4F0B1200BC744F /* MainBottom */,
 				008A5C9C1A4F0B1200BC744F /* MainTop */,
@@ -1345,6 +1377,7 @@
 				0049ECBC1A40BA990016EA3D /* LoopCellPickerButton.pdf in Resources */,
 				001BFDCE1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf in Resources */,
 				008A5CE21A4F0E3300BC744F /* TempoListUICell.xib in Resources */,
+				001FF8ED1B559CFD0025F78F /* MusicSettingBottomSubview.xib in Resources */,
 				001BFDBD1A3F550200A56947 /* BPMArrowDown.pdf in Resources */,
 				0069995B1A5C69DD00B01E5F /* ResetTime.pdf in Resources */,
 				0069994F1A5C653200B01E5F /* fNewCircleButton_f3.pdf in Resources */,
@@ -1383,6 +1416,7 @@
 				0010C5A61A60607200BC5E51 /* Accent_Low.wav in Resources */,
 				001BFDA21A3F4DE900A56947 /* NomalHiClickVoice.pdf in Resources */,
 				00BBB86E1A61905E005B9B28 /* Tic_Hi.wav in Resources */,
+				001FF8E71B559C4F0025F78F /* MusicSpeedBottomSubview.xib in Resources */,
 				00BBB87A1A619270005B9B28 /* Snare.wav in Resources */,
 				008A5CB01A4F0DF400BC744F /* OneDigitsValuePicker.xib in Resources */,
 				00BBB8B01A61997E005B9B28 /* Eight.wav in Resources */,
@@ -1502,12 +1536,14 @@
 				008A5C491A4F06AD00BC744F /* SystemPageViewController.m in Sources */,
 				00319FBA1A0F2EED00CF3C83 /* UINSOperation.m in Sources */,
 				008A5CF11A4F0E7000BC744F /* InputSubmitView.m in Sources */,
+				001FF8E61B559C4F0025F78F /* MusicSpeedBottomSubview.m in Sources */,
 				008A5C961A4F0AE600BC744F /* SelectBarCell.m in Sources */,
 				00657D0B1A65AFBE0044E35F /* MPMediaPickerControllerHook.m in Sources */,
 				004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */,
 				008A5C091A4F00F100BC744F /* GlobalConfig.m in Sources */,
 				008A5C941A4F0AE600BC744F /* MetronomeSelectBar.m in Sources */,
 				008A5CFF1A4F18E200BC744F /* TempoListViewController.m in Sources */,
+				001FF8EC1B559CFD0025F78F /* MusicSettingBottomSubview.m in Sources */,
 				008A5CC81A4F0E1B00BC744F /* SubPropertySelector.m in Sources */,
 				0059D1691A5719770058C5E3 /* CustomerButton.m in Sources */,
 				00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */,
@@ -1740,6 +1776,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "GrooveTests/RockClickTests-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = RockClickTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -1758,6 +1795,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Groove/Groove-Prefix.pch";
 				INFOPLIST_FILE = "GrooveTests/RockClickTests-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = RockClickTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

@@ -28,7 +28,7 @@
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
     self.PlayCellListButton = Parent.TopSubView.PlayCellListButton;
-    self.PlayCurrentCellButton = Parent.BottomSubView.PlayCurrentCellButton;
+    self.PlayCurrentCellButton = Parent.volumeBottomSubview.PlayCurrentCellButton;
     self.PlayMusicButton = Parent.TopSubView.PlayMusicButton;
     
     
@@ -58,7 +58,7 @@
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
-    self.SelectGrooveBar = Parent.BottomSubView.SelectGrooveBar;
+    self.SelectGrooveBar = Parent.volumeBottomSubview.SelectGrooveBar;
     self.AddLoopCellButton = Parent.TopSubView.AddLoopCellButton;
     
     [self.AddLoopCellButton addTarget:self

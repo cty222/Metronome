@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MetronomeMainViewController">
@@ -9,6 +9,8 @@
                 <outlet property="BottomView" destination="aiL-sj-irR" id="qHK-ul-inb"/>
                 <outlet property="FullView" destination="i5M-Pr-FkT" id="une-hm-rFz"/>
                 <outlet property="TopView" destination="JoB-YJ-xBY" id="Vrk-us-xZN"/>
+                <outlet property="adView" destination="WXb-P9-IbG" id="yhw-a2-dDg"/>
+                <outlet property="bottomSubviewSwitcher" destination="IdU-uH-Fyd" id="Six-zn-jCV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,10 +25,36 @@
                     <color key="backgroundColor" red="0.67428845319999997" green="1" blue="0.90542151240000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="aiL-sj-irR">
-                    <rect key="frame" x="0.0" y="268" width="320" height="300"/>
+                    <rect key="frame" x="0.0" y="268.00000046741195" width="320" height="256"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.36735393080000001" green="0.50841731540000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="IdU-uH-Fyd">
+                    <rect key="frame" x="0.0" y="524.00000046741206" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="Volume" id="ynl-55-07w" userLabel="page 1">
+                            <connections>
+                                <action selector="bottomSwitchToVolumes:" destination="-1" id="Oec-7g-7nM"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Music" id="TrM-i5-gq2" userLabel="page 2">
+                            <connections>
+                                <action selector="bottomSwitchToMusic:" destination="-1" id="dk0-cJ-Nld"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="speed" id="RhE-wB-by6" userLabel="page 3">
+                            <connections>
+                                <action selector="bottomSwitchToMusicSpeed:" destination="-1" id="naM-3G-EbX"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="WXb-P9-IbG">
+                    <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                </adBannerView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>

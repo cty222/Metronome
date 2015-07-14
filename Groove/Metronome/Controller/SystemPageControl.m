@@ -22,13 +22,19 @@
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
     self.SystemButton = Parent.TopSubView.SystemButton;
-    self.adView = Parent.BottomSubView.adView;
+    self.adView = Parent.adView;
     
     
     [self.SystemButton addTarget:self
                                 action:@selector(ChangeToSystemSettingControllerView:) forControlEvents:UIControlEventTouchDown];
    
     self.adView.delegate = self;
+    
+    // 一開始是不打開的
+    self.adView.hidden = YES;
+    
+    // TODO: self.adView 加入顯示/隱藏動畫
+
 }
 
 - (void) StopTimeLowerThanStartTimeCallBack:(NSNotification *)Notification

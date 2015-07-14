@@ -5,8 +5,6 @@
 //  Created by C-ty on 2014/9/11.
 //  Copyright (c) 2014年 Cty. All rights reserved.
 //
-#import "iAd/iAd.h"
-
 #import "XibViewInterface.h"
 #import "MetronomeSelectBar.h"
 #import "GlobalConfig.h"
@@ -27,8 +25,5 @@
 
 // loop button
 @property (strong, nonatomic) IBOutlet UIButton *PlayCurrentCellButton;
-
-// Ad view
-@property(nonatomic,retain)IBOutlet ADBannerView *adView;
 
 @end

@@ -8,12 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+// iAd
+#import "iAd/iAd.h"
+
 // WindowsHook
 #import "UIWindowWithHook.h"
 
-// View
+// View top
 #import "MetronmoneTopSubViewIphone.h"
+
+// View bottom
 #import "MetronomeBottomView.h"
+#import "MusicSettingBottomSubview.h"
+#import "MusicSpeedBottomSubview.h"
+
 #import "MetronomeSelectBar.h"
 
 // Tools
@@ -40,8 +48,17 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIView *FullView;
 @property (weak, nonatomic) IBOutlet UIView *TopView;
 @property (weak, nonatomic) IBOutlet UIView *BottomView;
+
+
 @property (nonatomic) MetronmoneTopSubViewIphone *TopSubView;
-@property (nonatomic) MetronomeBottomView *BottomSubView;
+@property (nonatomic) MetronomeBottomView *volumeBottomSubview;
+@property (nonatomic) MusicSettingBottomSubview *musicSettingBottomSubview;
+@property (nonatomic) MusicSpeedBottomSubview *musicSpeedBottomSubview;
+@property (strong, nonatomic) IBOutlet UIToolbar *bottomSubviewSwitcher;
+
+// Ad view
+@property(nonatomic,retain)IBOutlet ADBannerView *adView;
+
 
 @property NSArray * CurrentCellsDataTable;
 @property (nonatomic, strong) BeepBound* CurrentVoice;
@@ -61,7 +78,6 @@ typedef enum {
 
 
 - (void) ReflashCellListAndFocusCellByCurrentData;
-
 
 // Sub Controller
 @property  CellParameterSettingControl * CellParameterSettingSubController;

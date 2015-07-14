@@ -24,11 +24,11 @@
     if (self && [NSStringFromClass([Parent class]) isEqualToString:@"MetronomeMainViewController"])
     {
         self.Parent = Parent;
-        self.AccentCircleVolumeButton = self.Parent.BottomSubView.AccentCircleVolumeButton;
-        self.QuarterCircleVolumeButton = self.Parent.BottomSubView.QuarterCircleVolumeButton;
-        self.EighthNoteCircleVolumeButton = self.Parent.BottomSubView.EighthNoteCircleVolumeButton;
-        self.SixteenthNoteCircleVolumeButton = self.Parent.BottomSubView.SixteenthNoteCircleVolumeButton;
-        self.TrippleNoteCircleVolumeButton = self.Parent.BottomSubView.TrippleNoteCircleVolumeButton;
+        self.AccentCircleVolumeButton = self.Parent.volumeBottomSubview.AccentCircleVolumeButton;
+        self.QuarterCircleVolumeButton = self.Parent.volumeBottomSubview.QuarterCircleVolumeButton;
+        self.EighthNoteCircleVolumeButton = self.Parent.volumeBottomSubview.EighthNoteCircleVolumeButton;
+        self.SixteenthNoteCircleVolumeButton = self.Parent.volumeBottomSubview.SixteenthNoteCircleVolumeButton;
+        self.TrippleNoteCircleVolumeButton = self.Parent.volumeBottomSubview.TrippleNoteCircleVolumeButton;
         [self InitializeVolumeSets];
     }
     else

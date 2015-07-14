@@ -250,20 +250,46 @@
 
 - (void) InitializeBottomSubView
 {
-    if (self.BottomSubView == nil)
-    {
-        CGRect SubFrame = self.BottomView.frame;
-        SubFrame.origin = CGPointMake(0, 0);
-        
-        self.BottomSubView = [[MetronomeBottomView alloc] initWithFrame:SubFrame];
-    }
     if (self.BottomView.subviews.count != 0)
     {
         [[self.BottomView subviews]
          makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }
+    
+    // 1. volumeBottomSubview
+    if (self.volumeBottomSubview == nil)
+    {
+        CGRect SubFrame = self.BottomView.frame;
+        SubFrame.origin = CGPointMake(0, 0);
+        
+        self.volumeBottomSubview = [[MetronomeBottomView alloc] initWithFrame:SubFrame];
+    }
 
-    [self.BottomView addSubview:self.BottomSubView];
+    
+    // 2. musicSettingBottomSubview
+    if (self.musicSettingBottomSubview == nil)
+    {
+        CGRect SubFrame = self.BottomView.frame;
+        SubFrame.origin = CGPointMake(0, 0);
+        
+        self.musicSettingBottomSubview = [[MusicSettingBottomSubview alloc] initWithFrame:SubFrame];
+    }
+
+    
+    if (self.musicSpeedBottomSubview == nil)
+    {
+        CGRect SubFrame = self.BottomView.frame;
+        SubFrame.origin = CGPointMake(0, 0);
+        
+        self.musicSpeedBottomSubview = [[MusicSpeedBottomSubview alloc] initWithFrame:SubFrame];
+    }
+
+    [self.BottomView addSubview:self.volumeBottomSubview];
+    [self.BottomView addSubview:self.musicSettingBottomSubview];
+    [self.BottomView addSubview:self.musicSpeedBottomSubview];
+
+    // 預設開 volumeBottomSubview
+    [self bottomSwitchToVolumes: self.volumeBottomSubview];
 }
 
 // ============
@@ -512,6 +538,9 @@
                     [gPlayMusicChannel Stop];
                 }
             }
+            
+            self.bottomSubviewSwitcher.hidden = NO;
+            self.adView.hidden = YES;
             break;
         case SINGLE_PLAYING:
             [self StartClick];
@@ -523,9 +552,14 @@
                 }
                 [gPlayMusicChannel Play];
             }
+            
+            self.bottomSubviewSwitcher.hidden = YES;
+            self.adView.hidden = NO;
             break;
         case LIST_PLAYING:
             [self StartClick];
+            self.bottomSubviewSwitcher.hidden = YES;
+            self.adView.hidden = NO;
             break;
         default:
             self.PlayingMode = STOP_PLAYING;
@@ -783,11 +817,11 @@
 
     if (_CellParameterSettingSubController.BPMPicker.Mode == BPM_PICKER_INT_MODE)
     {
-        NSLog(@"CurrentBPMValue %f", CurrentBPMValue);
+        //NSLog(@"CurrentBPMValue %f", CurrentBPMValue);
 
-        NSLog(@"ROUND_NO_DECOMAL_FROM_DOUBLE %f", ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue));
+        //NSLog(@"ROUND_NO_DECOMAL_FROM_DOUBLE %f", ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue));
 
-        NSLog(@"BPM_TO_TIMER_VALUE %f", BPM_TO_TIMER_VALUE(ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue)));
+        //NSLog(@"BPM_TO_TIMER_VALUE %f", BPM_TO_TIMER_VALUE(ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue)));
         PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE(
                                                                 ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue))
                                                           target:self
@@ -835,7 +869,7 @@
         return;
     }
     
-    NSLog(@"_CurrentPlayingNoteCounter %d", _CurrentPlayingNoteCounter);
+    //NSLog(@"_CurrentPlayingNoteCounter %d", _CurrentPlayingNoteCounter);
 
     
     // Play function
@@ -918,5 +952,23 @@
 // 一开始的屏幕旋转方向
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
     return [[UIApplication sharedApplication] statusBarOrientation];
+}
+
+- (IBAction)bottomSwitchToVolumes:(id)sender {
+    self.volumeBottomSubview.hidden = NO;
+    self.musicSettingBottomSubview.hidden = YES;
+    self.musicSpeedBottomSubview.hidden = YES;
+}
+
+- (IBAction)bottomSwitchToMusic:(id)sender {
+    self.volumeBottomSubview.hidden = YES;
+    self.musicSettingBottomSubview.hidden = NO;
+    self.musicSpeedBottomSubview.hidden = YES;
+}
+
+- (IBAction)bottomSwitchToMusicSpeed:(id)sender {
+    self.volumeBottomSubview.hidden = YES;
+    self.musicSettingBottomSubview.hidden = YES;
+    self.musicSpeedBottomSubview.hidden = NO;
 }
 @end
