@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "004BE63919B2DDC7002CD995"
                BuildableName = "RockMetromone:SongClick.app"
-               BlueprintName = "Groove"
-               ReferencedContainer = "container:Groove.xcodeproj">
+               BlueprintName = "RockClick"
+               ReferencedContainer = "container:RockClick.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "004BE65919B2DDC8002CD995"
-               BuildableName = "GrooveTests.xctest"
-               BlueprintName = "GrooveTests"
-               ReferencedContainer = "container:Groove.xcodeproj">
+               BuildableName = "RockClickTests.xctest"
+               BlueprintName = "RockClickTests"
+               ReferencedContainer = "container:RockClick.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "004BE63919B2DDC7002CD995"
             BuildableName = "RockMetromone:SongClick.app"
-            BlueprintName = "Groove"
-            ReferencedContainer = "container:Groove.xcodeproj">
+            BlueprintName = "RockClick"
+            ReferencedContainer = "container:RockClick.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -58,13 +58,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "004BE63919B2DDC7002CD995"
             BuildableName = "RockMetromone:SongClick.app"
-            BlueprintName = "Groove"
-            ReferencedContainer = "container:Groove.xcodeproj">
+            BlueprintName = "RockClick"
+            ReferencedContainer = "container:RockClick.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -76,13 +77,14 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "004BE63919B2DDC7002CD995"
             BuildableName = "RockMetromone:SongClick.app"
-            BlueprintName = "Groove"
-            ReferencedContainer = "container:Groove.xcodeproj">
+            BlueprintName = "RockClick"
+            ReferencedContainer = "container:RockClick.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -281,16 +281,16 @@
 		004BE63F19B2DDC7002CD995 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		004BE64119B2DDC7002CD995 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		004BE64319B2DDC7002CD995 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		004BE64719B2DDC7002CD995 /* Groove-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Groove-Info.plist"; sourceTree = "<group>"; };
+		004BE64719B2DDC7002CD995 /* RockClick-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RockClick-Info.plist"; sourceTree = "<group>"; };
 		004BE64919B2DDC7002CD995 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		004BE64B19B2DDC7002CD995 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		004BE64D19B2DDC8002CD995 /* Groove-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Groove-Prefix.pch"; sourceTree = "<group>"; };
+		004BE64D19B2DDC8002CD995 /* RockClick-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RockClick-Prefix.pch"; sourceTree = "<group>"; };
 		004BE64E19B2DDC8002CD995 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		004BE64F19B2DDC8002CD995 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		004BE65419B2DDC8002CD995 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
-		004BE65A19B2DDC8002CD995 /* GrooveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrooveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		004BE65A19B2DDC8002CD995 /* RockClickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RockClickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		004BE65B19B2DDC8002CD995 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		004BE66419B2DDC8002CD995 /* GrooveTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GrooveTests-Info.plist"; sourceTree = "<group>"; };
+		004BE66419B2DDC8002CD995 /* RockClickTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RockClickTests-Info.plist"; sourceTree = "<group>"; };
 		004BE66619B2DDC8002CD995 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		004BE66819B2DDC8002CD995 /* GrooveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrooveTests.m; sourceTree = "<group>"; };
 		004DF4601A40A69900E79C0E /* SwitchButtonLock.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SwitchButtonLock.pdf; sourceTree = "<group>"; };
@@ -618,7 +618,7 @@
 			isa = PBXGroup;
 			children = (
 				004BE63A19B2DDC7002CD995 /* RockMetromone:SongClick.app */,
-				004BE65A19B2DDC8002CD995 /* GrooveTests.xctest */,
+				004BE65A19B2DDC8002CD995 /* RockClickTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -665,10 +665,10 @@
 		004BE64619B2DDC7002CD995 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				004BE64719B2DDC7002CD995 /* Groove-Info.plist */,
+				004BE64719B2DDC7002CD995 /* RockClick-Info.plist */,
 				004BE64819B2DDC7002CD995 /* InfoPlist.strings */,
 				004BE64B19B2DDC7002CD995 /* main.m */,
-				004BE64D19B2DDC8002CD995 /* Groove-Prefix.pch */,
+				004BE64D19B2DDC8002CD995 /* RockClick-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -685,7 +685,7 @@
 		004BE66319B2DDC8002CD995 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				004BE66419B2DDC8002CD995 /* GrooveTests-Info.plist */,
+				004BE66419B2DDC8002CD995 /* RockClickTests-Info.plist */,
 				004BE66519B2DDC8002CD995 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -1255,9 +1255,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		004BE63919B2DDC7002CD995 /* Groove */ = {
+		004BE63919B2DDC7002CD995 /* RockClick */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 004BE66C19B2DDC8002CD995 /* Build configuration list for PBXNativeTarget "Groove" */;
+			buildConfigurationList = 004BE66C19B2DDC8002CD995 /* Build configuration list for PBXNativeTarget "RockClick" */;
 			buildPhases = (
 				004BE63619B2DDC7002CD995 /* Sources */,
 				004BE63719B2DDC7002CD995 /* Frameworks */,
@@ -1267,14 +1267,14 @@
 			);
 			dependencies = (
 			);
-			name = Groove;
+			name = RockClick;
 			productName = Groove;
 			productReference = 004BE63A19B2DDC7002CD995 /* RockMetromone:SongClick.app */;
 			productType = "com.apple.product-type.application";
 		};
-		004BE65919B2DDC8002CD995 /* GrooveTests */ = {
+		004BE65919B2DDC8002CD995 /* RockClickTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 004BE66F19B2DDC8002CD995 /* Build configuration list for PBXNativeTarget "GrooveTests" */;
+			buildConfigurationList = 004BE66F19B2DDC8002CD995 /* Build configuration list for PBXNativeTarget "RockClickTests" */;
 			buildPhases = (
 				004BE65619B2DDC8002CD995 /* Sources */,
 				004BE65719B2DDC8002CD995 /* Frameworks */,
@@ -1285,9 +1285,9 @@
 			dependencies = (
 				004BE66119B2DDC8002CD995 /* PBXTargetDependency */,
 			);
-			name = GrooveTests;
+			name = RockClickTests;
 			productName = GrooveTests;
-			productReference = 004BE65A19B2DDC8002CD995 /* GrooveTests.xctest */;
+			productReference = 004BE65A19B2DDC8002CD995 /* RockClickTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1312,7 +1312,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 004BE63519B2DDC7002CD995 /* Build configuration list for PBXProject "Groove" */;
+			buildConfigurationList = 004BE63519B2DDC7002CD995 /* Build configuration list for PBXProject "RockClick" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1327,8 +1327,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				004BE63919B2DDC7002CD995 /* Groove */,
-				004BE65919B2DDC8002CD995 /* GrooveTests */,
+				004BE63919B2DDC7002CD995 /* RockClick */,
+				004BE65919B2DDC8002CD995 /* RockClickTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1559,7 +1559,7 @@
 /* Begin PBXTargetDependency section */
 		004BE66119B2DDC8002CD995 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 004BE63919B2DDC7002CD995 /* Groove */;
+			target = 004BE63919B2DDC7002CD995 /* RockClick */;
 			targetProxy = 004BE66019B2DDC8002CD995 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1686,8 +1686,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Groove/Groove-Prefix.pch";
-				INFOPLIST_FILE = "Groove/Groove-Info.plist";
+				GCC_PREFIX_HEADER = "Groove/RockClick-Prefix.pch";
+				INFOPLIST_FILE = "Groove/RockClick-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
@@ -1710,8 +1710,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Groove/Groove-Prefix.pch";
-				INFOPLIST_FILE = "Groove/Groove-Info.plist";
+				GCC_PREFIX_HEADER = "Groove/RockClick-Prefix.pch";
+				INFOPLIST_FILE = "Groove/RockClick-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
@@ -1739,8 +1739,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "GrooveTests/GrooveTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "GrooveTests/RockClickTests-Info.plist";
+				PRODUCT_NAME = RockClickTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1757,8 +1757,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Groove/Groove-Prefix.pch";
-				INFOPLIST_FILE = "GrooveTests/GrooveTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "GrooveTests/RockClickTests-Info.plist";
+				PRODUCT_NAME = RockClickTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1767,7 +1767,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		004BE63519B2DDC7002CD995 /* Build configuration list for PBXProject "Groove" */ = {
+		004BE63519B2DDC7002CD995 /* Build configuration list for PBXProject "RockClick" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				004BE66A19B2DDC8002CD995 /* Debug */,
@@ -1776,7 +1776,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		004BE66C19B2DDC8002CD995 /* Build configuration list for PBXNativeTarget "Groove" */ = {
+		004BE66C19B2DDC8002CD995 /* Build configuration list for PBXNativeTarget "RockClick" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				004BE66D19B2DDC8002CD995 /* Debug */,
@@ -1785,7 +1785,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		004BE66F19B2DDC8002CD995 /* Build configuration list for PBXNativeTarget "GrooveTests" */ = {
+		004BE66F19B2DDC8002CD995 /* Build configuration list for PBXNativeTarget "RockClickTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				004BE67019B2DDC8002CD995 /* Debug */,
