@@ -10,6 +10,7 @@
 
 // iAd
 #import "iAd/iAd.h"
+#import "WebAd.h"
 
 // WindowsHook
 #import "UIWindowWithHook.h"
@@ -34,6 +35,10 @@
 #import "SystemPageControl.h"
 #import "PlayerForSongs.h"
 
+
+// AFNetworking
+#import "AFHTTPRequestOperationManager.h"
+
 @class LoopAndPlayViewControl;
 @class CellParameterSettingControl;
 @class SystemPageControl;
@@ -44,11 +49,11 @@ typedef enum {
     LIST_PLAYING,
 } METRONOME_PLAYING_MODE;
 
-@interface MetronomeMainViewController : UIViewController <NoteProtocol>
+@interface MetronomeMainViewController : UIViewController <NoteProtocol, WebAdProtocol>
 @property (strong, nonatomic) IBOutlet UIView *FullView;
 @property (weak, nonatomic) IBOutlet UIView *TopView;
 @property (weak, nonatomic) IBOutlet UIView *BottomView;
-
+@property (weak, nonatomic) IBOutlet UIView *middleAdView;
 
 @property (nonatomic) MetronmoneTopSubViewIphone *TopSubView;
 @property (nonatomic) MetronomeBottomView *volumeBottomSubview;
@@ -59,6 +64,13 @@ typedef enum {
 // Ad view
 @property(nonatomic,retain)IBOutlet ADBannerView *adView;
 
+// webAd
+// TODO: move to class
+@property (strong, nonatomic) IBOutlet WebAd *webAdSubview;
+@property (strong, nonatomic) IBOutlet UIButton *closeWebAdSubviewbtn;
+
+// Network Manager
+@property AFHTTPRequestOperationManager *networkManager;
 
 @property NSArray * CurrentCellsDataTable;
 @property (nonatomic, strong) BeepBound* CurrentVoice;

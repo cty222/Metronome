@@ -85,6 +85,13 @@
     [self SyncMusicInfoFromTempList];
 
     [self SyncMusicPropertyFromGlobalConfig];
+    
+    //TODO: testing
+    self.networkManager = [AFHTTPRequestOperationManager manager];
+    [self requirePostWebJson: @"http://www.rock-click.com/midi_drum/test5"];
+    
+    NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
+    NSLog(@"%@", countryCode);
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -162,9 +169,9 @@
    
     [self.SystemPageController InitializeSystemButton];
     
-    
     [self GlobalEventInitialize];
-    
+
+    [self InitializeMiddleAdSubView];
 }
 
 - (void) GlobalEventInitialize
@@ -237,7 +244,9 @@
 {
     if (self.TopSubView == nil)
     {
-        self.TopSubView = [[MetronmoneTopSubViewIphone alloc] initWithFrame:self.TopView.frame];
+        CGRect subFrame = self.TopView.frame;
+        subFrame.origin = CGPointMake(0, 0);
+        self.TopSubView = [[MetronmoneTopSubViewIphone alloc] initWithFrame:subFrame];
     }
     if (self.TopView.subviews.count != 0)
     {
@@ -290,6 +299,25 @@
 
     // 預設開 volumeBottomSubview
     [self bottomSwitchToVolumes: self.volumeBottomSubview];
+}
+
+- (void) InitializeMiddleAdSubView
+{
+    // initialize web ad
+    if (self.webAdSubview == nil)
+    {
+        CGRect subFrame = self.middleAdView.frame;
+        subFrame.origin = CGPointMake(0, 0);
+        self.webAdSubview = [[WebAd alloc] initWithFrame:subFrame];
+    }
+    if (self.middleAdView.subviews.count != 0)
+    {
+        [[self.middleAdView subviews]
+         makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    }
+    [self.middleAdView addSubview:self.webAdSubview];
+    self.webAdSubview.delegate = self;
+    self.middleAdView.hidden = YES;
 }
 
 // ============
@@ -718,6 +746,11 @@
         [_CellParameterSettingSubController.VolumeSetsControl.TrippleNoteCircleVolumeButton TwickLing];
     }
 }
+
+- (IBAction) closeWebAdEvent: (id) sender
+{
+    self.middleAdView.hidden = YES;
+}
 //
 //  =========================
 
@@ -954,6 +987,10 @@
     return [[UIApplication sharedApplication] statusBarOrientation];
 }
 
+// ======================
+// bottom subview switch
+// ======================
+
 - (IBAction)bottomSwitchToVolumes:(id)sender {
     self.volumeBottomSubview.hidden = NO;
     self.musicSettingBottomSubview.hidden = YES;
@@ -971,4 +1008,31 @@
     self.musicSettingBottomSubview.hidden = YES;
     self.musicSpeedBottomSubview.hidden = NO;
 }
+
+// ======================
+// Network function
+// ======================
+-(void) showWebAd {
+    self.middleAdView.hidden = NO;
+    [self.view bringSubviewToFront:self.middleAdView];
+    self.webAdSubview.adImageView.image = [UIImage imageNamed:@"MusicListen"];
+};
+
+- (id) requirePostWebJson: (NSString *) url {
+    __block id response = nil;
+    
+    if (self.networkManager == nil){
+        return nil;
+    }
+    
+    [self.networkManager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        response = responseObject;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        // TODO : Error handler
+        NSLog(@"requirePostWebJson failed");
+    }];
+    
+    return response;
+}
+
 @end
