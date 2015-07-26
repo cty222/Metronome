@@ -21,8 +21,6 @@
 
 #import <Foundation/Foundation.h>
 #import <Security/Security.h>
-// cty222 add
-#import "AFNetworking_Xcode6.2.h"
 
 typedef NS_ENUM(NSUInteger, AFSSLPinningMode) {
     AFSSLPinningModeNone,

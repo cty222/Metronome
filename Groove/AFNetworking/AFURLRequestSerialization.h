@@ -24,8 +24,6 @@
 #import <UIKit/UIKit.h>
 #endif
 
-// cty222 add
-#import "AFNetworking_Xcode6.2.h"
 
 
 NS_ASSUME_NONNULL_BEGIN

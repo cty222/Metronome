@@ -22,8 +22,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-// cty222 add
-#import "AFNetworking_Xcode6.2.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

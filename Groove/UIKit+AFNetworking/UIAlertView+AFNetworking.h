@@ -26,8 +26,6 @@
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED) && !defined(AF_APP_EXTENSIONS)
 
 #import <UIKit/UIKit.h>
-// cty222 add
-#import "AFNetworking_Xcode6.2.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

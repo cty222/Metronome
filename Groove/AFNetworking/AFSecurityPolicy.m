@@ -21,8 +21,6 @@
 
 #import "AFSecurityPolicy.h"
 
-// cty222 add
-#import "AFNetworking_Xcode6.2.h"
 #import <AssertMacros.h>
 
 #if !defined(__IPHONE_OS_VERSION_MIN_REQUIRED)

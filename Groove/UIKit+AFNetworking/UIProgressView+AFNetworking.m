@@ -21,8 +21,6 @@
 
 #import "UIProgressView+AFNetworking.h"
 
-// cty222 add
-#import "AFNetworking_Xcode6.2.h"
 
 #import <objc/runtime.h>
 

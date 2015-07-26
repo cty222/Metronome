@@ -22,9 +22,6 @@
 #import <Foundation/Foundation.h>
 
 #import <Availability.h>
-// cty222 add
-#import "AFNetworking_Xcode6.2.h"
-
 
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 

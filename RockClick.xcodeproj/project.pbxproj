@@ -403,7 +403,6 @@
 		00717A531B56250A002779B7 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		00717A541B56250A002779B7 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		00717A551B56250A002779B7 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
-		00717A671B56253A002779B7 /* AFNetworking_Xcode6.2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFNetworking_Xcode6.2.h; sourceTree = "<group>"; };
 		00717A6A1B563EF4002779B7 /* WebAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebAd.h; sourceTree = "<group>"; };
 		00717A6B1B563EF4002779B7 /* WebAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebAd.m; sourceTree = "<group>"; };
 		00717A6D1B563F67002779B7 /* WebAd.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebAd.xib; sourceTree = "<group>"; };
@@ -882,7 +881,6 @@
 				00717A411B56250A002779B7 /* AFURLResponseSerialization.m */,
 				00717A421B56250A002779B7 /* AFURLSessionManager.h */,
 				00717A431B56250A002779B7 /* AFURLSessionManager.m */,
-				00717A671B56253A002779B7 /* AFNetworking_Xcode6.2.h */,
 			);
 			path = AFNetworking;
 			sourceTree = "<group>";

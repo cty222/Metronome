@@ -26,8 +26,6 @@
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 
 #import <UIKit/UIKit.h>
-#import "AFNetworking_Xcode6.2.h"
-
 @class AFURLConnectionOperation;
 
 /**
