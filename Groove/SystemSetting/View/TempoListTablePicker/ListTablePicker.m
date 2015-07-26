@@ -16,6 +16,9 @@
     UIAlertView *_NoSelectedAlert;
     UIAlertView *_TempoListOverMaxCountAlert;
 }
+ 
+@dynamic delegate;
+
 
 - (id)initWithFrame:(CGRect)frame
 {

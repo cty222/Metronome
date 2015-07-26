@@ -28,9 +28,11 @@
 @property (strong, nonatomic) IBOutlet UIView *EditerView;
 @property (strong, nonatomic) IBOutlet NameEditer *NameEditer;
 @property (nonatomic, assign) id <ListTablePickerProtocol> delegate;
+
 @property (strong, nonatomic, getter = GetTempoListArrayForBinding, setter = SetTempoListArrayForBinding:) NSArray * TempoListArrayForBinding;
 
 - (NSInteger) GetSelectedIndex;
 - (void) SetSelectedCell : (TempoList *) TargetTempoList;
 
 @end
+

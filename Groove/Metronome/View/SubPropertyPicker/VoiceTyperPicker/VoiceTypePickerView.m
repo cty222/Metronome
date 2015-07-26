@@ -11,7 +11,6 @@
 
 @implementation VoiceTypePickerView
 {
-    BOOL _hidden;
 }
 
 

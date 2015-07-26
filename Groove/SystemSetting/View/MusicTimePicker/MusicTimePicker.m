@@ -18,6 +18,7 @@
     BOOL _ByPassTimeScrollUpdateByTicker;
     BOOL _TimeScrollChangeWhenPlaying;
 }
+@dynamic delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
