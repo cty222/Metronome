@@ -10,4 +10,8 @@
 
 @implementation RockClickNotificationCenter
 
+- (void) makeCircleButtonTwickLing: (__CIRCLE_BUTTON) value
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kCircleButtonTwickLing object:@(value)];
+}
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NotesTool.h"
 #import "MetronomeEngine.h"
+#import "RockClickNotificationCenter.h"
 
 typedef NS_ENUM(NSUInteger) {
     METRONOME_PAGE,
@@ -17,7 +19,9 @@ typedef NS_ENUM(NSUInteger) {
 
 @interface GlobalServices : NSObject
 
+@property NotesTool * noteCallbackInterface;
 @property MetronomeEngine *engine;
+@property RockClickNotificationCenter *notificationCenter;
 
 - (UIViewController *) getUIViewController: (__MAIN_PAGE) key;
 

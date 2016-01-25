@@ -184,7 +184,7 @@
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
-    TempoCell * TargetCell = Parent.tempoCells[Index];
+    TempoCell * TargetCell = Parent.engine.tempoCells[Index];
     
     
     if (NewValue < [[GlobalConfig TempoCellLoopCountMin] intValue])
@@ -215,7 +215,7 @@
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
-    if (Parent.tempoCells.count >= [[GlobalConfig TempoCellNumberMax] integerValue])
+    if (Parent.engine.tempoCells.count >= [[GlobalConfig TempoCellNumberMax] integerValue])
     {
         // TODO: 警告數量超過了
         // 超過了
@@ -233,17 +233,17 @@
     }
     
     // 新增一筆進資料庫
-    [gMetronomeModel AddNewTempoCell: Parent.currentTempoList];
+    [gMetronomeModel AddNewTempoCell: Parent.engine.currentTempoList];
     
     // 重新顯示
     [Parent syncTempoListWithModel];
     
     [Parent syncTempoCellDatatableWithModel];
     
-    TempoList * CurrentListCell = Parent.currentTempoList;
+    TempoList * CurrentListCell = Parent.engine.currentTempoList;
     
     // TODO : 嚴重 同步問題！！！
-    CurrentListCell.focusCellIndex = [NSNumber numberWithInt:(int)(Parent.tempoCells.count - 1)];
+    CurrentListCell.focusCellIndex = [NSNumber numberWithInt:(int)(Parent.engine.tempoCells.count - 1)];
     [gMetronomeModel Save];
     
     
@@ -255,8 +255,8 @@
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
     // 不可以刪掉最後一個, 或大於Count > 或負數Index
-    if ((Parent.tempoCells.count <= 1 )
-        || (Parent.tempoCells.count <= CurrentFocusIndex )
+    if ((Parent.engine.tempoCells.count <= 1 )
+        || (Parent.engine.tempoCells.count <= CurrentFocusIndex )
         || (CurrentFocusIndex <0 )
         )
     {
@@ -264,7 +264,7 @@
     }
 
     // 找到要刪除的
-    _DeletedCell = Parent.tempoCells[CurrentFocusIndex];
+    _DeletedCell = Parent.engine.tempoCells[CurrentFocusIndex];
     
     // 刪掉資料庫對應資料
     [gMetronomeModel DeleteTargetTempoCell:_DeletedCell];
@@ -277,14 +277,14 @@
     
     // 如果刪掉的是最後一個
     // 向前移一個
-    if (CurrentFocusIndex >= Parent.tempoCells.count)
+    if (CurrentFocusIndex >= Parent.engine.tempoCells.count)
     {
-        CurrentFocusIndex = (int)(Parent.tempoCells.count -1);
+        CurrentFocusIndex = (int)(Parent.engine.tempoCells.count -1);
     }
     Parent.currentSelectedCellIndex = CurrentFocusIndex;
     
     // TODO : 嚴重 同步問題！！！
-    TempoList * CurrentListCell = Parent.currentTempoList;
+    TempoList * CurrentListCell = Parent.engine.currentTempoList;
     CurrentListCell.focusCellIndex = [NSNumber numberWithInt:Parent.currentSelectedCellIndex];
     [gMetronomeModel Save];
     // ================

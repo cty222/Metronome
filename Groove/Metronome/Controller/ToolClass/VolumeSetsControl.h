@@ -10,14 +10,6 @@
 #import "CircleButton.h"
 #import "GlobalConfig.h"
 
-typedef enum{
-    ACCENT_VOLUME_BUTTON = 101,
-    QUARTER_VOLUME_BUTTON,
-    EIGHTH_NOTE_VOLUME_BUTTON,
-    SIXTEENTH_NOTE_VOLUME_BUTTON,
-    TRIPPLET_NOTE_VOLUME_BUTTON
-} VOLUME_BUTTON_TAG;
-
 @interface VolumeSetsControl : NSObject <CircleButtonProtocol>
 // (1) Volume sets
 @property (strong, nonatomic) IBOutlet CircleButton *AccentCircleVolumeButton;

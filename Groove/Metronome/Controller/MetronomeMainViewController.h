@@ -72,24 +72,19 @@ typedef enum {
 // ====================
 
 
+// GlobalServices
+@property GlobalServices *globalServices;
+@property MetronomeEngine * engine;
+
 // Ad view
 @property(nonatomic,retain)IBOutlet ADBannerView *adView;
 
-// webAd
+// webAd and Network Manager
 // TODO: move to class
 @property (strong, nonatomic) IBOutlet WebAd *webAdSubview;
 @property (strong, nonatomic) IBOutlet UIButton *closeWebAdSubviewbtn;
-
-
-
-// Network Manager
 @property AFHTTPRequestOperationManager *networkManager;
 
-@property NSArray * tempoCells;
-@property TempoCell* currentCell;
-@property (nonatomic) BeepBound* currentVoice;
-@property (nonatomic) NSString* currentTimeSignature;
-@property (nonatomic) TempoList* currentTempoList;
 
 @property (setter=setCurrentSelectedCellIndex:, getter=getCurrentSelectedCellIndex)int currentSelectedCellIndex;
 @property (setter=setCurrentPlayingMode:, getter=getCurrentPlayingMode)METRONOME_PLAYING_MODE currentPlayingMode;
@@ -98,9 +93,7 @@ typedef enum {
 @property MusicProperties * MusicProperties;
 
 
-
 - (id) initWithGlobalServices: (GlobalServices *) globalService;
-
 
 // TODO: move to private 
 - (void) syncTempoListWithModel;

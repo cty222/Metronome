@@ -23,11 +23,6 @@
 #import "GlobalConfig.h"
 #import "DebugHeader.h"
 
-@class AudioPlay;
-// it won't work if add static
-AudioPlay* gPlayUnit;
-NSMutableArray* gClickVoiceList;
-
 @interface AudioPlay : NSObject <AVAudioPlayerDelegate>
 
 enum ClickVoice{
@@ -42,8 +37,6 @@ enum ClickVoice{
 
 @property int MaxVolume;
 - (void) playSound : (double) InsertVolume : (AUDIO_FILE) AudioFile;
-+ (BOOL) AudioPlayEnable;
-+ (void) ResetClickVocieList;
 + (void) InitAlcDevice;
 + (void) RestartAlcDevice;
 

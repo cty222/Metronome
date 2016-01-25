@@ -11,8 +11,6 @@
 #import "TapFunction.h"
 #import "VolumeSetsControl.h"
 
-
-
 typedef enum{
     VOICE_TYPE_BUTTON = 201,
 } PARAMETER_BUTTON_TAG;
@@ -39,8 +37,7 @@ typedef enum{
 
 
 - (void) MainViewWillAppear;
-- (void) InitlizeCellParameterControlItems;
-- (int) DecodeTimeSignatureToValue : (NSString *)TimeSignatureString;
+- (void) initlizeCellParameterControlItems;
 
 
 - (void) ChangeVoiceTypePickerImage: (int) TagNumber;

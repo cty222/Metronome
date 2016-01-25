@@ -16,35 +16,6 @@
 static ALCdevice *openALDevice;
 static ALCcontext *openALContext;
 
-+ (BOOL) AudioPlayEnable
-{
-    if (gPlayUnit == nil)
-    {
-        gPlayUnit = [[AudioPlay alloc] init];
-    }
-
-    return YES;
-}
-
-+ (void) ResetClickVocieList
-{
-    if (gClickVoiceList == nil)
-    {
-        gClickVoiceList = [[NSMutableArray alloc] init];
-    }
-    else
-    {
-        [gClickVoiceList removeAllObjects];
-    }
-    
-    // ?? why I need beep sound ??
-    [gClickVoiceList addObject: [[NormalHiClickVoice alloc] init]];
-    [gClickVoiceList addObject: [[BlockVoice alloc] init]];
-    [gClickVoiceList addObject: [[HumanVoice alloc] init]];
-    [gClickVoiceList addObject: [[DrumVoice1 alloc] init]];
-
-}
-
 + (void) InitAlcDevice
 {
     if (openALDevice)

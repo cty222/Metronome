@@ -30,7 +30,8 @@
     self = [super init];
     
     if (self){
-        self.engine = [[MetronomeEngine alloc] init];
+        self.notificationCenter = [[RockClickNotificationCenter alloc] init];
+        self.engine = [[MetronomeEngine alloc] initWithGlobalServices: self];
     }
     
     return self;
@@ -91,7 +92,6 @@
 
 //
 // ============================
-
 
 
 @end

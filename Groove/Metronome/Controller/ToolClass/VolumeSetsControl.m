@@ -21,8 +21,7 @@
 -(id) init : (id) Parent
 {
     self = [super init];
-    if (self && [NSStringFromClass([Parent class]) isEqualToString:@"MetronomeMainViewController"])
-    {
+    if (self && [NSStringFromClass([Parent class]) isEqualToString:@"MetronomeMainViewController"]){
         self.Parent = Parent;
         self.AccentCircleVolumeButton = self.Parent.volumeBottomSubview.AccentCircleVolumeButton;
         self.QuarterCircleVolumeButton = self.Parent.volumeBottomSubview.QuarterCircleVolumeButton;
@@ -31,8 +30,7 @@
         self.TrippleNoteCircleVolumeButton = self.Parent.volumeBottomSubview.TrippleNoteCircleVolumeButton;
         [self InitializeVolumeSets];
     }
-    else
-    {
+    else{
         NSLog(@"VolumeSetsControl Initialize failed!!!");
     }
     return self;
@@ -62,23 +60,23 @@
     
     self.AccentCircleVolumeButton.IndexRange = VolumeRange;
     self.AccentCircleVolumeButton.IndexValueSensitivity = 1;
-    self.AccentCircleVolumeButton.tag = ACCENT_VOLUME_BUTTON;
+    self.AccentCircleVolumeButton.tag = AccentCircle_Button;
     
     self.QuarterCircleVolumeButton.IndexRange = VolumeRange;
     self.QuarterCircleVolumeButton.IndexValueSensitivity = 1;
-    self.QuarterCircleVolumeButton.tag = QUARTER_VOLUME_BUTTON;
+    self.QuarterCircleVolumeButton.tag = QuarterCircle_Button;
     
     self.EighthNoteCircleVolumeButton.IndexRange = VolumeRange;
     self.EighthNoteCircleVolumeButton.IndexValueSensitivity = 1;
-    self.EighthNoteCircleVolumeButton.tag = EIGHTH_NOTE_VOLUME_BUTTON;
+    self.EighthNoteCircleVolumeButton.tag = EighthNoteCircle_Button;
     
     self.SixteenthNoteCircleVolumeButton.IndexRange = VolumeRange;
     self.SixteenthNoteCircleVolumeButton.IndexValueSensitivity = 1;
-    self.SixteenthNoteCircleVolumeButton.tag = SIXTEENTH_NOTE_VOLUME_BUTTON;
+    self.SixteenthNoteCircleVolumeButton.tag = SixteenthNoteCircle_Button;
     
     self.TrippleNoteCircleVolumeButton.IndexRange = VolumeRange;
     self.TrippleNoteCircleVolumeButton.IndexValueSensitivity = 1;
-    self.TrippleNoteCircleVolumeButton.tag = TRIPPLET_NOTE_VOLUME_BUTTON;
+    self.TrippleNoteCircleVolumeButton.tag = TrippleNoteCircle_Button;
 }
 
 
@@ -95,20 +93,20 @@
 {
     float Value = ThisCircleButton.IndexValue;
     switch (ThisCircleButton.tag) {
-        case ACCENT_VOLUME_BUTTON:
-            self.Parent.currentCell.accentVolume = [NSNumber numberWithFloat:Value];
+        case AccentCircle_Button:
+            self.Parent.engine.currentCell.accentVolume = [NSNumber numberWithFloat:Value];
             break;
-        case QUARTER_VOLUME_BUTTON:
-            self.Parent.currentCell.quarterNoteVolume = [NSNumber numberWithFloat:Value];
+        case QuarterCircle_Button:
+            self.Parent.engine.currentCell.quarterNoteVolume = [NSNumber numberWithFloat:Value];
             break;
-        case EIGHTH_NOTE_VOLUME_BUTTON:
-            self.Parent.currentCell.eighthNoteVolume = [NSNumber numberWithFloat:Value];
+        case EighthNoteCircle_Button:
+            self.Parent.engine.currentCell.eighthNoteVolume = [NSNumber numberWithFloat:Value];
             break;
-        case SIXTEENTH_NOTE_VOLUME_BUTTON:
-            self.Parent.currentCell.sixteenNoteVolume = [NSNumber numberWithFloat:Value];
+        case SixteenthNoteCircle_Button:
+            self.Parent.engine.currentCell.sixteenNoteVolume = [NSNumber numberWithFloat:Value];
             break;
-        case TRIPPLET_NOTE_VOLUME_BUTTON:
-            self.Parent.currentCell.trippleNoteVolume = [NSNumber numberWithFloat:Value];
+        case TrippleNoteCircle_Button:
+            self.Parent.engine.currentCell.trippleNoteVolume = [NSNumber numberWithFloat:Value];
             break;
         default:
             break;

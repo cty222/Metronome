@@ -26,8 +26,41 @@
     [self.VolumeSetsControl ResetVolumeSets];
 }
 
+- (void) initNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(TapChangeBPMCallBack:)
+                                                 name:kTapChangeBPMValue
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(twicklingCircleButton:)
+                                                 name:kCircleButtonTwickLing
+                                               object:nil];
+}
 
-- (void) InitlizeCellParameterControlItems
+- (void)twicklingCircleButton:(NSNotification *)notification {
+    __CIRCLE_BUTTON btnTag = [((NSNumber *)notification.object) intValue];
+    switch (btnTag) {
+        case AccentCircle_Button:
+            [self.VolumeSetsControl.AccentCircleVolumeButton TwickLing];
+            break;
+        case QuarterCircle_Button:
+            [self.VolumeSetsControl.QuarterCircleVolumeButton TwickLing];
+            break;
+        case EighthNoteCircle_Button:
+            [self.VolumeSetsControl.EighthNoteCircleVolumeButton TwickLing];
+            break;
+        case SixteenthNoteCircle_Button:
+            [self.VolumeSetsControl.SixteenthNoteCircleVolumeButton TwickLing];
+            break;
+        case TrippleNoteCircle_Button:
+            [self.VolumeSetsControl.TrippleNoteCircleVolumeButton TwickLing];
+            break;
+    }
+}
+
+- (void) initlizeCellParameterControlItems
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
@@ -49,13 +82,11 @@
     self.BPMPicker.delegate = self;
     
     
-    //Init  TapFunction
+    //initialize tap function
     self.TapFunction = [[TapFunction alloc] init];
     self.TapFunction.TapAlertImage = self.TapAlertImage;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(TapChangeBPMCallBack:)
-                                                 name:kTapChangeBPMValue
-                                               object:nil];
+    [self initNotifications];
+    
 
     //VoiceTypePicker
     [self InitilaizeVoiceTypePickerView];
@@ -80,13 +111,13 @@
 
 - (void) InitilaizeVoiceTypePickerView
 {
-    NSArray *VoiceTypeArray = gMetronomeModel.VoiceTypeDataTable;
+    NSArray *voiceTypeArray = gMetronomeModel.VoiceTypeDataTable;
     self.VoiceTypePickerView.OriginYOffset = self.OptionScrollView.frame.origin.y - self.VoiceTypePickerView.frame.origin.y;
     self.VoiceTypePickerView.ArrowCenterLine = self.VoiceTypePicker.frame.origin.y + self.VoiceTypePicker.frame.size.height/2 - self.OptionScrollView.contentOffset.y;
     self.VoiceTypePickerView.TriggerButton = self.VoiceTypePicker;
     self.VoiceTypePickerView.delegate = self;
     
-    [self.VoiceTypePickerView DisplayPropertyCell:VoiceTypeArray : self.VoiceTypePicker];
+    [self.VoiceTypePickerView DisplayPropertyCell:voiceTypeArray : self.VoiceTypePicker];
 }
 
 
@@ -132,7 +163,7 @@
 -(IBAction) LoopCellEditerDisplay:(UIButton *)sender
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-    TempoCell * TargetCell = Parent.tempoCells[Parent.currentSelectedCellIndex];
+    TempoCell * TargetCell = Parent.engine.tempoCells[Parent.currentSelectedCellIndex];
     
     if ([TargetCell.loopCount intValue] != ROUND_NO_DECOMAL_FROM_DOUBLE(self.LoopCellEditerView.ValueScrollView.Value))
     {
@@ -144,10 +175,9 @@
 
 - (IBAction) ChangeVoiceType:(UIButton *)TriggerItem
 {
-    NSArray *VoiceTypeArray = gMetronomeModel.VoiceTypeDataTable;
+    NSArray *voiceTypeArray = gMetronomeModel.VoiceTypeDataTable;
 
-    if (gClickVoiceList.count <= TriggerItem.tag || VoiceTypeArray.count <= TriggerItem.tag)
-    {
+    if (voiceTypeArray.count <= TriggerItem.tag) {
         return;
     }
     
@@ -155,15 +185,14 @@
     
     // Because 0 is no voice
     NSInteger VoiceIndex = TriggerItem.tag;
-    Parent.currentCell.voiceType = (VoiceType *)VoiceTypeArray[TriggerItem.tag];
-    Parent.currentVoice = [gClickVoiceList objectAtIndex:VoiceIndex];
-    
-    // TODO : 不要save這麼頻繁
-    [gMetronomeModel Save];
+    Parent.engine.currentCell.voiceType = (VoiceType *)voiceTypeArray[TriggerItem.tag];
     
     [self.VoiceTypePicker setBackgroundImage:[TriggerItem backgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];
 
-
+    Parent.engine.currentVoice = [Parent.globalServices.engine.clickVoiceList objectAtIndex:VoiceIndex];
+    
+    // TODO : 不要save這麼頻繁
+    [gMetronomeModel Save];
 }
 
 - (void) ChangeVoiceTypePickerImage: (int) TagNumber
@@ -202,8 +231,8 @@
     }
     
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-    Parent.currentCell.timeSignatureType = (TimeSignatureType *)TimeSignatureTypeArray[TriggerItem.tag];
-    Parent.currentTimeSignature = TriggerItem.titleLabel.text;
+    Parent.engine.currentCell.timeSignatureType = (TimeSignatureType *)TimeSignatureTypeArray[TriggerItem.tag];
+    Parent.engine.currentTimeSignature = TriggerItem.titleLabel.text;
     
     // TODO : 不要save這麼頻繁
     [gMetronomeModel Save];
@@ -226,61 +255,6 @@
     }
 }
 
-
-- (int) DecodeTimeSignatureToValue : (NSString *)TimeSignatureString
-{
-    
-    if ([TimeSignatureString isEqualToString:@"1/4"])
-    {
-        return 1;
-    }
-    else if ([TimeSignatureString isEqualToString:@"2/4"])
-    {
-        return 2;
-    }
-    else if ([TimeSignatureString isEqualToString:@"3/4"])
-    {
-        return 3;
-    }
-    else if ([TimeSignatureString isEqualToString:@"4/4"])
-    {
-        return 4;
-    }
-    else if ([TimeSignatureString isEqualToString:@"5/4"])
-    {
-        return 5;
-    }
-    else if ([TimeSignatureString isEqualToString:@"6/4"])
-    {
-        return 6;
-    }
-    else if ([TimeSignatureString isEqualToString:@"7/4"])
-    {
-        return 7;
-    }
-    else if ([TimeSignatureString isEqualToString:@"8/4"])
-    {
-        return 8;
-    }
-    else if ([TimeSignatureString isEqualToString:@"9/4"])
-    {
-        return 9;
-    }
-    else if ([TimeSignatureString isEqualToString:@"10/4"])
-    {
-        return 10;
-    }
-    else if ([TimeSignatureString isEqualToString:@"11/4"])
-    {
-        return 11;
-    }
-    else if ([TimeSignatureString isEqualToString:@"12/4"])
-    {
-        return 12;
-    }
-    return 4;
-}
-
 // =========================
 // delegate
 //
@@ -295,7 +269,7 @@
     if (Picker == self.BPMPicker)
     {
         // BPM Save
-        Parent.currentCell.bpmValue = [NSNumber numberWithFloat:self.BPMPicker.Value];
+        Parent.engine.currentCell.bpmValue = [NSNumber numberWithFloat:self.BPMPicker.Value];
     
         // TODO : 不要save這麼頻繁
         [gMetronomeModel Save];
