@@ -8,65 +8,92 @@
 
 #import "MetronomeMainViewController.h"
 
-
+// private property
 @interface MetronomeMainViewController ()
+
+@property GlobalServices *globalServices;
+@property NotesTool * noteCallbackInterface;
+
+// ===== TODO: replace ==========
+@property NSTimer * clickTimer;
+@property CURRENT_PLAYING_NOTE currentPlayingNoteCounter;
+@property int accentCounter;
+@property int loopCountCounter;
+@property int timeSignatureCounter;
+@property BOOL listChangeFocusFlag;
+// ==============================
+
+@property BOOL doesItNeedToChangeToNextCellAfterFinished;
 
 @end
 
 @implementation MetronomeMainViewController
 {
-    // Index
-    int _FocusIndex;
-    BOOL _IsDeleteUICellFinished;
     
-    // LoopCellPlayingFlag
-    METRONOME_PLAYING_MODE _PlayingMode;
-    
-    // Tools
-    NotesTool * _NTool;
-    
-    
-    // ========================
-    // Loop
-    NSTimer *PlaySoundTimer;
-    
-    // Loop Counter
-    int _AccentCounter;
-    CURRENT_PLAYING_NOTE _CurrentPlayingNoteCounter;
-    int _LoopCountCounter;
-    int _TimeSignatureCounter;
-    BOOL _ListChangeFocusFlag;
-    
-    
-    BOOL _IsNeedChangeToNextCell;
-    //
-    // ========================
+}
 
+@synthesize globalServices = _globalServices;
+@synthesize currentSelectedCellIndex = _currentSelectedCellIndex;
+@synthesize currentPlayingMode = _currentPlayingMode;
+
+- (id) initWithGlobalServices: (GlobalServices *) globalService
+{
+    self = [super init];
+    if (self){
+        self.globalServices = globalService;
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    
+    [self initailzieGlobalTools];
+    
+    [self initLocalServices];
+    
+    [self initializeFlagStatus];
+    
+    [self initializeLayoutToFitDeviceSize];
+    
+    // Initalize Sub View
+    [self initializeTopSubView];
+    
+    [self initializeBottomSubView];
+    
+    // Get Control UI form sub View and initialize default data
+    [self initializeSubController];
+    
+    [self registerNotifications];
+    
+    [self initializeCustomizeAdPopUp];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
    
-    [self SyncCurrentTempoListFromModel];
+    [self syncTempoListWithModel];
     
-    [self SyncCurrentTempoCellDatatableWithModel];
+    [self syncTempoCellDatatableWithModel];
 
-    [self ReflashCellListAndFocusCellByCurrentData];
+    [self reflashCellListAndCurrentCellByCurrentData];
     
-    if (self.CellParameterSettingSubController != nil)
+    if (self.cellParameterSettingSubController != nil)
     {
-        [self.CellParameterSettingSubController MainViewWillAppear];
+        [self.cellParameterSettingSubController MainViewWillAppear];
     }
     
-    if (self.LoopAndPlayViewSubController != nil)
+    if (self.loopAndPlayViewSubController != nil)
     {
-        [self.LoopAndPlayViewSubController MainViewWillAppear];
+        [self.loopAndPlayViewSubController MainViewWillAppear];
     }
     
-    if (self.SystemPageController != nil)
+    if (self.systemPageController != nil)
     {
-        [self.SystemPageController MainViewWillAppear];
+        [self.systemPageController MainViewWillAppear];
     }
     
     // ===================
@@ -76,9 +103,9 @@
         gPlayMusicChannel = [PlayerForSongs alloc];
     }
     
-    if (self.CurrentTempoList.musicInfo == nil)
+    if (self.currentTempoList.musicInfo == nil)
     {
-        self.CurrentTempoList.musicInfo = [gMetronomeModel CreateNewMusicInfo];
+        self.currentTempoList.musicInfo = [gMetronomeModel CreateNewMusicInfo];
         [gMetronomeModel Save];
     }
     
@@ -86,12 +113,15 @@
 
     [self SyncMusicPropertyFromGlobalConfig];
     
-    //TODO: testing
-    self.networkManager = [AFHTTPRequestOperationManager manager];
-    [self requirePostWebJson: @"http://www.rock-click.com/midi_drum/test5"];
+    //TODO: web api test
+    //self.networkManager = [AFHTTPRequestOperationManager manager];
+    //[self requirePostWebJson: @"http://www.rock-click.com/midi_drum/test5"];
     
+    
+#if TODO
     NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
     NSLog(@"%@", countryCode);
+#endif
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -102,35 +132,55 @@
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.PlayingMode = STOP_PLAYING;
+    self.currentPlayingMode = STOP_PLAYING;
     [gPlayMusicChannel Stop];
 }
 
-- (void)viewDidLoad
+// ==============================
+// initialize and register methods
+// ==============================
+- (void) initailzieGlobalTools
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.globalServices = [[GlobalServices alloc] init];
     
-    [self InitailzieTools];
+    // 2. Initialize player
+    [AudioPlay AudioPlayEnable];
     
-    [self InitializeFlagStatus];
+    // 3. Initilize Click Voice
+    [AudioPlay ResetClickVocieList];
     
-    // UI layout
-    //
+    self.noteCallbackInterface = [[NotesTool alloc] init];
+    self.noteCallbackInterface.delegate = self;
+}
+
+- (void) initLocalServices
+{
+}
+
+- (void) initializeFlagStatus
+{
+    _currentPlayingMode = STOP_PLAYING;
+    _currentSelectedCellIndex = -1;
     
+    self.doesItNeedToRestartMetronome = NO;
+}
+
+- (void) initializeLayoutToFitDeviceSize
+{
+    // TODO: fixed iPhone 6S layout error
     CGRect FullViewFrame = self.FullView.frame;
     CGRect TopViewFrame = self.TopView.frame;
     CGRect BottomViewFrame = self.BottomView.frame;
     
-
+    
     NSNumber * DeviceType = [GlobalConfig DeviceType];
     switch (DeviceType.intValue) {
         case IPHONE_4S:
             FullViewFrame = CGRectMake(FullViewFrame.origin.x
-                                      , FullViewFrame.origin.y
-                                      , FullViewFrame.size.width
-                                      , IPHONE_4S_HEIGHT
-                                      );
+                                       , FullViewFrame.origin.y
+                                       , FullViewFrame.size.width
+                                       , IPHONE_4S_HEIGHT
+                                       );
             
             TopViewFrame = CGRectMake(TopViewFrame.origin.x
                                       , TopViewFrame.origin.y
@@ -138,10 +188,10 @@
                                       , TopViewFrame.size.height - (IPHONE_5S_HEIGHT - IPHONE_4S_HEIGHT)
                                       );
             BottomViewFrame = CGRectMake(BottomViewFrame.origin.x
-                                      , BottomViewFrame.origin.y  - (IPHONE_5S_HEIGHT - IPHONE_4S_HEIGHT)
-                                      , BottomViewFrame.size.width
-                                      , BottomViewFrame.size.height
-                                      );
+                                         , BottomViewFrame.origin.y  - (IPHONE_5S_HEIGHT - IPHONE_4S_HEIGHT)
+                                         , BottomViewFrame.size.width
+                                         , BottomViewFrame.size.height
+                                         );
             break;
         case IPHONE_5S:
             break;
@@ -153,94 +203,30 @@
     self.TopView.frame = TopViewFrame;
     self.BottomView.frame = BottomViewFrame;
     
-    // Initalize Sub View
-    [self InitializeTopSubView];
-    
-    [self InitializeBottomSubView];
 
-    // Get Control UI form sub View and initialize default data
-    [self InitializeSubController];
-    
-    [self.CellParameterSettingSubController InitlizeCellParameterControlItems];
-    
-    [self.LoopAndPlayViewSubController InitlizePlayingItems];
-    
-    [self.LoopAndPlayViewSubController InitializeLoopControlItem];
-   
-    [self.SystemPageController InitializeSystemButton];
-    
-    [self GlobalEventInitialize];
-
-    [self InitializeMiddleAdSubView];
 }
 
-- (void) GlobalEventInitialize
+- (void) initializeSubController
 {
-    // Change View Controller
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(ChangePageToSystemView:)
-                                                 name:kChangeToSystemPageView
-                                               object:nil];
+    self.cellParameterSettingSubController = [[CellParameterSettingControl alloc] init];
+    self.cellParameterSettingSubController.ParrentController = self;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(ChangePageToMetronomeView:)
-                                                 name:kChangeBackToMetronomeView
-                                               object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(VoiceStopByInterrupt:)
-                                                 name:kVoiceStopByInterrupt
-                                               object:nil];
-}
-
-- (void) ChangePageToSystemView:(NSNotification *)Notification
-{
-    [self presentViewController:[GlobalConfig SystemPageViewController] animated:YES completion:nil];
-}
-
-- (void) ChangePageToMetronomeView:(NSNotification *)Notification
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void) VoiceStopByInterrupt: (NSNotification *)Notification
-{
-    self.PlayingMode = STOP_PLAYING;
-}
-
-- (void) InitializeSubController
-{
-    self.CellParameterSettingSubController = [[CellParameterSettingControl alloc] init];
-    self.CellParameterSettingSubController.ParrentController = self;
+    self.loopAndPlayViewSubController = [[LoopAndPlayViewControl alloc] init];
+    self.loopAndPlayViewSubController.ParrentController = self;
     
-    self.LoopAndPlayViewSubController = [[LoopAndPlayViewControl alloc] init];
-    self.LoopAndPlayViewSubController.ParrentController = self;
+    self.systemPageController = [[SystemPageControl alloc] init];
+    self.systemPageController.ParrentController = self;
     
-    self.SystemPageController = [[SystemPageControl alloc] init];
-    self.SystemPageController.ParrentController = self;
+    [self.cellParameterSettingSubController InitlizeCellParameterControlItems];
+    
+    [self.loopAndPlayViewSubController InitlizePlayingItems];
+    
+    [self.loopAndPlayViewSubController InitializeLoopControlItem];
+    
+    [self.systemPageController InitializeSystemButton];
 }
 
-- (void) InitailzieTools
-{
-    // 2. Initialize player
-    [AudioPlay AudioPlayEnable];
-    
-    // 3. Initilize Click Voice
-    [AudioPlay ResetClickVocieList];
-    
-    _NTool = [[NotesTool alloc] init];
-    _NTool.delegate = self;
-}
-
-- (void) InitializeFlagStatus
-{
-    _PlayingMode = STOP_PLAYING;
-    _FocusIndex = -1;
-    
-    self.IsNeededToRestartMetronomeClick = NO;
-}
-
-- (void) InitializeTopSubView
+- (void) initializeTopSubView
 {
     if (self.TopSubView == nil)
     {
@@ -254,10 +240,10 @@
          makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }
     [self.TopView addSubview:self.TopSubView];
-
+    
 }
 
-- (void) InitializeBottomSubView
+- (void) initializeBottomSubView
 {
     if (self.BottomView.subviews.count != 0)
     {
@@ -273,7 +259,7 @@
         
         self.volumeBottomSubview = [[MetronomeBottomView alloc] initWithFrame:SubFrame];
     }
-
+    
     
     // 2. musicSettingBottomSubview
     if (self.musicSettingBottomSubview == nil)
@@ -283,7 +269,7 @@
         
         self.musicSettingBottomSubview = [[MusicSettingBottomSubview alloc] initWithFrame:SubFrame];
     }
-
+    
     
     if (self.musicSpeedBottomSubview == nil)
     {
@@ -292,16 +278,16 @@
         
         self.musicSpeedBottomSubview = [[MusicSpeedBottomSubview alloc] initWithFrame:SubFrame];
     }
-
+    
     [self.BottomView addSubview:self.volumeBottomSubview];
     [self.BottomView addSubview:self.musicSettingBottomSubview];
     [self.BottomView addSubview:self.musicSpeedBottomSubview];
-
+    
     // 預設開 volumeBottomSubview
     [self bottomSwitchToVolumes: self.volumeBottomSubview];
 }
 
-- (void) InitializeMiddleAdSubView
+- (void) initializeCustomizeAdPopUp
 {
     // initialize web ad
     if (self.webAdSubview == nil)
@@ -320,23 +306,60 @@
     self.middleAdView.hidden = YES;
 }
 
+- (void) registerNotifications
+{
+    // Change View Controller
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(ChangePageToSystemView:)
+                                                 name:kChangeToSystemPageView
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(ChangePageToMetronomeView:)
+                                                 name:kChangeBackToMetronomeView
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(VoiceStopByInterrupt:)
+                                                 name:kVoiceStopByInterrupt
+                                               object:nil];
+}
+
+// =============================
+// notification callback
+// =============================
+- (void) ChangePageToSystemView:(NSNotification *)Notification
+{
+    [self presentViewController:[self.globalServices getUIViewController:SYSTEMSETTING_PAGE] animated:YES completion:nil];
+}
+
+- (void) ChangePageToMetronomeView:(NSNotification *)Notification
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) VoiceStopByInterrupt: (NSNotification *)Notification
+{
+    self.currentPlayingMode = STOP_PLAYING;
+}
+
 // ============
 //
 // TODO : Model Sync
 //
 
-- (void) SyncCurrentTempoListFromModel
+- (void) syncTempoListWithModel
 {
     NSNumber *LastTempoListIndexUserSelected = [GlobalConfig GetLastTempoListIndexUserSelected];
     
-    self.CurrentTempoList =  [gMetronomeModel PickTargetTempoListFromDataTable:LastTempoListIndexUserSelected];
+    self.currentTempoList =  [gMetronomeModel PickTargetTempoListFromDataTable:LastTempoListIndexUserSelected];
    
-    if (self.CurrentTempoList == nil)
+    if (self.currentTempoList == nil)
     {
         NSLog(@"嚴重錯誤: Last TempoList 同步錯誤 Error!!!");
 
-        self.CurrentTempoList = [gMetronomeModel PickTargetTempoListFromDataTable:@0];
-        if (self.CurrentTempoList == nil)
+        self.currentTempoList = [gMetronomeModel PickTargetTempoListFromDataTable:@0];
+        if (self.currentTempoList == nil)
         {
             NSLog(@"嚴重錯誤: TempoList 資料庫需要reset");
         }
@@ -346,7 +369,7 @@
         }
     }
     
-    if (self.CurrentTempoList != nil)
+    if (self.currentTempoList != nil)
     {
         [self SyncMetronomePrivateProperties];
     }
@@ -354,20 +377,20 @@
 
 - (void) SyncMetronomePrivateProperties
 {
-    if (self.CurrentTempoList == nil)
+    if (self.currentTempoList == nil)
     {
         NSLog(@"Error: Using Error CurrentList is nil!!");
-        [self SyncCurrentTempoListFromModel];
+        [self syncTempoListWithModel];
         return;
     }
     
-    if ([self.CurrentTempoList.privateProperties.doubleValueEnable boolValue])
+    if ([self.currentTempoList.privateProperties.doubleValueEnable boolValue])
     {
-        _CellParameterSettingSubController.BPMPicker.Mode = BPM_PICKER_DOUBLE_MODE;
+        self.cellParameterSettingSubController.BPMPicker.Mode = BPM_PICKER_DOUBLE_MODE;
     }
     else
     {
-        _CellParameterSettingSubController.BPMPicker.Mode = BPM_PICKER_INT_MODE;
+        self.cellParameterSettingSubController.BPMPicker.Mode = BPM_PICKER_INT_MODE;
     }
 }
 
@@ -376,8 +399,8 @@
     self.MusicProperties = [GlobalConfig GetMusicProperties];
     if (self.MusicProperties.MusicFunctionEnable)
     {
-        _LoopAndPlayViewSubController.PlayMusicButton.hidden = NO;
-        _LoopAndPlayViewSubController.PlayCellListButton.hidden = YES;
+        self.loopAndPlayViewSubController.PlayMusicButton.hidden = NO;
+        self.loopAndPlayViewSubController.PlayCellListButton.hidden = YES;
         
         // Sync music property
         if (self.MusicProperties.MusicHalfRateEnable)
@@ -394,56 +417,58 @@
     }
     else
     {
-        _LoopAndPlayViewSubController.PlayMusicButton.hidden = YES;
-        _LoopAndPlayViewSubController.PlayCellListButton.hidden = NO;
+        self.loopAndPlayViewSubController.PlayMusicButton.hidden = YES;
+        self.loopAndPlayViewSubController.PlayCellListButton.hidden = NO;
     }
 }
 
 - (void) SyncMusicInfoFromTempList
 {
-    if (self.CurrentTempoList.musicInfo.persistentID != nil)
+    if (self.currentTempoList.musicInfo.persistentID != nil)
     {
-        MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : self.CurrentTempoList.musicInfo.persistentID ];
+        MPMediaItem *Item =  [gPlayMusicChannel GetFirstMPMediaItemFromPersistentID : self.currentTempoList.musicInfo.persistentID ];
         if (![gPlayMusicChannel isPlaying])
         {
             [gPlayMusicChannel PrepareMusicToplay:Item];
         }
-        gPlayMusicChannel.StartTime = [self.CurrentTempoList.musicInfo.startTime floatValue];
-        gPlayMusicChannel.StopTime = [self.CurrentTempoList.musicInfo.endTime floatValue];
-        gPlayMusicChannel.Volume = [self.CurrentTempoList.musicInfo.volume floatValue];
+        gPlayMusicChannel.StartTime = [self.currentTempoList.musicInfo.startTime floatValue];
+        gPlayMusicChannel.StopTime = [self.currentTempoList.musicInfo.endTime floatValue];
+        gPlayMusicChannel.Volume = [self.currentTempoList.musicInfo.volume floatValue];
     }
 }
 
-- (void) SyncCurrentTempoCellDatatableWithModel
+- (void) syncTempoCellDatatableWithModel
 {
-    if (self.CurrentTempoList == nil)
+    if (self.currentTempoList == nil)
     {
         NSLog(@"錯誤: SyncCurrentFocusCellFromCurrentTempoList CurrentTempoList == nil");
         return;
     }
 
-    self.CurrentCellsDataTable = [gMetronomeModel FetchTempoCellFromTempoListWithSort:self.CurrentTempoList];
-    if (self.CurrentCellsDataTable == nil)
+    self.tempoCells = [gMetronomeModel FetchTempoCellFromTempoListWithSort:self.currentTempoList];
+    if (self.tempoCells == nil)
     {
-        self.CurrentCellsDataTable = gMetronomeModel.TempoListDataTable[0];
+        self.tempoCells = gMetronomeModel.TempoListDataTable[0];
     }
     
-    NSLog(@"%@", self.CurrentCellsDataTable);
+#if TOOD
+    NSLog(@"%@", self.tempoCells);
+#endif
 }
 
-- (int) GetFocusCellWithCurrentTempoList
+- (int) getCurrentCellFromTempoList
 {
-    if (self.CurrentTempoList == nil)
+    if (self.currentTempoList == nil)
     {
         NSLog(@"錯誤: SyncCurrentFocusCellFromCurrentTempoList CurrentTempoList == nil");
         return 0;
     }
     
-    NSNumber *LastFocusCellIndex = self.CurrentTempoList.focusCellIndex;
+    NSNumber *lastFocusCellIndex = self.currentTempoList.focusCellIndex;
 
-    if (self.CurrentCellsDataTable.count > [LastFocusCellIndex intValue])
+    if (self.tempoCells.count > [lastFocusCellIndex intValue])
     {
-        return [LastFocusCellIndex intValue];
+        return [lastFocusCellIndex intValue];
     }
     else
     {
@@ -451,9 +476,9 @@
     }
 }
 
-- (void) ReflashCellListAndFocusCellByCurrentData
+- (void) reflashCellListAndCurrentCellByCurrentData
 {
-    [self.LoopAndPlayViewSubController CopyCellListToSelectBar : self.CurrentCellsDataTable];
+    [self.loopAndPlayViewSubController CopyCellListToSelectBar : self.tempoCells];
 }
 
 
@@ -463,101 +488,84 @@
 //  =========================
 //  property
 //
-- (BOOL) GetIsDeleteUICellFinished
+- (int) getCurrentSelectedCellIndex
 {
-    return _IsDeleteUICellFinished;
-}
-
--(void) SetIsDeleteUICellFinished: (BOOL)NewValue
-{
-    if (_IsDeleteUICellFinished == NewValue)
+    if (_currentSelectedCellIndex >= self.tempoCells.count)
     {
-        return;
+        NSLog(@"Bug !! Controller _currentSelectedCellIndex over count error" );
+        _currentSelectedCellIndex = (int)(self.tempoCells.count -1);
     }
-    
-    _IsDeleteUICellFinished = NewValue;
-}
-
-
-- (int) GetFocusIndex
-{
-    if (_FocusIndex >= self.CurrentCellsDataTable.count)
+    else if (_currentSelectedCellIndex < 0)
     {
-        NSLog(@"Bug !! Controller _FocusIndex over count error" );
-        _FocusIndex = (int)(self.CurrentCellsDataTable.count -1);
-    }
-    else if (_FocusIndex < 0)
-    {
-        NSLog(@"Bug !! Controller _FocusIndex lower 0 error");
-        _FocusIndex = 0;
+        NSLog(@"Bug !! Controller _currentSelectedCellIndex lower 0 error");
+        _currentSelectedCellIndex = 0;
         
     }
-    return _FocusIndex;
+    return _currentSelectedCellIndex;
 }
 
-// 不會設下去到Bottom View UI
-- (void) SetFocusIndex:(int) NewValue
+// won't set in Bottom View UI
+- (void) setCurrentSelectedCellIndex:(int) newValue
 {
-    if (NewValue < 0
-        || NewValue >= self.CurrentCellsDataTable.count
-        || (self.PlayingMode == LIST_PLAYING && NewValue == _FocusIndex && !_ListChangeFocusFlag)
+    if (newValue < 0
+        || newValue >= self.tempoCells.count
+        || (self.currentPlayingMode == LIST_PLAYING && newValue == _currentSelectedCellIndex && !self.listChangeFocusFlag)
         )
     {
       return;
     }
-    else if (_ListChangeFocusFlag)
+    else if (self.listChangeFocusFlag)
     {
-        _ListChangeFocusFlag = NO;
+        self.listChangeFocusFlag = NO;
     }
     
-    _FocusIndex = NewValue;
+    _currentSelectedCellIndex = newValue;
     
-    // 同步到 Model
-    self.CurrentTempoList.focusCellIndex = [NSNumber numberWithInt:_FocusIndex];
+    // sync to Model
+    self.currentTempoList.focusCellIndex = [NSNumber numberWithInt:_currentSelectedCellIndex];
     [gMetronomeModel Save];
     
-    self.CurrentCell = self.CurrentCellsDataTable[_FocusIndex];
+    self.currentCell = self.tempoCells[_currentSelectedCellIndex];
     
     // Set BPM
-    self.TopSubView.BPMPicker.Value = [self.CurrentCell.bpmValue floatValue];
+    self.TopSubView.BPMPicker.Value = [self.currentCell.bpmValue floatValue];
     
     // Set Volume Set
-    [self.CellParameterSettingSubController.VolumeSetsControl SetVolumeBarVolume:self.CurrentCell];
+    [self.cellParameterSettingSubController.VolumeSetsControl SetVolumeBarVolume:self.currentCell];
     
     // Set Voice
-    self.CurrentVoice = [gClickVoiceList objectAtIndex:[self.CurrentCell.voiceType.sortIndex intValue]];
-    [_CellParameterSettingSubController ChangeVoiceTypePickerImage:[self.CurrentCell.voiceType.sortIndex intValue]];
+    self.currentVoice = [gClickVoiceList objectAtIndex:[self.currentCell.voiceType.sortIndex intValue]];
+    [self.cellParameterSettingSubController ChangeVoiceTypePickerImage:[self.currentCell.voiceType.sortIndex intValue]];
     
     // Set TimeSignature
-    self.CurrentTimeSignature = self.CurrentCell.timeSignatureType.timeSignature;
-    [self.CellParameterSettingSubController.TimeSigaturePicker setTitle:self.CurrentTimeSignature forState:UIControlStateNormal];
+    self.currentTimeSignature = self.currentCell.timeSignatureType.timeSignature;
+    [self.cellParameterSettingSubController.TimeSigaturePicker setTitle:self.currentTimeSignature forState:UIControlStateNormal];
 
     // Set LoopCount
-    [_CellParameterSettingSubController.LoopCellEditerView.ValueScrollView SetValueWithoutDelegate:[self.CurrentCell.loopCount intValue]];
+    [self.cellParameterSettingSubController.LoopCellEditerView.ValueScrollView SetValueWithoutDelegate:[self.currentCell.loopCount intValue]];
 
     
-    [self ResetCounter];
-
+    [self resetCounter];
 }
 
-- (METRONOME_PLAYING_MODE) GetPlayingMode
+- (METRONOME_PLAYING_MODE) getCurrentPlayingMode
 {
-    return _PlayingMode;
+    return _currentPlayingMode;
 }
 
-- (void) SetPlayingMode : (METRONOME_PLAYING_MODE) NewValue
+- (void) setCurrentPlayingMode : (METRONOME_PLAYING_MODE) newValue
 {
-    if (NewValue == _PlayingMode)
+    if (newValue == _currentPlayingMode)
     {
         return;
     }
     
-    _PlayingMode = NewValue;
+    _currentPlayingMode = newValue;
     
-    switch (_PlayingMode) {
+    switch (_currentPlayingMode) {
         case STOP_PLAYING:
-            [self StopClick];
-            [self ResetCounter];
+            [self stopClick];
+            [self resetCounter];
 
             if (self.MusicProperties.MusicFunctionEnable && self.MusicProperties.PlaySingleCellWithMusicEnable)
             {
@@ -571,7 +579,7 @@
             self.adView.hidden = YES;
             break;
         case SINGLE_PLAYING:
-            [self StartClick];
+            [self startClick];
             if (self.MusicProperties.MusicFunctionEnable && self.MusicProperties.PlaySingleCellWithMusicEnable)
             {
                 if (gPlayMusicChannel.isPlaying)
@@ -585,16 +593,16 @@
             self.adView.hidden = NO;
             break;
         case LIST_PLAYING:
-            [self StartClick];
+            [self startClick];
             self.bottomSubviewSwitcher.hidden = YES;
             self.adView.hidden = NO;
             break;
         default:
-            self.PlayingMode = STOP_PLAYING;
+            self.currentPlayingMode = STOP_PLAYING;
             break;
     }
     
-    [self.LoopAndPlayViewSubController ChangeButtonDisplayByPlayMode];
+    [self.loopAndPlayViewSubController ChangeButtonDisplayByPlayMode];
 
 }
 //
@@ -607,54 +615,54 @@
 //
 - (void) HumanVoiceDynamicFirstBeat
 {
-    switch (_TimeSignatureCounter) {
+    switch (self.timeSignatureCounter) {
         case 0:
-            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                                : [self.CurrentVoice GetFirstBeatVoice]];
+            [gPlayUnit playSound: [self.currentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.currentVoice GetFirstBeatVoice]];
             break;
         case 1:
-            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                                : [self.CurrentVoice GetTwoBeatVoice]];
+            [gPlayUnit playSound: [self.currentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.currentVoice GetTwoBeatVoice]];
             break;
         case 2:
-            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                                : [self.CurrentVoice GetThreeBeatVoice]];
+            [gPlayUnit playSound: [self.currentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.currentVoice GetThreeBeatVoice]];
             break;
         case 3:
-            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                                : [self.CurrentVoice GetFourBeatVoice]];
+            [gPlayUnit playSound: [self.currentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.currentVoice GetFourBeatVoice]];
             break;
         case 4:
-            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                                : [self.CurrentVoice GetFiveBeatVoice]];
+            [gPlayUnit playSound: [self.currentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.currentVoice GetFiveBeatVoice]];
             break;
         case 5:
-            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                                : [self.CurrentVoice GetSixBeatVoice]];
+            [gPlayUnit playSound: [self.currentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.currentVoice GetSixBeatVoice]];
             break;
         case 6:
-            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                                : [self.CurrentVoice GetSevenBeatVoice]];
+            [gPlayUnit playSound: [self.currentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.currentVoice GetSevenBeatVoice]];
             break;
         case 7:
-            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                                : [self.CurrentVoice GetEightBeatVoice]];
+            [gPlayUnit playSound: [self.currentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.currentVoice GetEightBeatVoice]];
             break;
         case 8:
-            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                                : [self.CurrentVoice GetNineBeatVoice]];
+            [gPlayUnit playSound: [self.currentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.currentVoice GetNineBeatVoice]];
             break;
         case 9:
-            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                                : [self.CurrentVoice GetTenBeatVoice]];
+            [gPlayUnit playSound: [self.currentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.currentVoice GetTenBeatVoice]];
             break;
         case 10:
-            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                                : [self.CurrentVoice GetElevenBeatVoice]];
+            [gPlayUnit playSound: [self.currentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.currentVoice GetElevenBeatVoice]];
             break;
         case 11:
-            [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                                : [self.CurrentVoice GetTwelveBeatVoice]];
+            [gPlayUnit playSound: [self.currentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                                : [self.currentVoice GetTwelveBeatVoice]];
             break;
     }
 }
@@ -662,88 +670,88 @@
 - (void) FirstBeatFunc
 {
     // Accent
-    if ( _AccentCounter == 0 || _AccentCounter >= [self.CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
+    if ( self.accentCounter == 0 || self.accentCounter >= [self.cellParameterSettingSubController DecodeTimeSignatureToValue:self.currentTimeSignature])
     {
-        [gPlayUnit playSound: [self.CurrentCell.accentVolume floatValue]/ MAX_VOLUME
-                                : [self.CurrentVoice GetAccentVoice]];
+        [gPlayUnit playSound: [self.currentCell.accentVolume floatValue]/ MAX_VOLUME
+                                : [self.currentVoice GetAccentVoice]];
 
-        if ([self.CurrentCell.accentVolume floatValue] > 0)
+        if ([self.currentCell.accentVolume floatValue] > 0)
         {
-            [_CellParameterSettingSubController.VolumeSetsControl.AccentCircleVolumeButton TwickLing];
+            [self.cellParameterSettingSubController.VolumeSetsControl.AccentCircleVolumeButton TwickLing];
         }
-        _AccentCounter = 0;
+        self.accentCounter = 0;
     }
     
     // TODO: Change Voice
-    if ([@"HumanVoice" isEqualToString:NSStringFromClass([self.CurrentVoice class])])
+    if ([@"HumanVoice" isEqualToString:NSStringFromClass([self.currentVoice class])])
     {
         [self HumanVoiceDynamicFirstBeat];
     }
     else
     {
-        [gPlayUnit playSound: [self.CurrentCell.quarterNoteVolume floatValue] / MAX_VOLUME
-                            : [self.CurrentVoice GetFirstBeatVoice]];
+        [gPlayUnit playSound: [self.currentCell.quarterNoteVolume floatValue] / MAX_VOLUME
+                            : [self.currentVoice GetFirstBeatVoice]];
     }
-    if ([self.CurrentCell.quarterNoteVolume floatValue] > 0)
+    if ([self.currentCell.quarterNoteVolume floatValue] > 0)
     {
-        [_CellParameterSettingSubController.VolumeSetsControl.QuarterCircleVolumeButton TwickLing];
+        [self.cellParameterSettingSubController.VolumeSetsControl.QuarterCircleVolumeButton TwickLing];
     }
-    _AccentCounter++;
+    self.accentCounter++;
 }
 
 - (void) EBeatFunc
 {
-    [gPlayUnit playSound: [self.CurrentCell.sixteenNoteVolume floatValue] / MAX_VOLUME
-                        : [self.CurrentVoice GetEbeatVoice]];
-    if ([self.CurrentCell.sixteenNoteVolume floatValue] > 0)
+    [gPlayUnit playSound: [self.currentCell.sixteenNoteVolume floatValue] / MAX_VOLUME
+                        : [self.currentVoice GetEbeatVoice]];
+    if ([self.currentCell.sixteenNoteVolume floatValue] > 0)
     {
-        [_CellParameterSettingSubController.VolumeSetsControl.SixteenthNoteCircleVolumeButton TwickLing];
+        [self.cellParameterSettingSubController.VolumeSetsControl.SixteenthNoteCircleVolumeButton TwickLing];
     }
 }
 
 - (void) AndBeatFunc
 {
-    [gPlayUnit playSound: [self.CurrentCell.eighthNoteVolume floatValue] / MAX_VOLUME
-                        : [self.CurrentVoice GetAndBeatVoice]];
-    if ([self.CurrentCell.eighthNoteVolume floatValue] > 0)
+    [gPlayUnit playSound: [self.currentCell.eighthNoteVolume floatValue] / MAX_VOLUME
+                        : [self.currentVoice GetAndBeatVoice]];
+    if ([self.currentCell.eighthNoteVolume floatValue] > 0)
     {
-        [_CellParameterSettingSubController.VolumeSetsControl.EighthNoteCircleVolumeButton TwickLing];
+        [self.cellParameterSettingSubController.VolumeSetsControl.EighthNoteCircleVolumeButton TwickLing];
     }
 }
 
 - (void) ABeatFunc
 {
-    [gPlayUnit playSound: [self.CurrentCell.sixteenNoteVolume floatValue] / MAX_VOLUME
-                        : [self.CurrentVoice GetAbeatVoice]];
-    if ([self.CurrentCell.sixteenNoteVolume floatValue] > 0)
+    [gPlayUnit playSound: [self.currentCell.sixteenNoteVolume floatValue] / MAX_VOLUME
+                        : [self.currentVoice GetAbeatVoice]];
+    if ([self.currentCell.sixteenNoteVolume floatValue] > 0)
     {
-        [_CellParameterSettingSubController.VolumeSetsControl.SixteenthNoteCircleVolumeButton TwickLing];
+        [self.cellParameterSettingSubController.VolumeSetsControl.SixteenthNoteCircleVolumeButton TwickLing];
     }
 }
 
 - (void) TicBeatFunc
 {
-    if ([self.CurrentTempoList.privateProperties.shuffleEnable boolValue])
+    if ([self.currentTempoList.privateProperties.shuffleEnable boolValue])
     {
         return;
     }
     
-    [gPlayUnit playSound: [self.CurrentCell.trippleNoteVolume floatValue] / MAX_VOLUME
-                        : [self.CurrentVoice GetTicbeatVoice]];
+    [gPlayUnit playSound: [self.currentCell.trippleNoteVolume floatValue] / MAX_VOLUME
+                        : [self.currentVoice GetTicbeatVoice]];
     
-    if ([self.CurrentCell.trippleNoteVolume floatValue] > 0)
+    if ([self.currentCell.trippleNoteVolume floatValue] > 0)
     {
-        [_CellParameterSettingSubController.VolumeSetsControl.TrippleNoteCircleVolumeButton TwickLing];
+        [self.cellParameterSettingSubController.VolumeSetsControl.TrippleNoteCircleVolumeButton TwickLing];
     }
 }
 
 - (void) TocBeatFunc
 {
-    [gPlayUnit playSound: [self.CurrentCell.trippleNoteVolume floatValue] / MAX_VOLUME
-                        : [self.CurrentVoice GetTocbeatVoice]];
-    if ([self.CurrentCell.trippleNoteVolume floatValue] > 0)
+    [gPlayUnit playSound: [self.currentCell.trippleNoteVolume floatValue] / MAX_VOLUME
+                        : [self.currentVoice GetTocbeatVoice]];
+    if ([self.currentCell.trippleNoteVolume floatValue] > 0)
     {
-        [_CellParameterSettingSubController.VolumeSetsControl.TrippleNoteCircleVolumeButton TwickLing];
+        [self.cellParameterSettingSubController.VolumeSetsControl.TrippleNoteCircleVolumeButton TwickLing];
     }
 }
 
@@ -761,189 +769,170 @@
 - (void) ChangeToNextLoopCell
 {
     // Change to next
-    if (self.PlayingMode == LIST_PLAYING)
+    if (self.currentPlayingMode == LIST_PLAYING)
     {
-        int NewIndex = self.FocusIndex + 1;
+        int NewIndex = self.currentSelectedCellIndex + 1;
         
-        if (NewIndex >= self.CurrentCellsDataTable.count)
+        if (NewIndex >= self.tempoCells.count)
         {
-            if ([self.CurrentTempoList.privateProperties.tempoListLoopingEnable boolValue])
+            if ([self.currentTempoList.privateProperties.tempoListLoopingEnable boolValue])
             {
                 NewIndex = 0;
-                _ListChangeFocusFlag = YES;
+                self.listChangeFocusFlag = YES;
             }
             else
             {
-                self.PlayingMode = STOP_PLAYING;
+                self.currentPlayingMode = STOP_PLAYING;
                 return;
             }
         }
 
-        [self StopClick];
-        self.FocusIndex = NewIndex;
+        [self stopClick];
+        self.currentSelectedCellIndex = NewIndex;
         
-        // 如果Count是0就跳到下一個Cell
-        if ([self.CurrentCell.loopCount intValue] == 0)
+        // jump to next cell when counter is 0.
+        if ([self.currentCell.loopCount intValue] == 0)
         {
             [self ChangeToNextLoopCell];
             return;
         }
         
-        [self.LoopAndPlayViewSubController ChangeSelectBarForcusIndex: NewIndex];
+        [self.loopAndPlayViewSubController ChangeSelectBarForcusIndex: NewIndex];
         
-        [self StartClick];
+        [self startClick];
     }
 }
 
-- (void) ResetCounter
+- (void) resetCounter
 {
-    _IsNeedChangeToNextCell = NO;
-    _LoopCountCounter = 0;
-    _TimeSignatureCounter = 0;
-    _AccentCounter = 0;
-    _CurrentPlayingNoteCounter = NONE_CLICK;
+    self.doesItNeedToChangeToNextCellAfterFinished = NO;
+    self.timeSignatureCounter = 0;
+    self.accentCounter = 0;
+    self.loopCountCounter = 0;
+
+    self.currentPlayingNoteCounter = NONE_CLICK;
 }
 
-//Stop click
-- (void) StopClick
+- (void) stopClick
 {
-    if (PlaySoundTimer != nil)
+    if (self.clickTimer != nil)
     {
-        [PlaySoundTimer invalidate];
-        PlaySoundTimer = nil;
+        [self.clickTimer invalidate];
+        self.clickTimer = nil;
     }
 }
 
-//Start click
-- (void) StartClick
+- (void) startClick
 {
-    //重要!! 只要被改過值都會被設成YES.
-    self.IsNeededToRestartMetronomeClick = NO;
+    // important!! when any values have been changed,
+    // self.doesItNeedToRestartMetronome will be change to YES.
+    self.doesItNeedToRestartMetronome = NO;
 
-    if (PlaySoundTimer != nil) {
-        [self StopClick];
-        [self ResetCounter];
+    if (self.clickTimer != nil) {
+        [self stopClick];
+        [self resetCounter];
     }
     
-    if (self.PlayingMode == LIST_PLAYING)
+    if (self.currentPlayingMode == LIST_PLAYING)
     {
-        if (_LoopCountCounter >= [self.CurrentCell.loopCount intValue])
+        if (self.loopCountCounter >= [self.currentCell.loopCount intValue])
         {
             [self ChangeToNextLoopCell];
-            // 最後一次只有delay
-            // 沒有聲音
+            // there will be no sound in last click period.
             return;
         }
     }
     
-    if (_CurrentPlayingNoteCounter == NONE_CLICK)
+    if (self.currentPlayingNoteCounter == NONE_CLICK)
     {
-        _CurrentPlayingNoteCounter = FIRST_CLICK;
+        self.currentPlayingNoteCounter = FIRST_CLICK;
     }
     
-    // 因為Timer的特性是先等再做
-    // 所以必須要調整成先開始一次與最後多等一次
-    [self MetronomeTicker: nil];
+    // This engine is using timer, and timer will wait untill time up then trigger it.
+    // So here we need to play sound once before timer start.
+    [self metronomeTicker: nil];
     
-    float CurrentBPMValue = [self.CurrentCell.bpmValue floatValue];
+    float currentBPMValue = [self.currentCell.bpmValue floatValue];
     
-
-    if (_CellParameterSettingSubController.BPMPicker.Mode == BPM_PICKER_INT_MODE)
+    if (self.cellParameterSettingSubController.BPMPicker.Mode == BPM_PICKER_INT_MODE)
     {
-        //NSLog(@"CurrentBPMValue %f", CurrentBPMValue);
-
-        //NSLog(@"ROUND_NO_DECOMAL_FROM_DOUBLE %f", ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue));
-
-        //NSLog(@"BPM_TO_TIMER_VALUE %f", BPM_TO_TIMER_VALUE(ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue)));
-        PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE(
-                                                                ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue))
+        self.clickTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE(
+                                                                ROUND_NO_DECOMAL_FROM_DOUBLE(currentBPMValue))
                                                           target:self
-                                                        selector:@selector(MetronomeTicker:)
+                                                        selector:@selector(metronomeTicker:)
                                                         userInfo:nil
                                                          repeats:YES];
-#if CTY_DEBUG
-        NSLog(@"CurrentBPMValue %f", CurrentBPMValue);
-        NSLog(@"BPM_TO_TIMER_VALUE %f", BPM_TO_TIMER_VALUE(                                                          ROUND_NO_DECOMAL_FROM_DOUBLE(CurrentBPMValue)));
-#endif
-
     }
     else
     {
-        PlaySoundTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE(ROUND_ONE_DECOMAL_FROM_DOUBLE(CurrentBPMValue))
+        self.clickTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE(ROUND_ONE_DECOMAL_FROM_DOUBLE(currentBPMValue))
                                                           target:self
-                                                        selector:@selector(MetronomeTicker:)
+                                                        selector:@selector(metronomeTicker:)
                                                         userInfo:nil
                                                          repeats:YES];
-#if CTY_DEBUG
-        NSLog(@"CurrentBPMValue %f", CurrentBPMValue);
-        NSLog(@"BPM_TO_TIMER_VALUE %f", BPM_TO_TIMER_VALUE(                                                          ROUND_ONE_DECOMAL_FROM_DOUBLE(CurrentBPMValue)));
-#endif
     }
 
 }
 
-- (void) MetronomeTicker: (NSTimer *) ThisTimer
+- (void) metronomeTicker: (NSTimer *) thisTimer
 {
-    if (self.PlayingMode == STOP_PLAYING)
+    if (self.currentPlayingMode == STOP_PLAYING)
     {
-        [self ResetCounter];
-        [self StopClick];
-        [ThisTimer invalidate];
+        [self resetCounter];
+        [self stopClick];
+        [thisTimer invalidate];
         return;
     }
 
     // 必須要完整的delay
     // 所以是最後一次跑完, 再進來才換.
-    if(_IsNeedChangeToNextCell)
+    if(self.doesItNeedToChangeToNextCellAfterFinished)
     {
-        _IsNeedChangeToNextCell = NO;
+        self.doesItNeedToChangeToNextCellAfterFinished = NO;
         [self ChangeToNextLoopCell];
-        [ThisTimer invalidate];
+        [thisTimer invalidate];
         return;
     }
     
-    //NSLog(@"_CurrentPlayingNoteCounter %d", _CurrentPlayingNoteCounter);
-
-    
     // Play function
-    [self TriggerMetronomeSounds];
+    [self triggerMetronomeSounds];
     
-    [self AddMetronomeCounter];
+    [self addMetronomeCounter];
     
-    if ([self IsLoopCounterIsLargerThenSetupValue])
+    if ([self isLoopCounterIsLargerThenSetupValue])
     {
-        _IsNeedChangeToNextCell = YES;
+        self.doesItNeedToChangeToNextCellAfterFinished = YES;
     }
     
-    [self RestartClickIfBPMValueBeSetWhenPlaying];
+    [self restartClickIfBPMValueBeSetWhenPlaying];
 }
 
-- (void) AddMetronomeCounter
+- (void) addMetronomeCounter
 {
     // Count script
-    _CurrentPlayingNoteCounter++;
+    self.currentPlayingNoteCounter++;
     
-    if (_CurrentPlayingNoteCounter >= RESET_CLICK)
+    if (self.currentPlayingNoteCounter >= RESET_CLICK)
     {
-        _CurrentPlayingNoteCounter = FIRST_CLICK;
+        self.currentPlayingNoteCounter = FIRST_CLICK;
         
-        _TimeSignatureCounter++;
-        if (_TimeSignatureCounter >= [self.CellParameterSettingSubController DecodeTimeSignatureToValue:self.CurrentTimeSignature])
+        self.timeSignatureCounter++;
+        if (self.timeSignatureCounter >= [self.cellParameterSettingSubController DecodeTimeSignatureToValue:self.currentTimeSignature])
         {
-            _TimeSignatureCounter = 0;
-            if (self.PlayingMode >= LIST_PLAYING)
+            self.timeSignatureCounter = 0;
+            if (self.currentPlayingMode >= LIST_PLAYING)
             {
-                _LoopCountCounter++;
+                self.loopCountCounter++;
             }
         }
     }
 }
 
-- (BOOL) IsLoopCounterIsLargerThenSetupValue
+- (BOOL) isLoopCounterIsLargerThenSetupValue
 {
-    if (self.PlayingMode == LIST_PLAYING)
+    if (self.currentPlayingMode == LIST_PLAYING)
     {
-        if (_LoopCountCounter >= [self.CurrentCell.loopCount intValue])
+        if (self.loopCountCounter >= [self.currentCell.loopCount intValue])
         {
             return YES;
         }
@@ -952,22 +941,22 @@
     return NO;
 }
 
-- (void) RestartClickIfBPMValueBeSetWhenPlaying
+- (void) restartClickIfBPMValueBeSetWhenPlaying
 {
-    if(self.IsNeededToRestartMetronomeClick && self.PlayingMode != STOP_PLAYING)
+    if(self.doesItNeedToRestartMetronome && self.currentPlayingMode != STOP_PLAYING)
     {
-        [self StopClick];
-        [self StartClick];
+        [self stopClick];
+        [self startClick];
     }
 }
 
-- (void) TriggerMetronomeSounds
+- (void) triggerMetronomeSounds
 {
-    [NotesTool NotesFunc:_CurrentPlayingNoteCounter :_NTool];
+    [NotesTool NotesFunc:self.currentPlayingNoteCounter :self.noteCallbackInterface];
 }
 
 
-- (void)didReceiveMemoryWarning
+- (void) didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -977,8 +966,8 @@
     return YES;
 }
 
-// 支持的旋转方向
-- (NSUInteger)supportedInterfaceOrientations {
+// UIInterfaceOrientationMask
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 

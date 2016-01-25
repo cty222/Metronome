@@ -190,16 +190,6 @@ static NSMutableDictionary * ThisPlist;
 
         [GlobalConfig SaveDataInDistributionFile];
     }
-    
-    //
-    // TODO: Self testing
-    //
-    if (self.MetronomeMainViewController == nil ||
-        self.SystemPageViewController == nil
-        )
-    {
-        _IsInitialized = NO;
-    }
 }
 
 + (void) SaveDataInDistributionFile
@@ -391,59 +381,5 @@ static NSMutableDictionary * ThisPlist;
 //
 // ============================
 
-// ============================
-// Main View Initialize
-//
-+ (UIViewController *) MetronomeMainViewController
-{
-    static MetronomeMainViewController* _MetronomeMainViewController;
-    static dispatch_once_t _MMVCIToken;
-    dispatch_once(&_MMVCIToken, ^{
-        _MetronomeMainViewController = [[MetronomeMainViewController alloc] initWithNibName:NSStringFromClass([_MetronomeMainViewController class]) bundle:nil];
-    });
-    
-    if (![GlobalConfig IsInitialized])
-    {
-        return nil;
-    }
-    return _MetronomeMainViewController;
-}
-
-+ (UIViewController *) SystemPageViewController
-{
-    static SystemPageViewController* _SystemPageViewController;
-    static dispatch_once_t _SPVCToken;
-    dispatch_once(&_SPVCToken, ^{
-        _SystemPageViewController = [[SystemPageViewController alloc] initWithNibName:NSStringFromClass([_SystemPageViewController class]) bundle:nil];
-        _SystemPageViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-
-    });
-    
-    if (![GlobalConfig IsInitialized])
-    {
-        return nil;
-    }
-    return _SystemPageViewController;
-}
-
-+ (UIViewController *) TempoListController
-{
-    static TempoListViewController* _TempoListViewController;
-    static dispatch_once_t _TLCIToken;
-    dispatch_once(&_TLCIToken, ^{
-        _TempoListViewController = [[TempoListViewController alloc] initWithNibName:NSStringFromClass([_TempoListViewController class]) bundle:nil];
-        _TempoListViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        
-    });
-    
-    if (![GlobalConfig IsInitialized])
-    {
-        return nil;
-    }
-    return _TempoListViewController;
-}
-
-//
-// ============================
 
 @end

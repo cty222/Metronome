@@ -20,7 +20,7 @@
     // Data
     NSMutableArray * _GrooveCellValueStringList;
 
-    int _FocusIndex;
+    int _focusIndex;
     SELECT_BAR_MOVE_MODE _Mode;
     float _FocusLine;
     int _DeleteIndex;
@@ -188,7 +188,7 @@
 
 - (int) GetFocusIndex
 {
-    return _FocusIndex;
+    return _focusIndex;
 }
 
 - (void) SetFocusIndex:(int) NewValue
@@ -207,7 +207,7 @@
         return;
     }
 
-    _FocusIndex = NewValue;
+    _focusIndex = NewValue;
     
     // Set from code, not user touch, CurrentMove will be Zero.
     // (MoveToCenterTimer == nil) is for avoid recursive error.

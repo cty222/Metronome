@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#import "GlobalServices.h"
+
 #import "PlayerForSongs.h"
 #import "GlobalConfig.h"
 #import "TempoListViewController.h"
@@ -66,6 +69,6 @@ enum SYSTEM_INPUT_ID {
 @property (strong, nonatomic) IBOutlet UILabel *MusicHalfSpeedLabel;
 
 
-
+- (id) initWithGlobalServices: (GlobalServices *) globalService;
 
 @end

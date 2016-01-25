@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "GlobalConfig.h"
 #import "ListTablePicker.h"
+#import "GlobalServices.h"
 
 @interface TempoListViewController : UIViewController<ListTablePickerProtocol>
 @property (strong, nonatomic) IBOutlet ListTablePicker *ListTablePicker;
+
+- (id) initWithGlobalServices: (GlobalServices *) globalService;
 
 @end

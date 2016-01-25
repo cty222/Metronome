@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+// ========================
+// Global services
+#import "GlobalServices.h"
+
+// 
+// ========================
+
 // iAd
 #import "iAd/iAd.h"
 #import "WebAd.h"
@@ -26,7 +33,6 @@
 #import "MetronomeSelectBar.h"
 
 // Tools
-#import "NotesTool.h"
 #import "AudioPlay.h"
 
 // Control sub class
@@ -50,16 +56,21 @@ typedef enum {
 } METRONOME_PLAYING_MODE;
 
 @interface MetronomeMainViewController : UIViewController <NoteProtocol, WebAdProtocol>
+
+// ====================
+// TODO: make it readable
 @property (strong, nonatomic) IBOutlet UIView *FullView;
 @property (weak, nonatomic) IBOutlet UIView *TopView;
 @property (weak, nonatomic) IBOutlet UIView *BottomView;
 @property (weak, nonatomic) IBOutlet UIView *middleAdView;
-
 @property (nonatomic) MetronmoneTopSubViewIphone *TopSubView;
 @property (nonatomic) MetronomeBottomView *volumeBottomSubview;
 @property (nonatomic) MusicSettingBottomSubview *musicSettingBottomSubview;
 @property (nonatomic) MusicSpeedBottomSubview *musicSpeedBottomSubview;
 @property (strong, nonatomic) IBOutlet UIToolbar *bottomSubviewSwitcher;
+//
+// ====================
+
 
 // Ad view
 @property(nonatomic,retain)IBOutlet ADBannerView *adView;
@@ -69,31 +80,37 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet WebAd *webAdSubview;
 @property (strong, nonatomic) IBOutlet UIButton *closeWebAdSubviewbtn;
 
+
+
 // Network Manager
 @property AFHTTPRequestOperationManager *networkManager;
 
-@property NSArray * CurrentCellsDataTable;
-@property (nonatomic, strong) BeepBound* CurrentVoice;
-@property (nonatomic, strong) NSString* CurrentTimeSignature;
-@property (nonatomic, strong) TempoList* CurrentTempoList;
+@property NSArray * tempoCells;
+@property TempoCell* currentCell;
+@property (nonatomic) BeepBound* currentVoice;
+@property (nonatomic) NSString* currentTimeSignature;
+@property (nonatomic) TempoList* currentTempoList;
 
-@property TempoCell* CurrentCell;
-@property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
-@property (getter = GetPlayingMode, setter = SetPlayingMode:) METRONOME_PLAYING_MODE PlayingMode;
+@property (setter=setCurrentSelectedCellIndex:, getter=getCurrentSelectedCellIndex)int currentSelectedCellIndex;
+@property (setter=setCurrentPlayingMode:, getter=getCurrentPlayingMode)METRONOME_PLAYING_MODE currentPlayingMode;
 
-@property BOOL IsNeededToRestartMetronomeClick;
+@property BOOL doesItNeedToRestartMetronome;
 @property MusicProperties * MusicProperties;
 
-- (void) SyncCurrentTempoListFromModel;
-- (void) SyncCurrentTempoCellDatatableWithModel;
-- (int) GetFocusCellWithCurrentTempoList;
 
 
-- (void) ReflashCellListAndFocusCellByCurrentData;
+- (id) initWithGlobalServices: (GlobalServices *) globalService;
+
+
+// TODO: move to private 
+- (void) syncTempoListWithModel;
+- (void) syncTempoCellDatatableWithModel;
+- (int) getCurrentCellFromTempoList;
+- (void) reflashCellListAndCurrentCellByCurrentData;
 
 // Sub Controller
-@property  CellParameterSettingControl * CellParameterSettingSubController;
-@property  LoopAndPlayViewControl * LoopAndPlayViewSubController;
-@property  SystemPageControl * SystemPageController;
+@property  CellParameterSettingControl * cellParameterSettingSubController;
+@property  LoopAndPlayViewControl * loopAndPlayViewSubController;
+@property  SystemPageControl * systemPageController;
 
 @end

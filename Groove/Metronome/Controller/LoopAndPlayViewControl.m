@@ -71,7 +71,7 @@
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
-    switch (Parent.PlayingMode) {
+    switch (Parent.currentPlayingMode) {
         case STOP_PLAYING:
             [self.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayBlack"] forState:UIControlStateNormal];
             [self.PlayCellListButton setBackgroundImage:[UIImage imageNamed:@"PlayList"] forState:UIControlStateNormal];
@@ -105,7 +105,7 @@
     }
     self.SelectGrooveBar.GrooveCellValueStringList = _CellValueToStringList;
     
-    [self.SelectGrooveBar DisplayUICellList: [Parent GetFocusCellWithCurrentTempoList]];
+    [self.SelectGrooveBar DisplayUICellList: [Parent getCurrentCellFromTempoList]];
 
 }
 
@@ -117,18 +117,18 @@
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
-    if (Parent.PlayingMode == SINGLE_PLAYING)
+    if (Parent.currentPlayingMode == SINGLE_PLAYING)
     {
-        Parent.PlayingMode = STOP_PLAYING;
+        Parent.currentPlayingMode = STOP_PLAYING;
     }
     
-    if (Parent.PlayingMode == STOP_PLAYING)
+    if (Parent.currentPlayingMode == STOP_PLAYING)
     {
-        Parent.PlayingMode = LIST_PLAYING;
+        Parent.currentPlayingMode = LIST_PLAYING;
     }
-    else if(Parent.PlayingMode == LIST_PLAYING)
+    else if(Parent.currentPlayingMode == LIST_PLAYING)
     {
-        Parent.PlayingMode = STOP_PLAYING;
+        Parent.currentPlayingMode = STOP_PLAYING;
     }
     
 }
@@ -137,13 +137,13 @@
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
-    if (Parent.PlayingMode == STOP_PLAYING)
+    if (Parent.currentPlayingMode == STOP_PLAYING)
     {
-        Parent.PlayingMode = SINGLE_PLAYING;
+        Parent.currentPlayingMode = SINGLE_PLAYING;
     }
-    else if (Parent.PlayingMode == SINGLE_PLAYING)
+    else if (Parent.currentPlayingMode == SINGLE_PLAYING)
     {
-        Parent.PlayingMode = STOP_PLAYING;
+        Parent.currentPlayingMode = STOP_PLAYING;
     }
 }
 
@@ -184,7 +184,7 @@
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
-    TempoCell * TargetCell = Parent.CurrentCellsDataTable[Index];
+    TempoCell * TargetCell = Parent.tempoCells[Index];
     
     
     if (NewValue < [[GlobalConfig TempoCellLoopCountMin] intValue])
@@ -203,11 +203,11 @@
     
     [_CellValueToStringList replaceObjectAtIndex:Index withObject:[NSString stringWithFormat:@"%d", NewValue]];
     
-    [Parent SyncCurrentTempoListFromModel];
+    [Parent syncTempoListWithModel];
     
-    [Parent SyncCurrentTempoCellDatatableWithModel];
+    [Parent syncTempoCellDatatableWithModel];
     
-    [Parent ReflashCellListAndFocusCellByCurrentData];
+    [Parent reflashCellListAndCurrentCellByCurrentData];
 
 }
 
@@ -215,7 +215,7 @@
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
-    if (Parent.CurrentCellsDataTable.count >= [[GlobalConfig TempoCellNumberMax] integerValue])
+    if (Parent.tempoCells.count >= [[GlobalConfig TempoCellNumberMax] integerValue])
     {
         // TODO: 警告數量超過了
         // 超過了
@@ -233,21 +233,21 @@
     }
     
     // 新增一筆進資料庫
-    [gMetronomeModel AddNewTempoCell: Parent.CurrentTempoList];
+    [gMetronomeModel AddNewTempoCell: Parent.currentTempoList];
     
     // 重新顯示
-    [Parent SyncCurrentTempoListFromModel];
+    [Parent syncTempoListWithModel];
     
-    [Parent SyncCurrentTempoCellDatatableWithModel];
+    [Parent syncTempoCellDatatableWithModel];
     
-    TempoList * CurrentListCell = Parent.CurrentTempoList;
+    TempoList * CurrentListCell = Parent.currentTempoList;
     
     // TODO : 嚴重 同步問題！！！
-    CurrentListCell.focusCellIndex = [NSNumber numberWithInt:(int)(Parent.CurrentCellsDataTable.count - 1)];
+    CurrentListCell.focusCellIndex = [NSNumber numberWithInt:(int)(Parent.tempoCells.count - 1)];
     [gMetronomeModel Save];
     
     
-    [Parent ReflashCellListAndFocusCellByCurrentData];
+    [Parent reflashCellListAndCurrentCellByCurrentData];
 }
 
 - (void) DeleteTargetIndexCell: (int) CurrentFocusIndex
@@ -255,8 +255,8 @@
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
     // 不可以刪掉最後一個, 或大於Count > 或負數Index
-    if ((Parent.CurrentCellsDataTable.count <= 1 )
-        || (Parent.CurrentCellsDataTable.count <= CurrentFocusIndex )
+    if ((Parent.tempoCells.count <= 1 )
+        || (Parent.tempoCells.count <= CurrentFocusIndex )
         || (CurrentFocusIndex <0 )
         )
     {
@@ -264,33 +264,33 @@
     }
 
     // 找到要刪除的
-    _DeletedCell = Parent.CurrentCellsDataTable[CurrentFocusIndex];
+    _DeletedCell = Parent.tempoCells[CurrentFocusIndex];
     
     // 刪掉資料庫對應資料
     [gMetronomeModel DeleteTargetTempoCell:_DeletedCell];
     _DeletedCell = nil;
 
     // 重讀資料庫
-    [Parent SyncCurrentTempoListFromModel];
+    [Parent syncTempoListWithModel];
     
-    [Parent SyncCurrentTempoCellDatatableWithModel];
+    [Parent syncTempoCellDatatableWithModel];
     
     // 如果刪掉的是最後一個
     // 向前移一個
-    if (CurrentFocusIndex >= Parent.CurrentCellsDataTable.count)
+    if (CurrentFocusIndex >= Parent.tempoCells.count)
     {
-        CurrentFocusIndex = (int)(Parent.CurrentCellsDataTable.count -1);
+        CurrentFocusIndex = (int)(Parent.tempoCells.count -1);
     }
-    Parent.FocusIndex = CurrentFocusIndex;
+    Parent.currentSelectedCellIndex = CurrentFocusIndex;
     
     // TODO : 嚴重 同步問題！！！
-    TempoList * CurrentListCell = Parent.CurrentTempoList;
-    CurrentListCell.focusCellIndex = [NSNumber numberWithInt:Parent.FocusIndex];
+    TempoList * CurrentListCell = Parent.currentTempoList;
+    CurrentListCell.focusCellIndex = [NSNumber numberWithInt:Parent.currentSelectedCellIndex];
     [gMetronomeModel Save];
     // ================
     
     // 重新顯示
-    [Parent ReflashCellListAndFocusCellByCurrentData];
+    [Parent reflashCellListAndCurrentCellByCurrentData];
 
 }
 
@@ -303,7 +303,7 @@
 - (void) SetFocusIndex:(int) NewValue
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-    Parent.FocusIndex = NewValue;
+    Parent.currentSelectedCellIndex = NewValue;
     
 }
 

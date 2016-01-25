@@ -96,19 +96,19 @@
     float Value = ThisCircleButton.IndexValue;
     switch (ThisCircleButton.tag) {
         case ACCENT_VOLUME_BUTTON:
-            self.Parent.CurrentCell.accentVolume = [NSNumber numberWithFloat:Value];
+            self.Parent.currentCell.accentVolume = [NSNumber numberWithFloat:Value];
             break;
         case QUARTER_VOLUME_BUTTON:
-            self.Parent.CurrentCell.quarterNoteVolume = [NSNumber numberWithFloat:Value];
+            self.Parent.currentCell.quarterNoteVolume = [NSNumber numberWithFloat:Value];
             break;
         case EIGHTH_NOTE_VOLUME_BUTTON:
-            self.Parent.CurrentCell.eighthNoteVolume = [NSNumber numberWithFloat:Value];
+            self.Parent.currentCell.eighthNoteVolume = [NSNumber numberWithFloat:Value];
             break;
         case SIXTEENTH_NOTE_VOLUME_BUTTON:
-            self.Parent.CurrentCell.sixteenNoteVolume = [NSNumber numberWithFloat:Value];
+            self.Parent.currentCell.sixteenNoteVolume = [NSNumber numberWithFloat:Value];
             break;
         case TRIPPLET_NOTE_VOLUME_BUTTON:
-            self.Parent.CurrentCell.trippleNoteVolume = [NSNumber numberWithFloat:Value];
+            self.Parent.currentCell.trippleNoteVolume = [NSNumber numberWithFloat:Value];
             break;
         default:
             break;

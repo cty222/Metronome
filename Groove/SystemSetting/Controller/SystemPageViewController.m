@@ -8,6 +8,7 @@
 
 #import "SystemPageViewController.h"
 @interface SystemPageViewController ()
+@property GlobalServices *globalServices;
 
 @end
 
@@ -21,14 +22,25 @@
     BOOL _TwickLingEnable;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+@synthesize globalServices = _globalServices;
+
+- (id) initWithGlobalServices: (GlobalServices *) globalService
+{
+    self = [super init];
+    if (self){
+        self.globalServices = globalService;
+    }
+    return self;
+}
+
+/*- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
     return self;
-}
+}*/
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -662,7 +674,7 @@
 //
 - (void) ChangePageToTempoListView:(NSNotification *)Notification
 {
-    [self presentViewController:[GlobalConfig TempoListController] animated:YES completion:nil];
+    [self presentViewController:[self.globalServices getUIViewController:TEMPOLIST_PAGE] animated:YES completion:nil];
 }
 
 - (void) ChangePageBackToSystemView:(NSNotification *)Notification
@@ -743,7 +755,7 @@
 }
 
 // 支持的旋转方向
-- (NSUInteger)supportedInterfaceOrientations {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     //垂直與倒過來
     return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }

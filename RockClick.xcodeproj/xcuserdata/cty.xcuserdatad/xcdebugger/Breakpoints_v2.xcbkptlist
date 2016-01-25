@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Groove/SystemSetting/Controller/TempoListViewController.m"
-            timestampString = "442267284.139059"
+            timestampString = "475385975.661094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "-SyncCurrentListFromModel"
             landmarkType = "5">
          </BreakpointContent>

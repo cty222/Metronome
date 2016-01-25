@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0007F2091A3A1D43003F6927 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0007F2081A3A1D43003F6927 /* MediaPlayer.framework */; };
 		0007F20F1A3A22B9003F6927 /* PlayerForSongs.m in Sources */ = {isa = PBXBuildFile; fileRef = 0007F20E1A3A22B9003F6927 /* PlayerForSongs.m */; };
+		000870D01C55B27400C152B5 /* MetronomeEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 000870CF1C55B27400C152B5 /* MetronomeEngine.m */; };
+		000870D51C55C2D300C152B5 /* GlobalServicesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 000870D41C55C2D300C152B5 /* GlobalServicesTest.m */; };
 		00088ADE1A798339004D83A3 /* LocalizedMutilanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 00088ADD1A798339004D83A3 /* LocalizedMutilanguage.m */; };
 		000947AA1A76B5A40012492C /* TapFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 000947A91A76B5A40012492C /* TapFunction.m */; };
 		000D46271A469B710066BE0A /* MusicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 000D46261A469B710066BE0A /* MusicProperties.m */; };
@@ -61,7 +63,6 @@
 		004BE65E19B2DDC8002CD995 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE64119B2DDC7002CD995 /* UIKit.framework */; };
 		004BE65F19B2DDC8002CD995 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BE64319B2DDC7002CD995 /* CoreData.framework */; };
 		004BE66719B2DDC8002CD995 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 004BE66519B2DDC8002CD995 /* InfoPlist.strings */; };
-		004BE66919B2DDC8002CD995 /* GrooveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 004BE66819B2DDC8002CD995 /* GrooveTests.m */; };
 		004DF4621A40A69900E79C0E /* SwitchButtonLock.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 004DF4601A40A69900E79C0E /* SwitchButtonLock.pdf */; };
 		004DF4631A40A69900E79C0E /* SwitchButtonUnLock.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 004DF4611A40A69900E79C0E /* SwitchButtonUnLock.pdf */; };
 		004DF4691A40A6AD00E79C0E /* TapAnimation_1_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 004DF4651A40A6AD00E79C0E /* TapAnimation_1_red.pdf */; };
@@ -175,6 +176,8 @@
 		008A5CFF1A4F18E200BC744F /* TempoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5CFD1A4F18E200BC744F /* TempoListViewController.m */; };
 		008A5D001A4F18E200BC744F /* TempoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A5CFE1A4F18E200BC744F /* TempoListViewController.xib */; };
 		008A5D031A4F1A8E00BC744F /* SystemPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5D021A4F1A8E00BC744F /* SystemPageControl.m */; };
+		008F404E1C55ACF40057600C /* GlobalServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 008F404D1C55ACF40057600C /* GlobalServices.m */; };
+		008F40511C55AF0F0057600C /* RockClickNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 008F40501C55AF0F0057600C /* RockClickNotificationCenter.m */; };
 		0098D7C21A5999A90001DE00 /* Add.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7BE1A5999A90001DE00 /* Add.pdf */; };
 		0098D7C31A5999A90001DE00 /* Add_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7BF1A5999A90001DE00 /* Add_red.pdf */; };
 		0098D7C41A5999A90001DE00 /* Delete.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7C01A5999A90001DE00 /* Delete.pdf */; };
@@ -250,6 +253,9 @@
 		0007F2081A3A1D43003F6927 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0007F20D1A3A22B9003F6927 /* PlayerForSongs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerForSongs.h; path = Tools/PlayerForSongs.h; sourceTree = "<group>"; };
 		0007F20E1A3A22B9003F6927 /* PlayerForSongs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerForSongs.m; path = Tools/PlayerForSongs.m; sourceTree = "<group>"; };
+		000870CE1C55B27400C152B5 /* MetronomeEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetronomeEngine.h; path = Metronome/Controller/LocalServices/MetronomeEngine.h; sourceTree = "<group>"; };
+		000870CF1C55B27400C152B5 /* MetronomeEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetronomeEngine.m; path = Metronome/Controller/LocalServices/MetronomeEngine.m; sourceTree = "<group>"; };
+		000870D41C55C2D300C152B5 /* GlobalServicesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalServicesTest.m; path = GlobalServices/GlobalServicesTest.m; sourceTree = "<group>"; };
 		00088ADC1A798339004D83A3 /* LocalizedMutilanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalizedMutilanguage.h; path = Tools/LocalizedMutilanguage.h; sourceTree = "<group>"; };
 		00088ADD1A798339004D83A3 /* LocalizedMutilanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalizedMutilanguage.m; path = Tools/LocalizedMutilanguage.m; sourceTree = "<group>"; };
 		00088ADF1A7986AB004D83A3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -321,7 +327,6 @@
 		004BE65B19B2DDC8002CD995 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		004BE66419B2DDC8002CD995 /* RockClickTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RockClickTests-Info.plist"; sourceTree = "<group>"; };
 		004BE66619B2DDC8002CD995 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		004BE66819B2DDC8002CD995 /* GrooveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrooveTests.m; sourceTree = "<group>"; };
 		004DF4601A40A69900E79C0E /* SwitchButtonLock.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SwitchButtonLock.pdf; sourceTree = "<group>"; };
 		004DF4611A40A69900E79C0E /* SwitchButtonUnLock.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SwitchButtonUnLock.pdf; sourceTree = "<group>"; };
 		004DF4651A40A6AD00E79C0E /* TapAnimation_1_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = TapAnimation_1_red.pdf; sourceTree = "<group>"; };
@@ -499,6 +504,10 @@
 		008A5CFE1A4F18E200BC744F /* TempoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TempoListViewController.xib; path = Groove/SystemSetting/Controller/TempoListViewController.xib; sourceTree = SOURCE_ROOT; };
 		008A5D011A4F1A8E00BC744F /* SystemPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemPageControl.h; sourceTree = "<group>"; };
 		008A5D021A4F1A8E00BC744F /* SystemPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemPageControl.m; sourceTree = "<group>"; };
+		008F404C1C55ACF40057600C /* GlobalServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalServices.h; path = GlobalServices/GlobalServices.h; sourceTree = "<group>"; };
+		008F404D1C55ACF40057600C /* GlobalServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalServices.m; path = GlobalServices/GlobalServices.m; sourceTree = "<group>"; };
+		008F404F1C55AF0F0057600C /* RockClickNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RockClickNotificationCenter.h; path = GlobalServices/RockClickNotificationCenter.h; sourceTree = "<group>"; };
+		008F40501C55AF0F0057600C /* RockClickNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RockClickNotificationCenter.m; path = GlobalServices/RockClickNotificationCenter.m; sourceTree = "<group>"; };
 		0098D7BE1A5999A90001DE00 /* Add.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Add.pdf; sourceTree = "<group>"; };
 		0098D7BF1A5999A90001DE00 /* Add_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Add_red.pdf; sourceTree = "<group>"; };
 		0098D7C01A5999A90001DE00 /* Delete.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Delete.pdf; sourceTree = "<group>"; };
@@ -596,6 +605,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000870D31C55C26900C152B5 /* GlobalServices */ = {
+			isa = PBXGroup;
+			children = (
+				000870D41C55C2D300C152B5 /* GlobalServicesTest.m */,
+			);
+			name = GlobalServices;
+			sourceTree = "<group>";
+		};
 		000947A71A76B5640012492C /* ToolClass */ = {
 			isa = PBXGroup;
 			children = (
@@ -732,8 +749,8 @@
 		004BE64519B2DDC7002CD995 /* Groove */ = {
 			isa = PBXGroup;
 			children = (
+				008F404B1C55ACA90057600C /* GlobalServices */,
 				00717A301B56250A002779B7 /* AFNetworking */,
-				00717A441B56250A002779B7 /* UIKit+AFNetworking */,
 				0027FC561A5B059300257397 /* StringList */,
 				008A5CE31A4F0E7000BC744F /* SuperClass */,
 				008A5CA41A4F0DF400BC744F /* UITools */,
@@ -766,7 +783,7 @@
 		004BE66219B2DDC8002CD995 /* GrooveTests */ = {
 			isa = PBXGroup;
 			children = (
-				004BE66819B2DDC8002CD995 /* GrooveTests.m */,
+				000870D31C55C26900C152B5 /* GlobalServices */,
 				004BE66319B2DDC8002CD995 /* Supporting Files */,
 			);
 			path = GrooveTests;
@@ -862,6 +879,7 @@
 		00717A301B56250A002779B7 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				00717A441B56250A002779B7 /* UIKit+AFNetworking */,
 				00717A311B56250A002779B7 /* AFHTTPRequestOperation.h */,
 				00717A321B56250A002779B7 /* AFHTTPRequestOperation.m */,
 				00717A331B56250A002779B7 /* AFHTTPRequestOperationManager.h */,
@@ -906,7 +924,8 @@
 				00717A541B56250A002779B7 /* UIWebView+AFNetworking.h */,
 				00717A551B56250A002779B7 /* UIWebView+AFNetworking.m */,
 			);
-			path = "UIKit+AFNetworking";
+			name = "UIKit+AFNetworking";
+			path = "../UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
 		00717A681B563E96002779B7 /* WebAd */ = {
@@ -916,7 +935,8 @@
 				00717A6B1B563EF4002779B7 /* WebAd.m */,
 				00717A6D1B563F67002779B7 /* WebAd.xib */,
 			);
-			path = WebAd;
+			name = WebAd;
+			path = Metronome/Controller/WebAd;
 			sourceTree = "<group>";
 		};
 		0071A9AC1A2B075F00EA57D2 /* MetronomeSelectBar */ = {
@@ -1022,17 +1042,8 @@
 		008A5C4C1A4F071500BC744F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				00717A681B563E96002779B7 /* WebAd */,
+				008F40521C55B0DE0057600C /* main */,
 				000947A71A76B5640012492C /* ToolClass */,
-				008A5D011A4F1A8E00BC744F /* SystemPageControl.h */,
-				008A5D021A4F1A8E00BC744F /* SystemPageControl.m */,
-				008A5C4D1A4F071500BC744F /* CellParameterSettingControl.h */,
-				008A5C4E1A4F071500BC744F /* CellParameterSettingControl.m */,
-				008A5C4F1A4F071500BC744F /* LoopAndPlayViewControl.h */,
-				008A5C501A4F071500BC744F /* LoopAndPlayViewControl.m */,
-				008A5C511A4F071500BC744F /* MetronomeMainViewController.h */,
-				008A5C521A4F071500BC744F /* MetronomeMainViewController.m */,
-				008A5C531A4F071500BC744F /* MetronomeMainViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1280,6 +1291,46 @@
 			path = TempoListTablePicker;
 			sourceTree = "<group>";
 		};
+		008F404B1C55ACA90057600C /* GlobalServices */ = {
+			isa = PBXGroup;
+			children = (
+				00DA130F19F4E94600F27E25 /* NotesTool.h */,
+				00DA131019F4E94700F27E25 /* NotesTool.m */,
+				000870CE1C55B27400C152B5 /* MetronomeEngine.h */,
+				000870CF1C55B27400C152B5 /* MetronomeEngine.m */,
+				00717A681B563E96002779B7 /* WebAd */,
+				008F404C1C55ACF40057600C /* GlobalServices.h */,
+				008F404D1C55ACF40057600C /* GlobalServices.m */,
+				008F404F1C55AF0F0057600C /* RockClickNotificationCenter.h */,
+				008F40501C55AF0F0057600C /* RockClickNotificationCenter.m */,
+			);
+			name = GlobalServices;
+			sourceTree = "<group>";
+		};
+		008F40521C55B0DE0057600C /* main */ = {
+			isa = PBXGroup;
+			children = (
+				008F40531C55B0F50057600C /* LocalServices */,
+				008A5C511A4F071500BC744F /* MetronomeMainViewController.h */,
+				008A5C521A4F071500BC744F /* MetronomeMainViewController.m */,
+				008A5C531A4F071500BC744F /* MetronomeMainViewController.xib */,
+			);
+			name = main;
+			sourceTree = "<group>";
+		};
+		008F40531C55B0F50057600C /* LocalServices */ = {
+			isa = PBXGroup;
+			children = (
+				008A5D011A4F1A8E00BC744F /* SystemPageControl.h */,
+				008A5D021A4F1A8E00BC744F /* SystemPageControl.m */,
+				008A5C4D1A4F071500BC744F /* CellParameterSettingControl.h */,
+				008A5C4E1A4F071500BC744F /* CellParameterSettingControl.m */,
+				008A5C4F1A4F071500BC744F /* LoopAndPlayViewControl.h */,
+				008A5C501A4F071500BC744F /* LoopAndPlayViewControl.m */,
+			);
+			name = LocalServices;
+			sourceTree = "<group>";
+		};
 		0098D7BD1A5999A90001DE00 /* CellPropertyButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -1320,8 +1371,6 @@
 			isa = PBXGroup;
 			children = (
 				005CDA6C1A57B9B100B85E4C /* VoiceClass */,
-				00DA130F19F4E94600F27E25 /* NotesTool.h */,
-				00DA131019F4E94700F27E25 /* NotesTool.m */,
 				00DA131319F4EE1E00F27E25 /* AudioPlay.h */,
 				00DA131419F4EE1E00F27E25 /* AudioPlay.m */,
 				00319FB81A0F2EED00CF3C83 /* UINSOperation.h */,
@@ -1449,7 +1498,7 @@
 		004BE63219B2DDC7002CD995 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Cty;
 				TargetAttributes = {
 					004BE63919B2DDC7002CD995 = {
@@ -1680,6 +1729,7 @@
 				00DA131519F4EE1E00F27E25 /* AudioPlay.m in Sources */,
 				008A5CCB1A4F0E1B00BC744F /* ValueScrollView.m in Sources */,
 				008A5C5D1A4F071600BC744F /* MetronomeMainViewController.m in Sources */,
+				008F404E1C55ACF40057600C /* GlobalServices.m in Sources */,
 				00717A5F1B56250A002779B7 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				00717A621B56250A002779B7 /* UIButton+AFNetworking.m in Sources */,
 				008A5CDD1A4F0E3300BC744F /* MusicTimePicker.m in Sources */,
@@ -1695,6 +1745,7 @@
 				004BE64C19B2DDC8002CD995 /* main.m in Sources */,
 				008A5CF41A4F0E7000BC744F /* XibTableViewCellInterface.m in Sources */,
 				008A5CC91A4F0E1B00BC744F /* LoopCellEditerView.m in Sources */,
+				008F40511C55AF0F0057600C /* RockClickNotificationCenter.m in Sources */,
 				008A5C5C1A4F071600BC744F /* LoopAndPlayViewControl.m in Sources */,
 				007598F51A5D9896000A6B78 /* BlockVoice.m in Sources */,
 				008A5CF21A4F0E7000BC744F /* ValuePickerTemplate.m in Sources */,
@@ -1712,6 +1763,7 @@
 				008A5CF51A4F0E7000BC744F /* XibViewInterface.m in Sources */,
 				006739361A55D256008B6A2F /* NameEditer.m in Sources */,
 				0069994D1A5C458900B01E5F /* VoiceType.m in Sources */,
+				000870D01C55B27400C152B5 /* MetronomeEngine.m in Sources */,
 				00B238AD1A7D5EAE00DFC04B /* TempoCell.m in Sources */,
 				005A93971A2CE10A00280507 /* TimeSignatureType.m in Sources */,
 				00717A5A1B56250A002779B7 /* AFSecurityPolicy.m in Sources */,
@@ -1726,7 +1778,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				004BE66919B2DDC8002CD995 /* GrooveTests.m in Sources */,
+				000870D51C55C2D300C152B5 /* GlobalServicesTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1795,6 +1847,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1867,6 +1920,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = 6LM28NT488.com.CtyToys.RockClick;
 				PRODUCT_NAME = "RockMetromone:SongClick";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Groove/Groove-Bridging-Header.h";
@@ -1891,6 +1945,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = 6LM28NT488.com.CtyToys.RockClick;
 				PRODUCT_NAME = "RockMetromone:SongClick";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Groove/Groove-Bridging-Header.h";
@@ -1903,22 +1958,18 @@
 		004BE67019B2DDC8002CD995 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Groove.app/Groove";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Groove/Groove-Prefix.pch";
+				GCC_PREFIX_HEADER = "Groove/RockClick-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "GrooveTests/RockClickTests-Info.plist";
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.com.Cty.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = RockClickTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RockMetromone:SongClick.app/RockMetromone:SongClick";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -1926,18 +1977,14 @@
 		004BE67119B2DDC8002CD995 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Groove.app/Groove";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Groove/Groove-Prefix.pch";
+				GCC_PREFIX_HEADER = "Groove/RockClick-Prefix.pch";
 				INFOPLIST_FILE = "GrooveTests/RockClickTests-Info.plist";
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.com.Cty.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = RockClickTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RockMetromone:SongClick.app/RockMetromone:SongClick";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;

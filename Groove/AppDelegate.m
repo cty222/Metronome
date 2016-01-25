@@ -11,12 +11,16 @@
 // 讓silence mode 下也有聲音
 #import <AVFoundation/AVFoundation.h>
 #import "Audioplay.h"
+#import "GlobalServices.h"
 
 @interface AppDelegate ()
 @property NSDictionary *options;
+@property GlobalServices *globalServices;
+
 @end
 
 @implementation AppDelegate
+@synthesize globalServices = _globalServices;
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -24,13 +28,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // 看語言順序
+#if TODO
     NSLog(@"%@", [NSLocale preferredLanguages]);
-
+#endif
     
     self.window = [[UIWindowWithHook alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor blueColor];
+    self.window.backgroundColor = [UIColor blueColor]; //??????
     self.window.EnableTouchHookNotifications = YES;
     
 // 移植資料庫
@@ -70,7 +75,7 @@
     //
     // will all so set or reset global plist
     [GlobalConfig Initialize:self.window];
-    
+    self.globalServices = [[GlobalServices alloc] init];
     
     //
     // 2. Initize Model
@@ -82,7 +87,7 @@
     [gMetronomeModel UpdateDbVersion:[GlobalConfig DbVersion]];
     
     //3. Set rootViewController
-    self.window.rootViewController =  [GlobalConfig MetronomeMainViewController];
+    self.window.rootViewController =  [self.globalServices getUIViewController: METRONOME_PAGE];
     
     
     // System add

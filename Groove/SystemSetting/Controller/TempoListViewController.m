@@ -9,14 +9,24 @@
 #import "TempoListViewController.h"
 
 @interface TempoListViewController ()
-
+@property GlobalServices *globalServices;
 @end
 
 @implementation TempoListViewController
 {
     NSArray * _TempoListDataTable;
     TempoList *_CurrentList;
+}
 
+@synthesize globalServices = _globalServices;
+
+- (id) initWithGlobalServices: (GlobalServices *) globalService
+{
+    self = [super init];
+    if (self){
+        self.globalServices = globalService;
+    }
+    return self;
 }
 
 - (void)viewDidLoad {
@@ -55,7 +65,7 @@
         }
         else
         {
-            // 修正嚴重錯誤
+            // workaround: fixed sync bug
             [GlobalConfig SetLastTempoListIndexUserSelected:0];
         }
     }
@@ -66,7 +76,7 @@
     int NewIndex = (int)[self.ListTablePicker GetSelectedIndex];
     if (NewIndex < 0)
     {
-        NSLog(@"Error: 有錯誤");
+        NSLog(@"Error: failed");
         NewIndex = 0;
     }
     [GlobalConfig SetLastTempoListIndexUserSelected:NewIndex];
@@ -105,7 +115,7 @@
 
     [self FillTempoListFromModel];
 
-    // 自動選擇之前選的Index
+    // auto sync previous selected item
     [self.ListTablePicker SetSelectedCell: _CurrentList];
     int AutoSelectIndex = (int)[self.ListTablePicker GetSelectedIndex];
     [GlobalConfig SetLastTempoListIndexUserSelected:AutoSelectIndex];
@@ -132,19 +142,16 @@
 // ===============================
 
 - (BOOL)shouldAutorotate {
-    //打開旋轉
+    // open rotate
     return YES;
 }
 
-// 支持的旋转方向
-- (NSUInteger)supportedInterfaceOrientations {
-    //垂直與倒過來
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
     return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
-// 一开始的屏幕旋转方向
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-
     return [[UIApplication sharedApplication] statusBarOrientation];
 }
 
@@ -152,14 +159,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

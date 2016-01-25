@@ -132,7 +132,7 @@
 -(IBAction) LoopCellEditerDisplay:(UIButton *)sender
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-    TempoCell * TargetCell = Parent.CurrentCellsDataTable[Parent.FocusIndex];
+    TempoCell * TargetCell = Parent.tempoCells[Parent.currentSelectedCellIndex];
     
     if ([TargetCell.loopCount intValue] != ROUND_NO_DECOMAL_FROM_DOUBLE(self.LoopCellEditerView.ValueScrollView.Value))
     {
@@ -155,8 +155,8 @@
     
     // Because 0 is no voice
     NSInteger VoiceIndex = TriggerItem.tag;
-    Parent.CurrentCell.voiceType = (VoiceType *)VoiceTypeArray[TriggerItem.tag];
-    Parent.CurrentVoice = [gClickVoiceList objectAtIndex:VoiceIndex];
+    Parent.currentCell.voiceType = (VoiceType *)VoiceTypeArray[TriggerItem.tag];
+    Parent.currentVoice = [gClickVoiceList objectAtIndex:VoiceIndex];
     
     // TODO : 不要save這麼頻繁
     [gMetronomeModel Save];
@@ -202,8 +202,8 @@
     }
     
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-    Parent.CurrentCell.timeSignatureType = (TimeSignatureType *)TimeSignatureTypeArray[TriggerItem.tag];
-    Parent.CurrentTimeSignature = TriggerItem.titleLabel.text;
+    Parent.currentCell.timeSignatureType = (TimeSignatureType *)TimeSignatureTypeArray[TriggerItem.tag];
+    Parent.currentTimeSignature = TriggerItem.titleLabel.text;
     
     // TODO : 不要save這麼頻繁
     [gMetronomeModel Save];
@@ -217,12 +217,12 @@
 
     if (self.LoopCellEditerView.ValueScrollView == TriggerItem)
     {
-        [Parent.LoopAndPlayViewSubController SetTargetCellLoopCountAdd:Parent.FocusIndex
+        [Parent.loopAndPlayViewSubController SetTargetCellLoopCountAdd:Parent.currentSelectedCellIndex
                                                                  Value:self.LoopCellEditerView.ValueScrollView.Value];
     }
     else if (self.LoopCellEditerView.CellDeleteButton == TriggerItem)
     {
-        [Parent.LoopAndPlayViewSubController DeleteTargetIndexCell:Parent.FocusIndex];
+        [Parent.loopAndPlayViewSubController DeleteTargetIndexCell:Parent.currentSelectedCellIndex];
     }
 }
 
@@ -295,14 +295,14 @@
     if (Picker == self.BPMPicker)
     {
         // BPM Save
-        Parent.CurrentCell.bpmValue = [NSNumber numberWithFloat:self.BPMPicker.Value];
+        Parent.currentCell.bpmValue = [NSNumber numberWithFloat:self.BPMPicker.Value];
     
         // TODO : 不要save這麼頻繁
         [gMetronomeModel Save];
     
-        if (Parent.PlayingMode != STOP_PLAYING)
+        if (Parent.currentPlayingMode != STOP_PLAYING)
         {
-            Parent.IsNeededToRestartMetronomeClick = YES;
+            Parent.doesItNeedToRestartMetronome = YES;
         }
     }
 }

@@ -67,20 +67,13 @@ enum {
 + (MusicProperties *) GetMusicProperties;
 + (void) SetMusicProperties : (MusicProperties *) NewMusicProperties;
 
-// Main View
-+ (UIViewController *) SystemPageViewController;
-+ (UIViewController *) MetronomeMainViewController;
-+ (UIViewController *) TempoListController;
 
 // GlobalEvent
 #define kChangeToSystemPageView @"kChangeToSystemPageView"
 #define kChangeBackToMetronomeView @"kChangeBackToMetronomeView"
-
 #define kChangeToTempoListPickerView @"kChangeToTempoListPickerView"
 #define kChangeBackToSystemPageView @"kChangeBackToSystemPageView"
-
 #define kVoiceStopByInterrupt @"kVoiceStopByInterrupt"
-
 #define kTapResetNotification @"kTapResetNotification"
 
 @end
