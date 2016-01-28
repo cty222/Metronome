@@ -133,8 +133,6 @@
 		008A5C5C1A4F071600BC744F /* LoopAndPlayViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C501A4F071500BC744F /* LoopAndPlayViewControl.m */; };
 		008A5C5D1A4F071600BC744F /* MetronomeMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C521A4F071500BC744F /* MetronomeMainViewController.m */; };
 		008A5C5E1A4F071600BC744F /* MetronomeMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A5C531A4F071500BC744F /* MetronomeMainViewController.xib */; };
-		008A5C8E1A4F0AE600BC744F /* LargeBPMPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C7D1A4F0AE600BC744F /* LargeBPMPicker.m */; };
-		008A5C8F1A4F0AE600BC744F /* LargeBPMPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A5C7E1A4F0AE600BC744F /* LargeBPMPicker.xib */; };
 		008A5C901A4F0AE600BC744F /* CircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C811A4F0AE600BC744F /* CircleButton.m */; };
 		008A5C911A4F0AE600BC744F /* CircleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A5C821A4F0AE600BC744F /* CircleButton.xib */; };
 		008A5C921A4F0AE600BC744F /* TapAnimationImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C851A4F0AE600BC744F /* TapAnimationImage.m */; };
@@ -145,8 +143,6 @@
 		008A5C971A4F0AE600BC744F /* SelectBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A5C8D1A4F0AE600BC744F /* SelectBarCell.xib */; };
 		008A5CA01A4F0B1200BC744F /* MetronomeBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C9A1A4F0B1200BC744F /* MetronomeBottomView.m */; };
 		008A5CA11A4F0B1200BC744F /* MetronomeBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A5C9B1A4F0B1200BC744F /* MetronomeBottomView.xib */; };
-		008A5CA21A4F0B1200BC744F /* MetronmoneTopSubViewIphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C9E1A4F0B1200BC744F /* MetronmoneTopSubViewIphone.m */; };
-		008A5CA31A4F0B1200BC744F /* MetronmoneTopSubViewIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A5C9F1A4F0B1200BC744F /* MetronmoneTopSubViewIphone.xib */; };
 		008A5CAF1A4F0DF400BC744F /* OneDigitsValuePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5CA71A4F0DF400BC744F /* OneDigitsValuePicker.m */; };
 		008A5CB01A4F0DF400BC744F /* OneDigitsValuePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A5CA81A4F0DF400BC744F /* OneDigitsValuePicker.xib */; };
 		008A5CB11A4F0DF400BC744F /* ThreeDigitsValuePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5CAA1A4F0DF400BC744F /* ThreeDigitsValuePicker.m */; };
@@ -176,6 +172,11 @@
 		008A5CFF1A4F18E200BC744F /* TempoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5CFD1A4F18E200BC744F /* TempoListViewController.m */; };
 		008A5D001A4F18E200BC744F /* TempoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A5CFE1A4F18E200BC744F /* TempoListViewController.xib */; };
 		008A5D031A4F1A8E00BC744F /* SystemPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5D021A4F1A8E00BC744F /* SystemPageControl.m */; };
+		008A9B431C59EBDB004564B8 /* SystemPageControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A9B421C59EBDB004564B8 /* SystemPageControl.xib */; };
+		008A9B4C1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A9B4A1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.m */; };
+		008A9B4D1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A9B4B1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.xib */; };
+		008A9B511C59EF2B004564B8 /* TopPartOfMetronomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A9B4F1C59EF2B004564B8 /* TopPartOfMetronomeViewController.m */; };
+		008A9B521C59EF2B004564B8 /* TopPartOfMetronomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A9B501C59EF2B004564B8 /* TopPartOfMetronomeViewController.xib */; };
 		008F404E1C55ACF40057600C /* GlobalServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 008F404D1C55ACF40057600C /* GlobalServices.m */; };
 		008F40511C55AF0F0057600C /* RockClickNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 008F40501C55AF0F0057600C /* RockClickNotificationCenter.m */; };
 		0098D7C21A5999A90001DE00 /* Add.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7BE1A5999A90001DE00 /* Add.pdf */; };
@@ -184,13 +185,16 @@
 		0098D7C51A5999A90001DE00 /* Delete_red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7C11A5999A90001DE00 /* Delete_red.pdf */; };
 		0098D7C71A5999C50001DE00 /* MusicListen.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7C61A5999C50001DE00 /* MusicListen.pdf */; };
 		0098D7CD1A5999DA0001DE00 /* SyncTime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7CC1A5999DA0001DE00 /* SyncTime.pdf */; };
-		0098D7D11A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7D01A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib */; };
 		0098D7D41A59B0680001DE00 /* LoopCellEditerView4S.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0098D7D31A59B0680001DE00 /* LoopCellEditerView4S.xib */; };
 		00B238AD1A7D5EAE00DFC04B /* TempoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B238AC1A7D5EAE00DFC04B /* TempoCell.m */; };
 		00B238B31A7D62ED00DFC04B /* TempoPrivateProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B238B21A7D62ED00DFC04B /* TempoPrivateProperties.m */; };
 		00B238B71A7E1C1900DFC04B /* Noise gate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 00B238B61A7E1C1900DFC04B /* Noise gate.txt */; };
 		00B238DB1A7E286F00DFC04B /* Two.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00B238D91A7E286F00DFC04B /* Two.wav */; };
 		00B238E51A7E9B3E00DFC04B /* Six.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00B238E41A7E9B3E00DFC04B /* Six.wav */; };
+		00B8713B1C59FDB4005167F0 /* BPMPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B871391C59FDB4005167F0 /* BPMPickerViewController.m */; };
+		00B8713C1C59FDB4005167F0 /* BPMPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B8713A1C59FDB4005167F0 /* BPMPickerViewController.xib */; };
+		00B871401C5A04CC005167F0 /* BPMPicker4SViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B8713E1C5A04CC005167F0 /* BPMPicker4SViewController.m */; };
+		00B871411C5A04CC005167F0 /* BPMPicker4SViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B8713F1C5A04CC005167F0 /* BPMPicker4SViewController.xib */; };
 		00BBB83B1A61804E005B9B28 /* BlockVoice.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB8391A61804E005B9B28 /* BlockVoice.pdf */; };
 		00BBB83C1A61804E005B9B28 /* DrumVoice1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB83A1A61804E005B9B28 /* DrumVoice1.pdf */; };
 		00BBB8421A6180A7005B9B28 /* BassDrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = 00BBB83D1A6180A7005B9B28 /* BassDrum.wav */; };
@@ -436,9 +440,6 @@
 		008A5C511A4F071500BC744F /* MetronomeMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeMainViewController.h; sourceTree = "<group>"; };
 		008A5C521A4F071500BC744F /* MetronomeMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeMainViewController.m; sourceTree = "<group>"; };
 		008A5C531A4F071500BC744F /* MetronomeMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeMainViewController.xib; sourceTree = "<group>"; };
-		008A5C7C1A4F0AE600BC744F /* LargeBPMPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargeBPMPicker.h; sourceTree = "<group>"; };
-		008A5C7D1A4F0AE600BC744F /* LargeBPMPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargeBPMPicker.m; sourceTree = "<group>"; };
-		008A5C7E1A4F0AE600BC744F /* LargeBPMPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LargeBPMPicker.xib; sourceTree = "<group>"; };
 		008A5C801A4F0AE600BC744F /* CircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleButton.h; sourceTree = "<group>"; };
 		008A5C811A4F0AE600BC744F /* CircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleButton.m; sourceTree = "<group>"; };
 		008A5C821A4F0AE600BC744F /* CircleButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleButton.xib; sourceTree = "<group>"; };
@@ -454,9 +455,6 @@
 		008A5C991A4F0B1200BC744F /* MetronomeBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeBottomView.h; sourceTree = "<group>"; };
 		008A5C9A1A4F0B1200BC744F /* MetronomeBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeBottomView.m; sourceTree = "<group>"; };
 		008A5C9B1A4F0B1200BC744F /* MetronomeBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeBottomView.xib; sourceTree = "<group>"; };
-		008A5C9D1A4F0B1200BC744F /* MetronmoneTopSubViewIphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronmoneTopSubViewIphone.h; sourceTree = "<group>"; };
-		008A5C9E1A4F0B1200BC744F /* MetronmoneTopSubViewIphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronmoneTopSubViewIphone.m; sourceTree = "<group>"; };
-		008A5C9F1A4F0B1200BC744F /* MetronmoneTopSubViewIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronmoneTopSubViewIphone.xib; sourceTree = "<group>"; };
 		008A5CA61A4F0DF400BC744F /* OneDigitsValuePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneDigitsValuePicker.h; sourceTree = "<group>"; };
 		008A5CA71A4F0DF400BC744F /* OneDigitsValuePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneDigitsValuePicker.m; sourceTree = "<group>"; };
 		008A5CA81A4F0DF400BC744F /* OneDigitsValuePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OneDigitsValuePicker.xib; sourceTree = "<group>"; };
@@ -504,6 +502,13 @@
 		008A5CFE1A4F18E200BC744F /* TempoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TempoListViewController.xib; path = Groove/SystemSetting/Controller/TempoListViewController.xib; sourceTree = SOURCE_ROOT; };
 		008A5D011A4F1A8E00BC744F /* SystemPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemPageControl.h; sourceTree = "<group>"; };
 		008A5D021A4F1A8E00BC744F /* SystemPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemPageControl.m; sourceTree = "<group>"; };
+		008A9B421C59EBDB004564B8 /* SystemPageControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SystemPageControl.xib; sourceTree = "<group>"; };
+		008A9B491C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPartOfMetronome4SVersionViewController.h; sourceTree = "<group>"; };
+		008A9B4A1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPartOfMetronome4SVersionViewController.m; sourceTree = "<group>"; };
+		008A9B4B1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopPartOfMetronome4SVersionViewController.xib; sourceTree = "<group>"; };
+		008A9B4E1C59EF2B004564B8 /* TopPartOfMetronomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPartOfMetronomeViewController.h; sourceTree = "<group>"; };
+		008A9B4F1C59EF2B004564B8 /* TopPartOfMetronomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPartOfMetronomeViewController.m; sourceTree = "<group>"; };
+		008A9B501C59EF2B004564B8 /* TopPartOfMetronomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopPartOfMetronomeViewController.xib; sourceTree = "<group>"; };
 		008F404C1C55ACF40057600C /* GlobalServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalServices.h; path = GlobalServices/GlobalServices.h; sourceTree = "<group>"; };
 		008F404D1C55ACF40057600C /* GlobalServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalServices.m; path = GlobalServices/GlobalServices.m; sourceTree = "<group>"; };
 		008F404F1C55AF0F0057600C /* RockClickNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RockClickNotificationCenter.h; path = GlobalServices/RockClickNotificationCenter.h; sourceTree = "<group>"; };
@@ -514,7 +519,6 @@
 		0098D7C11A5999A90001DE00 /* Delete_red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Delete_red.pdf; sourceTree = "<group>"; };
 		0098D7C61A5999C50001DE00 /* MusicListen.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = MusicListen.pdf; sourceTree = "<group>"; };
 		0098D7CC1A5999DA0001DE00 /* SyncTime.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SyncTime.pdf; sourceTree = "<group>"; };
-		0098D7D01A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronmoneTopSubViewIphone4S.xib; sourceTree = "<group>"; };
 		0098D7D31A59B0680001DE00 /* LoopCellEditerView4S.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoopCellEditerView4S.xib; sourceTree = "<group>"; };
 		00B238AB1A7D5EAE00DFC04B /* TempoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoCell.h; path = CoreDataSubClass/TempoCell.h; sourceTree = "<group>"; };
 		00B238AC1A7D5EAE00DFC04B /* TempoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoCell.m; path = CoreDataSubClass/TempoCell.m; sourceTree = "<group>"; };
@@ -523,6 +527,12 @@
 		00B238B61A7E1C1900DFC04B /* Noise gate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Noise gate.txt"; sourceTree = "<group>"; };
 		00B238D91A7E286F00DFC04B /* Two.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Two.wav; sourceTree = "<group>"; };
 		00B238E41A7E9B3E00DFC04B /* Six.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Six.wav; sourceTree = "<group>"; };
+		00B871381C59FDB4005167F0 /* BPMPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPMPickerViewController.h; sourceTree = "<group>"; };
+		00B871391C59FDB4005167F0 /* BPMPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPMPickerViewController.m; sourceTree = "<group>"; };
+		00B8713A1C59FDB4005167F0 /* BPMPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BPMPickerViewController.xib; sourceTree = "<group>"; };
+		00B8713D1C5A04CC005167F0 /* BPMPicker4SViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPMPicker4SViewController.h; sourceTree = "<group>"; };
+		00B8713E1C5A04CC005167F0 /* BPMPicker4SViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPMPicker4SViewController.m; sourceTree = "<group>"; };
+		00B8713F1C5A04CC005167F0 /* BPMPicker4SViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BPMPicker4SViewController.xib; sourceTree = "<group>"; };
 		00BBB8391A61804E005B9B28 /* BlockVoice.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = BlockVoice.pdf; sourceTree = "<group>"; };
 		00BBB83A1A61804E005B9B28 /* DrumVoice1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = DrumVoice1.pdf; sourceTree = "<group>"; };
 		00BBB83D1A6180A7005B9B28 /* BassDrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BassDrum.wav; sourceTree = "<group>"; };
@@ -1055,7 +1065,6 @@
 				001FF8E21B559C4F0025F78F /* MusicSpeedBottomSubview */,
 				008A5CB51A4F0E1B00BC744F /* SubPropertyPicker */,
 				008A5C981A4F0B1200BC744F /* MainBottom */,
-				008A5C9C1A4F0B1200BC744F /* MainTop */,
 				008A5C7B1A4F0AE600BC744F /* BPMPicker */,
 				008A5C7F1A4F0AE600BC744F /* CircleVolumeScroll */,
 				008A5C831A4F0AE600BC744F /* TapNotifyAnimation */,
@@ -1067,9 +1076,12 @@
 		008A5C7B1A4F0AE600BC744F /* BPMPicker */ = {
 			isa = PBXGroup;
 			children = (
-				008A5C7C1A4F0AE600BC744F /* LargeBPMPicker.h */,
-				008A5C7D1A4F0AE600BC744F /* LargeBPMPicker.m */,
-				008A5C7E1A4F0AE600BC744F /* LargeBPMPicker.xib */,
+				00B871381C59FDB4005167F0 /* BPMPickerViewController.h */,
+				00B871391C59FDB4005167F0 /* BPMPickerViewController.m */,
+				00B8713A1C59FDB4005167F0 /* BPMPickerViewController.xib */,
+				00B8713D1C5A04CC005167F0 /* BPMPicker4SViewController.h */,
+				00B8713E1C5A04CC005167F0 /* BPMPicker4SViewController.m */,
+				00B8713F1C5A04CC005167F0 /* BPMPicker4SViewController.xib */,
 			);
 			path = BPMPicker;
 			sourceTree = "<group>";
@@ -1115,17 +1127,6 @@
 				008A5C9B1A4F0B1200BC744F /* MetronomeBottomView.xib */,
 			);
 			path = MainBottom;
-			sourceTree = "<group>";
-		};
-		008A5C9C1A4F0B1200BC744F /* MainTop */ = {
-			isa = PBXGroup;
-			children = (
-				008A5C9D1A4F0B1200BC744F /* MetronmoneTopSubViewIphone.h */,
-				008A5C9E1A4F0B1200BC744F /* MetronmoneTopSubViewIphone.m */,
-				008A5C9F1A4F0B1200BC744F /* MetronmoneTopSubViewIphone.xib */,
-				0098D7D01A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib */,
-			);
-			path = MainTop;
 			sourceTree = "<group>";
 		};
 		008A5CA41A4F0DF400BC744F /* UITools */ = {
@@ -1291,6 +1292,26 @@
 			path = TempoListTablePicker;
 			sourceTree = "<group>";
 		};
+		008A9B411C59EB9A004564B8 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				008A5D011A4F1A8E00BC744F /* SystemPageControl.h */,
+				008A5D021A4F1A8E00BC744F /* SystemPageControl.m */,
+				008A5C4D1A4F071500BC744F /* CellParameterSettingControl.h */,
+				008A5C4E1A4F071500BC744F /* CellParameterSettingControl.m */,
+				008A5C4F1A4F071500BC744F /* LoopAndPlayViewControl.h */,
+				008A5C501A4F071500BC744F /* LoopAndPlayViewControl.m */,
+				008A9B421C59EBDB004564B8 /* SystemPageControl.xib */,
+				008A9B491C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.h */,
+				008A9B4A1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.m */,
+				008A9B4B1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.xib */,
+				008A9B4E1C59EF2B004564B8 /* TopPartOfMetronomeViewController.h */,
+				008A9B4F1C59EF2B004564B8 /* TopPartOfMetronomeViewController.m */,
+				008A9B501C59EF2B004564B8 /* TopPartOfMetronomeViewController.xib */,
+			);
+			name = SubViews;
+			sourceTree = "<group>";
+		};
 		008F404B1C55ACA90057600C /* GlobalServices */ = {
 			isa = PBXGroup;
 			children = (
@@ -1310,6 +1331,7 @@
 		008F40521C55B0DE0057600C /* main */ = {
 			isa = PBXGroup;
 			children = (
+				008A9B411C59EB9A004564B8 /* SubViews */,
 				008F40531C55B0F50057600C /* LocalServices */,
 				008A5C511A4F071500BC744F /* MetronomeMainViewController.h */,
 				008A5C521A4F071500BC744F /* MetronomeMainViewController.m */,
@@ -1321,12 +1343,6 @@
 		008F40531C55B0F50057600C /* LocalServices */ = {
 			isa = PBXGroup;
 			children = (
-				008A5D011A4F1A8E00BC744F /* SystemPageControl.h */,
-				008A5D021A4F1A8E00BC744F /* SystemPageControl.m */,
-				008A5C4D1A4F071500BC744F /* CellParameterSettingControl.h */,
-				008A5C4E1A4F071500BC744F /* CellParameterSettingControl.m */,
-				008A5C4F1A4F071500BC744F /* LoopAndPlayViewControl.h */,
-				008A5C501A4F071500BC744F /* LoopAndPlayViewControl.m */,
 			);
 			name = LocalServices;
 			sourceTree = "<group>";
@@ -1545,6 +1561,7 @@
 				00BBB8C31A61A4B5005B9B28 /* Human_Tic.wav in Resources */,
 				00BBB8B51A61997E005B9B28 /* One.wav in Resources */,
 				0049ECBC1A40BA990016EA3D /* LoopCellPickerButton.pdf in Resources */,
+				00B8713C1C59FDB4005167F0 /* BPMPickerViewController.xib in Resources */,
 				001BFDCE1A3F5EEE00A56947 /* BPMArrowUp_4S.pdf in Resources */,
 				008A5CE21A4F0E3300BC744F /* TempoListUICell.xib in Resources */,
 				001FF8ED1B559CFD0025F78F /* MusicSettingBottomSubview.xib in Resources */,
@@ -1555,7 +1572,6 @@
 				001BFDAB1A3F4E9200A56947 /* ValueDownArrow.pdf in Resources */,
 				0098D7C71A5999C50001DE00 /* MusicListen.pdf in Resources */,
 				0071A9B91A2B090100EA57D2 /* TrippleNote.pdf in Resources */,
-				0098D7D11A59A1AC0001DE00 /* MetronmoneTopSubViewIphone4S.xib in Resources */,
 				00ED15931A5F0FDD002D442F /* AppIcon_120.png in Resources */,
 				0098D7C51A5999A90001DE00 /* Delete_red.pdf in Resources */,
 				00BBB8C61A61A55C005B9B28 /* Ride.wav in Resources */,
@@ -1565,6 +1581,7 @@
 				00BBB8B31A61997E005B9B28 /* Four.wav in Resources */,
 				008A5CB41A4F0DF400BC744F /* TwoDigitsValuePicker.xib in Resources */,
 				0098D7CD1A5999DA0001DE00 /* SyncTime.pdf in Resources */,
+				008A9B431C59EBDB004564B8 /* SystemPageControl.xib in Resources */,
 				0071A9AE1A2B075F00EA57D2 /* LoopCellScrollView.pdf in Resources */,
 				0059D1411A56FFD20058C5E3 /* ClockIcon.pdf in Resources */,
 				00E8C0411A36119200D53F82 /* 16NoteYellow.pdf in Resources */,
@@ -1606,10 +1623,10 @@
 				008A5CA11A4F0B1200BC744F /* MetronomeBottomView.xib in Resources */,
 				008A5C4A1A4F06AD00BC744F /* SystemPageViewController.xib in Resources */,
 				008A5CCA1A4F0E1B00BC744F /* LoopCellEditerView.xib in Resources */,
-				008A5CA31A4F0B1200BC744F /* MetronmoneTopSubViewIphone.xib in Resources */,
 				004DF46B1A40A6AD00E79C0E /* TapAnimation_2_red.pdf in Resources */,
 				006999551A5C656100B01E5F /* PlayList.pdf in Resources */,
 				00ED15921A5F0FDD002D442F /* AppIcon_87.png in Resources */,
+				00B871411C5A04CC005167F0 /* BPMPicker4SViewController.xib in Resources */,
 				0098D7C41A5999A90001DE00 /* Delete.pdf in Resources */,
 				008A5C911A4F0AE600BC744F /* CircleButton.xib in Resources */,
 				006739381A55D26B008B6A2F /* NameEditer.xib in Resources */,
@@ -1628,6 +1645,7 @@
 				0071A9CF1A2B0EB300EA57D2 /* ScrollViewBackGround.pdf in Resources */,
 				008A5D001A4F18E200BC744F /* TempoListViewController.xib in Resources */,
 				0059D16B1A571BCE0058C5E3 /* CustomerButton.xib in Resources */,
+				008A9B521C59EF2B004564B8 /* TopPartOfMetronomeViewController.xib in Resources */,
 				008A5CCE1A4F0E1B00BC744F /* TimeSignaturePickerView.xib in Resources */,
 				0034734F1A0FE5B4003C9F3C /* NewCircleButton_f4.pdf in Resources */,
 				0059D1481A57012C0058C5E3 /* System.pdf in Resources */,
@@ -1669,10 +1687,10 @@
 				006999571A5C656100B01E5F /* PlayMusic.pdf in Resources */,
 				00BBB8AD1A61997E005B9B28 /* Human_a.wav in Resources */,
 				00ED15911A5F0FDD002D442F /* AppIcon_80.png in Resources */,
-				008A5C8F1A4F0AE600BC744F /* LargeBPMPicker.xib in Resources */,
 				0010C5D91A606DE500BC5E51 /* ScrollViewCellBackGround.pdf in Resources */,
 				001BFDD11A3F5F2200A56947 /* LoopCellBackGround.pdf in Resources */,
 				0071A9B81A2B090100EA57D2 /* QuarterNote.pdf in Resources */,
+				008A9B4D1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1691,7 +1709,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				008A5C8E1A4F0AE600BC744F /* LargeBPMPicker.m in Sources */,
+				008A9B511C59EF2B004564B8 /* TopPartOfMetronomeViewController.m in Sources */,
 				0007F20F1A3A22B9003F6927 /* PlayerForSongs.m in Sources */,
 				008A5CB31A4F0DF400BC744F /* TwoDigitsValuePicker.m in Sources */,
 				008A5D031A4F1A8E00BC744F /* SystemPageControl.m in Sources */,
@@ -1718,11 +1736,13 @@
 				008A5C961A4F0AE600BC744F /* SelectBarCell.m in Sources */,
 				00657D0B1A65AFBE0044E35F /* MPMediaPickerControllerHook.m in Sources */,
 				004BE65019B2DDC8002CD995 /* AppDelegate.m in Sources */,
+				00B8713B1C59FDB4005167F0 /* BPMPickerViewController.m in Sources */,
 				008A5C091A4F00F100BC744F /* GlobalConfig.m in Sources */,
 				008A5C941A4F0AE600BC744F /* MetronomeSelectBar.m in Sources */,
 				008A5CFF1A4F18E200BC744F /* TempoListViewController.m in Sources */,
 				00717A641B56250A002779B7 /* UIProgressView+AFNetworking.m in Sources */,
 				00717A5D1B56250A002779B7 /* AFURLResponseSerialization.m in Sources */,
+				00B871401C5A04CC005167F0 /* BPMPicker4SViewController.m in Sources */,
 				001FF8EC1B559CFD0025F78F /* MusicSettingBottomSubview.m in Sources */,
 				008A5CC81A4F0E1B00BC744F /* SubPropertySelector.m in Sources */,
 				0059D1691A5719770058C5E3 /* CustomerButton.m in Sources */,
@@ -1734,7 +1754,6 @@
 				00717A621B56250A002779B7 /* UIButton+AFNetworking.m in Sources */,
 				008A5CDD1A4F0E3300BC744F /* MusicTimePicker.m in Sources */,
 				008A5CF31A4F0E7000BC744F /* UIWindowWithHook.m in Sources */,
-				008A5CA21A4F0B1200BC744F /* MetronmoneTopSubViewIphone.m in Sources */,
 				008A5C5B1A4F071600BC744F /* CellParameterSettingControl.m in Sources */,
 				00ED15871A5EEC5D002D442F /* TempoList.m in Sources */,
 				0010C5CE1A60682600BC5E51 /* DrumVoice1.m in Sources */,
@@ -1753,6 +1772,7 @@
 				00088ADE1A798339004D83A3 /* LocalizedMutilanguage.m in Sources */,
 				008A5C901A4F0AE600BC744F /* CircleButton.m in Sources */,
 				005CDA731A57B9E300B85E4C /* BeepBound.m in Sources */,
+				008A9B4C1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.m in Sources */,
 				00717A5C1B56250A002779B7 /* AFURLRequestSerialization.m in Sources */,
 				008A5C921A4F0AE600BC744F /* TapAnimationImage.m in Sources */,
 				003A56A919D3293A00747EB3 /* MetronomeModel.m in Sources */,

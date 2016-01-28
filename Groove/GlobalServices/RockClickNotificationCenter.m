@@ -14,4 +14,9 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:kCircleButtonTwickLing object:@(value)];
 }
+
+- (void) switchMainWindowToSystemView
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kChangeToSystemPageView object:nil];
+}
 @end

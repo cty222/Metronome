@@ -22,8 +22,9 @@
 // WindowsHook
 #import "UIWindowWithHook.h"
 
-// View top
-#import "MetronmoneTopSubViewIphone.h"
+// New top view
+#import "TopPartOfMetronome4SVersionViewController.h"
+#import "TopPartOfMetronomeViewController.h"
 
 // View bottom
 #import "MetronomeBottomView.h"
@@ -45,6 +46,8 @@
 // AFNetworking
 #import "AFHTTPRequestOperationManager.h"
 
+
+
 @class LoopAndPlayViewControl;
 @class CellParameterSettingControl;
 @class SystemPageControl;
@@ -63,11 +66,15 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIView *TopView;
 @property (weak, nonatomic) IBOutlet UIView *BottomView;
 @property (weak, nonatomic) IBOutlet UIView *middleAdView;
-@property (nonatomic) MetronmoneTopSubViewIphone *TopSubView;
+
 @property (nonatomic) MetronomeBottomView *volumeBottomSubview;
 @property (nonatomic) MusicSettingBottomSubview *musicSettingBottomSubview;
 @property (nonatomic) MusicSpeedBottomSubview *musicSpeedBottomSubview;
 @property (strong, nonatomic) IBOutlet UIToolbar *bottomSubviewSwitcher;
+
+// new
+@property (strong, nonatomic) TopPartOfMetronomeViewController *topPartOfMetronomeViewController;
+
 //
 // ====================
 

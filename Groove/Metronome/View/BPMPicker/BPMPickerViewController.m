@@ -1,15 +1,14 @@
 //
-//  LargeBPMPicker.m
-//  Groove
+//  BPMPickerViewController.m
+//  RockClick
 //
-//  Created by C-ty on 2014/9/7.
-//  Copyright (c) 2014年 Cty. All rights reserved.
+//  Created by C-ty on 2016-01-28.
+//  Copyright © 2016 Cty. All rights reserved.
 //
 
-#import "LargeBPMPicker.h"
+#import "BPMPickerViewController.h"
 
-// Private property
-@interface LargeBPMPicker ()
+@interface BPMPickerViewController ()
 
 @property (getter = GetIsValueChange, setter = SetIsValueChange:) BOOL IsValueChange;
 @property int Sensitivity;
@@ -18,8 +17,7 @@
 
 @end
 
-@implementation LargeBPMPicker
-{
+@implementation BPMPickerViewController{
     BPM_PICKER_MODE _Mode;
     double _Value;
     int _MaxLimit;
@@ -38,79 +36,38 @@
     double _PressTime_ms;
 }
 
-- (float) LongPushArraySensitivity
-{
-    return 0.3;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    [self initInViewDidLoad];
 }
 
-- (void) awakeFromNib
-{
-    [super awakeFromNib];
-
-    [self InitializeInAwakeFromNib];
-}
-
--(void) InitializeInAwakeFromNib
-{
-    
-    self.DeviceType = [GlobalConfig DeviceType];
-    switch (self.DeviceType.intValue) {
-        case IPHONE_4S:
-            self.UpArrow.image = [UIImage imageNamed:@"BPMArrowUp_4S"];
-            self.DownArrow.image = [UIImage imageNamed:@"BPMArrowDown_4S"];
-            break;
-        case IPHONE_5S:
-            break;
-        default:
-            break;
-    }
+-(void) initInViewDidLoad {
     
     self.Mode = BPM_PICKER_INT_MODE;
-
+    
     
     _MaxLimit = [[GlobalConfig BPMMaxValue] intValue];
     _MinLimit = [[GlobalConfig BPMMinValue] intValue];
-
+    
     
     self.Value = 120;
     self.ShortPressSecond = 0.5;
     
     self.UpArrow.userInteractionEnabled = NO;
     self.DownArrow.userInteractionEnabled = NO;
-
+    
     self.UpArrow.hidden = YES;
     self.DownArrow.hidden = YES;
     self.Touched = NO;
-
+    
 }
 
-- (id)initWithFrame:(CGRect) frame
+- (float) LongPushArraySensitivity
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-
-    return self;
+    return 0.3;
 }
 
-// NO Use
-- (id) init
-{
-    self = [super init];
-    if (self) {
-        // If set this enable, the touch will send event to lebal
-    }
-    return self;
-}
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 // =================================
 // Property
@@ -127,13 +84,7 @@
         case BPM_PICKER_INT_MODE:
             self.Sensitivity = 5;
             self.StepValue = 1;
-            if (self.DeviceType.intValue == IPHONE_4S) {
-                self.ValueLabel.font = [self.ValueLabel.font  fontWithSize:110];
-            }
-            else
-            {
-                self.ValueLabel.font = [self.ValueLabel.font  fontWithSize:140];
-            }
+            self.ValueLabel.font = [self.ValueLabel.font  fontWithSize:140];
             break;
         case BPM_PICKER_DOUBLE_MODE:
             self.Sensitivity = 3;
@@ -154,13 +105,12 @@
 - (void) SetValue : (double) NewValue
 {
     // 小數點的關係會讓300出不來
-    if (NewValue > _MaxLimit || NewValue < _MinLimit)
-    {
+    if (NewValue > _MaxLimit || NewValue < _MinLimit) {
         return;
     }
     
     _Value =  ROUND_ONE_DECOMAL_FROM_DOUBLE(NewValue);
-
+    
     switch (self.Mode) {
         case BPM_PICKER_INT_MODE:
             [self.ValueLabel setText:[NSString stringWithFormat:@"%d", (int)self.Value]];
@@ -191,7 +141,7 @@
 // ============================
 // delegate
 //
-- (void) ShortPress: (LargeBPMPicker *) ThisPicker
+- (void) ShortPress: (id) ThisPicker
 {
     if (self.IsValueChange)
     {
@@ -416,4 +366,21 @@
 
 
 //========
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
 @end

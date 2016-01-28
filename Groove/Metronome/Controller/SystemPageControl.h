@@ -21,4 +21,6 @@
 
 - (void) InitializeSystemButton;
 
+- (id) initWithGlobalServices: (GlobalServices *) globalService;
+
 @end

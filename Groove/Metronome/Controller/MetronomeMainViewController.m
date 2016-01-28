@@ -39,6 +39,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    // TODO: empty now
     [self initLocalServices];
     
     [self initializeFlagStatus];
@@ -180,6 +181,7 @@
     self.systemPageController = [[SystemPageControl alloc] init];
     self.systemPageController.ParrentController = self;
     
+    
     [self.cellParameterSettingSubController initlizeCellParameterControlItems];
     
     [self.loopAndPlayViewSubController InitlizePlayingItems];
@@ -191,18 +193,15 @@
 
 - (void) initializeTopSubView
 {
-    if (self.TopSubView == nil)
-    {
-        CGRect subFrame = self.TopView.frame;
-        subFrame.origin = CGPointMake(0, 0);
-        self.TopSubView = [[MetronmoneTopSubViewIphone alloc] initWithFrame:subFrame];
+    if (self.topPartOfMetronomeViewController == nil){
+        NSNumber * DeviceType = [GlobalConfig DeviceType];
+        if (DeviceType.intValue == IPHONE_4S){
+            self.topPartOfMetronomeViewController = [[TopPartOfMetronome4SVersionViewController alloc] init];
+        }else{
+           self.topPartOfMetronomeViewController = [[TopPartOfMetronomeViewController alloc] init];
+        }
     }
-    if (self.TopView.subviews.count != 0)
-    {
-        [[self.TopView subviews]
-         makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    }
-    [self.TopView addSubview:self.TopSubView];
+    [self.TopView addSubview:self.topPartOfMetronomeViewController.view];
     
 }
 
@@ -347,13 +346,11 @@
         return;
     }
     
-    if ([self.engine.currentTempoList.privateProperties.doubleValueEnable boolValue])
-    {
-        self.cellParameterSettingSubController.BPMPicker.Mode = BPM_PICKER_DOUBLE_MODE;
+    if ([self.engine.currentTempoList.privateProperties.doubleValueEnable boolValue]) {
+        self.cellParameterSettingSubController.bPMPickerViewController.Mode = BPM_PICKER_DOUBLE_MODE;
     }
-    else
-    {
-        self.cellParameterSettingSubController.BPMPicker.Mode = BPM_PICKER_INT_MODE;
+    else {
+        self.cellParameterSettingSubController.bPMPickerViewController.Mode = BPM_PICKER_INT_MODE;
     }
 }
 
@@ -491,7 +488,7 @@
     self.engine.currentCell = self.engine.tempoCells[_currentSelectedCellIndex];
     
     // Set BPM
-    self.TopSubView.BPMPicker.Value = [self.engine.currentCell.bpmValue floatValue];
+    //self.TopSubView.BPMPicker.Value = [self.engine.currentCell.bpmValue floatValue];
     
     // Set Volume Set
     [self.cellParameterSettingSubController.VolumeSetsControl SetVolumeBarVolume:self.engine.currentCell];
@@ -673,7 +670,7 @@
     
     float currentBPMValue = [self.engine.currentCell.bpmValue floatValue];
     
-    if (self.cellParameterSettingSubController.BPMPicker.Mode == BPM_PICKER_INT_MODE)
+    if (self.cellParameterSettingSubController.bPMPickerViewController.Mode == BPM_PICKER_INT_MODE)
     {
         self.engine.clickTimer = [NSTimer scheduledTimerWithTimeInterval:BPM_TO_TIMER_VALUE(
                                                                 ROUND_NO_DECOMAL_FROM_DOUBLE(currentBPMValue))

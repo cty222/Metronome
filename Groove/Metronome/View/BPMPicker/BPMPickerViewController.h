@@ -1,14 +1,13 @@
 //
-//  LargeBPMPicker.h
-//  Groove
+//  BPMPickerViewController.h
+//  RockClick
 //
-//  Created by C-ty on 2014/9/7.
-//  Copyright (c) 2014年 Cty. All rights reserved.
+//  Created by C-ty on 2016-01-28.
+//  Copyright © 2016 Cty. All rights reserved.
 //
 
 #import "GlobalConfig.h"
-#import "XibViewInterface.h"
-
+#import <UIKit/UIKit.h>
 
 #define DIGIT_ENABLE_FLAG 0
 
@@ -17,18 +16,16 @@ typedef enum{
     BPM_PICKER_DOUBLE_MODE
 } BPM_PICKER_MODE;
 
-@ class LargeBPMPicker;
-
 @protocol LargeBPMPickerProtocol <NSObject>
 @required
 
 @optional
 
-- (void) SetBPMValue : (LargeBPMPicker *) ThisPicker;
-- (void) ShortPress: (LargeBPMPicker *) ThisPicker;
+- (void) SetBPMValue : (id) ThisPicker;
+- (void) ShortPress: (id) ThisPicker;
 @end
 
-@interface LargeBPMPicker : XibViewInterface
+@interface BPMPickerViewController : UIViewController
 
 @property (getter = GetMode, setter = SetMode:) BPM_PICKER_MODE Mode;
 @property (getter = GetValue, setter = SetValue:) double Value;

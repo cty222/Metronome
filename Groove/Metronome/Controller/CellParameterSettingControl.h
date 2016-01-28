@@ -18,7 +18,10 @@ typedef enum{
 @interface CellParameterSettingControl : NSObject <LargeBPMPickerProtocol, SubPropertySelectorProtocol>
 
 // (2) Cell parameter control item
-@property (strong, nonatomic) IBOutlet LargeBPMPicker *BPMPicker;
+@property BPMPickerViewController *bPMPickerViewController;
+
+
+
 @property (strong, nonatomic) IBOutlet UIButton *VoiceTypePicker;
 @property (strong, nonatomic) IBOutlet UIButton *TimeSigaturePicker;
 @property (strong, nonatomic) IBOutlet UIButton *LoopCellEditer;

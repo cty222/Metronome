@@ -68,18 +68,19 @@
     self.VolumeSetsControl = [[VolumeSetsControl alloc] init: Parent];
     
     // Others
-    self.BPMPicker = Parent.TopSubView.BPMPicker;
-    self.OptionScrollView = Parent.TopSubView.OptionScrollView;
-    self.VoiceTypePicker = Parent.TopSubView.VoiceTypePicker;
-    self.TimeSigaturePicker = Parent.TopSubView.TimeSigaturePicker;
-    self.LoopCellEditer = Parent.TopSubView.LoopCellEditer;
-    self.TapAlertImage = Parent.TopSubView.TapAnimationImage;
-    self.TimeSignaturePickerView = Parent.TopSubView.TimeSignaturePickerView;
-    self.VoiceTypePickerView = Parent.TopSubView.VoiceTypePickerView;
-    self.LoopCellEditerView = Parent.TopSubView.LoopCellEditerView;
+    self.bPMPickerViewController = Parent.topPartOfMetronomeViewController.bPMPickerViewController;
+    
+    self.OptionScrollView = Parent.topPartOfMetronomeViewController.OptionScrollView;
+    self.VoiceTypePicker = Parent.topPartOfMetronomeViewController.VoiceTypePicker;
+    self.TimeSigaturePicker = Parent.topPartOfMetronomeViewController.TimeSigaturePicker;
+    self.LoopCellEditer = Parent.topPartOfMetronomeViewController.LoopCellEditer;
+    self.TapAlertImage = Parent.topPartOfMetronomeViewController.TapAnimationImage;
+    self.TimeSignaturePickerView = Parent.topPartOfMetronomeViewController.TimeSignaturePickerView;
+    self.VoiceTypePickerView = Parent.topPartOfMetronomeViewController.VoiceTypePickerView;
+    self.LoopCellEditerView = Parent.topPartOfMetronomeViewController.LoopCellEditerView;
 
     // BPM Picker Initialize
-    self.BPMPicker.delegate = self;
+    self.bPMPickerViewController.delegate = self;
     
     
     //initialize tap function
@@ -258,7 +259,7 @@
 // =========================
 // delegate
 //
-- (void) ShortPress: (LargeBPMPicker *) ThisPicker
+- (void) ShortPress: (id) ThisPicker
 {
     [self.TapFunction TapAreaBeingTap];
 }
@@ -266,10 +267,10 @@
 - (void) SetBPMValue : (id) Picker
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-    if (Picker == self.BPMPicker)
+    if (Picker == self.bPMPickerViewController)
     {
         // BPM Save
-        Parent.engine.currentCell.bpmValue = [NSNumber numberWithFloat:self.BPMPicker.Value];
+        Parent.engine.currentCell.bpmValue = [NSNumber numberWithFloat:self.bPMPickerViewController.Value];
     
         // TODO : 不要save這麼頻繁
         [gMetronomeModel Save];
@@ -290,7 +291,7 @@
 
 - (void) TapChangeBPMCallBack :(NSNotification *)Notification
 {
-    self.BPMPicker.Value = [self.TapFunction GetNewValue];
+    self.bPMPickerViewController.Value = [self.TapFunction GetNewValue];
 }
 
 //

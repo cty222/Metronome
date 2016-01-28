@@ -18,10 +18,12 @@ typedef NS_ENUM(NSUInteger) {
 } __CIRCLE_BUTTON;
 
 #define kCircleButtonTwickLing @"kCircleButtonTwickLing"
+#define kChangeToSystemPageView @"kChangeToSystemPageView"
 
 
 @interface RockClickNotificationCenter : NSObject
 
 - (void) makeCircleButtonTwickLing: (__CIRCLE_BUTTON) value;
+- (void) switchMainWindowToSystemView;
 
 @end
