@@ -69,6 +69,8 @@ enum {
 
 
 // GlobalEvent
+#define kTapChangeBPMValue @"kTapChangeBPMValue"
+
 #define kChangeBackToMetronomeView @"kChangeBackToMetronomeView"
 #define kChangeToTempoListPickerView @"kChangeToTempoListPickerView"
 #define kChangeBackToSystemPageView @"kChangeBackToSystemPageView"

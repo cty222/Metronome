@@ -19,11 +19,20 @@ typedef NS_ENUM(NSUInteger) {
 
 #define kCircleButtonTwickLing @"kCircleButtonTwickLing"
 #define kChangeToSystemPageView @"kChangeToSystemPageView"
-
+#define kSetBPMValueNotification @"kSetBPMValueNotification"
+#define kChangeCellCounter @"kChangeCellCounter"
+#define kDeleteTargetIndexCell @"kDeleteTargetIndexCell"
+#define kPlayCellListButtonClick @"kPlayCellListButtonClick"
+#define kAddLoopCellButtonClick @"kAddLoopCellButtonClick"
 
 @interface RockClickNotificationCenter : NSObject
 
 - (void) makeCircleButtonTwickLing: (__CIRCLE_BUTTON) value;
 - (void) switchMainWindowToSystemView;
+- (void) setBPMValue;
+- (void) changeCellCounter: (float) value;
+- (void) deleteTargetIndexCell;
+- (void) playCellListButtonClick;
+- (void) addLoopCellButtonClick;
 
 @end

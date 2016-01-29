@@ -126,11 +126,9 @@
     }
     
     // Pass to parent view.
-    if (self.delegate != nil)
-    {
+    if (self.delegate != nil){
         // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(SetBPMValue:)])
-        {
+        if([self.delegate respondsToSelector:@selector(SetBPMValue:)]){
             [self.delegate SetBPMValue: self];
         }
     }
@@ -143,16 +141,13 @@
 //
 - (void) ShortPress: (id) ThisPicker
 {
-    if (self.IsValueChange)
-    {
+    if (self.IsValueChange){
         return;
     }
-    
-    if (self.delegate != nil)
-    {
+
+    if (self.delegate != nil){
         // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(ShortPress:)])
-        {
+        if([self.delegate respondsToSelector:@selector(ShortPress:)]){
             [self.delegate ShortPress: ThisPicker];
         }
     }

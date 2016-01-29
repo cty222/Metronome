@@ -19,4 +19,27 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:kChangeToSystemPageView object:nil];
 }
+
+- (void) setBPMValue
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kSetBPMValueNotification object:nil];
+}
+
+- (void) changeCellCounter: (float) value
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kChangeCellCounter object:@(value)];
+}
+
+- (void) deleteTargetIndexCell
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDeleteTargetIndexCell object:nil];
+}
+
+- (void) playCellListButtonClick{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayCellListButtonClick object:nil];
+}
+
+- (void) addLoopCellButtonClick{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAddLoopCellButtonClick object:nil];
+}
 @end

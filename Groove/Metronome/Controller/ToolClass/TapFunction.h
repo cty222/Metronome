@@ -10,8 +10,6 @@
 #import "TapAnimationImage.h"
 #import "GlobalConfig.h"
 
-#define kTapChangeBPMValue @"kTapChangeBPMValue"
-
 @interface TapFunction : NSObject
 
 - (void) TapAreaBeingTap;

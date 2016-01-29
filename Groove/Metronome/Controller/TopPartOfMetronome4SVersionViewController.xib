@@ -7,20 +7,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopPartOfMetronome4SVersionViewController">
             <connections>
-                <outlet property="AddLoopCellButton" destination="3Kz-ae-74c" id="XnQ-as-cZR"/>
-                <outlet property="BPMPicker" destination="f4l-lO-1PC" id="lx1-2O-GQi"/>
-                <outlet property="LoopCellEditer" destination="QwU-KM-ttY" id="5Yw-AS-hsu"/>
-                <outlet property="LoopCellEditerView" destination="Ggz-fd-GMg" id="pVB-dC-8XS"/>
-                <outlet property="OptionScrollView" destination="UBb-Q2-NtV" id="Dqi-lc-Us4"/>
-                <outlet property="PlayCellListButton" destination="vmT-Sl-Mtf" id="DWr-EG-ThA"/>
-                <outlet property="PlayMusicButton" destination="MHU-6h-QJl" id="DkZ-EX-cmA"/>
-                <outlet property="SystemButton" destination="9vU-24-5qK" id="tcV-dX-mdi"/>
-                <outlet property="TapAnimationImage" destination="Fd9-eg-oym" id="Thn-6z-e7z"/>
-                <outlet property="TimeSigaturePicker" destination="eKS-lY-k8H" id="sPE-LS-rHI"/>
-                <outlet property="TimeSignaturePickerView" destination="B2M-hH-twT" id="rXb-z1-fW0"/>
-                <outlet property="VoiceTypePicker" destination="N9X-Fv-yKS" id="hxt-2B-smF"/>
-                <outlet property="VoiceTypePickerView" destination="ZYY-rP-SuE" id="Bxo-cJ-Oup"/>
+                <outlet property="addLoopCellButton" destination="3Kz-ae-74c" id="O1B-vE-pZS"/>
+                <outlet property="bpmPicker" destination="f4l-lO-1PC" id="niI-Zl-LNC"/>
+                <outlet property="loopCellDisplayEditorButton" destination="QwU-KM-ttY" id="thp-lE-vWt"/>
+                <outlet property="loopCellEditorView" destination="Ggz-fd-GMg" id="e08-cO-lRW"/>
+                <outlet property="optionScrollView" destination="UBb-Q2-NtV" id="LQS-Yg-TqT"/>
+                <outlet property="playCellListButton" destination="vmT-Sl-Mtf" id="rhi-yW-3VQ"/>
+                <outlet property="playMusicButton" destination="MHU-6h-QJl" id="6aC-I3-gOe"/>
+                <outlet property="systemButton" destination="9vU-24-5qK" id="lpR-YP-PXD"/>
+                <outlet property="tapAnimationImage" destination="Fd9-eg-oym" id="X5d-G1-OQk"/>
+                <outlet property="timeSigatureDisplayPickerButton" destination="eKS-lY-k8H" id="jjJ-xz-Mm5"/>
+                <outlet property="timeSignaturePickerView" destination="B2M-hH-twT" id="Gik-4P-9p1"/>
                 <outlet property="view" destination="FuM-FJ-7kf" id="SDT-ZN-2h7"/>
+                <outlet property="voiceTypeDisplayPickerButton" destination="N9X-Fv-yKS" id="jM6-EK-fMz"/>
+                <outlet property="voiceTypePickerView" destination="ZYY-rP-SuE" id="yzG-NE-3du"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -49,18 +49,27 @@
                             <state key="normal" backgroundImage="ScrollViewCellBackGround">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="timeSigaturePickerClick:" destination="-1" eventType="touchUpInside" id="JFL-y8-01h"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9X-Fv-yKS">
                             <rect key="frame" x="10" y="61" width="40" height="40"/>
                             <state key="normal" backgroundImage="HumanVoice">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="voiceTypePickerClick:" destination="-1" eventType="touchUpInside" id="CP2-4t-SGw"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QwU-KM-ttY">
                             <rect key="frame" x="10" y="110" width="40" height="40"/>
                             <state key="normal" backgroundImage="LoopCellPickerButton">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="loopCellEditerClick:" destination="-1" eventType="touchUpInside" id="Mfi-Eb-RWF"/>
+                            </connections>
                         </button>
                     </subviews>
                 </scrollView>
@@ -71,18 +80,18 @@
                     <rect key="frame" x="5" y="5" width="40" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Kz-ae-74c">
-                    <rect key="frame" x="210" y="135" width="40" height="40"/>
-                    <fontDescription key="fontDescription" name="Marion-Bold" family="Marion" pointSize="23"/>
-                    <state key="normal" backgroundImage="AddCellGray">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmT-Sl-Mtf">
                     <rect key="frame" x="8" y="145" width="80" height="30"/>
                     <fontDescription key="fontDescription" name="Marion-Bold" family="Marion" pointSize="23"/>
                     <state key="normal" backgroundImage="PlayList">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHU-6h-QJl">
+                    <rect key="frame" x="8" y="145" width="80" height="30"/>
+                    <fontDescription key="fontDescription" name="Marion-Bold" family="Marion" pointSize="23"/>
+                    <state key="normal" backgroundImage="PlayMusic">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -92,11 +101,14 @@
                     <state key="normal" backgroundImage="SystemButton_4S">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="switchMainWindowToSystemView:" destination="-1" eventType="touchUpInside" id="rMM-zN-POr"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHU-6h-QJl">
-                    <rect key="frame" x="8" y="145" width="80" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Kz-ae-74c">
+                    <rect key="frame" x="210" y="135" width="40" height="40"/>
                     <fontDescription key="fontDescription" name="Marion-Bold" family="Marion" pointSize="23"/>
-                    <state key="normal" backgroundImage="PlayMusic">
+                    <state key="normal" backgroundImage="AddCellGray">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>

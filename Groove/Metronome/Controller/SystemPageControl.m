@@ -9,7 +9,6 @@
 #import "SystemPageControl.h"
 
 @interface SystemPageControl()
-@property GlobalServices *globalServices;
 
 @end
 
@@ -17,12 +16,7 @@
 {
 }
 
-- (void) MainViewWillAppear
-{
-
-}
-
-- (id) initWithGlobalServices: (GlobalServices *) globalService{
+- (id) initWithGlobalServices: (GlobalServices *) globalServices{
     self = [super init];
     if (self){
         
@@ -34,12 +28,7 @@
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
     
-    self.SystemButton = Parent.topPartOfMetronomeViewController.SystemButton;
     self.adView = Parent.adView;
-    self.globalServices = Parent.globalServices;
-    
-    [self.SystemButton addTarget:self
-                                action:@selector(ChangeToSystemSettingControllerView:) forControlEvents:UIControlEventTouchDown];
    
     self.adView.delegate = self;
     
@@ -87,15 +76,4 @@
 
 //
 // =================================
-
-
-//  =========================
-//
-//
-- (IBAction) ChangeToSystemSettingControllerView : (id) Button
-{
-    [self.globalServices.notificationCenter switchMainWindowToSystemView];
-}
-//
-//  =========================
 @end

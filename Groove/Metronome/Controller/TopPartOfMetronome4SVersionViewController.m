@@ -16,7 +16,7 @@
 
 //override
 - (void) initBPMPicker {
-    self.bPMPickerViewController = [[BPMPicker4SViewController alloc] init];
+    self.bpmPickerViewController = [[BPMPicker4SViewController alloc] init];
 }
 
 - (void)viewDidLoad {

@@ -14,13 +14,8 @@
 @property UIViewController *ParrentController;
 
 // (5) System Button
-@property (strong, nonatomic) IBOutlet UIButton *SystemButton;
 @property(nonatomic,retain)IBOutlet ADBannerView *adView;
 
-- (void) MainViewWillAppear;
-
-- (void) InitializeSystemButton;
-
-- (id) initWithGlobalServices: (GlobalServices *) globalService;
+- (id) initWithGlobalServices: (GlobalServices *) globalServices;
 
 @end

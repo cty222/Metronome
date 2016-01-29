@@ -14,43 +14,18 @@
     
     // Delete Cell
     TempoCell * _DeletedCell;
-    UIAlertView *_TempoCellOverMaxCountAlert;
-
-}
-
-- (void) MainViewWillAppear
-{
-    [self PlayMusicStatusChangedCallBack:nil];
 }
 
 - (void) InitlizePlayingItems
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
-    self.PlayCellListButton = Parent.topPartOfMetronomeViewController.PlayCellListButton;
     self.PlayCurrentCellButton = Parent.volumeBottomSubview.PlayCurrentCellButton;
-    self.PlayMusicButton = Parent.topPartOfMetronomeViewController.PlayMusicButton;
-    
     
     // PlayLoopCellButton Initalize
     // black  playloop button
     [self.PlayCurrentCellButton addTarget:self
                                    action:@selector(PlayCurrentCellButtonClick:) forControlEvents:UIControlEventTouchDown];
-    
-    // PlayCellListButton Initialize
-    [self.PlayCellListButton addTarget:self
-                                action:@selector(PlayCellListButtonClick:) forControlEvents:UIControlEventTouchDown];
-    
-    // PlayCellListButton Initialize
-    [self.PlayMusicButton addTarget:self
-                                action:@selector(PlayMusicButtonClick:) forControlEvents:UIControlEventTouchDown];
-    
-  
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(PlayMusicStatusChangedCallBack:)
-                                                 name:kPlayMusicStatusChangedEvent
-                                               object:nil];
-    
     
 }
 
@@ -59,32 +34,8 @@
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
 
     self.SelectGrooveBar = Parent.volumeBottomSubview.SelectGrooveBar;
-    self.AddLoopCellButton = Parent.topPartOfMetronomeViewController.AddLoopCellButton;
-    
-    [self.AddLoopCellButton addTarget:self
-                               action:@selector(AddLoopCellButtonClick:) forControlEvents:UIControlEventTouchDown];
     
     self.SelectGrooveBar.delegate = self;
-}
-
-- (void) ChangeButtonDisplayByPlayMode
-{
-    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-
-    switch (Parent.currentPlayingMode) {
-        case STOP_PLAYING:
-            [self.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayBlack"] forState:UIControlStateNormal];
-            [self.PlayCellListButton setBackgroundImage:[UIImage imageNamed:@"PlayList"] forState:UIControlStateNormal];
-            break;
-        case SINGLE_PLAYING:
-            [self.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
-            break;
-        case LIST_PLAYING:
-            // TODO : 要改成Stop圖
-            [self.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
-            [self.PlayCellListButton setBackgroundImage:[UIImage imageNamed:@"PlayList_Red"] forState:UIControlStateNormal];
-            break;
-    }
 }
 
 
@@ -112,27 +63,6 @@
 // =========================
 // Action
 //
-
-- (IBAction) PlayCellListButtonClick: (UIButton *) ThisClickedButton
-{
-    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-
-    if (Parent.currentPlayingMode == SINGLE_PLAYING)
-    {
-        Parent.currentPlayingMode = STOP_PLAYING;
-    }
-    
-    if (Parent.currentPlayingMode == STOP_PLAYING)
-    {
-        Parent.currentPlayingMode = LIST_PLAYING;
-    }
-    else if(Parent.currentPlayingMode == LIST_PLAYING)
-    {
-        Parent.currentPlayingMode = STOP_PLAYING;
-    }
-    
-}
-
 - (IBAction) PlayCurrentCellButtonClick: (UIButton *) ThisClickedButton
 {
     MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
@@ -144,37 +74,6 @@
     else if (Parent.currentPlayingMode == SINGLE_PLAYING)
     {
         Parent.currentPlayingMode = STOP_PLAYING;
-    }
-}
-
-- (IBAction)PlayMusicButtonClick:(UIButton *)ThisClickedButton
-{
-    if (gPlayMusicChannel.URL == nil)
-    {
-        return;
-    }
-    
-    if (!gPlayMusicChannel.Playing)
-    {
-        [gPlayMusicChannel Play];
-    }
-    else
-    {
-        [gPlayMusicChannel Stop];
-    }
-    
-    [self PlayMusicStatusChangedCallBack:nil];
-}
-
-- (void) PlayMusicStatusChangedCallBack:(NSNotification *)Notification
-{
-    if (gPlayMusicChannel.Playing)
-    {
-        [self.PlayMusicButton setBackgroundImage:[UIImage imageNamed:@"PlayMusic_Red"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [self.PlayMusicButton setBackgroundImage:[UIImage imageNamed:@"PlayMusic"] forState:UIControlStateNormal];
     }
 }
 
@@ -209,45 +108,6 @@
     
     [Parent reflashCellListAndCurrentCellByCurrentData];
 
-}
-
-- (IBAction) AddLoopCellButtonClick: (UIButton *) ThisClickedButton
-{
-    MetronomeMainViewController * Parent = (MetronomeMainViewController *)self.ParrentController;
-    
-    if (Parent.engine.tempoCells.count >= [[GlobalConfig TempoCellNumberMax] integerValue])
-    {
-        // TODO: 警告數量超過了
-        // 超過了
-        if (_TempoCellOverMaxCountAlert ==nil)
-        {
-            _TempoCellOverMaxCountAlert = [[UIAlertView alloc]
-                                           initWithTitle:LocalStringSync(@"Too many tempo items", nil)
-                                           message:LocalStringSync(@"You can't add more than 20 tempo items in one tempo list !!", nil)
-                                           delegate:nil
-                                           cancelButtonTitle:LocalStringSync(@"OK, I know it.", nil)
-                                           otherButtonTitles:nil, nil];
-        }
-        [_TempoCellOverMaxCountAlert show];
-        return;
-    }
-    
-    // 新增一筆進資料庫
-    [gMetronomeModel AddNewTempoCell: Parent.engine.currentTempoList];
-    
-    // 重新顯示
-    [Parent syncTempoListWithModel];
-    
-    [Parent syncTempoCellDatatableWithModel];
-    
-    TempoList * CurrentListCell = Parent.engine.currentTempoList;
-    
-    // TODO : 嚴重 同步問題！！！
-    CurrentListCell.focusCellIndex = [NSNumber numberWithInt:(int)(Parent.engine.tempoCells.count - 1)];
-    [gMetronomeModel Save];
-    
-    
-    [Parent reflashCellListAndCurrentCellByCurrentData];
 }
 
 - (void) DeleteTargetIndexCell: (int) CurrentFocusIndex

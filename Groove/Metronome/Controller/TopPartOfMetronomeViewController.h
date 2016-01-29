@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GlobalServices.h"
 
 #import "BPMPickerViewController.h"
 #import "SubPropertySelector.h"
@@ -14,30 +15,27 @@
 #import "VoiceTypePickerView.h"
 #import "LoopCellEditerView.h"
 #import "TapAnimationImage.h"
+#import "TapFunction.h"
+#import "PlayerForSongs.h"
 
-@interface TopPartOfMetronomeViewController : UIViewController <LargeBPMPickerProtocol>
+@interface TopPartOfMetronomeViewController : UIViewController <LargeBPMPickerProtocol, SubPropertySelectorProtocol >
 
-@property (strong, nonatomic) IBOutlet UIView *BPMPicker;
-@property (strong, nonatomic) BPMPickerViewController *bPMPickerViewController;
+@property (strong, nonatomic) BPMPickerViewController *bpmPickerViewController;
+@property (strong, nonatomic) IBOutlet UIView *bpmPicker;
+@property (strong, nonatomic) IBOutlet TimeSignaturePickerView *timeSignaturePickerView;
+@property (strong, nonatomic) IBOutlet VoiceTypePickerView *voiceTypePickerView;
+@property (strong, nonatomic) IBOutlet LoopCellEditerView *loopCellEditorView;
+@property (strong, nonatomic) IBOutlet UIScrollView *optionScrollView;
+@property (strong, nonatomic) IBOutlet UIButton *timeSigatureDisplayPickerButton;
+@property (strong, nonatomic) IBOutlet UIButton *voiceTypeDisplayPickerButton;
+@property (strong, nonatomic) IBOutlet UIButton *loopCellDisplayEditorButton;
+@property (strong, nonatomic) IBOutlet TapAnimationImage *tapAnimationImage;
+@property (strong, nonatomic) IBOutlet UIButton *playCellListButton;
+@property (strong, nonatomic) IBOutlet UIButton *playMusicButton;
+@property (strong, nonatomic) IBOutlet UIButton *systemButton;
+@property (strong, nonatomic) IBOutlet UIButton *addLoopCellButton;
 
-
-
-
-
-@property (strong, nonatomic) IBOutlet TimeSignaturePickerView *TimeSignaturePickerView;
-@property (strong, nonatomic) IBOutlet VoiceTypePickerView *VoiceTypePickerView;
-@property (strong, nonatomic) IBOutlet LoopCellEditerView *LoopCellEditerView;
-@property (strong, nonatomic) IBOutlet UIScrollView *OptionScrollView;
-@property (strong, nonatomic) IBOutlet UIButton *TimeSigaturePicker;
-@property (strong, nonatomic) IBOutlet UIButton *VoiceTypePicker;
-@property (strong, nonatomic) IBOutlet UIButton *LoopCellEditer;
-@property (strong, nonatomic) IBOutlet TapAnimationImage *TapAnimationImage;
-@property (strong, nonatomic) IBOutlet UIButton *PlayCellListButton;
-@property (strong, nonatomic) IBOutlet UIButton *PlayMusicButton;
-@property (strong, nonatomic) IBOutlet UIButton *SystemButton;
-
-@property (strong, nonatomic) IBOutlet UIButton *AddLoopCellButton;
-
-
+- (id) initWithGlobalServices: (GlobalServices *) globalService;
+- (void) changeVoiceTypePickerImage: (int) TagNumber;
 
 @end
