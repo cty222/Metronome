@@ -9,51 +9,70 @@
 #import "CircleButton.h"
 #import <QuartzCore/QuartzCore.h>
 
+@interface CircleButton ()
+@property (strong, nonatomic) IBOutlet UIView *subView4;
+@property (strong, nonatomic) IBOutlet UIView *subView3;
+@property (strong, nonatomic) IBOutlet UIView *subView2MiddleBlockValue;
+@property (strong, nonatomic) IBOutlet UIView *subView1RedValue;
+@property (strong, nonatomic) IBOutlet UIView *subViewFrame0;
+@property (strong, nonatomic) IBOutlet UIImageView *imageViewChangeSizeCircle;
+@property (strong, nonatomic) IBOutlet UIImageView *imageViewInnerBlackCircle;
+@property (strong, nonatomic) IBOutlet UIImageView *imageViewRedValue;
+@property (strong, nonatomic) IBOutlet UIImageView *imageViewOuterBlackCircle;
+
+@property (getter = getTouched, setter = setTouched:) BOOL touched;
+
+@end
 
 @implementation CircleButton
 {
-    UIImage * _ImageMask;
-    __block NSInteger _SubView_F4_degree;
+    UIImage * _imageMask;
+    __block NSInteger _subView_F4_degree;
     
-    BOOL _Touched;
-    CGPoint _OriginalLocation;
+    CGPoint _originalLocation;
     
-    float _IndexValue;
-
-    NSUInteger _IndexValueSensitivity;
-    
-    NSTimer *_TouchedTimer;
-    
-    CIRCLEBUTTON_RANGE _IndexRange;
-    
-    NSOperationQueue * _Queue;
-    NSBlockOperation * RoundingOperation;
+    NSTimer *_touchedTimer;
+        
+    NSOperationQueue * _queue;
 }
+@synthesize indexValue = _indexValue;
+@synthesize indexRange = _indexRange;
+@synthesize indexValueSensitivity = _indexValueSensitivity;
+@synthesize touched = _touched;
 
 - (void) awakeFromNib
 {
     [super awakeFromNib];
 }
 
--(void) Initialize
+-(void) initialize
 {
     // Default Value
-    _Queue = [[NSOperationQueue alloc] init];
-    _SubView_F4_degree = 0;
-    _IndexRange.MaxIndex = CIRCLE_DEFAULT_MAX_VALUE;
-    _IndexRange.MinIndex = CIRCLE_DEFAULT_MIN_VALUE;
-    self.TwickPicture.hidden = YES;
-
+    _queue = [[NSOperationQueue alloc] init];
+    _subView_F4_degree = 0;
+    self.twickPicture.hidden = YES;
+    _indexRange.maxIndex = CIRCLE_DEFAULT_MAX_VALUE;
+    _indexRange.minIndex = CIRCLE_DEFAULT_MIN_VALUE;
+    
     // reset to default state
-    [self FlipAnimation];
+    [self flipAnimation];
     
     // Need this, Important
     UIGraphicsBeginImageContext(self.frame.size);
     [[UIImage imageNamed:@"NewCircle_F1"] drawInRect:self.bounds];
-    _ImageMask = UIGraphicsGetImageFromCurrentImageContext();
+    _imageMask = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    self.SubView_Frame2_BlockValue.backgroundColor = [UIColor colorWithPatternImage:_ImageMask];
+    self.subView2MiddleBlockValue.backgroundColor = [UIColor colorWithPatternImage:_imageMask];
     
+    CircleButtonRange volumeRange = {
+        .maxIndex = 10.0, 
+        .minIndex = 0, 
+        .unitValue = 0.1
+    };
+    
+    self.indexRange = volumeRange;
+    self.indexValueSensitivity = 1;
+        
 }
 
 - (id)initWithFrame:(CGRect) frame
@@ -61,413 +80,321 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self Initialize];
-
+        [self initialize];
     }
-    
     return self;
 }
 
-- (void) ValueColorChangeWithIndexValue
+- (id) init
 {
-    NSUInteger Scale = self.IndexRange.MaxIndex - self.IndexRange.MinIndex;
-    if (Scale == 0) {
-        Scale = 1;
+    self = [super init];
+    if (self){
+       [self initialize]; 
+    }
+    return self;
+}
+
+- (void) valueColorChangeWithIndexValue
+{
+    NSUInteger scale = self.indexRange.maxIndex - self.indexRange.minIndex;
+    if (scale == 0) {
+        scale = 1;
     }
     
-    double DisplayPersentage = (double)(self.IndexValue - self.IndexRange.MinIndex)/ (double) Scale;
+    double displayPersentage = (double)(self.indexValue - self.indexRange.minIndex)/ (double) scale;
     
-    self.SubView_Frame2_BlockValue.frame = CGRectMake(0, 0 , self.frame.size.width, self.frame.size.height * (1 - DisplayPersentage));
+    self.subView2MiddleBlockValue.frame = CGRectMake(0, 0 , self.frame.size.width, self.frame.size.height * (1 - displayPersentage));
     
 }
 
-- (CIRCLEBUTTON_RANGE) GetIndexRange
+- (CircleButtonRange) getIndexRange
 {
-    return _IndexRange;
+    return _indexRange;
 }
 
-- (void) SetIndexRange:(CIRCLEBUTTON_RANGE) NewValue
+- (void) setIndexRange:(CircleButtonRange) newValue
 {
-    if (NewValue.MaxIndex < NewValue.MinIndex)
-    {
-        NewValue.MaxIndex = NewValue.MinIndex;
+    if (newValue.maxIndex < newValue.minIndex){
+        newValue.maxIndex = newValue.minIndex;
     }
     
-    if (NewValue.MaxIndex == 0)
-    {
-        NewValue.MaxIndex = CIRCLE_DEFAULT_MAX_VALUE;
+    if (newValue.maxIndex == 0){
+        newValue.maxIndex = CIRCLE_DEFAULT_MAX_VALUE;
     }
     
-    if (NewValue.UnitValue > NewValue.MaxIndex - NewValue.MinIndex)
+    if (newValue.unitValue > newValue.maxIndex - newValue.minIndex)
     {
-        NewValue.UnitValue = NewValue.MaxIndex - NewValue.MinIndex;
+        newValue.unitValue = newValue.maxIndex - newValue.minIndex;
     }
     
-    _IndexRange = NewValue;
+    _indexRange = newValue;
 }
 
-- (double) GetIndexValueSensitivity
+- (double) getIndexValueSensitivity
 {
-    if (_IndexValueSensitivity<= 0)
+    if (_indexValueSensitivity<= 0)
     {
-        _IndexValueSensitivity = 1;
+        _indexValueSensitivity = 1;
     }
-    return _IndexValueSensitivity;
+    return _indexValueSensitivity;
 }
 
--(void) SetIndexValueSensitivity: (double) NewValue
+-(void) setIndexValueSensitivity: (double) newValue
 {
-    _IndexValueSensitivity = NewValue;
+    _indexValueSensitivity = newValue;
 }
 
--(float) GetIndexValue
+-(float) getIndexValue
 {
-    return _IndexValue;
+    return _indexValue;
 }
 
--(void) SetIndexValue: (float) NewValue
+-(void) setIndexValue: (float) newValue
 {
     
-    if (NewValue > self.IndexRange.MaxIndex)
-    {
-        NewValue = self.IndexRange.MaxIndex;
-    }
-    else if (NewValue < self.IndexRange.MinIndex)
-    {
-        NewValue = self.IndexRange.MinIndex;
+    if (newValue > self.indexRange.maxIndex){
+        newValue = self.indexRange.maxIndex;
+    }else if (newValue < self.indexRange.minIndex){
+        newValue = self.indexRange.minIndex;
     }
         
-    _IndexValue = NewValue;
+    _indexValue = newValue;
     
-    [self ValueColorChangeWithIndexValue];
-    [self.ValueLabel setText:[NSString stringWithFormat:@"%0.1f", _IndexValue]];
+    [self valueColorChangeWithIndexValue];
+    [self.valueLabel setText:[NSString stringWithFormat:@"%0.1f", _indexValue]];
     
-    [self CircleButtonValueChanged: self];
+    [self circleButtonValueChanged: self];
 }
 
--(void) SetTouched: (BOOL) NewValue
+-(void) setTouched: (BOOL) newValue
 {
-    _Touched = NewValue;
-    if (_Touched)
-    {
+    _touched = newValue;
+    if (_touched){
         [self.superview bringSubviewToFront:self];
-        // 如果觸碰
-        // 最內環會變大, 便最外環
-        // 不用animate 是因為動作設不快???
-        // 翻轉文字_顯示, 放大在反轉完成之後
-        [self FlipAnimation];
-    }
-    else
-    {
-        
-        // 如果結束觸碰
-        // 最內環會變轉正, 之後再縮小.
-        [self RoundingAnimationStop];
-
+        // If it has been touched, the inner red circle will become bigger.
+        // The reason why I didn't use animate methods to handle it is because of speed, too slow.
+        // It will rotate to label side when changing size finish.
+        [self flipAnimation];
+    }else{
+        [self roundingAnimationStop];
     }
 }
 
-- (BOOL) GetTouched
+- (BOOL) getTouched
 {
-    return _Touched;
+    return _touched;
 }
 
-- (void) FlipAnimation
+- (void) flipAnimation
 {
-    if (self.Touched) {
-        [UIView transitionFromView:self.SignPicture toView:self.ValueLabel
+    if (self.touched) {
+        [UIView transitionFromView:self.signPicture toView:self.valueLabel
                           duration:0.5
                            options:UIViewAnimationOptionTransitionFlipFromLeft
                         completion:^(BOOL finished){
-                            if (self.Touched)
-                            {
-                                // 放大在反轉完成之後
-                                if (_TouchedTimer != nil)
-                                {
-                                    [_TouchedTimer invalidate];
-                                    _TouchedTimer = nil;
+                            if (self.touched){
+                                if (_touchedTimer != nil){
+                                    [_touchedTimer invalidate];
+                                    _touchedTimer = nil;
                                 }
-                                _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
+                                _touchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
                                                                              target:self
-                                                                           selector:@selector(TouchedOpen:)
+                                                                           selector:@selector(touchedOpen:)
                                                                            userInfo:nil
                                                                             repeats:YES];
                             }
                         }];
     }
     else {
-        [UIView transitionFromView:self.ValueLabel toView:self.SignPicture
+        [UIView transitionFromView:self.valueLabel toView:self.signPicture
                           duration:0.5
                            options:UIViewAnimationOptionTransitionFlipFromLeft
                         completion:NULL];
     }
 }
 
-- (void) TouchedOpen: (NSTimer *) ThisTimer
+- (void) touchedOpen: (NSTimer *) thisTimer
 {
-    if (!self.Touched)
-    {
+    if (!self.touched){
         return;
     }
     
-    // 放大
-    if (self.SubView_Frame4.frame.origin.x > -1 * (self.frame.size.width /2))
-    {
-        self.SubView_Frame4.frame = CGRectMake( self.SubView_Frame4.frame.origin.x - 1,
-                                            self.SubView_Frame4.frame.origin.y - 1,
-                                            self.SubView_Frame4.frame.size.width + 2,
-                                            self.SubView_Frame4.frame.size.height + 2
+    // change to large size
+    if (self.subView4.frame.origin.x > -1 * (self.frame.size.width /2)){
+        self.subView4.frame = CGRectMake( self.subView4.frame.origin.x - 1,
+                                            self.subView4.frame.origin.y - 1,
+                                            self.subView4.frame.size.width + 2,
+                                            self.subView4.frame.size.height + 2
                                            );
-    }
-    else
-    {
-        //當變大完成, 就會開始旋轉
-        if (_TouchedTimer != nil)
-        {
-            [_TouchedTimer invalidate];
-            _TouchedTimer = nil;
+    }else{
+        if (_touchedTimer != nil){
+            [_touchedTimer invalidate];
+            _touchedTimer = nil;
         }
 
-        [self RoundingAnimationStart];
-
+        [self roundingAnimationStart];
     }
 }
 
-- (void) TouchedClose: (NSTimer *) ThisTimer
+- (void) touchedClose: (NSTimer *) thisTimer
 {
-    if (self.Touched)
-    {
+    if (self.touched){
         return;
     }
     
-    // 縮小
-    if (self.SubView_Frame4.frame.origin.x < 0)
-    {
-        self.SubView_Frame4.frame = CGRectMake( self.SubView_Frame4.frame.origin.x + 1,
-                                           self.SubView_Frame4.frame.origin.y + 1,
-                                           self.SubView_Frame4.frame.size.width - 2,
-                                           self.SubView_Frame4.frame.size.height - 2
+    // change to small size
+    if (self.subView4.frame.origin.x < 0){
+        self.subView4.frame = CGRectMake( self.subView4.frame.origin.x + 1,
+                                           self.subView4.frame.origin.y + 1,
+                                           self.subView4.frame.size.width - 2,
+                                           self.subView4.frame.size.height - 2
                                            );
-    }
-    else
-    {
-        // 翻轉文字_顯示
-        [self FlipAnimation];
+    }else{
+        // rotate back to symbal
+        [self flipAnimation];
 
         
-        if (_TouchedTimer != nil)
-        {
-            [_TouchedTimer invalidate];
-            _TouchedTimer = nil;
+        if (_touchedTimer != nil){
+            [_touchedTimer invalidate];
+            _touchedTimer = nil;
         }
     }
 }
 
-- (void) RoundingAnimationStart
+- (void) roundingAnimationStart
 {
-    self.ImageView_Frame4.image = [UIImage imageNamed:@"NewCircle_Big_Inner"];
+    self.imageViewChangeSizeCircle.image = [UIImage imageNamed:@"NewCircle_Big_Inner"];
     [UIView animateWithDuration:0.005
                           delay:0.01
                         options: UIViewAnimationOptionCurveLinear
                      animations:^{
-                         [self RotationChange :self.SubView_Frame4 Degree : (float) _SubView_F4_degree];
+                         [self rotationChange :self.subView4 degree : (float) _subView_F4_degree];
                      }
                      completion:^(BOOL finished){
-                         if (self.Touched){
-                             _SubView_F4_degree += ROUNDING_START_SENSITIVITY;
-                             [self RoundingAnimationStart];
+                         if (self.touched){
+                             _subView_F4_degree += ROUNDING_START_SENSITIVITY;
+                             [self roundingAnimationStart];
                          }
                      }];
 }
 
-- (void) RoundingAnimationStop
+- (void) roundingAnimationStop
 {
-    self.ImageView_Frame4.image = [UIImage imageNamed:@"NewCircle_F4"];
+    self.imageViewChangeSizeCircle.image = [UIImage imageNamed:@"NewCircle_F4"];
 
     [UIView animateWithDuration:0.005
                           delay:0.0001
                         options: UIViewAnimationOptionCurveLinear
                      animations:^{
-                         [self RotationChange :self.SubView_Frame4 Degree : (float) _SubView_F4_degree];
+                         [self rotationChange :self.subView4 degree : (float) _subView_F4_degree];
                      }
                      completion:^(BOOL finished){
-                         if (!self.Touched){
-                             if ((_SubView_F4_degree % HALF_CIRCLE_DEGREE) == 0)
-                             {
-                                 _SubView_F4_degree = 0;
-                                 //當轉正完成, 就會開始縮小
-                                 if (_TouchedTimer != nil)
-                                 {
-                                     [_TouchedTimer invalidate];
-                                     _TouchedTimer = nil;
+                         if (!self.touched){
+                             if ((_subView_F4_degree % HALF_CIRCLE_DEGREE) == 0){
+                                 _subView_F4_degree = 0;
+                                 if (_touchedTimer != nil){
+                                     [_touchedTimer invalidate];
+                                     _touchedTimer = nil;
                                  }
-                                 _TouchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.001
+                                 _touchedTimer = [NSTimer scheduledTimerWithTimeInterval:0.001
                                                                                   target:self
-                                                                                selector:@selector(TouchedClose:)
+                                                                                selector:@selector(touchedClose:)
                                                                                 userInfo:nil
                                                                                  repeats:YES];
-                             }
-                             else
-                             {
-                                 if (_SubView_F4_degree % ROUNDING_BACK_SENSITIVITY)
-                                 {
-                                     _SubView_F4_degree -= _SubView_F4_degree % ROUNDING_BACK_SENSITIVITY;
+                             }else{
+                                 if (_subView_F4_degree % ROUNDING_BACK_SENSITIVITY){
+                                     _subView_F4_degree -= _subView_F4_degree % ROUNDING_BACK_SENSITIVITY;
                                  }
-                                 _SubView_F4_degree -= ROUNDING_BACK_SENSITIVITY;
-                                 [self RoundingAnimationStop];
+                                 _subView_F4_degree -= ROUNDING_BACK_SENSITIVITY;
+                                 [self roundingAnimationStop];
                              }
                          }
                      }];
 }
-#if 0
-- (void) OperationRounding
-{
-    //if (RoundingOperation == nil)
-    {
-        RoundingOperation = [[NSBlockOperation alloc] init];
-        [RoundingOperation setThreadPriority:1];
-        [RoundingOperation addExecutionBlock:^{
-            __block int TestCounter;
-            TestCounter = 0;
-            while (self.Touched) {
-                _SubView_F4_degree += ROUNDING_START_SENSITIVITY;
-                float rad = ((float)_SubView_F4_degree/ (float)HALF_CIRCLE_DEGREE )*M_PI;
-                CGAffineTransform rotation = CGAffineTransformMakeRotation(rad);
-                [self.SubView_F4.layer setAffineTransform:rotation];
-            }
-        }];
-        
-        [_Queue addOperation:RoundingOperation];
-    }
-}
-#endif
 
 
-- (void) RotationChange :(UIView *) TargetView Degree : (float) Degree
+- (void) rotationChange :(UIView *) targetView degree : (float) degree
 {
-    if (TargetView == nil)
-    {
+    if (targetView == nil){
         return;
     }
     
-    float rad = ((float)Degree/ (float)HALF_CIRCLE_DEGREE) *M_PI;
+    float rad = ((float)degree/ (float)HALF_CIRCLE_DEGREE) *M_PI;
     CGAffineTransform rotation = CGAffineTransformMakeRotation(rad);
-    [TargetView.layer setAffineTransform:rotation];
-
+    [targetView.layer setAffineTransform:rotation];
 }
-
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    _OriginalLocation = [self GetLocationPoint: touches];
+    _originalLocation = [self getLocationPoint: touches];
 
-    self.Touched = YES;
+    self.touched = YES;
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.Touched = NO;
+    self.touched = NO;
 }
 
 -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (self.Touched)
-    {
-        CGPoint TouchLocation = [self GetLocationPoint: touches];
+    if (self.touched){
+        CGPoint touchLocation = [self getLocationPoint: touches];
         // Because zero point is on left top, large point in on right bottom
-        int MoveUp = (double)(_OriginalLocation.y - TouchLocation.y) / (double)self.IndexValueSensitivity;
-        if (MoveUp != 0)
-        {
-           self.IndexValue += (float)MoveUp * self.IndexRange.UnitValue;
-           _OriginalLocation = TouchLocation;
+        int moveUp = (double)(_originalLocation.y - touchLocation.y) / (double)self.indexValueSensitivity;
+        if (moveUp != 0){
+           self.indexValue += (float)moveUp * self.indexRange.unitValue;
+           _originalLocation = touchLocation;
         }
     }
 }
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-   self.Touched = NO;
+   self.touched = NO;
 }
 
-- (CGPoint) GetLocationPoint: (NSSet*)touches
+- (CGPoint) getLocationPoint: (NSSet*)touches
 {
-    UITouch *Touch =  [touches anyObject];
-    return [Touch locationInView:Touch.view];
+    UITouch *touch =  [touches anyObject];
+    return [touch locationInView:touch.view];
 }
 
-- (IBAction) CircleButtonValueChanged:(CircleButton*) ThisCircleButton;
+- (IBAction) circleButtonValueChanged:(CircleButton*) circleButton;
 {
     // Pass to parent view.
-    if (self.delegate != nil)
-    {
+    if (self.delegate != nil){
         // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(CircleButtonValueChanged:)])
-        {
-            [self.delegate CircleButtonValueChanged: ThisCircleButton];
+        if([self.delegate respondsToSelector:@selector(circleButtonValueChanged:)]){
+            [self.delegate circleButtonValueChanged: circleButton];
         }
     }
 }
 
-- (void) TwickLing
+- (void) twickLing
 {
-    if (self.Touched)
-    {
-        self.TwickPicture.hidden = YES;
+    if (self.touched){
+        self.twickPicture.hidden = YES;
         return;
     }
-    self.TwickPicture.hidden = NO;
-    [UIView transitionFromView:self.SignPicture toView:self.TwickPicture
+    self.twickPicture.hidden = NO;
+    [UIView transitionFromView:self.signPicture toView:self.twickPicture
                       duration:0.1
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     completion:^(BOOL finished){
-                        [UIView transitionFromView:self.TwickPicture toView:self.SignPicture
+                        [UIView transitionFromView:self.twickPicture toView:self.signPicture
                                           duration:0.1
                                            options:UIViewAnimationOptionTransitionCrossDissolve
                                         completion:^(BOOL finished){
-                                            self.TwickPicture.hidden = YES;
+                                            self.twickPicture.hidden = YES;
                                         }];
 
                     }];
 }
 
-- (void) ResetHandle
+- (void) resetHandle
 {
     // useful
-    self.Touched = NO;
+    self.touched = NO;
 }
-
-#if 0
-// 如果開animate, Close 也要用 不然會有bug
-- (void) AnimationTouchedOpen
-{
-    [UIView animateWithDuration:0.03
-                          delay:0
-                        options: 0
-                     animations:^{
-                         self.SubView_F4.frame = CGRectMake( self.SubView_F4.frame.origin.x -1,
-                                                            self.SubView_F4.frame.origin.y -1,
-                                                            self.SubView_F4.frame.size.width + 2,
-                                                            self.SubView_F4.frame.size.height + 2
-                                                            );
-                     }
-                     completion:^(BOOL finished){
-                         if (self.Touched)
-                         {
-                             if (self.SubView_F4.frame.origin.x > -1 * (self.frame.size.width /2)) {
-                                 [self AnimationTouchedOpen];
-                             }
-                             else
-                             {
-                                 [self RoundingAnimationStart];
-                             }
-                         }
-                         else
-                         {
-                             [self RoundingAnimationStop];
-                             
-                         }
-                         
-                     }];
-}
-#endif
 @end

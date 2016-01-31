@@ -11,9 +11,6 @@
 // private property
 @interface MetronomeMainViewController ()
 @property BOOL doesItNeedToChangeToNextCellAfterFinished;
-
-// TODO: Tmp
-@property VolumeSetsControl * VolumeSetsControl;
 @end
 
 @implementation MetronomeMainViewController
@@ -71,17 +68,15 @@
 
     [self reflashCellListAndCurrentCellByCurrentData];
     
-    [self.VolumeSetsControl ResetVolumeSets];
+    [self.volumeBottomSubview resetVolumeSets];
     
     // ===================
     // Setup music by model music info
-    if (gPlayMusicChannel == nil)
-    {
+    if (gPlayMusicChannel == nil){
         gPlayMusicChannel = [PlayerForSongs alloc];
     }
     
-    if (self.engine.currentTempoList.musicInfo == nil)
-    {
+    if (self.engine.currentTempoList.musicInfo == nil){
         self.engine.currentTempoList.musicInfo = [gMetronomeModel CreateNewMusicInfo];
         [gMetronomeModel Save];
     }
@@ -164,14 +159,11 @@
     self.adView.delegate = self;
     // 一開始是不打開的
     self.adView.hidden = YES;
-
-    // Init Volumesets
-    self.VolumeSetsControl = [[VolumeSetsControl alloc] init: self];
     
-    [self.volumeBottomSubview.PlayCurrentCellButton addTarget:self
+    [self.volumeBottomSubview.playCurrentCellButton addTarget:self
                                    action:@selector(PlayCurrentCellButtonClick:) forControlEvents:UIControlEventTouchDown];
     
-    self.volumeBottomSubview.SelectGrooveBar.delegate = self;
+    self.volumeBottomSubview.metronomeCellsSelector.delegate = self;
 }
 
 - (void) initializeTopSubView
@@ -190,25 +182,27 @@
 
 - (void) initializeBottomSubView
 {
-    if (self.BottomView.subviews.count != 0)
-    {
+    if (self.BottomView.subviews.count != 0){
         [[self.BottomView subviews]
          makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }
     
     // 1. volumeBottomSubview
-    if (self.volumeBottomSubview == nil)
-    {
+    if (self.volumeBottomSubview == nil){
         CGRect SubFrame = self.BottomView.frame;
         SubFrame.origin = CGPointMake(0, 0);
         
         self.volumeBottomSubview = [[MetronomeBottomView alloc] initWithFrame:SubFrame];
+        self.volumeBottomSubview.accentCircleVolumeButton.delegate = self;
+        self.volumeBottomSubview.quarterCircleVolumeButton.delegate = self;
+        self.volumeBottomSubview.eighthNoteCircleVolumeButton.delegate = self;
+        self.volumeBottomSubview.sixteenthNoteCircleVolumeButton.delegate = self;
+        self.volumeBottomSubview.trippleNoteCircleVolumeButton.delegate = self;
     }
     
     
     // 2. musicSettingBottomSubview
-    if (self.musicSettingBottomSubview == nil)
-    {
+    if (self.musicSettingBottomSubview == nil){
         CGRect SubFrame = self.BottomView.frame;
         SubFrame.origin = CGPointMake(0, 0);
         
@@ -216,8 +210,7 @@
     }
     
     
-    if (self.musicSpeedBottomSubview == nil)
-    {
+    if (self.musicSpeedBottomSubview == nil){
         CGRect SubFrame = self.BottomView.frame;
         SubFrame.origin = CGPointMake(0, 0);
         
@@ -235,17 +228,17 @@
 - (void) initializeCustomizeAdPopUp
 {
     // initialize web ad
-    if (self.webAdSubview == nil)
-    {
+    if (self.webAdSubview == nil){
         CGRect subFrame = self.middleAdView.frame;
         subFrame.origin = CGPointMake(0, 0);
         self.webAdSubview = [[WebAd alloc] initWithFrame:subFrame];
     }
-    if (self.middleAdView.subviews.count != 0)
-    {
+    
+    if (self.middleAdView.subviews.count != 0){
         [[self.middleAdView subviews]
          makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }
+    
     [self.middleAdView addSubview:self.webAdSubview];
     self.webAdSubview.delegate = self;
     self.middleAdView.hidden = YES;
@@ -293,11 +286,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(addLoopCellButtonClick:)
                                                  name:kAddLoopCellButtonClick
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(twicklingCircleButton:)
-                                                 name:kCircleButtonTwickLing
                                                object:nil];
     
 }
@@ -368,27 +356,6 @@
     
     
     [self reflashCellListAndCurrentCellByCurrentData];
-}
-
-- (void)twicklingCircleButton:(NSNotification *)notification {
-    __CIRCLE_BUTTON btnTag = [((NSNumber *)notification.object) intValue];
-    switch (btnTag) {
-        case AccentCircle_Button:
-            [self.VolumeSetsControl.AccentCircleVolumeButton TwickLing];
-            break;
-        case QuarterCircle_Button:
-            [self.VolumeSetsControl.QuarterCircleVolumeButton TwickLing];
-            break;
-        case EighthNoteCircle_Button:
-            [self.VolumeSetsControl.EighthNoteCircleVolumeButton TwickLing];
-            break;
-        case SixteenthNoteCircle_Button:
-            [self.VolumeSetsControl.SixteenthNoteCircleVolumeButton TwickLing];
-            break;
-        case TrippleNoteCircle_Button:
-            [self.VolumeSetsControl.TrippleNoteCircleVolumeButton TwickLing];
-            break;
-    }
 }
 //
 // =============================
@@ -531,13 +498,10 @@
 //
 - (int) getCurrentSelectedCellIndex
 {
-    if (_currentSelectedCellIndex >= self.engine.tempoCells.count)
-    {
+    if (_currentSelectedCellIndex >= self.engine.tempoCells.count){
         NSLog(@"Bug !! Controller _currentSelectedCellIndex over count error" );
         _currentSelectedCellIndex = (int)(self.engine.tempoCells.count -1);
-    }
-    else if (_currentSelectedCellIndex < 0)
-    {
+    }else if (_currentSelectedCellIndex < 0){
         NSLog(@"Bug !! Controller _currentSelectedCellIndex lower 0 error");
         _currentSelectedCellIndex = 0;
         
@@ -551,12 +515,9 @@
     if (newValue < 0
         || newValue >= self.engine.tempoCells.count
         || (self.currentPlayingMode == LIST_PLAYING && newValue == _currentSelectedCellIndex && !self.engine.listChangeFocusFlag)
-        )
-    {
+        ){
       return;
-    }
-    else if (self.engine.listChangeFocusFlag)
-    {
+    }else if (self.engine.listChangeFocusFlag){
         self.engine.listChangeFocusFlag = NO;
     }
     
@@ -568,8 +529,11 @@
     
     self.engine.currentCell = self.engine.tempoCells[_currentSelectedCellIndex];
     
+    // Set BPM
+    self.topPartOfMetronomeViewController.bpmPickerViewController.Value = [self.engine.currentCell.bpmValue floatValue];
+    
     // Set Volume Set
-    [self.VolumeSetsControl SetVolumeBarVolume:self.engine.currentCell];
+    [self.volumeBottomSubview setVolumeBarVolume:self.engine.currentCell];
     
     // Set Voice
     self.engine.currentVoice = [self.globalServices.engine.clickVoiceList objectAtIndex:[self.engine.currentCell.voiceType.sortIndex intValue]];
@@ -647,18 +611,43 @@
 {
     switch (self.currentPlayingMode) {
         case STOP_PLAYING:
-            [self.volumeBottomSubview.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayBlack"] forState:UIControlStateNormal];
+            [self.volumeBottomSubview.playCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayBlack"] forState:UIControlStateNormal];
             [self.topPartOfMetronomeViewController.playCellListButton setBackgroundImage:[UIImage imageNamed:@"PlayList"] forState:UIControlStateNormal];
             break;
         case SINGLE_PLAYING:
-            [self.volumeBottomSubview.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
+            [self.volumeBottomSubview.playCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
             break;
         case LIST_PLAYING:
             // TODO : 要改成Stop圖
-            [self.volumeBottomSubview.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
+            [self.volumeBottomSubview.playCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
             [self.topPartOfMetronomeViewController.playCellListButton setBackgroundImage:[UIImage imageNamed:@"PlayList_Red"] forState:UIControlStateNormal];
             break;
     }
+}
+
+- (IBAction) circleButtonValueChanged:(CircleButton*) circleButton;
+{
+    float value = circleButton.indexValue;
+    switch (circleButton.tag) {
+        case AccentCircleButton:
+            self.engine.currentCell.accentVolume = [NSNumber numberWithFloat:value];
+            break;
+        case QuarterCircleButton:
+            self.engine.currentCell.quarterNoteVolume = [NSNumber numberWithFloat:value];
+            break;
+        case EighthNoteCircleButton:
+            self.engine.currentCell.eighthNoteVolume = [NSNumber numberWithFloat:value];
+            break;
+        case SixteenthNoteCircleButton:
+            self.engine.currentCell.sixteenNoteVolume = [NSNumber numberWithFloat:value];
+            break;
+        case TrippleNoteCircleButton:
+            self.engine.currentCell.trippleNoteVolume = [NSNumber numberWithFloat:value];
+            break;
+    }
+    
+    // TODO : 不要save這麼頻繁
+    [gMetronomeModel Save];
 }
 //
 //  =========================
@@ -697,9 +686,9 @@
     for (TempoCell *cell in cellDataTable){
         [cellValueToStringList addObject:[NSString stringWithFormat:@"%d", [cell.loopCount intValue]]];
     }
-    self.volumeBottomSubview.SelectGrooveBar.GrooveCellValueStringList = cellValueToStringList;
+    self.volumeBottomSubview.metronomeCellsSelector.GrooveCellValueStringList = cellValueToStringList;
     
-    [self.volumeBottomSubview.SelectGrooveBar DisplayUICellList: [self getCurrentCellFromTempoList]];
+    [self.volumeBottomSubview.metronomeCellsSelector DisplayUICellList: [self getCurrentCellFromTempoList]];
     
 }
 
@@ -720,7 +709,7 @@
     // TODO : 不要save這麼頻繁
     [gMetronomeModel Save];
     
-    [self.volumeBottomSubview.SelectGrooveBar.GrooveCellValueStringList replaceObjectAtIndex:index withObject:[NSString stringWithFormat:@"%d", newValue]];
+    [self.volumeBottomSubview.metronomeCellsSelector.GrooveCellValueStringList replaceObjectAtIndex:index withObject:[NSString stringWithFormat:@"%d", newValue]];
     
     [self syncTempoListWithModel];
     
@@ -809,7 +798,7 @@
             return;
         }
         
-        [self.volumeBottomSubview.SelectGrooveBar ChangeFocusIndexWithUIMoving: newIndex];
+        [self.volumeBottomSubview.metronomeCellsSelector ChangeFocusIndexWithUIMoving: newIndex];
 
         [self startClick];
     }

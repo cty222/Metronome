@@ -10,12 +10,13 @@
 
 // GlobalEvent
 typedef NS_ENUM(NSUInteger) {
-    AccentCircle_Button,
-    QuarterCircle_Button,
-    EighthNoteCircle_Button,
-    SixteenthNoteCircle_Button,
-    TrippleNoteCircle_Button,
-} __CIRCLE_BUTTON;
+    AccentCircleButton,
+    QuarterCircleButton,
+    EighthNoteCircleButton,
+    SixteenthNoteCircleButton,
+    TrippleNoteCircleButton,
+    LastNoteCircleButton = TrippleNoteCircleButton,
+} __CircleButton;
 
 #define kCircleButtonTwickLing @"kCircleButtonTwickLing"
 #define kChangeToSystemPageView @"kChangeToSystemPageView"
@@ -27,7 +28,7 @@ typedef NS_ENUM(NSUInteger) {
 
 @interface RockClickNotificationCenter : NSObject
 
-- (void) makeCircleButtonTwickLing: (__CIRCLE_BUTTON) value;
+- (void) makeCircleButtonTwickLing: (__CircleButton) value;
 - (void) switchMainWindowToSystemView;
 - (void) setBPMValue;
 - (void) changeCellCounter: (float) value;

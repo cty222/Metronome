@@ -7,23 +7,25 @@
 //
 #import "XibViewInterface.h"
 #import "MetronomeSelectBar.h"
+#import "GlobalServices.h"
 #import "GlobalConfig.h"
 #import "CircleButton.h"
-
 #import "UINSOperation.h"
 
 
-@interface MetronomeBottomView : XibViewInterface
-@property (strong, nonatomic) IBOutlet MetronomeSelectBar *SelectGrooveBar;
+@interface MetronomeBottomView : XibViewInterface <CircleButtonProtocol>
+@property (strong, nonatomic) IBOutlet MetronomeSelectBar *metronomeCellsSelector;
 
 // Volume button
-@property (strong, nonatomic) IBOutlet CircleButton *AccentCircleVolumeButton;
-@property (strong, nonatomic) IBOutlet CircleButton *QuarterCircleVolumeButton;
-@property (strong, nonatomic) IBOutlet CircleButton *EighthNoteCircleVolumeButton;
-@property (strong, nonatomic) IBOutlet CircleButton *SixteenthNoteCircleVolumeButton;
-@property (strong, nonatomic) IBOutlet CircleButton *TrippleNoteCircleVolumeButton;
-
+@property (strong, nonatomic) IBOutlet CircleButton *accentCircleVolumeButton;
+@property (strong, nonatomic) IBOutlet CircleButton *quarterCircleVolumeButton;
+@property (strong, nonatomic) IBOutlet CircleButton *eighthNoteCircleVolumeButton;
+@property (strong, nonatomic) IBOutlet CircleButton *sixteenthNoteCircleVolumeButton;
+@property (strong, nonatomic) IBOutlet CircleButton *trippleNoteCircleVolumeButton;
 // loop button
-@property (strong, nonatomic) IBOutlet UIButton *PlayCurrentCellButton;
+@property (strong, nonatomic) IBOutlet UIButton *playCurrentCellButton;
 
+
+- (void) resetVolumeSets;
+- (void) setVolumeBarVolume : (TempoCell *)cell;
 @end

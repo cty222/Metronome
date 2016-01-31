@@ -27,7 +27,7 @@
                     <color key="backgroundColor" red="0.67428845319999997" green="1" blue="0.90542151240000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="aiL-sj-irR">
-                    <rect key="frame" x="0.0" y="268.00000111273641" width="320" height="256"/>
+                    <rect key="frame" x="0.0" y="268.00000134959595" width="320" height="256"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.36735393080000001" green="0.50841731540000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </view>

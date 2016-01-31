@@ -24,46 +24,126 @@
     if (self) {
         // Initialization code
         
-        [self.SelectGrooveBar removeFromSuperview];
-        self.SelectGrooveBar = [[MetronomeSelectBar alloc] initWithFrame:self.SelectGrooveBar.frame];
-        [self addSubview:self.SelectGrooveBar];
+        [self.metronomeCellsSelector removeFromSuperview];
+        self.metronomeCellsSelector = [[MetronomeSelectBar alloc] initWithFrame:self.metronomeCellsSelector.frame];
+        [self addSubview:self.metronomeCellsSelector];
         
-        [self.AccentCircleVolumeButton removeFromSuperview];
-        self.AccentCircleVolumeButton = [[CircleButton alloc] initWithFrame:self.AccentCircleVolumeButton.frame];
-        self.AccentCircleVolumeButton.SignPicture.image = [UIImage imageNamed:@"AccentNoteGary"];
-        self.AccentCircleVolumeButton.TwickPicture.image = [UIImage imageNamed:@"AccentNoteRed"];
-        [self addSubview:self.AccentCircleVolumeButton];
-
-        [self.QuarterCircleVolumeButton removeFromSuperview];
-        self.QuarterCircleVolumeButton = [[CircleButton alloc] initWithFrame:self.QuarterCircleVolumeButton.frame];
-        self.QuarterCircleVolumeButton.SignPicture.image = [UIImage imageNamed:@"QuarterNoteGary"];
-        self.QuarterCircleVolumeButton.TwickPicture.image = [UIImage imageNamed:@"QuarterNoteRed"];
-        [self addSubview:self.QuarterCircleVolumeButton];
-
-        [self.EighthNoteCircleVolumeButton removeFromSuperview];
-        self.EighthNoteCircleVolumeButton = [[CircleButton alloc] initWithFrame:self.EighthNoteCircleVolumeButton.frame];
-        self.EighthNoteCircleVolumeButton.SignPicture.image = [UIImage imageNamed:@"8NoteGary"];
-        self.EighthNoteCircleVolumeButton.TwickPicture.image = [UIImage imageNamed:@"8NoteRed"];
-
-        [self addSubview:self.EighthNoteCircleVolumeButton];
-
-        [self.SixteenthNoteCircleVolumeButton removeFromSuperview];
-        self.SixteenthNoteCircleVolumeButton = [[CircleButton alloc] initWithFrame:self.SixteenthNoteCircleVolumeButton.frame];
-        self.SixteenthNoteCircleVolumeButton.SignPicture.image = [UIImage imageNamed:@"16NoteGary"];
-        self.SixteenthNoteCircleVolumeButton.TwickPicture.image = [UIImage imageNamed:@"16NoteRed"];
-        [self addSubview:self.SixteenthNoteCircleVolumeButton];
-
-        [self.TrippleNoteCircleVolumeButton removeFromSuperview];
-        self.TrippleNoteCircleVolumeButton = [[CircleButton alloc] initWithFrame:self.TrippleNoteCircleVolumeButton.frame];
-        self.TrippleNoteCircleVolumeButton.SignPicture.image = [UIImage imageNamed:@"TrippleNoteGary"];
-        self.TrippleNoteCircleVolumeButton.TwickPicture.image = [UIImage imageNamed:@"TrippleNoteRed"];
-        [self addSubview:self.TrippleNoteCircleVolumeButton];
+        int index = 0;
+        for(index = 0; index <= LastNoteCircleButton; index++){
+            [self createVolumeButton: index];
+        }
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(twicklingCircleButton:)
+                                                     name:kCircleButtonTwickLing
+                                                   object:nil];
      
     }
     return self;
 }
 
+// =======================
+// public methods
+//
+- (void) resetVolumeSets
+{
+    [self.accentCircleVolumeButton resetHandle];
+    [self.quarterCircleVolumeButton resetHandle];
+    [self.eighthNoteCircleVolumeButton resetHandle];
+    [self.sixteenthNoteCircleVolumeButton resetHandle];
+    [self.trippleNoteCircleVolumeButton resetHandle];
+}
 
+- (void) setVolumeBarVolume: (TempoCell *)cell
+{
+    self.accentCircleVolumeButton.IndexValue = [cell.accentVolume floatValue];
+    self.quarterCircleVolumeButton.IndexValue = [cell.quarterNoteVolume floatValue];
+    self.eighthNoteCircleVolumeButton.IndexValue = [cell.eighthNoteVolume floatValue];
+    self.sixteenthNoteCircleVolumeButton.IndexValue = [cell.sixteenNoteVolume floatValue];
+    self.trippleNoteCircleVolumeButton.IndexValue = [cell.trippleNoteVolume floatValue];
+}
+
+- (void)twicklingCircleButton:(NSNotification *)notification {
+    __CircleButton btnTag = [((NSNumber *)notification.object) intValue];
+    CircleButton * tagertButton = [self getCircleButtonByTagNumber:btnTag];
+    if (tagertButton){
+        [tagertButton twickLing];
+    }
+}
+
+//
+// =======================
+
+// =======================
+// private methods
+- (CircleButton *) getCircleButtonByTagNumber: (__CircleButton) btnTag{
+    CircleButton * tagertButton = nil;
+    switch (btnTag) {
+        case AccentCircleButton:
+            tagertButton = self.accentCircleVolumeButton;
+            break;
+        case QuarterCircleButton:
+            tagertButton = self.quarterCircleVolumeButton;
+            break;
+        case EighthNoteCircleButton:
+            tagertButton = self.eighthNoteCircleVolumeButton;
+            break;
+        case SixteenthNoteCircleButton:
+            tagertButton = self.sixteenthNoteCircleVolumeButton;
+            break;
+        case TrippleNoteCircleButton:
+            tagertButton = self.trippleNoteCircleVolumeButton;
+            break;
+    }
+    return tagertButton;
+}
+
+-(void) createVolumeButton: (__CircleButton)tagName
+{
+    CircleButton *targetButton = nil;
+    CircleButton *newButton = nil;
+    switch(tagName){
+        case AccentCircleButton:
+            targetButton = self.accentCircleVolumeButton;
+            newButton = [[CircleButton alloc] initWithFrame:targetButton.frame];
+            newButton.signPicture.image = [UIImage imageNamed:@"AccentNoteGary"];
+            newButton.twickPicture.image = [UIImage imageNamed:@"AccentNoteRed"];
+            self.accentCircleVolumeButton = newButton;
+            break;
+        case QuarterCircleButton:
+            targetButton = self.quarterCircleVolumeButton;
+            newButton = [[CircleButton alloc] initWithFrame:targetButton.frame];
+            newButton.signPicture.image = [UIImage imageNamed:@"QuarterNoteGary"];
+            newButton.twickPicture.image = [UIImage imageNamed:@"QuarterNoteRed"];
+            self.quarterCircleVolumeButton = newButton;
+            break;
+        case EighthNoteCircleButton:
+            targetButton = self.eighthNoteCircleVolumeButton;
+            newButton = [[CircleButton alloc] initWithFrame:targetButton.frame];
+            newButton.signPicture.image = [UIImage imageNamed:@"8NoteGary"];
+            newButton.twickPicture.image = [UIImage imageNamed:@"8NoteRed"];
+            self.eighthNoteCircleVolumeButton = newButton;
+            break;
+        case SixteenthNoteCircleButton:
+            targetButton = self.sixteenthNoteCircleVolumeButton;
+            newButton = [[CircleButton alloc] initWithFrame:targetButton.frame];
+            newButton.signPicture.image = [UIImage imageNamed:@"16NoteGary"];
+            newButton.twickPicture.image = [UIImage imageNamed:@"16NoteRed"];
+            self.sixteenthNoteCircleVolumeButton = newButton;
+            break;
+        case TrippleNoteCircleButton:
+            targetButton = self.trippleNoteCircleVolumeButton;
+            newButton = [[CircleButton alloc] initWithFrame:targetButton.frame];
+            newButton.signPicture.image = [UIImage imageNamed:@"TrippleNoteGary"];
+            newButton.twickPicture.image = [UIImage imageNamed:@"TrippleNoteRed"];
+            self.trippleNoteCircleVolumeButton = newButton;
+            break;
+    }
+    [targetButton removeFromSuperview];
+    [self addSubview:newButton];
+    newButton.tag = tagName;
+    
+}
 
 //
 // =================================

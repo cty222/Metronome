@@ -15,7 +15,7 @@
 
 @optional
 
-- (IBAction) CircleButtonValueChanged:(CircleButton*) ThisCircleButton;
+- (void) circleButtonValueChanged:(CircleButton*) circleButton;
 @end
 
 #define ROUNDING_BACK_SENSITIVITY   10
@@ -30,35 +30,25 @@ typedef enum {
 } CIRCLE_BUTTON_MODE;
 
 typedef struct {
-    float MaxIndex;
-    float MinIndex;
-    float UnitValue;
-}CIRCLEBUTTON_RANGE;
+    float maxIndex;
+    float minIndex;
+    float unitValue;
+}CircleButtonRange;
 
 @interface CircleButton : XibViewInterface
-@property (strong, nonatomic) IBOutlet UIView *SubView_Frame4;
-@property (strong, nonatomic) IBOutlet UIView *SubView_Frame3;
-@property (strong, nonatomic) IBOutlet UIView *SubView_Frame2_BlockValue;
-@property (strong, nonatomic) IBOutlet UIView *SubView_Frame1_Value;
-@property (strong, nonatomic) IBOutlet UIView *SubView_Frame0;
-@property (strong, nonatomic) IBOutlet UIImageView *ImageView_Frame0;
-@property (strong, nonatomic) IBOutlet UIImageView *ImageView_Frame1_Value;
-@property (strong, nonatomic) IBOutlet UIImageView *ImageView_Frame3;
-@property (strong, nonatomic) IBOutlet UIImageView *ImageView_Frame4;
 
-@property (strong, nonatomic) IBOutlet UILabel *ValueLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *SignPicture;
-@property (strong, nonatomic) IBOutlet UIImageView *TwickPicture;
+@property (strong, nonatomic) IBOutlet UILabel *valueLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *signPicture;
+@property (strong, nonatomic) IBOutlet UIImageView *twickPicture;
 
-@property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
-@property (getter = GetIndexValue, setter = SetIndexValue:) float IndexValue;
-@property (getter = GetIndexRange, setter = SetIndexRange:) CIRCLEBUTTON_RANGE IndexRange;
 
-@property (getter = GetIndexValueSensitivity, setter = SetIndexValueSensitivity:) double IndexValueSensitivity;
+@property (getter = getIndexValue, setter = setIndexValue:) float indexValue;
+@property (getter = getIndexRange, setter = setIndexRange:) CircleButtonRange indexRange;
+@property (getter = getIndexValueSensitivity, setter = setIndexValueSensitivity:) double indexValueSensitivity;
 
 @property (nonatomic, assign) id<CircleButtonProtocol> delegate;
 
-- (void) TwickLing;
-- (void) ResetHandle;
+- (void) twickLing;
+- (void) resetHandle;
 
 @end

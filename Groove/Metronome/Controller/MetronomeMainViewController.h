@@ -31,13 +31,10 @@
 #import "MusicSettingBottomSubview.h"
 #import "MusicSpeedBottomSubview.h"
 
-#import "MetronomeSelectBar.h"
-
 // Tools
 #import "AudioPlay.h"
 
 // Control sub class
-#import "VolumeSetsControl.h"
 #import "PlayerForSongs.h"
 
 
@@ -50,7 +47,7 @@ typedef enum {
     LIST_PLAYING,
 } METRONOME_PLAYING_MODE;
 
-@interface MetronomeMainViewController : UIViewController <NoteProtocol, WebAdProtocol, SelectBarProtocol, ADBannerViewDelegate>
+@interface MetronomeMainViewController : UIViewController <NoteProtocol, WebAdProtocol, SelectBarProtocol, CircleButtonProtocol, ADBannerViewDelegate>
 
 // ====================
 // TODO: make it readable

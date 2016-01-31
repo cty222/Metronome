@@ -102,7 +102,7 @@
                             : [self.currentVoice GetAccentVoice]];
         
         if ([self.currentCell.accentVolume floatValue] > 0){
-            [self.globalServices.notificationCenter makeCircleButtonTwickLing:AccentCircle_Button];
+            [self.globalServices.notificationCenter makeCircleButtonTwickLing:AccentCircleButton];
         }
         self.accentCounter = 0;
     }
@@ -116,7 +116,7 @@
                             : [self.currentVoice GetFirstBeatVoice]];
     }
     if ([self.currentCell.quarterNoteVolume floatValue] > 0){
-        [self.globalServices.notificationCenter makeCircleButtonTwickLing:QuarterCircle_Button];
+        [self.globalServices.notificationCenter makeCircleButtonTwickLing:QuarterCircleButton];
         //[self.cellParameterSettingSubController.VolumeSetsControl.QuarterCircleVolumeButton TwickLing];
     }
     self.accentCounter++;
@@ -127,7 +127,7 @@
     [self.playUnit playSound: [self.currentCell.sixteenNoteVolume floatValue] / MAX_VOLUME
                         : [self.currentVoice GetEbeatVoice]];
     if ([self.currentCell.sixteenNoteVolume floatValue] > 0){
-            [self.globalServices.notificationCenter makeCircleButtonTwickLing:SixteenthNoteCircle_Button];
+            [self.globalServices.notificationCenter makeCircleButtonTwickLing:SixteenthNoteCircleButton];
         //[self.cellParameterSettingSubController.VolumeSetsControl.SixteenthNoteCircleVolumeButton TwickLing];
     }
 }
@@ -137,7 +137,7 @@
     [self.playUnit playSound: [self.currentCell.eighthNoteVolume floatValue] / MAX_VOLUME
                         : [self.currentVoice GetAndBeatVoice]];
     if ([self.currentCell.eighthNoteVolume floatValue] > 0){
-        [self.globalServices.notificationCenter makeCircleButtonTwickLing:EighthNoteCircle_Button];
+        [self.globalServices.notificationCenter makeCircleButtonTwickLing:EighthNoteCircleButton];
         //[self.cellParameterSettingSubController.VolumeSetsControl.EighthNoteCircleVolumeButton TwickLing];
     }
 }
@@ -147,7 +147,7 @@
     [self.playUnit playSound: [self.currentCell.sixteenNoteVolume floatValue] / MAX_VOLUME
                         : [self.currentVoice GetAbeatVoice]];
     if ([self.currentCell.sixteenNoteVolume floatValue] > 0){
-        [self.globalServices.notificationCenter makeCircleButtonTwickLing:SixteenthNoteCircle_Button];
+        [self.globalServices.notificationCenter makeCircleButtonTwickLing:SixteenthNoteCircleButton];
         //[self.cellParameterSettingSubController.VolumeSetsControl.SixteenthNoteCircleVolumeButton TwickLing];
     }
 }
@@ -162,7 +162,7 @@
                         : [self.currentVoice GetTicbeatVoice]];
     
     if ([self.currentCell.trippleNoteVolume floatValue] > 0){
-        [self.globalServices.notificationCenter makeCircleButtonTwickLing:TrippleNoteCircle_Button];
+        [self.globalServices.notificationCenter makeCircleButtonTwickLing:TrippleNoteCircleButton];
         //[self.cellParameterSettingSubController.VolumeSetsControl.TrippleNoteCircleVolumeButton TwickLing];
     }
 }
@@ -172,7 +172,7 @@
     [self.playUnit playSound: [self.currentCell.trippleNoteVolume floatValue] / MAX_VOLUME
                         : [self.currentVoice GetTocbeatVoice]];
     if ([self.currentCell.trippleNoteVolume floatValue] > 0){
-        [self.globalServices.notificationCenter makeCircleButtonTwickLing:TrippleNoteCircle_Button];
+        [self.globalServices.notificationCenter makeCircleButtonTwickLing:TrippleNoteCircleButton];
         //[self.cellParameterSettingSubController.VolumeSetsControl.TrippleNoteCircleVolumeButton TwickLing];
     }
 }
