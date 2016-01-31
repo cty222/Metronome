@@ -37,20 +37,12 @@
 #import "AudioPlay.h"
 
 // Control sub class
-#import "CellParameterSettingControl.h"
-#import "LoopAndPlayViewControl.h"
-#import "SystemPageControl.h"
+#import "VolumeSetsControl.h"
 #import "PlayerForSongs.h"
 
 
 // AFNetworking
 #import "AFHTTPRequestOperationManager.h"
-
-
-
-@class LoopAndPlayViewControl;
-@class CellParameterSettingControl;
-@class SystemPageControl;
 
 typedef enum {
     STOP_PLAYING         = 0,
@@ -58,7 +50,7 @@ typedef enum {
     LIST_PLAYING,
 } METRONOME_PLAYING_MODE;
 
-@interface MetronomeMainViewController : UIViewController <NoteProtocol, WebAdProtocol>
+@interface MetronomeMainViewController : UIViewController <NoteProtocol, WebAdProtocol, SelectBarProtocol, ADBannerViewDelegate>
 
 // ====================
 // TODO: make it readable
@@ -107,10 +99,4 @@ typedef enum {
 - (void) syncTempoCellDatatableWithModel;
 - (int) getCurrentCellFromTempoList;
 - (void) reflashCellListAndCurrentCellByCurrentData;
-
-// Sub Controller
-@property  CellParameterSettingControl * cellParameterSettingSubController;
-@property  LoopAndPlayViewControl * loopAndPlayViewSubController;
-@property  SystemPageControl * systemPageController;
-
 @end

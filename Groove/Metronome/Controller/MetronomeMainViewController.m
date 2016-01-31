@@ -12,6 +12,8 @@
 @interface MetronomeMainViewController ()
 @property BOOL doesItNeedToChangeToNextCellAfterFinished;
 
+// TODO: Tmp
+@property VolumeSetsControl * VolumeSetsControl;
 @end
 
 @implementation MetronomeMainViewController
@@ -69,10 +71,7 @@
 
     [self reflashCellListAndCurrentCellByCurrentData];
     
-    if (self.cellParameterSettingSubController != nil)
-    {
-        [self.cellParameterSettingSubController MainViewWillAppear];
-    }
+    [self.VolumeSetsControl ResetVolumeSets];
     
     // ===================
     // Setup music by model music info
@@ -162,21 +161,17 @@
 
 - (void) initializeSubController
 {
-    self.cellParameterSettingSubController = [[CellParameterSettingControl alloc] init];
-    self.cellParameterSettingSubController.ParrentController = self;
+    self.adView.delegate = self;
+    // 一開始是不打開的
+    self.adView.hidden = YES;
+
+    // Init Volumesets
+    self.VolumeSetsControl = [[VolumeSetsControl alloc] init: self];
     
-    self.loopAndPlayViewSubController = [[LoopAndPlayViewControl alloc] init];
-    self.loopAndPlayViewSubController.ParrentController = self;
+    [self.volumeBottomSubview.PlayCurrentCellButton addTarget:self
+                                   action:@selector(PlayCurrentCellButtonClick:) forControlEvents:UIControlEventTouchDown];
     
-    self.systemPageController = [[SystemPageControl alloc] init];
-    self.systemPageController.ParrentController = self;
-    
-    
-    [self.cellParameterSettingSubController initlizeCellParameterControlItems];
-    
-    [self.loopAndPlayViewSubController InitlizePlayingItems];
-    
-    [self.loopAndPlayViewSubController InitializeLoopControlItem];
+    self.volumeBottomSubview.SelectGrooveBar.delegate = self;
 }
 
 - (void) initializeTopSubView
@@ -286,7 +281,7 @@
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(deleteTargetIndexCell:)
+                                             selector:@selector(deleteTargetIndexCellCallBack:)
                                                  name:kDeleteTargetIndexCell
                                                object:nil];
     
@@ -298,6 +293,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(addLoopCellButtonClick:)
                                                  name:kAddLoopCellButtonClick
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(twicklingCircleButton:)
+                                                 name:kCircleButtonTwickLing
                                                object:nil];
     
 }
@@ -329,13 +329,13 @@
 - (void) changeCellCounter: (NSNotification *)notification{
     float value = [((NSNumber *)notification.object) floatValue];
 
-    [self.loopAndPlayViewSubController SetTargetCellLoopCountAdd: self.currentSelectedCellIndex
-                                                             Value: value];
+    [self setTargetCellLoopCountAdd: self.currentSelectedCellIndex
+                                                             value: value];
 }
 
--(void) deleteTargetIndexCell: (NSNotification *)notification
+-(void) deleteTargetIndexCellCallBack: (NSNotification *)notification
 {
-    [self.loopAndPlayViewSubController DeleteTargetIndexCell:self.currentSelectedCellIndex];
+    [self deleteTargetIndexCell:self.currentSelectedCellIndex];
 }
 
 - (void) playCellListButtonClick: (NSNotification *)notification
@@ -370,6 +370,26 @@
     [self reflashCellListAndCurrentCellByCurrentData];
 }
 
+- (void)twicklingCircleButton:(NSNotification *)notification {
+    __CIRCLE_BUTTON btnTag = [((NSNumber *)notification.object) intValue];
+    switch (btnTag) {
+        case AccentCircle_Button:
+            [self.VolumeSetsControl.AccentCircleVolumeButton TwickLing];
+            break;
+        case QuarterCircle_Button:
+            [self.VolumeSetsControl.QuarterCircleVolumeButton TwickLing];
+            break;
+        case EighthNoteCircle_Button:
+            [self.VolumeSetsControl.EighthNoteCircleVolumeButton TwickLing];
+            break;
+        case SixteenthNoteCircle_Button:
+            [self.VolumeSetsControl.SixteenthNoteCircleVolumeButton TwickLing];
+            break;
+        case TrippleNoteCircle_Button:
+            [self.VolumeSetsControl.TrippleNoteCircleVolumeButton TwickLing];
+            break;
+    }
+}
 //
 // =============================
 
@@ -499,7 +519,7 @@
 
 - (void) reflashCellListAndCurrentCellByCurrentData
 {
-    [self.loopAndPlayViewSubController CopyCellListToSelectBar : self.engine.tempoCells];
+    [self CopyCellListToSelectBar : self.engine.tempoCells];
 }
 
 
@@ -548,11 +568,8 @@
     
     self.engine.currentCell = self.engine.tempoCells[_currentSelectedCellIndex];
     
-    // Set BPM
-    //self.TopSubView.BPMPicker.Value = [self.engine.currentCell.bpmValue floatValue];
-    
     // Set Volume Set
-    [self.cellParameterSettingSubController.VolumeSetsControl SetVolumeBarVolume:self.engine.currentCell];
+    [self.VolumeSetsControl SetVolumeBarVolume:self.engine.currentCell];
     
     // Set Voice
     self.engine.currentVoice = [self.globalServices.engine.clickVoiceList objectAtIndex:[self.engine.currentCell.voiceType.sortIndex intValue]];
@@ -630,15 +647,15 @@
 {
     switch (self.currentPlayingMode) {
         case STOP_PLAYING:
-            [self.loopAndPlayViewSubController.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayBlack"] forState:UIControlStateNormal];
+            [self.volumeBottomSubview.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayBlack"] forState:UIControlStateNormal];
             [self.topPartOfMetronomeViewController.playCellListButton setBackgroundImage:[UIImage imageNamed:@"PlayList"] forState:UIControlStateNormal];
             break;
         case SINGLE_PLAYING:
-            [self.loopAndPlayViewSubController.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
+            [self.volumeBottomSubview.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
             break;
         case LIST_PLAYING:
             // TODO : 要改成Stop圖
-            [self.loopAndPlayViewSubController.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
+            [self.volumeBottomSubview.PlayCurrentCellButton setBackgroundImage:[UIImage imageNamed:@"PlayRed"] forState:UIControlStateNormal];
             [self.topPartOfMetronomeViewController.playCellListButton setBackgroundImage:[UIImage imageNamed:@"PlayList_Red"] forState:UIControlStateNormal];
             break;
     }
@@ -646,18 +663,119 @@
 //
 //  =========================
 
-
+- (IBAction) PlayCurrentCellButtonClick: (UIButton *) ThisClickedButton
+{
+    if (self.currentPlayingMode == STOP_PLAYING){
+        self.currentPlayingMode = SINGLE_PLAYING;
+    }else if (self.currentPlayingMode == SINGLE_PLAYING){
+        self.currentPlayingMode = STOP_PLAYING;
+    }
+}
 
 
 - (IBAction) closeWebAdEvent: (id) sender
 {
     self.middleAdView.hidden = YES;
 }
+
+// =========================
+// delegate
+//
+- (void) SetFocusIndex:(int) NewValue
+{
+    self.currentSelectedCellIndex = NewValue;
+}
 //
 //  =========================
 
-//  =========================
-//  Play Function
+// =========================
+// private methods
+//
+- (void) CopyCellListToSelectBar : (NSArray *) cellDataTable
+{    
+    NSMutableArray* cellValueToStringList = [[NSMutableArray alloc]init];
+    for (TempoCell *cell in cellDataTable){
+        [cellValueToStringList addObject:[NSString stringWithFormat:@"%d", [cell.loopCount intValue]]];
+    }
+    self.volumeBottomSubview.SelectGrooveBar.GrooveCellValueStringList = cellValueToStringList;
+    
+    [self.volumeBottomSubview.SelectGrooveBar DisplayUICellList: [self getCurrentCellFromTempoList]];
+    
+}
+
+// Loop 增減
+- (void) setTargetCellLoopCountAdd: (int) index value: (int) newValue
+{    
+    TempoCell * TargetCell = self.engine.tempoCells[index];
+    
+    
+    if (newValue < [[GlobalConfig TempoCellLoopCountMin] intValue]){
+        newValue = [[GlobalConfig TempoCellLoopCountMin] intValue];
+    }else if (newValue > [[GlobalConfig TempoCellLoopCountMax] intValue]){
+        newValue = [[GlobalConfig TempoCellLoopCountMax] intValue];
+    }
+    
+    TargetCell.loopCount = [NSNumber numberWithInt:newValue];
+    
+    // TODO : 不要save這麼頻繁
+    [gMetronomeModel Save];
+    
+    [self.volumeBottomSubview.SelectGrooveBar.GrooveCellValueStringList replaceObjectAtIndex:index withObject:[NSString stringWithFormat:@"%d", newValue]];
+    
+    [self syncTempoListWithModel];
+    
+    [self syncTempoCellDatatableWithModel];
+    
+    [self reflashCellListAndCurrentCellByCurrentData];
+    
+}
+
+- (void) deleteTargetIndexCell: (int) CurrentFocusIndex
+{    
+    // 不可以刪掉最後一個, 或大於Count > 或負數Index
+    if ((self.engine.tempoCells.count <= 1 )
+        || (self.engine.tempoCells.count <= CurrentFocusIndex )
+        || (CurrentFocusIndex <0 )
+        )
+    {
+        return;
+    }
+    
+    // 找到要刪除的
+    TempoCell *deletedCell = self.engine.tempoCells[CurrentFocusIndex];
+    
+    // 刪掉資料庫對應資料
+    [gMetronomeModel DeleteTargetTempoCell:deletedCell];
+    deletedCell = nil;
+    
+    // 重讀資料庫
+    [self syncTempoListWithModel];
+    
+    [self syncTempoCellDatatableWithModel];
+    
+    // 如果刪掉的是最後一個
+    // 向前移一個
+    if (CurrentFocusIndex >= self.engine.tempoCells.count){
+        CurrentFocusIndex = (int)(self.engine.tempoCells.count -1);
+    }
+    self.currentSelectedCellIndex = CurrentFocusIndex;
+    
+    // TODO : 嚴重 同步問題！！！
+    TempoList * CurrentListCell = self.engine.currentTempoList;
+    CurrentListCell.focusCellIndex = [NSNumber numberWithInt:self.currentSelectedCellIndex];
+    [gMetronomeModel Save];
+    // ================
+    
+    // 重新顯示
+    [self reflashCellListAndCurrentCellByCurrentData];
+}
+
+//
+// =========================
+
+
+// =========================
+// Play methods
 //
 
 - (void) ChangeToNextLoopCell
@@ -665,13 +783,13 @@
     // Change to next
     if (self.currentPlayingMode == LIST_PLAYING)
     {
-        int NewIndex = self.currentSelectedCellIndex + 1;
+        int newIndex = self.currentSelectedCellIndex + 1;
         
-        if (NewIndex >= self.engine.tempoCells.count)
+        if (newIndex >= self.engine.tempoCells.count)
         {
             if ([self.engine.currentTempoList.privateProperties.tempoListLoopingEnable boolValue])
             {
-                NewIndex = 0;
+                newIndex = 0;
                 self.engine.listChangeFocusFlag = YES;
             }
             else
@@ -682,7 +800,7 @@
         }
 
         [self stopClick];
-        self.currentSelectedCellIndex = NewIndex;
+        self.currentSelectedCellIndex = newIndex;
         
         // jump to next cell when counter is 0.
         if ([self.engine.currentCell.loopCount intValue] == 0)
@@ -691,8 +809,8 @@
             return;
         }
         
-        [self.loopAndPlayViewSubController ChangeSelectBarForcusIndex: NewIndex];
-        
+        [self.volumeBottomSubview.SelectGrooveBar ChangeFocusIndexWithUIMoving: newIndex];
+
         [self startClick];
     }
 }
@@ -888,6 +1006,40 @@
     self.musicSettingBottomSubview.hidden = YES;
     self.musicSpeedBottomSubview.hidden = NO;
 }
+
+// =================================
+// iAD function
+
+-(void) bannerViewWillLoadAd:(ADBannerView *)banner
+{
+}
+
+-(void) bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    // 廣告載入
+    
+}
+
+- (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    // 有錯誤會進來
+}
+
+
+-(BOOL) bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+{
+    // 使用者點了廣告後開啟畫面
+    
+    return YES;
+}
+
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+{
+    
+}
+
+//
+// =================================
 
 // ======================
 // Network function

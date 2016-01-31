@@ -129,8 +129,6 @@
 		008A5C0A1A4F00F100BC744F /* GlobalConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 008A5C081A4F00F100BC744F /* GlobalConfig.plist */; };
 		008A5C491A4F06AD00BC744F /* SystemPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C451A4F06AD00BC744F /* SystemPageViewController.m */; };
 		008A5C4A1A4F06AD00BC744F /* SystemPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A5C461A4F06AD00BC744F /* SystemPageViewController.xib */; };
-		008A5C5B1A4F071600BC744F /* CellParameterSettingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C4E1A4F071500BC744F /* CellParameterSettingControl.m */; };
-		008A5C5C1A4F071600BC744F /* LoopAndPlayViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C501A4F071500BC744F /* LoopAndPlayViewControl.m */; };
 		008A5C5D1A4F071600BC744F /* MetronomeMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C521A4F071500BC744F /* MetronomeMainViewController.m */; };
 		008A5C5E1A4F071600BC744F /* MetronomeMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A5C531A4F071500BC744F /* MetronomeMainViewController.xib */; };
 		008A5C901A4F0AE600BC744F /* CircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5C811A4F0AE600BC744F /* CircleButton.m */; };
@@ -171,8 +169,6 @@
 		008A5CF51A4F0E7000BC744F /* XibViewInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5CF01A4F0E7000BC744F /* XibViewInterface.m */; };
 		008A5CFF1A4F18E200BC744F /* TempoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5CFD1A4F18E200BC744F /* TempoListViewController.m */; };
 		008A5D001A4F18E200BC744F /* TempoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A5CFE1A4F18E200BC744F /* TempoListViewController.xib */; };
-		008A5D031A4F1A8E00BC744F /* SystemPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A5D021A4F1A8E00BC744F /* SystemPageControl.m */; };
-		008A9B431C59EBDB004564B8 /* SystemPageControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A9B421C59EBDB004564B8 /* SystemPageControl.xib */; };
 		008A9B4C1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A9B4A1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.m */; };
 		008A9B4D1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008A9B4B1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.xib */; };
 		008A9B511C59EF2B004564B8 /* TopPartOfMetronomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 008A9B4F1C59EF2B004564B8 /* TopPartOfMetronomeViewController.m */; };
@@ -433,10 +429,6 @@
 		008A5C441A4F06AD00BC744F /* SystemPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemPageViewController.h; sourceTree = "<group>"; };
 		008A5C451A4F06AD00BC744F /* SystemPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemPageViewController.m; sourceTree = "<group>"; };
 		008A5C461A4F06AD00BC744F /* SystemPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SystemPageViewController.xib; sourceTree = "<group>"; };
-		008A5C4D1A4F071500BC744F /* CellParameterSettingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellParameterSettingControl.h; sourceTree = "<group>"; };
-		008A5C4E1A4F071500BC744F /* CellParameterSettingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellParameterSettingControl.m; sourceTree = "<group>"; };
-		008A5C4F1A4F071500BC744F /* LoopAndPlayViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopAndPlayViewControl.h; sourceTree = "<group>"; };
-		008A5C501A4F071500BC744F /* LoopAndPlayViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoopAndPlayViewControl.m; sourceTree = "<group>"; };
 		008A5C511A4F071500BC744F /* MetronomeMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeMainViewController.h; sourceTree = "<group>"; };
 		008A5C521A4F071500BC744F /* MetronomeMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeMainViewController.m; sourceTree = "<group>"; };
 		008A5C531A4F071500BC744F /* MetronomeMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeMainViewController.xib; sourceTree = "<group>"; };
@@ -500,9 +492,6 @@
 		008A5CFC1A4F18E200BC744F /* TempoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempoListViewController.h; path = Groove/SystemSetting/Controller/TempoListViewController.h; sourceTree = SOURCE_ROOT; };
 		008A5CFD1A4F18E200BC744F /* TempoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempoListViewController.m; path = Groove/SystemSetting/Controller/TempoListViewController.m; sourceTree = SOURCE_ROOT; };
 		008A5CFE1A4F18E200BC744F /* TempoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TempoListViewController.xib; path = Groove/SystemSetting/Controller/TempoListViewController.xib; sourceTree = SOURCE_ROOT; };
-		008A5D011A4F1A8E00BC744F /* SystemPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemPageControl.h; sourceTree = "<group>"; };
-		008A5D021A4F1A8E00BC744F /* SystemPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemPageControl.m; sourceTree = "<group>"; };
-		008A9B421C59EBDB004564B8 /* SystemPageControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SystemPageControl.xib; sourceTree = "<group>"; };
 		008A9B491C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPartOfMetronome4SVersionViewController.h; sourceTree = "<group>"; };
 		008A9B4A1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPartOfMetronome4SVersionViewController.m; sourceTree = "<group>"; };
 		008A9B4B1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopPartOfMetronome4SVersionViewController.xib; sourceTree = "<group>"; };
@@ -1295,13 +1284,6 @@
 		008A9B411C59EB9A004564B8 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				008A5D011A4F1A8E00BC744F /* SystemPageControl.h */,
-				008A5D021A4F1A8E00BC744F /* SystemPageControl.m */,
-				008A5C4D1A4F071500BC744F /* CellParameterSettingControl.h */,
-				008A5C4E1A4F071500BC744F /* CellParameterSettingControl.m */,
-				008A5C4F1A4F071500BC744F /* LoopAndPlayViewControl.h */,
-				008A5C501A4F071500BC744F /* LoopAndPlayViewControl.m */,
-				008A9B421C59EBDB004564B8 /* SystemPageControl.xib */,
 				008A9B491C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.h */,
 				008A9B4A1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.m */,
 				008A9B4B1C59EF05004564B8 /* TopPartOfMetronome4SVersionViewController.xib */,
@@ -1581,7 +1563,6 @@
 				00BBB8B31A61997E005B9B28 /* Four.wav in Resources */,
 				008A5CB41A4F0DF400BC744F /* TwoDigitsValuePicker.xib in Resources */,
 				0098D7CD1A5999DA0001DE00 /* SyncTime.pdf in Resources */,
-				008A9B431C59EBDB004564B8 /* SystemPageControl.xib in Resources */,
 				0071A9AE1A2B075F00EA57D2 /* LoopCellScrollView.pdf in Resources */,
 				0059D1411A56FFD20058C5E3 /* ClockIcon.pdf in Resources */,
 				00E8C0411A36119200D53F82 /* 16NoteYellow.pdf in Resources */,
@@ -1712,7 +1693,6 @@
 				008A9B511C59EF2B004564B8 /* TopPartOfMetronomeViewController.m in Sources */,
 				0007F20F1A3A22B9003F6927 /* PlayerForSongs.m in Sources */,
 				008A5CB31A4F0DF400BC744F /* TwoDigitsValuePicker.m in Sources */,
-				008A5D031A4F1A8E00BC744F /* SystemPageControl.m in Sources */,
 				008A5CDF1A4F0E3300BC744F /* ListTablePicker.m in Sources */,
 				008A5CA01A4F0B1200BC744F /* MetronomeBottomView.m in Sources */,
 				00717A601B56250A002779B7 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -1754,7 +1734,6 @@
 				00717A621B56250A002779B7 /* UIButton+AFNetworking.m in Sources */,
 				008A5CDD1A4F0E3300BC744F /* MusicTimePicker.m in Sources */,
 				008A5CF31A4F0E7000BC744F /* UIWindowWithHook.m in Sources */,
-				008A5C5B1A4F071600BC744F /* CellParameterSettingControl.m in Sources */,
 				00ED15871A5EEC5D002D442F /* TempoList.m in Sources */,
 				0010C5CE1A60682600BC5E51 /* DrumVoice1.m in Sources */,
 				00717A631B56250A002779B7 /* UIImageView+AFNetworking.m in Sources */,
@@ -1765,7 +1744,6 @@
 				008A5CF41A4F0E7000BC744F /* XibTableViewCellInterface.m in Sources */,
 				008A5CC91A4F0E1B00BC744F /* LoopCellEditerView.m in Sources */,
 				008F40511C55AF0F0057600C /* RockClickNotificationCenter.m in Sources */,
-				008A5C5C1A4F071600BC744F /* LoopAndPlayViewControl.m in Sources */,
 				007598F51A5D9896000A6B78 /* BlockVoice.m in Sources */,
 				008A5CF21A4F0E7000BC744F /* ValuePickerTemplate.m in Sources */,
 				001BF2981A531D9A00558052 /* MusicBindingInfo.m in Sources */,
