@@ -25,6 +25,10 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kSetBPMValueNotification object:nil];
 }
 
+- (void) changeCurrentCell: (int) value{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kChangeCurrentCell object:@(value)];
+}
+
 - (void) changeCellCounter: (float) value
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:kChangeCellCounter object:@(value)];
@@ -39,7 +43,16 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kPlayCellListButtonClick object:nil];
 }
 
+- (void) playCurrentCellButtonClick{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayCurrentCellButtonClick object:nil];
+}
+
+
 - (void) addLoopCellButtonClick{
     [[NSNotificationCenter defaultCenter] postNotificationName:kAddLoopCellButtonClick object:nil];
+}
+
+- (void) chanegBottomPartOfPanel: (__BottomPartOfMetronomePanel) value{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kChanegBottomPartOfPanel object:@(value)];
 }
 @end

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottomPartOfVolumeViewController">
+            <connections>
+                <outlet property="accentCircleVolumeButton" destination="9KH-S8-KYX" id="uRA-jT-4L2"/>
+                <outlet property="eighthNoteCircleVolumeButton" destination="x1P-xa-h6e" id="coo-OP-IeQ"/>
+                <outlet property="grooveCellsSelector" destination="btd-oP-fyh" id="tkB-U8-bWh"/>
+                <outlet property="playCurrentCellButton" destination="ros-m7-zaH" id="VOd-hg-5EN"/>
+                <outlet property="quarterCircleVolumeButton" destination="oBa-qV-5lC" id="ry4-iu-8YT"/>
+                <outlet property="sixteenthNoteCircleVolumeButton" destination="lDi-sv-9di" id="Pam-7F-JwP"/>
+                <outlet property="trippleNoteCircleVolumeButton" destination="QM2-af-hOa" id="oTb-xj-oZl"/>
+                <outlet property="view" destination="Xt3-f3-un7" id="0u2-pW-373"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Xt3-f3-un7">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9KH-S8-KYX" customClass="CircleButton">
+                    <rect key="frame" x="15" y="56" width="90" height="90"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oBa-qV-5lC" customClass="CircleButton">
+                    <rect key="frame" x="115" y="56" width="90" height="90"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x1P-xa-h6e" customClass="CircleButton">
+                    <rect key="frame" x="215" y="56" width="90" height="90"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lDi-sv-9di" customClass="CircleButton">
+                    <rect key="frame" x="15" y="154" width="90" height="90"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QM2-af-hOa" customClass="CircleButton">
+                    <rect key="frame" x="115" y="154" width="90" height="90"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="btd-oP-fyh" customClass="MetronomeSelectBar">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ros-m7-zaH">
+                    <rect key="frame" x="215" y="154" width="90" height="90"/>
+                    <state key="normal" backgroundImage="PlayBlack">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="PlayCurrentCellButtonClick:" destination="-1" eventType="touchUpInside" id="3SU-D3-bpN"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.21960784310000001" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="140" y="132"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="PlayBlack" width="80" height="80"/>
+    </resources>
+</document>

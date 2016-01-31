@@ -21,14 +21,14 @@ typedef enum{
 
 @optional
 
-- (void) SetFocusIndex: (int) FocusIndex;
+- (void) setFocusIndex: (int) FocusIndex;
 @end
 
 @interface MetronomeSelectBar : XibViewInterface <SelectBarCellProtocol, UIScrollViewDelegate>
 @property (getter = GetGrooveCellValueStringList, setter = SetGrooveCellValueStringList:) NSMutableArray* GrooveCellValueStringList;
 @property (nonatomic, assign) id<SelectBarProtocol> delegate;
 - (void) ChangeFocusIndexWithUIMoving : (int) NewIndex;
-- (void) DisplayUICellList: (int) FocusCellIndex;
+- (void) displayUICellList: (int) focusCellIndex;
 
 
 // loop button

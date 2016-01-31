@@ -142,7 +142,7 @@
     [self ValueColorChangeWithIndexValue];
     [self.ValueLabel setText:[NSString stringWithFormat:@"%0.1f", _IndexValue]];
     
-    [self CircleButtonValueChanged: self];
+    [self circleButtonValueChanged: self];
 }
 
 -(void) SetTouched: (BOOL) NewValue
@@ -395,15 +395,15 @@
     return [Touch locationInView:Touch.view];
 }
 
-- (IBAction) CircleButtonValueChanged:(CircleButton*) ThisCircleButton;
+- (IBAction) circleButtonValueChanged:(CircleButton*) thisCircleButton;
 {
     // Pass to parent view.
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(CircleButtonValueChanged:)])
+        if([self.delegate respondsToSelector:@selector(circleButtonValueChanged:)])
         {
-            [self.delegate CircleButtonValueChanged: ThisCircleButton];
+            [self.delegate circleButtonValueChanged: thisCircleButton];
         }
     }
 }

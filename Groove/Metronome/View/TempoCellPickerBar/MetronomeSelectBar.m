@@ -9,7 +9,7 @@
 #import "MetronomeSelectBar.h"
 
 @interface MetronomeSelectBar ()
-@property (getter = GetFocusIndex, setter = SetFocusIndex:) int FocusIndex;
+@property (getter = getFocusIndex, setter = setFocusIndex:) int FocusIndex;
 @property (getter = GetTouched, setter = SetTouched:) BOOL Touched;
 @property BOOL NoneHumanChangeFocusFlag;
 @property (getter = GetMode, setter = SetMode:) SELECT_BAR_MOVE_MODE Mode;
@@ -42,42 +42,46 @@
         self.userInteractionEnabled = YES;
         
         self.GrooveCellListView.delegate = self;
+        
+        NSLog(@"cell picker init!!");
     }
     return self;
 }
 
 
-- (void) DisplayUICellList: (int) FocusCellIndex
+- (void) displayUICellList: (int) focusCellIndex
 {
+    NSLog(@"DisplayUICellList");
+    
+    
     UIScrollView * ControlView = self.GrooveCellListView;
     
     // Clear all cell
     [[ControlView subviews]
      makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    float CellWidth  = self.FocusLineImage.frame.size.width;
-    float CellHeight = self.FocusLineImage.frame.size.height;
-    float CellLocation_X = 0;
-    float CellLocation_Y = (ControlView.bounds.size.height - CellHeight)/2 ;
+    float cellWidth  = self.FocusLineImage.frame.size.width;
+    float cellHeight = self.FocusLineImage.frame.size.height;
+    float cellLocation_X = 0;
+    float cellLocation_Y = (ControlView.bounds.size.height - cellHeight)/2 ;
 
 
-    for (int Index = 0; Index < self.GrooveCellValueStringList.count; Index++)
-    {
-        CGRect TmpFrame = CGRectMake(CellLocation_X, CellLocation_Y, CellWidth, CellHeight);
-        CellLocation_X += CellWidth;
+    for (int index = 0; index < self.GrooveCellValueStringList.count; index++){
+        CGRect tmpFrame = CGRectMake(cellLocation_X, cellLocation_Y, cellWidth, cellHeight);
+        cellLocation_X += cellWidth;
         
-        SelectBarCell * TmpCell = [[SelectBarCell alloc] initWithFrame:TmpFrame];
-        TmpCell.IndexNumber = Index;
-        TmpCell.Text = (NSString *)self.GrooveCellValueStringList[Index];
-        TmpCell.delegate = self;
+        SelectBarCell * tmpCell = [[SelectBarCell alloc] initWithFrame:tmpFrame];
+        tmpCell.IndexNumber = index;
+        tmpCell.Text = (NSString *)self.GrooveCellValueStringList[index];
+        tmpCell.delegate = self;
         
-        [ControlView addSubview:TmpCell];
+        [ControlView addSubview:tmpCell];
     }
   
-    ControlView.contentInset = UIEdgeInsetsMake (0, ([self FocusLine] -  CellWidth/2), 0,  CellWidth * (self.GrooveCellValueStringList.count -1)  + ([self FocusLine] +  CellWidth/2));
+    ControlView.contentInset = UIEdgeInsetsMake (0, ([self FocusLine] -  cellWidth/2), 0,  cellWidth * (self.GrooveCellValueStringList.count -1)  + ([self FocusLine] +  cellWidth/2));
     
     
-    [self ChangeFocusIndexWithUIMoving: FocusCellIndex];
+    [self ChangeFocusIndexWithUIMoving: focusCellIndex];
 }
 
 
@@ -151,11 +155,10 @@
     return _GrooveCellValueStringList;
 }
 
--(void) SetGrooveCellValueStringList: (NSMutableArray *) NewValue
+-(void) SetGrooveCellValueStringList: (NSMutableArray *) newValue
 {
-    if (NewValue != _GrooveCellValueStringList)
-    {
-        _GrooveCellValueStringList = NewValue;
+    if (newValue != _GrooveCellValueStringList){
+        _GrooveCellValueStringList = newValue;
     }
 }
 
@@ -186,33 +189,30 @@
     _Mode = NewValue;
 }
 
-- (int) GetFocusIndex
+- (int) getFocusIndex
 {
     return _focusIndex;
 }
 
-- (void) SetFocusIndex:(int) NewValue
+- (void) setFocusIndex:(int) newValue
 {
-    if (self.Mode == SELECT_BAR_UNCHANGED)
-    {
+    if (self.Mode == SELECT_BAR_UNCHANGED){
         return;
     }
 
     UIScrollView * ControlView = self.GrooveCellListView;
     if (_GrooveCellValueStringList == nil
         || ControlView.subviews.count == 0
-        || ControlView.subviews.count <= NewValue
-        )
-    {
+        || ControlView.subviews.count <= newValue
+        ){
         return;
     }
 
-    _focusIndex = NewValue;
+    _focusIndex = newValue;
     
     // Set from code, not user touch, CurrentMove will be Zero.
     // (MoveToCenterTimer == nil) is for avoid recursive error.
-    if (self.NoneHumanChangeFocusFlag)
-    {
+    if (self.NoneHumanChangeFocusFlag){
         self.Mode = SELECT_BAR_UNCHANGED;
         [self MovingCellMatchFocusLineWithPassToController];
         return;
@@ -230,9 +230,9 @@
     if (self.delegate != nil)
     {
         // Check whether delegate have this selector
-        if([self.delegate respondsToSelector:@selector(SetFocusIndex:)])
+        if([self.delegate respondsToSelector:@selector(setFocusIndex:)])
         {
-            [self.delegate SetFocusIndex: self.FocusIndex];
+            [self.delegate setFocusIndex: self.FocusIndex];
         }
     }
 }

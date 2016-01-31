@@ -15,7 +15,7 @@
 
 @optional
 
-- (IBAction) CircleButtonValueChanged:(CircleButton*) ThisCircleButton;
+- (IBAction) circleButtonValueChanged:(CircleButton*) thisCircleButton;
 @end
 
 #define ROUNDING_BACK_SENSITIVITY   10
